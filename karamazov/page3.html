@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カラマーゾフの兄弟 — 第一部 第一篇 第一章 — フョードル・パーヴロヴィチ・カラマーゾフ p.3</title>
+  <style>
+    :root {
+      --bg: #fdf6e3;
+      --text: #2c2c2c;
+      --accent: #8b1a1a;
+      --muted: #888;
+      --border: #e0d6c0;
+      --vocab-bg: #f0e8d0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    ruby { ruby-align: center; }
+    rt { font-size: 0.52em; color: #aaa; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">フョードル・ドストエフスキー</div>
+  <div class="chapter-title">カラマーゾフの兄弟</div>
+  <div class="chapter-sub">第一部 第一篇 第一章 — フョードル・パーヴロヴィチ・カラマーゾフ</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p><ruby>結婚<rt>けっこん</rt></ruby>してから三、四<ruby>年<rt>ねん</rt></ruby>が<ruby>経<rt>た</rt></ruby>つと、アデライーダ・イワーノヴナは<ruby>神学生<rt>しんがくせい</rt></ruby>の<ruby>一人<rt>ひとり</rt></ruby>と<ruby>駆<rt>か</rt></ruby>け<ruby>落<rt>お</rt></ruby>ちしてしまいました。<ruby>逃<rt>に</rt></ruby>げる<ruby>際<rt>さい</rt></ruby>に、<ruby>僅<rt>わず</rt></ruby>かな<ruby>現金<rt>げんきん</rt></ruby>だけを<ruby>持<rt>も</rt></ruby>ち<ruby>去<rt>さ</rt></ruby>りました。</p>
+    <p>フョードル・パーヴロヴィチは<ruby>妻<rt>つま</rt></ruby>に<ruby>逃<rt>に</rt></ruby>げられたというのに、<ruby>意外<rt>いがい</rt></ruby>なほど<ruby>冷静<rt>れいせい</rt></ruby>でした。<ruby>伝<rt>つた</rt></ruby>えられるところによれば、<ruby>彼<rt>かれ</rt></ruby>は<ruby>最初<rt>さいしょ</rt></ruby>からこの<ruby>結婚<rt>けっこん</rt></ruby>に<ruby>重<rt>おも</rt></ruby>きを<ruby>置<rt>お</rt></ruby>いていなかったようです。むしろ<ruby>解放感<rt>かいほうかん</rt></ruby>を<ruby>覚<rt>おぼ</rt></ruby>えたとさえ<ruby>言<rt>い</rt></ruby>われています。</p>
+    <p>もっとも、<ruby>妻<rt>つま</rt></ruby>が<ruby>去<rt>さ</rt></ruby>った<ruby>後<rt>のち</rt></ruby>、フョードルは<ruby>彼女<rt>かのじょ</rt></ruby>の<ruby>駆<rt>か</rt></ruby>け<ruby>落<rt>お</rt></ruby>ちを<ruby>哀<rt>かな</rt></ruby>れを<ruby>誘<rt>さそ</rt></ruby>う<ruby>話<rt>はなし</rt></ruby>として、あちこちで<ruby>大<rt>おお</rt></ruby>げさに<ruby>語<rt>かた</rt></ruby>り<ruby>歩<rt>ある</rt></ruby>いたと<ruby>言<rt>い</rt></ruby>います。<ruby>自分<rt>じぶん</rt></ruby>が<ruby>被害者<rt>ひがいしゃ</rt></ruby>であるかのように<ruby>振<rt>ふ</rt></ruby>る<ruby>舞<rt>ま</rt></ruby>うのが、<ruby>彼<rt>かれ</rt></ruby>のお<ruby>気<rt>き</rt></ruby>に<ruby>入<rt>い</rt></ruby>りの<ruby>役割<rt>やくわり</rt></ruby>でした。</p>
+    <p>アデライーダはその<ruby>後<rt>のち</rt></ruby>まもなく、<ruby>惨<rt>みじ</rt></ruby>めな<ruby>境遇<rt>きょうぐう</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<ruby>命<rt>いのち</rt></ruby>を<ruby>落<rt>お</rt></ruby>としました——<ruby>一説<rt>いっせつ</rt></ruby>には<ruby>餓死<rt>がし</rt></ruby>したとも<ruby>言<rt>い</rt></ruby>われています。<ruby>父親<rt>ちちおや</rt></ruby>のもとには、<ruby>三歳<rt>さんさい</rt></ruby>にも<ruby>満<rt>み</rt></ruby>たない<ruby>幼<rt>おさな</rt></ruby>い<ruby>息子<rt>むすこ</rt></ruby>ドミートリーだけが<ruby>残<rt>のこ</rt></ruby>されました。</p>
+    <p>フョードルは<ruby>息子<rt>むすこ</rt></ruby>のことも<ruby>早々<rt>そうそう</rt></ruby>に<ruby>忘<rt>わす</rt></ruby>れてしまいました。ドミートリーは<ruby>遠縁<rt>とおえん</rt></ruby>の<ruby>親戚<rt>しんせき</rt></ruby>や<ruby>召使<rt>めしつかい</rt></ruby>たちに<ruby>育<rt>そだ</rt></ruby>てられ、<ruby>父親<rt>ちちおや</rt></ruby>の<ruby>愛情<rt>あいじょう</rt></ruby>というものを<ruby>知<rt>し</rt></ruby>らないまま<ruby>成長<rt>せいちょう</rt></ruby>しました。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>Three or four years after the marriage, Adelaida Ivanovna ran away with a divinity student, taking only a small sum of cash with her.</p>
+    <p>Fyodor Pavlovich, left behind, was surprisingly calm. By all accounts, he had never placed much weight on the marriage, and was said to have felt something close to relief.</p>
+    <p>That said, after she left, Fyodor went about telling the story of her elopement in an exaggerated, pathetic style, as if he were the tragic victim. Playing the wronged husband was, by all reports, his favourite role.</p>
+    <p>Adelaida died not long afterwards in wretched circumstances — some accounts say she starved to death. Left behind was the small child Dmitri, not yet three years old.</p>
+    <p>Fyodor forgot about his son almost at once. Dmitri was raised by distant relatives and household servants, growing up without ever knowing a father's affection.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <a href="page2.html">← 前のページ</a>
+  <span class="page-num">p. 3 / 5</span>
+  <a href="page4.html">次のページ →</a>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">神学生</td><td class="vocab-reading">しんがくせい</td><td class="vocab-en">divinity student / seminary student</td></tr>
+    <tr><td class="vocab-kanji">駆け落ち</td><td class="vocab-reading">かけおち</td><td class="vocab-en">elopement / running away together</td></tr>
+    <tr><td class="vocab-kanji">僅かな</td><td class="vocab-reading">わずかな</td><td class="vocab-en">a mere / a small amount of</td></tr>
+    <tr><td class="vocab-kanji">持ち去る</td><td class="vocab-reading">もちさる</td><td class="vocab-en">to take away / carry off</td></tr>
+    <tr><td class="vocab-kanji">意外なほど</td><td class="vocab-reading">いがいなほど</td><td class="vocab-en">surprisingly / to a surprising degree</td></tr>
+    <tr><td class="vocab-kanji">重きを置く</td><td class="vocab-reading">おもきをおく</td><td class="vocab-en">to place emphasis / weight on</td></tr>
+    <tr><td class="vocab-kanji">解放感</td><td class="vocab-reading">かいほうかん</td><td class="vocab-en">sense of liberation / relief</td></tr>
+    <tr><td class="vocab-kanji">哀れを誘う</td><td class="vocab-reading">あわれをさそう</td><td class="vocab-en">to evoke pity / play the victim</td></tr>
+    <tr><td class="vocab-kanji">大げさに</td><td class="vocab-reading">おおげさに</td><td class="vocab-en">exaggeratedly / in an over-the-top way</td></tr>
+    <tr><td class="vocab-kanji">語り歩く</td><td class="vocab-reading">かたりあるく</td><td class="vocab-en">to go about telling (a story)</td></tr>
+    <tr><td class="vocab-kanji">被害者</td><td class="vocab-reading">ひがいしゃ</td><td class="vocab-en">victim</td></tr>
+    <tr><td class="vocab-kanji">振る舞う</td><td class="vocab-reading">ふるまう</td><td class="vocab-en">to behave / conduct oneself</td></tr>
+    <tr><td class="vocab-kanji">役割</td><td class="vocab-reading">やくわり</td><td class="vocab-en">role / part to play</td></tr>
+    <tr><td class="vocab-kanji">惨めな</td><td class="vocab-reading">みじめな</td><td class="vocab-en">wretched / miserable</td></tr>
+    <tr><td class="vocab-kanji">境遇</td><td class="vocab-reading">きょうぐう</td><td class="vocab-en">circumstances / situation in life</td></tr>
+    <tr><td class="vocab-kanji">餓死する</td><td class="vocab-reading">がしする</td><td class="vocab-en">to die of starvation</td></tr>
+    <tr><td class="vocab-kanji">遠縁</td><td class="vocab-reading">とおえん</td><td class="vocab-en">distant relative</td></tr>
+    <tr><td class="vocab-kanji">成長する</td><td class="vocab-reading">せいちょうする</td><td class="vocab-en">to grow up / develop</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜というのに</strong> — even though ~ / despite ~<br><em>妻に逃げられたというのに、意外なほど冷静でした</em><br>Expresses surprise or contradiction. Similar to のに but with a noun/clause quoted.</div>
+<div class="grammar-item"><strong>〜とも言われています</strong> — it is also said that ~<br><em>解放感を覚えたとも言われています</em><br>Distancing — the narrator doesn't claim certainty, just reports what is said.</div>
+<div class="grammar-item"><strong>〜かのように</strong> — as if ~ / as though ~<br><em>自分が被害者であるかのように振る舞う</em><br>Key N2 pattern. Describes someone acting as if something were the case (when it isn't).</div>
+<div class="grammar-item"><strong>〜ないまま</strong> — without doing ~ / leaving ~ undone<br><em>父親の愛情というものを知らないまま成長した</em><br>Expresses a lack or deficit that persists throughout an action/period.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
