@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カラマーゾフの兄弟 — 第一部 第一篇 第一章 — フョードル・パーヴロヴィチ・カラマーゾフ p.2</title>
+  <style>
+    :root {
+      --bg: #fdf6e3;
+      --text: #2c2c2c;
+      --accent: #8b1a1a;
+      --muted: #888;
+      --border: #e0d6c0;
+      --vocab-bg: #f0e8d0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    ruby { ruby-align: center; }
+    rt { font-size: 0.52em; color: #aaa; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">フョードル・ドストエフスキー</div>
+  <div class="chapter-title">カラマーゾフの兄弟</div>
+  <div class="chapter-sub">第一部 第一篇 第一章 — フョードル・パーヴロヴィチ・カラマーゾフ</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p>フョードル・パーヴロヴィチは<ruby>生涯<rt>しょうがい</rt></ruby>に<ruby>二度<rt>にど</rt></ruby><ruby>結婚<rt>けっこん</rt></ruby>し、三<ruby>人<rt>にん</rt></ruby>の<ruby>息子<rt>むすこ</rt></ruby>をもうけました。<ruby>長男<rt>ちょうなん</rt></ruby>のドミートリーは<ruby>最初<rt>さいしょ</rt></ruby>の<ruby>妻<rt>つま</rt></ruby>との<ruby>間<rt>あいだ</rt></ruby>に、<ruby>次男<rt>じなん</rt></ruby>のイワンと<ruby>三男<rt>さんなん</rt></ruby>のアリョーシャは<ruby>二番目<rt>ふたんめ</rt></ruby>の<ruby>妻<rt>つま</rt></ruby>との<ruby>間<rt>あいだ</rt></ruby>に<ruby>生<rt>う</rt></ruby>まれました。</p>
+    <p><ruby>最初<rt>さいしょ</rt></ruby>の<ruby>妻<rt>つま</rt></ruby>はミウーソフ家の<ruby>出身<rt>しゅっしん</rt></ruby>で、<ruby>由緒<rt>ゆいしょ</rt></ruby>ある<ruby>家柄<rt>いえがら</rt></ruby>の<ruby>娘<rt>むすめ</rt></ruby>でした。<ruby>相当<rt>そうとう</rt></ruby>な<ruby>持参金<rt>じさんきん</rt></ruby>も<ruby>持<rt>も</rt></ruby>っておりました。フョードル・パーヴロヴィチがいかにしてこの<ruby>女性<rt>じょせい</rt></ruby>と<ruby>結婚<rt>けっこん</rt></ruby>するに<ruby>至<rt>いた</rt></ruby>ったのか、<ruby>理解<rt>りかい</rt></ruby>するのは<ruby>難<rt>むずか</rt></ruby>しいことです。</p>
+    <p><ruby>彼女<rt>かのじょ</rt></ruby>の<ruby>名<rt>な</rt></ruby>はアデライーダ・イワーノヴナと<ruby>申<rt>もう</rt></ruby>し、<ruby>十六歳<rt>じゅうろくさい</rt></ruby>のころから<ruby>活発<rt>かっぱつ</rt></ruby>で<ruby>才気<rt>さいき</rt></ruby><ruby>溢<rt>あふ</rt></ruby>れ、<ruby>誇<rt>ほこ</rt></ruby>り<ruby>高<rt>たか</rt></ruby>い<ruby>娘<rt>むすめ</rt></ruby>でした。<ruby>理屈<rt>りくつ</rt></ruby>や<ruby>打算<rt>ださん</rt></ruby>からではなく、<ruby>情熱<rt>じょうねつ</rt></ruby>と<ruby>反抗心<rt>はんこうしん</rt></ruby>から<ruby>衝動的<rt>しょうどうてき</rt></ruby>に<ruby>行動<rt>こうどう</rt></ruby>する<ruby>性質<rt>せいしつ</rt></ruby>の<ruby>持<rt>も</rt></ruby>ち<ruby>主<rt>ぬし</rt></ruby>でした。</p>
+    <p>おそらく<ruby>彼女<rt>かのじょ</rt></ruby>は、フョードルの<ruby>道化<rt>どうけ</rt></ruby>じみた<ruby>大胆<rt>だいたん</rt></ruby>さと、<ruby>人<rt>ひと</rt></ruby>を<ruby>笑<rt>わら</rt></ruby>わせる<ruby>奇妙<rt>きみょう</rt></ruby>な<ruby>才能<rt>さいのう</rt></ruby>に<ruby>心<rt>こころ</rt></ruby>を<ruby>動<rt>うご</rt></ruby>かされたのでしょう。あるいは、<ruby>既成<rt>きせい</rt></ruby>の<ruby>秩序<rt>ちつじょ</rt></ruby>への<ruby>反発<rt>はんぱつ</rt></ruby>として<ruby>敢<rt>あえ</rt></ruby>て<ruby>最低<rt>さいてい</rt></ruby>の<ruby>男<rt>おとこ</rt></ruby>を<ruby>選<rt>えら</rt></ruby>んだとも<ruby>考<rt>かんが</rt></ruby>えられます。</p>
+    <p>いずれにせよ、<ruby>結婚<rt>けっこん</rt></ruby>は<ruby>成立<rt>せいりつ</rt></ruby>しました。ミウーソフ家の<ruby>親戚<rt>しんせき</rt></ruby>たちは<ruby>憤慨<rt>ふんがい</rt></ruby>しましたが、<ruby>若<rt>わか</rt></ruby>い<ruby>娘<rt>むすめ</rt></ruby>の<ruby>決意<rt>けつい</rt></ruby>は<ruby>固<rt>かた</rt></ruby>く、<ruby>誰<rt>だれ</rt></ruby>も<ruby>彼女<rt>かのじょ</rt></ruby>を<ruby>止<rt>と</rt></ruby>めることができませんでした。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>Fyodor Pavlovich was married twice in his life and had three sons — the eldest, Dmitri, by his first wife, and the other two, Ivan and Alyosha, by his second.</p>
+    <p>His first wife was of the Miusov family, of good lineage, and possessed of a fortune. How he came to marry this woman is difficult to understand.</p>
+    <p>Her name was Adelaida Ivanovna, a lively, clever, bold and proud girl of sixteen, with a romantic temperament and a taste for passionate, impulsive action rather than calculation.</p>
+    <p>She was, I believe, won over by his clownish daring and his strange talent for making people laugh. Or perhaps she chose the lowest possible man precisely as an act of defiance against convention.</p>
+    <p>In any event, the marriage took place. The Miusov family was outraged, but the young woman's resolve was firm and no one could stop her.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <a href="page1.html">← 前のページ</a>
+  <span class="page-num">p. 2 / 5</span>
+  <a href="page3.html">次のページ →</a>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">生涯</td><td class="vocab-reading">しょうがい</td><td class="vocab-en">one's lifetime / life</td></tr>
+    <tr><td class="vocab-kanji">長男</td><td class="vocab-reading">ちょうなん</td><td class="vocab-en">eldest son</td></tr>
+    <tr><td class="vocab-kanji">次男</td><td class="vocab-reading">じなん</td><td class="vocab-en">second son</td></tr>
+    <tr><td class="vocab-kanji">由緒ある</td><td class="vocab-reading">ゆいしょある</td><td class="vocab-en">of distinguished lineage</td></tr>
+    <tr><td class="vocab-kanji">家柄</td><td class="vocab-reading">いえがら</td><td class="vocab-en">family background / pedigree</td></tr>
+    <tr><td class="vocab-kanji">持参金</td><td class="vocab-reading">じさんきん</td><td class="vocab-en">dowry</td></tr>
+    <tr><td class="vocab-kanji">〜に至る</td><td class="vocab-reading">〜にいたる</td><td class="vocab-en">to come to / to arrive at (a conclusion/situation)</td></tr>
+    <tr><td class="vocab-kanji">活発な</td><td class="vocab-reading">かっぱつな</td><td class="vocab-en">lively / energetic</td></tr>
+    <tr><td class="vocab-kanji">才気溢れる</td><td class="vocab-reading">さいきあふれる</td><td class="vocab-en">brimming with wit / talented</td></tr>
+    <tr><td class="vocab-kanji">誇り高い</td><td class="vocab-reading">ほこりたかい</td><td class="vocab-en">proud / haughty</td></tr>
+    <tr><td class="vocab-kanji">打算</td><td class="vocab-reading">ださん</td><td class="vocab-en">calculation / self-interest</td></tr>
+    <tr><td class="vocab-kanji">反抗心</td><td class="vocab-reading">はんこうしん</td><td class="vocab-en">rebellious spirit</td></tr>
+    <tr><td class="vocab-kanji">衝動的な</td><td class="vocab-reading">しょうどうてき</td><td class="vocab-en">impulsive</td></tr>
+    <tr><td class="vocab-kanji">道化じみた</td><td class="vocab-reading">どうけじみた</td><td class="vocab-en">clown-like / buffoonish</td></tr>
+    <tr><td class="vocab-kanji">大胆さ</td><td class="vocab-reading">だいたんさ</td><td class="vocab-en">boldness / daring</td></tr>
+    <tr><td class="vocab-kanji">既成の秩序</td><td class="vocab-reading">きせいのちつじょ</td><td class="vocab-en">established order</td></tr>
+    <tr><td class="vocab-kanji">反発</td><td class="vocab-reading">はんぱつ</td><td class="vocab-en">defiance / resistance</td></tr>
+    <tr><td class="vocab-kanji">憤慨する</td><td class="vocab-reading">ふんがいする</td><td class="vocab-en">to be outraged / indignant</td></tr>
+    <tr><td class="vocab-kanji">決意</td><td class="vocab-reading">けつい</td><td class="vocab-en">resolve / determination</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜に至る</strong> — to come to ~ / to result in ~<br><em>結婚するに至ったのか</em><br>Formal expression for reaching a situation or conclusion, often used in written Japanese.</div>
+<div class="grammar-item"><strong>〜からではなく〜から</strong> — not from ~ but from ~<br><em>打算からではなく、情熱と反抗心から衝動的に行動する</em><br>Contrasting motivations. Note the repetition of から for parallel structure.</div>
+<div class="grammar-item"><strong>おそらく〜のでしょう</strong> — probably ~ (conjecture)<br><em>おそらく彼女は心を動かされたのでしょう</em><br>Narrator speculating. でしょう softens and distances the claim.</div>
+<div class="grammar-item"><strong>いずれにせよ</strong> — in any case / either way<br><em>いずれにせよ、結婚は成立しました</em><br>Useful connector — moves the narrative forward after weighing alternatives.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
