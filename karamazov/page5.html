@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カラマーゾフの兄弟 — 第一部 第一篇 第一章 — フョードル・パーヴロヴィチ・カラマーゾフ p.5</title>
+  <style>
+    :root {
+      --bg: #fdf6e3;
+      --text: #2c2c2c;
+      --accent: #8b1a1a;
+      --muted: #888;
+      --border: #e0d6c0;
+      --vocab-bg: #f0e8d0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    ruby { ruby-align: center; }
+    rt { font-size: 0.52em; color: #aaa; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">フョードル・ドストエフスキー</div>
+  <div class="chapter-title">カラマーゾフの兄弟</div>
+  <div class="chapter-sub">第一部 第一篇 第一章 — フョードル・パーヴロヴィチ・カラマーゾフ</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p>ソフィヤ・イワーノヴナは<ruby>長<rt>なが</rt></ruby>くは<ruby>持<rt>も</rt></ruby>ちませんでした。<ruby>夫<rt>おっと</rt></ruby>の<ruby>放蕩<rt>ほうとう</rt></ruby>と<ruby>日々<rt>ひび</rt></ruby>の<ruby>辱<rt>はずかし</rt></ruby>めに<ruby>心身<rt>しんしん</rt></ruby>ともに<ruby>蝕<rt>むしば</rt></ruby>まれ、<ruby>息子<rt>むすこ</rt></ruby>たちがまだ<ruby>幼<rt>おさな</rt></ruby>いうちに、<ruby>静<rt>しず</rt></ruby>かに<ruby>息<rt>いき</rt></ruby>を<ruby>引<rt>ひ</rt></ruby>き<ruby>取<rt>と</rt></ruby>りました。<ruby>神経<rt>しんけい</rt></ruby><ruby>症<rt>しょう</rt></ruby>が<ruby>死<rt>し</rt></ruby>の<ruby>原因<rt>げんいん</rt></ruby>であったと<ruby>伝<rt>つた</rt></ruby>えられています。</p>
+    <p>こうして<ruby>三人<rt>さんにん</rt></ruby>の<ruby>息子<rt>むすこ</rt></ruby>たちは、それぞれ<ruby>異<rt>こと</rt></ruby>なる<ruby>時期<rt>じき</rt></ruby>に<ruby>母親<rt>ははおや</rt></ruby>を<ruby>失<rt>うしな</rt></ruby>いました。<ruby>長男<rt>ちょうなん</rt></ruby>ドミートリーは<ruby>生<rt>うま</rt></ruby>れてまもなく<ruby>最初<rt>さいしょ</rt></ruby>の<ruby>母<rt>はは</rt></ruby>を<ruby>失<rt>うしな</rt></ruby>い、イワンとアリョーシャは<ruby>物心<rt>ものごころ</rt></ruby>がつくかつかないうちに、<ruby>優<rt>やさ</rt></ruby>しいソフィヤを<ruby>亡<rt>な</rt></ruby>くしました。</p>
+    <p><ruby>三人<rt>さんにん</rt></ruby>の<ruby>誰<rt>だれ</rt></ruby>も、<ruby>父親<rt>ちちおや</rt></ruby>からの<ruby>愛情<rt>あいじょう</rt></ruby>を<ruby>受<rt>う</rt></ruby>けた<ruby>記憶<rt>きおく</rt></ruby>を<ruby>持<rt>も</rt></ruby>っていません。フョードル・パーヴロヴィチは<ruby>親<rt>おや</rt></ruby>というものを<ruby>一切<rt>いっさい</rt></ruby><ruby>気<rt>き</rt></ruby>にしない<ruby>男<rt>おとこ</rt></ruby>でした。<ruby>息子<rt>むすこ</rt></ruby>たちは<ruby>他<rt>ほか</rt></ruby>の<ruby>人々<rt>ひとびと</rt></ruby>の<ruby>手<rt>て</rt></ruby>に<ruby>委<rt>ゆだ</rt></ruby>ねられ、<ruby>父<rt>ちち</rt></ruby>は<ruby>自分<rt>じぶん</rt></ruby>の<ruby>享楽<rt>きょうらく</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に<ruby>沈<rt>しず</rt></ruby>んでいきました。</p>
+    <p>しかし——そしてこれは<ruby>注目<rt>ちゅうもく</rt></ruby>に<ruby>値<rt>あたい</rt></ruby>することですが——<ruby>三人<rt>さんにん</rt></ruby>の<ruby>息子<rt>むすこ</rt></ruby>たちはそれぞれに<ruby>際立<rt>きわだ</rt></ruby>った<ruby>人物<rt>じんぶつ</rt></ruby>として<ruby>成長<rt>せいちょう</rt></ruby>しました。その<ruby>差異<rt>さい</rt></ruby>の<ruby>大<rt>おお</rt></ruby>きさは、<ruby>同<rt>おな</rt></ruby>じ<ruby>父親<rt>ちちおや</rt></ruby>から<ruby>生<rt>う</rt></ruby>まれたとは<ruby>到底<rt>とうてい</rt></ruby><ruby>思<rt>おも</rt></ruby>えないほどのものでした。</p>
+    <p>ここに<ruby>語<rt>かた</rt></ruby>る<ruby>物語<rt>ものがたり</rt></ruby>は、まさにその<ruby>三人<rt>さんにん</rt></ruby>——とりわけ<ruby>末弟<rt>まってい</rt></ruby>アリョーシャ——の<ruby>物語<rt>ものがたり</rt></ruby>です。<ruby>第一章<rt>だいいっしょう</rt></ruby>はここで<ruby>幕<rt>まく</rt></ruby>を<ruby>閉<rt>と</rt></ruby>じます。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>Sofia Ivanovna did not last long. Worn down in body and spirit by her husband's debauchery and daily humiliations, she died quietly while her sons were still small. A nervous disorder was said to be the cause.</p>
+    <p>Thus each of the three sons lost his mother at a different time. Dmitri lost his first mother almost at birth; Ivan and Alyosha lost the gentle Sofia before they were old enough to remember her clearly.</p>
+    <p>None of the three carry any memory of receiving a father's affection. Fyodor Pavlovich was a man entirely indifferent to parenthood. His sons were left in the hands of others, while he sank back into his own pleasures.</p>
+    <p>And yet — and this is worth noting — each of the three sons grew into a strikingly distinct individual. The differences between them are so profound that one could hardly believe they sprang from the same father.</p>
+    <p>It is the story of these three — and above all of the youngest, Alyosha — that we are about to tell. And here the first chapter closes.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <a href="page4.html">← 前のページ</a>
+  <span class="page-num">p. 5 / 5</span>
+  <em style="color:#ccc">次のページは準備中</em>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">長くは持たない</td><td class="vocab-reading">ながくはもたない</td><td class="vocab-en">not to last long / not to survive long</td></tr>
+    <tr><td class="vocab-kanji">蝕む</td><td class="vocab-reading">むしばむ</td><td class="vocab-en">to eat away at / erode / undermine</td></tr>
+    <tr><td class="vocab-kanji">心身ともに</td><td class="vocab-reading">しんしんともに</td><td class="vocab-en">in both mind and body</td></tr>
+    <tr><td class="vocab-kanji">息を引き取る</td><td class="vocab-reading">いきをひきとる</td><td class="vocab-en">to breathe one's last / die</td></tr>
+    <tr><td class="vocab-kanji">神経症</td><td class="vocab-reading">しんけいしょう</td><td class="vocab-en">nervous disorder / neurosis</td></tr>
+    <tr><td class="vocab-kanji">物心がつく</td><td class="vocab-reading">ものごころがつく</td><td class="vocab-en">to reach the age of awareness / begin to understand the world</td></tr>
+    <tr><td class="vocab-kanji">一切〜ない</td><td class="vocab-reading">いっさい〜ない</td><td class="vocab-en">not at all ~ / completely without ~</td></tr>
+    <tr><td class="vocab-kanji">委ねる</td><td class="vocab-reading">ゆだねる</td><td class="vocab-en">to entrust / leave in the hands of</td></tr>
+    <tr><td class="vocab-kanji">享楽</td><td class="vocab-reading">きょうらく</td><td class="vocab-en">pleasure-seeking / hedonism</td></tr>
+    <tr><td class="vocab-kanji">注目に値する</td><td class="vocab-reading">ちゅうもくにあたいする</td><td class="vocab-en">worthy of note / noteworthy</td></tr>
+    <tr><td class="vocab-kanji">際立った</td><td class="vocab-reading">きわだった</td><td class="vocab-en">conspicuous / strikingly distinct</td></tr>
+    <tr><td class="vocab-kanji">差異</td><td class="vocab-reading">さい</td><td class="vocab-en">difference / disparity</td></tr>
+    <tr><td class="vocab-kanji">到底〜ない</td><td class="vocab-reading">とうてい〜ない</td><td class="vocab-en">cannot possibly ~ / utterly impossible to ~</td></tr>
+    <tr><td class="vocab-kanji">末弟</td><td class="vocab-reading">まってい</td><td class="vocab-en">youngest brother</td></tr>
+    <tr><td class="vocab-kanji">幕を閉じる</td><td class="vocab-reading">まくをとじる</td><td class="vocab-en">to close the curtain / bring to an end</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜に値する</strong> — to be worthy of ~ / to merit ~<br><em>これは注目に値することです</em><br>N2 pattern. 値する (to be worth) attaches to a noun. Very formal, literary.</div>
+<div class="grammar-item"><strong>到底〜ない</strong> — cannot possibly ~ / utterly beyond ~<br><em>同じ父親から生まれたとは到底思えないほどの差異</em><br>Strong negation. Emphasises the speaker's complete inability to accept or imagine something.</div>
+<div class="grammar-item"><strong>物心がつく</strong> — to reach the age of understanding<br><em>物心がつくかつかないうちに母を亡くした</em><br>Set phrase. 物心がつかないうち = before one is old enough to be aware of things.</div>
+<div class="grammar-item"><strong>〜とりわけ</strong> — especially / above all / in particular<br><em>三人——とりわけ末弟アリョーシャ——の物語</em><br>Formal adverb for singling something out. More literary than 特に.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
