@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>カラマーゾフの兄弟 — 第1章</title>
+  <title>カラマーゾフの兄弟 — 第一部 第一篇 第一章 — フョードル・パーヴロヴィチ・カラマーゾフ p.1</title>
   <style>
     :root {
       --bg: #fdf6e3;
@@ -29,187 +29,74 @@
       padding-bottom: 18px;
       margin-bottom: 28px;
     }
-    .book-title {
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.18em;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-    }
-    .chapter-title {
-      font-size: 1.45rem;
-      color: var(--accent);
-      font-weight: bold;
-      margin-bottom: 4px;
-    }
-    .chapter-sub {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    /* Flip bar */
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
     .flip-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 22px;
-      padding: 10px 16px;
-      background: var(--vocab-bg);
-      border-radius: 10px;
-      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
     }
-    .lang-label {
-      font-size: 0.9rem;
-      color: var(--muted);
-      font-style: italic;
-    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
     .flip-btn {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 7px 18px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      font-family: inherit;
-      letter-spacing: 0.03em;
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
     }
     .flip-btn:active { opacity: 0.75; }
-
-    /* Text */
-    .text-panel {
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .text-panel p {
-      margin-bottom: 1.5em;
-      font-size: 1.08rem;
-      text-align: justify;
-    }
-    .panel-en {
-      display: none;
-      color: #3a3a3a;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 1.05rem;
-      font-style: italic;
-    }
-    .panel-en p { font-style: normal; color: #333; }
-    .panel-en .en-note {
-      font-size: 0.82rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-top: -0.8em;
-      margin-bottom: 1.4em;
-    }
-
-    /* Furigana */
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
     ruby { ruby-align: center; }
     rt { font-size: 0.52em; color: #aaa; }
-
-    /* Tap hint */
-    .tap-hint {
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-bottom: 18px;
-      letter-spacing: 0.05em;
-    }
-
-    /* Page nav */
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
     .page-nav {
-      text-align: center;
-      margin-top: 32px;
-      font-size: 0.82rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
     }
-    .page-nav a {
-      color: var(--accent);
-      text-decoration: none;
-      margin: 0 8px;
-    }
-
-    /* Vocab button */
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
     .vocab-toggle {
-      position: fixed;
-      bottom: 24px;
-      right: 20px;
-      background: var(--accent);
-      color: white;
-      border: none;
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.28);
-      z-index: 100;
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
       -webkit-tap-highlight-color: transparent;
     }
-
-    /* Vocab panel */
     .vocab-panel {
-      display: none;
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      max-height: 60vh;
-      overflow-y: auto;
-      background: var(--bg);
-      border-top: 2px solid var(--accent);
-      padding: 18px 20px 40px;
-      z-index: 99;
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
       box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
     }
     .vocab-panel.open { display: block; }
-    .vocab-panel h3 {
-      font-size: 0.9rem;
-      color: var(--accent);
-      margin-bottom: 14px;
-      letter-spacing: 0.08em;
-    }
-    .vocab-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-      margin-bottom: 18px;
-    }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
     .vocab-table tr { border-bottom: 1px solid var(--border); }
     .vocab-table td { padding: 8px 4px; vertical-align: top; }
-    .vocab-kanji { font-weight: bold; width: 38%; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
     .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
-    .vocab-en { color: #555; width: 34%; }
-
-    /* Grammar */
-    .grammar-section h4 {
-      font-size: 0.88rem;
-      color: var(--accent);
-      margin-bottom: 10px;
-      letter-spacing: 0.06em;
-    }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
     .grammar-item {
-      background: var(--vocab-bg);
-      border-radius: 8px;
-      padding: 11px 13px;
-      margin-bottom: 10px;
-      font-size: 0.86rem;
-      line-height: 1.65;
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
     }
     .grammar-item strong { color: var(--accent); }
     .grammar-item em { color: #555; }
-
     .close-vocab {
-      display: block;
-      margin: 0 auto 14px;
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 5px 18px;
-      font-size: 0.82rem;
-      color: var(--muted);
-      cursor: pointer;
-      font-family: inherit;
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
     }
-  </style>
+</style>
 </head>
 <body>
 
@@ -227,43 +114,30 @@
 <div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
 
 <div class="text-panel" onclick="toggleLang()">
-
   <div class="panel-jp" id="panel-jp">
-    <p>
-      <ruby>アレクセイ<rt>あれくせい</rt></ruby>・フョードロヴィチ・<ruby>カラマーゾフ<rt>からまーぞふ</rt></ruby>は、私たちの<ruby>郡<rt>ぐん</rt></ruby>で<ruby>名<rt>な</rt></ruby>の<ruby>知<rt>し</rt></ruby>れた<ruby>地主<rt>じぬし</rt></ruby>、フョードル・パーヴロヴィチ・カラマーゾフの<ruby>三男<rt>さんなん</rt></ruby>でした。
-    </p>
-    <p>
-      フョードル・パーヴロヴィチは<ruby>今<rt>いま</rt></ruby>から<ruby>十三年前<rt>じゅうさんねんまえ</rt></ruby>、<ruby>不可解<rt>ふかかい</rt></ruby>な——そして<ruby>今<rt>いま</rt></ruby>なお<ruby>多<rt>おお</rt></ruby>くの<ruby>点<rt>てん</rt></ruby>で<ruby>謎<rt>なぞ</rt></ruby>に<ruby>包<rt>つつ</rt></ruby>まれた——<ruby>死<rt>し</rt></ruby>を<ruby>遂<rt>と</rt></ruby>げました。その<ruby>最期<rt>さいご</rt></ruby>については、<ruby>後<rt>のち</rt></ruby>ほど<ruby>適切<rt>てきせつ</rt></ruby>な<ruby>箇所<rt>かしょ</rt></ruby>でお<ruby>話<rt>はなし</rt></ruby>しします。
-    </p>
-    <p>
-      ここでは<ruby>差<rt>さ</rt></ruby>し<ruby>当<rt>あ</rt></ruby>たり、この「<ruby>地主<rt>じぬし</rt></ruby>」——そう<ruby>呼<rt>よ</rt></ruby>ばれてはいましたが、<ruby>実際<rt>じっさい</rt></ruby>には<ruby>自分<rt>じぶん</rt></ruby>の<ruby>領地<rt>りょうち</rt></ruby>にほとんど<ruby>足<rt>あし</rt></ruby>を<ruby>運<rt>はこ</rt></ruby>ぶことのなかった<ruby>男<rt>おとこ</rt></ruby>でした——が、<ruby>奇妙<rt>きみょう</rt></ruby>な<ruby>人物<rt>じんぶつ</rt></ruby>であったと<ruby>申<rt>もう</rt></ruby>し<ruby>上<rt>あ</rt></ruby>げるにとどめましょう。このような<ruby>人物<rt>じんぶつ</rt></ruby>は<ruby>珍<rt>めずら</rt></ruby>しくもありませんが、<ruby>卑<rt>いや</rt></ruby>しく、<ruby>堕落<rt>だらく</rt></ruby>していて、しかも<ruby>愚<rt>おろ</rt></ruby>かしいという<ruby>点<rt>てん</rt></ruby>では<ruby>際立<rt>きわだ</rt></ruby>っておりました。
-    </p>
-    <p>
-      とはいえ、こうした「<ruby>愚<rt>おろ</rt></ruby>か<ruby>者<rt>もの</rt></ruby>」の<ruby>中<rt>なか</rt></ruby>でも、<ruby>自分<rt>じぶん</rt></ruby>の<ruby>世俗的<rt>せぞくてき</rt></ruby>な<ruby>利益<rt>りえき</rt></ruby>を<ruby>守<rt>まも</rt></ruby>ることにかけては<ruby>非常<rt>ひじょう</rt></ruby>に<ruby>有能<rt>ゆうのう</rt></ruby>で、それ<ruby>以外<rt>いがい</rt></ruby>のことには<ruby>関心<rt>かんしん</rt></ruby>がないようでした。フョードル・パーヴロヴィチはほぼ<ruby>無一文<rt>むいちもん</rt></ruby>から<ruby>身<rt>み</rt></ruby>を<ruby>起<rt>お</rt></ruby>こしました。<ruby>領地<rt>りょうち</rt></ruby>はわずかなものでしたが、<ruby>他人<rt>たにん</rt></ruby>の<ruby>食卓<rt>しょくたく</rt></ruby>に<ruby>上<rt>あ</rt></ruby>がり<ruby>込<rt>こ</rt></ruby>んでは<ruby>取<rt>と</rt></ruby>り<ruby>入<rt>い</rt></ruby>る<ruby>術<rt>すべ</rt></ruby>を<ruby>心得<rt>こころえ</rt></ruby>ておりました。
-    </p>
-    <p>
-      ところが、<ruby>彼<rt>かれ</rt></ruby>が<ruby>亡<rt>な</rt></ruby>くなってみると、<ruby>現金<rt>げんきん</rt></ruby>で<ruby>十万<rt>じゅうまん</rt></ruby>ルーブルを<ruby>残<rt>のこ</rt></ruby>していたことが<ruby>明<rt>あき</rt></ruby>らかになったのです。
-    </p>
+    <p><ruby>アレクセイ<rt>あれくせい</rt></ruby>・フョードロヴィチ・<ruby>カラマーゾフ<rt>からまーぞふ</rt></ruby>は、私たちの<ruby>郡<rt>ぐん</rt></ruby>で<ruby>名<rt>な</rt></ruby>の<ruby>知<rt>し</rt></ruby>れた<ruby>地主<rt>じぬし</rt></ruby>、フョードル・パーヴロヴィチ・カラマーゾフの<ruby>三男<rt>さんなん</rt></ruby>でした。</p>
+    <p>フョードル・パーヴロヴィチは<ruby>今<rt>いま</rt></ruby>から<ruby>十三年前<rt>じゅうさんねんまえ</rt></ruby>、<ruby>不可解<rt>ふかかい</rt></ruby>な——そして<ruby>今<rt>いま</rt></ruby>なお<ruby>多<rt>おお</rt></ruby>くの<ruby>点<rt>てん</rt></ruby>で<ruby>謎<rt>なぞ</rt></ruby>に<ruby>包<rt>つつ</rt></ruby>まれた——<ruby>死<rt>し</rt></ruby>を<ruby>遂<rt>と</rt></ruby>げました。その<ruby>最期<rt>さいご</rt></ruby>については、<ruby>後<rt>のち</rt></ruby>ほど<ruby>適切<rt>てきせつ</rt></ruby>な<ruby>箇所<rt>かしょ</rt></ruby>でお<ruby>話<rt>はなし</rt></ruby>しします。</p>
+    <p>ここでは<ruby>差<rt>さ</rt></ruby>し<ruby>当<rt>あ</rt></ruby>たり、この「<ruby>地主<rt>じぬし</rt></ruby>」——そう<ruby>呼<rt>よ</rt></ruby>ばれてはいましたが、<ruby>実際<rt>じっさい</rt></ruby>には<ruby>自分<rt>じぶん</rt></ruby>の<ruby>領地<rt>りょうち</rt></ruby>にほとんど<ruby>足<rt>あし</rt></ruby>を<ruby>運<rt>はこ</rt></ruby>ぶことのなかった<ruby>男<rt>おとこ</rt></ruby>でした——が、<ruby>奇妙<rt>きみょう</rt></ruby>な<ruby>人物<rt>じんぶつ</rt></ruby>であったと<ruby>申<rt>もう</rt></ruby>し<ruby>上<rt>あ</rt></ruby>げるにとどめましょう。このような<ruby>人物<rt>じんぶつ</rt></ruby>は<ruby>珍<rt>めずら</rt></ruby>しくもありませんが、<ruby>卑<rt>いや</rt></ruby>しく、<ruby>堕落<rt>だらく</rt></ruby>していて、しかも<ruby>愚<rt>おろ</rt></ruby>かしいという<ruby>点<rt>てん</rt></ruby>では<ruby>際立<rt>きわだ</rt></ruby>っておりました。</p>
+    <p>とはいえ、こうした「<ruby>愚<rt>おろ</rt></ruby>か<ruby>者<rt>もの</rt></ruby>」の<ruby>中<rt>なか</rt></ruby>でも、<ruby>自分<rt>じぶん</rt></ruby>の<ruby>世俗的<rt>せぞくてき</rt></ruby>な<ruby>利益<rt>りえき</rt></ruby>を<ruby>守<rt>まも</rt></ruby>ることにかけては<ruby>非常<rt>ひじょう</rt></ruby>に<ruby>有能<rt>ゆうのう</rt></ruby>で、それ<ruby>以外<rt>いがい</rt></ruby>のことには<ruby>関心<rt>かんしん</rt></ruby>がないようでした。フョードル・パーヴロヴィチはほぼ<ruby>無一文<rt>むいちもん</rt></ruby>から<ruby>身<rt>み</rt></ruby>を<ruby>起<rt>お</rt></ruby>こしました。<ruby>領地<rt>りょうち</rt></ruby>はわずかなものでしたが、<ruby>他人<rt>たにん</rt></ruby>の<ruby>食卓<rt>しょくたく</rt></ruby>に<ruby>上<rt>あ</rt></ruby>がり<ruby>込<rt>こ</rt></ruby>んでは<ruby>取<rt>と</rt></ruby>り<ruby>入<rt>い</rt></ruby>る<ruby>術<rt>すべ</rt></ruby>を<ruby>心得<rt>こころえ</rt></ruby>ておりました。</p>
+    <p>ところが、<ruby>彼<rt>かれ</rt></ruby>が<ruby>亡<rt>な</rt></ruby>くなってみると、<ruby>現金<rt>げんきん</rt></ruby>で<ruby>十万<rt>じゅうまん</rt></ruby>ルーブルを<ruby>残<rt>のこ</rt></ruby>していたことが<ruby>明<rt>あき</rt></ruby>らかになったのです。</p>
   </div>
-
   <div class="panel-en" id="panel-en">
     <p>Alexey Fyodorovich Karamazov was the third son of Fyodor Pavlovich Karamazov, a landowner well known in our district, whose strange and tragic death — mysterious in many respects even now — occurred thirteen years ago.</p>
-    <p class="en-note">(The narrator promises to describe this death in its proper place.)</p>
-    <p>For the present I will only say that this "landowner" — though he had scarcely ever set foot on his own estate — was a strange type: not uncommon, yet conspicuous for being at once abject, vicious, and utterly senseless.</p>
-    <p>And yet he was one of those senseless persons entirely capable of managing his own worldly affairs — and apparently little else. Fyodor Pavlovich began with almost nothing; his estate was tiny, but he wormed his way to other men's tables and clung there as a toady.</p>
+    <p>I shall describe that death in its proper place. For the present I will say only this.</p>
+    <p>This 'landowner' — though he had scarcely ever set foot on his own estate — was a strange type: not uncommon, yet conspicuous for being at once abject, vicious, and utterly senseless.</p>
+    <p>Yet he was one of those senseless men entirely capable of managing his own worldly interests, and apparently nothing else. Fyodor Pavlovich began with almost nothing. His estate was tiny, but he wormed his way to other men's tables and clung there as a toady.</p>
     <p>And yet — when he died, it emerged that he had left a hundred thousand roubles in hard cash.</p>
   </div>
-
 </div>
 
 <div class="page-nav">
-  第一章 &nbsp;·&nbsp; <strong>1 / 1</strong> &nbsp;·&nbsp; <em>更なるページは近日公開</em>
+  <span></span>
+  <span class="page-num">p. 1 / 5</span>
+  <a href="page2.html">次のページ →</a>
 </div>
 
-<!-- Vocab button -->
 <button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
 
-<!-- Vocab panel -->
 <div class="vocab-panel" id="vocab-panel">
   <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
   <h3>📖 語彙チートシート — Vocabulary</h3>
@@ -275,10 +149,8 @@
     <tr><td class="vocab-kanji">謎に包まれた</td><td class="vocab-reading">なぞにつつまれた</td><td class="vocab-en">shrouded in mystery</td></tr>
     <tr><td class="vocab-kanji">死を遂げる</td><td class="vocab-reading">しをとげる</td><td class="vocab-en">to meet one's death</td></tr>
     <tr><td class="vocab-kanji">最期</td><td class="vocab-reading">さいご</td><td class="vocab-en">final moments / death</td></tr>
-    <tr><td class="vocab-kanji">適切な箇所</td><td class="vocab-reading">てきせつなかしょ</td><td class="vocab-en">appropriate place / section</td></tr>
+    <tr><td class="vocab-kanji">差し当たり</td><td class="vocab-reading">さしあたり</td><td class="vocab-en">for the present / for now</td></tr>
     <tr><td class="vocab-kanji">領地</td><td class="vocab-reading">りょうち</td><td class="vocab-en">estate / domain</td></tr>
-    <tr><td class="vocab-kanji">差し当たり</td><td class="vocab-reading">さしあたり</td><td class="vocab-en">for now / for the present</td></tr>
-    <tr><td class="vocab-kanji">奇妙な</td><td class="vocab-reading">きみょうな</td><td class="vocab-en">strange / peculiar</td></tr>
     <tr><td class="vocab-kanji">卑しい</td><td class="vocab-reading">いやしい</td><td class="vocab-en">base / vulgar / lowly</td></tr>
     <tr><td class="vocab-kanji">堕落</td><td class="vocab-reading">だらく</td><td class="vocab-en">moral depravity</td></tr>
     <tr><td class="vocab-kanji">際立つ</td><td class="vocab-reading">きわだつ</td><td class="vocab-en">to stand out / be conspicuous</td></tr>
@@ -289,47 +161,28 @@
     <tr><td class="vocab-kanji">取り入る術</td><td class="vocab-reading">とりいるすべ</td><td class="vocab-en">knack for ingratiating oneself</td></tr>
     <tr><td class="vocab-kanji">心得る</td><td class="vocab-reading">こころえる</td><td class="vocab-en">to know well / be versed in</td></tr>
     <tr><td class="vocab-kanji">現金</td><td class="vocab-reading">げんきん</td><td class="vocab-en">cash / ready money</td></tr>
-    <tr><td class="vocab-kanji">十万ルーブル</td><td class="vocab-reading">じゅうまんるーぶる</td><td class="vocab-en">100,000 roubles</td></tr>
   </table>
-
   <div class="grammar-section">
     <h4>🗒 文法メモ — Grammar Notes</h4>
-    <div class="grammar-item">
-      <strong>〜にとどめる</strong> — "to limit oneself to ~"<br>
-      <em>申し上げるにとどめましょう</em> = "I shall limit myself to saying..."<br>
-      Elegant way to signal the narrator is holding back detail deliberately.
-    </div>
-    <div class="grammar-item">
-      <strong>〜てみると</strong> — "upon doing ~ / when it turned out that ~"<br>
-      <em>亡くなってみると</em> = "when he died and we looked..."<br>
-      Implies a surprising discovery after the action.
-    </div>
-    <div class="grammar-item">
-      <strong>〜にかけては</strong> — "when it comes to ~ / in the matter of ~"<br>
-      <em>利益を守ることにかけては有能</em> = "capable when it came to protecting his interests"<br>
-      Often used to highlight a specific domain of skill or weakness.
-    </div>
-    <div class="grammar-item">
-      <strong>差し当たり</strong> — "for the present / for now"<br>
-      Literary narrator's phrase — signals more is coming but isn't being said yet. Very Dostoevsky.
-    </div>
+<div class="grammar-item"><strong>〜にとどめる</strong> — to limit oneself to ~<br><em>申し上げるにとどめましょう</em><br>"I shall limit myself to saying..." — the narrator signals he is deliberately holding back.</div>
+<div class="grammar-item"><strong>〜てみると</strong> — upon doing ~ / when it turned out that ~<br><em>亡くなってみると現金で十万ルーブルが残っていた</em><br>Implies a surprising discovery after the action.</div>
+<div class="grammar-item"><strong>〜にかけては</strong> — when it comes to ~ / in the matter of ~<br><em>利益を守ることにかけては非常に有能</em><br>Used to highlight a specific domain of skill or weakness.</div>
+<div class="grammar-item"><strong>差し当たり</strong> — for the present / for now<br><em>ここでは差し当たり〜と申し上げるにとどめましょう</em><br>Literary narrator's phrase — signals more is coming but isn't said yet.</div>
   </div>
 </div>
 
 <script>
-  let isJapanese = true;
-
+  let isJP = true;
   function toggleLang() {
-    isJapanese = !isJapanese;
-    document.getElementById('panel-jp').style.display = isJapanese ? 'block' : 'none';
-    document.getElementById('panel-en').style.display = isJapanese ? 'none' : 'block';
-    document.getElementById('lang-label').textContent = isJapanese ? '🇯🇵 日本語' : '🇬🇧 English';
-    document.getElementById('flip-btn').textContent = isJapanese ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
-    document.getElementById('tap-hint').textContent = isJapanese
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
       ? 'テキストをタップして英語に切り替え / tap text to flip'
       : 'Tap text to return to Japanese / タップで日本語へ';
   }
-
   function toggleVocab() {
     document.getElementById('vocab-panel').classList.toggle('open');
   }
