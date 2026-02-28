@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カラマーゾフの兄弟 — 第一部 第一篇 第一章 — フョードル・パーヴロヴィチ・カラマーゾフ p.4</title>
+  <style>
+    :root {
+      --bg: #fdf6e3;
+      --text: #2c2c2c;
+      --accent: #8b1a1a;
+      --muted: #888;
+      --border: #e0d6c0;
+      --vocab-bg: #f0e8d0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    ruby { ruby-align: center; }
+    rt { font-size: 0.52em; color: #aaa; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">フョードル・ドストエフスキー</div>
+  <div class="chapter-title">カラマーゾフの兄弟</div>
+  <div class="chapter-sub">第一部 第一篇 第一章 — フョードル・パーヴロヴィチ・カラマーゾフ</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p><ruby>最初<rt>さいしょ</rt></ruby>の<ruby>結婚<rt>けっこん</rt></ruby>からおよそ三<ruby>年<rt>ねん</rt></ruby>が<ruby>経<rt>た</rt></ruby>ち、フョードル・パーヴロヴィチは<ruby>再婚<rt>さいこん</rt></ruby>しました。<ruby>二番目<rt>ふたんめ</rt></ruby>の<ruby>妻<rt>つま</rt></ruby>はソフィヤ・イワーノヴナという<ruby>娘<rt>むすめ</rt></ruby>で、<ruby>孤児院<rt>こじいん</rt></ruby>で<ruby>育<rt>そだ</rt></ruby>てられた<ruby>身<rt>み</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>の<ruby>者<rt>もの</rt></ruby>でした。</p>
+    <p>ソフィヤは<ruby>美<rt>うつく</rt></ruby>しい<ruby>娘<rt>むすめ</rt></ruby>でしたが、<ruby>気<rt>き</rt></ruby>の<ruby>弱<rt>よわ</rt></ruby>い、<ruby>従順<rt>じゅうじゅん</rt></ruby>な<ruby>性格<rt>せいかく</rt></ruby>の<ruby>持<rt>も</rt></ruby>ち<ruby>主<rt>ぬし</rt></ruby>でもありました。<ruby>後見人<rt>こうけんにん</rt></ruby>も<ruby>身内<rt>みうち</rt></ruby>もなく、<ruby>誰<rt>だれ</rt></ruby>にも<ruby>頼<rt>たよ</rt></ruby>れない<ruby>境遇<rt>きょうぐう</rt></ruby>にあったのです。フョードルのような<ruby>男<rt>おとこ</rt></ruby>にとって、そういう<ruby>状況<rt>じょうきょう</rt></ruby>の<ruby>女性<rt>じょせい</rt></ruby>は<ruby>格好<rt>かっこう</rt></ruby>の<ruby>標的<rt>ひょうてき</rt></ruby>でした。</p>
+    <p>どのような<ruby>経緯<rt>いきさつ</rt></ruby>でこの<ruby>結婚<rt>けっこん</rt></ruby>が<ruby>成立<rt>せいりつ</rt></ruby>したのか、<ruby>詳細<rt>しょうさい</rt></ruby>は<ruby>伝<rt>つた</rt></ruby>わっていません。ただ、<ruby>縁談<rt>えんだん</rt></ruby>を<ruby>持<rt>も</rt></ruby>ち<ruby>込<rt>こ</rt></ruby>んだのは<ruby>仲介人<rt>ちゅうかいにん</rt></ruby>であり、ソフィヤには<ruby>断<rt>こと</rt></ruby>わる<ruby>余地<rt>よち</rt></ruby>もなかったと<ruby>言<rt>い</rt></ruby>われています。</p>
+    <p><ruby>結婚生活<rt>けっこんせいかつ</rt></ruby>はソフィヤにとって<ruby>試練<rt>しれん</rt></ruby>の<ruby>連続<rt>れんぞく</rt></ruby>でした。フョードルは<ruby>放蕩<rt>ほうとう</rt></ruby>をやめず、<ruby>妻<rt>つま</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>でも<ruby>恥<rt>は</rt></ruby>じることなく<ruby>乱<rt>みだ</rt></ruby>れた<ruby>生活<rt>せいかつ</rt></ruby>を<ruby>続<rt>つづ</rt></ruby>けました。<ruby>優<rt>やさ</rt></ruby>しい<ruby>心<rt>こころ</rt></ruby>を<ruby>持<rt>も</rt></ruby>つソフィヤは、<ruby>夫<rt>おっと</rt></ruby>の<ruby>振<rt>ふ</rt></ruby>る<ruby>舞<rt>ま</rt></ruby>いに<ruby>深<rt>ふか</rt></ruby>く<ruby>傷<rt>きず</rt></ruby>つき、<ruby>神<rt>かみ</rt></ruby>に<ruby>祈<rt>いの</rt></ruby>る<ruby>以外<rt>いがい</rt></ruby>に<ruby>逃<rt>に</rt></ruby>げ<ruby>場<rt>ば</rt></ruby>を<ruby>見<rt>み</rt></ruby>つけられませんでした。</p>
+    <p>それでも<ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>二人<rt>ふたり</rt></ruby>の<ruby>男児<rt>だんじ</rt></ruby>を<ruby>産<rt>う</rt></ruby>みました。<ruby>長男<rt>ちょうなん</rt></ruby>がイワン・フョードロヴィチ、<ruby>次男<rt>じなん</rt></ruby>がアレクセイ・フョードロヴィチです。<ruby>後者<rt>こうしゃ</rt></ruby>こそが、この<ruby>物語<rt>ものがたり</rt></ruby>の<ruby>主人公<rt>しゅじんこう</rt></ruby>に<ruby>他<rt>ほか</rt></ruby>なりません。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>About three years after the first marriage, Fyodor Pavlovich remarried. His second wife was Sofia Ivanovna, a girl who had been raised in an orphanage.</p>
+    <p>Sofia was beautiful, but she was also meek and gentle by nature. She had no guardian, no family to rely on — no one to turn to. For a man like Fyodor, a woman in such circumstances made an easy target.</p>
+    <p>How exactly this marriage was arranged is not recorded. It is said that a go-between brought the proposal, and that Sofia had little room to refuse.</p>
+    <p>Married life was for Sofia a series of ordeals. Fyodor did not stop his dissolute ways; he continued his debauched existence without any shame before his wife. Gentle-hearted Sofia was deeply wounded by his behaviour, and could find no refuge except prayer.</p>
+    <p>And yet she bore him two sons: the elder, Ivan Fyodorovich, and the younger, Alexey Fyodorovich — who is none other than the hero of this story.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <a href="page3.html">← 前のページ</a>
+  <span class="page-num">p. 4 / 5</span>
+  <a href="page5.html">次のページ →</a>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">再婚する</td><td class="vocab-reading">さいこんする</td><td class="vocab-en">to remarry</td></tr>
+    <tr><td class="vocab-kanji">孤児院</td><td class="vocab-reading">こじいん</td><td class="vocab-en">orphanage</td></tr>
+    <tr><td class="vocab-kanji">従順な</td><td class="vocab-reading">じゅうじゅんな</td><td class="vocab-en">meek / obedient / docile</td></tr>
+    <tr><td class="vocab-kanji">後見人</td><td class="vocab-reading">こうけんにん</td><td class="vocab-en">guardian</td></tr>
+    <tr><td class="vocab-kanji">身内</td><td class="vocab-reading">みうち</td><td class="vocab-en">family / relatives</td></tr>
+    <tr><td class="vocab-kanji">格好の標的</td><td class="vocab-reading">かっこうのひょうてき</td><td class="vocab-en">perfect / easy target</td></tr>
+    <tr><td class="vocab-kanji">経緯</td><td class="vocab-reading">いきさつ</td><td class="vocab-en">circumstances / backstory / how things came about</td></tr>
+    <tr><td class="vocab-kanji">縁談</td><td class="vocab-reading">えんだん</td><td class="vocab-en">marriage proposal / matchmaking</td></tr>
+    <tr><td class="vocab-kanji">仲介人</td><td class="vocab-reading">ちゅうかいにん</td><td class="vocab-en">go-between / intermediary</td></tr>
+    <tr><td class="vocab-kanji">断る余地</td><td class="vocab-reading">ことわるよち</td><td class="vocab-en">room / leeway to refuse</td></tr>
+    <tr><td class="vocab-kanji">試練の連続</td><td class="vocab-reading">しれんのれんぞく</td><td class="vocab-en">series of ordeals / trials</td></tr>
+    <tr><td class="vocab-kanji">放蕩</td><td class="vocab-reading">ほうとう</td><td class="vocab-en">debauchery / dissolute living</td></tr>
+    <tr><td class="vocab-kanji">恥じる</td><td class="vocab-reading">はじる</td><td class="vocab-en">to feel shame / be ashamed</td></tr>
+    <tr><td class="vocab-kanji">逃げ場</td><td class="vocab-reading">にげば</td><td class="vocab-en">refuge / escape route</td></tr>
+    <tr><td class="vocab-kanji">男児</td><td class="vocab-reading">だんじ</td><td class="vocab-en">male child / boy</td></tr>
+    <tr><td class="vocab-kanji">後者</td><td class="vocab-reading">こうしゃ</td><td class="vocab-en">the latter</td></tr>
+    <tr><td class="vocab-kanji">主人公</td><td class="vocab-reading">しゅじんこう</td><td class="vocab-en">protagonist / hero</td></tr>
+    <tr><td class="vocab-kanji">〜に他ならない</td><td class="vocab-reading">〜にほかならない</td><td class="vocab-en">none other than ~ / is precisely ~</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜にとって</strong> — for ~ / from the perspective of ~<br><em>フョードルのような男にとって、格好の標的でした</em><br>Fundamental N3/N2 expression. Sets the frame of reference for a judgement.</div>
+<div class="grammar-item"><strong>〜に他ならない</strong> — is nothing other than ~ / is precisely ~<br><em>この物語の主人公に他なりません</em><br>N2 pattern for strong identification or assertion. More emphatic than simply です.</div>
+<div class="grammar-item"><strong>〜の連続</strong> — a succession of ~ / one ~ after another<br><em>試練の連続でした</em><br>Expresses that something kept happening repeatedly, often with negative connotation.</div>
+<div class="grammar-item"><strong>〜以外に〜ない</strong> — there is nothing other than ~ / only ~<br><em>神に祈る以外に逃げ場を見つけられなかった</em><br>Negated existence — literally 'could not find a refuge except prayer'.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
