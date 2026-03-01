@@ -5,178 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>しんぶん — Japanese Reading Practice</title>
   <style>
-    :root {
-      --bg: #fdf6e3;
-      --text: #2c2c2c;
-      --accent: #8b1a1a;
-      --accent2: #1a4f8b;
-      --muted: #888;
-      --border: #e0d6c0;
-      --card-bg: #fff9ee;
-    }
+    :root { --bg: #fdf6e3; --text: #2c2c2c; --accent: #8b1a1a; --muted: #888; --border: #e0d6c0; --card-bg: #fff9ee; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
-      min-height: 100vh;
-      padding: 0 0 60px;
-    }
-
-    /* Header */
-    header {
-      background: var(--accent);
-      color: white;
-      text-align: center;
-      padding: 36px 20px 28px;
-    }
-    .site-name {
-      font-size: 2.2rem;
-      letter-spacing: 0.25em;
-      margin-bottom: 4px;
-    }
-    .site-name-en {
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      opacity: 0.8;
-      text-transform: uppercase;
-    }
-    .tagline {
-      font-size: 0.82rem;
-      opacity: 0.75;
-      margin-top: 8px;
-      font-style: italic;
-    }
-
-    /* Content */
-    .content {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 32px 20px 0;
-    }
-
-    /* Section headers */
-    .section-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--muted);
-      margin-bottom: 12px;
-      margin-top: 36px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    /* Cards */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      margin-bottom: 14px;
-      overflow: hidden;
-      text-decoration: none;
-      display: block;
-      transition: box-shadow 0.15s;
-    }
+    body { background: var(--bg); color: var(--text); font-family: 'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',Georgia,serif; padding: 0 0 60px; }
+    header { background: var(--accent); color: white; text-align: center; padding: 36px 20px 28px; }
+    .site-name { font-size: 2.2rem; letter-spacing: 0.25em; margin-bottom: 4px; }
+    .site-name-en { font-size: 0.85rem; letter-spacing: 0.15em; opacity: 0.8; text-transform: uppercase; }
+    .tagline { font-size: 0.82rem; opacity: 0.75; margin-top: 8px; font-style: italic; }
+    .content { max-width: 640px; margin: 0 auto; padding: 32px 20px 0; }
+    .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 12px; margin-top: 36px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 14px; overflow: hidden; text-decoration: none; display: block; }
     .card:active { opacity: 0.85; }
-    .card-inner {
-      display: flex;
-      align-items: center;
-      padding: 16px 18px;
-      gap: 16px;
-    }
-    .card-icon {
-      font-size: 2rem;
-      flex-shrink: 0;
-      width: 48px;
-      text-align: center;
-    }
+    .card-inner { display: flex; align-items: center; padding: 16px 18px; gap: 16px; }
+    .card-icon { font-size: 2rem; flex-shrink: 0; width: 48px; text-align: center; }
     .card-text { flex: 1; }
-    .card-title {
-      font-size: 1.05rem;
-      color: var(--text);
-      font-weight: bold;
-      margin-bottom: 3px;
-    }
-    .card-sub {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-    .card-arrow {
-      font-size: 1rem;
-      color: var(--border);
-      flex-shrink: 0;
-    }
-
-    /* Today highlight */
-    .card.today {
-      border-color: var(--accent);
-      border-width: 2px;
-    }
+    .card-title { font-size: 1.05rem; color: var(--text); font-weight: bold; margin-bottom: 3px; }
+    .card-sub { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+    .card-arrow { font-size: 1rem; color: var(--border); flex-shrink: 0; }
+    .card.today { border-color: var(--accent); border-width: 2px; }
     .card.today .card-title { color: var(--accent); }
-    .today-badge {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      font-size: 0.7rem;
-      padding: 1px 7px;
-      border-radius: 8px;
-      margin-left: 8px;
-      vertical-align: middle;
-      letter-spacing: 0.05em;
-    }
-
-    /* Karamazov accent */
+    .today-badge { display: inline-block; background: var(--accent); color: white; font-size: 0.7rem; padding: 1px 7px; border-radius: 8px; margin-left: 8px; vertical-align: middle; }
     .card.karamazov { border-color: #c0a882; }
     .card.karamazov .card-title { color: #5a3a1a; }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      margin-top: 48px;
-      font-size: 0.75rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
+    footer { text-align: center; margin-top: 48px; font-size: 0.75rem; color: var(--muted); }
   </style>
 </head>
 <body>
-
 <header>
   <div class="site-name">しんぶん</div>
   <div class="site-name-en">Shinbun</div>
   <div class="tagline">Daily Japanese reading practice</div>
 </header>
-
 <div class="content">
-
   <div class="section-label">📰 日刊紙 — Daily Newspaper</div>
-
+  
   <a class="card today" href="/shinbun/2026-03-01.html">
     <div class="card-inner">
       <div class="card-icon">📅</div>
       <div class="card-text">
-        <div class="card-title">今日の新聞<span class="today-badge">Today</span></div>
-        <div class="card-sub">Today's edition — tap to read · N3〜N2 Japanese</div>
+        <div class="card-title">2026年3月1日（日曜日）<span class="today-badge">Today</span></div>
+        <div class="card-sub">米・イスラエルがイラン空爆　ハメネイ最高指導者が死亡</div>
       </div>
       <div class="card-arrow">›</div>
     </div>
   </a>
-
+  <a class="card" href="/shinbun/2026-02-28.html">
+    <div class="card-inner">
+      <div class="card-icon">📰</div>
+      <div class="card-text">
+        <div class="card-title">2026年2月28日（土曜日）</div>
+        <div class="card-sub">緑の党、100年の労働党牙城を崩す</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </div>
+  </a>
+  <a class="card" href="/shinbun/2026-02-27.html">
+    <div class="card-inner">
+      <div class="card-icon">📰</div>
+      <div class="card-text">
+        <div class="card-title">2026年2月27日（金曜日）</div>
+        <div class="card-sub">緑の党が労働党の牙城を崩す　マンチェスター補選で歴史的勝利</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </div>
+  </a>
   <a class="card" href="/shinbun/archive.html">
     <div class="card-inner">
       <div class="card-icon">🗂</div>
       <div class="card-text">
         <div class="card-title">バックナンバー</div>
-        <div class="card-sub">Past editions archive</div>
+        <div class="card-sub">All past editions</div>
       </div>
       <div class="card-arrow">›</div>
     </div>
   </a>
-
   <div class="section-label">📖 文学 — Literature</div>
-
   <a class="card karamazov" href="/shinbun/karamazov/index.html">
     <div class="card-inner">
       <div class="card-icon">🕯</div>
@@ -187,27 +90,7 @@
       <div class="card-arrow">›</div>
     </div>
   </a>
-
-  <div class="section-label">ℹ️ About</div>
-
-  <div class="card" style="cursor:default;">
-    <div class="card-inner">
-      <div class="card-icon">🎩</div>
-      <div class="card-text">
-        <div class="card-title">About Shinbun</div>
-        <div class="card-sub">
-          A personal Japanese reading companion. The daily newspaper is generated fresh each morning from real news sources. The literature section adds furigana, vocabulary, and flip-to-English for classic novels in the public domain.<br><br>
-          Aimed at N3–N2 learners. New content every day.
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
-
-<footer>
-  しんぶん · updated daily · 2026-03-01
-</footer>
-
+<footer>しんぶん · updated daily · 2026-03-01</footer>
 </body>
 </html>
