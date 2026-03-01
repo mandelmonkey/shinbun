@@ -741,15 +741,13 @@ function renderKeyFilter() {
 
 function toggleKey(k, mode) {
   const set = mode === 'major' ? STATE.quizMajorKeys : STATE.quizMinorKeys;
-  // Always keep at least 2 keys selected so the quiz can generate wrong answers
-  if (set.has(k) && set.size <= 2) return;
   set.has(k) ? set.delete(k) : set.add(k);
   renderKeyFilter();
 }
 
 function setAllKeys(on) {
-  STATE.quizMajorKeys = on ? new Set(MAJOR_KEYS) : new Set(MAJOR_KEYS.slice(0,2));
-  STATE.quizMinorKeys = on ? new Set(MINOR_KEYS) : new Set(MINOR_KEYS.slice(0,2));
+  STATE.quizMajorKeys = on ? new Set(MAJOR_KEYS) : new Set();
+  STATE.quizMinorKeys = on ? new Set(MINOR_KEYS) : new Set();
   renderKeyFilter();
 }
 
@@ -760,6 +758,15 @@ function setCommonKeys() {
 }
 
 function startQuiz(mode) {
+  // Guard: need keys selected for the relevant modes
+  const noMajor = STATE.quizMajorKeys.size === 0;
+  const noMinor = STATE.quizMinorKeys.size === 0;
+  if (mode === 'spell-prog' && noMajor) {
+    alert('Please select at least one major key first.'); return;
+  }
+  if ((mode === 'chord-name' || mode === 'find-degree') && noMajor && noMinor) {
+    alert('Please select at least one key first.'); return;
+  }
   STATE.quiz.mode = mode;
   STATE.quiz.correct = 0;
   STATE.quiz.total = 0;
