@@ -140,8 +140,47 @@
   .vocab-reading { color: #666; font-style: italic; }
   .vocab-english { color: #2a5a8b; }
   .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
   .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
   .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
 </style>
 </head>
 <body>
@@ -154,8 +193,8 @@
 <div class="divider"></div>
 
   <div class="flip-bar">
-    <span class="flip-label" id="flip-label">🇯🇵 日本語表示中 — タップして英語に切り替え</span>
-    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 Switch to English</button>
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
   </div>
 
 <div class="container">
@@ -163,7 +202,10 @@
   <div class="articles-grid">
     
         <article class="article" onclick="flipArticle(this)">
-            <div class="section-tag">英国・世界</div>
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
             <div class="lang-jp">
               <h2 class="headline"><ruby>米<rt>こめ</rt></ruby>・イスラエルがイラン<ruby>空爆<rt>くうばく</rt></ruby>　ハメネイ<ruby>最高<rt>さいこう</rt></ruby><ruby>指導者<rt>しどうしゃ</rt></ruby>が<ruby>死亡<rt>しぼう</rt></ruby></h2>
               <p class="body">アメリカとイスラエルは2<ruby>月<rt>がつ</rt></ruby>28<ruby>日夜<rt>にちや</rt></ruby>、イランに<ruby>対し<rt>たいし</rt></ruby>て<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>空爆<rt>くうばく</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>した。イラン<ruby>国営<rt>こくえい</rt></ruby>テレビは、<ruby>最高<rt>さいこう</rt></ruby><ruby>指導者<rt>しどうしゃ</rt></ruby>アリー・ハメネイ<ruby>師<rt>し</rt></ruby>が<ruby>攻撃<rt>こうげき</rt></ruby>により<ruby>死亡<rt>しぼう</rt></ruby>したと<ruby>伝え<rt>つたえ</rt></ruby>た。ハメネイ<ruby>師<rt>し</rt></ruby>は40<ruby>年以上<rt>ねんいじょう</rt></ruby>にわたってイランの<ruby>最高権力者<rt>さいこうけんりょくしゃ</rt></ruby>として<ruby>君臨<rt>くんりん</rt></ruby>しており、その<ruby>死<rt>し</rt></ruby>は<ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby>に<ruby>大き<rt>おおき</rt></ruby>な<ruby>衝撃<rt>しょうげき</rt></ruby>をもたらした。<ruby>後継者問題<rt>こうけいしゃもんだい</rt></ruby>や<ruby>国内<rt>こくない</rt></ruby>の<ruby>権力<rt>けんりょく</rt></ruby><ruby>争い<rt>あらそい</rt></ruby>が<ruby>今後<rt>こんご</rt></ruby>の<ruby>焦点<rt>しょうてん</rt></ruby>となる<ruby>見通し<rt>みとおし</rt></ruby>だ。</p>
@@ -174,7 +216,10 @@
             </div>
         </article>
         <article class="article" onclick="flipArticle(this)">
-            <div class="section-tag">英国・世界</div>
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
             <div class="lang-jp">
               <h2 class="headline">イランが<ruby>報復攻撃<rt>ほうふくこうげき</rt></ruby>　<ruby>中東<rt>ちゅうとう</rt></ruby><ruby>全域<rt>ぜんいき</rt></ruby>に<ruby>緊張<rt>きんちょう</rt></ruby><ruby>広が<rt>ひろが</rt></ruby>る</h2>
               <p class="body">イランは<ruby>空爆<rt>くうばく</rt></ruby>への<ruby>報復<rt>ほうふく</rt></ruby>として、イスラエルおよびアメリカ<ruby>軍<rt>ぐん</rt></ruby><ruby>基地<rt>きち</rt></ruby>が<ruby>置か<rt>おか</rt></ruby>れているペルシャ<ruby>湾岸諸国<rt>わんがんしょこく</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>てミサイルとドローンを<ruby>発射<rt>はっしゃ</rt></ruby>した。イギリスは<ruby>今回<rt>こんかい</rt></ruby>の<ruby>攻撃<rt>こうげき</rt></ruby>に<ruby>関与<rt>かんよ</rt></ruby>も<ruby>支持<rt>しじ</rt></ruby>もしていないとの<ruby>立場<rt>たちば</rt></ruby>を<ruby>表明<rt>ひょうめい</rt></ruby>しており、アメリカとヨーロッパの<ruby>同盟関係<rt>どうめいかんけい</rt></ruby>に<ruby>亀裂<rt>きれつ</rt></ruby>が<ruby>生じ<rt>しょうじ</rt></ruby>つつある。トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>はスターマー<ruby>英<rt>えい</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>に<ruby>電話<rt>でんわ</rt></ruby>で<ruby>事前<rt>じぜん</rt></ruby><ruby>説明<rt>せつめい</rt></ruby>を<ruby>行った<rt>いった</rt></ruby>。</p>
@@ -185,7 +230,10 @@
             </div>
         </article>
         <article class="article" onclick="flipArticle(this)">
-            <div class="section-tag">英国・世界</div>
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
             <div class="lang-jp">
               <h2 class="headline"><ruby>中東<rt>ちゅうとう</rt></ruby><ruby>緊張<rt>きんちょう</rt></ruby>で<ruby>航空<rt>こうくう</rt></ruby><ruby>各社<rt>かくしゃ</rt></ruby>が<ruby>相次ぎ<rt>あいつぎ</rt></ruby><ruby>運休<rt>うんきゅう</rt></ruby>　<ruby>旅行<rt>りょこう</rt></ruby><ruby>業界<rt>ぎょうかい</rt></ruby>に<ruby>混乱<rt>こんらん</rt></ruby></h2>
               <p class="body"><ruby>米<rt>こめ</rt></ruby>・イスラエルによるイランへの<ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、ブリティッシュ・エアウェイズ、ヴァージン・アトランティック、ウィズ・エアーなど<ruby>主要<rt>しゅよう</rt></ruby><ruby>航空会社<rt>こうくうがいしゃ</rt></ruby>が<ruby>中東<rt>ちゅうとう</rt></ruby><ruby>路線<rt>ろせん</rt></ruby>の<ruby>運航<rt>うんこう</rt></ruby>を<ruby>一時停止<rt>いちじていし</rt></ruby>した。ドバイを<ruby>含む<rt>ふくむ</rt></ruby><ruby>中東<rt>ちゅうとう</rt></ruby>の<ruby>主要空港<rt>しゅようくうこう</rt></ruby>では<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>欠航<rt>けっこう</rt></ruby>が<ruby>相次ぎ<rt>あいつぎ</rt></ruby>、<ruby>乗客<rt>じょうきゃく</rt></ruby>の<ruby>安全確保<rt>あんぜんかくほ</rt></ruby>を<ruby>最優先<rt>さいゆうせん</rt></ruby>とした<ruby>措置<rt>そち</rt></ruby>だと<ruby>各社<rt>かくしゃ</rt></ruby>は<ruby>説明し<rt>せつめいし</rt></ruby>ている。</p>
@@ -196,7 +244,10 @@
             </div>
         </article>
         <article class="article" onclick="flipArticle(this)">
-            <div class="section-tag">英国・政治</div>
+            <div class="article-header">
+              <div class="section-tag">英国・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
             <div class="lang-jp">
               <h2 class="headline"><ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>のサイモンズ<ruby>大臣<rt>だいじん</rt></ruby>が<ruby>辞任<rt>じにん</rt></ruby>　ジャーナリスト<ruby>調査<rt>ちょうさ</rt></ruby><ruby>疑惑<rt>ぎわく</rt></ruby>で</h2>
               <p class="body">イギリス<ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>のジョシュ・サイモンズ<ruby>文化<rt>ぶんか</rt></ruby><ruby>担当<rt>たんとう</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>は、<ruby>自身<rt>じしん</rt></ruby>がかつて<ruby>代表<rt>だいひょう</rt></ruby>を<ruby>務め<rt>つとめ</rt></ruby>たシンクタンク「レイバー・トゥゲザー」がジャーナリストの<ruby>経歴<rt>けいれき</rt></ruby><ruby>調査<rt>ちょうさ</rt></ruby>を<ruby>依頼<rt>いらい</rt></ruby>していたとの<ruby>疑惑<rt>ぎわく</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、<ruby>辞表<rt>じひょう</rt></ruby>を<ruby>提出<rt>ていしゅつ</rt></ruby>した。スターマー<ruby>首相<rt>しゅしょう</rt></ruby>がこれを<ruby>受理<rt>じゅり</rt></ruby>したことで、<ruby>政権<rt>せいけん</rt></ruby><ruby>発足以来<rt>ほっそくいらい</rt></ruby><ruby>最大<rt>さいだい</rt></ruby>の<ruby>閣僚<rt>かくりょう</rt></ruby><ruby>辞任<rt>じにん</rt></ruby>となった。</p>
@@ -207,29 +258,38 @@
             </div>
         </article>
         <article class="article" onclick="flipArticle(this)">
-            <div class="section-tag">日本</div>
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
             <div class="lang-jp">
               <h2 class="headline"><ruby>新宿<rt>しんじゅく</rt></ruby>で<ruby>寒桜<rt>かんざくら</rt></ruby>が<ruby>開花<rt>かいか</rt></ruby>　お<ruby>花見<rt>はなみ</rt></ruby>シーズン<ruby>到来<rt>とうらい</rt></ruby>を<ruby>告げ<rt>つげ</rt></ruby>る</h2>
               <p class="body"><ruby>東京<rt>とうきょう</rt></ruby>・<ruby>新宿区<rt>しんじゅくく</rt></ruby>の<ruby>公園<rt>こうえん</rt></ruby>で、<ruby>早咲き<rt>はやざき</rt></ruby>の<ruby>品種<rt>ひんしゅ</rt></ruby>「<ruby>寒桜<rt>かんざくら</rt></ruby>」が<ruby>開花<rt>かいか</rt></ruby>し<ruby>始め<rt>はじめ</rt></ruby>た。<ruby>染井吉野<rt>そめいよしの</rt></ruby>よりも<ruby>数週間<rt>すうしゅうかん</rt></ruby><ruby>早く<rt>はやく</rt></ruby><ruby>咲く<rt>さく</rt></ruby><ruby>寒桜<rt>かんざくら</rt></ruby>の<ruby>開花<rt>かいか</rt></ruby>は、<ruby>毎年<rt>まいとし</rt></ruby><ruby>春<rt>はる</rt></ruby>の<ruby>訪れ<rt>おとずれ</rt></ruby>を<ruby>告げ<rt>つげ</rt></ruby>る<ruby>風物詩<rt>ふうぶつし</rt></ruby>となっている。<ruby>土曜日<rt>どようび</rt></ruby>の<ruby>時点で<rt>じてんで</rt></ruby>すでに<ruby>多く<rt>おおく</rt></ruby>の<ruby>花<rt>はな</rt></ruby>が<ruby>開き<rt>ひらき</rt></ruby>、<ruby>写真撮影<rt>しゃしんさつえい</rt></ruby>を<ruby>楽し<rt>たのし</rt></ruby>む<ruby>市民<rt>しみん</rt></ruby>の<ruby>姿<rt>すがた</rt></ruby>が<ruby>見ら<rt>みら</rt></ruby>れた。<ruby>気象庁<rt>きしょうちょう</rt></ruby>は<ruby>今年<rt>こんねん</rt></ruby>の<ruby>染井吉野<rt>そめいよしの</rt></ruby>の<ruby>開花<rt>かいか</rt></ruby><ruby>予想<rt>よそう</rt></ruby>についても<ruby>近く<rt>ちかく</rt></ruby><ruby>発表<rt>はっぴょう</rt></ruby>する<ruby>見通し<rt>みとおし</rt></ruby>だ。</p>
             </div>
             <div class="lang-en" style="display:none;">
               <h2 class="headline en-headline">Early cherry blossoms open in Shinjuku — hanami season begins</h2>
-              <p class="body en-body">Kanzakura cherry trees — an early-blooming variety — have begun flowering in parks across Shinjuku, Tokyo. Blooming several weeks ahead of the standard Somei-Yoshino variety, the kanzakura is seen as the unofficial start of spring. By Saturday, many trees were already in bloom, with residents gathering to take photographs. The Japan Meteorological Agency is expected to announce its Somei-Yoshino forecast soon.</p>
+              <p class="body en-body">Kanzakura cherry trees — an early-blooming variety — have begun flowering in parks across Shinjuku, Tokyo. Blooming several weeks ahead of the standard Somei-Yoshino variety, the kanzakura is seen as the unofficial start of spring. By Saturday many trees were already in bloom, with residents gathering to take photographs. The Japan Meteorological Agency is expected to announce its Somei-Yoshino forecast soon.</p>
             </div>
         </article>
         <article class="article" onclick="flipArticle(this)">
-            <div class="section-tag">日本</div>
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
             <div class="lang-jp">
               <h2 class="headline"><ruby>茨城県<rt>いばらきけん</rt></ruby>が<ruby>不法<rt>ふほう</rt></ruby><ruby>滞在<rt>たいざい</rt></ruby><ruby>通報<rt>つうほう</rt></ruby>に<ruby>報奨金<rt>ほうしょうきん</rt></ruby><ruby>制度<rt>せいど</rt></ruby>　<ruby>人権団体<rt>じんけんだんたい</rt></ruby>は<ruby>批判<rt>ひはん</rt></ruby></h2>
               <p class="body"><ruby>茨城県<rt>いばらきけん</rt></ruby>は、<ruby>不法<rt>ふほう</rt></ruby><ruby>滞在<rt>たいざい</rt></ruby>の<ruby>外国人<rt>がいこくじん</rt></ruby>を<ruby>当局<rt>とうきょく</rt></ruby>に<ruby>通報し<rt>つうほうし</rt></ruby>た<ruby>人<rt>にん</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>て1<ruby>万円<rt>まんえん</rt></ruby>の<ruby>報奨金<rt>ほうしょうきん</rt></ruby>を<ruby>支払う<rt>しはらう</rt></ruby><ruby>制度<rt>せいど</rt></ruby>を<ruby>導入<rt>どうにゅう</rt></ruby>すると<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>県<rt>けん</rt></ruby>は<ruby>治安維持<rt>ちあんいじ</rt></ruby>と<ruby>地域<rt>ちいき</rt></ruby>の<ruby>安全確保<rt>あんぜんかくほ</rt></ruby>を<ruby>目的<rt>もくてき</rt></ruby>としていると<ruby>説明し<rt>せつめいし</rt></ruby>ているが、<ruby>人権団体<rt>じんけんだんたい</rt></ruby>や<ruby>支援<rt>しえん</rt></ruby><ruby>者<rt>もの</rt></ruby>からは<ruby>外国人<rt>がいこくじん</rt></ruby><ruby>差別<rt>さべつ</rt></ruby>を<ruby>助長<rt>じょちょう</rt></ruby>するとして<ruby>強い<rt>つよい</rt></ruby><ruby>反発<rt>はんぱつ</rt></ruby>の<ruby>声<rt>こえ</rt></ruby>が<ruby>上が<rt>あが</rt></ruby>っている。<ruby>日本<rt>にっぽん</rt></ruby>では<ruby>近年<rt>きんねん</rt></ruby>、<ruby>外国人労働者<rt>がいこくじんろうどうしゃ</rt></ruby>の<ruby>受け入れ<rt>うけいれ</rt></ruby><ruby>拡大<rt>かくだい</rt></ruby>に<ruby>伴い<rt>ともない</rt></ruby>、<ruby>移民<rt>いみん</rt></ruby><ruby>政策<rt>せいさく</rt></ruby>をめぐる<ruby>議論<rt>ぎろん</rt></ruby>が<ruby>活発化<rt>かっぱつか</rt></ruby>している。</p>
             </div>
             <div class="lang-en" style="display:none;">
               <h2 class="headline en-headline">Ibaraki Prefecture offers ¥10,000 bounty for reporting undocumented residents — human rights groups object</h2>
-              <p class="body en-body">Ibaraki Prefecture announced it will pay ¥10,000 to anyone who reports an undocumented foreign resident to the authorities. The prefecture described the measure as aimed at maintaining public safety, but human rights groups and advocates condemned it as discriminatory. The announcement comes as Japan's immigration debate intensifies alongside broader efforts to attract foreign workers.</p>
+              <p class="body en-body">Ibaraki Prefecture announced it will pay ¥10,000 to anyone who reports an undocumented foreign resident to the authorities. The prefecture described the measure as aimed at maintaining public safety, but human rights groups condemned it as discriminatory. The announcement comes as Japan's immigration debate intensifies alongside broader efforts to attract foreign workers.</p>
             </div>
         </article>
         <article class="article" onclick="flipArticle(this)">
-            <div class="section-tag">日本</div>
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
             <div class="lang-jp">
               <h2 class="headline">2026<ruby>年<rt>ねん</rt></ruby>から<ruby>日本<rt>にっぽん</rt></ruby>のビザ<ruby>申請料<rt>しんせいりょう</rt></ruby><ruby>金<rt>きん</rt></ruby>が<ruby>値上げ<rt>ねあげ</rt></ruby>　<ruby>外国人<rt>がいこくじん</rt></ruby>や<ruby>企業<rt>きぎょう</rt></ruby>に<ruby>影響<rt>えいきょう</rt></ruby></h2>
               <p class="body"><ruby>日本政府<rt>にほんせいふ</rt></ruby>は2026<ruby>年<rt>ねん</rt></ruby>より、<ruby>在留<rt>ざいりゅう</rt></ruby><ruby>資格<rt>しかく</rt></ruby>の<ruby>申請<rt>しんせい</rt></ruby>にかかるビザ<ruby>手数料<rt>てすうりょう</rt></ruby>を<ruby>引き上げ<rt>ひきあげ</rt></ruby>ると<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>日本<rt>にっぽん</rt></ruby>での<ruby>就労<rt>しゅうろう</rt></ruby>や<ruby>長期滞在<rt>ちょうきたいざい</rt></ruby>を<ruby>希望<rt>きぼう</rt></ruby>する<ruby>外国人<rt>がいこくじん</rt></ruby>、および<ruby>外国人<rt>がいこくじん</rt></ruby>を<ruby>雇用<rt>こよう</rt></ruby>する<ruby>企業<rt>きぎょう</rt></ruby>にとって<ruby>直接的<rt>ちょくせつてき</rt></ruby>な<ruby>負担増<rt>ふたんぞう</rt></ruby>となる。<ruby>専門家<rt>せんもんか</rt></ruby>は、<ruby>申請<rt>しんせい</rt></ruby><ruby>前<rt>まえ</rt></ruby>に<ruby>最新<rt>さいしん</rt></ruby>の<ruby>料金体系<rt>りょうきんたいけい</rt></ruby>を<ruby>確認す<rt>かくにんす</rt></ruby>るよう<ruby>呼び<rt>よび</rt></ruby>かけている。</p>
@@ -240,91 +300,17 @@
             </div>
         </article>
   </div>
-  
-        <section class="vocab-section">
-            <h3 class="vocab-title">📖 単語チートシート / Vocabulary Cheat Sheet</h3>
-            <table class="vocab-table">
-                <thead>
-                    <tr><th>単語</th><th>よみかた</th><th>English</th></tr>
-                </thead>
-                <tbody>
-            <tr>
-                <td class="vocab-word"><ruby>最高指導者<rt>さいこうしどうしゃ</rt></ruby></td>
-                <td class="vocab-reading">さいこうしどうしゃ</td>
-                <td class="vocab-english">Supreme Leader</td>
-            </tr>
-            <tr>
-                <td class="vocab-word"><ruby>空爆<rt>くうばく</rt></ruby></td>
-                <td class="vocab-reading">くうばく</td>
-                <td class="vocab-english">air strike / aerial bombing</td>
-            </tr>
-            <tr>
-                <td class="vocab-word"><ruby>報復<rt>ほうふく</rt></ruby></td>
-                <td class="vocab-reading">ほうふく</td>
-                <td class="vocab-english">retaliation / reprisal</td>
-            </tr>
-            <tr>
-                <td class="vocab-word"><ruby>後継者<rt>こうけいしゃ</rt></ruby></td>
-                <td class="vocab-reading">こうけいしゃ</td>
-                <td class="vocab-english">successor</td>
-            </tr>
-            <tr>
-                <td class="vocab-word"><ruby>亀裂<rt>きれつ</rt></ruby></td>
-                <td class="vocab-reading">きれつ</td>
-                <td class="vocab-english">crack / rift / fracture</td>
-            </tr>
-            <tr>
-                <td class="vocab-word"><ruby>欠航<rt>けっこう</rt></ruby></td>
-                <td class="vocab-reading">けっこう</td>
-                <td class="vocab-english">flight cancellation</td>
-            </tr>
-            <tr>
-                <td class="vocab-word"><ruby>閣僚<rt>かくりょう</rt></ruby></td>
-                <td class="vocab-reading">かくりょう</td>
-                <td class="vocab-english">cabinet minister</td>
-            </tr>
-            <tr>
-                <td class="vocab-word"><ruby>辞表<rt>じひょう</rt></ruby></td>
-                <td class="vocab-reading">じひょう</td>
-                <td class="vocab-english">letter of resignation</td>
-            </tr>
-            <tr>
-                <td class="vocab-word"><ruby>寒桜<rt>かんざくら</rt></ruby></td>
-                <td class="vocab-reading">かんざくら</td>
-                <td class="vocab-english">early-blooming cherry blossoms</td>
-            </tr>
-            <tr>
-                <td class="vocab-word"><ruby>開花<rt>かいか</rt></ruby></td>
-                <td class="vocab-reading">かいか</td>
-                <td class="vocab-english">flowering / blooming</td>
-            </tr>
-            <tr>
-                <td class="vocab-word"><ruby>不法滞在<rt>ふほうたいざい</rt></ruby></td>
-                <td class="vocab-reading">ふほうたいざい</td>
-                <td class="vocab-english">illegal stay / undocumented residence</td>
-            </tr>
-            <tr>
-                <td class="vocab-word"><ruby>報奨金<rt>ほうしょうきん</rt></ruby></td>
-                <td class="vocab-reading">ほうしょうきん</td>
-                <td class="vocab-english">reward money / bounty</td>
-            </tr>
-            <tr>
-                <td class="vocab-word"><ruby>在留資格<rt>ざいりゅうしかく</rt></ruby></td>
-                <td class="vocab-reading">ざいりゅうしかく</td>
-                <td class="vocab-english">residency status / visa category</td>
-            </tr>
-            <tr>
-                <td class="vocab-word"><ruby>手数料<rt>てすうりょう</rt></ruby></td>
-                <td class="vocab-reading">てすうりょう</td>
-                <td class="vocab-english">fee / handling charge</td>
-            </tr>
-            <tr>
-                <td class="vocab-word"><ruby>助長<rt>じょちょう</rt></ruby></td>
-                <td class="vocab-reading">じょちょう</td>
-                <td class="vocab-english">to promote / encourage (often negative)</td>
-            </tr></tbody>
-            </table>
-        </section>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
 </div>
 
 <footer class="footer">
@@ -332,17 +318,21 @@
 </footer>
 
   <script>
+    const VOCABS  = [[{"word": "最高指導者", "reading": "さいこうしどうしゃ", "english": "Supreme Leader"}, {"word": "空爆", "reading": "くうばく", "english": "air strike / aerial bombing"}, {"word": "国営テレビ", "reading": "こくえいてれび", "english": "state television"}, {"word": "後継者", "reading": "こうけいしゃ", "english": "successor"}, {"word": "権力争い", "reading": "けんりょくあらそい", "english": "power struggle"}, {"word": "衝撃をもたらす", "reading": "しょうげきをもたらす", "english": "to send shockwaves / cause a shock"}], [{"word": "報復", "reading": "ほうふく", "english": "retaliation / reprisal"}, {"word": "湾岸諸国", "reading": "わんがんしょこく", "english": "Gulf states"}, {"word": "関与", "reading": "かんよ", "english": "involvement / participation"}, {"word": "同盟関係", "reading": "どうめいかんけい", "english": "alliance / allied relationship"}, {"word": "亀裂", "reading": "きれつ", "english": "crack / rift"}, {"word": "事前説明", "reading": "じぜんせつめい", "english": "advance briefing"}], [{"word": "相次ぐ", "reading": "あいつぐ", "english": "one after another / in succession"}, {"word": "運休", "reading": "うんきゅう", "english": "service suspension / cancellation of flights"}, {"word": "欠航", "reading": "けっこう", "english": "cancelled flight"}, {"word": "一時停止", "reading": "いちじていし", "english": "temporary suspension"}, {"word": "安全確保", "reading": "あんぜんかくほ", "english": "ensuring safety"}, {"word": "最優先", "reading": "さいゆうせん", "english": "top priority"}], [{"word": "大臣", "reading": "だいじん", "english": "minister (cabinet)"}, {"word": "辞表", "reading": "じひょう", "english": "letter of resignation"}, {"word": "シンクタンク", "reading": "しんくたんく", "english": "think tank"}, {"word": "経歴調査", "reading": "けいれきちょうさ", "english": "background check"}, {"word": "疑惑", "reading": "ぎわく", "english": "suspicion / allegation"}, {"word": "政権発足", "reading": "せいけんほっそく", "english": "launch of the government / taking office"}], [{"word": "寒桜", "reading": "かんざくら", "english": "early-blooming cherry (Kanzakura)"}, {"word": "開花", "reading": "かいか", "english": "blooming / flowering"}, {"word": "染井吉野", "reading": "そめいよしの", "english": "Somei-Yoshino cherry (standard variety)"}, {"word": "風物詩", "reading": "ふうぶつし", "english": "seasonal feature / hallmark of a season"}, {"word": "気象庁", "reading": "きしょうちょう", "english": "Japan Meteorological Agency"}, {"word": "開花予想", "reading": "かいかよそう", "english": "cherry blossom forecast"}], [{"word": "不法滞在", "reading": "ふほうたいざい", "english": "undocumented stay / illegal residence"}, {"word": "通報", "reading": "つうほう", "english": "to report (to authorities)"}, {"word": "報奨金", "reading": "ほうしょうきん", "english": "reward money / bounty"}, {"word": "治安維持", "reading": "ちあんいじ", "english": "maintaining public order"}, {"word": "助長する", "reading": "じょちょうする", "english": "to promote / encourage (negative)"}, {"word": "活発化する", "reading": "かっぱつかする", "english": "to become more active / intensify"}], [{"word": "在留資格", "reading": "ざいりゅうしかく", "english": "residency status / visa category"}, {"word": "手数料", "reading": "てすうりょう", "english": "fee / handling charge"}, {"word": "値上げ", "reading": "ねあげ", "english": "price increase / fee hike"}, {"word": "負担増", "reading": "ふたんぞう", "english": "increased burden / higher costs"}, {"word": "料金体系", "reading": "りょうきんたいけい", "english": "fee structure / pricing system"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "米・イスラエルがイラン空爆　ハメネイ最高指導者が死亡"}, {"section": "英国・世界", "headline": "イランが報復攻撃　中東全域に緊張広がる"}, {"section": "英国・世界", "headline": "中東緊張で航空各社が相次ぎ運休　旅行業界に混乱"}, {"section": "英国・政治", "headline": "労働党のサイモンズ大臣が辞任　ジャーナリスト調査疑惑で"}, {"section": "日本", "headline": "新宿で寒桜が開花　お花見シーズン到来を告げる"}, {"section": "日本", "headline": "茨城県が不法滞在通報に報奨金制度　人権団体は批判"}, {"section": "日本", "headline": "2026年から日本のビザ申請料金が値上げ　外国人や企業に影響"}];
     let isJP = true;
+
     function flipAll(e) {
       if (e) e.stopPropagation();
       isJP = !isJP;
       document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
       document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
-      document.getElementById('flip-label').textContent = isJP
-        ? '🇯🇵 日本語表示中 — タップして英語に切り替え'
-        : '🇬🇧 English — tap to switch back to Japanese';
-      document.querySelector('.flip-btn').textContent = isJP ? '🇬🇧 Switch to English' : '🇯🇵 日本語に戻る';
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
     }
+
     function flipArticle(article) {
       const jp = article.querySelector('.lang-jp');
       const en = article.querySelector('.lang-en');
@@ -351,6 +341,42 @@
       jp.style.display = jpVisible ? 'none' : '';
       en.style.display = jpVisible ? '' : 'none';
     }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
   </script>
 </body>
 </html>
