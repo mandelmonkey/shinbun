@@ -36,11 +36,38 @@
     opacity: 0.7;
     letter-spacing: 0.1em;
   }
-  .divider {
-    height: 2px;
-    background: #8b1a1a;
-    margin: 0;
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
   }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
   .container {
     max-width: 900px;
     margin: 0 auto;
@@ -58,7 +85,10 @@
     border-top: 3px solid #8b1a1a;
     padding: 20px;
     border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
   }
+  .article:active { opacity: 0.9; }
   .section-tag {
     font-size: 0.7rem;
     font-family: 'Helvetica Neue', sans-serif;
@@ -76,15 +106,23 @@
     border-bottom: 1px solid #d4c9a8;
     padding-bottom: 12px;
   }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
   .body {
     font-size: clamp(0.9rem, 2.2vw, 1rem);
     line-height: 2;
     color: #2a2a2a;
   }
-  ruby rt {
-    font-size: 0.55em;
-    color: #666;
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
   }
+  ruby rt { font-size: 0.55em; color: #666; }
   .vocab-section {
     background: #fffdf7;
     border: 1px solid #d4c9a8;
@@ -93,53 +131,17 @@
     border-radius: 2px;
     margin-top: 16px;
   }
-  .vocab-title {
-    font-size: 1rem;
-    color: #2a5a8b;
-    margin-bottom: 16px;
-    font-family: 'Helvetica Neue', sans-serif;
-  }
-  .vocab-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: clamp(0.8rem, 2vw, 0.95rem);
-  }
-  .vocab-table th {
-    background: #2a5a8b;
-    color: white;
-    padding: 8px 12px;
-    text-align: left;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-  }
-  .vocab-table td {
-    padding: 8px 12px;
-    border-bottom: 1px solid #e0d9c8;
-  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
   .vocab-table tr:hover td { background: #f0ead8; }
   .vocab-word { font-size: 1.1em; font-weight: 600; }
   .vocab-reading { color: #666; font-style: italic; }
   .vocab-english { color: #2a5a8b; }
-  .footer {
-    text-align: center;
-    padding: 24px;
-    font-size: 0.8rem;
-    color: #888;
-    font-family: 'Helvetica Neue', sans-serif;
-    border-top: 1px solid #d4c9a8;
-    margin-top: 32px;
-  }
-  .archive-link {
-    text-align: center;
-    margin: 16px 0;
-    font-family: 'Helvetica Neue', sans-serif;
-  }
-  .archive-link a {
-    color: #8b1a1a;
-    text-decoration: none;
-    font-size: 0.85rem;
-  }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
 </style>
 </head>
 <body>
@@ -151,48 +153,93 @@
 </header>
 <div class="divider"></div>
 
-<div class="container">
-  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
-
-  <div class="articles-grid">
-    
-        <article class="article">
-            <div class="section-tag">英国・世界</div>
-            <h2 class="headline"><ruby>米<rt>こめ</rt></ruby>・イスラエルがイラン<ruby>空爆<rt>くうばく</rt></ruby>　ハメネイ<ruby>最高<rt>さいこう</rt></ruby><ruby>指導者<rt>しどうしゃ</rt></ruby>が<ruby>死亡<rt>しぼう</rt></ruby></h2>
-            <p class="body">アメリカとイスラエルは2<ruby>月<rt>がつ</rt></ruby>28<ruby>日夜<rt>にちや</rt></ruby>、イランに<ruby>対し<rt>たいし</rt></ruby>て<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>空爆<rt>くうばく</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>した。イラン<ruby>国営<rt>こくえい</rt></ruby>テレビは、<ruby>最高<rt>さいこう</rt></ruby><ruby>指導者<rt>しどうしゃ</rt></ruby>アリー・ハメネイ<ruby>師<rt>し</rt></ruby>が<ruby>攻撃<rt>こうげき</rt></ruby>により<ruby>死亡<rt>しぼう</rt></ruby>したと<ruby>伝え<rt>つたえ</rt></ruby>た。ハメネイ<ruby>師<rt>し</rt></ruby>は40<ruby>年以上<rt>ねんいじょう</rt></ruby>にわたってイランの<ruby>最高権力者<rt>さいこうけんりょくしゃ</rt></ruby>として<ruby>君臨<rt>くんりん</rt></ruby>しており、その<ruby>死<rt>し</rt></ruby>は<ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby>に<ruby>大き<rt>おおき</rt></ruby>な<ruby>衝撃<rt>しょうげき</rt></ruby>をもたらした。<ruby>後継者問題<rt>こうけいしゃもんだい</rt></ruby>や<ruby>国内<rt>こくない</rt></ruby>の<ruby>権力<rt>けんりょく</rt></ruby><ruby>争い<rt>あらそい</rt></ruby>が<ruby>今後<rt>こんご</rt></ruby>の<ruby>焦点<rt>しょうてん</rt></ruby>となる<ruby>見通し<rt>みとおし</rt></ruby>だ。</p>
-        </article>
-        <article class="article">
-            <div class="section-tag">英国・世界</div>
-            <h2 class="headline">イランが<ruby>報復攻撃<rt>ほうふくこうげき</rt></ruby>　<ruby>中東<rt>ちゅうとう</rt></ruby><ruby>全域<rt>ぜんいき</rt></ruby>に<ruby>緊張<rt>きんちょう</rt></ruby><ruby>広が<rt>ひろが</rt></ruby>る</h2>
-            <p class="body">イランは<ruby>空爆<rt>くうばく</rt></ruby>への<ruby>報復<rt>ほうふく</rt></ruby>として、イスラエルおよびアメリカ<ruby>軍<rt>ぐん</rt></ruby><ruby>基地<rt>きち</rt></ruby>が<ruby>置か<rt>おか</rt></ruby>れているペルシャ<ruby>湾岸諸国<rt>わんがんしょこく</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>てミサイルとドローンを<ruby>発射<rt>はっしゃ</rt></ruby>した。イギリスは<ruby>今回<rt>こんかい</rt></ruby>の<ruby>攻撃<rt>こうげき</rt></ruby>に<ruby>関与<rt>かんよ</rt></ruby>も<ruby>支持<rt>しじ</rt></ruby>もしていないとの<ruby>立場<rt>たちば</rt></ruby>を<ruby>表明<rt>ひょうめい</rt></ruby>しており、アメリカとヨーロッパの<ruby>同盟関係<rt>どうめいかんけい</rt></ruby>に<ruby>亀裂<rt>きれつ</rt></ruby>が<ruby>生じ<rt>しょうじ</rt></ruby>つつある。トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>はスターマー<ruby>英<rt>えい</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>に<ruby>電話<rt>でんわ</rt></ruby>で<ruby>事前<rt>じぜん</rt></ruby><ruby>説明<rt>せつめい</rt></ruby>を<ruby>行った<rt>いった</rt></ruby>。</p>
-        </article>
-        <article class="article">
-            <div class="section-tag">英国・世界</div>
-            <h2 class="headline"><ruby>中東<rt>ちゅうとう</rt></ruby><ruby>緊張<rt>きんちょう</rt></ruby>で<ruby>航空<rt>こうくう</rt></ruby><ruby>各社<rt>かくしゃ</rt></ruby>が<ruby>相次ぎ<rt>あいつぎ</rt></ruby><ruby>運休<rt>うんきゅう</rt></ruby>　<ruby>旅行<rt>りょこう</rt></ruby><ruby>業界<rt>ぎょうかい</rt></ruby>に<ruby>混乱<rt>こんらん</rt></ruby></h2>
-            <p class="body"><ruby>米<rt>こめ</rt></ruby>・イスラエルによるイランへの<ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、ブリティッシュ・エアウェイズ、ヴァージン・アトランティック、ウィズ・エアーなど<ruby>主要<rt>しゅよう</rt></ruby><ruby>航空会社<rt>こうくうがいしゃ</rt></ruby>が<ruby>中東<rt>ちゅうとう</rt></ruby><ruby>路線<rt>ろせん</rt></ruby>の<ruby>運航<rt>うんこう</rt></ruby>を<ruby>一時停止<rt>いちじていし</rt></ruby>した。ドバイを<ruby>含む<rt>ふくむ</rt></ruby><ruby>中東<rt>ちゅうとう</rt></ruby>の<ruby>主要空港<rt>しゅようくうこう</rt></ruby>では<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>欠航<rt>けっこう</rt></ruby>が<ruby>相次ぎ<rt>あいつぎ</rt></ruby>、<ruby>乗客<rt>じょうきゃく</rt></ruby>の<ruby>安全確保<rt>あんぜんかくほ</rt></ruby>を<ruby>最優先<rt>さいゆうせん</rt></ruby>とした<ruby>措置<rt>そち</rt></ruby>だと<ruby>各社<rt>かくしゃ</rt></ruby>は<ruby>説明し<rt>せつめいし</rt></ruby>ている。</p>
-        </article>
-        <article class="article">
-            <div class="section-tag">英国・世界</div>
-            <h2 class="headline"><ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>のサイモンズ<ruby>大臣<rt>だいじん</rt></ruby>が<ruby>辞任<rt>じにん</rt></ruby>　ジャーナリスト<ruby>調査<rt>ちょうさ</rt></ruby><ruby>疑惑<rt>ぎわく</rt></ruby>で</h2>
-            <p class="body">イギリス<ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>のジョシュ・サイモンズ<ruby>文化<rt>ぶんか</rt></ruby><ruby>担当<rt>たんとう</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>は、<ruby>自身<rt>じしん</rt></ruby>がかつて<ruby>代表<rt>だいひょう</rt></ruby>を<ruby>務め<rt>つとめ</rt></ruby>たシンクタンク「レイバー・トゥゲザー」がジャーナリストの<ruby>経歴<rt>けいれき</rt></ruby><ruby>調査<rt>ちょうさ</rt></ruby>を<ruby>依頼<rt>いらい</rt></ruby>していたとの<ruby>疑惑<rt>ぎわく</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、<ruby>辞表<rt>じひょう</rt></ruby>を<ruby>提出<rt>ていしゅつ</rt></ruby>した。スターマー<ruby>首相<rt>しゅしょう</rt></ruby>がこれを<ruby>受理<rt>じゅり</rt></ruby>したことで、<ruby>政権<rt>せいけん</rt></ruby><ruby>発足以来<rt>ほっそくいらい</rt></ruby><ruby>最大<rt>さいだい</rt></ruby>の<ruby>閣僚<rt>かくりょう</rt></ruby><ruby>辞任<rt>じにん</rt></ruby>となった。</p>
-        </article>
-        <article class="article">
-            <div class="section-tag">日本</div>
-            <h2 class="headline"><ruby>新宿<rt>しんじゅく</rt></ruby>で<ruby>寒桜<rt>かんざくら</rt></ruby>が<ruby>開花<rt>かいか</rt></ruby>　お<ruby>花見<rt>はなみ</rt></ruby>シーズン<ruby>到来<rt>とうらい</rt></ruby>を<ruby>告げ<rt>つげ</rt></ruby>る</h2>
-            <p class="body"><ruby>東京<rt>とうきょう</rt></ruby>・<ruby>新宿区<rt>しんじゅくく</rt></ruby>の<ruby>公園<rt>こうえん</rt></ruby>で、<ruby>早咲き<rt>はやざき</rt></ruby>の<ruby>品種<rt>ひんしゅ</rt></ruby>「<ruby>寒桜<rt>かんざくら</rt></ruby>」が<ruby>開花<rt>かいか</rt></ruby>し<ruby>始め<rt>はじめ</rt></ruby>た。<ruby>染井吉野<rt>そめいよしの</rt></ruby>よりも<ruby>数週間<rt>すうしゅうかん</rt></ruby><ruby>早く<rt>はやく</rt></ruby><ruby>咲く<rt>さく</rt></ruby><ruby>寒桜<rt>かんざくら</rt></ruby>の<ruby>開花<rt>かいか</rt></ruby>は、<ruby>毎年<rt>まいとし</rt></ruby><ruby>春<rt>はる</rt></ruby>の<ruby>訪れ<rt>おとずれ</rt></ruby>を<ruby>告げ<rt>つげ</rt></ruby>る<ruby>風物詩<rt>ふうぶつし</rt></ruby>となっている。<ruby>土曜日<rt>どようび</rt></ruby>の<ruby>時点で<rt>じてんで</rt></ruby>すでに<ruby>多く<rt>おおく</rt></ruby>の<ruby>花<rt>はな</rt></ruby>が<ruby>開き<rt>ひらき</rt></ruby>、<ruby>写真撮影<rt>しゃしんさつえい</rt></ruby>を<ruby>楽し<rt>たのし</rt></ruby>む<ruby>市民<rt>しみん</rt></ruby>の<ruby>姿<rt>すがた</rt></ruby>が<ruby>見ら<rt>みら</rt></ruby>れた。<ruby>気象庁<rt>きしょうちょう</rt></ruby>は<ruby>今年<rt>こんねん</rt></ruby>の<ruby>染井吉野<rt>そめいよしの</rt></ruby>の<ruby>開花<rt>かいか</rt></ruby><ruby>予想<rt>よそう</rt></ruby>についても<ruby>近く<rt>ちかく</rt></ruby><ruby>発表<rt>はっぴょう</rt></ruby>する<ruby>見通し<rt>みとおし</rt></ruby>だ。</p>
-        </article>
-        <article class="article">
-            <div class="section-tag">日本</div>
-            <h2 class="headline"><ruby>茨城県<rt>いばらきけん</rt></ruby>が<ruby>不法<rt>ふほう</rt></ruby><ruby>滞在<rt>たいざい</rt></ruby><ruby>通報<rt>つうほう</rt></ruby>に<ruby>報奨金<rt>ほうしょうきん</rt></ruby><ruby>制度<rt>せいど</rt></ruby>　<ruby>人権団体<rt>じんけんだんたい</rt></ruby>は<ruby>批判<rt>ひはん</rt></ruby></h2>
-            <p class="body"><ruby>茨城県<rt>いばらきけん</rt></ruby>は、<ruby>不法<rt>ふほう</rt></ruby><ruby>滞在<rt>たいざい</rt></ruby>の<ruby>外国人<rt>がいこくじん</rt></ruby>を<ruby>当局<rt>とうきょく</rt></ruby>に<ruby>通報し<rt>つうほうし</rt></ruby>た<ruby>人<rt>にん</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>て1<ruby>万円<rt>まんえん</rt></ruby>の<ruby>報奨金<rt>ほうしょうきん</rt></ruby>を<ruby>支払う<rt>しはらう</rt></ruby><ruby>制度<rt>せいど</rt></ruby>を<ruby>導入<rt>どうにゅう</rt></ruby>すると<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>県<rt>けん</rt></ruby>は<ruby>治安維持<rt>ちあんいじ</rt></ruby>と<ruby>地域<rt>ちいき</rt></ruby>の<ruby>安全確保<rt>あんぜんかくほ</rt></ruby>を<ruby>目的<rt>もくてき</rt></ruby>としていると<ruby>説明し<rt>せつめいし</rt></ruby>ているが、<ruby>人権団体<rt>じんけんだんたい</rt></ruby>や<ruby>支援<rt>しえん</rt></ruby><ruby>者<rt>もの</rt></ruby>からは<ruby>外国人<rt>がいこくじん</rt></ruby><ruby>差別<rt>さべつ</rt></ruby>を<ruby>助長<rt>じょちょう</rt></ruby>するとして<ruby>強い<rt>つよい</rt></ruby><ruby>反発<rt>はんぱつ</rt></ruby>の<ruby>声<rt>こえ</rt></ruby>が<ruby>上が<rt>あが</rt></ruby>っている。<ruby>日本<rt>にっぽん</rt></ruby>では<ruby>近年<rt>きんねん</rt></ruby>、<ruby>外国人労働者<rt>がいこくじんろうどうしゃ</rt></ruby>の<ruby>受け入れ<rt>うけいれ</rt></ruby><ruby>拡大<rt>かくだい</rt></ruby>に<ruby>伴い<rt>ともない</rt></ruby>、<ruby>移民<rt>いみん</rt></ruby><ruby>政策<rt>せいさく</rt></ruby>をめぐる<ruby>議論<rt>ぎろん</rt></ruby>が<ruby>活発化<rt>かっぱつか</rt></ruby>している。</p>
-        </article>
-        <article class="article">
-            <div class="section-tag">日本</div>
-            <h2 class="headline">2026<ruby>年<rt>ねん</rt></ruby>から<ruby>日本<rt>にっぽん</rt></ruby>のビザ<ruby>申請料<rt>しんせいりょう</rt></ruby><ruby>金<rt>きん</rt></ruby>が<ruby>値上げ<rt>ねあげ</rt></ruby>　<ruby>外国人<rt>がいこくじん</rt></ruby>や<ruby>企業<rt>きぎょう</rt></ruby>に<ruby>影響<rt>えいきょう</rt></ruby></h2>
-            <p class="body"><ruby>日本政府<rt>にほんせいふ</rt></ruby>は2026<ruby>年<rt>ねん</rt></ruby>より、<ruby>在留<rt>ざいりゅう</rt></ruby><ruby>資格<rt>しかく</rt></ruby>の<ruby>申請<rt>しんせい</rt></ruby>にかかるビザ<ruby>手数料<rt>てすうりょう</rt></ruby>を<ruby>引き上げ<rt>ひきあげ</rt></ruby>ると<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>日本<rt>にっぽん</rt></ruby>での<ruby>就労<rt>しゅうろう</rt></ruby>や<ruby>長期滞在<rt>ちょうきたいざい</rt></ruby>を<ruby>希望<rt>きぼう</rt></ruby>する<ruby>外国人<rt>がいこくじん</rt></ruby>、および<ruby>外国人<rt>がいこくじん</rt></ruby>を<ruby>雇用<rt>こよう</rt></ruby>する<ruby>企業<rt>きぎょう</rt></ruby>にとって<ruby>直接的<rt>ちょくせつてき</rt></ruby>な<ruby>負担増<rt>ふたんぞう</rt></ruby>となる。<ruby>専門家<rt>せんもんか</rt></ruby>は、<ruby>申請<rt>しんせい</rt></ruby><ruby>前<rt>まえ</rt></ruby>に<ruby>最新<rt>さいしん</rt></ruby>の<ruby>料金体系<rt>りょうきんたいけい</rt></ruby>を<ruby>確認す<rt>かくにんす</rt></ruby>るよう<ruby>呼び<rt>よび</rt></ruby>かけている。</p>
-        </article>
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語表示中 — タップして英語に切り替え</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 Switch to English</button>
   </div>
 
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="section-tag">英国・世界</div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米<rt>こめ</rt></ruby>・イスラエルがイラン<ruby>空爆<rt>くうばく</rt></ruby>　ハメネイ<ruby>最高<rt>さいこう</rt></ruby><ruby>指導者<rt>しどうしゃ</rt></ruby>が<ruby>死亡<rt>しぼう</rt></ruby></h2>
+              <p class="body">アメリカとイスラエルは2<ruby>月<rt>がつ</rt></ruby>28<ruby>日夜<rt>にちや</rt></ruby>、イランに<ruby>対し<rt>たいし</rt></ruby>て<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>空爆<rt>くうばく</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>した。イラン<ruby>国営<rt>こくえい</rt></ruby>テレビは、<ruby>最高<rt>さいこう</rt></ruby><ruby>指導者<rt>しどうしゃ</rt></ruby>アリー・ハメネイ<ruby>師<rt>し</rt></ruby>が<ruby>攻撃<rt>こうげき</rt></ruby>により<ruby>死亡<rt>しぼう</rt></ruby>したと<ruby>伝え<rt>つたえ</rt></ruby>た。ハメネイ<ruby>師<rt>し</rt></ruby>は40<ruby>年以上<rt>ねんいじょう</rt></ruby>にわたってイランの<ruby>最高権力者<rt>さいこうけんりょくしゃ</rt></ruby>として<ruby>君臨<rt>くんりん</rt></ruby>しており、その<ruby>死<rt>し</rt></ruby>は<ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby>に<ruby>大き<rt>おおき</rt></ruby>な<ruby>衝撃<rt>しょうげき</rt></ruby>をもたらした。<ruby>後継者問題<rt>こうけいしゃもんだい</rt></ruby>や<ruby>国内<rt>こくない</rt></ruby>の<ruby>権力<rt>けんりょく</rt></ruby><ruby>争い<rt>あらそい</rt></ruby>が<ruby>今後<rt>こんご</rt></ruby>の<ruby>焦点<rt>しょうてん</rt></ruby>となる<ruby>見通し<rt>みとおし</rt></ruby>だ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US and Israel strike Iran — Supreme Leader Khamenei dead</h2>
+              <p class="body en-body">The United States and Israel carried out large-scale airstrikes on Iran overnight on 28th February. Iranian state TV reported that Supreme Leader Ali Khamenei was killed in the attack. Khamenei had held supreme power in Iran for over 40 years; his death has sent shockwaves through the Middle East. The question of his successor and internal power struggles are now expected to dominate the coming days.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="section-tag">英国・世界</div>
+            <div class="lang-jp">
+              <h2 class="headline">イランが<ruby>報復攻撃<rt>ほうふくこうげき</rt></ruby>　<ruby>中東<rt>ちゅうとう</rt></ruby><ruby>全域<rt>ぜんいき</rt></ruby>に<ruby>緊張<rt>きんちょう</rt></ruby><ruby>広が<rt>ひろが</rt></ruby>る</h2>
+              <p class="body">イランは<ruby>空爆<rt>くうばく</rt></ruby>への<ruby>報復<rt>ほうふく</rt></ruby>として、イスラエルおよびアメリカ<ruby>軍<rt>ぐん</rt></ruby><ruby>基地<rt>きち</rt></ruby>が<ruby>置か<rt>おか</rt></ruby>れているペルシャ<ruby>湾岸諸国<rt>わんがんしょこく</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>てミサイルとドローンを<ruby>発射<rt>はっしゃ</rt></ruby>した。イギリスは<ruby>今回<rt>こんかい</rt></ruby>の<ruby>攻撃<rt>こうげき</rt></ruby>に<ruby>関与<rt>かんよ</rt></ruby>も<ruby>支持<rt>しじ</rt></ruby>もしていないとの<ruby>立場<rt>たちば</rt></ruby>を<ruby>表明<rt>ひょうめい</rt></ruby>しており、アメリカとヨーロッパの<ruby>同盟関係<rt>どうめいかんけい</rt></ruby>に<ruby>亀裂<rt>きれつ</rt></ruby>が<ruby>生じ<rt>しょうじ</rt></ruby>つつある。トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>はスターマー<ruby>英<rt>えい</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>に<ruby>電話<rt>でんわ</rt></ruby>で<ruby>事前<rt>じぜん</rt></ruby><ruby>説明<rt>せつめい</rt></ruby>を<ruby>行った<rt>いった</rt></ruby>。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Iran retaliates with missiles and drones — tensions spread across the Middle East</h2>
+              <p class="body en-body">In retaliation for the airstrikes, Iran fired missiles and drones at Israel and at Gulf states hosting US military bases. The UK stated it was neither involved in nor supportive of the strikes, with cracks emerging in the US-European alliance. President Trump called Prime Minister Starmer ahead of the attack to brief him.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="section-tag">英国・世界</div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>中東<rt>ちゅうとう</rt></ruby><ruby>緊張<rt>きんちょう</rt></ruby>で<ruby>航空<rt>こうくう</rt></ruby><ruby>各社<rt>かくしゃ</rt></ruby>が<ruby>相次ぎ<rt>あいつぎ</rt></ruby><ruby>運休<rt>うんきゅう</rt></ruby>　<ruby>旅行<rt>りょこう</rt></ruby><ruby>業界<rt>ぎょうかい</rt></ruby>に<ruby>混乱<rt>こんらん</rt></ruby></h2>
+              <p class="body"><ruby>米<rt>こめ</rt></ruby>・イスラエルによるイランへの<ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、ブリティッシュ・エアウェイズ、ヴァージン・アトランティック、ウィズ・エアーなど<ruby>主要<rt>しゅよう</rt></ruby><ruby>航空会社<rt>こうくうがいしゃ</rt></ruby>が<ruby>中東<rt>ちゅうとう</rt></ruby><ruby>路線<rt>ろせん</rt></ruby>の<ruby>運航<rt>うんこう</rt></ruby>を<ruby>一時停止<rt>いちじていし</rt></ruby>した。ドバイを<ruby>含む<rt>ふくむ</rt></ruby><ruby>中東<rt>ちゅうとう</rt></ruby>の<ruby>主要空港<rt>しゅようくうこう</rt></ruby>では<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>欠航<rt>けっこう</rt></ruby>が<ruby>相次ぎ<rt>あいつぎ</rt></ruby>、<ruby>乗客<rt>じょうきゃく</rt></ruby>の<ruby>安全確保<rt>あんぜんかくほ</rt></ruby>を<ruby>最優先<rt>さいゆうせん</rt></ruby>とした<ruby>措置<rt>そち</rt></ruby>だと<ruby>各社<rt>かくしゃ</rt></ruby>は<ruby>説明し<rt>せつめいし</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Airlines suspend Middle East flights as regional tensions escalate</h2>
+              <p class="body en-body">Following the US-Israeli strikes on Iran, British Airways, Virgin Atlantic, Wizz Air and other major carriers suspended flights to the Middle East. Large-scale cancellations hit major hubs including Dubai. Airlines said the decisions were taken to prioritise passenger safety as the regional situation develops.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="section-tag">英国・政治</div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>のサイモンズ<ruby>大臣<rt>だいじん</rt></ruby>が<ruby>辞任<rt>じにん</rt></ruby>　ジャーナリスト<ruby>調査<rt>ちょうさ</rt></ruby><ruby>疑惑<rt>ぎわく</rt></ruby>で</h2>
+              <p class="body">イギリス<ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>のジョシュ・サイモンズ<ruby>文化<rt>ぶんか</rt></ruby><ruby>担当<rt>たんとう</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>は、<ruby>自身<rt>じしん</rt></ruby>がかつて<ruby>代表<rt>だいひょう</rt></ruby>を<ruby>務め<rt>つとめ</rt></ruby>たシンクタンク「レイバー・トゥゲザー」がジャーナリストの<ruby>経歴<rt>けいれき</rt></ruby><ruby>調査<rt>ちょうさ</rt></ruby>を<ruby>依頼<rt>いらい</rt></ruby>していたとの<ruby>疑惑<rt>ぎわく</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、<ruby>辞表<rt>じひょう</rt></ruby>を<ruby>提出<rt>ていしゅつ</rt></ruby>した。スターマー<ruby>首相<rt>しゅしょう</rt></ruby>がこれを<ruby>受理<rt>じゅり</rt></ruby>したことで、<ruby>政権<rt>せいけん</rt></ruby><ruby>発足以来<rt>ほっそくいらい</rt></ruby><ruby>最大<rt>さいだい</rt></ruby>の<ruby>閣僚<rt>かくりょう</rt></ruby><ruby>辞任<rt>じにん</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Labour minister Simons resigns over journalist background check claims</h2>
+              <p class="body en-body">Labour Culture Minister Josh Simons submitted his resignation after claims that Labour Together, the think tank he formerly led, commissioned background checks on journalists. Starmer accepted the resignation — the biggest ministerial departure since the government took office.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="section-tag">日本</div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>新宿<rt>しんじゅく</rt></ruby>で<ruby>寒桜<rt>かんざくら</rt></ruby>が<ruby>開花<rt>かいか</rt></ruby>　お<ruby>花見<rt>はなみ</rt></ruby>シーズン<ruby>到来<rt>とうらい</rt></ruby>を<ruby>告げ<rt>つげ</rt></ruby>る</h2>
+              <p class="body"><ruby>東京<rt>とうきょう</rt></ruby>・<ruby>新宿区<rt>しんじゅくく</rt></ruby>の<ruby>公園<rt>こうえん</rt></ruby>で、<ruby>早咲き<rt>はやざき</rt></ruby>の<ruby>品種<rt>ひんしゅ</rt></ruby>「<ruby>寒桜<rt>かんざくら</rt></ruby>」が<ruby>開花<rt>かいか</rt></ruby>し<ruby>始め<rt>はじめ</rt></ruby>た。<ruby>染井吉野<rt>そめいよしの</rt></ruby>よりも<ruby>数週間<rt>すうしゅうかん</rt></ruby><ruby>早く<rt>はやく</rt></ruby><ruby>咲く<rt>さく</rt></ruby><ruby>寒桜<rt>かんざくら</rt></ruby>の<ruby>開花<rt>かいか</rt></ruby>は、<ruby>毎年<rt>まいとし</rt></ruby><ruby>春<rt>はる</rt></ruby>の<ruby>訪れ<rt>おとずれ</rt></ruby>を<ruby>告げ<rt>つげ</rt></ruby>る<ruby>風物詩<rt>ふうぶつし</rt></ruby>となっている。<ruby>土曜日<rt>どようび</rt></ruby>の<ruby>時点で<rt>じてんで</rt></ruby>すでに<ruby>多く<rt>おおく</rt></ruby>の<ruby>花<rt>はな</rt></ruby>が<ruby>開き<rt>ひらき</rt></ruby>、<ruby>写真撮影<rt>しゃしんさつえい</rt></ruby>を<ruby>楽し<rt>たのし</rt></ruby>む<ruby>市民<rt>しみん</rt></ruby>の<ruby>姿<rt>すがた</rt></ruby>が<ruby>見ら<rt>みら</rt></ruby>れた。<ruby>気象庁<rt>きしょうちょう</rt></ruby>は<ruby>今年<rt>こんねん</rt></ruby>の<ruby>染井吉野<rt>そめいよしの</rt></ruby>の<ruby>開花<rt>かいか</rt></ruby><ruby>予想<rt>よそう</rt></ruby>についても<ruby>近く<rt>ちかく</rt></ruby><ruby>発表<rt>はっぴょう</rt></ruby>する<ruby>見通し<rt>みとおし</rt></ruby>だ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Early cherry blossoms open in Shinjuku — hanami season begins</h2>
+              <p class="body en-body">Kanzakura cherry trees — an early-blooming variety — have begun flowering in parks across Shinjuku, Tokyo. Blooming several weeks ahead of the standard Somei-Yoshino variety, the kanzakura is seen as the unofficial start of spring. By Saturday, many trees were already in bloom, with residents gathering to take photographs. The Japan Meteorological Agency is expected to announce its Somei-Yoshino forecast soon.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="section-tag">日本</div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>茨城県<rt>いばらきけん</rt></ruby>が<ruby>不法<rt>ふほう</rt></ruby><ruby>滞在<rt>たいざい</rt></ruby><ruby>通報<rt>つうほう</rt></ruby>に<ruby>報奨金<rt>ほうしょうきん</rt></ruby><ruby>制度<rt>せいど</rt></ruby>　<ruby>人権団体<rt>じんけんだんたい</rt></ruby>は<ruby>批判<rt>ひはん</rt></ruby></h2>
+              <p class="body"><ruby>茨城県<rt>いばらきけん</rt></ruby>は、<ruby>不法<rt>ふほう</rt></ruby><ruby>滞在<rt>たいざい</rt></ruby>の<ruby>外国人<rt>がいこくじん</rt></ruby>を<ruby>当局<rt>とうきょく</rt></ruby>に<ruby>通報し<rt>つうほうし</rt></ruby>た<ruby>人<rt>にん</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>て1<ruby>万円<rt>まんえん</rt></ruby>の<ruby>報奨金<rt>ほうしょうきん</rt></ruby>を<ruby>支払う<rt>しはらう</rt></ruby><ruby>制度<rt>せいど</rt></ruby>を<ruby>導入<rt>どうにゅう</rt></ruby>すると<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>県<rt>けん</rt></ruby>は<ruby>治安維持<rt>ちあんいじ</rt></ruby>と<ruby>地域<rt>ちいき</rt></ruby>の<ruby>安全確保<rt>あんぜんかくほ</rt></ruby>を<ruby>目的<rt>もくてき</rt></ruby>としていると<ruby>説明し<rt>せつめいし</rt></ruby>ているが、<ruby>人権団体<rt>じんけんだんたい</rt></ruby>や<ruby>支援<rt>しえん</rt></ruby><ruby>者<rt>もの</rt></ruby>からは<ruby>外国人<rt>がいこくじん</rt></ruby><ruby>差別<rt>さべつ</rt></ruby>を<ruby>助長<rt>じょちょう</rt></ruby>するとして<ruby>強い<rt>つよい</rt></ruby><ruby>反発<rt>はんぱつ</rt></ruby>の<ruby>声<rt>こえ</rt></ruby>が<ruby>上が<rt>あが</rt></ruby>っている。<ruby>日本<rt>にっぽん</rt></ruby>では<ruby>近年<rt>きんねん</rt></ruby>、<ruby>外国人労働者<rt>がいこくじんろうどうしゃ</rt></ruby>の<ruby>受け入れ<rt>うけいれ</rt></ruby><ruby>拡大<rt>かくだい</rt></ruby>に<ruby>伴い<rt>ともない</rt></ruby>、<ruby>移民<rt>いみん</rt></ruby><ruby>政策<rt>せいさく</rt></ruby>をめぐる<ruby>議論<rt>ぎろん</rt></ruby>が<ruby>活発化<rt>かっぱつか</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Ibaraki Prefecture offers ¥10,000 bounty for reporting undocumented residents — human rights groups object</h2>
+              <p class="body en-body">Ibaraki Prefecture announced it will pay ¥10,000 to anyone who reports an undocumented foreign resident to the authorities. The prefecture described the measure as aimed at maintaining public safety, but human rights groups and advocates condemned it as discriminatory. The announcement comes as Japan's immigration debate intensifies alongside broader efforts to attract foreign workers.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="section-tag">日本</div>
+            <div class="lang-jp">
+              <h2 class="headline">2026<ruby>年<rt>ねん</rt></ruby>から<ruby>日本<rt>にっぽん</rt></ruby>のビザ<ruby>申請料<rt>しんせいりょう</rt></ruby><ruby>金<rt>きん</rt></ruby>が<ruby>値上げ<rt>ねあげ</rt></ruby>　<ruby>外国人<rt>がいこくじん</rt></ruby>や<ruby>企業<rt>きぎょう</rt></ruby>に<ruby>影響<rt>えいきょう</rt></ruby></h2>
+              <p class="body"><ruby>日本政府<rt>にほんせいふ</rt></ruby>は2026<ruby>年<rt>ねん</rt></ruby>より、<ruby>在留<rt>ざいりゅう</rt></ruby><ruby>資格<rt>しかく</rt></ruby>の<ruby>申請<rt>しんせい</rt></ruby>にかかるビザ<ruby>手数料<rt>てすうりょう</rt></ruby>を<ruby>引き上げ<rt>ひきあげ</rt></ruby>ると<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>日本<rt>にっぽん</rt></ruby>での<ruby>就労<rt>しゅうろう</rt></ruby>や<ruby>長期滞在<rt>ちょうきたいざい</rt></ruby>を<ruby>希望<rt>きぼう</rt></ruby>する<ruby>外国人<rt>がいこくじん</rt></ruby>、および<ruby>外国人<rt>がいこくじん</rt></ruby>を<ruby>雇用<rt>こよう</rt></ruby>する<ruby>企業<rt>きぎょう</rt></ruby>にとって<ruby>直接的<rt>ちょくせつてき</rt></ruby>な<ruby>負担増<rt>ふたんぞう</rt></ruby>となる。<ruby>専門家<rt>せんもんか</rt></ruby>は、<ruby>申請<rt>しんせい</rt></ruby><ruby>前<rt>まえ</rt></ruby>に<ruby>最新<rt>さいしん</rt></ruby>の<ruby>料金体系<rt>りょうきんたいけい</rt></ruby>を<ruby>確認す<rt>かくにんす</rt></ruby>るよう<ruby>呼び<rt>よび</rt></ruby>かけている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan raising visa fees in 2026 — foreign workers and employers face higher costs</h2>
+              <p class="body en-body">The Japanese government has announced an increase in visa application fees from 2026, affecting foreign nationals seeking to work or reside long-term in Japan, as well as companies employing them. Experts are advising applicants to check updated fee schedules before applying.</p>
+            </div>
+        </article>
+  </div>
   
         <section class="vocab-section">
             <h3 class="vocab-title">📖 単語チートシート / Vocabulary Cheat Sheet</h3>
@@ -274,7 +321,7 @@
             <tr>
                 <td class="vocab-word"><ruby>助長<rt>じょちょう</rt></ruby></td>
                 <td class="vocab-reading">じょちょう</td>
-                <td class="vocab-english">to promote / to encourage (often negative connotation)</td>
+                <td class="vocab-english">to promote / encourage (often negative)</td>
             </tr></tbody>
             </table>
         </section>
@@ -284,5 +331,26 @@
   毎日新聞 · Longfellow Daily · 2026-03-01 · N2日本語練習用
 </footer>
 
+  <script>
+    let isJP = true;
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      document.getElementById('flip-label').textContent = isJP
+        ? '🇯🇵 日本語表示中 — タップして英語に切り替え'
+        : '🇬🇧 English — tap to switch back to Japanese';
+      document.querySelector('.flip-btn').textContent = isJP ? '🇬🇧 Switch to English' : '🇯🇵 日本語に戻る';
+    }
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+  </script>
 </body>
 </html>
