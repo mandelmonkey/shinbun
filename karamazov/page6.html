@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カラマーゾフの兄弟 — 第一部 第一篇 第二章 — 長男を追い払う p.6</title>
+  <style>
+    :root {
+      --bg: #fdf6e3;
+      --text: #2c2c2c;
+      --accent: #8b1a1a;
+      --muted: #888;
+      --border: #e0d6c0;
+      --vocab-bg: #f0e8d0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    ruby { ruby-align: center; }
+    rt { font-size: 0.52em; color: #aaa; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">フョードル・ドストエフスキー</div>
+  <div class="chapter-title">カラマーゾフの兄弟</div>
+  <div class="chapter-sub">第一部 第一篇 第二章 — 長男を追い払う</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p>フョードル・パーヴロヴィチが<ruby>幼<rt>おさな</rt></ruby>い<ruby>息子<rt>むすこ</rt></ruby>を<ruby>顧<rt>かえり</rt></ruby>みなかったのは、<ruby>誰<rt>だれ</rt></ruby>も<ruby>驚<rt>おどろ</rt></ruby>かないことでした。しかし<ruby>赤<rt>あか</rt></ruby>ん<ruby>坊<rt>ぼう</rt></ruby>のドミートリーが<ruby>完全<rt>かんぜん</rt></ruby>に<ruby>放置<rt>ほうち</rt></ruby>されたかというと、そうではありません。</p>
+    <p>カラマーゾフ家に<ruby>長年<rt>ながねん</rt></ruby><ruby>仕<rt>つか</rt></ruby>えてきた<ruby>老僕<rt>ろうぼく</rt></ruby>のグリゴーリイ・ワシーリエヴィチが、<ruby>子<rt>こ</rt></ruby>の<ruby>世話<rt>せわ</rt></ruby>を<ruby>引<rt>ひ</rt></ruby>き<ruby>受<rt>う</rt></ruby>けたのです。グリゴーリイは<ruby>寡黙<rt>かもく</rt></ruby>で<ruby>篤実<rt>とくじつ</rt></ruby>な<ruby>男<rt>おとこ</rt></ruby>で、<ruby>信仰<rt>しんこう</rt></ruby>を<ruby>何<rt>なに</rt></ruby>よりも<ruby>大切<rt>たいせつ</rt></ruby>にする<ruby>性質<rt>せいしつ</rt></ruby>の<ruby>持<rt>も</rt></ruby>ち<ruby>主<rt>ぬし</rt></ruby>でした。<ruby>妻<rt>つま</rt></ruby>のマルファとともに、<ruby>子<rt>こ</rt></ruby>のない<ruby>夫婦<rt>ふうふ</rt></ruby>だったため、<ruby>幼<rt>おさな</rt></ruby>い<ruby>ミーチャ<rt>みーちゃ</rt></ruby>——ドミートリーの<ruby>愛称<rt>あいしょう</rt></ruby>——を<ruby>実<rt>じつ</rt></ruby>の<ruby>子<rt>こ</rt></ruby>のように<ruby>育<rt>そだ</rt></ruby>てました。</p>
+    <p>アデライーダの<ruby>遠縁<rt>とおえん</rt></ruby>にあたるピョートル・アレクサンドロヴィチ・ミウーソフが、<ruby>ちょうど<rt>ちょうど</rt></ruby>その<ruby>頃<rt>ころ</rt></ruby>フランスから<ruby>帰国<rt>きこく</rt></ruby>しました。<ruby>パリ<rt>ぱり</rt></ruby>で<ruby>教育<rt>きょういく</rt></ruby>を<ruby>受<rt>う</rt></ruby>けた<ruby>自由主義者<rt>じゆうしゅぎしゃ</rt></ruby>だった<ruby>彼<rt>かれ</rt></ruby>は、カラマーゾフ<ruby>家<rt>け</rt></ruby>の<ruby>一切<rt>いっさい</rt></ruby>を<ruby>軽蔑<rt>けいべつ</rt></ruby>していましたが、<ruby>放置<rt>ほうち</rt></ruby>された<ruby>幼児<rt>ようじ</rt></ruby>を<ruby>目<rt>め</rt></ruby>にして<ruby>良心<rt>りょうしん</rt></ruby>が<ruby>疼<rt>うず</rt></ruby>いたのでしょう。</p>
+    <p>ミウーソフは<ruby>子供<rt>こども</rt></ruby>を<ruby>引<rt>ひ</rt></ruby>き<ruby>取<rt>と</rt></ruby>る<ruby>申<rt>もう</rt></ruby>し<ruby>出<rt>で</rt></ruby>をしました。フョードルはその<ruby>申<rt>もう</rt></ruby>し<ruby>出<rt>で</rt></ruby>を<ruby>喜<rt>よろこ</rt></ruby>んで<ruby>受<rt>う</rt></ruby>け<ruby>入<rt>い</rt></ruby>れました。<ruby>引<rt>ひ</rt></ruby>き<ruby>取<rt>と</rt></ruby>り<ruby>料<rt>りょう</rt></ruby>についての<ruby>話<rt>はな</rt></ruby>し<ruby>合<rt>あ</rt></ruby>いが<ruby>多少<rt>たしょう</rt></ruby>ありましたが、フョードルが<ruby>支払<rt>しはら</rt></ruby>いを<ruby>渋<rt>しぶ</rt></ruby>ったのは<ruby>言<rt>い</rt></ruby>うまでもないことでした。</p>
+    <p>こうして<ruby>幼<rt>おさな</rt></ruby>いドミートリーは、<ruby>父親<rt>ちちおや</rt></ruby>の<ruby>家<rt>いえ</rt></ruby>を<ruby>離<rt>はな</rt></ruby>れることになりました。<ruby>彼<rt>かれ</rt></ruby>が<ruby>父<rt>ちち</rt></ruby>と<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>暮<rt>く</rt></ruby>らしたのは、<ruby>言葉<rt>ことば</rt></ruby>を<ruby>覚<rt>おぼ</rt></ruby>える<ruby>前<rt>まえ</rt></ruby>のわずかな<ruby>期間<rt>きかん</rt></ruby>だけのことでした。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>That Fyodor Pavlovich took no interest in his young son surprised no one. But to say that the infant Dmitri was entirely abandoned would not be quite accurate.</p>
+    <p>The old household servant Grigory Vasilyevich, who had served the Karamazov family for many years, took the boy into his care. Grigory was a taciturn and conscientious man who held his faith above all else. He and his wife Marfa, a childless couple, raised the small Mitya — Dmitri's pet name — as though he were their own.</p>
+    <p>It was around this time that Pyotr Alexandrovich Miusov, a distant relative of Adelaida's, returned from France. A Paris-educated liberal who held everything Karamazov in contempt, he was nonetheless stirred by conscience at the sight of the neglected child.</p>
+    <p>Miusov offered to take the boy. Fyodor accepted with pleasure. There were some negotiations about a fee, and of course Fyodor was reluctant to pay.</p>
+    <p>And so the small Dmitri was removed from his father's house. The only time he had lived under the same roof as Fyodor was the brief period before he had even learned to speak.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <a href="page5.html">← 前のページ</a>
+  <span class="page-num">p. 6 / 10</span>
+  <a href="page7.html">次のページ →</a>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">顧みる</td><td class="vocab-reading">かえりみる</td><td class="vocab-en">to look after / concern oneself with</td></tr>
+    <tr><td class="vocab-kanji">老僕</td><td class="vocab-reading">ろうぼく</td><td class="vocab-en">old manservant</td></tr>
+    <tr><td class="vocab-kanji">寡黙な</td><td class="vocab-reading">かもくな</td><td class="vocab-en">taciturn / of few words</td></tr>
+    <tr><td class="vocab-kanji">篤実な</td><td class="vocab-reading">とくじつな</td><td class="vocab-en">sincere / conscientious / dependable</td></tr>
+    <tr><td class="vocab-kanji">愛称</td><td class="vocab-reading">あいしょう</td><td class="vocab-en">pet name / nickname / term of endearment</td></tr>
+    <tr><td class="vocab-kanji">遠縁</td><td class="vocab-reading">とおえん</td><td class="vocab-en">distant relative</td></tr>
+    <tr><td class="vocab-kanji">自由主義者</td><td class="vocab-reading">じゆうしゅぎしゃ</td><td class="vocab-en">liberal (political term)</td></tr>
+    <tr><td class="vocab-kanji">軽蔑する</td><td class="vocab-reading">けいべつする</td><td class="vocab-en">to despise / look down on</td></tr>
+    <tr><td class="vocab-kanji">幼児</td><td class="vocab-reading">ようじ</td><td class="vocab-en">infant / small child</td></tr>
+    <tr><td class="vocab-kanji">良心が疼く</td><td class="vocab-reading">りょうしんがうずく</td><td class="vocab-en">one's conscience aches / is stirred</td></tr>
+    <tr><td class="vocab-kanji">申し出</td><td class="vocab-reading">もうしで</td><td class="vocab-en">offer / proposal</td></tr>
+    <tr><td class="vocab-kanji">引き取る</td><td class="vocab-reading">ひきとる</td><td class="vocab-en">to take into custody / take in</td></tr>
+    <tr><td class="vocab-kanji">渋る</td><td class="vocab-reading">しぶる</td><td class="vocab-en">to be reluctant / hesitate to give</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜わけではない</strong> — it doesn't mean that ~ / not necessarily ~<br><em>完全に放置されたわけではありません</em><br>Softens or partially denies a preceding statement. Very common in written Japanese.</div>
+<div class="grammar-item"><strong>〜てきた</strong> — has been doing ~ up until now<br><em>カラマーゾフ家に長年仕えてきた老僕</em><br>Emphasises a continuous action leading up to the present moment.</div>
+<div class="grammar-item"><strong>〜のでしょう</strong> — I imagine ~ / probably ~ (gentle conjecture)<br><em>良心が疼いたのでしょう</em><br>The narrator speculates about a character's inner state. Distancing and literary.</div>
+<div class="grammar-item"><strong>〜は言うまでもない</strong> — it goes without saying that ~<br><em>フョードルが支払いを渋ったのは言うまでもない</em><br>Used for things the narrator considers self-evident given what the reader knows.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
