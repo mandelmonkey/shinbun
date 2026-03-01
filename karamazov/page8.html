@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カラマーゾフの兄弟 — 第一部 第一篇 第二章 — 長男を追い払う p.8</title>
+  <style>
+    :root {
+      --bg: #fdf6e3;
+      --text: #2c2c2c;
+      --accent: #8b1a1a;
+      --muted: #888;
+      --border: #e0d6c0;
+      --vocab-bg: #f0e8d0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    ruby { ruby-align: center; }
+    rt { font-size: 0.52em; color: #aaa; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">フョードル・ドストエフスキー</div>
+  <div class="chapter-title">カラマーゾフの兄弟</div>
+  <div class="chapter-sub">第一部 第一篇 第二章 — 長男を追い払う</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p>フョードル・パーヴロヴィチは<ruby>二度目<rt>にどめ</rt></ruby>の<ruby>結婚<rt>けっこん</rt></ruby>の<ruby>後<rt>のち</rt></ruby>も、<ruby>相変<rt>あいか</rt></ruby>わらずの<ruby>放蕩<rt>ほうとう</rt></ruby>な<ruby>生活<rt>せいかつ</rt></ruby>を<ruby>続<rt>つづ</rt></ruby>けました。<ruby>時折<rt>ときおり</rt></ruby><ruby>領地<rt>りょうち</rt></ruby>のある<ruby>郡<rt>ぐん</rt></ruby>に<ruby>戻<rt>もど</rt></ruby>っては、<ruby>近隣<rt>きんりん</rt></ruby>の<ruby>地主<rt>じぬし</rt></ruby>たちの<ruby>間<rt>あいだ</rt></ruby>で<ruby>物笑<rt>ものわら</rt></ruby>いの<ruby>種<rt>たね</rt></ruby>となる<ruby>振<rt>ふ</rt></ruby>る<ruby>舞<rt>ま</rt></ruby>いをしました。</p>
+    <p><ruby>彼<rt>かれ</rt></ruby>の<ruby>性格<rt>せいかく</rt></ruby>の<ruby>奇妙<rt>きみょう</rt></ruby>な<ruby>点<rt>てん</rt></ruby>の<ruby>一つ<rt>ひとつ</rt></ruby>は、<ruby>宴会<rt>えんかい</rt></ruby>の<ruby>席<rt>せき</rt></ruby>において<ruby>並外<rt>なみはず</rt></ruby>れた<ruby>才能<rt>さいのう</rt></ruby>を<ruby>発揮<rt>はっき</rt></ruby>することでした。<ruby>道化<rt>どうけ</rt></ruby>を<ruby>演<rt>えん</rt></ruby>じ、<ruby>人<rt>ひと</rt></ruby>を<ruby>笑<rt>わら</rt></ruby>わせ、<ruby>憚<rt>はばか</rt></ruby>ることなく<ruby>振<rt>ふ</rt></ruby>る<ruby>舞<rt>ま</rt></ruby>うことで、<ruby>周囲<rt>しゅうい</rt></ruby>を<ruby>引<rt>ひ</rt></ruby>きつけました。その<ruby>滑稽<rt>こっけい</rt></ruby>さは<ruby>ある種<rt>あるしゅ</rt></ruby>の<ruby>魅力<rt>みりょく</rt></ruby>を<ruby>持<rt>も</rt></ruby>ち、<ruby>嫌悪<rt>けんお</rt></ruby>と<ruby>笑<rt>わら</rt></ruby>いとが<ruby>奇妙<rt>きみょう</rt></ruby>に<ruby>混<rt>ま</rt></ruby>ざり<ruby>合<rt>あ</rt></ruby>うような<ruby>印象<rt>いんしょう</rt></ruby>を<ruby>与<rt>あた</rt></ruby>えました。</p>
+    <p>しかし<ruby>金銭<rt>きんせん</rt></ruby>の<ruby>問題<rt>もんだい</rt></ruby>になると、<ruby>彼<rt>かれ</rt></ruby>は<ruby>全<rt>まった</rt></ruby>く<ruby>別<rt>べつ</rt></ruby>の<ruby>顔<rt>かお</rt></ruby>を<ruby>見<rt>み</rt></ruby>せました。<ruby>抜<rt>ぬ</rt></ruby>け<ruby>目<rt>め</rt></ruby>なく、<ruby>狡猾<rt>こうかつ</rt></ruby>で、<ruby>一銭<rt>いっせん</rt></ruby>たりとも<ruby>無駄<rt>むだ</rt></ruby>にしない<ruby>用意<rt>ようい</rt></ruby>がありました。<ruby>二番目<rt>ふたんめ</rt></ruby>の<ruby>妻<rt>つま</rt></ruby>の<ruby>財産<rt>ざいさん</rt></ruby>も、<ruby>彼<rt>かれ</rt></ruby>は<ruby>徐々<rt>じょじょ</rt></ruby>に<ruby>手中<rt>しゅちゅう</rt></ruby>に<ruby>収<rt>おさ</rt></ruby>めていったのです。</p>
+    <p><ruby>郡<rt>ぐん</rt></ruby>の<ruby>人々<rt>ひとびと</rt></ruby>は<ruby>彼<rt>かれ</rt></ruby>を<ruby>蔑<rt>さげす</rt></ruby>みながらも、<ruby>ある種<rt>あるしゅ</rt></ruby>の<ruby>奇妙<rt>きみょう</rt></ruby>な<ruby>愛着<rt>あいちゃく</rt></ruby>を<ruby>感<rt>かん</rt></ruby>じていました。<ruby>彼<rt>かれ</rt></ruby>の<ruby>存在<rt>そんざい</rt></ruby>は、その<ruby>場<rt>ば</rt></ruby>の<ruby>空気<rt>くうき</rt></ruby>を<ruby>変<rt>か</rt></ruby>える<ruby>力<rt>ちから</rt></ruby>を<ruby>持<rt>も</rt></ruby>っていたのです。こういう<ruby>類<rt>たぐい</rt></ruby>の<ruby>人間<rt>にんげん</rt></ruby>というものは、<ruby>不思議<rt>ふしぎ</rt></ruby>と<ruby>人<rt>ひと</rt></ruby>を<ruby>引<rt>ひ</rt></ruby>きつけるものです。</p>
+    <p><ruby>息子<rt>むすこ</rt></ruby>たちのことは、フョードルにとって<ruby>相変<rt>あいか</rt></ruby>わらず<ruby>他人事<rt>たにんごと</rt></ruby>のようでした。<ruby>三人<rt>さんにん</rt></ruby>の<ruby>息子<rt>むすこ</rt></ruby>がどこで<ruby>何<rt>なに</rt></ruby>をしているか、<ruby>彼<rt>かれ</rt></ruby>にはほとんど<ruby>関心<rt>かんしん</rt></ruby>がなかったのです。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>After his second marriage, Fyodor Pavlovich continued his dissolute way of life unchanged. From time to time he returned to the district where his estate lay, making himself a figure of ridicule among the neighbouring landowners.</p>
+    <p>One peculiarity of his character was a remarkable talent at the dinner table. He clowned, provoked laughter, and behaved without any restraint — and this drew people to him. His foolishness had a kind of charm, producing a strange mixture of revulsion and amusement in those who watched.</p>
+    <p>But when money was at stake, he became an entirely different man: shrewd, cunning, and not prepared to waste a single kopek. The fortune of his second wife he quietly absorbed into his own hands.</p>
+    <p>The people of the district despised him, yet felt a strange attachment. His presence had the power to transform the atmosphere of any room. Such people have an uncanny way of attracting others.</p>
+    <p>As for his sons, they remained, as always, entirely other people's business in his eyes. He had little idea what the three of them were doing or where they were.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <a href="page7.html">← 前のページ</a>
+  <span class="page-num">p. 8 / 10</span>
+  <a href="page9.html">次のページ →</a>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">相変わらず</td><td class="vocab-reading">あいかわらず</td><td class="vocab-en">as usual / unchanged / same as ever</td></tr>
+    <tr><td class="vocab-kanji">物笑いの種</td><td class="vocab-reading">ものわらいのたね</td><td class="vocab-en">laughingstock / cause of ridicule</td></tr>
+    <tr><td class="vocab-kanji">並外れた</td><td class="vocab-reading">なみはずれた</td><td class="vocab-en">extraordinary / exceptional / out of the ordinary</td></tr>
+    <tr><td class="vocab-kanji">宴会</td><td class="vocab-reading">えんかい</td><td class="vocab-en">banquet / dinner party</td></tr>
+    <tr><td class="vocab-kanji">道化を演じる</td><td class="vocab-reading">どうけをえんじる</td><td class="vocab-en">to play the clown / act the buffoon</td></tr>
+    <tr><td class="vocab-kanji">憚る</td><td class="vocab-reading">はばかる</td><td class="vocab-en">to be restrained by / refrain from</td></tr>
+    <tr><td class="vocab-kanji">滑稽さ</td><td class="vocab-reading">こっけいさ</td><td class="vocab-en">comicality / ridiculousness</td></tr>
+    <tr><td class="vocab-kanji">嫌悪</td><td class="vocab-reading">けんお</td><td class="vocab-en">revulsion / loathing / disgust</td></tr>
+    <tr><td class="vocab-kanji">抜け目ない</td><td class="vocab-reading">ぬけめない</td><td class="vocab-en">shrewd / sharp / not missing a trick</td></tr>
+    <tr><td class="vocab-kanji">狡猾な</td><td class="vocab-reading">こうかつな</td><td class="vocab-en">cunning / crafty</td></tr>
+    <tr><td class="vocab-kanji">手中に収める</td><td class="vocab-reading">しゅちゅうにおさめる</td><td class="vocab-en">to take into one's own hands / appropriate</td></tr>
+    <tr><td class="vocab-kanji">蔑む</td><td class="vocab-reading">さげすむ</td><td class="vocab-en">to despise / look down on</td></tr>
+    <tr><td class="vocab-kanji">愛着</td><td class="vocab-reading">あいちゃく</td><td class="vocab-en">attachment / fondness</td></tr>
+    <tr><td class="vocab-kanji">他人事</td><td class="vocab-reading">たにんごと</td><td class="vocab-en">someone else's affair / not one's concern</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>相変わらず</strong> — as usual / same as ever<br><em>相変わらずの放蕩な生活を続けました</em><br>Fixed adverbial phrase. Implies continuation of an established pattern, often with mild criticism.</div>
+<div class="grammar-item"><strong>〜になると</strong> — when it comes to ~ / once it's a matter of ~<br><em>金銭の問題になると、全く別の顔を見せました</em><br>Signals a contrast — the subject behaves completely differently in this domain.</div>
+<div class="grammar-item"><strong>〜というものは〜ものです</strong> — such-and-such type of thing tends to ~<br><em>こういう類の人間というものは、不思議と人を引きつけるものです</em><br>A generalising pattern. ものです here expresses an observed tendency or truth about the world.</div>
+<div class="grammar-item"><strong>〜のようでした</strong> — it seemed as though ~ / apparently<br><em>息子たちのことは他人事のようでした</em><br>Softened assertion. The narrator declines to make a strong claim about inner states.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
