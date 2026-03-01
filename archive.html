@@ -1,75 +1,53 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>しんぶん — バックナンバー</title>
-  <style>
-    :root { --bg: #fdf6e3; --accent: #8b1a1a; --muted: #888; --border: #e0d6c0; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: #2c2c2c;
-      font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
-      max-width: 640px; margin: 0 auto; padding: 24px 20px 60px; }
-    .back { font-size: 0.85rem; color: var(--accent); text-decoration: none; display: inline-block; margin-bottom: 20px; }
-    h1 { font-size: 1.4rem; color: var(--accent); margin-bottom: 6px; }
-    .sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 28px; }
-    .row {
-      display: flex; align-items: center; gap: 14px;
-      padding: 14px 4px; border-bottom: 1px solid var(--border);
-      text-decoration: none; color: #2c2c2c;
-    }
-    .row:hover { color: var(--accent); }
-    .row-date { flex-shrink: 0; min-width: 110px; }
-    .date-main { font-size: 0.9rem; font-weight: bold; }
-    .date-ja { font-size: 0.75rem; color: var(--muted); }
-    .row-summary { flex: 1; font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
-    .row-arrow { color: var(--border); flex-shrink: 0; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — Archive</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Hiragino Mincho ProN','Yu Mincho','Georgia',serif; background:#f5f0e8; color:#1a1a1a; }
+  .masthead { background:#1a1a1a; color:#f5f0e8; text-align:center; padding:24px 16px 16px; border-bottom:4px solid #8b1a1a; }
+  .masthead-title { font-size:clamp(2rem,8vw,4rem); font-weight:900; letter-spacing:0.15em; }
+  .masthead-subtitle { font-size:0.9rem; letter-spacing:0.2em; opacity:0.8; margin-top:4px; }
+  .container { max-width:700px; margin:0 auto; padding:32px 16px; }
+  h2 { font-size:1.1rem; color:#8b1a1a; margin-bottom:16px; letter-spacing:0.1em; }
+  .entries { list-style:none; }
+  .entry { border-bottom:1px solid #d4c9a8; }
+  .entry a { display:flex; flex-direction:column; padding:16px 8px; text-decoration:none; color:inherit; }
+  .entry a:hover { background:#fffdf7; }
+  .entry-date { font-size:0.8rem; color:#888; font-family:'Helvetica Neue',sans-serif; margin-bottom:4px; }
+  .entry-headline { font-size:1.05rem; font-weight:600; }
+  .footer { text-align:center; padding:24px; font-size:0.8rem; color:#888; font-family:'Helvetica Neue',sans-serif; }
+</style>
 </head>
 <body>
-<a class="back" href="/shinbun/">← ホームへ戻る</a>
-<h1>🗂 バックナンバー</h1>
-<div class="sub">Past editions — updated automatically each morning</div>
-
-  <a class="row" href="/shinbun/2026-03-01.html">
-    <div class="row-date">
-      <div class="date-main">2026-03-01</div>
-      <div class="date-ja">日曜日 1 March 2026</div>
-    </div>
-    <div class="row-summary">Iran airstrikes · UK politics · Cherry blossom season</div>
-    <div class="row-arrow">›</div>
-  </a>
-  <a class="row" href="/shinbun/2026-02-28.html">
-    <div class="row-date">
-      <div class="date-main">2026-02-28</div>
-      <div class="date-ja">土曜日 28 February 2026</div>
-    </div>
-    <div class="row-summary">Greens win Gorton · Israel strikes Iran · Japan melon breakthrough</div>
-    <div class="row-arrow">›</div>
-  </a>
-  <a class="row" href="/shinbun/2026-02-27.html">
-    <div class="row-date">
-      <div class="date-main">2026-02-27</div>
-      <div class="date-ja">金曜日 27 February 2026</div>
-    </div>
-    <div class="row-summary">Green Party by-election · Block AI layoffs · Japan birth rate record low</div>
-    <div class="row-arrow">›</div>
-  </a>
-  <a class="row" href="/shinbun/2026-02-26.html">
-    <div class="row-date">
-      <div class="date-main">2026-02-26</div>
-      <div class="date-ja">木曜日 26 February 2026</div>
-    </div>
-    <div class="row-summary">Jersey assisted dying · Anthropic Pentagon row · Japan birth rate / figure skating</div>
-    <div class="row-arrow">›</div>
-  </a>
-  <a class="row" href="/shinbun/2026-02-25.html">
-    <div class="row-date">
-      <div class="date-main">2026-02-25</div>
-      <div class="date-ja">水曜日 25 February 2026</div>
-    </div>
-    <div class="row-summary">UK energy bills · Aston Martin cuts 600 jobs · Chagos Islands</div>
-    <div class="row-arrow">›</div>
-  </a>
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+</header>
+<div class="container">
+  <h2>記事一覧 / Archive</h2>
+  <ul class="entries">
+        <li class="entry">
+            <a href="2026-03-01.html">
+                <span class="entry-date">2026年3月1日（日曜日）</span>
+                <span class="entry-headline">米・イスラエルがイラン空爆　ハメネイ最高指導者が死亡</span>
+            </a>
+        </li>
+        <li class="entry">
+            <a href="2026-02-28.html">
+                <span class="entry-date">2026年2月28日（土曜日）</span>
+                <span class="entry-headline">緑の党、100年の労働党牙城を崩す</span>
+            </a>
+        </li>
+        <li class="entry">
+            <a href="2026-02-27.html">
+                <span class="entry-date">2026年2月27日（金曜日）</span>
+                <span class="entry-headline">緑の党が労働党の牙城を崩す　マンチェスター補選で歴史的勝利</span>
+            </a>
+        </li></ul>
+</div>
+<footer class="footer">毎日新聞 · Longfellow Daily · N2日本語練習用</footer>
 </body>
 </html>
