@@ -812,10 +812,18 @@ function setQuizCount(n) {
 }
 
 function updateScore() {
-  const total = STATE.quizTotalQ;
-  const label = total === 0
-    ? `${STATE.quiz.correct} / ${STATE.quiz.total}`
-    : `${STATE.quiz.correct} / ${STATE.quiz.total}  ·  Q${STATE.quiz.total} of ${total}`;
+  const qLen     = STATE.quizTotalQ;   // target (0 = unlimited)
+  const answered = STATE.quiz.total;   // questions answered so far
+  const correct  = STATE.quiz.correct;
+  let label;
+  if (qLen === 0) {
+    label = answered === 0 ? '–' : `${correct} / ${answered}`;
+  } else {
+    const current = answered + 1; // question we're on (or just finished)
+    label = answered === 0
+      ? `Q 1 of ${qLen}`
+      : `${correct} / ${answered}  ·  Q${Math.min(current, qLen)} of ${qLen}`;
+  }
   document.getElementById('score-display').textContent = label;
 }
 
@@ -832,6 +840,7 @@ function nextQuestion() {
     b.classList.remove('correct','wrong','reveal');
     b.disabled = false;
   });
+  updateScore();
 
   const mode = STATE.quiz.mode;
   if (mode === 'chord-name')  genChordNameQ();
