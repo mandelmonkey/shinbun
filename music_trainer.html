@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Chord Trainer</title>
+<style>
+  :root {
+    --bg:       #0d0d1a;
+    --card:     #1a1a2e;
+    --card2:    #222240;
+    --border:   #2e2e50;
+    --gold:     #f0b429;
+    --teal:     #2ec4b6;
+    --purple:   #9b72cf;
+    --red:      #e63946;
+    --green:    #2dc653;
+    --text:     #e8e8f8;
+    --muted:    #8888aa;
+    --tab-h:    58px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; background: var(--bg); color: var(--text); font-family: -apple-system, 'Segoe UI', sans-serif; overflow: hidden; }
+
+  /* ── Layout ── */
+  #app { display: flex; flex-direction: column; height: 100vh; max-width: 540px; margin: 0 auto; }
+  #content { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 16px 16px calc(var(--tab-h) + 16px); }
+  #tabs { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 540px; height: var(--tab-h); display: flex; background: var(--card); border-top: 1px solid var(--border); z-index: 100; }
+  .tab { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; cursor: pointer; font-size: 0.68rem; color: var(--muted); transition: color 0.15s; padding: 6px 0 8px; }
+  .tab.active { color: var(--gold); }
+  .tab-icon { font-size: 1.4rem; line-height: 1; }
+
+  /* ── Screens ── */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ── Common UI ── */
+  h2 { font-size: 1.15rem; font-weight: 700; color: var(--gold); margin-bottom: 14px; letter-spacing: 0.02em; }
+  h3 { font-size: 0.95rem; font-weight: 600; color: var(--muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .pill { padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border); background: var(--card); color: var(--text); transition: all 0.1s; user-select: none; }
+  .pill.active { background: var(--gold); color: #000; border-color: var(--gold); }
+  .pill.minor.active { background: var(--purple); color: #fff; border-color: var(--purple); }
+  .btn { display: block; width: 100%; padding: 14px; border-radius: 12px; border: none; font-size: 1rem; font-weight: 700; cursor: pointer; text-align: center; transition: opacity 0.1s; }
+  .btn:active { opacity: 0.75; }
+  .btn-gold { background: var(--gold); color: #000; }
+  .btn-outline { background: none; border: 1px solid var(--border); color: var(--text); }
+  .btn-green { background: var(--green); color: #000; }
+  .btn-red { background: var(--red); color: #fff; }
+  .btn-purple { background: var(--purple); color: #fff; }
+  .toggle-row { display: flex; gap: 8px; margin-bottom: 14px; }
+  .toggle { flex: 1; padding: 9px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); color: var(--muted); font-size: 0.85rem; font-weight: 600; cursor: pointer; text-align: center; }
+  .toggle.active-major { background: var(--teal); color: #000; border-color: var(--teal); }
+  .toggle.active-minor { background: var(--purple); color: #fff; border-color: var(--purple); }
+  .badge { display: inline-block; font-size: 0.7rem; padding: 2px 8px; border-radius: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+  .badge-major { background: rgba(46,196,182,0.2); color: var(--teal); }
+  .badge-minor { background: rgba(155,114,207,0.2); color: var(--purple); }
+
+  /* ── Reference ── */
+  .chord-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .chord-card { background: var(--card2); border-radius: 10px; padding: 12px 14px; border-left: 3px solid var(--border); }
+  .chord-card.quality-maj7  { border-color: var(--teal); }
+  .chord-card.quality-m7    { border-color: var(--purple); }
+  .chord-card.quality-dom7  { border-color: var(--gold); }
+  .chord-card.quality-half  { border-color: var(--red); }
+  .chord-degree { font-size: 0.72rem; color: var(--muted); font-weight: 600; letter-spacing: 0.08em; margin-bottom: 3px; }
+  .chord-name { font-size: 1.3rem; font-weight: 800; color: var(--text); }
+  .chord-quality-label { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+
+  /* ── Quiz ── */
+  .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .score-badge { background: var(--card2); border-radius: 10px; padding: 6px 14px; font-size: 0.85rem; color: var(--gold); font-weight: 700; }
+  .question-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px 20px; margin-bottom: 16px; text-align: center; min-height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .q-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .q-key { font-size: 2rem; font-weight: 900; color: var(--gold); line-height: 1; }
+  .q-degree { font-size: 1.3rem; font-weight: 700; color: var(--text); }
+  .q-sub { font-size: 0.88rem; color: var(--muted); }
+  .answers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+  .answer-btn { background: var(--card2); border: 1px solid var(--border); border-radius: 12px; padding: 16px 12px; font-size: 1rem; font-weight: 700; cursor: pointer; color: var(--text); text-align: center; transition: all 0.15s; }
+  .answer-btn:active { opacity: 0.75; }
+  .answer-btn.correct { background: rgba(45,198,83,0.25); border-color: var(--green); color: var(--green); }
+  .answer-btn.wrong   { background: rgba(230,57,70,0.2); border-color: var(--red); color: var(--red); }
+  .answer-btn.reveal  { background: rgba(45,198,83,0.15); border-color: var(--green); color: var(--green); }
+  .feedback { text-align: center; font-size: 0.9rem; padding: 10px; border-radius: 10px; margin-bottom: 12px; }
+  .feedback.correct { background: rgba(45,198,83,0.15); color: var(--green); }
+  .feedback.wrong   { background: rgba(230,57,70,0.15); color: var(--red); }
+  .mode-select-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .mode-card { background: var(--card2); border: 1px solid var(--border); border-radius: 12px; padding: 18px 14px; cursor: pointer; text-align: center; transition: border-color 0.15s; }
+  .mode-card:active { opacity: 0.8; }
+  .mode-card:hover { border-color: var(--gold); }
+  .mode-icon { font-size: 1.8rem; margin-bottom: 8px; }
+  .mode-title { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .mode-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.4; }
+  .prog-display { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 8px 0; }
+  .prog-chip { background: var(--card2); border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; font-size: 0.9rem; font-weight: 700; color: var(--text); }
+  .prog-chip.revealed { border-color: var(--gold); color: var(--gold); }
+
+  /* ── Key Filter ── */
+  .key-filter { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; }
+  .key-filter-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .key-filter-title { font-size: 0.78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .key-filter-actions { display: flex; gap: 6px; }
+  .kf-btn { font-size: 0.72rem; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border); background: none; color: var(--muted); cursor: pointer; font-weight: 600; }
+  .kf-btn:active { background: var(--card2); }
+  .kf-mode-label { font-size: 0.7rem; font-weight: 700; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .kf-pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .kf-pill-row:last-child { margin-bottom: 0; }
+  .kf-pill { padding: 5px 11px; border-radius: 16px; font-size: 0.78rem; font-weight: 700; cursor: pointer; border: 1px solid var(--border); background: var(--card2); color: var(--muted); transition: all 0.12s; user-select: none; display: flex; align-items: center; gap: 3px; }
+  .kf-pill.on { background: var(--teal); color: #000; border-color: var(--teal); }
+  .kf-pill.on.is-minor { background: var(--purple); color: #fff; border-color: var(--purple); }
+  .kf-pill .common-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; opacity: 0.9; }
+  .kf-pill.on .common-dot { background: rgba(0,0,0,0.35); }
+  .kf-count { font-size: 0.72rem; color: var(--muted); text-align: right; margin-top: 8px; }
+
+  /* ── Patterns ── */
+  .pattern-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px 16px; margin-bottom: 14px; }
+  .pattern-name { font-size: 1.2rem; font-weight: 800; color: var(--gold); margin-bottom: 2px; letter-spacing: 0.02em; }
+  .pattern-nick { font-size: 0.8rem; color: var(--muted); margin-bottom: 10px; font-style: italic; }
+  .pattern-chords { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+  .pattern-chord { background: var(--card2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 16px; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+  .pattern-chord.quality-maj7 { border-color: var(--teal); color: var(--teal); }
+  .pattern-chord.quality-m7   { border-color: var(--purple); color: var(--purple); }
+  .pattern-chord.quality-dom7 { border-color: var(--gold); color: var(--gold); }
+  .pattern-chord.quality-half { border-color: var(--red); color: var(--red); }
+  .pattern-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.55; margin-bottom: 10px; }
+  .songs-label { font-size: 0.7rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .song-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .song-chip { background: var(--card2); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; min-width: 0; }
+  .song-chip-title { font-size: 0.8rem; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .song-chip-artist { font-size: 0.68rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .genre-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 9px; border-radius: 8px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; background: rgba(240,180,41,0.12); color: var(--gold); border: 1px solid rgba(240,180,41,0.25); }
+  .genre-tag.minor { background: rgba(155,114,207,0.12); color: var(--purple); border-color: rgba(155,114,207,0.25); }
+  .pattern-numeral { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 4px; }
+  .numeral-chip { font-size: 0.75rem; font-weight: 700; color: var(--muted); background: var(--card2); border-radius: 6px; padding: 2px 8px; }
+
+  /* ── Songs ── */
+  .prog-section { margin-bottom: 20px; }
+  .prog-header { background: var(--card2); border-radius: 10px; padding: 14px 16px; margin-bottom: 8px; cursor: pointer; }
+  .prog-header-top { display: flex; justify-content: space-between; align-items: center; }
+  .prog-header-name { font-size: 1rem; font-weight: 800; color: var(--gold); }
+  .prog-header-genre { font-size: 0.75rem; color: var(--muted); margin-top: 3px; }
+  .prog-expand-icon { color: var(--muted); font-size: 1rem; transition: transform 0.2s; }
+  .prog-section.open .prog-expand-icon { transform: rotate(180deg); }
+  .prog-body { display: none; }
+  .prog-section.open .prog-body { display: block; }
+  .prog-mood { font-size: 0.8rem; color: var(--muted); font-style: italic; padding: 0 4px 10px; }
+  .song-list { display: flex; flex-direction: column; gap: 8px; }
+  .song-item { background: var(--card2); border-radius: 10px; padding: 13px 14px; display: flex; justify-content: space-between; align-items: flex-start; cursor: pointer; border: 1px solid var(--border); }
+  .song-item:active { opacity: 0.8; }
+  .song-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+  .song-artist { font-size: 0.8rem; color: var(--muted); }
+  .song-key { font-size: 0.8rem; font-weight: 700; color: var(--gold); text-align: right; }
+  .song-key-label { font-size: 0.65rem; color: var(--muted); }
+
+  /* ── Home ── */
+  .home-hero { text-align: center; padding: 24px 0 20px; }
+  .home-icon { font-size: 3.5rem; margin-bottom: 12px; }
+  .home-title { font-size: 1.6rem; font-weight: 900; color: var(--gold); margin-bottom: 6px; }
+  .home-sub { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+  .tip-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 10px; }
+  .tip-label { font-size: 0.7rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .tip-text { font-size: 0.88rem; color: var(--text); line-height: 1.6; }
+  .tip-chords { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .tip-chord { background: var(--card2); border-radius: 6px; padding: 4px 10px; font-size: 0.82rem; font-weight: 700; color: var(--teal); }
+
+  /* Song detail modal */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 200; }
+  .modal-overlay.open { display: flex; align-items: flex-end; }
+  .modal { background: var(--card); border-radius: 20px 20px 0 0; padding: 24px 20px 40px; width: 100%; max-height: 80vh; overflow-y: auto; }
+  .modal-title { font-size: 1.2rem; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+  .modal-artist { font-size: 0.88rem; color: var(--muted); margin-bottom: 16px; }
+  .modal-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+  .modal-row:last-child { border-bottom: none; }
+  .modal-label { color: var(--muted); }
+  .modal-value { font-weight: 700; color: var(--text); text-align: right; }
+  .modal-chords { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .modal-chord { background: var(--card2); border-radius: 8px; padding: 8px 14px; font-size: 1rem; font-weight: 800; color: var(--gold); }
+  .modal-close { margin-top: 16px; }
+  .related-section { margin-top: 16px; }
+  .related-title { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .related-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .related-pill { background: var(--card2); border-radius: 6px; padding: 4px 10px; font-size: 0.78rem; color: var(--text); }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="content">
+
+    <!-- HOME -->
+    <div class="screen active" id="screen-home">
+      <div class="home-hero">
+        <div class="home-icon">🎸</div>
+        <div class="home-title">Chord Trainer</div>
+        <div class="home-sub">Learn the chords in every key.<br>Play any pop song you hear.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-label">💡 The Secret of Pop Music</div>
+        <div class="tip-text">About 90% of pop songs use just 4 chords. In the key of C major, that's:</div>
+        <div class="tip-chords">
+          <div class="tip-chord">C</div>
+          <div class="tip-chord">G</div>
+          <div class="tip-chord">Am</div>
+          <div class="tip-chord">F</div>
+        </div>
+        <div class="tip-text" style="margin-top:8px">The pattern: <strong>I – V – vi – IV</strong>. Learn this in every key and you're halfway there.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-label">🎵 Why 7th chords?</div>
+        <div class="tip-text">7th chords add colour and sophistication. The <strong>V</strong> chord is always a dominant 7th (G<strong>7</strong>) — that tension wants to resolve home to the I. The I and IV are major 7ths. The ii, iii, vi are minor 7ths. Learn these and your playing will sound full and musical.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-label">🎹 How to use this app</div>
+        <div class="tip-text"><strong>Reference</strong> — explore chords in any key<br><strong>Quiz</strong> — drill until it's muscle memory<br><strong>Songs</strong> — see how it all connects to real music</div>
+      </div>
+    </div>
+
+    <!-- REFERENCE -->
+    <div class="screen" id="screen-ref">
+      <h2>Reference</h2>
+      <div class="toggle-row">
+        <div class="toggle active-major" id="toggle-major" onclick="setMode('major')">Major</div>
+        <div class="toggle" id="toggle-minor" onclick="setMode('minor')">Minor</div>
+      </div>
+      <div class="pill-row" id="key-pills"></div>
+      <div id="chord-display"></div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="screen" id="screen-quiz">
+      <div id="quiz-menu">
+        <h2>Quiz</h2>
+
+        <!-- Key Filter -->
+        <div class="key-filter">
+          <div class="key-filter-header">
+            <div class="key-filter-title">🎹 Keys to include</div>
+            <div class="key-filter-actions">
+              <button class="kf-btn" onclick="setAllKeys(true)">All</button>
+              <button class="kf-btn" onclick="setAllKeys(false)">None</button>
+              <button class="kf-btn" onclick="setCommonKeys()">Common</button>
+            </div>
+          </div>
+          <div class="kf-mode-label">Major</div>
+          <div class="kf-pill-row" id="kf-major-pills"></div>
+          <div class="kf-mode-label">Minor</div>
+          <div class="kf-pill-row" id="kf-minor-pills"></div>
+          <div class="kf-count" id="kf-count"></div>
+        </div>
+
+        <div class="mode-select-grid">
+          <div class="mode-card" onclick="startQuiz('chord-name')">
+            <div class="mode-icon">🎯</div>
+            <div class="mode-title">Name the Chord</div>
+            <div class="mode-desc">Given a key + degree, name the chord</div>
+          </div>
+          <div class="mode-card" onclick="startQuiz('find-degree')">
+            <div class="mode-icon">🔍</div>
+            <div class="mode-title">Find the Degree</div>
+            <div class="mode-desc">Given a chord in a key, name its degree</div>
+          </div>
+          <div class="mode-card" onclick="startQuiz('spell-prog')">
+            <div class="mode-icon">🎼</div>
+            <div class="mode-title">Spell a Progression</div>
+            <div class="mode-desc">I–V–vi–IV in D = ?</div>
+          </div>
+          <div class="mode-card" onclick="startQuiz('song-prog')">
+            <div class="mode-icon">🎵</div>
+            <div class="mode-title">Song Progression</div>
+            <div class="mode-desc">What progression does this song use?</div>
+          </div>
+        </div>
+      </div>
+      <div id="quiz-active" style="display:none">
+        <div class="quiz-header">
+          <div style="font-size:0.85rem;color:var(--muted)" id="quiz-mode-label"></div>
+          <div class="score-badge" id="score-display">0 / 0</div>
+        </div>
+        <div class="question-card" id="question-card"></div>
+        <div class="answers" id="answers-area"></div>
+        <div class="feedback" id="feedback" style="display:none"></div>
+        <button class="btn btn-outline" id="next-btn" style="display:none" onclick="nextQuestion()">Next →</button>
+        <button class="btn btn-outline" style="margin-top:8px" onclick="showQuizMenu()">← Back to menu</button>
+      </div>
+    </div>
+
+    <!-- SONGS -->
+    <div class="screen" id="screen-songs">
+      <h2>Songs</h2>
+      <div id="songs-list"></div>
+    </div>
+
+    <!-- PATTERNS -->
+    <div class="screen" id="screen-patterns">
+      <h2>Common Progressions</h2>
+      <div class="toggle-row">
+        <div class="toggle" id="ptoggle-major" onclick="setPatternsMode('major')">Major</div>
+        <div class="toggle" id="ptoggle-minor" onclick="setPatternsMode('minor')">Minor</div>
+      </div>
+      <div class="pill-row" id="pattern-key-pills"></div>
+      <div id="patterns-list"></div>
+    </div>
+
+  </div>
+
+  <nav id="tabs">
+    <div class="tab active" data-screen="home" onclick="switchTab('home')">
+      <div class="tab-icon">🏠</div>
+      <div>Home</div>
+    </div>
+    <div class="tab" data-screen="ref" onclick="switchTab('ref')">
+      <div class="tab-icon">📖</div>
+      <div>Reference</div>
+    </div>
+    <div class="tab" data-screen="quiz" onclick="switchTab('quiz')">
+      <div class="tab-icon">🎯</div>
+      <div>Quiz</div>
+    </div>
+    <div class="tab" data-screen="songs" onclick="switchTab('songs')">
+      <div class="tab-icon">🎵</div>
+      <div>Songs</div>
+    </div>
+    <div class="tab" data-screen="patterns" onclick="switchTab('patterns')">
+      <div class="tab-icon">🎼</div>
+      <div>Patterns</div>
+    </div>
+  </nav>
+</div>
+
+<!-- Song detail modal -->
+<div class="modal-overlay" id="song-modal" onclick="closeSongModal(event)">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// MUSIC THEORY DATA
+// ═══════════════════════════════════════════════════════
+
+const MAJOR_SCALES = {
+  'C':  ['C','D','E','F','G','A','B'],
+  'Db': ['Db','Eb','F','Gb','Ab','Bb','C'],
+  'D':  ['D','E','F#','G','A','B','C#'],
+  'Eb': ['Eb','F','G','Ab','Bb','C','D'],
+  'E':  ['E','F#','G#','A','B','C#','D#'],
+  'F':  ['F','G','A','Bb','C','D','E'],
+  'Gb': ['Gb','Ab','Bb','Cb','Db','Eb','F'],
+  'G':  ['G','A','B','C','D','E','F#'],
+  'Ab': ['Ab','Bb','C','Db','Eb','F','G'],
+  'A':  ['A','B','C#','D','E','F#','G#'],
+  'Bb': ['Bb','C','D','Eb','F','G','A'],
+  'B':  ['B','C#','D#','E','F#','G#','A#'],
+};
+
+const MINOR_SCALES = {
+  'A':  ['A','B','C','D','E','F','G'],
+  'E':  ['E','F#','G','A','B','C','D'],
+  'B':  ['B','C#','D','E','F#','G','A'],
+  'F#': ['F#','G#','A','B','C#','D','E'],
+  'C#': ['C#','D#','E','F#','G#','A','B'],
+  'G#': ['G#','A#','B','C#','D#','E','F#'],
+  'D':  ['D','E','F','G','A','Bb','C'],
+  'G':  ['G','A','Bb','C','D','Eb','F'],
+  'C':  ['C','D','Eb','F','G','Ab','Bb'],
+  'F':  ['F','G','Ab','Bb','C','Db','Eb'],
+  'Bb': ['Bb','C','Db','Eb','F','Gb','Ab'],
+  'Eb': ['Eb','F','Gb','Ab','Bb','Cb','Db'],
+};
+
+// Qualities for diatonic chords (with 7ths)
+const MAJ_Q = ['maj7','m7','m7','maj7','7','m7','m7♭5'];
+const MIN_Q = ['m7','m7♭5','maj7','m7','7','maj7','7'];
+
+// Roman numeral degrees
+const MAJ_DEG = ['I','II','III','IV','V','VI','VII'];
+const MIN_DEG = ['i','ii°','III','iv','V','VI','VII'];
+
+// Quality labels for display
+const Q_LABELS = {
+  'maj7':   'Major 7th',
+  'm7':     'Minor 7th',
+  '7':      'Dominant 7th',
+  'm7♭5':  'Half-dim 7th',
+};
+
+// Quality CSS class
+const Q_CLASS = {
+  'maj7':  'quality-maj7',
+  'm7':    'quality-m7',
+  '7':     'quality-dom7',
+  'm7♭5': 'quality-half',
+};
+
+const MAJOR_KEYS = Object.keys(MAJOR_SCALES);
+const MINOR_KEYS = Object.keys(MINOR_SCALES);
+
+// Keys considered "common" in everyday playing
+const COMMON_MAJOR_KEYS = new Set(['C','G','D','A','E','F','Bb']);
+const COMMON_MINOR_KEYS = new Set(['A','E','D','G','C']);
+
+// Build chord name: root + quality
+function chordName(root, quality) {
+  // Strip trailing 'maj7'/'m7'/'7'/etc. display adjustments
+  if (quality === 'maj7') return root + 'maj7';
+  if (quality === 'm7')   return root + 'm7';
+  if (quality === '7')    return root + '7';
+  if (quality === 'm7♭5') return root + 'm7♭5';
+  return root + quality;
+}
+
+function getChords(key, mode) {
+  const scale = mode === 'major' ? MAJOR_SCALES[key] : MINOR_SCALES[key];
+  const quals = mode === 'major' ? MAJ_Q : MIN_Q;
+  const degs  = mode === 'major' ? MAJ_DEG : MIN_DEG;
+  return scale.map((note, i) => ({
+    degree: degs[i],
+    root:   note,
+    quality: quals[i],
+    name:   chordName(note, quals[i]),
+    index:  i,
+  }));
+}
+
+// ═══════════════════════════════════════════════════════
+// SONGS DATABASE
+// ═══════════════════════════════════════════════════════
+
+const PROGRESSIONS = [
+  {
+    id: 'I-V-vi-IV',
+    name: 'I – V – vi – IV',
+    degrees: [0,4,5,3],
+    mode: 'major',
+    genre: 'Pop / Rock',
+    mood: 'Triumphant, anthemic — the most common chord sequence in pop music',
+    songs: [
+      {title:'Let It Be', artist:'The Beatles', key:'C', note:'C–G–Am–F; Cmaj7 often used on the I chord'},
+    ]
+  },
+  {
+    id: 'i-V-bVII-IV',
+    name: 'i – V – ♭VII – IV',
+    degrees: [0,4,6,3],
+    mode: 'minor',
+    genre: 'Rock Ballad',
+    mood: 'Romantic, melancholic — the V chord (major) gives unexpected brightness before the ♭VII resolves down',
+    songs: [
+      {title:'Angie', artist:'The Rolling Stones', key:'A', note:'Am–E–G–D–F–C; E major is the V chord (not minor) — adds ache and tension; Mick\'s most tender vocal'},
+    ]
+  },
+];
+
+// ═══════════════════════════════════════════════════════
+// COMMON PROGRESSIONS DATA
+// ═══════════════════════════════════════════════════════
+
+const COMMON_PROGRESSIONS = [
+  // ── MAJOR ──────────────────────────────────────────
+  {
+    name: 'I – V – vi – IV',
+    nickname: 'The Four Chord Song',
+    mode: 'major',
+    degrees: [0, 4, 5, 3],
+    genre: 'Pop / Rock',
+    description: 'The most common progression in Western pop. Sounds triumphant and anthemic — four chords that unlock hundreds of songs.',
+    examples: [
+      {title:"Let It Be",              artist:"The Beatles"},
+      {title:"Don't Stop Believin'",   artist:"Journey"},
+      {title:"Someone Like You",       artist:"Adele"},
+      {title:"No Woman No Cry",        artist:"Bob Marley"},
+      {title:"With or Without You",    artist:"U2"},
+      {title:"Viva la Vida",           artist:"Coldplay"},
+    ],
+  },
+  {
+    name: 'I – IV – V',
+    nickname: 'The Rock & Roll',
+    mode: 'major',
+    degrees: [0, 3, 4],
+    genre: 'Rock / Blues / Country',
+    description: 'The backbone of rock, country, and 12-bar blues. Three chords, infinite songs. Direct, driving, and impossible to tire of.',
+    examples: [
+      {title:"La Bamba",               artist:"Ritchie Valens"},
+      {title:"Johnny B. Goode",        artist:"Chuck Berry"},
+      {title:"Twist and Shout",        artist:"The Beatles"},
+      {title:"Wild Thing",             artist:"The Troggs"},
+      {title:"Here Comes the Sun",     artist:"The Beatles"},
+      {title:"Three Little Birds",     artist:"Bob Marley"},
+    ],
+  },
+  {
+    name: 'I – vi – IV – V',
+    nickname: 'The 50s Progression',
+    mode: 'major',
+    degrees: [0, 5, 3, 4],
+    genre: 'Pop / Soul / Doo-wop',
+    description: 'Nostalgic and bittersweet. The vi chord casts a brief shadow before the IV lifts you. Defined the sound of 50s and 60s pop.',
+    examples: [
+      {title:"Stand By Me",            artist:"Ben E. King"},
+      {title:"Every Breath You Take",  artist:"The Police"},
+      {title:"Hallelujah",             artist:"Leonard Cohen"},
+      {title:"Blue Moon",              artist:"Standard"},
+      {title:"Earth Angel",            artist:"The Penguins"},
+      {title:"All I Have to Do Is Dream", artist:"Everly Brothers"},
+    ],
+  },
+  {
+    name: 'I – V – IV',
+    nickname: 'The Anthem',
+    mode: 'major',
+    degrees: [0, 4, 3],
+    genre: 'Rock / Pop',
+    description: 'Instead of resolving V back to I, it drops to IV — a satisfying, slightly unexpected release. Feels powerful and wide-open.',
+    examples: [
+      {title:"Hey Jude",               artist:"The Beatles"},
+      {title:"Knockin' on Heaven's Door", artist:"Bob Dylan"},
+      {title:"Free Fallin'",           artist:"Tom Petty"},
+      {title:"You Are So Beautiful",   artist:"Joe Cocker"},
+      {title:"All Along the Watchtower", artist:"Jimi Hendrix"},
+    ],
+  },
+  {
+    name: 'I – ♭VII – IV',
+    nickname: 'The Mixolydian',
+    mode: 'major',
+    degrees: [0, 6, 3],
+    genre: 'Rock / Americana',
+    description: 'The ♭VII is borrowed from the Mixolydian mode — one whole step below the root. Gives a rootsy, earthy, slightly modal feel.',
+    examples: [
+      {title:"Sweet Home Alabama",     artist:"Lynyrd Skynyrd"},
+      {title:"Norwegian Wood",         artist:"The Beatles"},
+      {title:"Hey Joe",                artist:"Jimi Hendrix"},
+      {title:"Sympathy for the Devil", artist:"Rolling Stones"},
+      {title:"Old Time Rock & Roll",   artist:"Bob Seger"},
+    ],
+  },
+  {
+    name: 'ii – V – I',
+    nickname: 'The Jazz Cadence',
+    mode: 'major',
+    degrees: [1, 4, 0],
+    genre: 'Jazz / Bossa Nova',
+    description: 'The fundamental building block of jazz. ii sets up tension, V intensifies it with the tritone, I resolves. Chain these in different keys and you have jazz.',
+    examples: [
+      {title:"Fly Me to the Moon",     artist:"Frank Sinatra"},
+      {title:"Autumn Leaves",          artist:"Jazz Standard"},
+      {title:"The Girl from Ipanema",  artist:"Jobim"},
+      {title:"All the Things You Are", artist:"Jerome Kern"},
+      {title:"There Will Never Be Another You", artist:"Standard"},
+    ],
+  },
+  // ── MINOR ──────────────────────────────────────────
+  {
+    name: 'i – VII – VI – V',
+    nickname: 'The Andalusian Cadence',
+    mode: 'minor',
+    degrees: [0, 6, 5, 4],
+    genre: 'Flamenco / Minor Pop',
+    description: 'A descending minor progression with an ancient feel. The major V chord (from harmonic minor) creates irresistible pull back to i.',
+    examples: [
+      {title:"Sultans of Swing",       artist:"Dire Straits"},
+      {title:"Hit the Road Jack",      artist:"Ray Charles"},
+      {title:"Babe I'm Gonna Leave You", artist:"Led Zeppelin"},
+      {title:"Smooth Criminal",        artist:"Michael Jackson"},
+      {title:"What Is Life",           artist:"George Harrison"},
+    ],
+  },
+  {
+    name: 'i – VI – III – VII',
+    nickname: 'The Minor Anthem',
+    mode: 'minor',
+    degrees: [0, 5, 2, 6],
+    genre: 'Rock / Cinematic',
+    description: 'Epic and wide. Extremely common in minor-key rock, film scores, and power ballads. The VI–III–VII ascent feels cinematic.',
+    examples: [
+      {title:"While My Guitar Gently Weeps", artist:"The Beatles"},
+      {title:"Losing My Religion",     artist:"R.E.M."},
+      {title:"Stairway to Heaven",     artist:"Led Zeppelin"},
+      {title:"In the Air Tonight",     artist:"Phil Collins"},
+      {title:"…Baby One More Time",    artist:"Britney Spears"},
+    ],
+  },
+  {
+    name: 'i – iv – VII – III',
+    nickname: 'The Minor Circle',
+    mode: 'minor',
+    degrees: [0, 3, 6, 2],
+    genre: 'Classical / Rock',
+    description: 'Moves in ascending 4ths — a fragment of the circle of 5ths. Has a sense of inevitability, each chord pulling naturally to the next.',
+    examples: [
+      {title:"Greensleeves",           artist:"Traditional"},
+      {title:"Scarborough Fair",       artist:"Simon & Garfunkel"},
+      {title:"Moondance",              artist:"Van Morrison"},
+      {title:"My Favourite Things",    artist:"Rodgers & Hammerstein"},
+    ],
+  },
+  {
+    name: 'i – V – VI – VII',
+    nickname: 'The Minor Ascent',
+    mode: 'minor',
+    degrees: [0, 4, 5, 6],
+    genre: 'Rock / Pop',
+    description: 'Starts at home, leaps to the major V, then rises through VI and VII. The ascending motion creates yearning and momentum.',
+    examples: [
+      {title:"Zombie",                 artist:"The Cranberries"},
+      {title:"Nothing Else Matters",   artist:"Metallica"},
+      {title:"The Unforgiven",         artist:"Metallica"},
+      {title:"In the End",             artist:"Linkin Park"},
+      {title:"Mad World",              artist:"Tears for Fears"},
+    ],
+  },
+];
+
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+
+const STATE = {
+  refMode: 'major',
+  refKey:  'C',
+  patternsMode: 'major',
+  patternsKey:  'C',
+  quizMajorKeys: new Set(MAJOR_KEYS),
+  quizMinorKeys: new Set(MINOR_KEYS),
+  quiz: {
+    mode:    null,
+    correct: 0,
+    total:   0,
+    current: null,
+    answered: false,
+  }
+};
+
+// ═══════════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════════
+
+function switchTab(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('screen-' + name).classList.add('active');
+  document.querySelector(`.tab[data-screen="${name}"]`).classList.add('active');
+  if (name === 'ref')      renderRef();
+  if (name === 'songs')    renderSongs();
+  if (name === 'quiz')     showQuizMenu();
+  if (name === 'patterns') renderPatterns();
+}
+
+// ═══════════════════════════════════════════════════════
+// REFERENCE TAB
+// ═══════════════════════════════════════════════════════
+
+function setMode(mode) {
+  STATE.refMode = mode;
+  document.getElementById('toggle-major').className = 'toggle' + (mode === 'major' ? ' active-major' : '');
+  document.getElementById('toggle-minor').className = 'toggle' + (mode === 'minor' ? ' active-minor' : '');
+  // Reset key if not available in new mode
+  const keys = mode === 'major' ? MAJOR_KEYS : MINOR_KEYS;
+  if (!keys.includes(STATE.refKey)) STATE.refKey = keys[0];
+  renderRef();
+}
+
+function renderRef() {
+  const mode = STATE.refMode;
+  const keys = mode === 'major' ? MAJOR_KEYS : MINOR_KEYS;
+
+  // Key pills
+  const pillRow = document.getElementById('key-pills');
+  pillRow.innerHTML = keys.map(k => `
+    <div class="pill ${mode==='minor'?'minor':''} ${k===STATE.refKey?'active':''}"
+         onclick="selectKey('${k}')">${k}${mode==='minor'?'m':''}</div>
+  `).join('');
+
+  // Chord display
+  const chords = getChords(STATE.refKey, mode);
+  const display = document.getElementById('chord-display');
+  const modeBadge = mode === 'major'
+    ? `<span class="badge badge-major">Major</span>`
+    : `<span class="badge badge-minor">Minor</span>`;
+
+  display.innerHTML = `
+    <div style="margin-bottom:12px;font-size:0.9rem;color:var(--muted)">
+      ${modeBadge} Key of <strong style="color:var(--text)">${STATE.refKey}${mode==='minor'?'m':''}</strong>
+      — scale: ${(mode==='major'?MAJOR_SCALES:MINOR_SCALES)[STATE.refKey].join(' – ')}
+    </div>
+    <div class="chord-grid">
+      ${chords.map(c => `
+        <div class="chord-card ${Q_CLASS[c.quality]}">
+          <div class="chord-degree">${c.degree}</div>
+          <div class="chord-name">${c.name}</div>
+          <div class="chord-quality-label">${Q_LABELS[c.quality]}</div>
+        </div>
+      `).join('')}
+    </div>
+    <div style="margin-top:14px;font-size:0.78rem;color:var(--muted);line-height:1.7">
+      <span style="color:var(--teal)">■</span> Major 7th &nbsp;
+      <span style="color:var(--purple)">■</span> Minor 7th &nbsp;
+      <span style="color:var(--gold)">■</span> Dominant 7th &nbsp;
+      <span style="color:var(--red)">■</span> Half-dim
+    </div>
+  `;
+}
+
+function selectKey(k) {
+  STATE.refKey = k;
+  renderRef();
+}
+
+// ═══════════════════════════════════════════════════════
+// QUIZ TAB
+// ═══════════════════════════════════════════════════════
+
+function showQuizMenu() {
+  document.getElementById('quiz-menu').style.display = 'block';
+  document.getElementById('quiz-active').style.display = 'none';
+  renderKeyFilter();
+}
+
+// ── Key filter ──────────────────────────────────────────
+
+function renderKeyFilter() {
+  const renderPills = (keys, selectedSet, commonSet, isMinor) =>
+    keys.map(k => {
+      const on      = selectedSet.has(k);
+      const common  = commonSet.has(k);
+      const label   = k + (isMinor ? 'm' : '');
+      const dot     = common ? `<span class="common-dot"></span>` : '';
+      const cls     = ['kf-pill', on ? 'on' : '', isMinor ? 'is-minor' : ''].filter(Boolean).join(' ');
+      return `<div class="${cls}" onclick="toggleKey('${k}','${isMinor?'minor':'major'}')">${label}${dot}</div>`;
+    }).join('');
+
+  document.getElementById('kf-major-pills').innerHTML =
+    renderPills(MAJOR_KEYS, STATE.quizMajorKeys, COMMON_MAJOR_KEYS, false);
+  document.getElementById('kf-minor-pills').innerHTML =
+    renderPills(MINOR_KEYS, STATE.quizMinorKeys, COMMON_MINOR_KEYS, true);
+
+  const total = STATE.quizMajorKeys.size + STATE.quizMinorKeys.size;
+  document.getElementById('kf-count').textContent =
+    `${total} key${total !== 1 ? 's' : ''} selected  ·  ● = common key`;
+}
+
+function toggleKey(k, mode) {
+  const set = mode === 'major' ? STATE.quizMajorKeys : STATE.quizMinorKeys;
+  // Always keep at least 2 keys selected so the quiz can generate wrong answers
+  if (set.has(k) && set.size <= 2) return;
+  set.has(k) ? set.delete(k) : set.add(k);
+  renderKeyFilter();
+}
+
+function setAllKeys(on) {
+  STATE.quizMajorKeys = on ? new Set(MAJOR_KEYS) : new Set(MAJOR_KEYS.slice(0,2));
+  STATE.quizMinorKeys = on ? new Set(MINOR_KEYS) : new Set(MINOR_KEYS.slice(0,2));
+  renderKeyFilter();
+}
+
+function setCommonKeys() {
+  STATE.quizMajorKeys = new Set(COMMON_MAJOR_KEYS);
+  STATE.quizMinorKeys = new Set(COMMON_MINOR_KEYS);
+  renderKeyFilter();
+}
+
+function startQuiz(mode) {
+  STATE.quiz.mode = mode;
+  STATE.quiz.correct = 0;
+  STATE.quiz.total = 0;
+  STATE.quiz.answered = false;
+  document.getElementById('quiz-menu').style.display = 'none';
+  document.getElementById('quiz-active').style.display = 'block';
+  const labels = {
+    'chord-name':  'Name the Chord',
+    'find-degree': 'Find the Degree',
+    'spell-prog':  'Spell a Progression',
+    'song-prog':   'Song Progression',
+  };
+  document.getElementById('quiz-mode-label').textContent = labels[mode];
+  nextQuestion();
+}
+
+function updateScore() {
+  document.getElementById('score-display').textContent =
+    `${STATE.quiz.correct} / ${STATE.quiz.total}`;
+}
+
+function nextQuestion() {
+  STATE.quiz.answered = false;
+  document.getElementById('feedback').style.display = 'none';
+  document.getElementById('next-btn').style.display = 'none';
+  document.querySelectorAll('.answer-btn').forEach(b => {
+    b.classList.remove('correct','wrong','reveal');
+    b.disabled = false;
+  });
+
+  const mode = STATE.quiz.mode;
+  if (mode === 'chord-name')  genChordNameQ();
+  if (mode === 'find-degree') genFindDegreeQ();
+  if (mode === 'spell-prog')  genSpellProgQ();
+  if (mode === 'song-prog')   genSongProgQ();
+}
+
+function randItem(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function shuffle(arr)   { return [...arr].sort(() => Math.random()-0.5); }
+
+// Quiz mode 1: given key + degree → name the chord
+function genChordNameQ() {
+  let modeChoice = Math.random() > 0.5 ? 'major' : 'minor';
+  if (STATE.quizMajorKeys.size === 0) modeChoice = 'minor';
+  if (STATE.quizMinorKeys.size === 0) modeChoice = 'major';
+  const allKeys = modeChoice === 'major' ? MAJOR_KEYS : MINOR_KEYS;
+  const selectedSet = modeChoice === 'major' ? STATE.quizMajorKeys : STATE.quizMinorKeys;
+  const keys = allKeys.filter(k => selectedSet.has(k));
+  const key = randItem(keys);
+  const chords = getChords(key, modeChoice);
+  const correct = randItem(chords);
+
+  // Wrong answers: other chords in different keys
+  const wrongPool = [];
+  for (let i = 0; i < 3; i++) {
+    const wk = randItem(keys);
+    const wc = randItem(getChords(wk, modeChoice));
+    if (wc.name !== correct.name) wrongPool.push(wc.name);
+  }
+  // Ensure 3 unique wrong answers
+  const wrongs = [...new Set(wrongPool)].slice(0,3);
+  while (wrongs.length < 3) {
+    const filler = randItem(getChords(randItem(keys), modeChoice)).name;
+    if (filler !== correct.name && !wrongs.includes(filler)) wrongs.push(filler);
+  }
+
+  const options = shuffle([correct.name, ...wrongs]);
+  STATE.quiz.current = { answer: correct.name };
+
+  document.getElementById('question-card').innerHTML = `
+    <div class="q-label">In the key of</div>
+    <div class="q-key">${key}${modeChoice==='minor'?'m':''}</div>
+    <div class="q-degree">what is the <strong>${correct.degree}</strong> chord?</div>
+  `;
+  document.getElementById('answers-area').innerHTML = options.map(o =>
+    `<button class="answer-btn" onclick="checkAnswer(this,'${o}','${correct.name}')">${o}</button>`
+  ).join('');
+}
+
+// Quiz mode 2: given chord + key → name the degree
+function genFindDegreeQ() {
+  let modeChoice = Math.random() > 0.5 ? 'major' : 'minor';
+  if (STATE.quizMajorKeys.size === 0) modeChoice = 'minor';
+  if (STATE.quizMinorKeys.size === 0) modeChoice = 'major';
+  const allKeys = modeChoice === 'major' ? MAJOR_KEYS : MINOR_KEYS;
+  const selectedSet = modeChoice === 'major' ? STATE.quizMajorKeys : STATE.quizMinorKeys;
+  const keys = allKeys.filter(k => selectedSet.has(k));
+  const key = randItem(keys);
+  const chords = getChords(key, modeChoice);
+  const correct = randItem(chords);
+  const degs = modeChoice === 'major' ? MAJ_DEG : MIN_DEG;
+
+  // Wrong answers: other degrees
+  const wrongDegs = degs.filter(d => d !== correct.degree);
+  const wrongs = shuffle(wrongDegs).slice(0,3);
+  const options = shuffle([correct.degree, ...wrongs]);
+  STATE.quiz.current = { answer: correct.degree };
+
+  document.getElementById('question-card').innerHTML = `
+    <div class="q-label">In ${key}${modeChoice==='minor'?'m':''}, the chord</div>
+    <div class="q-key">${correct.name}</div>
+    <div class="q-degree">is the <strong>___</strong> chord</div>
+  `;
+  document.getElementById('answers-area').innerHTML = options.map(o =>
+    `<button class="answer-btn" onclick="checkAnswer(this,'${o}','${correct.degree}')">${o}</button>`
+  ).join('');
+}
+
+// Quiz mode 3: spell a progression in a key
+function genSpellProgQ() {
+  const prog = randItem(PROGRESSIONS.filter(p => p.mode === 'major'));
+  const filteredMajorKeys = MAJOR_KEYS.filter(k => STATE.quizMajorKeys.has(k));
+  const key = randItem(filteredMajorKeys.length ? filteredMajorKeys : MAJOR_KEYS);
+  const chords = getChords(key, 'major');
+
+  // Only use standard 4-chord progressions for this quiz
+  const simpleDegs = prog.degrees.slice(0,4).filter(d => d >= 0 && d < 7);
+  const correctChords = simpleDegs.map(d => chords[d].name);
+  const answer = correctChords.join(' – ');
+
+  // Generate 3 wrong answers (same progression, different keys)
+  const wrongs = [];
+  const otherKeys = filteredMajorKeys.filter(k => k !== key);
+  for (let i = 0; i < 3; i++) {
+    const wk = randItem(otherKeys);
+    const wchords = getChords(wk, 'major');
+    const wAnswer = simpleDegs.map(d => wchords[d].name).join(' – ');
+    if (wAnswer !== answer) wrongs.push(wAnswer);
+  }
+  const uniqueWrongs = [...new Set(wrongs)].slice(0,3);
+
+  STATE.quiz.current = { answer };
+
+  const progDisplay = simpleDegs.map((d,i) =>
+    `<div class="prog-chip">${(prog.degrees.length <= 4 ? prog.name : prog.name).split('–')[i]?.trim() || MAJ_DEG[d]}</div>`
+  ).join('');
+
+  document.getElementById('question-card').innerHTML = `
+    <div class="q-label">Spell this progression in <strong>${key}</strong></div>
+    <div class="prog-display">${simpleDegs.map(d => `<div class="prog-chip">${MAJ_DEG[d]}</div>`).join('')}</div>
+    <div class="q-sub">${prog.name}</div>
+  `;
+
+  const opts = shuffle([answer, ...uniqueWrongs]);
+  document.getElementById('answers-area').style.gridTemplateColumns = '1fr';
+  document.getElementById('answers-area').innerHTML = opts.map(o =>
+    `<button class="answer-btn" style="font-size:0.88rem" onclick="checkAnswer(this,\`${o}\`,\`${answer}\`)">${o}</button>`
+  ).join('');
+}
+
+// Quiz mode 4: name the progression from a song
+function genSongProgQ() {
+  const prog = randItem(PROGRESSIONS);
+  const song = randItem(prog.songs);
+
+  // Wrong answers: other progression names
+  const wrongProgs = PROGRESSIONS.filter(p => p.id !== prog.id);
+  const wrongs = shuffle(wrongProgs).slice(0,3).map(p => p.name);
+  const options = shuffle([prog.name, ...wrongs]);
+  STATE.quiz.current = { answer: prog.name, note: song.note, genre: prog.genre };
+
+  document.getElementById('answers-area').style.gridTemplateColumns = '1fr';
+  document.getElementById('question-card').innerHTML = `
+    <div class="q-label">What progression does this song use?</div>
+    <div class="q-key" style="font-size:1.4rem">${song.title}</div>
+    <div class="q-degree">${song.artist}</div>
+    <div class="q-sub">Key of ${song.key}${prog.mode==='minor'?'m':''}</div>
+  `;
+  document.getElementById('answers-area').innerHTML = options.map(o =>
+    `<button class="answer-btn" style="font-size:0.88rem" onclick="checkAnswer(this,\`${o}\`,\`${prog.name}\`)">${o}</button>`
+  ).join('');
+}
+
+function checkAnswer(btn, chosen, correct) {
+  if (STATE.quiz.answered) return;
+  STATE.quiz.answered = true;
+  STATE.quiz.total++;
+
+  const isCorrect = chosen === correct;
+  if (isCorrect) STATE.quiz.correct++;
+  updateScore();
+
+  // Colour buttons
+  document.querySelectorAll('.answer-btn').forEach(b => {
+    b.disabled = true;
+    const bText = b.textContent.trim();
+    if (bText === correct) b.classList.add(isCorrect ? 'correct' : 'reveal');
+    else if (b === btn && !isCorrect) b.classList.add('wrong');
+  });
+
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'block';
+  if (isCorrect) {
+    fb.className = 'feedback correct';
+    fb.innerHTML = '✓ Correct!';
+  } else {
+    fb.className = 'feedback wrong';
+    let extra = '';
+    if (STATE.quiz.current.note) extra = `<br><small>${STATE.quiz.current.note}</small>`;
+    fb.innerHTML = `✗ The answer was: <strong>${correct}</strong>${extra}`;
+  }
+
+  document.getElementById('next-btn').style.display = 'block';
+}
+
+// ═══════════════════════════════════════════════════════
+// SONGS TAB
+// ═══════════════════════════════════════════════════════
+
+function renderSongs() {
+  const container = document.getElementById('songs-list');
+  container.innerHTML = PROGRESSIONS.map((prog, pi) => `
+    <div class="prog-section" id="prog-${pi}">
+      <div class="prog-header" onclick="toggleProg(${pi})">
+        <div class="prog-header-top">
+          <div>
+            <div class="prog-header-name">${prog.name}</div>
+            <div class="prog-header-genre">${prog.genre}</div>
+          </div>
+          <div class="prog-expand-icon">▼</div>
+        </div>
+      </div>
+      <div class="prog-body">
+        <div class="prog-mood">${prog.mood}</div>
+        <div class="song-list">
+          ${prog.songs.map((s,si) => `
+            <div class="song-item" onclick="openSongModal(${pi},${si})">
+              <div>
+                <div class="song-title">${s.title}</div>
+                <div class="song-artist">${s.artist}</div>
+              </div>
+              <div>
+                <div class="song-key">${s.key}${prog.mode==='minor'?'m':''}</div>
+                <div class="song-key-label">key</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleProg(pi) {
+  const el = document.getElementById('prog-' + pi);
+  el.classList.toggle('open');
+}
+
+function openSongModal(pi, si) {
+  const prog = PROGRESSIONS[pi];
+  const song = prog.songs[si];
+  const mode = prog.mode;
+  const keyMap = mode === 'major' ? MAJOR_SCALES : MINOR_SCALES;
+  const chords = getChords(song.key, mode);
+
+  // Get the actual chords for this progression in this key
+  const progDegrees = prog.degrees.slice(0,4).filter(d => d >= 0 && d < 7);
+  const progressionChords = progDegrees.map(d => chords[d].name);
+
+  // Related songs: same progression, different keys
+  const related = prog.songs.filter(s => s.title !== song.title);
+
+  const relatedHTML = related.map(s =>
+    `<div class="related-pill">${s.title} (${s.key}${mode==='minor'?'m':''})</div>`
+  ).join('');
+
+  document.getElementById('modal-content').innerHTML = `
+    <div class="modal-title">${song.title}</div>
+    <div class="modal-artist">${song.artist}</div>
+
+    <div class="modal-row">
+      <span class="modal-label">Key</span>
+      <span class="modal-value">${song.key}${mode==='minor'?'m':''} ${mode}</span>
+    </div>
+    <div class="modal-row">
+      <span class="modal-label">Progression</span>
+      <span class="modal-value">${prog.name}</span>
+    </div>
+    <div class="modal-row">
+      <span class="modal-label">Genre</span>
+      <span class="modal-value">${prog.genre}</span>
+    </div>
+
+    <div style="margin-top:14px;font-size:0.78rem;color:var(--muted);margin-bottom:6px">CHORDS IN THIS KEY</div>
+    <div class="modal-chords">
+      ${progressionChords.map(c => `<div class="modal-chord">${c}</div>`).join('')}
+    </div>
+
+    ${song.note ? `<div style="margin-top:12px;font-size:0.82rem;color:var(--muted);font-style:italic">💡 ${song.note}</div>` : ''}
+
+    ${related.length ? `
+    <div class="related-section">
+      <div class="related-title">Same progression</div>
+      <div class="related-pills">${relatedHTML}</div>
+    </div>` : ''}
+
+    <button class="btn btn-outline modal-close" onclick="closeSongModal()">Close</button>
+  `;
+  document.getElementById('song-modal').classList.add('open');
+}
+
+function closeSongModal(e) {
+  if (!e || !document.getElementById('modal-content').contains(e.target)) {
+    document.getElementById('song-modal').classList.remove('open');
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// PATTERNS TAB
+// ═══════════════════════════════════════════════════════
+
+function setPatternsMode(mode) {
+  STATE.patternsMode = mode;
+  const keys = mode === 'major' ? MAJOR_KEYS : MINOR_KEYS;
+  if (!keys.includes(STATE.patternsKey)) STATE.patternsKey = keys[0];
+  renderPatterns();
+}
+
+function renderPatterns() {
+  const mode = STATE.patternsMode;
+  const keys = mode === 'major' ? MAJOR_KEYS : MINOR_KEYS;
+
+  // Toggle buttons
+  document.getElementById('ptoggle-major').className = 'toggle' + (mode === 'major' ? ' active-major' : '');
+  document.getElementById('ptoggle-minor').className = 'toggle' + (mode === 'minor' ? ' active-minor' : '');
+
+  // Key pills
+  document.getElementById('pattern-key-pills').innerHTML = keys.map(k => `
+    <div class="pill ${mode==='minor'?'minor':''} ${k===STATE.patternsKey?'active':''}"
+         onclick="selectPatternsKey('${k}')">${k}${mode==='minor'?'m':''}</div>
+  `).join('');
+
+  // Filter progressions for this mode
+  const progs = COMMON_PROGRESSIONS.filter(p => p.mode === mode);
+  const chords = getChords(STATE.patternsKey, mode);
+
+  document.getElementById('patterns-list').innerHTML = progs.map(prog => {
+    const chordPills = prog.degrees.map(d => {
+      const ch = chords[d];
+      const qcls = Q_CLASS[ch.quality] || '';
+      return `<div class="pattern-chord ${qcls}">${ch.name}</div>`;
+    }).join('');
+
+    const numerals = prog.degrees.map(d => {
+      const deg = mode === 'major' ? MAJ_DEG[d] : MIN_DEG[d];
+      return `<div class="numeral-chip">${deg}</div>`;
+    }).join('');
+
+    const songChips = prog.examples.map(s => `
+      <div class="song-chip">
+        <div class="song-chip-title">${s.title}</div>
+        <div class="song-chip-artist">${s.artist}</div>
+      </div>`).join('');
+
+    return `
+      <div class="pattern-card">
+        <div class="pattern-name">${prog.name}</div>
+        <div class="pattern-nick">${prog.nickname}</div>
+        <div class="genre-tag ${mode==='minor'?'minor':''}">${prog.genre}</div>
+        <div class="pattern-numeral">${numerals}</div>
+        <div class="pattern-chords">${chordPills}</div>
+        <div class="pattern-desc">${prog.description}</div>
+        <div class="songs-label">🎵 Songs</div>
+        <div class="song-chips">${songChips}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function selectPatternsKey(k) {
+  STATE.patternsKey = k;
+  renderPatterns();
+}
+
+// ═══════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════
+
+renderRef();
+</script>
+</body>
+</html>
