@@ -1,53 +1,213 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>毎日新聞 — Archive</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Hiragino Mincho ProN','Yu Mincho','Georgia',serif; background:#f5f0e8; color:#1a1a1a; }
-  .masthead { background:#1a1a1a; color:#f5f0e8; text-align:center; padding:24px 16px 16px; border-bottom:4px solid #8b1a1a; }
-  .masthead-title { font-size:clamp(2rem,8vw,4rem); font-weight:900; letter-spacing:0.15em; }
-  .masthead-subtitle { font-size:0.9rem; letter-spacing:0.2em; opacity:0.8; margin-top:4px; }
-  .container { max-width:700px; margin:0 auto; padding:32px 16px; }
-  h2 { font-size:1.1rem; color:#8b1a1a; margin-bottom:16px; letter-spacing:0.1em; }
-  .entries { list-style:none; }
-  .entry { border-bottom:1px solid #d4c9a8; }
-  .entry a { display:flex; flex-direction:column; padding:16px 8px; text-decoration:none; color:inherit; }
-  .entry a:hover { background:#fffdf7; }
-  .entry-date { font-size:0.8rem; color:#888; font-family:'Helvetica Neue',sans-serif; margin-bottom:4px; }
-  .entry-headline { font-size:1.05rem; font-weight:600; }
-  .footer { text-align:center; padding:24px; font-size:0.8rem; color:#888; font-family:'Helvetica Neue',sans-serif; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>しんぶん — Japanese Reading Practice</title>
+  <style>
+    :root {
+      --bg: #fdf6e3;
+      --text: #2c2c2c;
+      --accent: #8b1a1a;
+      --accent2: #1a4f8b;
+      --muted: #888;
+      --border: #e0d6c0;
+      --card-bg: #fff9ee;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      min-height: 100vh;
+      padding: 0 0 60px;
+    }
+
+    /* Header */
+    header {
+      background: var(--accent);
+      color: white;
+      text-align: center;
+      padding: 36px 20px 28px;
+    }
+    .site-name {
+      font-size: 2.2rem;
+      letter-spacing: 0.25em;
+      margin-bottom: 4px;
+    }
+    .site-name-en {
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      opacity: 0.8;
+      text-transform: uppercase;
+    }
+    .tagline {
+      font-size: 0.82rem;
+      opacity: 0.75;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* Content */
+    .content {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 32px 20px 0;
+    }
+
+    /* Section headers */
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      margin-bottom: 12px;
+      margin-top: 36px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 14px;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      transition: box-shadow 0.15s;
+    }
+    .card:active { opacity: 0.85; }
+    .card-inner {
+      display: flex;
+      align-items: center;
+      padding: 16px 18px;
+      gap: 16px;
+    }
+    .card-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      width: 48px;
+      text-align: center;
+    }
+    .card-text { flex: 1; }
+    .card-title {
+      font-size: 1.05rem;
+      color: var(--text);
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+    .card-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .card-arrow {
+      font-size: 1rem;
+      color: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* Today highlight */
+    .card.today {
+      border-color: var(--accent);
+      border-width: 2px;
+    }
+    .card.today .card-title { color: var(--accent); }
+    .today-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-size: 0.7rem;
+      padding: 1px 7px;
+      border-radius: 8px;
+      margin-left: 8px;
+      vertical-align: middle;
+      letter-spacing: 0.05em;
+    }
+
+    /* Karamazov accent */
+    .card.karamazov { border-color: #c0a882; }
+    .card.karamazov .card-title { color: #5a3a1a; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+  </style>
 </head>
 <body>
-<header class="masthead">
-  <div class="masthead-title">毎日新聞</div>
-  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+
+<header>
+  <div class="site-name">しんぶん</div>
+  <div class="site-name-en">Shinbun</div>
+  <div class="tagline">Daily Japanese reading practice</div>
 </header>
-<div class="container">
-  <h2>記事一覧 / Archive</h2>
-  <ul class="entries">
-        <li class="entry">
-            <a href="2026-03-01.html">
-                <span class="entry-date">2026年3月1日（日曜日）</span>
-                <span class="entry-headline">米・イスラエルがイラン空爆　ハメネイ最高指導者が死亡</span>
-            </a>
-        </li>
-        <li class="entry">
-            <a href="2026-02-28.html">
-                <span class="entry-date">2026年2月28日（土曜日）</span>
-                <span class="entry-headline">緑の党、100年の労働党牙城を崩す</span>
-            </a>
-        </li>
-        <li class="entry">
-            <a href="2026-02-27.html">
-                <span class="entry-date">2026年2月27日（金曜日）</span>
-                <span class="entry-headline">緑の党が労働党の牙城を崩す　マンチェスター補選で歴史的勝利</span>
-            </a>
-        </li></ul>
+
+<div class="content">
+
+  <div class="section-label">📰 日刊紙 — Daily Newspaper</div>
+
+  <a class="card today" href="/shinbun/2026-03-01.html">
+    <div class="card-inner">
+      <div class="card-icon">📅</div>
+      <div class="card-text">
+        <div class="card-title">今日の新聞<span class="today-badge">Today</span></div>
+        <div class="card-sub">Today's edition — tap to read · N3〜N2 Japanese</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </div>
+  </a>
+
+  <a class="card" href="/shinbun/archive.html">
+    <div class="card-inner">
+      <div class="card-icon">🗂</div>
+      <div class="card-text">
+        <div class="card-title">バックナンバー</div>
+        <div class="card-sub">Past editions archive</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </div>
+  </a>
+
+  <div class="section-label">📖 文学 — Literature</div>
+
+  <a class="card karamazov" href="/shinbun/karamazov/index.html">
+    <div class="card-inner">
+      <div class="card-icon">🕯</div>
+      <div class="card-text">
+        <div class="card-title">カラマーゾフの兄弟</div>
+        <div class="card-sub">The Brothers Karamazov · ドストエフスキー<br>Tap-to-flip JP↔EN · furigana · vocab cheat sheet</div>
+      </div>
+      <div class="card-arrow">›</div>
+    </div>
+  </a>
+
+  <div class="section-label">ℹ️ About</div>
+
+  <div class="card" style="cursor:default;">
+    <div class="card-inner">
+      <div class="card-icon">🎩</div>
+      <div class="card-text">
+        <div class="card-title">About Shinbun</div>
+        <div class="card-sub">
+          A personal Japanese reading companion. The daily newspaper is generated fresh each morning from real news sources. The literature section adds furigana, vocabulary, and flip-to-English for classic novels in the public domain.<br><br>
+          Aimed at N3–N2 learners. New content every day.
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
-<footer class="footer">毎日新聞 · Longfellow Daily · N2日本語練習用</footer>
+
+<footer>
+  しんぶん · updated daily · 2026-03-01
+</footer>
+
 </body>
 </html>
