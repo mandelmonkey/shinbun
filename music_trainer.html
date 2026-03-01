@@ -112,6 +112,17 @@
   .kf-pill .common-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; opacity: 0.9; }
   .kf-pill.on .common-dot { background: rgba(0,0,0,0.35); }
   .kf-count { font-size: 0.72rem; color: var(--muted); text-align: right; margin-top: 8px; }
+  .qcount-row { display: flex; gap: 8px; align-items: center; margin-bottom: 16px; }
+  .qcount-label { font-size: 0.78rem; color: var(--muted); font-weight: 600; white-space: nowrap; }
+  .qcount-pill { padding: 6px 16px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; cursor: pointer; border: 1px solid var(--border); background: var(--card); color: var(--text); transition: all 0.1s; user-select: none; }
+  .qcount-pill.active { background: var(--gold); color: #000; border-color: var(--gold); }
+  .results-card { text-align: center; padding: 32px 20px; }
+  .results-icon { font-size: 3.5rem; margin-bottom: 12px; }
+  .results-score { font-size: 2.8rem; font-weight: 900; color: var(--gold); margin-bottom: 4px; }
+  .results-label { font-size: 0.9rem; color: var(--muted); margin-bottom: 24px; }
+  .results-pct { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
+  .progress-bar-wrap { background: var(--card2); border-radius: 8px; height: 10px; margin-bottom: 24px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; border-radius: 8px; background: var(--green); transition: width 0.5s; }
 
   /* ── Patterns ── */
   .pattern-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px 16px; margin-bottom: 14px; }
@@ -246,6 +257,15 @@
           <div class="kf-mode-label">Minor</div>
           <div class="kf-pill-row" id="kf-minor-pills"></div>
           <div class="kf-count" id="kf-count"></div>
+        </div>
+
+        <!-- Question count -->
+        <div class="qcount-row">
+          <div class="qcount-label">Questions:</div>
+          <div class="qcount-pill"        data-q="10"  onclick="setQuizCount(10)">10</div>
+          <div class="qcount-pill active" data-q="25"  onclick="setQuizCount(25)">25</div>
+          <div class="qcount-pill"        data-q="50"  onclick="setQuizCount(50)">50</div>
+          <div class="qcount-pill"        data-q="0"   onclick="setQuizCount(0)">∞</div>
         </div>
 
         <div class="mode-select-grid">
@@ -622,6 +642,7 @@ const STATE = {
   patternsKey:  'C',
   quizMajorKeys: new Set(MAJOR_KEYS),
   quizMinorKeys: new Set(MINOR_KEYS),
+  quizTotalQ: 25,
   quiz: {
     mode:    null,
     correct: 0,
@@ -783,12 +804,27 @@ function startQuiz(mode) {
   nextQuestion();
 }
 
+function setQuizCount(n) {
+  STATE.quizTotalQ = n;
+  document.querySelectorAll('.qcount-pill').forEach(p => {
+    p.classList.toggle('active', parseInt(p.dataset.q) === n);
+  });
+}
+
 function updateScore() {
-  document.getElementById('score-display').textContent =
-    `${STATE.quiz.correct} / ${STATE.quiz.total}`;
+  const total = STATE.quizTotalQ;
+  const label = total === 0
+    ? `${STATE.quiz.correct} / ${STATE.quiz.total}`
+    : `${STATE.quiz.correct} / ${STATE.quiz.total}  ·  Q${STATE.quiz.total} of ${total}`;
+  document.getElementById('score-display').textContent = label;
 }
 
 function nextQuestion() {
+  // Check if we've hit the question limit
+  if (STATE.quizTotalQ > 0 && STATE.quiz.total >= STATE.quizTotalQ) {
+    showResults(); return;
+  }
+
   STATE.quiz.answered = false;
   document.getElementById('feedback').style.display = 'none';
   document.getElementById('next-btn').style.display = 'none';
@@ -929,6 +965,36 @@ function genSongProgQ() {
   document.getElementById('answers-area').innerHTML = options.map(o =>
     `<button class="answer-btn" style="font-size:0.88rem" onclick="checkAnswer(this,\`${o}\`,\`${prog.name}\`)">${o}</button>`
   ).join('');
+}
+
+function showResults() {
+  const correct = STATE.quiz.correct;
+  const total   = STATE.quiz.total;
+  const pct     = total ? Math.round((correct / total) * 100) : 0;
+  const icon    = pct >= 90 ? '🏆' : pct >= 70 ? '🎯' : pct >= 50 ? '👍' : '🎸';
+  const msg     = pct >= 90 ? 'Excellent!' : pct >= 70 ? 'Good work!' : pct >= 50 ? 'Keep practising!' : 'More practice needed!';
+
+  document.getElementById('question-card').innerHTML = `
+    <div class="results-card">
+      <div class="results-icon">${icon}</div>
+      <div class="results-score">${correct} / ${total}</div>
+      <div class="results-pct" style="color:${pct>=70?'var(--green)':pct>=50?'var(--gold)':'var(--red)'}">${pct}% — ${msg}</div>
+      <div class="progress-bar-wrap" style="width:100%">
+        <div class="progress-bar-fill" style="width:${pct}%;background:${pct>=70?'var(--green)':pct>=50?'var(--gold)':'var(--red)'}"></div>
+      </div>
+    </div>
+  `;
+  document.getElementById('answers-area').innerHTML = '';
+  document.getElementById('feedback').style.display = 'none';
+  document.getElementById('next-btn').style.display = 'none';
+
+  // Show play-again + back buttons
+  const area = document.getElementById('answers-area');
+  area.style.gridTemplateColumns = '1fr';
+  area.innerHTML = `
+    <button class="btn btn-gold" onclick="startQuiz('${STATE.quiz.mode}')">Play Again</button>
+    <button class="btn btn-outline" style="margin-top:8px" onclick="showQuizMenu()">← Back to menu</button>
+  `;
 }
 
 function checkAnswer(btn, chosen, correct) {
