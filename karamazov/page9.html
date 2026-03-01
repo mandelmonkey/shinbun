@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カラマーゾフの兄弟 — 第一部 第一篇 第二章 — 長男を追い払う p.9</title>
+  <style>
+    :root {
+      --bg: #fdf6e3;
+      --text: #2c2c2c;
+      --accent: #8b1a1a;
+      --muted: #888;
+      --border: #e0d6c0;
+      --vocab-bg: #f0e8d0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    ruby { ruby-align: center; }
+    rt { font-size: 0.52em; color: #aaa; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">フョードル・ドストエフスキー</div>
+  <div class="chapter-title">カラマーゾフの兄弟</div>
+  <div class="chapter-sub">第一部 第一篇 第二章 — 長男を追い払う</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p>ドミートリーは<ruby>成人<rt>せいじん</rt></ruby>すると<ruby>軍<rt>ぐん</rt></ruby>に<ruby>入隊<rt>にゅうたい</rt></ruby>しました。<ruby>将校<rt>しょうこう</rt></ruby>として<ruby>勤務<rt>きんむ</rt></ruby>し、コーカサスにも<ruby>赴<rt>おもむ</rt></ruby>きました。やがて<ruby>昇進<rt>しょうしん</rt></ruby>し、<ruby>中尉<rt>ちゅうい</rt></ruby>の<ruby>位<rt>くらい</rt></ruby>を<ruby>得<rt>え</rt></ruby>ました。しかし<ruby>その間<rt>そのあいだ</rt></ruby>にも、<ruby>放縦<rt>ほうじゅう</rt></ruby>な<ruby>生活<rt>せいかつ</rt></ruby>が<ruby>始<rt>はじ</rt></ruby>まりつつありました。</p>
+    <p>ドミートリーは<ruby>豪快<rt>ごうかい</rt></ruby>で<ruby>情熱的<rt>じょうねつてき</rt></ruby>な<ruby>性格<rt>せいかく</rt></ruby>の<ruby>持<rt>も</rt></ruby>ち<ruby>主<rt>ぬし</rt></ruby>でした。<ruby>酒<rt>さけ</rt></ruby>を<ruby>飲<rt>の</rt></ruby>み、<ruby>女性<rt>じょせい</rt></ruby>を<ruby>愛<rt>あい</rt></ruby>し、<ruby>賭<rt>かけ</rt></ruby>けを<ruby>好<rt>この</rt></ruby>みました。<ruby>借金<rt>しゃっきん</rt></ruby>はあっという<ruby>間<rt>ま</rt></ruby>に<ruby>膨<rt>ふく</rt></ruby>らんでいきました。それでも、そのような<ruby>行<rt>おこな</rt></ruby>いの<ruby>どこかに<rt>どこかに</rt></ruby>、<ruby>隠<rt>かく</rt></ruby>れた<ruby>誠実<rt>せいじつ</rt></ruby>さが<ruby>息<rt>いき</rt></ruby>づいているのを<ruby>感<rt>かん</rt></ruby>じさせる<ruby>男<rt>おとこ</rt></ruby>でした。</p>
+    <p><ruby>彼<rt>かれ</rt></ruby>はやがて、<ruby>亡<rt>な</rt></ruby>き<ruby>母<rt>はは</rt></ruby>アデライーダの<ruby>遺産<rt>いさん</rt></ruby>について<ruby>考<rt>かんが</rt></ruby>えるようになりました。<ruby>父親<rt>ちちおや</rt></ruby>の<ruby>管理下<rt>かんりか</rt></ruby>に<ruby>置<rt>お</rt></ruby>かれているはずの<ruby>財産<rt>ざいさん</rt></ruby>が、<ruby>自分<rt>じぶん</rt></ruby>には<ruby>一切<rt>いっさい</rt></ruby><ruby>届<rt>とど</rt></ruby>いていないことに、<ruby>彼<rt>かれ</rt></ruby>は<ruby>気<rt>き</rt></ruby>づき<ruby>始<rt>はじ</rt></ruby>めたのです。</p>
+    <p>ドミートリーはフョードルに<ruby>手紙<rt>てがみ</rt></ruby>を<ruby>書<rt>か</rt></ruby>きました。<ruby>最初<rt>さいしょ</rt></ruby>のうちは<ruby>丁寧<rt>ていねい</rt></ruby>な<ruby>文面<rt>ぶんめん</rt></ruby>でした。しかし<ruby>返事<rt>へんじ</rt></ruby>はなく、あるいは<ruby>曖昧<rt>あいまい</rt></ruby>な<ruby>約束<rt>やくそく</rt></ruby>ばかりが<ruby>続<rt>つづ</rt></ruby>きました。やがて<ruby>手紙<rt>てがみ</rt></ruby>の<ruby>口調<rt>くちょう</rt></ruby>は<ruby>険<rt>けわ</rt></ruby>しくなり、<ruby>要求<rt>ようきゅう</rt></ruby>は<ruby>次第<rt>しだい</rt></ruby>に<ruby>強硬<rt>きょうこう</rt></ruby>なものになっていきました。</p>
+    <p>こうして<ruby>父<rt>ちち</rt></ruby>と<ruby>長男<rt>ちょうなん</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>に、<ruby>財産<rt>ざいさん</rt></ruby>をめぐる<ruby>紛争<rt>ふんそう</rt></ruby>の<ruby>種<rt>たね</rt></ruby>が<ruby>蒔<rt>ま</rt></ruby>かれたのでした。この<ruby>紛争<rt>ふんそう</rt></ruby>こそが、<ruby>後<rt>のち</rt></ruby>の<ruby>出来事<rt>できごと</rt></ruby>の<ruby>遠因<rt>えんいん</rt></ruby>となるのです。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>On coming of age, Dmitri enlisted in the army. He served as an officer and was posted to the Caucasus, eventually rising to the rank of lieutenant. But during these years a dissolute way of life was already taking hold.</p>
+    <p>Dmitri was exuberant and passionate by nature. He drank, loved women, and gambled. His debts grew with alarming speed. And yet, somewhere beneath all this behaviour, one sensed a hidden sincerity still alive in the man.</p>
+    <p>He began in time to think about the estate of his dead mother Adelaida — the inheritance that ought to have been his, under his father's management, from which he had received nothing at all.</p>
+    <p>Dmitri wrote to Fyodor. At first the letters were polite. But answers were slow or vague — nothing but evasive promises. Gradually the tone of the letters sharpened, and the demands grew more and more insistent.</p>
+    <p>And so were sown the seeds of a dispute over property between father and eldest son. It is this dispute that would become the distant root of everything that followed.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <a href="page8.html">← 前のページ</a>
+  <span class="page-num">p. 9 / 10</span>
+  <a href="page10.html">次のページ →</a>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">入隊する</td><td class="vocab-reading">にゅうたいする</td><td class="vocab-en">to enlist / join the military</td></tr>
+    <tr><td class="vocab-kanji">将校</td><td class="vocab-reading">しょうこう</td><td class="vocab-en">military officer</td></tr>
+    <tr><td class="vocab-kanji">赴く</td><td class="vocab-reading">おもむく</td><td class="vocab-en">to go to / set out for (formal)</td></tr>
+    <tr><td class="vocab-kanji">昇進する</td><td class="vocab-reading">しょうしんする</td><td class="vocab-en">to be promoted</td></tr>
+    <tr><td class="vocab-kanji">中尉</td><td class="vocab-reading">ちゅうい</td><td class="vocab-en">lieutenant</td></tr>
+    <tr><td class="vocab-kanji">放縦な</td><td class="vocab-reading">ほうじゅうな</td><td class="vocab-en">dissolute / unrestrained / licentious</td></tr>
+    <tr><td class="vocab-kanji">豪快な</td><td class="vocab-reading">ごうかいな</td><td class="vocab-en">bold / exuberant / larger-than-life</td></tr>
+    <tr><td class="vocab-kanji">借金が膨らむ</td><td class="vocab-reading">しゃっきんがふくらむ</td><td class="vocab-en">debts swell / grow</td></tr>
+    <tr><td class="vocab-kanji">誠実さ</td><td class="vocab-reading">せいじつさ</td><td class="vocab-en">sincerity / integrity / honesty</td></tr>
+    <tr><td class="vocab-kanji">遺産</td><td class="vocab-reading">いさん</td><td class="vocab-en">inheritance / estate / legacy</td></tr>
+    <tr><td class="vocab-kanji">管理下</td><td class="vocab-reading">かんりか</td><td class="vocab-en">under management / under supervision</td></tr>
+    <tr><td class="vocab-kanji">文面</td><td class="vocab-reading">ぶんめん</td><td class="vocab-en">wording / text of a letter</td></tr>
+    <tr><td class="vocab-kanji">曖昧な</td><td class="vocab-reading">あいまいな</td><td class="vocab-en">vague / ambiguous</td></tr>
+    <tr><td class="vocab-kanji">口調</td><td class="vocab-reading">くちょう</td><td class="vocab-en">tone (of voice or writing)</td></tr>
+    <tr><td class="vocab-kanji">強硬な</td><td class="vocab-reading">きょうこうな</td><td class="vocab-en">insistent / hard-line / forceful</td></tr>
+    <tr><td class="vocab-kanji">紛争</td><td class="vocab-reading">ふんそう</td><td class="vocab-en">dispute / conflict</td></tr>
+    <tr><td class="vocab-kanji">種を蒔く</td><td class="vocab-reading">たねをまく</td><td class="vocab-en">to sow seeds (of something)</td></tr>
+    <tr><td class="vocab-kanji">遠因</td><td class="vocab-reading">えんいん</td><td class="vocab-en">underlying / distant cause</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜つつある</strong> — is in the process of ~ing / is gradually ~ing<br><em>放縦な生活が始まりつつありました</em><br>N2 grammar. Describes a change or process underway. More formal than 〜ている.</div>
+<div class="grammar-item"><strong>〜に気づき始める</strong> — to begin to realise ~ / start noticing ~<br><em>自分には一切届いていないことに、気づき始めたのです</em><br>始める attaches to verb stems to express the start of an action or realisation.</div>
+<div class="grammar-item"><strong>〜こそが〜となる</strong> — it is precisely ~ that becomes ~<br><em>この紛争こそが、後の出来事の遠因となるのです</em><br>こそ is an emphatic particle. Marks the subject as the definitive cause or entity.</div>
+<div class="grammar-item"><strong>〜のうちは</strong> — while ~ / during the period when ~<br><em>最初のうちは丁寧な文面でした</em><br>Describes a condition that held true during an initial phase, before things changed.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
