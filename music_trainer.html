@@ -819,21 +819,8 @@ function genChordNameQ() {
   const chords = getChords(key, modeChoice);
   const correct = randItem(chords);
 
-  // Wrong answers: other chords in different keys
-  const wrongPool = [];
-  for (let i = 0; i < 3; i++) {
-    const wk = randItem(keys);
-    const wc = randItem(getChords(wk, modeChoice));
-    if (wc.name !== correct.name) wrongPool.push(wc.name);
-  }
-  // Ensure 3 unique wrong answers
-  const wrongs = [...new Set(wrongPool)].slice(0,3);
-  while (wrongs.length < 3) {
-    const filler = randItem(getChords(randItem(keys), modeChoice)).name;
-    if (filler !== correct.name && !wrongs.includes(filler)) wrongs.push(filler);
-  }
-
-  const options = shuffle([correct.name, ...wrongs]);
+  // Show all 7 chords in this key, shuffled
+  const options = shuffle(chords.map(c => c.name));
   STATE.quiz.current = { answer: correct.name };
 
   document.getElementById('question-card').innerHTML = `
@@ -841,8 +828,10 @@ function genChordNameQ() {
     <div class="q-key">${key}${modeChoice==='minor'?'m':''}</div>
     <div class="q-degree">what is the <strong>${correct.degree}</strong> chord?</div>
   `;
-  document.getElementById('answers-area').innerHTML = options.map(o =>
-    `<button class="answer-btn" onclick="checkAnswer(this,'${o}','${correct.name}')">${o}</button>`
+  const area = document.getElementById('answers-area');
+  area.style.gridTemplateColumns = 'repeat(3, 1fr)';
+  area.innerHTML = options.map(o =>
+    `<button class="answer-btn" style="font-size:0.9rem;padding:12px 6px" onclick="checkAnswer(this,'${o}','${correct.name}')">${o}</button>`
   ).join('');
 }
 
@@ -870,7 +859,9 @@ function genFindDegreeQ() {
     <div class="q-key">${correct.name}</div>
     <div class="q-degree">is the <strong>___</strong> chord</div>
   `;
-  document.getElementById('answers-area').innerHTML = options.map(o =>
+  const area2 = document.getElementById('answers-area');
+  area2.style.gridTemplateColumns = '1fr 1fr';
+  area2.innerHTML = options.map(o =>
     `<button class="answer-btn" onclick="checkAnswer(this,'${o}','${correct.degree}')">${o}</button>`
   ).join('');
 }
