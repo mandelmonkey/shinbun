@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月3日（火曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月3日（火曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米<rt>こめ</rt></ruby>・イスラエル、イランを<ruby>攻撃<rt>こうげき</rt></ruby>　<ruby>中東<rt>ちゅうとう</rt></ruby><ruby>全域<rt>ぜんいき</rt></ruby>に<ruby>緊張<rt>きんちょう</rt></ruby><ruby>広が<rt>ひろが</rt></ruby>る</h2>
+              <p class="body"><ruby>米国<rt>べいこく</rt></ruby>とイスラエルがイランへの<ruby>軍事<rt>ぐんじ</rt></ruby><ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>開始<rt>かいし</rt></ruby>し、<ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby>が<ruby>急速<rt>きゅうそく</rt></ruby>に<ruby>悪化<rt>あっか</rt></ruby>している。イランはイスラエル、<ruby>湾岸諸国<rt>わんがんしょこく</rt></ruby>、さらにキプロスのイギリス<ruby>軍<rt>ぐん</rt></ruby><ruby>基地<rt>きち</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>て<ruby>報復攻撃<rt>ほうふくこうげき</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>した。イランの<ruby>上級<rt>じょうきゅう</rt></ruby><ruby>指導部<rt>しどうぶ</rt></ruby>の<ruby>多く<rt>おおく</rt></ruby>が<ruby>攻撃<rt>こうげき</rt></ruby>で<ruby>失わ<rt>うしなわ</rt></ruby>れており、<ruby>専門家<rt>せんもんか</rt></ruby>は<ruby>戦争<rt>せんそう</rt></ruby>の<ruby>行方<rt>なめがた</rt></ruby>が<ruby>依然<rt>いぜん</rt></ruby>として<ruby>不透明<rt>ふとうめい</rt></ruby>だと<ruby>指摘<rt>してき</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US and Israel Strike Iran as Conflict Spreads Across Middle East</h2>
+              <p class="body en-body">The United States and Israel have launched military strikes on Iran, triggering a rapid escalation across the Middle East. Iran has retaliated with attacks on Israel, Gulf states, and a British military base in Cyprus. With much of Iran's senior leadership killed, analysts say the trajectory of the conflict remains deeply uncertain.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">スターマー<ruby>首相<rt>しゅしょう</rt></ruby>、イラン<ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>支持<rt>しじ</rt></ruby>せず　トランプ<ruby>氏<rt>し</rt></ruby>と<ruby>対立<rt>たいりつ</rt></ruby></h2>
+              <p class="body">キア・スターマー<ruby>英<rt>えい</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>は<ruby>議会<rt>ぎかい</rt></ruby>で「<ruby>空か<rt>あか</rt></ruby>らの<ruby>体制<rt>たいせい</rt></ruby><ruby>変換<rt>へんかん</rt></ruby>は<ruby>信じ<rt>しんじ</rt></ruby>ない」と<ruby>表明<rt>ひょうめい</rt></ruby>し、<ruby>米<rt>こめ</rt></ruby>・イスラエルによるイランへの<ruby>攻撃<rt>こうげき</rt></ruby>への<ruby>支持<rt>しじ</rt></ruby>を<ruby>明確<rt>めいかく</rt></ruby>に<ruby>拒否<rt>きょひ</rt></ruby>した。<ruby>英米<rt>えいべい</rt></ruby><ruby>間の<rt>まの</rt></ruby><ruby>外交的<rt>がいこうてき</rt></ruby><ruby>亀裂<rt>きれつ</rt></ruby>は<ruby>近年<rt>きんねん</rt></ruby>まれなほど<ruby>深刻<rt>しんこく</rt></ruby>とされ、<ruby>英国内<rt>えいこくない</rt></ruby><ruby>外<rt>そと</rt></ruby>から<ruby>大き<rt>おおき</rt></ruby>な<ruby>注目<rt>ちゅうもく</rt></ruby>を<ruby>集め<rt>あつめ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Starmer Breaks with Trump Over Iran Strikes</h2>
+              <p class="body en-body">UK Prime Minister Keir Starmer declared in parliament that Britain 'does not believe in regime change from the skies,' clearly distancing his government from the US-Israeli strikes on Iran. The move represents one of the most significant diplomatic splits between London and Washington in recent years.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ブリュードッグ、<ruby>米<rt>こめ</rt></ruby><ruby>社<rt>しゃ</rt></ruby>に<ruby>買収<rt>ばいしゅう</rt></ruby>　バー<ruby>閉鎖<rt>へいさ</rt></ruby>で<ruby>数百人<rt>すうひゃくにん</rt></ruby>が<ruby>失業<rt>しつぎょう</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>のクラフトビールブランド「ブリュードッグ」が<ruby>経営<rt>けいえい</rt></ruby><ruby>不振<rt>ふしん</rt></ruby>のため<ruby>管理下<rt>かんりか</rt></ruby>に<ruby>入り<rt>いり</rt></ruby>、<ruby>米国<rt>べいこく</rt></ruby>の<ruby>飲料<rt>いんりょう</rt></ruby>・<ruby>大麻<rt>たいま</rt></ruby><ruby>会社<rt>かいしゃ</rt></ruby>「タイルレイ」に<ruby>約<rt>やく</rt></ruby>3300<ruby>万<rt>まん</rt></ruby>ポンドで<ruby>売却<rt>ばいきゃく</rt></ruby>された。<ruby>買収<rt>ばいしゅう</rt></ruby><ruby>後<rt>のち</rt></ruby>、<ruby>複数<rt>ふくすう</rt></ruby>のバーが<ruby>閉鎖<rt>へいさ</rt></ruby>され<ruby>数百人<rt>すうひゃくにん</rt></ruby>が<ruby>失業<rt>しつぎょう</rt></ruby>した。かつて<ruby>英国<rt>えいこく</rt></ruby>クラフトビール<ruby>革命<rt>かくめい</rt></ruby>を<ruby>牽引<rt>けんいん</rt></ruby>したブランドの<ruby>凋落<rt>ちょうらく</rt></ruby>に、<ruby>業界<rt>ぎょうかい</rt></ruby>から<ruby>惜し<rt>おし</rt></ruby>む<ruby>声<rt>こえ</rt></ruby>が<ruby>上が<rt>あが</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Brewdog Sold to US Firm for £33m as Bars Shut and Jobs Lost</h2>
+              <p class="body en-body">UK craft beer brand Brewdog has been sold to US beverage and cannabis company Tilray for approximately £33 million after entering administration. Several bars have since closed and hundreds of workers have lost their jobs. The sale marks a dramatic fall for a brand once seen as the vanguard of Britain's craft beer movement.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>除染<rt>じょせん</rt></ruby><ruby>土<rt>つち</rt></ruby>の<ruby>受け入れ<rt>うけいれ</rt></ruby>、<ruby>全都<rt>ぜんと</rt></ruby><ruby>道府県<rt>どうふけん</rt></ruby>がゼロ<ruby>回答<rt>かいとう</rt></ruby>　<ruby>福島<rt>ふくしま</rt></ruby><ruby>問題<rt>もんだい</rt></ruby><ruby>長期化<rt>ちょうきか</rt></ruby></h2>
+              <p class="body"><ruby>福島<rt>ふくしま</rt></ruby><ruby>第一<rt>だいいち</rt></ruby><ruby>原発<rt>げんぱつ</rt></ruby>の<ruby>廃炉<rt>はいろ</rt></ruby><ruby>作業<rt>さぎょう</rt></ruby>で<ruby>発生<rt>はっせい</rt></ruby>した<ruby>除染<rt>じょせん</rt></ruby><ruby>土<rt>つち</rt></ruby>の<ruby>受け入れ<rt>うけいれ</rt></ruby>について、<ruby>全国<rt>ぜんこく</rt></ruby>の<ruby>都道府県知事<rt>とどうふけんちじ</rt></ruby>を<ruby>対象<rt>たいしょう</rt></ruby>とした<ruby>調査<rt>ちょうさ</rt></ruby>で、<ruby>受け入れ<rt>うけいれ</rt></ruby>を<ruby>表明<rt>ひょうめい</rt></ruby>した<ruby>知事<rt>ちじ</rt></ruby>はゼロだったことが<ruby>明らか<rt>あきらか</rt></ruby>になった。<ruby>政府<rt>せいふ</rt></ruby>は2045<ruby>年<rt>ねん</rt></ruby>までに<ruby>中間<rt>ちゅうかん</rt></ruby><ruby>貯蔵<rt>ちょぞう</rt></ruby><ruby>施設<rt>しせつ</rt></ruby>から<ruby>県外<rt>けんがい</rt></ruby>へ<ruby>搬出<rt>はんしゅつ</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>だが、<ruby>最終<rt>さいしゅう</rt></ruby><ruby>処分<rt>しょぶん</rt></ruby><ruby>地<rt>ち</rt></ruby>の<ruby>選定<rt>せんてい</rt></ruby>は<ruby>依然<rt>いぜん</rt></ruby>として<ruby>進ん<rt>すすん</rt></ruby>でいない。<ruby>風評<rt>ふうひょう</rt></ruby><ruby>被害<rt>ひがい</rt></ruby>への<ruby>懸念<rt>けねん</rt></ruby>と<ruby>科学的<rt>かがくてき</rt></ruby><ruby>安全性<rt>あんぜんせい</rt></ruby>の<ruby>間<rt>かん</rt></ruby>で<ruby>議論<rt>ぎろん</rt></ruby>は<ruby>平行線<rt>へいこうせん</rt></ruby>をたどっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">No Prefecture Willing to Accept Fukushima Cleanup Soil</h2>
+              <p class="body en-body">A survey of Japan's 47 prefectural governors found that not one is prepared to accept soil collected during decontamination work around the Fukushima Daiichi nuclear plant. The government plans to move the soil out of Fukushima's interim storage facilities by 2045, but selecting a final disposal site remains at an impasse amid persistent concerns over reputational damage.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>東京<rt>とうきょう</rt></ruby>の<ruby>落とし物<rt>おとしもの</rt></ruby>、<ruby>現金<rt>げんきん</rt></ruby>45<ruby>億円<rt>おくえん</rt></ruby>で<ruby>過去<rt>かこ</rt></ruby><ruby>最高<rt>さいこう</rt></ruby>　2025<ruby>年<rt>ねん</rt></ruby><ruby>統計<rt>とうけい</rt></ruby></h2>
+              <p class="body"><ruby>東京<rt>とうきょう</rt></ruby><ruby>警視庁<rt>けいしちょう</rt></ruby>が<ruby>発表<rt>はっぴょう</rt></ruby>した2025<ruby>年<rt>ねん</rt></ruby>の<ruby>統計<rt>とうけい</rt></ruby>によると、<ruby>落とし物<rt>おとしもの</rt></ruby>として<ruby>届け<rt>とどけ</rt></ruby>られた<ruby>現金<rt>げんきん</rt></ruby>が<ruby>過去<rt>かこ</rt></ruby><ruby>最高<rt>さいこう</rt></ruby>の45<ruby>億円<rt>おくえん</rt></ruby>に<ruby>達し<rt>たっし</rt></ruby>た。<ruby>財布<rt>さいふ</rt></ruby>や<ruby>貴重品<rt>きちょうひん</rt></ruby>を<ruby>含む<rt>ふくむ</rt></ruby><ruby>届出<rt>とどけで</rt></ruby><ruby>件数<rt>けんすう</rt></ruby>も<ruby>増加傾向<rt>ぞうかけいこう</rt></ruby>にあり、<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>高い<rt>たかい</rt></ruby><ruby>道徳観<rt>どうとくかん</rt></ruby>を<ruby>示す<rt>しめす</rt></ruby>データとして<ruby>国際的<rt>こくさいてき</rt></ruby>にも<ruby>注目<rt>ちゅうもく</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Record ¥4.5 Billion in Lost Cash Handed in to Tokyo Police in 2025</h2>
+              <p class="body en-body">Statistics released by Tokyo Metropolitan Police show a record ¥4.5 billion in cash was handed in as lost property in 2025, the highest figure ever recorded. The data, which also covers wallets and valuables, has drawn international attention as evidence of Japan's deeply ingrained culture of honesty.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">「<ruby>魔女<rt>まじょ</rt></ruby>の<ruby>宅急便<rt>たっきゅうびん</rt></ruby>」<ruby>初<rt>はつ</rt></ruby>のIMAX<ruby>版<rt>はん</rt></ruby><ruby>公開<rt>こうかい</rt></ruby>へ　ジブリファン<ruby>沸く<rt>わく</rt></ruby></h2>
+              <p class="body">スタジオジブリの<ruby>名作<rt>めいさく</rt></ruby>「<ruby>魔女<rt>まじょ</rt></ruby>の<ruby>宅急便<rt>たっきゅうびん</rt></ruby>」が<ruby>初めて<rt>はじめて</rt></ruby>IMAXフォーマットでリマスターされ、<ruby>日本全国<rt>にほんぜんこく</rt></ruby>の<ruby>映画館<rt>えいがかん</rt></ruby>で<ruby>上映<rt>じょうえい</rt></ruby>されることが<ruby>発表<rt>はっぴょう</rt></ruby>された。1989<ruby>年<rt>ねん</rt></ruby>の<ruby>公開<rt>こうかい</rt></ruby><ruby>以来<rt>いらい</rt></ruby>、<ruby>世代<rt>せだい</rt></ruby>を<ruby>超え<rt>こえ</rt></ruby>て<ruby>愛さ<rt>あいさ</rt></ruby>れ<ruby>続け<rt>つづけ</rt></ruby>てきた<ruby>本作<rt>ほんさく</rt></ruby>がより<ruby>大き<rt>おおき</rt></ruby>なスクリーンで<ruby>蘇る<rt>よみがえる</rt></ruby>ことに、ファンから<ruby>歓喜<rt>かんき</rt></ruby>の<ruby>声<rt>こえ</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Kiki's Delivery Service to Return with First-Ever IMAX Remaster</h2>
+              <p class="body en-body">Studio Ghibli's beloved 1989 film Kiki's Delivery Service is to be re-released in Japanese cinemas in a first-ever IMAX remaster. The announcement has been met with widespread excitement from fans, for whom the film has remained a cherished classic across generations since its original release.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-03 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "軍事攻撃", "reading": "ぐんじこうげき", "english": "military strike"}, {"word": "報復", "reading": "ほうふく", "english": "retaliation"}, {"word": "情勢", "reading": "じょうせい", "english": "situation / state of affairs"}, {"word": "指導部", "reading": "しどうぶ", "english": "leadership"}, {"word": "緊張", "reading": "きんちょう", "english": "tension"}], [{"word": "体制変換", "reading": "たいせいへんかん", "english": "regime change"}, {"word": "議会", "reading": "ぎかい", "english": "parliament"}, {"word": "亀裂", "reading": "きれつ", "english": "rift / crack"}, {"word": "外交的", "reading": "がいこうてき", "english": "diplomatic"}, {"word": "支持", "reading": "しじ", "english": "support"}], [{"word": "買収", "reading": "ばいしゅう", "english": "acquisition / takeover"}, {"word": "経営不振", "reading": "けいえいふしん", "english": "business difficulties"}, {"word": "管理下", "reading": "かんりか", "english": "under administration"}, {"word": "閉鎖", "reading": "へいさ", "english": "closure"}, {"word": "凋落", "reading": "ちょうらく", "english": "decline / fall"}], [{"word": "除染", "reading": "じょせん", "english": "decontamination"}, {"word": "廃炉", "reading": "はいろ", "english": "decommissioning"}, {"word": "中間貯蔵施設", "reading": "ちゅうかんちょぞうしせつ", "english": "interim storage facility"}, {"word": "処分地", "reading": "しょぶんち", "english": "disposal site"}, {"word": "風評被害", "reading": "ふうひょうひがい", "english": "reputational damage from rumour"}], [{"word": "落とし物", "reading": "おとしもの", "english": "lost property"}, {"word": "届け出", "reading": "とどけで", "english": "report / notification"}, {"word": "警視庁", "reading": "けいしちょう", "english": "Tokyo Metropolitan Police"}, {"word": "統計", "reading": "とうけい", "english": "statistics"}, {"word": "道徳観", "reading": "どうとくかん", "english": "moral values / sense of ethics"}], [{"word": "上映", "reading": "じょうえい", "english": "screening / showing"}, {"word": "リマスター", "reading": "りますたー", "english": "remaster"}, {"word": "名作", "reading": "めいさく", "english": "masterpiece"}, {"word": "世代", "reading": "せだい", "english": "generation"}, {"word": "歓喜", "reading": "かんき", "english": "joy / jubilation"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "米・イスラエル、イランを攻撃　中東全域に緊張広がる"}, {"section": "英国・世界", "headline": "スターマー首相、イラン攻撃を支持せず　トランプ氏と対立"}, {"section": "英国・世界", "headline": "ブリュードッグ、米社に買収　バー閉鎖で数百人が失業"}, {"section": "日本", "headline": "除染土の受け入れ、全都道府県がゼロ回答　福島問題長期化"}, {"section": "日本", "headline": "東京の落とし物、現金45億円で過去最高　2025年統計"}, {"section": "日本", "headline": "「魔女の宅急便」初のIMAX版公開へ　ジブリファン沸く"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
