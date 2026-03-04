@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月4日（水曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月4日（水曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英米<rt>えいべい</rt></ruby>「<ruby>特別<rt>とくべつ</rt></ruby>な<ruby>関係<rt>かんけい</rt></ruby>」に<ruby>亀裂<rt>きれつ</rt></ruby>　トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>がスターマー<ruby>首相<rt>しゅしょう</rt></ruby>を<ruby>批判<rt>ひはん</rt></ruby></h2>
+              <p class="body">トランプ<ruby>米大統領<rt>べいだいとうりょう</rt></ruby>は、スターマー<ruby>英<rt>えい</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>について「チャーチルとは<ruby>程遠い<rt>ほどとおい</rt></ruby>」と<ruby>発言<rt>はつげん</rt></ruby>し、<ruby>両国<rt>りょうごく</rt></ruby>の<ruby>関係<rt>かんけい</rt></ruby>に<ruby>波紋<rt>はもん</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。この<ruby>発言<rt>はつげん</rt></ruby>は、<ruby>英国<rt>えいこく</rt></ruby>がアメリカとイスラエルによるイラン<ruby>攻撃<rt>こうげき</rt></ruby>において<ruby>自国<rt>じこく</rt></ruby>の<ruby>軍事<rt>ぐんじ</rt></ruby><ruby>基地<rt>きち</rt></ruby>の<ruby>使用<rt>しよう</rt></ruby>を<ruby>拒否<rt>きょひ</rt></ruby>したことに<ruby>端<rt>はじ</rt></ruby>を<ruby>発し<rt>はっし</rt></ruby>ている。にもかかわらず、スターマー<ruby>首相<rt>しゅしょう</rt></ruby>は<ruby>外交的<rt>がいこうてき</rt></ruby>な<ruby>対話<rt>たいわ</rt></ruby>を<ruby>継続<rt>けいぞく</rt></ruby>する<ruby>姿勢<rt>しせい</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>ており、<ruby>英国<rt>えいこく</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>はオマーン<ruby>経由<rt>けいゆ</rt></ruby>の<ruby>帰国便<rt>きこくびん</rt></ruby>を<ruby>手配<rt>てはい</rt></ruby>するなど、<ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby>への<ruby>対応<rt>たいおう</rt></ruby>を<ruby>続け<rt>つづけ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Trump Calls Starmer 'No Churchill' as UK-US Rift Deepens</h2>
+              <p class="body en-body">US President Donald Trump has described UK Prime Minister Keir Starmer as 'no Churchill', deepening tensions between the two allies after Britain refused to allow its military bases to be used in US-Israeli strikes on Iran. Despite the rift, Starmer has maintained a diplomatic approach, while the UK government arranged its first repatriation flight from Muscat and dispatched HMS Dragon to Cyprus to protect British military personnel.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イラン<ruby>情勢<rt>じょうせい</rt></ruby>で<ruby>原油<rt>げんゆ</rt></ruby><ruby>急騰<rt>きゅうとう</rt></ruby>　アジア<ruby>株<rt>かぶ</rt></ruby>も<ruby>三日<rt>みっか</rt></ruby><ruby>連続<rt>れんぞく</rt></ruby><ruby>下落<rt>げらく</rt></ruby></h2>
+              <p class="body"><ruby>中東<rt>ちゅうとう</rt></ruby>でのイラン<ruby>攻撃<rt>こうげき</rt></ruby>が<ruby>長期化<rt>ちょうきか</rt></ruby>するにつれて、<ruby>原油価格<rt>げんゆかかく</rt></ruby>が<ruby>三日<rt>みっか</rt></ruby><ruby>連続<rt>れんぞく</rt></ruby>で<ruby>上昇<rt>じょうしょう</rt></ruby>し、アジアの<ruby>株式市場<rt>かぶしきしじょう</rt></ruby>も<ruby>下落<rt>げらく</rt></ruby>が<ruby>続い<rt>つづい</rt></ruby>ている。トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>はエネルギー<ruby>供給<rt>きょうきゅう</rt></ruby>を<ruby>守る<rt>まもる</rt></ruby>ため、<ruby>必要<rt>ひつよう</rt></ruby>なら<ruby>米<rt>こめ</rt></ruby><ruby>海軍<rt>かいぐん</rt></ruby>が<ruby>中東<rt>ちゅうとう</rt></ruby>の<ruby>海上輸送路<rt>かいじょうゆそうろ</rt></ruby>を<ruby>保護<rt>ほご</rt></ruby>すると<ruby>表明<rt>ひょうめい</rt></ruby>した。また、<ruby>英国<rt>えいこく</rt></ruby>の<ruby>軍事<rt>ぐんじ</rt></ruby><ruby>基地<rt>きち</rt></ruby><ruby>使用<rt>しよう</rt></ruby>を<ruby>拒否<rt>きょひ</rt></ruby>したスペインに<ruby>対し<rt>たいし</rt></ruby>ても、トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>は<ruby>貿易<rt>ぼうえき</rt></ruby><ruby>制裁<rt>せいさい</rt></ruby>を<ruby>示唆し<rt>しさし</rt></ruby>ており、<ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby>は<ruby>国際<rt>こくさい</rt></ruby><ruby>外交<rt>がいこう</rt></ruby><ruby>全般<rt>ぜんぱん</rt></ruby>に<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>与え<rt>あたえ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Oil Surges for Third Day as Iran War Rattles Global Markets</h2>
+              <p class="body en-body">Oil prices have risen for a third consecutive day and Asian stock markets have fallen as the Iran conflict continues to rattle global energy and financial markets. President Trump stated that the US Navy would protect Middle Eastern shipping lanes 'if necessary'. He also threatened trade sanctions against Spain after it barred US access to its military bases, highlighting the conflict's widening geopolitical impact.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>妊娠<rt>にんしん</rt></ruby>で<ruby>脳<rt>のう</rt></ruby>の<ruby>灰白<rt>かいはく</rt></ruby><ruby>質<rt>しつ</rt></ruby>が<ruby>変化<rt>へんか</rt></ruby>　「マタニティブレイン」の<ruby>通説<rt>つうせつ</rt></ruby>を<ruby>覆す<rt>くつがえす</rt></ruby><ruby>研究<rt>けんきゅう</rt></ruby></h2>
+              <p class="body">BBCが<ruby>独占<rt>どくせん</rt></ruby><ruby>入手<rt>にゅうしゅ</rt></ruby>した<ruby>最新<rt>さいしん</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>によると、<ruby>妊娠中<rt>にんしんちゅう</rt></ruby>に<ruby>女性<rt>じょせい</rt></ruby>の<ruby>脳<rt>のう</rt></ruby>の<ruby>灰白<rt>かいはく</rt></ruby><ruby>質<rt>しつ</rt></ruby>が<ruby>減少<rt>げんしょう</rt></ruby>することが<ruby>確認さ<rt>かくにんさ</rt></ruby>れた。しかし<ruby>研究者<rt>けんきゅうしゃ</rt></ruby>たちは、これは<ruby>記憶力<rt>きおくりょく</rt></ruby>の<ruby>低下<rt>ていか</rt></ruby>ではなく、<ruby>育児<rt>いくじ</rt></ruby>に<ruby>適応<rt>てきおう</rt></ruby>するための<ruby>脳<rt>のう</rt></ruby>の<ruby>再構成<rt>さいこうせい</rt></ruby>であると<ruby>述べ<rt>のべ</rt></ruby>ている。いわゆる「マタニティブレイン」は<ruby>記憶力<rt>きおくりょく</rt></ruby>の<ruby>問題<rt>もんだい</rt></ruby>というよりも、<ruby>母性<rt>ぼせい</rt></ruby><ruby>行動<rt>こうどう</rt></ruby>を<ruby>高め<rt>たかめ</rt></ruby>るためのポジティブな<ruby>変化<rt>へんか</rt></ruby>であると<ruby>結論<rt>けつろん</rt></ruby><ruby>付け<rt>つけ</rt></ruby>られており、これまでのステレオタイプを<ruby>見直す<rt>みなおす</rt></ruby><ruby>契機<rt>けいき</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Pregnancy Reshapes the Brain to Aid Motherhood, BBC Study Shows</h2>
+              <p class="body en-body">A new study seen exclusively by the BBC has found that women lose grey matter in their brains during pregnancy. Researchers say this is not a sign of cognitive decline, but rather a positive restructuring of the brain that helps with motherhood. The findings challenge the widely-held 'baby brain' stereotype, suggesting it is time to reframe how we understand the maternal brain.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>東北新幹線<rt>とうほくしんかんせん</rt></ruby>、<ruby>停電<rt>ていでん</rt></ruby>で<ruby>一時<rt>いちじ</rt></ruby><ruby>運転<rt>うんてん</rt></ruby><ruby>見合わ<rt>みあわ</rt></ruby>せ　<ruby>午前中<rt>ごぜんちゅう</rt></ruby>に<ruby>復旧<rt>ふっきゅう</rt></ruby></h2>
+              <p class="body">4<ruby>日<rt>にち</rt></ruby><ruby>午前<rt>ごぜん</rt></ruby>5<ruby>時<rt>とき</rt></ruby>50<ruby>分<rt>ふん</rt></ruby>ごろ、<ruby>東北新幹線<rt>とうほくしんかんせん</rt></ruby>の<ruby>新<rt>しん</rt></ruby><ruby>白河<rt>しらかわ</rt></ruby>〜<ruby>福島<rt>ふくしま</rt></ruby><ruby>駅間<rt>えきかん</rt></ruby>で<ruby>停電<rt>ていでん</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>し、<ruby>東京<rt>とうきょう</rt></ruby>〜<ruby>盛岡<rt>もりおか</rt></ruby><ruby>間の<rt>まの</rt></ruby><ruby>全列車<rt>ぜんれっしゃ</rt></ruby>が<ruby>運転<rt>うんてん</rt></ruby>を<ruby>見合わ<rt>みあわ</rt></ruby>せた。<ruby>朝<rt>あさ</rt></ruby>の<ruby>通勤<rt>つうきん</rt></ruby>ラッシュと<ruby>重なっ<rt>かさなっ</rt></ruby>たため、<ruby>多く<rt>おおく</rt></ruby>の<ruby>乗客<rt>じょうきゃく</rt></ruby>に<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>出た<rt>でた</rt></ruby>。JR<ruby>東日本<rt>ひがしにほん</rt></ruby>の<ruby>担当者<rt>たんとうしゃ</rt></ruby>が<ruby>迅速<rt>じんそく</rt></ruby>に<ruby>現場<rt>げんば</rt></ruby>へ<ruby>急行<rt>きゅうこう</rt></ruby>した<ruby>結果<rt>けっか</rt></ruby>、<ruby>午前中<rt>ごぜんちゅう</rt></ruby>に<ruby>運転<rt>うんてん</rt></ruby>を<ruby>再開<rt>さいかい</rt></ruby>したが、<ruby>原因<rt>げんいん</rt></ruby>についての<ruby>調査<rt>ちょうさ</rt></ruby>は<ruby>継続中<rt>けいぞくちゅう</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Tohoku Shinkansen Halted by Power Outage, Services Resume by Morning</h2>
+              <p class="body en-body">A power outage occurred on the Tohoku Shinkansen line between Shinshirakawa and Fukushima stations at around 5:50 a.m. on Wednesday, causing the suspension of all services between Tokyo and Morioka. The disruption coincided with the morning rush hour, affecting many commuters. JR East dispatched an official to the scene and services were restored by mid-morning, though the cause of the outage is still under investigation.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>観光<rt>かんこう</rt></ruby><ruby>施設<rt>しせつ</rt></ruby>のデュアルプライシング　<ruby>国<rt>くに</rt></ruby>がガイドライン<ruby>策定<rt>さくてい</rt></ruby>へ</h2>
+              <p class="body"><ruby>訪日<rt>ほうにち</rt></ruby><ruby>外国人<rt>がいこくじん</rt></ruby>の<ruby>急増<rt>きゅうぞう</rt></ruby>に<ruby>伴う<rt>ともなう</rt></ruby>オーバーツーリズム<ruby>対策<rt>たいさく</rt></ruby>として、<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>国土<rt>こくど</rt></ruby><ruby>交通<rt>こうつう</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>は<ruby>公共<rt>こうきょう</rt></ruby>の<ruby>観光<rt>かんこう</rt></ruby><ruby>施設<rt>しせつ</rt></ruby>における「デュアルプライシング」のガイドラインを<ruby>策定<rt>さくてい</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。デュアルプライシングとは、<ruby>地元<rt>じもと</rt></ruby><ruby>住民<rt>じゅうみん</rt></ruby>と<ruby>観光客<rt>かんこうきゃく</rt></ruby>で<ruby>異なる<rt>ことなる</rt></ruby><ruby>料金<rt>りょうきん</rt></ruby>を<ruby>設定<rt>せってい</rt></ruby>する<ruby>仕組み<rt>しくみ</rt></ruby>のことで、<ruby>需要<rt>じゅよう</rt></ruby><ruby>管理<rt>かんり</rt></ruby>の<ruby>一手<rt>いって</rt></ruby><ruby>段<rt>だん</rt></ruby>として<ruby>全国各地<rt>ぜんこくかくち</rt></ruby>で<ruby>導入<rt>どうにゅう</rt></ruby>の<ruby>動き<rt>うごき</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。また、<ruby>京都市<rt>きょうとし</rt></ruby>は3<ruby>月<rt>がつ</rt></ruby>から<ruby>宿泊<rt>しゅくはく</rt></ruby><ruby>税<rt>ぜい</rt></ruby>を<ruby>引き上げ<rt>ひきあげ</rt></ruby>、<ruby>一人<rt>ひとり</rt></ruby><ruby>一泊<rt>いっぱく</rt></ruby><ruby>最大<rt>さいだい</rt></ruby>1<ruby>万円<rt>まんえん</rt></ruby>を<ruby>徴収<rt>ちょうしゅう</rt></ruby>しており、<ruby>世界<rt>せかい</rt></ruby><ruby>遺産<rt>いさん</rt></ruby>の<ruby>姫路城<rt>ひめじじょう</rt></ruby>も<ruby>入場料<rt>にゅうじょうりょう</rt></ruby>を<ruby>大幅<rt>おおはば</rt></ruby>に<ruby>値上げ<rt>ねあげ</rt></ruby>した。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan to Issue Dual Pricing Guidelines for Tourism Facilities</h2>
+              <p class="body en-body">Japan's transport minister has announced plans to develop guidelines on dual pricing at public tourism facilities, in response to growing concerns about overtourism driven by record inbound visitor numbers. Dual pricing involves setting different prices for local residents and tourists as a demand management strategy. In a related move, Kyoto raised its lodging tax to a maximum of 10,000 yen per person per night from March, while Himeji Castle also increased its entry fee significantly.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">スペースワン「カイロス3<ruby>号機<rt>ごうき</rt></ruby>」<ruby>打ち上げ<rt>うちあげ</rt></ruby><ruby>再<rt>さい</rt></ruby><ruby>延期<rt>えんき</rt></ruby>　<ruby>悪天候<rt>あくてんこう</rt></ruby>が<ruby>原因<rt>げんいん</rt></ruby></h2>
+              <p class="body"><ruby>日本<rt>にっぽん</rt></ruby>の<ruby>民間<rt>みんかん</rt></ruby>ロケット<ruby>企業<rt>きぎょう</rt></ruby>スペースワン<ruby>社<rt>しゃ</rt></ruby>は、「カイロス3<ruby>号機<rt>ごうき</rt></ruby>」の<ruby>打ち上げ<rt>うちあげ</rt></ruby>を<ruby>悪天候<rt>あくてんこう</rt></ruby>を<ruby>理由<rt>りゆう</rt></ruby>に<ruby>再度<rt>さいど</rt></ruby><ruby>延期<rt>えんき</rt></ruby>した。<ruby>打ち上げ<rt>うちあげ</rt></ruby>ウィンドウは3<ruby>月<rt>がつ</rt></ruby>25<ruby>日<rt>にち</rt></ruby>まであり、<ruby>新た<rt>あらた</rt></ruby>な<ruby>打ち上げ<rt>うちあげ</rt></ruby><ruby>日程<rt>にってい</rt></ruby>はまだ<ruby>発表<rt>はっぴょう</rt></ruby>されていない。<ruby>当日<rt>とうじつ</rt></ruby>は<ruby>約<rt>やく</rt></ruby>700<ruby>人<rt>にん</rt></ruby>のファンや<ruby>見学者<rt>けんがくしゃ</rt></ruby>が<ruby>集ま<rt>あつま</rt></ruby>っていたが、<ruby>残念<rt>ざんねん</rt></ruby>ながら<ruby>見届け<rt>みとどけ</rt></ruby>ることはできなかった。<ruby>民間<rt>みんかん</rt></ruby><ruby>宇宙<rt>うちゅう</rt></ruby><ruby>産業<rt>さんぎょう</rt></ruby>への<ruby>関心<rt>かんしん</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>る<ruby>中<rt>なか</rt></ruby>、<ruby>次回<rt>じかい</rt></ruby>の<ruby>打ち上げ<rt>うちあげ</rt></ruby><ruby>成功<rt>せいこう</rt></ruby>が<ruby>期待さ<rt>きたいさ</rt></ruby>れる。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Space One's Kairos No.3 Rocket Launch Postponed Again Due to Weather</h2>
+              <p class="body en-body">Japanese private rocket company Space One has postponed the launch of its Kairos No.3 rocket for the second time, citing unfavorable weather conditions. The launch window extends until March 25, but a new date has not yet been announced. Around 700 people had gathered to watch the launch. Interest in Japan's private space sector continues to grow, making the next attempt eagerly anticipated.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-04 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "特別な関係", "reading": "とくべつなかんけい", "english": "special relationship"}, {"word": "亀裂", "reading": "きれつ", "english": "crack / rift"}, {"word": "軍事基地", "reading": "ぐんじきち", "english": "military base"}, {"word": "波紋", "reading": "はもん", "english": "ripple / controversy"}, {"word": "帰国便", "reading": "きこくびん", "english": "repatriation flight"}], [{"word": "急騰", "reading": "きゅうとう", "english": "sudden surge / sharp rise"}, {"word": "原油価格", "reading": "げんゆかかく", "english": "crude oil price"}, {"word": "海上輸送路", "reading": "かいじょうゆそうろ", "english": "maritime shipping lane"}, {"word": "貿易制裁", "reading": "ぼうえきせいさい", "english": "trade sanctions"}, {"word": "長期化", "reading": "ちょうきか", "english": "prolongation / becoming protracted"}], [{"word": "灰白質", "reading": "かいはくしつ", "english": "grey matter"}, {"word": "再構成", "reading": "さいこうせい", "english": "restructuring / reorganisation"}, {"word": "母性行動", "reading": "ぼせいこうどう", "english": "maternal behaviour"}, {"word": "通説", "reading": "つうせつ", "english": "prevailing theory / common belief"}, {"word": "契機", "reading": "けいき", "english": "trigger / opportunity / turning point"}], [{"word": "停電", "reading": "ていでん", "english": "power outage / blackout"}, {"word": "運転見合わせ", "reading": "うんてんみあわせ", "english": "suspension of services"}, {"word": "通勤ラッシュ", "reading": "つうきんラッシュ", "english": "morning rush hour"}, {"word": "復旧", "reading": "ふっきゅう", "english": "restoration / recovery"}, {"word": "担当者", "reading": "たんとうしゃ", "english": "person in charge / official"}], [{"word": "過剰観光", "reading": "かじょうかんこう", "english": "overtourism"}, {"word": "宿泊税", "reading": "しゅくはくぜい", "english": "lodging / accommodation tax"}, {"word": "入場料", "reading": "にゅうじょうりょう", "english": "admission fee"}, {"word": "需要管理", "reading": "じゅようかんり", "english": "demand management"}, {"word": "訪日外国人", "reading": "ほうにちがいこくじん", "english": "foreign visitors to Japan / inbound tourists"}, {"word": "世界遺産", "reading": "せかいいさん", "english": "World Heritage site"}], [{"word": "延期", "reading": "えんき", "english": "postponement / delay"}, {"word": "打ち上げ", "reading": "うちあげ", "english": "launch (rocket)"}, {"word": "悪天候", "reading": "あくてんこう", "english": "bad / unfavorable weather"}, {"word": "民間企業", "reading": "みんかんきぎょう", "english": "private company"}, {"word": "宇宙産業", "reading": "うちゅうさんぎょう", "english": "space industry"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "英米「特別な関係」に亀裂　トランプ大統領がスターマー首相を批判"}, {"section": "英国・世界", "headline": "イラン情勢で原油急騰　アジア株も三日連続下落"}, {"section": "英国・世界", "headline": "妊娠で脳の灰白質が変化　「マタニティブレイン」の通説を覆す研究"}, {"section": "日本", "headline": "東北新幹線、停電で一時運転見合わせ　午前中に復旧"}, {"section": "日本", "headline": "観光施設のデュアルプライシング　国がガイドライン策定へ"}, {"section": "日本", "headline": "スペースワン「カイロス3号機」打ち上げ再延期　悪天候が原因"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
