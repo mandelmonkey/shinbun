@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月5日（木曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月5日（木曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米潜<rt>べいせん</rt></ruby><ruby>水<rt>みず</rt></ruby><ruby>艦<rt>かん</rt></ruby>がイラン<ruby>軍艦<rt>ぐんかん</rt></ruby>を<ruby>撃沈<rt>げきちん</rt></ruby>　<ruby>核施設<rt>かくしせつ</rt></ruby>への<ruby>攻撃<rt>こうげき</rt></ruby>も<ruby>衛星<rt>えいせい</rt></ruby><ruby>画像<rt>がぞう</rt></ruby>で<ruby>確認<rt>かくにん</rt></ruby></h2>
+              <p class="body">アメリカのヘグセス<ruby>国防長官<rt>こくぼうちょうかん</rt></ruby>は、<ruby>米<rt>こめ</rt></ruby><ruby>海軍<rt>かいぐん</rt></ruby>の<ruby>潜水艦<rt>せんすいかん</rt></ruby>がインド<ruby>洋<rt>ひろし</rt></ruby>でイランの<ruby>軍艦<rt>ぐんかん</rt></ruby>を<ruby>撃沈<rt>げきちん</rt></ruby>したと<ruby>発表<rt>はっぴょう</rt></ruby>した。BBCベリファイが<ruby>衛星<rt>えいせい</rt></ruby><ruby>画像<rt>がぞう</rt></ruby>を<ruby>分析<rt>ぶんせき</rt></ruby>した<ruby>結果<rt>けっか</rt></ruby>、<ruby>米<rt>こめ</rt></ruby>・イスラエルによる<ruby>一連<rt>いちれん</rt></ruby>の<ruby>攻撃<rt>こうげき</rt></ruby>でイランの<ruby>海軍<rt>かいぐん</rt></ruby><ruby>艦艇<rt>かんてい</rt></ruby>が11<ruby>隻<rt>せき</rt></ruby><ruby>以上<rt>いじょう</rt></ruby><ruby>破壊<rt>はかい</rt></ruby>され、<ruby>複数<rt>ふくすう</rt></ruby>の<ruby>核<rt>かく</rt></ruby><ruby>関連<rt>かんれん</rt></ruby><ruby>施設<rt>しせつ</rt></ruby>にも<ruby>甚大<rt>じんだい</rt></ruby>な<ruby>被害<rt>ひがい</rt></ruby>が<ruby>確認さ<rt>かくにんさ</rt></ruby>れた。こうした<ruby>激しい<rt>はげしい</rt></ruby><ruby>攻撃<rt>こうげき</rt></ruby>にもかかわらず、イランは<ruby>木曜<rt>もくよう</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>に<ruby>新た<rt>あらた</rt></ruby>な<ruby>攻撃<rt>こうげき</rt></ruby>の<ruby>波<rt>なみ</rt></ruby>を<ruby>開始<rt>かいし</rt></ruby>し、「アメリカは<ruby>苦い<rt>にがい</rt></ruby><ruby>後悔<rt>こうかい</rt></ruby>をすることになる」と<ruby>報復<rt>ほうふく</rt></ruby>を<ruby>誓っ<rt>ちかっ</rt></ruby>た。<ruby>現地<rt>げんち</rt></ruby><ruby>市民<rt>しみん</rt></ruby>からは「<ruby>毎日<rt>まいにち</rt></ruby>が<ruby>一ヶ月<rt>いっかげつ</rt></ruby>のように<ruby>感じ<rt>かんじ</rt></ruby>る」との<ruby>声<rt>こえ</rt></ruby>も<ruby>上が<rt>あが</rt></ruby>っており、<ruby>人道的<rt>じんどうてき</rt></ruby><ruby>状況<rt>じょうきょう</rt></ruby>の<ruby>悪化<rt>あっか</rt></ruby>が<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>懸念<rt>けねん</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US Sub Sinks Iranian Warship as Satellite Images Confirm Nuclear Site Strikes</h2>
+              <p class="body en-body">US Defense Secretary Hegseth announced that an American submarine sank an Iranian warship in the Indian Ocean. Analysis of satellite images by BBC Verify confirmed that over 11 Iranian naval vessels and multiple nuclear facilities have been destroyed in US-Israeli strikes. Despite the losses, Iran launched a new wave of attacks on Thursday morning, vowing that America would 'bitterly regret' the sinking.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>中国<rt>ちゅうごく</rt></ruby>、1991<ruby>年<rt>ねん</rt></ruby><ruby>以来<rt>いらい</rt></ruby><ruby>最低<rt>さいてい</rt></ruby>の<ruby>経済成長<rt>けいざいせいちょう</rt></ruby><ruby>目標<rt>もくひょう</rt></ruby>を<ruby>設定<rt>せってい</rt></ruby>　<ruby>国防<rt>こくぼう</rt></ruby><ruby>費<rt>ひ</rt></ruby>は7%<ruby>増<rt>ぞう</rt></ruby></h2>
+              <p class="body"><ruby>中国政府<rt>ちゅうごくせいふ</rt></ruby>は<ruby>全国<rt>ぜんこく</rt></ruby><ruby>人民<rt>じんみん</rt></ruby><ruby>代表<rt>だいひょう</rt></ruby><ruby>大会<rt>たいかい</rt></ruby>において、2026<ruby>年<rt>ねん</rt></ruby>の<ruby>経済成長<rt>けいざいせいちょう</rt></ruby><ruby>目標<rt>もくひょう</rt></ruby>を「4.5%<ruby>前後<rt>ぜんご</rt></ruby>」に<ruby>設定<rt>せってい</rt></ruby>した。これは1991<ruby>年<rt>ねん</rt></ruby><ruby>以来<rt>いらい</rt></ruby><ruby>最も<rt>もっとも</rt></ruby><ruby>低い<rt>ひくい</rt></ruby><ruby>目標<rt>もくひょう</rt></ruby>であり、<ruby>米国<rt>べいこく</rt></ruby>との<ruby>貿易摩擦<rt>ぼうえきまさつ</rt></ruby>や<ruby>国内<rt>こくない</rt></ruby><ruby>消費<rt>しょうひ</rt></ruby>の<ruby>低迷<rt>ていめい</rt></ruby>が<ruby>背景<rt>はいけい</rt></ruby>にあるとみられる。<ruby>一方<rt>いっぽう</rt></ruby>、<ruby>国防<rt>こくぼう</rt></ruby><ruby>費<rt>ひ</rt></ruby>は<ruby>前年比<rt>ぜんねんひ</rt></ruby>7%<ruby>増<rt>ぞう</rt></ruby>と<ruby>発表<rt>はっぴょう</rt></ruby>され、2035<ruby>年<rt>ねん</rt></ruby>までの<ruby>軍事<rt>ぐんじ</rt></ruby><ruby>近代化<rt>きんだいか</rt></ruby><ruby>計画<rt>けいかく</rt></ruby>の<ruby>一環<rt>いっかん</rt></ruby>とされている。<ruby>経済成長<rt>けいざいせいちょう</rt></ruby><ruby>目標<rt>もくひょう</rt></ruby>を<ruby>大幅<rt>おおはば</rt></ruby>に<ruby>上回る<rt>うわまわる</rt></ruby><ruby>軍事費<rt>ぐんじひ</rt></ruby>の<ruby>増額<rt>ぞうがく</rt></ruby>は、<ruby>近隣諸国<rt>きんりんしょこく</rt></ruby>の<ruby>注目<rt>ちゅうもく</rt></ruby>を<ruby>集め<rt>あつめ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">China Sets Lowest Growth Target Since 1991, Boosts Defence Spending 7%</h2>
+              <p class="body en-body">China's government set its 2026 economic growth target at 'around 4.5 percent' at the opening of the National People's Congress, the lowest figure since 1991. Trade tensions with the United States and weak domestic consumption are seen as key factors. Simultaneously, China announced a 7 percent increase in defence spending as part of its military modernisation plan targeting 2035.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英<rt>えい</rt></ruby><ruby>内務<rt>ないむ</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>、<ruby>亡命<rt>ぼうめい</rt></ruby><ruby>申請者<rt>しんせいしゃ</rt></ruby>への<ruby>支援<rt>しえん</rt></ruby><ruby>制限<rt>せいげん</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>のマフムード<ruby>内務<rt>ないむ</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>は、<ruby>亡命<rt>ぼうめい</rt></ruby><ruby>申請者<rt>しんせいしゃ</rt></ruby>への<ruby>政府<rt>せいふ</rt></ruby><ruby>支援<rt>しえん</rt></ruby>を<ruby>制限<rt>せいげん</rt></ruby>する<ruby>新た<rt>あらた</rt></ruby>な<ruby>方針<rt>ほうしん</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>移民<rt>いみん</rt></ruby><ruby>制度<rt>せいど</rt></ruby>への「<ruby>信頼<rt>しんらい</rt></ruby>を<ruby>取り<rt>とり</rt></ruby><ruby>戻す<rt>もどす</rt></ruby>」ことが<ruby>目的<rt>もくてき</rt></ruby>であるとし、<ruby>不正<rt>ふせい</rt></ruby><ruby>受給<rt>じゅきゅう</rt></ruby>の<ruby>防止<rt>ぼうし</rt></ruby>と<ruby>制度<rt>せいど</rt></ruby>の<ruby>持続<rt>じぞく</rt></ruby><ruby>可能性<rt>かのうせい</rt></ruby><ruby>向上<rt>こうじょう</rt></ruby>を<ruby>狙い<rt>ねらい</rt></ruby>としている。<ruby>人道<rt>じんどう</rt></ruby><ruby>支援<rt>しえん</rt></ruby><ruby>団体<rt>だんたい</rt></ruby>や<ruby>一部<rt>いちぶ</rt></ruby>の<ruby>議員<rt>ぎいん</rt></ruby>からは、<ruby>根本的<rt>こんぽんてき</rt></ruby>な<ruby>解決策<rt>かいけつさく</rt></ruby>にはならないとの<ruby>批判<rt>ひはん</rt></ruby>の<ruby>声<rt>こえ</rt></ruby>が<ruby>上が<rt>あが</rt></ruby>っており、<ruby>今後<rt>こんご</rt></ruby>の<ruby>国会<rt>こっかい</rt></ruby>での<ruby>議論<rt>ぎろん</rt></ruby>が<ruby>注目<rt>ちゅうもく</rt></ruby>される。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK Home Secretary Announces Curbs on Asylum Seeker Support</h2>
+              <p class="body en-body">UK Home Secretary Mahmood announced new restrictions on government support for asylum seekers, describing the move as essential to restore 'trust' in the immigration system. The policy aims to reduce fraudulent claims and improve the system's sustainability. Humanitarian organisations and some lawmakers have criticised the plan, arguing it fails to address the root causes of the asylum crisis.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>重症<rt>じゅうしょう</rt></ruby>てんかん「ドラベ<ruby>症候群<rt>しょうこうぐん</rt></ruby>」に<ruby>画期的<rt>かっきてき</rt></ruby><ruby>新薬<rt>しんやく</rt></ruby>　<ruby>家族<rt>かぞく</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby>を<ruby>一変<rt>いっぺん</rt></ruby></h2>
+              <p class="body"><ruby>重症<rt>じゅうしょう</rt></ruby><ruby>型<rt>かた</rt></ruby>てんかんの<ruby>一種<rt>いっしゅ</rt></ruby>であるドラベ<ruby>症候群<rt>しょうこうぐん</rt></ruby>を<ruby>持つ<rt>もつ</rt></ruby><ruby>子供<rt>こども</rt></ruby>たちに<ruby>対し<rt>たいし</rt></ruby>、<ruby>画期的<rt>かっきてき</rt></ruby>な<ruby>新薬<rt>しんやく</rt></ruby>の<ruby>投与<rt>とうよ</rt></ruby>が<ruby>始まり<rt>はじまり</rt></ruby>、<ruby>患者<rt>かんじゃ</rt></ruby><ruby>家族<rt>かぞく</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby>を<ruby>大きく<rt>おおきく</rt></ruby><ruby>変え<rt>かえ</rt></ruby>つつある。これまで<ruby>有効<rt>ゆうこう</rt></ruby>な<ruby>治療法<rt>ちりょうほう</rt></ruby>が<ruby>限ら<rt>かぎら</rt></ruby>れていた<ruby>同<rt>どう</rt></ruby><ruby>疾患<rt>しっかん</rt></ruby>において、<ruby>新薬<rt>しんやく</rt></ruby>は<ruby>発作<rt>ほっさ</rt></ruby>の<ruby>頻度<rt>ひんど</rt></ruby>を<ruby>大幅<rt>おおはば</rt></ruby>に<ruby>低減<rt>ていげん</rt></ruby>する<ruby>効果<rt>こうか</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>ており、<ruby>医療<rt>いりょう</rt></ruby><ruby>界<rt>かい</rt></ruby>では「てんかん<ruby>治療<rt>ちりょう</rt></ruby>の<ruby>新た<rt>あらた</rt></ruby>な<ruby>突破口<rt>とっぱこう</rt></ruby>」として<ruby>高い<rt>たかい</rt></ruby><ruby>期待<rt>きたい</rt></ruby>が<ruby>寄せ<rt>よせ</rt></ruby>られている。<ruby>子供<rt>こども</rt></ruby>たちの<ruby>質<rt>しつ</rt></ruby>の<ruby>高い<rt>たかい</rt></ruby><ruby>生活<rt>せいかつ</rt></ruby>への<ruby>希望<rt>きぼう</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Breakthrough Drug Transforms Lives of Children with Dravet Syndrome</h2>
+              <p class="body en-body">A groundbreaking new drug for Dravet syndrome, a severe form of childhood epilepsy, is dramatically improving the lives of affected families. The treatment significantly reduces the frequency of seizures in a condition that had previously offered few effective options. Medical professionals have described it as a major step forward in epilepsy treatment.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">WBC<ruby>東京大会<rt>とうきょうたいかい</rt></ruby>が<ruby>開幕<rt>かいまく</rt></ruby>　オーストラリアが<ruby>台湾<rt>たいわん</rt></ruby>を3<ruby>対<rt>つい</rt></ruby>0で<ruby>下す<rt>くだす</rt></ruby></h2>
+              <p class="body">ワールド・ベースボール・クラシック（WBC）が5<ruby>日<rt>にち</rt></ruby>、<ruby>東京<rt>とうきょう</rt></ruby>ドームで<ruby>開幕<rt>かいまく</rt></ruby>した。<ruby>初戦<rt>しょせん</rt></ruby>ではオーストラリアが<ruby>台湾<rt>たいわん</rt></ruby>を3<ruby>対<rt>つい</rt></ruby>0で<ruby>下し<rt>くだし</rt></ruby>、<ruby>台湾<rt>たいわん</rt></ruby>から<ruby>駆け<rt>かけ</rt></ruby>つけた<ruby>数千人<rt>すうせんにん</rt></ruby>のサポーターを<ruby>沸か<rt>わか</rt></ruby>せた。<ruby>東京<rt>とうきょう</rt></ruby><ruby>開催<rt>かいさい</rt></ruby>をきっかけに<ruby>世界中<rt>せかいじゅう</rt></ruby>で<ruby>野球<rt>やきゅう</rt></ruby>への<ruby>関心<rt>かんしん</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>る<ruby>中<rt>なか</rt></ruby>、<ruby>日本代表<rt>にほんだいひょう</rt></ruby>チームの<ruby>活躍<rt>かつやく</rt></ruby>にも<ruby>期待<rt>きたい</rt></ruby>が<ruby>集ま<rt>あつま</rt></ruby>っている。<ruby>今大会<rt>こんたいかい</rt></ruby>は3<ruby>月<rt>がつ</rt></ruby>25<ruby>日<rt>にち</rt></ruby>まで<ruby>国内<rt>こくない</rt></ruby><ruby>各地<rt>かくち</rt></ruby>で<ruby>開催<rt>かいさい</rt></ruby>される<ruby>予定<rt>よてい</rt></ruby>だ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">World Baseball Classic Opens in Tokyo as Australia Defeats Taiwan 3-0</h2>
+              <p class="body en-body">The World Baseball Classic opened Thursday at Tokyo Dome, with Australia defeating Taiwan 3-0 in the tournament's first game. Thousands of passionate Taiwanese fans who had travelled to Tokyo cheered their team throughout. Attention now turns to Japan's national team, with the host nation's games among the most anticipated of the tournament.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>中国<rt>ちゅうごく</rt></ruby>の<ruby>軍事費<rt>ぐんじひ</rt></ruby>7%<ruby>増<rt>ぞう</rt></ruby>　<ruby>東<rt>ひがし</rt></ruby>アジアの<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>に<ruby>影響<rt>えいきょう</rt></ruby>か</h2>
+              <p class="body"><ruby>中国<rt>ちゅうごく</rt></ruby>が2026<ruby>年<rt>ねん</rt></ruby>の<ruby>国防<rt>こくぼう</rt></ruby><ruby>費<rt>ひ</rt></ruby>を<ruby>前年比<rt>ぜんねんひ</rt></ruby>7%<ruby>増<rt>ぞう</rt></ruby>とすると<ruby>発表<rt>はっぴょう</rt></ruby>したことを<ruby>受け<rt>うけ</rt></ruby>、<ruby>日本国内<rt>にほんこくない</rt></ruby>では<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby><ruby>政策<rt>せいさく</rt></ruby>への<ruby>関心<rt>かんしん</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>高ま<rt>たかま</rt></ruby>っている。<ruby>増加率<rt>ぞうかりつ</rt></ruby>は<ruby>過去<rt>かこ</rt></ruby>5<ruby>年<rt>ねん</rt></ruby>で<ruby>最も<rt>もっとも</rt></ruby><ruby>低い<rt>ひくい</rt></ruby>ものの、<ruby>経済成長<rt>けいざいせいちょう</rt></ruby><ruby>目標<rt>もくひょう</rt></ruby>を<ruby>大幅<rt>おおはば</rt></ruby>に<ruby>上回る<rt>うわまわる</rt></ruby>ペースであり、<ruby>近隣諸国<rt>きんりんしょこく</rt></ruby>への<ruby>軍事的<rt>ぐんじてき</rt></ruby>プレッシャーが<ruby>増し<rt>まし</rt></ruby>ていると<ruby>専門家<rt>せんもんか</rt></ruby>は<ruby>指摘<rt>してき</rt></ruby>する。<ruby>日本政府<rt>にほんせいふ</rt></ruby>は<ruby>防衛費<rt>ぼうえいひ</rt></ruby>の<ruby>増額<rt>ぞうがく</rt></ruby>と<ruby>日米<rt>にちべい</rt></ruby><ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby><ruby>協力<rt>きょうりょく</rt></ruby>の<ruby>強化<rt>きょうか</rt></ruby>を<ruby>進め<rt>すすめ</rt></ruby>ており、<ruby>東<rt>ひがし</rt></ruby>アジアの<ruby>地政学<rt>ちせいがく</rt></ruby><ruby>的<rt>てき</rt></ruby><ruby>均衡<rt>きんこう</rt></ruby>に<ruby>注目<rt>ちゅうもく</rt></ruby>が<ruby>集ま<rt>あつま</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">China's 7% Defence Hike Raises East Asian Security Concerns</h2>
+              <p class="body en-body">China's announcement of a 7 percent rise in defence spending has renewed focus on Japan's own security policy. While the growth rate is the lowest in five years, it still far outpaces China's economic growth target, signalling sustained military ambition. Japan's government has been increasing its defence budget and deepening security cooperation with the United States in response.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby>で<ruby>原油<rt>げんゆ</rt></ruby><ruby>高騰<rt>こうとう</rt></ruby>　エネルギー<ruby>輸入<rt>ゆにゅう</rt></ruby><ruby>依存<rt>いぞん</rt></ruby>の<ruby>日本<rt>にっぽん</rt></ruby>に<ruby>影響<rt>えいきょう</rt></ruby></h2>
+              <p class="body"><ruby>中東<rt>ちゅうとう</rt></ruby>でのイラン<ruby>紛争<rt>ふんそう</rt></ruby>が<ruby>長期化<rt>ちょうきか</rt></ruby>する<ruby>中<rt>なか</rt></ruby>、<ruby>国際原油価格<rt>こくさいげんゆかかく</rt></ruby>が<ruby>高<rt>たか</rt></ruby><ruby>止まり<rt>どまり</rt></ruby>している。エネルギーの9<ruby>割<rt>わり</rt></ruby><ruby>以上<rt>いじょう</rt></ruby>を<ruby>輸入<rt>ゆにゅう</rt></ruby>に<ruby>頼る<rt>たよる</rt></ruby><ruby>日本<rt>にっぽん</rt></ruby>にとって、<ruby>原油価格<rt>げんゆかかく</rt></ruby>の<ruby>上昇<rt>じょうしょう</rt></ruby>はガソリン<ruby>代<rt>だい</rt></ruby>や<ruby>電気料金<rt>でんきりょうきん</rt></ruby>の<ruby>値上がり<rt>ねあがり</rt></ruby>を<ruby>通じ<rt>つうじ</rt></ruby>て<ruby>家計<rt>かけい</rt></ruby>や<ruby>企業<rt>きぎょう</rt></ruby>に<ruby>直接<rt>ちょくせつ</rt></ruby><ruby>打撃<rt>だげき</rt></ruby>を<ruby>与え<rt>あたえ</rt></ruby>る。<ruby>専門家<rt>せんもんか</rt></ruby>は<ruby>再生可能<rt>さいせいかのう</rt></ruby>エネルギーへの<ruby>移行<rt>いこう</rt></ruby><ruby>加速<rt>かそく</rt></ruby>とエネルギー<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby><ruby>戦略<rt>せんりゃく</rt></ruby>の<ruby>抜本的<rt>ばっぽんてき</rt></ruby>な<ruby>見直し<rt>みなおし</rt></ruby>が<ruby>急務<rt>きゅうむ</rt></ruby>だと<ruby>指摘<rt>してき</rt></ruby>しており、<ruby>政府<rt>せいふ</rt></ruby>の<ruby>対応<rt>たいおう</rt></ruby>が<ruby>問わ<rt>とわ</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Rising Oil Prices Amid Iran Conflict Squeeze Energy-Dependent Japan</h2>
+              <p class="body en-body">International oil prices remain elevated as the Iran conflict continues in the Middle East. Japan, which imports over 90 percent of its energy needs, faces significant pressure on household and business budgets through rising petrol and electricity prices. Experts are calling for an accelerated shift to renewable energy and a fundamental review of Japan's energy security strategy.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-05 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "撃沈", "reading": "げきちん", "english": "sinking (a vessel)"}, {"word": "核関連施設", "reading": "かくかんれんしせつ", "english": "nuclear-related facilities"}, {"word": "衛星画像", "reading": "えいせいがぞう", "english": "satellite imagery"}, {"word": "報復", "reading": "ほうふく", "english": "retaliation / reprisal"}, {"word": "人道的", "reading": "じんどうてき", "english": "humanitarian"}], [{"word": "全国人民代表大会", "reading": "ぜんこくじんみんだいひょうたいかい", "english": "National People's Congress"}, {"word": "経済成長目標", "reading": "けいざいせいちょうもくひょう", "english": "economic growth target"}, {"word": "貿易摩擦", "reading": "ぼうえきまさつ", "english": "trade friction"}, {"word": "国防費", "reading": "こくぼうひ", "english": "defence spending"}, {"word": "近代化", "reading": "きんだいか", "english": "modernisation"}], [{"word": "内務大臣", "reading": "ないむだいじん", "english": "Home Secretary"}, {"word": "亡命申請者", "reading": "ぼうめいしんせいしゃ", "english": "asylum seeker"}, {"word": "不正受給", "reading": "ふせいじゅきゅう", "english": "fraudulent benefit claims"}, {"word": "持続可能性", "reading": "じぞくかのうせい", "english": "sustainability"}, {"word": "人道支援団体", "reading": "じんどうしえんだんたい", "english": "humanitarian organisation"}], [{"word": "てんかん", "reading": "てんかん", "english": "epilepsy"}, {"word": "発作", "reading": "ほっさ", "english": "seizure / fit"}, {"word": "画期的", "reading": "かっきてき", "english": "groundbreaking / epoch-making"}, {"word": "低減", "reading": "ていげん", "english": "reduction"}, {"word": "突破口", "reading": "とっぱこう", "english": "breakthrough"}], [{"word": "開幕", "reading": "かいまく", "english": "opening of an event"}, {"word": "代表チーム", "reading": "だいひょうちーむ", "english": "national team"}, {"word": "超満員", "reading": "ちょうまんいん", "english": "packed to capacity"}, {"word": "サポーター", "reading": "さぽーたー", "english": "fans / supporters"}, {"word": "開催", "reading": "かいさい", "english": "hosting / holding of an event"}], [{"word": "軍事費", "reading": "ぐんじひ", "english": "military expenditure"}, {"word": "前年比", "reading": "ぜんねんひ", "english": "year-on-year comparison"}, {"word": "安全保障", "reading": "あんぜんほしょう", "english": "national security"}, {"word": "地政学的", "reading": "ちせいがくてき", "english": "geopolitical"}, {"word": "均衡", "reading": "きんこう", "english": "balance / equilibrium"}], [{"word": "高止まり", "reading": "たかどまり", "english": "remaining at high levels"}, {"word": "電気料金", "reading": "でんきりょうきん", "english": "electricity rates"}, {"word": "再生可能エネルギー", "reading": "さいせいかのうえねるぎー", "english": "renewable energy"}, {"word": "抜本的", "reading": "ばっぽんてき", "english": "fundamental / radical"}, {"word": "エネルギー安全保障", "reading": "えねるぎーあんぜんほしょう", "english": "energy security"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "米潜水艦がイラン軍艦を撃沈　核施設への攻撃も衛星画像で確認"}, {"section": "英国・世界", "headline": "中国、1991年以来最低の経済成長目標を設定　国防費は7%増"}, {"section": "英国・世界", "headline": "英内務大臣、亡命申請者への支援制限を発表"}, {"section": "英国・世界", "headline": "重症てんかん「ドラベ症候群」に画期的新薬　家族の生活を一変"}, {"section": "日本", "headline": "WBC東京大会が開幕　オーストラリアが台湾を3対0で下す"}, {"section": "日本", "headline": "中国の軍事費7%増　東アジアの安全保障に影響か"}, {"section": "日本", "headline": "中東情勢で原油高騰　エネルギー輸入依存の日本に影響"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
