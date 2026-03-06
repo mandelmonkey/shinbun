@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月6日（金曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月6日（金曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イランで<ruby>学校<rt>がっこう</rt></ruby>と<ruby>軍事<rt>ぐんじ</rt></ruby><ruby>施設<rt>しせつ</rt></ruby>に<ruby>攻撃<rt>こうげき</rt></ruby>　168<ruby>人死<rt>ひとじに</rt></ruby><ruby>亡<rt>ぼう</rt></ruby></h2>
+              <p class="body">イランで<ruby>学校<rt>がっこう</rt></ruby>と<ruby>隣接<rt>りんせつ</rt></ruby>する<ruby>軍事<rt>ぐんじ</rt></ruby><ruby>施設<rt>しせつ</rt></ruby>が<ruby>複数回<rt>ふくすうかい</rt></ruby>にわたって<ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、<ruby>当局<rt>とうきょく</rt></ruby>は168<ruby>人<rt>にん</rt></ruby>が<ruby>死亡<rt>しぼう</rt></ruby>したと<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>衛星<rt>えいせい</rt></ruby><ruby>画像<rt>がぞう</rt></ruby>の<ruby>分析<rt>ぶんせき</rt></ruby>でも<ruby>甚大<rt>じんだい</rt></ruby>な<ruby>被害<rt>ひがい</rt></ruby>が<ruby>確認さ<rt>かくにんさ</rt></ruby>れており、<ruby>国際社会<rt>こくさいしゃかい</rt></ruby>は<ruby>強い<rt>つよい</rt></ruby><ruby>懸念<rt>けねん</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>ている。イランは<ruby>持久力<rt>じきゅうりょく</rt></ruby>と<ruby>抑止<rt>よくし</rt></ruby><ruby>力<rt>ちから</rt></ruby>を<ruby>重視<rt>じゅうし</rt></ruby>した<ruby>戦略<rt>せんりゃく</rt></ruby>をとっており、<ruby>停戦<rt>ていせん</rt></ruby>の<ruby>見通し<rt>みとおし</rt></ruby>は<ruby>立っ<rt>たっ</rt></ruby>ていない。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Iranian school and military base struck — 168 reported dead</h2>
+              <p class="body en-body">Iranian authorities say at least 168 people were killed after a school and a nearby military base were struck multiple times. Satellite imagery confirmed the scale of the destruction. Iran has signalled it intends to endure the strikes in a strategy built on attrition and deterrence, with no ceasefire in sight.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英<rt>えい</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>が<ruby>中東<rt>ちゅうとう</rt></ruby>から<ruby>自国民<rt>じこくみん</rt></ruby>を<ruby>避難<rt>ひなん</rt></ruby>　スタンステッド<ruby>空港<rt>くうこう</rt></ruby>に<ruby>到着<rt>とうちゃく</rt></ruby></h2>
+              <p class="body">イギリス<ruby>政府<rt>せいふ</rt></ruby>は<ruby>中東<rt>ちゅうとう</rt></ruby>の<ruby>紛争<rt>ふんそう</rt></ruby><ruby>地帯<rt>ちたい</rt></ruby>に<ruby>滞在<rt>たいざい</rt></ruby>する<ruby>自国民<rt>じこくみん</rt></ruby>を<ruby>避難<rt>ひなん</rt></ruby>させるため、<ruby>政府<rt>せいふ</rt></ruby>が<ruby>手配<rt>てはい</rt></ruby>した<ruby>最初<rt>さいしょ</rt></ruby>のチャーター<ruby>便<rt>びん</rt></ruby>を<ruby>運航<rt>うんこう</rt></ruby>した。<ruby>機体<rt>きたい</rt></ruby>は<ruby>現地時間<rt>げんちじかん</rt></ruby>の<ruby>金曜<rt>きんよう</rt></ruby><ruby>早朝<rt>そうちょう</rt></ruby>、ロンドンのスタンステッド<ruby>空港<rt>くうこう</rt></ruby>に<ruby>到着<rt>とうちゃく</rt></ruby>した。<ruby>乗客<rt>じょうきゃく</rt></ruby>たちは<ruby>急ぎ足<rt>いそぎあし</rt></ruby>での<ruby>搭乗<rt>とうじょう</rt></ruby>を「まるで<ruby>現実<rt>げんじつ</rt></ruby>とは<ruby>思え<rt>おもえ</rt></ruby>ない<ruby>体験<rt>たいけん</rt></ruby>だった」と<ruby>語っ<rt>かたっ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK government evacuates Britons from Middle East on first charter flight</h2>
+              <p class="body en-body">The UK government flew its first officially organised charter flight evacuating British nationals from the Middle East conflict zone. The plane landed at London's Stansted Airport in the early hours of Friday. Passengers described the frantic scramble to board as 'surreal'.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">マドゥロ<ruby>拘束<rt>こうそく</rt></ruby>を<ruby>契機<rt>けいき</rt></ruby>に<ruby>米<rt>こめ</rt></ruby>・ベネズエラが<ruby>外交関係<rt>がいこうかんけい</rt></ruby>を<ruby>再開<rt>さいかい</rt></ruby>へ</h2>
+              <p class="body">アメリカがベネズエラのマドゥロ<ruby>前<rt>まえ</rt></ruby><ruby>大統領<rt>だいとうりょう</rt></ruby><ruby>夫妻<rt>ふさい</rt></ruby>を<ruby>拘束<rt>こうそく</rt></ruby>したことを<ruby>契機<rt>けいき</rt></ruby>に、<ruby>長年<rt>ながねん</rt></ruby><ruby>断絶<rt>だんぜつ</rt></ruby>していた<ruby>両国<rt>りょうごく</rt></ruby>は<ruby>外交関係<rt>がいこうかんけい</rt></ruby>の<ruby>再開<rt>さいかい</rt></ruby>に<ruby>合意<rt>ごうい</rt></ruby>した。<ruby>米政府<rt>べいせいふ</rt></ruby>は<ruby>地域<rt>ちいき</rt></ruby>の<ruby>安定<rt>あんてい</rt></ruby><ruby>促進<rt>そくしん</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>て<ruby>共同<rt>きょうどう</rt></ruby>で<ruby>取り組む<rt>とりくむ</rt></ruby><ruby>方針<rt>ほうしん</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。マドゥロ<ruby>氏<rt>し</rt></ruby>は<ruby>腐敗<rt>ふはい</rt></ruby>や<ruby>麻薬<rt>まやく</rt></ruby><ruby>密輸<rt>みつゆ</rt></ruby>などに<ruby>関わ<rt>かかわ</rt></ruby>る<ruby>複数<rt>ふくすう</rt></ruby>の<ruby>容疑<rt>ようぎ</rt></ruby>で<ruby>起訴<rt>きそ</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US and Venezuela agree to restore diplomatic ties after Maduro's capture</h2>
+              <p class="body en-body">The United States and Venezuela agreed to restore diplomatic ties after the US seizure of former President Nicolás Maduro and his wife. Washington said both sides would work jointly to promote regional stability. Maduro faces multiple charges including corruption and drug trafficking.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イラン<ruby>紛争<rt>ふんそう</rt></ruby>でエネルギー<ruby>価格<rt>かかく</rt></ruby><ruby>急騰<rt>きゅうとう</rt></ruby>　<ruby>英国<rt>えいこく</rt></ruby><ruby>家計<rt>かけい</rt></ruby>を<ruby>直撃<rt>ちょくげき</rt></ruby></h2>
+              <p class="body">イランをめぐる<ruby>戦争<rt>せんそう</rt></ruby>の<ruby>影響<rt>えいきょう</rt></ruby>で<ruby>燃料<rt>ねんりょう</rt></ruby>・ガスの<ruby>卸売<rt>おろしうり</rt></ruby><ruby>価格<rt>かかく</rt></ruby>が<ruby>急騰<rt>きゅうとう</rt></ruby>し、イギリス<ruby>国内<rt>こくない</rt></ruby>の<ruby>企業<rt>きぎょう</rt></ruby>が<ruby>固定<rt>こてい</rt></ruby>エネルギー<ruby>契約<rt>けいやく</rt></ruby>を<ruby>次々<rt>つぎつぎ</rt></ruby>と<ruby>撤回<rt>てっかい</rt></ruby>している。<ruby>調査<rt>ちょうさ</rt></ruby>では<ruby>過去<rt>かこ</rt></ruby>1<ruby>年<rt>ねん</rt></ruby>で<ruby>英国内<rt>えいこくない</rt></ruby>の7<ruby>分<rt>ふん</rt></ruby>の1の<ruby>店舗<rt>てんぽ</rt></ruby>がキャッシュレスに<ruby>転換<rt>てんかん</rt></ruby>したことも<ruby>明らか<rt>あきらか</rt></ruby>になり、<ruby>中小<rt>ちゅうしょう</rt></ruby><ruby>小売業<rt>こうりぎょう</rt></ruby><ruby>者<rt>もの</rt></ruby>への<ruby>圧力<rt>あつりょく</rt></ruby>が<ruby>増し<rt>まし</rt></ruby>ている。<ruby>専門家<rt>せんもんか</rt></ruby>は<ruby>今後<rt>こんご</rt></ruby>さらなる<ruby>家計<rt>かけい</rt></ruby>への<ruby>打撃<rt>だげき</rt></ruby>を<ruby>警告し<rt>けいこくし</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Iran conflict sends UK energy prices soaring, households warned of higher bills</h2>
+              <p class="body en-body">Fuel and gas wholesale prices have surged as the conflict in Iran roils global energy markets, with UK firms pulling fixed-price energy deals in response. A separate survey revealed one in seven UK high street shops has gone cashless over the past year. Economists warn households face further financial pressure in the months ahead.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">スペースワン「カイロス3<ruby>号機<rt>ごうき</rt></ruby>」<ruby>打ち上げ<rt>うちあげ</rt></ruby>68<ruby>秒後<rt>びょうご</rt></ruby>に<ruby>飛行中<rt>ひこうちゅう</rt></ruby><ruby>断<rt>だん</rt></ruby></h2>
+              <p class="body"><ruby>日本<rt>にっぽん</rt></ruby>のスタートアップ「スペースワン」は5<ruby>日<rt>にち</rt></ruby>、<ruby>和歌山県<rt>わかやまけん</rt></ruby><ruby>串本<rt>くしもと</rt></ruby><ruby>町<rt>まち</rt></ruby>の<ruby>民間<rt>みんかん</rt></ruby><ruby>宇宙<rt>うちゅう</rt></ruby><ruby>港<rt>みなと</rt></ruby>「スペースポート<ruby>紀伊<rt>きい</rt></ruby>」からロケット「カイロス3<ruby>号機<rt>ごうき</rt></ruby>」を<ruby>打ち上げ<rt>うちあげ</rt></ruby>たが、68<ruby>秒後<rt>びょうご</rt></ruby>に<ruby>自律<rt>じりつ</rt></ruby><ruby>飛行中<rt>ひこうちゅう</rt></ruby><ruby>断<rt>だん</rt></ruby>システムが<ruby>作動<rt>さどう</rt></ruby>し、<ruby>飛行<rt>ひこう</rt></ruby>を<ruby>中止<rt>ちゅうし</rt></ruby>した。<ruby>高度<rt>こうど</rt></ruby><ruby>約<rt>やく</rt></ruby>30キロに<ruby>達し<rt>たっし</rt></ruby>た<ruby>後<rt>のち</rt></ruby>、<ruby>機体<rt>きたい</rt></ruby>は<ruby>自律的<rt>じりつてき</rt></ruby>に<ruby>破壊<rt>はかい</rt></ruby>された。<ruby>社長<rt>しゃちょう</rt></ruby>の<ruby>豊田<rt>とよだ</rt></ruby><ruby>正和<rt>まさかず</rt></ruby><ruby>氏<rt>し</rt></ruby>は「<ruby>心<rt>こころ</rt></ruby>からお<ruby>詫び<rt>わび</rt></ruby><ruby>申し上げ<rt>もうしあげ</rt></ruby>る」と<ruby>謝罪<rt>しゃざい</rt></ruby>したが、<ruby>今後<rt>こんご</rt></ruby>も<ruby>年間<rt>ねんかん</rt></ruby>20<ruby>回<rt>かい</rt></ruby>の<ruby>打ち上げ<rt>うちあげ</rt></ruby>を<ruby>目指す<rt>めざす</rt></ruby><ruby>姿勢<rt>しせい</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japanese startup Space One aborts Kairos No.3 rocket just 68 seconds after launch</h2>
+              <p class="body en-body">Japanese space startup Space One launched its Kairos No. 3 rocket from the Spaceport Kii private launch facility in Kushimoto, Wakayama, on Thursday, but the mission was aborted 68 seconds after liftoff when the autonomous flight termination system activated at an altitude of around 30 kilometres. It was the company's third consecutive failed launch. President Masakazu Toyoda apologised and reaffirmed the company's goal of 20 missions per year by the late 2020s.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>政府<rt>せいふ</rt></ruby>、<ruby>中東<rt>ちゅうとう</rt></ruby>の<ruby>邦人<rt>ほうじん</rt></ruby><ruby>保護<rt>ほご</rt></ruby>へチャーター<ruby>機<rt>き</rt></ruby>を<ruby>派遣<rt>はけん</rt></ruby></h2>
+              <p class="body"><ruby>外務省<rt>がいむしょう</rt></ruby>は<ruby>中東<rt>ちゅうとう</rt></ruby>の<ruby>紛争<rt>ふんそう</rt></ruby><ruby>地帯<rt>ちたい</rt></ruby>に<ruby>滞在<rt>たいざい</rt></ruby>する<ruby>邦人<rt>ほうじん</rt></ruby>を<ruby>保護<rt>ほご</rt></ruby>するため、チャーター<ruby>機<rt>き</rt></ruby>を<ruby>用いた<rt>もちいた</rt></ruby><ruby>避難<rt>ひなん</rt></ruby><ruby>作戦<rt>さくせん</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>を<ruby>固め<rt>かため</rt></ruby>た。イギリスなど<ruby>複数<rt>ふくすう</rt></ruby>の<ruby>国々<rt>くにぐに</rt></ruby>が<ruby>同様<rt>どうよう</rt></ruby>の<ruby>措置<rt>そち</rt></ruby>をとる<ruby>中<rt>なか</rt></ruby>、<ruby>日本<rt>にっぽん</rt></ruby>も<ruby>自国民<rt>じこくみん</rt></ruby>の<ruby>安全確保<rt>あんぜんかくほ</rt></ruby>を<ruby>最優先<rt>さいゆうせん</rt></ruby>とした<ruby>対応<rt>たいおう</rt></ruby>を<ruby>迫ら<rt>せまら</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan to charter aircraft to evacuate nationals from war-hit Middle East</h2>
+              <p class="body en-body">Japan's foreign ministry has announced plans to charter aircraft to evacuate Japanese nationals from Middle East conflict zones. The decision mirrors similar moves by the UK and other countries. The government said protecting nationals abroad remains its highest priority amid the ongoing conflict.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イラン<ruby>紛争<rt>ふんそう</rt></ruby>が<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>石油<rt>せきゆ</rt></ruby>・<ruby>経済<rt>けいざい</rt></ruby>に<ruby>影<rt>かげ</rt></ruby>　エネルギー<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>に<ruby>懸念<rt>けねん</rt></ruby></h2>
+              <p class="body"><ruby>日本<rt>にっぽん</rt></ruby>は<ruby>石油<rt>せきゆ</rt></ruby><ruby>輸入量<rt>ゆにゅうりょう</rt></ruby>の<ruby>多く<rt>おおく</rt></ruby>を<ruby>中東<rt>ちゅうとう</rt></ruby>に<ruby>依存<rt>いぞん</rt></ruby>しており、イランをめぐる<ruby>紛争<rt>ふんそう</rt></ruby>の<ruby>深刻化<rt>しんこくか</rt></ruby>が<ruby>石油供給<rt>せきゆきょうきゅう</rt></ruby>とエネルギー<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>に<ruby>重大な<rt>じゅうだいな</rt></ruby>リスクをもたらしている。<ruby>専門家<rt>せんもんか</rt></ruby>は、<ruby>戦闘<rt>せんとう</rt></ruby>が<ruby>長引け<rt>ながびけ</rt></ruby>ば<ruby>石油<rt>せきゆ</rt></ruby><ruby>価格<rt>かかく</rt></ruby>の<ruby>急騰<rt>きゅうとう</rt></ruby>が<ruby>製造業<rt>せいぞうぎょう</rt></ruby>や<ruby>一般家庭<rt>いっぱんかてい</rt></ruby>に<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>打撃<rt>だげき</rt></ruby>を<ruby>与え<rt>あたえ</rt></ruby>ると<ruby>警告し<rt>けいこくし</rt></ruby>ており、<ruby>政府<rt>せいふ</rt></ruby>はサプライチェーンへの<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>注視<rt>ちゅうし</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Iran conflict clouds Japan's oil supply and energy security outlook</h2>
+              <p class="body en-body">Japan imports a large share of its oil from the Middle East, leaving its economy exposed as the conflict in Iran deepens. Energy security analysts warn that prolonged fighting could trigger sharp oil price spikes, dealing a serious blow to manufacturers and households alike. The government says it is closely monitoring supply chain risks.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-06 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "軍事施設", "reading": "ぐんじしせつ", "english": "military facility"}, {"word": "衛星画像", "reading": "えいせいがぞう", "english": "satellite imagery"}, {"word": "当局", "reading": "とうきょく", "english": "authorities"}, {"word": "持久力", "reading": "じきゅうりょく", "english": "endurance / staying power"}, {"word": "抑止力", "reading": "よくしりょく", "english": "deterrence"}, {"word": "停戦", "reading": "ていせん", "english": "ceasefire"}], [{"word": "紛争地帯", "reading": "ふんそうちたい", "english": "conflict zone"}, {"word": "避難", "reading": "ひなん", "english": "evacuation / refuge"}, {"word": "チャーター便", "reading": "ちゃーたーびん", "english": "charter flight"}, {"word": "乗客", "reading": "じょうきゃく", "english": "passenger"}, {"word": "搭乗", "reading": "とうじょう", "english": "boarding (a plane)"}], [{"word": "拘束", "reading": "こうそく", "english": "detention / seizure"}, {"word": "外交関係", "reading": "がいこうかんけい", "english": "diplomatic relations"}, {"word": "再開", "reading": "さいかい", "english": "resumption / restart"}, {"word": "安定促進", "reading": "あんていそくしん", "english": "promotion of stability"}, {"word": "腐敗", "reading": "ふはい", "english": "corruption"}, {"word": "麻薬密輸", "reading": "まやくみつゆ", "english": "drug trafficking"}], [{"word": "卸売価格", "reading": "おろしうりかかく", "english": "wholesale price"}, {"word": "急騰", "reading": "きゅうとう", "english": "sharp price rise / surge"}, {"word": "固定契約", "reading": "こていけいやく", "english": "fixed-price contract"}, {"word": "撤回", "reading": "てっかい", "english": "withdrawal / retraction"}, {"word": "家計", "reading": "かけい", "english": "household finances"}, {"word": "中小小売業者", "reading": "ちゅうしょうこうりぎょうしゃ", "english": "small and medium-sized retailers"}], [{"word": "打ち上げ", "reading": "うちあげ", "english": "rocket launch"}, {"word": "自律飛行中断システム", "reading": "じりつひこうちゅうだんしすてむ", "english": "autonomous flight termination system"}, {"word": "宇宙港", "reading": "うちゅうこう", "english": "spaceport"}, {"word": "中断", "reading": "ちゅうだん", "english": "interruption / abort"}, {"word": "高度", "reading": "こうど", "english": "altitude"}], [{"word": "邦人", "reading": "ほうじん", "english": "Japanese national (abroad)"}, {"word": "外務省", "reading": "がいむしょう", "english": "Ministry of Foreign Affairs"}, {"word": "派遣", "reading": "はけん", "english": "dispatch / deployment"}, {"word": "措置", "reading": "そち", "english": "measure / action"}, {"word": "保護", "reading": "ほご", "english": "protection"}], [{"word": "石油輸入", "reading": "せきゆゆにゅう", "english": "oil imports"}, {"word": "エネルギー安全保障", "reading": "えねるぎーあんぜんほしょう", "english": "energy security"}, {"word": "依存", "reading": "いぞん", "english": "dependence / reliance"}, {"word": "供給", "reading": "きょうきゅう", "english": "supply"}, {"word": "サプライチェーン", "reading": "さぷらいちぇーん", "english": "supply chain"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "イランで学校と軍事施設に攻撃　168人死亡"}, {"section": "英国・世界", "headline": "英政府が中東から自国民を避難　スタンステッド空港に到着"}, {"section": "英国・世界", "headline": "マドゥロ拘束を契機に米・ベネズエラが外交関係を再開へ"}, {"section": "英国・世界", "headline": "イラン紛争でエネルギー価格急騰　英国家計を直撃"}, {"section": "日本", "headline": "スペースワン「カイロス3号機」打ち上げ68秒後に飛行中断"}, {"section": "日本", "headline": "政府、中東の邦人保護へチャーター機を派遣"}, {"section": "日本", "headline": "イラン紛争が日本の石油・経済に影　エネルギー安全保障に懸念"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
