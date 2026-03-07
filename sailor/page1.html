@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>午後の曳航 — 第一部 夏 — 第一章 p.1</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --text: #1a1a2e;
+      --accent: #16425b;
+      --muted: #6b7d8e;
+      --border: #c8d6e0;
+      --vocab-bg: #dce8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">三島由紀夫</div>
+  <div class="chapter-title">午後の曳航</div>
+  <div class="chapter-sub">第一部 夏 — 第一章</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p><ruby>登<rt>のぼる</rt></ruby>は、<ruby>自分<rt>じぶん</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>の<ruby>壁<rt>かべ</rt></ruby>に<ruby>小<rt>ちい</rt></ruby>さな<ruby>穴<rt>あな</rt></ruby>があることを<ruby>知<rt>し</rt></ruby>っていた。<ruby>抽斗<rt>ひきだし</rt></ruby>の<ruby>裏側<rt>うらがわ</rt></ruby>に<ruby>隠<rt>かく</rt></ruby>された、<ruby>豆粒<rt>まめつぶ</rt></ruby>ほどの<ruby>穴<rt>あな</rt></ruby>だった。そこから<ruby>隣<rt>となり</rt></ruby>の<ruby>母<rt>はは</rt></ruby>の<ruby>寝室<rt>しんしつ</rt></ruby>を<ruby>覗<rt>のぞ</rt></ruby>くことができた。</p>
+    <p><ruby>彼<rt>かれ</rt></ruby>はまだ<ruby>十三歳<rt>じゅうさんさい</rt></ruby>だった。この<ruby>年齢<rt>ねんれい</rt></ruby>の<ruby>少年<rt>しょうねん</rt></ruby>にとって、<ruby>世界<rt>せかい</rt></ruby>はまだ<ruby>秩序<rt>ちつじょ</rt></ruby>を<ruby>保<rt>たも</rt></ruby>っていた。<ruby>彼<rt>かれ</rt></ruby>は<ruby>自分<rt>じぶん</rt></ruby>が<ruby>選<rt>えら</rt></ruby>ばれた<ruby>人間<rt>にんげん</rt></ruby>であると<ruby>信<rt>しん</rt></ruby>じていた。<ruby>仲間<rt>なかま</rt></ruby>たちもそう<ruby>信<rt>しん</rt></ruby>じていた。</p>
+    <p><ruby>夏<rt>なつ</rt></ruby>の<ruby>夜<rt>よる</rt></ruby>だった。<ruby>横浜<rt>よこはま</rt></ruby>の<ruby>港<rt>みなと</rt></ruby>に<ruby>停泊<rt>ていはく</rt></ruby>する<ruby>貨物船<rt>かもつせん</rt></ruby>の<ruby>灯<rt>あかり</rt></ruby>が、<ruby>遠<rt>とお</rt></ruby>くの<ruby>海面<rt>かいめん</rt></ruby>に<ruby>揺<rt>ゆ</rt></ruby>れていた。<ruby>潮<rt>しお</rt></ruby>の<ruby>匂<rt>にお</rt></ruby>いが<ruby>窓<rt>まど</rt></ruby>から<ruby>流<rt>なが</rt></ruby>れ<ruby>込<rt>こ</rt></ruby>み、<ruby>少年<rt>しょうねん</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>を<ruby>満<rt>み</rt></ruby>たした。</p>
+    <p><ruby>登<rt>のぼる</rt></ruby>は<ruby>毎晩<rt>まいばん</rt></ruby>のように<ruby>穴<rt>あな</rt></ruby>を<ruby>覗<rt>のぞ</rt></ruby>いた。<ruby>母<rt>はは</rt></ruby>が<ruby>化粧台<rt>けしょうだい</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に<ruby>座<rt>すわ</rt></ruby>り、<ruby>髪<rt>かみ</rt></ruby>を<ruby>解<rt>と</rt></ruby>く<ruby>姿<rt>すがた</rt></ruby>を<ruby>見<rt>み</rt></ruby>つめた。それは<ruby>彼<rt>かれ</rt></ruby>にとって、ある<ruby>種<rt>しゅ</rt></ruby>の<ruby>儀式<rt>ぎしき</rt></ruby>だった。<ruby>母<rt>はは</rt></ruby>の<ruby>肉体<rt>にくたい</rt></ruby>は<ruby>美<rt>うつく</rt></ruby>しく、しかし<ruby>彼<rt>かれ</rt></ruby>の<ruby>関心<rt>かんしん</rt></ruby>は<ruby>官能的<rt>かんのうてき</rt></ruby>なものではなかった。<ruby>彼<rt>かれ</rt></ruby>が<ruby>求<rt>もと</rt></ruby>めていたのは、<ruby>大人<rt>おとな</rt></ruby>の<ruby>世界<rt>せかい</rt></ruby>の<ruby>秘密<rt>ひみつ</rt></ruby>を<ruby>知<rt>し</rt></ruby>ることだった。</p>
+    <p><ruby>黒田<rt>くろだ</rt></ruby><ruby>房子<rt>ふさこ</rt></ruby>——それが<ruby>母<rt>はは</rt></ruby>の<ruby>名前<rt>なまえ</rt></ruby>だった。<ruby>夫<rt>おっと</rt></ruby>を<ruby>亡<rt>な</rt></ruby>くしてから<ruby>三年<rt>さんねん</rt></ruby>が<ruby>経<rt>た</rt></ruby>っていた。<ruby>洋品店<rt>ようひんてん</rt></ruby>「レックス」を<ruby>経営<rt>けいえい</rt></ruby>し、<ruby>裕福<rt>ゆうふく</rt></ruby>に<ruby>暮<rt>く</rt></ruby>らしていた。<ruby>登<rt>のぼる</rt></ruby>は<ruby>一人息子<rt>ひとりむすこ</rt></ruby>だった。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>Noboru knew there was a small hole in the wall of his room. Hidden behind a chest of drawers — a hole no bigger than a pea. Through it he could peer into his mother's bedroom next door.</p>
+    <p>He was still only thirteen. For a boy of that age, the world still held its order. He believed himself to be one of the chosen. His companions believed it too.</p>
+    <p>It was a summer night. The lights of cargo ships moored in Yokohama harbour trembled on the distant surface of the sea. The smell of the tide flowed through the window and filled the boy's room.</p>
+    <p>Noboru peered through the hole almost every night. He watched his mother sit before her dressing table and let down her hair. For him it was a kind of ritual. Her body was beautiful, but his interest was not sensual. What he sought was knowledge of the secrets of the adult world.</p>
+    <p>Kuroda Fusako — that was his mother's name. Three years had passed since her husband's death. She ran a boutique called Rex, and lived comfortably. Noboru was her only son.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <span></span>
+  <span class="page-num">p. 1 / 5</span>
+  <a href="page2.html">次のページ →</a>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">抽斗</td><td class="vocab-reading">ひきだし</td><td class="vocab-en">drawer (chest of drawers)</td></tr>
+    <tr><td class="vocab-kanji">豆粒</td><td class="vocab-reading">まめつぶ</td><td class="vocab-en">the size of a bean / tiny speck</td></tr>
+    <tr><td class="vocab-kanji">寝室</td><td class="vocab-reading">しんしつ</td><td class="vocab-en">bedroom</td></tr>
+    <tr><td class="vocab-kanji">覗く</td><td class="vocab-reading">のぞく</td><td class="vocab-en">to peek / to peer through</td></tr>
+    <tr><td class="vocab-kanji">秩序</td><td class="vocab-reading">ちつじょ</td><td class="vocab-en">order / discipline</td></tr>
+    <tr><td class="vocab-kanji">停泊する</td><td class="vocab-reading">ていはくする</td><td class="vocab-en">to be moored / anchored</td></tr>
+    <tr><td class="vocab-kanji">貨物船</td><td class="vocab-reading">かもつせん</td><td class="vocab-en">cargo ship / freighter</td></tr>
+    <tr><td class="vocab-kanji">海面</td><td class="vocab-reading">かいめん</td><td class="vocab-en">sea surface</td></tr>
+    <tr><td class="vocab-kanji">潮</td><td class="vocab-reading">しお</td><td class="vocab-en">tide / salt water / the sea</td></tr>
+    <tr><td class="vocab-kanji">化粧台</td><td class="vocab-reading">けしょうだい</td><td class="vocab-en">dressing table / vanity</td></tr>
+    <tr><td class="vocab-kanji">髪を解く</td><td class="vocab-reading">かみをとく</td><td class="vocab-en">to let one's hair down / undo</td></tr>
+    <tr><td class="vocab-kanji">儀式</td><td class="vocab-reading">ぎしき</td><td class="vocab-en">ritual / ceremony</td></tr>
+    <tr><td class="vocab-kanji">肉体</td><td class="vocab-reading">にくたい</td><td class="vocab-en">the (physical) body / flesh</td></tr>
+    <tr><td class="vocab-kanji">官能的な</td><td class="vocab-reading">かんのうてきな</td><td class="vocab-en">sensual / carnal</td></tr>
+    <tr><td class="vocab-kanji">洋品店</td><td class="vocab-reading">ようひんてん</td><td class="vocab-en">Western-style clothing shop / boutique</td></tr>
+    <tr><td class="vocab-kanji">裕福な</td><td class="vocab-reading">ゆうふくな</td><td class="vocab-en">wealthy / well-off</td></tr>
+    <tr><td class="vocab-kanji">一人息子</td><td class="vocab-reading">ひとりむすこ</td><td class="vocab-en">only son</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜ことができた</strong> — was able to ~ / could ~<br><em>そこから隣の母の寝室を覗くことができた</em><br>Past potential form. ことができる = to be able to do something. Past tense = ことができた.</div>
+<div class="grammar-item"><strong>〜にとって</strong> — for ~ / from the perspective of ~<br><em>この年齢の少年にとって、世界はまだ秩序を保っていた</em><br>N2 grammar. Expresses perspective or standpoint. Often paired with は to set up a judgement.</div>
+<div class="grammar-item"><strong>〜ものではなかった</strong> — was not the kind of thing that ~ / was not ~<br><em>彼の関心は官能的なものではなかった</em><br>もの here = 'something of that nature'. Negated: denies a quality or category.</div>
+<div class="grammar-item"><strong>〜てから〜が経つ</strong> — ~ time has passed since ~<br><em>夫を亡くしてから三年が経っていた</em><br>てから marks the starting event; 経つ (たつ) = to pass/elapse. Common N2 time expression.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
