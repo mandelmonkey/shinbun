@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>午後の曳航 — 第一部 夏 — 第一章 p.6</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --text: #1a1a2e;
+      --accent: #16425b;
+      --muted: #6b7d8e;
+      --border: #c8d6e0;
+      --vocab-bg: #dce8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">三島由紀夫</div>
+  <div class="chapter-title">午後の曳航</div>
+  <div class="chapter-sub">第一部 夏 — 第一章</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p><ruby>数日後<rt>すうじつご</rt></ruby>、<ruby>房子<rt>ふさこ</rt></ruby>は<ruby>竜二<rt>りゅうじ</rt></ruby>を<ruby>食事<rt>しょくじ</rt></ruby>に<ruby>誘<rt>さそ</rt></ruby>った。<ruby>港<rt>みなと</rt></ruby>の<ruby>見<rt>み</rt></ruby>える<ruby>小<rt>ちい</rt></ruby>さなフランス<ruby>料理<rt>りょうり</rt></ruby>の<ruby>店<rt>みせ</rt></ruby>だった。<ruby>白<rt>しろ</rt></ruby>いテーブルクロスに<ruby>銀<rt>ぎん</rt></ruby>の<ruby>燭台<rt>しょくだい</rt></ruby>。<ruby>房子<rt>ふさこ</rt></ruby>は<ruby>黒<rt>くろ</rt></ruby>いドレスを<ruby>着<rt>き</rt></ruby>て<ruby>現<rt>あらわ</rt></ruby>れた。</p>
+    <p><ruby>竜二<rt>りゅうじ</rt></ruby>は<ruby>居心地<rt>いごこち</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>そうだった。フォークを<ruby>持<rt>も</rt></ruby>つ<ruby>手<rt>て</rt></ruby>が<ruby>不器用<rt>ぶきよう</rt></ruby>に<ruby>見<rt>み</rt></ruby>えた。しかし<ruby>房子<rt>ふさこ</rt></ruby>はそれを<ruby>好<rt>す</rt></ruby>ましいと<ruby>感<rt>かん</rt></ruby>じた。この<ruby>男<rt>おとこ</rt></ruby>は<ruby>嘘<rt>うそ</rt></ruby>をつかない。<ruby>社交<rt>しゃこう</rt></ruby>の<ruby>技術<rt>ぎじゅつ</rt></ruby>を<ruby>持<rt>も</rt></ruby>たないことが、むしろ<ruby>彼<rt>かれ</rt></ruby>の<ruby>誠実<rt>せいじつ</rt></ruby>さを<ruby>証明<rt>しょうめい</rt></ruby>しているように<ruby>思<rt>おも</rt></ruby>えた。</p>
+    <p>「<ruby>海<rt>うみ</rt></ruby>は<ruby>寂<rt>さび</rt></ruby>しくないですか」と<ruby>房子<rt>ふさこ</rt></ruby>は<ruby>尋<rt>たず</rt></ruby>ねた。<ruby>竜二<rt>りゅうじ</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>考<rt>かんが</rt></ruby>えてから<ruby>答<rt>こた</rt></ruby>えた。「<ruby>寂<rt>さび</rt></ruby>しいときもあります。でも<ruby>海<rt>うみ</rt></ruby>には<ruby>嘘<rt>うそ</rt></ruby>がない。<ruby>人間<rt>にんげん</rt></ruby>の<ruby>世界<rt>せかい</rt></ruby>とは<ruby>違<rt>ちが</rt></ruby>って、すべてが<ruby>明確<rt>めいかく</rt></ruby>です。<ruby>風<rt>かぜ</rt></ruby>は<ruby>風<rt>かぜ</rt></ruby>。<ruby>波<rt>なみ</rt></ruby>は<ruby>波<rt>なみ</rt></ruby>。ごまかしようがない」</p>
+    <p><ruby>房子<rt>ふさこ</rt></ruby>は<ruby>黙<rt>だま</rt></ruby>って<ruby>彼<rt>かれ</rt></ruby>の<ruby>顔<rt>かお</rt></ruby>を<ruby>見<rt>み</rt></ruby>つめた。<ruby>窓<rt>まど</rt></ruby>の<ruby>外<rt>そと</rt></ruby>に<ruby>停泊<rt>ていはく</rt></ruby>する<ruby>貨物船<rt>かもつせん</rt></ruby>の<ruby>灯<rt>あかり</rt></ruby>が、<ruby>彼<rt>かれ</rt></ruby>の<ruby>横顔<rt>よこがお</rt></ruby>を<ruby>照<rt>て</rt></ruby>らしていた。この<ruby>人<rt>ひと</rt></ruby>は<ruby>本当<rt>ほんとう</rt></ruby>に<ruby>海<rt>うみ</rt></ruby>に<ruby>属<rt>ぞく</rt></ruby>しているのだ、と<ruby>彼女<rt>かのじょ</rt></ruby>は<ruby>思<rt>おも</rt></ruby>った。そしてその<ruby>事実<rt>じじつ</rt></ruby>が、<ruby>彼女<rt>かのじょ</rt></ruby>の<ruby>胸<rt>むね</rt></ruby>を<ruby>締<rt>し</rt></ruby>めつけた。</p>
+    <p><ruby>帰<rt>かえ</rt></ruby>り<ruby>道<rt>みち</rt></ruby>、<ruby>二人<rt>ふたり</rt></ruby>は<ruby>港<rt>みなと</rt></ruby>の<ruby>堤防<rt>ていぼう</rt></ruby>に<ruby>沿<rt>そ</rt></ruby>って<ruby>歩<rt>ある</rt></ruby>いた。<ruby>潮風<rt>しおかぜ</rt></ruby>が<ruby>房子<rt>ふさこ</rt></ruby>の<ruby>髪<rt>かみ</rt></ruby>を<ruby>乱<rt>みだ</rt></ruby>した。<ruby>竜二<rt>りゅうじ</rt></ruby>が<ruby>初<rt>はじ</rt></ruby>めて<ruby>彼女<rt>かのじょ</rt></ruby>の<ruby>手<rt>て</rt></ruby>を<ruby>握<rt>にぎ</rt></ruby>ったのは、そのときだった。<ruby>無骨<rt>ぶこつ</rt></ruby>な、<ruby>塩<rt>しお</rt></ruby>に<ruby>荒<rt>あ</rt></ruby>れた<ruby>手<rt>て</rt></ruby>だった。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>A few days later, Fusako invited Ryuji to dinner. A small French restaurant overlooking the harbour. White tablecloth, silver candlestick. Fusako appeared in a black dress.</p>
+    <p>Ryuji looked uncomfortable. His hands seemed clumsy with the fork. But Fusako found this endearing. This man does not lie. His lack of social graces seemed rather to prove his sincerity.</p>
+    <p>'Don't you get lonely at sea?' Fusako asked. Ryuji thought for a moment before answering. 'Sometimes. But there are no lies at sea. Unlike the human world, everything is clear. Wind is wind. Waves are waves. There is no way to deceive.'</p>
+    <p>Fusako gazed at his face in silence. The lights of cargo ships moored outside the window illuminated his profile. This man truly belongs to the sea, she thought. And that fact squeezed her heart.</p>
+    <p>On the way home, they walked along the harbour breakwater. The sea breeze tousled Fusako's hair. It was then that Ryuji took her hand for the first time. A rough hand, weathered by salt.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <a href="page5.html">← 前のページ</a>
+  <span class="page-num">p. 6 / 10</span>
+  <a href="page7.html">次のページ →</a>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">誘う</td><td class="vocab-reading">さそう</td><td class="vocab-en">to invite / to ask someone out</td></tr>
+    <tr><td class="vocab-kanji">燭台</td><td class="vocab-reading">しょくだい</td><td class="vocab-en">candlestick / candelabra</td></tr>
+    <tr><td class="vocab-kanji">居心地が悪い</td><td class="vocab-reading">いごこちがわるい</td><td class="vocab-en">uncomfortable / ill at ease</td></tr>
+    <tr><td class="vocab-kanji">不器用な</td><td class="vocab-reading">ぶきような</td><td class="vocab-en">clumsy / awkward / unskilled</td></tr>
+    <tr><td class="vocab-kanji">好ましい</td><td class="vocab-reading">このましい</td><td class="vocab-en">pleasant / agreeable / likeable</td></tr>
+    <tr><td class="vocab-kanji">社交</td><td class="vocab-reading">しゃこう</td><td class="vocab-en">socialising / social graces</td></tr>
+    <tr><td class="vocab-kanji">誠実さ</td><td class="vocab-reading">せいじつさ</td><td class="vocab-en">sincerity / integrity</td></tr>
+    <tr><td class="vocab-kanji">証明する</td><td class="vocab-reading">しょうめいする</td><td class="vocab-en">to prove / to demonstrate</td></tr>
+    <tr><td class="vocab-kanji">明確な</td><td class="vocab-reading">めいかくな</td><td class="vocab-en">clear / unambiguous</td></tr>
+    <tr><td class="vocab-kanji">横顔</td><td class="vocab-reading">よこがお</td><td class="vocab-en">profile (side view of face)</td></tr>
+    <tr><td class="vocab-kanji">属する</td><td class="vocab-reading">ぞくする</td><td class="vocab-en">to belong to / to be part of</td></tr>
+    <tr><td class="vocab-kanji">締めつける</td><td class="vocab-reading">しめつける</td><td class="vocab-en">to squeeze / to constrict (heart)</td></tr>
+    <tr><td class="vocab-kanji">堤防</td><td class="vocab-reading">ていぼう</td><td class="vocab-en">breakwater / embankment / seawall</td></tr>
+    <tr><td class="vocab-kanji">潮風</td><td class="vocab-reading">しおかぜ</td><td class="vocab-en">sea breeze / salt wind</td></tr>
+    <tr><td class="vocab-kanji">荒れた</td><td class="vocab-reading">あれた</td><td class="vocab-en">rough / weathered / chapped</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜ように思えた</strong> — it seemed as though ~ / one felt that ~<br><em>彼の誠実さを証明しているように思えた</em><br>ように思える = to have the impression that. Past tense. Subjective and reflective.</div>
+<div class="grammar-item"><strong>〜ようがない</strong> — there is no way to ~ / it is impossible to ~<br><em>ごまかしようがない</em><br>N2 grammar. Verb stem + よう (method) + がない (does not exist). Expresses impossibility.</div>
+<div class="grammar-item"><strong>〜のだと思った</strong> — thought/realised that it was the case that ~<br><em>この人は本当に海に属しているのだ、と彼女は思った</em><br>のだ = explanatory/emphatic nominaliser. と思った = she thought. Conveys an inner realisation.</div>
+<div class="grammar-item"><strong>〜に沿って</strong> — along ~ / following ~<br><em>港の堤防に沿って歩いた</em><br>N2 grammar. 沿う = to follow/run along. に沿って = doing something while following a path or line.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
