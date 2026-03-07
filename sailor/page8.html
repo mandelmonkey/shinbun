@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>午後の曳航 — 第一部 夏 — 第一章 p.8</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --text: #1a1a2e;
+      --accent: #16425b;
+      --muted: #6b7d8e;
+      --border: #c8d6e0;
+      --vocab-bg: #dce8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">三島由紀夫</div>
+  <div class="chapter-title">午後の曳航</div>
+  <div class="chapter-sub">第一部 夏 — 第一章</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p><ruby>竜二<rt>りゅうじ</rt></ruby>が<ruby>泊<rt>と</rt></ruby>まるようになったのは、それから<ruby>間<rt>ま</rt></ruby>もなくのことだった。<ruby>最初<rt>さいしょ</rt></ruby>は<ruby>月<rt>つき</rt></ruby>に<ruby>一度<rt>いちど</rt></ruby>、やがて<ruby>週<rt>しゅう</rt></ruby>に<ruby>一度<rt>いちど</rt></ruby>。<ruby>彼<rt>かれ</rt></ruby>の<ruby>船<rt>ふね</rt></ruby>が<ruby>横浜<rt>よこはま</rt></ruby>に<ruby>寄港<rt>きこう</rt></ruby>するたびに、<ruby>房子<rt>ふさこ</rt></ruby>の<ruby>家<rt>いえ</rt></ruby>に<ruby>足<rt>あし</rt></ruby>を<ruby>運<rt>はこ</rt></ruby>んだ。</p>
+    <p><ruby>登<rt>のぼる</rt></ruby>は<ruby>その<rt>その</rt></ruby><ruby>変化<rt>へんか</rt></ruby>を<ruby>注意深<rt>ちゅういぶか</rt></ruby>く<ruby>観察<rt>かんさつ</rt></ruby>していた。<ruby>竜二<rt>りゅうじ</rt></ruby>は<ruby>最初<rt>さいしょ</rt></ruby>、<ruby>居間<rt>いま</rt></ruby>のソファに<ruby>座<rt>すわ</rt></ruby>るときも<ruby>背筋<rt>せすじ</rt></ruby>を<ruby>伸<rt>の</rt></ruby>ばしていた。<ruby>海<rt>うみ</rt></ruby>の<ruby>男<rt>おとこ</rt></ruby>の<ruby>姿勢<rt>しせい</rt></ruby>だった。ところが<ruby>次第<rt>しだい</rt></ruby>に、<ruby>彼<rt>かれ</rt></ruby>は<ruby>深<rt>ふか</rt></ruby>く<ruby>腰<rt>こし</rt></ruby>を<ruby>沈<rt>しず</rt></ruby>めるようになった。<ruby>足<rt>あし</rt></ruby>を<ruby>組<rt>く</rt></ruby>み、テレビを<ruby>眺<rt>なが</rt></ruby>め、<ruby>缶<rt>かん</rt></ruby>ビールを<ruby>飲<rt>の</rt></ruby>んだ。</p>
+    <p><ruby>登<rt>のぼる</rt></ruby>はその<ruby>姿<rt>すがた</rt></ruby>に<ruby>違和感<rt>いわかん</rt></ruby>を<ruby>覚<rt>おぼ</rt></ruby>えた。<ruby>甲板<rt>かんぱん</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>で<ruby>風<rt>かぜ</rt></ruby>を<ruby>受<rt>う</rt></ruby>けていた<ruby>男<rt>おとこ</rt></ruby>が、<ruby>居間<rt>いま</rt></ruby>のソファに<ruby>沈<rt>しず</rt></ruby>んでいく。<ruby>栄光<rt>えいこう</rt></ruby>を<ruby>待<rt>ま</rt></ruby>っていた<ruby>男<rt>おとこ</rt></ruby>が、テレビの<ruby>前<rt>まえ</rt></ruby>で<ruby>缶<rt>かん</rt></ruby>ビールを<ruby>飲<rt>の</rt></ruby>んでいる。それは<ruby>小<rt>ちい</rt></ruby>さな<ruby>変化<rt>へんか</rt></ruby>だったが、<ruby>登<rt>のぼる</rt></ruby>にとっては<ruby>重大<rt>じゅうだい</rt></ruby>な<ruby>兆候<rt>ちょうこう</rt></ruby>だった。</p>
+    <p><ruby>ある{晩<rt>ばん</rt></ruby>、<ruby>竜二<rt>りゅうじ</rt></ruby>は<ruby>登<rt>のぼる</rt></ruby>の<ruby>頭<rt>あたま</rt></ruby>を<ruby>撫<rt>な</rt></ruby>でた。「<ruby>大<rt>おお</rt></ruby>きくなったな」と<ruby>言<rt>い</rt></ruby>った。その<ruby>声<rt>こえ</rt></ruby>は<ruby>優<rt>やさ</rt></ruby>しかった。しかし<ruby>登<rt>のぼる</rt></ruby>は<ruby>身<rt>み</rt></ruby>を<ruby>硬<rt>かた</rt></ruby>くした。<ruby>海<rt>うみ</rt></ruby>の<ruby>男<rt>おとこ</rt></ruby>が<ruby>子<rt>こ</rt></ruby>どもの<ruby>頭<rt>あたま</rt></ruby>を<ruby>撫<rt>な</rt></ruby>でるなど、あってはならないことだった。</p>
+    <p><ruby>登<rt>のぼる</rt></ruby>は<ruby>その{夜<rt>よる</rt></ruby>、<ruby>日記<rt>にっき</rt></ruby>に<ruby>書<rt>か</rt></ruby>いた。「<ruby>竜二<rt>りゅうじ</rt></ruby>に<ruby>危険<rt>きけん</rt></ruby>な<ruby>兆候<rt>ちょうこう</rt></ruby>あり。<ruby>感傷<rt>かんしょう</rt></ruby>が<ruby>始<rt>はじ</rt></ruby>まっている。<ruby>要<rt>よう</rt></ruby><ruby>監視<rt>かんし</rt></ruby>」——<ruby>少年<rt>しょうねん</rt></ruby>の<ruby>文字<rt>もじ</rt></ruby>は<ruby>几帳面<rt>きちょうめん</rt></ruby>で、<ruby>感情<rt>かんじょう</rt></ruby>の<ruby>痕跡<rt>こんせき</rt></ruby>は<ruby>一切<rt>いっさい</rt></ruby>なかった。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>It was not long before Ryuji began staying over. At first once a month, then once a week. Each time his ship called at Yokohama, he made his way to Fusako's house.</p>
+    <p>Noboru observed the changes carefully. At first, Ryuji sat with a straight back even on the living room sofa. A sailor's posture. But gradually, he began to sink deeper. He crossed his legs, watched television, drank canned beer.</p>
+    <p>Noboru felt something was wrong. The man who had stood on deck facing the wind was sinking into the living room sofa. The man who had been waiting for glory was drinking canned beer in front of the television. It was a small change, but for Noboru it was a grave symptom.</p>
+    <p>One evening, Ryuji patted Noboru on the head. 'You've grown,' he said. His voice was gentle. But Noboru stiffened. A man of the sea patting a child's head — that should never happen.</p>
+    <p>That night, Noboru wrote in his diary: 'Dangerous symptoms in Ryuji. Sentimentality has begun. Requires surveillance.' — The boy's handwriting was meticulous, and bore no trace of emotion.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <a href="page7.html">← 前のページ</a>
+  <span class="page-num">p. 8 / 10</span>
+  <a href="page9.html">次のページ →</a>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">寄港する</td><td class="vocab-reading">きこうする</td><td class="vocab-en">to call at port / make port</td></tr>
+    <tr><td class="vocab-kanji">注意深く</td><td class="vocab-reading">ちゅういぶかく</td><td class="vocab-en">carefully / attentively / watchfully</td></tr>
+    <tr><td class="vocab-kanji">背筋を伸ばす</td><td class="vocab-reading">せすじをのばす</td><td class="vocab-en">to straighten one's back / sit upright</td></tr>
+    <tr><td class="vocab-kanji">姿勢</td><td class="vocab-reading">しせい</td><td class="vocab-en">posture / bearing</td></tr>
+    <tr><td class="vocab-kanji">次第に</td><td class="vocab-reading">しだいに</td><td class="vocab-en">gradually / little by little</td></tr>
+    <tr><td class="vocab-kanji">違和感</td><td class="vocab-reading">いわかん</td><td class="vocab-en">sense of wrongness / unease / something off</td></tr>
+    <tr><td class="vocab-kanji">兆候</td><td class="vocab-reading">ちょうこう</td><td class="vocab-en">symptom / sign / indication</td></tr>
+    <tr><td class="vocab-kanji">重大な</td><td class="vocab-reading">じゅうだいな</td><td class="vocab-en">grave / serious / significant</td></tr>
+    <tr><td class="vocab-kanji">撫でる</td><td class="vocab-reading">なでる</td><td class="vocab-en">to stroke / pat / caress</td></tr>
+    <tr><td class="vocab-kanji">身を硬くする</td><td class="vocab-reading">みをかたくする</td><td class="vocab-en">to stiffen / to tense up</td></tr>
+    <tr><td class="vocab-kanji">日記</td><td class="vocab-reading">にっき</td><td class="vocab-en">diary / journal</td></tr>
+    <tr><td class="vocab-kanji">監視</td><td class="vocab-reading">かんし</td><td class="vocab-en">surveillance / monitoring</td></tr>
+    <tr><td class="vocab-kanji">几帳面な</td><td class="vocab-reading">きちょうめんな</td><td class="vocab-en">meticulous / neat / methodical</td></tr>
+    <tr><td class="vocab-kanji">痕跡</td><td class="vocab-reading">こんせき</td><td class="vocab-en">trace / vestige / mark</td></tr>
+    <tr><td class="vocab-kanji">一切</td><td class="vocab-reading">いっさい</td><td class="vocab-en">not at all / absolutely none (with negative)</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜ようになった</strong> — came to ~ / began to ~ (change of state)<br><em>竜二が泊まるようになった</em><br>N2 grammar. Marks a gradual change — something that was not happening before has become habitual.</div>
+<div class="grammar-item"><strong>〜たびに</strong> — every time ~ / each time ~<br><em>彼の船が横浜に寄港するたびに</em><br>N2 grammar. Verb dictionary form + たびに = whenever/each time something occurs. Repetition.</div>
+<div class="grammar-item"><strong>〜など、あってはならない</strong> — something like ~ must never happen / is unacceptable<br><em>海の男が子どもの頭を撫でるなど、あってはならないことだった</em><br>など = such a thing as. あってはならない = must not exist/occur. Strong moral prohibition.</div>
+<div class="grammar-item"><strong>〜は一切なかった</strong> — there was absolutely no ~ / not a trace of ~<br><em>感情の痕跡は一切なかった</em><br>一切 (いっさい) + negative = absolute zero. Emphatic denial. The diary is chillingly clean.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
