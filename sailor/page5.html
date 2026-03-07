@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>午後の曳航 — 第一部 夏 — 第一章 p.5</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --text: #1a1a2e;
+      --accent: #16425b;
+      --muted: #6b7d8e;
+      --border: #c8d6e0;
+      --vocab-bg: #dce8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">三島由紀夫</div>
+  <div class="chapter-title">午後の曳航</div>
+  <div class="chapter-sub">第一部 夏 — 第一章</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p><ruby>竜二<rt>りゅうじ</rt></ruby>には、<ruby>誰<rt>だれ</rt></ruby>にも<ruby>話<rt>はな</rt></ruby>さない<ruby>夢<rt>ゆめ</rt></ruby>があった。<ruby>彼<rt>かれ</rt></ruby>は<ruby>栄光<rt>えいこう</rt></ruby>を<ruby>待<rt>ま</rt></ruby>っていた。いつか<ruby>自分<rt>じぶん</rt></ruby>を<ruby>待<rt>ま</rt></ruby>っている<ruby>特別<rt>とくべつ</rt></ruby>な<ruby>運命<rt>うんめい</rt></ruby>が、<ruby>水平線<rt>すいへいせん</rt></ruby>の<ruby>向<rt>む</rt></ruby>こうに<ruby>存在<rt>そんざい</rt></ruby>すると<ruby>信<rt>しん</rt></ruby>じていた。</p>
+    <p><ruby>海<rt>うみ</rt></ruby>は<ruby>彼<rt>かれ</rt></ruby>にとって、<ruby>栄光<rt>えいこう</rt></ruby>への<ruby>通路<rt>つうろ</rt></ruby>だった。<ruby>甲板<rt>かんぱん</rt></ruby>に<ruby>立<rt>た</rt></ruby>ち、<ruby>風<rt>かぜ</rt></ruby>を<ruby>受<rt>う</rt></ruby>け、<ruby>星<rt>ほし</rt></ruby>の<ruby>下<rt>した</rt></ruby>で<ruby>舵<rt>かじ</rt></ruby>を<ruby>取<rt>と</rt></ruby>るとき、<ruby>彼<rt>かれ</rt></ruby>は<ruby>自分<rt>じぶん</rt></ruby>が<ruby>何<rt>なに</rt></ruby>か<ruby>途方<rt>とほう</rt></ruby>もなく<ruby>大<rt>おお</rt></ruby>きなものの<ruby>一部<rt>いちぶ</rt></ruby>であると<ruby>感<rt>かん</rt></ruby>じた。<ruby>死<rt>し</rt></ruby>すら<ruby>恐<rt>おそ</rt></ruby>れなかった。むしろ<ruby>海<rt>うみ</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>での<ruby>死<rt>し</rt></ruby>こそが、<ruby>最<rt>もっと</rt></ruby>も<ruby>美<rt>うつく</rt></ruby>しい<ruby>結末<rt>けつまつ</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>っていた。</p>
+    <p>しかし<ruby>三十<rt>さんじゅう</rt></ruby>を<ruby>過<rt>す</rt></ruby>ぎて、<ruby>栄光<rt>えいこう</rt></ruby>はまだ<ruby>訪<rt>おとず</rt></ruby>れなかった。<ruby>航海<rt>こうかい</rt></ruby>は<ruby>繰<rt>く</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>され、<ruby>港<rt>みなと</rt></ruby>は<ruby>変<rt>か</rt></ruby>わり、しかし<ruby>彼<rt>かれ</rt></ruby>の<ruby>人生<rt>じんせい</rt></ruby>は<ruby>何<rt>なに</rt></ruby>も<ruby>変<rt>か</rt></ruby>わらなかった。<ruby>少<rt>すこ</rt></ruby>しずつ、<ruby>諦<rt>あきら</rt></ruby>めに<ruby>似<rt>に</rt></ruby>た<ruby>感覚<rt>かんかく</rt></ruby>が<ruby>彼<rt>かれ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に<ruby>沈殿<rt>ちんでん</rt></ruby>し<ruby>始<rt>はじ</rt></ruby>めていた。</p>
+    <p><ruby>房子<rt>ふさこ</rt></ruby>と<ruby>出会<rt>であ</rt></ruby>ったとき、<ruby>竜二<rt>りゅうじ</rt></ruby>は<ruby>初<rt>はじ</rt></ruby>めて<ruby>陸<rt>おか</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby>に<ruby>魅力<rt>みりょく</rt></ruby>を<ruby>感<rt>かん</rt></ruby>じた。<ruby>温<rt>あたた</rt></ruby>かい<ruby>食卓<rt>しょくたく</rt></ruby>。<ruby>柔<rt>やわ</rt></ruby>らかな<ruby>布団<rt>ふとん</rt></ruby>。<ruby>自分<rt>じぶん</rt></ruby>を<ruby>待<rt>ま</rt></ruby>っている<ruby>誰<rt>だれ</rt></ruby>かがいるという<ruby>感覚<rt>かんかく</rt></ruby>。<ruby>海<rt>うみ</rt></ruby>では<ruby>決<rt>けっ</rt></ruby>して<ruby>手<rt>て</rt></ruby>に<ruby>入<rt>い</rt></ruby>らなかったものが、ここにはあった。</p>
+    <p><ruby>竜二<rt>りゅうじ</rt></ruby>は<ruby>自分<rt>じぶん</rt></ruby>に<ruby>問<rt>と</rt></ruby>いかけた。<ruby>栄光<rt>えいこう</rt></ruby>を<ruby>待<rt>ま</rt></ruby>ち<ruby>続<rt>つづ</rt></ruby>けることと、<ruby>目<rt>め</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>にある<ruby>幸福<rt>こうふく</rt></ruby>を<ruby>掴<rt>つか</rt></ruby>むこと——どちらが<ruby>正<rt>ただ</rt></ruby>しいのか。<ruby>海<rt>うみ</rt></ruby>の<ruby>男<rt>おとこ</rt></ruby>は、<ruby>初<rt>はじ</rt></ruby>めて<ruby>迷<rt>まよ</rt></ruby>った。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>Ryuji had a dream he told no one about. He was waiting for glory. He believed that a special destiny, waiting just for him, existed somewhere beyond the horizon.</p>
+    <p>The sea was, for him, a passage to that glory. Standing on deck, facing the wind, taking the helm beneath the stars, he felt himself to be part of something immeasurably vast. He did not even fear death. Rather, he believed that death at sea would be the most beautiful ending of all.</p>
+    <p>But past thirty, glory had still not come. Voyages repeated, ports changed, yet nothing in his life changed at all. Little by little, something like resignation had begun to settle inside him, like sediment at the bottom of a glass.</p>
+    <p>When he met Fusako, Ryuji felt the allure of life on land for the first time. A warm dinner table. Soft bedding. The feeling that someone was waiting for him. Things he could never have obtained at sea — here they were.</p>
+    <p>Ryuji asked himself: to go on waiting for glory, or to seize the happiness right before his eyes — which was right? The man of the sea hesitated for the first time.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <a href="page4.html">← 前のページ</a>
+  <span class="page-num">p. 5 / 5</span>
+  <em style="color:#ccc">次のページは準備中</em>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">栄光</td><td class="vocab-reading">えいこう</td><td class="vocab-en">glory / splendour</td></tr>
+    <tr><td class="vocab-kanji">運命</td><td class="vocab-reading">うんめい</td><td class="vocab-en">destiny / fate</td></tr>
+    <tr><td class="vocab-kanji">水平線</td><td class="vocab-reading">すいへいせん</td><td class="vocab-en">horizon (at sea)</td></tr>
+    <tr><td class="vocab-kanji">通路</td><td class="vocab-reading">つうろ</td><td class="vocab-en">passage / corridor / pathway</td></tr>
+    <tr><td class="vocab-kanji">甲板</td><td class="vocab-reading">かんぱん</td><td class="vocab-en">deck (of a ship)</td></tr>
+    <tr><td class="vocab-kanji">舵を取る</td><td class="vocab-reading">かじをとる</td><td class="vocab-en">to take the helm / to steer</td></tr>
+    <tr><td class="vocab-kanji">途方もなく</td><td class="vocab-reading">とほうもなく</td><td class="vocab-en">immeasurably / tremendously</td></tr>
+    <tr><td class="vocab-kanji">結末</td><td class="vocab-reading">けつまつ</td><td class="vocab-en">ending / conclusion / outcome</td></tr>
+    <tr><td class="vocab-kanji">航海</td><td class="vocab-reading">こうかい</td><td class="vocab-en">voyage / sailing</td></tr>
+    <tr><td class="vocab-kanji">沈殿する</td><td class="vocab-reading">ちんでんする</td><td class="vocab-en">to settle / to precipitate (like sediment)</td></tr>
+    <tr><td class="vocab-kanji">魅力</td><td class="vocab-reading">みりょく</td><td class="vocab-en">charm / allure / attraction</td></tr>
+    <tr><td class="vocab-kanji">食卓</td><td class="vocab-reading">しょくたく</td><td class="vocab-en">dinner table / dining table</td></tr>
+    <tr><td class="vocab-kanji">幸福</td><td class="vocab-reading">こうふく</td><td class="vocab-en">happiness / well-being</td></tr>
+    <tr><td class="vocab-kanji">掴む</td><td class="vocab-reading">つかむ</td><td class="vocab-en">to seize / to grasp / to grab</td></tr>
+    <tr><td class="vocab-kanji">迷う</td><td class="vocab-reading">まよう</td><td class="vocab-en">to hesitate / to waver / to be lost</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜こそが</strong> — it is precisely ~ that / ~ above all else<br><em>海の上での死こそが、最も美しい結末だと思っていた</em><br>こそ = emphatic particle. Marks the preceding noun as the one true or definitive thing. Very literary.</div>
+<div class="grammar-item"><strong>〜に似た</strong> — resembling ~ / similar to ~<br><em>諦めに似た感覚が彼の中に沈殿し始めていた</em><br>に似る = to resemble. に似た + noun = a noun resembling ~. Softer than saying 'it was resignation'.</div>
+<div class="grammar-item"><strong>〜し始める</strong> — to begin to ~ / to start ~ing<br><em>諦めに似た感覚が沈殿し始めていた</em><br>Verb stem + 始める = inchoative (marks the beginning of a process). し始めていた = had begun to.</div>
+<div class="grammar-item"><strong>〜ことと〜こと——どちらが</strong> — ~ versus ~ — which (is) ~?<br><em>栄光を待ち続けることと、目の前にある幸福を掴むこと——どちらが正しいのか</em><br>Two nominalised clauses (こと) set against each other with と, then compared with どちら. Classic dilemma structure.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
