@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>午後の曳航 — 第一部 夏 — 第一章 p.3</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --text: #1a1a2e;
+      --accent: #16425b;
+      --muted: #6b7d8e;
+      --border: #c8d6e0;
+      --vocab-bg: #dce8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">三島由紀夫</div>
+  <div class="chapter-title">午後の曳航</div>
+  <div class="chapter-sub">第一部 夏 — 第一章</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p>ある<ruby>夏<rt>なつ</rt></ruby>の<ruby>日<rt>ひ</rt></ruby>、<ruby>房子<rt>ふさこ</rt></ruby>は<ruby>息子<rt>むすこ</rt></ruby>を<ruby>連<rt>つ</rt></ruby>れて<ruby>港<rt>みなと</rt></ruby>へ<ruby>出<rt>で</rt></ruby>かけた。<ruby>貨物船<rt>かもつせん</rt></ruby>の<ruby>見学<rt>けんがく</rt></ruby>ツアーがあると<ruby>聞<rt>き</rt></ruby>いたのだ。<ruby>登<rt>のぼる</rt></ruby>は<ruby>船<rt>ふね</rt></ruby>が<ruby>好<rt>す</rt></ruby>きだった。<ruby>海<rt>うみ</rt></ruby>と<ruby>船<rt>ふね</rt></ruby>は、<ruby>彼<rt>かれ</rt></ruby>が<ruby>信<rt>しん</rt></ruby>じる<ruby>秩序<rt>ちつじょ</rt></ruby>の<ruby>象徴<rt>しょうちょう</rt></ruby>だった。</p>
+    <p><ruby>塚崎竜二<rt>つかざきりゅうじ</rt></ruby>は、その<ruby>貨物船<rt>かもつせん</rt></ruby>の<ruby>二等航海士<rt>にとうこうかいし</rt></ruby>だった。<ruby>三十代<rt>さんじゅうだい</rt></ruby>の<ruby>逞<rt>たくま</rt></ruby>しい<ruby>男<rt>おとこ</rt></ruby>で、<ruby>日<rt>ひ</rt></ruby>に<ruby>焼<rt>や</rt></ruby>けた<ruby>肌<rt>はだ</rt></ruby>と<ruby>太<rt>ふと</rt></ruby>い<ruby>腕<rt>うで</rt></ruby>を<ruby>持<rt>も</rt></ruby>っていた。<ruby>船<rt>ふね</rt></ruby>の<ruby>案内<rt>あんない</rt></ruby>を<ruby>務<rt>つと</rt></ruby>めたのが<ruby>彼<rt>かれ</rt></ruby>だった。</p>
+    <p><ruby>竜二<rt>りゅうじ</rt></ruby>は<ruby>寡黙<rt>かもく</rt></ruby>な<ruby>男<rt>おとこ</rt></ruby>だった。しかし<ruby>船<rt>ふね</rt></ruby>のことを<ruby>語<rt>かた</rt></ruby>るとき、その<ruby>目<rt>め</rt></ruby>は<ruby>輝<rt>かがや</rt></ruby>いた。<ruby>機関室<rt>きかんしつ</rt></ruby>の<ruby>轟音<rt>ごうおん</rt></ruby>、<ruby>嵐<rt>あらし</rt></ruby>の<ruby>夜<rt>よる</rt></ruby>の<ruby>操舵<rt>そうだ</rt></ruby>、<ruby>赤道<rt>せきどう</rt></ruby>を<ruby>越<rt>こ</rt></ruby>えるときの<ruby>儀式<rt>ぎしき</rt></ruby>——<ruby>彼<rt>かれ</rt></ruby>は<ruby>淡々<rt>たんたん</rt></ruby>と、しかし<ruby>確<rt>たし</rt></ruby>かな<ruby>誇<rt>ほこ</rt></ruby>りを<ruby>込<rt>こ</rt></ruby>めて<ruby>語<rt>かた</rt></ruby>った。</p>
+    <p><ruby>登<rt>のぼる</rt></ruby>は<ruby>竜二<rt>りゅうじ</rt></ruby>を<ruby>見上<rt>みあ</rt></ruby>げた。この<ruby>男<rt>おとこ</rt></ruby>は<ruby>本物<rt>ほんもの</rt></ruby>だ、と<ruby>思<rt>おも</rt></ruby>った。<ruby>海<rt>うみ</rt></ruby>を<ruby>知<rt>し</rt></ruby>り、<ruby>孤独<rt>こどく</rt></ruby>を<ruby>知<rt>し</rt></ruby>り、<ruby>感傷<rt>かんしょう</rt></ruby>に<ruby>溺<rt>おぼ</rt></ruby>れない<ruby>男<rt>おとこ</rt></ruby>。<ruby>一番<rt>いちばん</rt></ruby>が<ruby>語<rt>かた</rt></ruby>る「<ruby>英雄<rt>えいゆう</rt></ruby>」の<ruby>条件<rt>じょうけん</rt></ruby>を、この<ruby>船乗<rt>ふなの</rt></ruby>りは<ruby>満<rt>み</rt></ruby>たしているように<ruby>見<rt>み</rt></ruby>えた。</p>
+    <p><ruby>房子<rt>ふさこ</rt></ruby>もまた、<ruby>竜二<rt>りゅうじ</rt></ruby>に<ruby>惹<rt>ひ</rt></ruby>かれていた。<ruby>彼<rt>かれ</rt></ruby>の<ruby>無骨<rt>ぶこつ</rt></ruby>な<ruby>手<rt>て</rt></ruby>が<ruby>錨<rt>いかり</rt></ruby>の<ruby>鎖<rt>くさり</rt></ruby>に<ruby>触<rt>ふ</rt></ruby>れるのを<ruby>見<rt>み</rt></ruby>たとき、<ruby>彼女<rt>かのじょ</rt></ruby>の<ruby>胸<rt>むね</rt></ruby>に<ruby>何<rt>なに</rt></ruby>かが<ruby>灯<rt>とも</rt></ruby>った。<ruby>三年間<rt>さんねんかん</rt></ruby>、<ruby>誰<rt>だれ</rt></ruby>にも<ruby>感<rt>かん</rt></ruby>じなかったものが。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>One summer day, Fusako took her son to the harbour. She had heard there was a tour of a cargo ship. Noboru loved ships. The sea and ships were, for him, symbols of the order he believed in.</p>
+    <p>Tsukazaki Ryuji was the second mate aboard that freighter. A sturdy man in his thirties, with sun-darkened skin and thick arms. It was he who led the tour of the ship.</p>
+    <p>Ryuji was a man of few words. But when he spoke about the ship, his eyes shone. The roar of the engine room, steering through storms at night, the rituals of crossing the equator — he spoke of these things matter-of-factly, yet with unmistakable pride.</p>
+    <p>Noboru looked up at Ryuji. This man is the real thing, he thought. A man who knows the sea, who knows solitude, who does not drown in sentimentality. He seemed to meet every condition for the 'hero' that Number One described.</p>
+    <p>Fusako, too, was drawn to Ryuji. When she saw his rough hands touch the anchor chain, something was lit inside her chest. Something she had not felt for anyone in three years.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <a href="page2.html">← 前のページ</a>
+  <span class="page-num">p. 3 / 5</span>
+  <a href="page4.html">次のページ →</a>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">見学</td><td class="vocab-reading">けんがく</td><td class="vocab-en">tour / study visit / observation</td></tr>
+    <tr><td class="vocab-kanji">象徴</td><td class="vocab-reading">しょうちょう</td><td class="vocab-en">symbol / emblem</td></tr>
+    <tr><td class="vocab-kanji">二等航海士</td><td class="vocab-reading">にとうこうかいし</td><td class="vocab-en">second mate (nautical rank)</td></tr>
+    <tr><td class="vocab-kanji">逞しい</td><td class="vocab-reading">たくましい</td><td class="vocab-en">sturdy / robust / strapping</td></tr>
+    <tr><td class="vocab-kanji">寡黙な</td><td class="vocab-reading">かもくな</td><td class="vocab-en">taciturn / a man of few words</td></tr>
+    <tr><td class="vocab-kanji">機関室</td><td class="vocab-reading">きかんしつ</td><td class="vocab-en">engine room</td></tr>
+    <tr><td class="vocab-kanji">轟音</td><td class="vocab-reading">ごうおん</td><td class="vocab-en">thunderous roar / booming sound</td></tr>
+    <tr><td class="vocab-kanji">操舵</td><td class="vocab-reading">そうだ</td><td class="vocab-en">steering (a ship) / the helm</td></tr>
+    <tr><td class="vocab-kanji">赤道</td><td class="vocab-reading">せきどう</td><td class="vocab-en">equator</td></tr>
+    <tr><td class="vocab-kanji">淡々と</td><td class="vocab-reading">たんたんと</td><td class="vocab-en">matter-of-factly / calmly / without emotion</td></tr>
+    <tr><td class="vocab-kanji">本物</td><td class="vocab-reading">ほんもの</td><td class="vocab-en">the real thing / genuine article</td></tr>
+    <tr><td class="vocab-kanji">孤独</td><td class="vocab-reading">こどく</td><td class="vocab-en">solitude / loneliness</td></tr>
+    <tr><td class="vocab-kanji">溺れる</td><td class="vocab-reading">おぼれる</td><td class="vocab-en">to drown (in) / to be consumed by</td></tr>
+    <tr><td class="vocab-kanji">条件を満たす</td><td class="vocab-reading">じょうけんをみたす</td><td class="vocab-en">to meet the conditions / fulfil requirements</td></tr>
+    <tr><td class="vocab-kanji">無骨な</td><td class="vocab-reading">ぶこつな</td><td class="vocab-en">rough / rugged / unrefined</td></tr>
+    <tr><td class="vocab-kanji">錨</td><td class="vocab-reading">いかり</td><td class="vocab-en">anchor</td></tr>
+    <tr><td class="vocab-kanji">鎖</td><td class="vocab-reading">くさり</td><td class="vocab-en">chain</td></tr>
+    <tr><td class="vocab-kanji">灯る</td><td class="vocab-reading">ともる</td><td class="vocab-en">to be lit / to kindle / to glow</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜ように見えた</strong> — appeared to ~ / seemed to ~<br><em>この船乗りは満たしているように見えた</em><br>ように見える = to look as though. Past tense = ように見えた. Expresses subjective impression.</div>
+<div class="grammar-item"><strong>〜を込めて</strong> — putting ~ into / with ~ (emotion/effort)<br><em>確かな誇りを込めて語った</em><br>N2 grammar. 込める = to put into/fill with. を込めて = doing something with feeling invested.</div>
+<div class="grammar-item"><strong>〜に惹かれる</strong> — to be drawn/attracted to ~<br><em>房子もまた、竜二に惹かれていた</em><br>惹かれる = passive of 惹く (to attract). に marks the object of attraction. Literary and emotional.</div>
+<div class="grammar-item"><strong>〜もまた</strong> — ~ also / ~ too (in the same way)<br><em>房子もまた、竜二に惹かれていた</em><br>も = also; また reinforces. Shows parallel: Noboru admires Ryuji → Fusako is also drawn to him.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
