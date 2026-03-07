@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>午後の曳航 — 第一部 夏 — 第一章 p.7</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --text: #1a1a2e;
+      --accent: #16425b;
+      --muted: #6b7d8e;
+      --border: #c8d6e0;
+      --vocab-bg: #dce8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">三島由紀夫</div>
+  <div class="chapter-title">午後の曳航</div>
+  <div class="chapter-sub">第一部 夏 — 第一章</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p><ruby>翌日<rt>よくじつ</rt></ruby>の<ruby>放課後<rt>ほうかご</rt></ruby>、<ruby>登<rt>のぼる</rt></ruby>は<ruby>仲間<rt>なかま</rt></ruby>たちに<ruby>報告<rt>ほうこく</rt></ruby>した。<ruby>廃<rt>はい</rt></ruby>ドックの<ruby>倉庫<rt>そうこ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で、<ruby>六人<rt>ろくにん</rt></ruby>は<ruby>車座<rt>くるまざ</rt></ruby>に<ruby>座<rt>すわ</rt></ruby>っていた。<ruby>割<rt>わ</rt></ruby>れた<ruby>窓<rt>まど</rt></ruby>から<ruby>午後<rt>ごご</rt></ruby>の<ruby>光<rt>ひかり</rt></ruby>が<ruby>差<rt>さ</rt></ruby>し<ruby>込<rt>こ</rt></ruby>んでいた。</p>
+    <p>「<ruby>船乗<rt>ふなの</rt></ruby>りが<ruby>家<rt>いえ</rt></ruby>に<ruby>来<rt>き</rt></ruby>た」と<ruby>登<rt>のぼる</rt></ruby>は<ruby>言<rt>い</rt></ruby>った。「<ruby>二等航海士<rt>にとうこうかいし</rt></ruby>だ。<ruby>海<rt>うみ</rt></ruby>を<ruby>知<rt>し</rt></ruby>っている<ruby>男<rt>おとこ</rt></ruby>だ。<ruby>俺<rt>おれ</rt></ruby>は<ruby>穴<rt>あな</rt></ruby>から<ruby>見<rt>み</rt></ruby>た。あの<ruby>男<rt>おとこ</rt></ruby>は——<ruby>本物<rt>ほんもの</rt></ruby>だ」</p>
+    <p><ruby>一番<rt>いちばん</rt></ruby>は<ruby>目<rt>め</rt></ruby>を<ruby>細<rt>ほそ</rt></ruby>めた。「<ruby>本物<rt>ほんもの</rt></ruby>か。<ruby>面白<rt>おもしろ</rt></ruby>い。しかし<ruby>気<rt>き</rt></ruby>をつけろ。<ruby>英雄<rt>えいゆう</rt></ruby>が<ruby>英雄<rt>えいゆう</rt></ruby>であり<ruby>続<rt>つづ</rt></ruby>けることは、ほとんど<ruby>不可能<rt>ふかのう</rt></ruby>だ。<ruby>陸<rt>おか</rt></ruby>に<ruby>上<rt>あ</rt></ruby>がれば<ruby>堕落<rt>だらく</rt></ruby>する。<ruby>女<rt>おんな</rt></ruby>と<ruby>暮<rt>く</rt></ruby>らせば<ruby>堕落<rt>だらく</rt></ruby>する。それが<ruby>大人<rt>おとな</rt></ruby>の<ruby>法則<rt>ほうそく</rt></ruby>だ」</p>
+    <p>「でも<ruby>竜二<rt>りゅうじ</rt></ruby>は<ruby>違<rt>ちが</rt></ruby>う」と<ruby>登<rt>のぼる</rt></ruby>は<ruby>反論<rt>はんろん</rt></ruby>した。<ruby>声<rt>こえ</rt></ruby>に<ruby>熱<rt>ねつ</rt></ruby>がこもっていた。「あの<ruby>男<rt>おとこ</rt></ruby>は<ruby>海<rt>うみ</rt></ruby>に<ruby>属<rt>ぞく</rt></ruby>している。<ruby>感傷<rt>かんしょう</rt></ruby>に<ruby>溺<rt>おぼ</rt></ruby>れるような<ruby>人間<rt>にんげん</rt></ruby>じゃない」</p>
+    <p><ruby>一番<rt>いちばん</rt></ruby>は<ruby>静<rt>しず</rt></ruby>かに<ruby>首<rt>くび</rt></ruby>を<ruby>振<rt>ふ</rt></ruby>った。「<ruby>三番<rt>さんばん</rt></ruby>、お<ruby>前<rt>まえ</rt></ruby>は<ruby>期待<rt>きたい</rt></ruby>している。<ruby>期待<rt>きたい</rt></ruby>すること<ruby>自体<rt>じたい</rt></ruby>が<ruby>感傷<rt>かんしょう</rt></ruby>だ。<ruby>俺<rt>おれ</rt></ruby>たちは<ruby>観察<rt>かんさつ</rt></ruby>するだけだ。<ruby>裁<rt>さば</rt></ruby>くのは<ruby>事実<rt>じじつ</rt></ruby>を<ruby>見<rt>み</rt></ruby>てからだ」——<ruby>登<rt>のぼる</rt></ruby>は<ruby>黙<rt>だま</rt></ruby>った。しかし<ruby>胸<rt>むね</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>で、<ruby>竜二<rt>りゅうじ</rt></ruby>だけは<ruby>裏切<rt>うらぎ</rt></ruby>らないと<ruby>信<rt>しん</rt></ruby>じたかった。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>The next afternoon, after school, Noboru reported to his companions. Inside the abandoned dock warehouse, the six of them sat in a circle. Afternoon light streamed through the broken windows.</p>
+    <p>'A sailor came to the house,' Noboru said. 'A second mate. A man who knows the sea. I watched through the hole. That man — he's the real thing.'</p>
+    <p>Number One narrowed his eyes. 'The real thing. Interesting. But be careful. It is almost impossible for a hero to remain a hero. Come ashore and he'll be corrupted. Live with a woman and he'll be corrupted. That is the law of adults.'</p>
+    <p>'But Ryuji is different,' Noboru argued back. His voice was charged with heat. 'That man belongs to the sea. He's not the kind of person who drowns in sentimentality.'</p>
+    <p>Number One shook his head quietly. 'Number Three, you are hoping. Hope itself is sentimentality. We only observe. Judgement comes after we have seen the facts.' — Noboru fell silent. But deep in his chest, he wanted to believe that Ryuji alone would not betray them.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <a href="page6.html">← 前のページ</a>
+  <span class="page-num">p. 7 / 10</span>
+  <a href="page8.html">次のページ →</a>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">翌日</td><td class="vocab-reading">よくじつ</td><td class="vocab-en">the next day / the following day</td></tr>
+    <tr><td class="vocab-kanji">報告する</td><td class="vocab-reading">ほうこくする</td><td class="vocab-en">to report / to give an account</td></tr>
+    <tr><td class="vocab-kanji">車座</td><td class="vocab-reading">くるまざ</td><td class="vocab-en">sitting in a circle</td></tr>
+    <tr><td class="vocab-kanji">目を細める</td><td class="vocab-reading">めをほそめる</td><td class="vocab-en">to narrow one's eyes / to squint</td></tr>
+    <tr><td class="vocab-kanji">不可能な</td><td class="vocab-reading">ふかのうな</td><td class="vocab-en">impossible</td></tr>
+    <tr><td class="vocab-kanji">法則</td><td class="vocab-reading">ほうそく</td><td class="vocab-en">law / rule / principle</td></tr>
+    <tr><td class="vocab-kanji">反論する</td><td class="vocab-reading">はんろんする</td><td class="vocab-en">to argue back / to counter</td></tr>
+    <tr><td class="vocab-kanji">熱がこもる</td><td class="vocab-reading">ねつがこもる</td><td class="vocab-en">to be filled with passion / heat</td></tr>
+    <tr><td class="vocab-kanji">首を振る</td><td class="vocab-reading">くびをふる</td><td class="vocab-en">to shake one's head</td></tr>
+    <tr><td class="vocab-kanji">期待する</td><td class="vocab-reading">きたいする</td><td class="vocab-en">to expect / to hope / to look forward to</td></tr>
+    <tr><td class="vocab-kanji">自体</td><td class="vocab-reading">じたい</td><td class="vocab-en">itself / in itself</td></tr>
+    <tr><td class="vocab-kanji">観察する</td><td class="vocab-reading">かんさつする</td><td class="vocab-en">to observe / to watch carefully</td></tr>
+    <tr><td class="vocab-kanji">裁く</td><td class="vocab-reading">さばく</td><td class="vocab-en">to judge / to pass judgement</td></tr>
+    <tr><td class="vocab-kanji">胸の奥</td><td class="vocab-reading">むねのおく</td><td class="vocab-en">deep in one's heart/chest</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜であり続ける</strong> — to continue to be ~ / to remain ~<br><em>英雄が英雄であり続けることは、ほとんど不可能だ</em><br>である (copula) + 続ける (to continue). Formal: to go on being something. Implies difficulty.</div>
+<div class="grammar-item"><strong>〜こと自体が</strong> — the very act of ~ / ~ in itself is<br><em>期待すること自体が感傷だ</em><br>N2 grammar. 自体 = itself. Emphasises that the thing being discussed is the problem, not its outcome.</div>
+<div class="grammar-item"><strong>〜てからだ</strong> — it is after ~ that / only after ~<br><em>裁くのは事実を見てからだ</em><br>てから = after doing. だ finalises. The judgement comes only after seeing facts. Sets a prerequisite.</div>
+<div class="grammar-item"><strong>〜と信じたかった</strong> — wanted to believe that ~<br><em>竜二だけは裏切らないと信じたかった</em><br>信じる (to believe) + たい (want to) + past tense. Poignant: the desire itself reveals vulnerability.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
