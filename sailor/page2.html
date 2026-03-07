@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>午後の曳航 — 第一部 夏 — 第一章 p.2</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --text: #1a1a2e;
+      --accent: #16425b;
+      --muted: #6b7d8e;
+      --border: #c8d6e0;
+      --vocab-bg: #dce8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">三島由紀夫</div>
+  <div class="chapter-title">午後の曳航</div>
+  <div class="chapter-sub">第一部 夏 — 第一章</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p><ruby>登<rt>のぼる</rt></ruby>には<ruby>五人<rt>ごにん</rt></ruby>の<ruby>仲間<rt>なかま</rt></ruby>がいた。<ruby>彼<rt>かれ</rt></ruby>らは<ruby>自<rt>みずか</rt></ruby>ら<ruby>番号<rt>ばんごう</rt></ruby>で<ruby>呼<rt>よ</rt></ruby>び<ruby>合<rt>あ</rt></ruby>い、<ruby>本名<rt>ほんみょう</rt></ruby>を<ruby>使<rt>つか</rt></ruby>うことを<ruby>軽蔑<rt>けいべつ</rt></ruby>した。<ruby>登<rt>のぼる</rt></ruby>は<ruby>三番<rt>さんばん</rt></ruby>だった。<ruby>首領<rt>しゅりょう</rt></ruby>は<ruby>一番<rt>いちばん</rt></ruby>と<ruby>呼<rt>よ</rt></ruby>ばれる<ruby>少年<rt>しょうねん</rt></ruby>で、<ruby>彼<rt>かれ</rt></ruby>らの<ruby>中<rt>なか</rt></ruby>で<ruby>最<rt>もっと</rt></ruby>も<ruby>冷酷<rt>れいこく</rt></ruby>な<ruby>知性<rt>ちせい</rt></ruby>を<ruby>持<rt>も</rt></ruby>っていた。</p>
+    <p>「<ruby>俺<rt>おれ</rt></ruby>たちは<ruby>選<rt>えら</rt></ruby>ばれた<ruby>人間<rt>にんげん</rt></ruby>だ」と<ruby>一番<rt>いちばん</rt></ruby>は<ruby>言<rt>い</rt></ruby>った。「この<ruby>世界<rt>せかい</rt></ruby>には<ruby>秩序<rt>ちつじょ</rt></ruby>がある。<ruby>大人<rt>おとな</rt></ruby>たちはその<ruby>秩序<rt>ちつじょ</rt></ruby>を<ruby>裏切<rt>うらぎ</rt></ruby>り<ruby>続<rt>つづ</rt></ruby>けている。<ruby>感傷<rt>かんしょう</rt></ruby>と<ruby>妥協<rt>だきょう</rt></ruby>によって、あらゆるものを<ruby>堕落<rt>だらく</rt></ruby>させている。<ruby>俺<rt>おれ</rt></ruby>たちだけが<ruby>真実<rt>しんじつ</rt></ruby>を<ruby>見<rt>み</rt></ruby>ている」</p>
+    <p><ruby>彼<rt>かれ</rt></ruby>らは<ruby>放課後<rt>ほうかご</rt></ruby>、<ruby>港<rt>みなと</rt></ruby>を<ruby>見下<rt>みお</rt></ruby>ろす<ruby>丘<rt>おか</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>にある<ruby>廃<rt>はい</rt></ruby>ドックの<ruby>倉庫<rt>そうこ</rt></ruby>に<ruby>集<rt>あつ</rt></ruby>まった。<ruby>錆<rt>さ</rt></ruby>びた<ruby>鉄骨<rt>てっこつ</rt></ruby>と<ruby>割<rt>わ</rt></ruby>れた<ruby>硝子<rt>がらす</rt></ruby>に<ruby>囲<rt>かこ</rt></ruby>まれた、<ruby>秘密<rt>ひみつ</rt></ruby>の<ruby>場所<rt>ばしょ</rt></ruby>だった。そこで<ruby>彼<rt>かれ</rt></ruby>らは<ruby>大人<rt>おとな</rt></ruby>の<ruby>世界<rt>せかい</rt></ruby>を<ruby>裁<rt>さば</rt></ruby>いた。</p>
+    <p><ruby>一番<rt>いちばん</rt></ruby>の<ruby>哲学<rt>てつがく</rt></ruby>は<ruby>明快<rt>めいかい</rt></ruby>だった。<ruby>感情<rt>かんじょう</rt></ruby>は<ruby>弱<rt>よわ</rt></ruby>さである。<ruby>涙<rt>なみだ</rt></ruby>は<ruby>堕落<rt>だらく</rt></ruby>である。<ruby>英雄<rt>えいゆう</rt></ruby>とは、<ruby>何<rt>なに</rt></ruby>も<ruby>感<rt>かん</rt></ruby>じないことのできる<ruby>人間<rt>にんげん</rt></ruby>のことだ。<ruby>世界<rt>せかい</rt></ruby>に<ruby>意味<rt>いみ</rt></ruby>はなく、<ruby>人間<rt>にんげん</rt></ruby>の<ruby>行為<rt>こうい</rt></ruby>にも<ruby>価値<rt>かち</rt></ruby>はない。ただ<ruby>純粋<rt>じゅんすい</rt></ruby>な<ruby>秩序<rt>ちつじょ</rt></ruby>だけが<ruby>美<rt>うつく</rt></ruby>しい。</p>
+    <p><ruby>登<rt>のぼる</rt></ruby>は<ruby>一番<rt>いちばん</rt></ruby>の<ruby>言葉<rt>ことば</rt></ruby>に<ruby>深<rt>ふか</rt></ruby>く<ruby>共鳴<rt>きょうめい</rt></ruby>した。<ruby>自分<rt>じぶん</rt></ruby>の<ruby>内側<rt>うちがわ</rt></ruby>にある<ruby>冷<rt>つめ</rt></ruby>たい<ruby>何<rt>なに</rt></ruby>かが、<ruby>同<rt>おな</rt></ruby>じことを<ruby>囁<rt>ささや</rt></ruby>いているのを<ruby>感<rt>かん</rt></ruby>じていたからだ。<ruby>父<rt>ちち</rt></ruby>のいない<ruby>家<rt>いえ</rt></ruby>で<ruby>育<rt>そだ</rt></ruby>った<ruby>少年<rt>しょうねん</rt></ruby>は、<ruby>世界<rt>せかい</rt></ruby>を<ruby>信頼<rt>しんらい</rt></ruby>することをとうに<ruby>諦<rt>あきら</rt></ruby>めていた。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>Noboru had five companions. They called one another by number and scorned the use of real names. Noboru was Number Three. The leader was the boy called Number One — the coldest intelligence among them.</p>
+    <p>'We are the chosen,' Number One said. 'There is an order to this world. Adults go on betraying that order. Through sentimentality and compromise, they corrupt everything. We alone see the truth.'</p>
+    <p>After school they gathered at an abandoned dock warehouse on a hill overlooking the harbour. Surrounded by rusted steel beams and broken glass — their secret place. There they passed judgement on the adult world.</p>
+    <p>Number One's philosophy was clear. Emotion is weakness. Tears are corruption. A hero is a person who can feel nothing. The world has no meaning, and human actions have no value. Only pure order is beautiful.</p>
+    <p>Noboru resonated deeply with Number One's words. He felt that something cold inside himself had been whispering the same thing. A boy raised in a fatherless home had long since given up trusting the world.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <a href="page1.html">← 前のページ</a>
+  <span class="page-num">p. 2 / 5</span>
+  <a href="page3.html">次のページ →</a>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">仲間</td><td class="vocab-reading">なかま</td><td class="vocab-en">companion / comrade / peer</td></tr>
+    <tr><td class="vocab-kanji">番号</td><td class="vocab-reading">ばんごう</td><td class="vocab-en">number (assigned)</td></tr>
+    <tr><td class="vocab-kanji">軽蔑する</td><td class="vocab-reading">けいべつする</td><td class="vocab-en">to scorn / despise / look down on</td></tr>
+    <tr><td class="vocab-kanji">首領</td><td class="vocab-reading">しゅりょう</td><td class="vocab-en">leader / chief / ringleader</td></tr>
+    <tr><td class="vocab-kanji">冷酷な</td><td class="vocab-reading">れいこくな</td><td class="vocab-en">cold-hearted / ruthless</td></tr>
+    <tr><td class="vocab-kanji">裏切る</td><td class="vocab-reading">うらぎる</td><td class="vocab-en">to betray</td></tr>
+    <tr><td class="vocab-kanji">感傷</td><td class="vocab-reading">かんしょう</td><td class="vocab-en">sentimentality</td></tr>
+    <tr><td class="vocab-kanji">妥協</td><td class="vocab-reading">だきょう</td><td class="vocab-en">compromise</td></tr>
+    <tr><td class="vocab-kanji">堕落</td><td class="vocab-reading">だらく</td><td class="vocab-en">corruption / moral decay</td></tr>
+    <tr><td class="vocab-kanji">廃ドック</td><td class="vocab-reading">はいドック</td><td class="vocab-en">abandoned dock</td></tr>
+    <tr><td class="vocab-kanji">倉庫</td><td class="vocab-reading">そうこ</td><td class="vocab-en">warehouse</td></tr>
+    <tr><td class="vocab-kanji">鉄骨</td><td class="vocab-reading">てっこつ</td><td class="vocab-en">steel beam / framework</td></tr>
+    <tr><td class="vocab-kanji">裁く</td><td class="vocab-reading">さばく</td><td class="vocab-en">to judge / pass judgement</td></tr>
+    <tr><td class="vocab-kanji">哲学</td><td class="vocab-reading">てつがく</td><td class="vocab-en">philosophy</td></tr>
+    <tr><td class="vocab-kanji">明快な</td><td class="vocab-reading">めいかいな</td><td class="vocab-en">clear / lucid</td></tr>
+    <tr><td class="vocab-kanji">共鳴する</td><td class="vocab-reading">きょうめいする</td><td class="vocab-en">to resonate / sympathise deeply</td></tr>
+    <tr><td class="vocab-kanji">囁く</td><td class="vocab-reading">ささやく</td><td class="vocab-en">to whisper</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜続けている</strong> — to continue ~ing / to keep on ~ing<br><em>大人たちはその秩序を裏切り続けている</em><br>Verb stem + 続ける = to continue doing. ている makes it ongoing present.</div>
+<div class="grammar-item"><strong>〜によって</strong> — by means of ~ / through ~<br><em>感傷と妥協によって、あらゆるものを堕落させている</em><br>N2 grammar. Expresses cause, means, or agent. Here: the method by which corruption happens.</div>
+<div class="grammar-item"><strong>〜からだ</strong> — because ~ / the reason is that ~<br><em>同じことを囁いているのを感じていたからだ</em><br>Sentence-final から + だ/です = explaining the reason for the previous statement. Literary register.</div>
+<div class="grammar-item"><strong>とうに〜ていた</strong> — had long since ~ / had already ~ (ages ago)<br><em>世界を信頼することをとうに諦めていた</em><br>とうに = long ago / already (emphatic). Combined with ていた = a state reached long before now.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
