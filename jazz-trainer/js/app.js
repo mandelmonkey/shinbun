@@ -518,6 +518,7 @@ const App = (() => {
 
         // Start button
         document.getElementById('btn-drill-start')?.addEventListener('click', startDrill);
+        document.getElementById('btn-drill-hear')?.addEventListener('click', hearDrillChord);
         document.getElementById('btn-drill-next')?.addEventListener('click', advanceDrill);
         document.getElementById('btn-drill-hint')?.addEventListener('click', toggleDrillHint);
     }
@@ -689,6 +690,18 @@ const App = (() => {
         MIDIHandler.clearNotes();
         drillShowHint = false;
         updateDrillHintDisplay();
+    }
+
+    function hearDrillChord() {
+        if (!currentChord) return;
+        const target = findDrillTarget();
+        if (target) {
+            AudioEngine.playChord(target.notes, 2.5);
+        } else {
+            // Fallback: play first available voicing
+            const voicings = Music.generateVoicings(currentChord);
+            if (voicings.length > 0) AudioEngine.playChord(voicings[0].notes, 2.5);
+        }
     }
 
     function toggleDrillHint() {
