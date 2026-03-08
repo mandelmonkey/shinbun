@@ -693,14 +693,39 @@ const App = (() => {
     }
 
     function hearDrillChord() {
-        if (!currentChord) return;
+        if (!currentChord || drillQueue.length === 0) return;
+        
+        // Ensure AudioContext is created and running
+        const ctx = AudioEngine.getContext();
+        
         const target = findDrillTarget();
-        if (target) {
-            AudioEngine.playChord(target.notes, 2.5);
+        let notes = null;
+        
+        if (target && target.notes && target.notes.length > 0) {
+            notes = target.notes;
         } else {
-            // Fallback: play first available voicing
+            // Fallback: play any available voicing
             const voicings = Music.generateVoicings(currentChord);
-            if (voicings.length > 0) AudioEngine.playChord(voicings[0].notes, 2.5);
+            if (voicings.length > 0) notes = voicings[0].notes;
+        }
+        
+        if (notes && notes.length > 0) {
+            AudioEngine.playChord(notes, 2.5, 0.25);
+            // Flash the button to confirm it played
+            const btn = document.getElementById('btn-drill-hear');
+            if (btn) {
+                btn.textContent = '♪ Playing...';
+                setTimeout(() => { btn.textContent = '♪ Hear It'; }, 1500);
+            }
+            // Show the notes on the keyboard briefly
+            if (target && target.twoHand && target.lh && target.rh) {
+                PianoUI.setTwoHandNotes(target.lh, target.rh);
+            } else {
+                PianoUI.setHighlightedNotes(notes);
+            }
+            setTimeout(() => {
+                if (!drillShowHint) PianoUI.clearAll();
+            }, 2500);
         }
     }
 
