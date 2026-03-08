@@ -20,6 +20,7 @@
         <nav>
             <button data-mode="chord-trainer" class="active">Chord Trainer</button>
             <button data-mode="ii-v-i">ii-V-I</button>
+            <button data-mode="voicing-drill">Voicing Drill</button>
             <button data-mode="progression">Progressions</button>
             <button data-mode="standards">Standards</button>
             <button data-mode="ear-training">Ear Training</button>
@@ -75,6 +76,52 @@
             </div>
             
             <div id="feedback-iivi" class="feedback-area hidden"></div>
+        </div>
+
+        <!-- ════════════════════════════════════════ -->
+        <!-- VOICING DRILL MODE                       -->
+        <!-- ════════════════════════════════════════ -->
+        <div id="mode-voicing-drill" class="mode-panel hidden">
+            <h2>Voicing Drill</h2>
+            <p class="mode-description">Learn every chord for a specific voicing type. Select roots, pick voicing + quality, then drill.</p>
+            
+            <div class="drill-setup">
+                <div class="drill-row">
+                    <label>Voicing type:</label>
+                    <select id="drill-voicing-type" class="btn"></select>
+                </div>
+                <div class="drill-row">
+                    <label>Chord quality:</label>
+                    <select id="drill-quality" class="btn"></select>
+                </div>
+                
+                <div class="drill-row">
+                    <label>Root notes to include:</label>
+                    <div class="drill-quick-btns">
+                        <button id="drill-select-all" class="btn btn-sm">All</button>
+                        <button id="drill-select-none" class="btn btn-sm">None</button>
+                        <button id="drill-select-naturals" class="btn btn-sm">Naturals</button>
+                    </div>
+                </div>
+                <div id="drill-root-grid" class="drill-root-grid"></div>
+            </div>
+            
+            <div class="btn-group">
+                <button id="btn-drill-start" class="btn btn-primary">▶ Start Drill</button>
+                <button id="btn-drill-hint" class="btn">👁 Show Notes</button>
+                <button id="btn-drill-next" class="btn">Skip →</button>
+            </div>
+            
+            <div class="chord-display-area">
+                <div id="drill-voicing-label" class="chord-quality-info" style="margin-bottom:4px;"></div>
+                <div id="drill-chord-display" class="chord-symbol">—</div>
+                <div id="drill-progress" class="chord-quality-info"></div>
+            </div>
+            
+            <div id="drill-dots" class="drill-dots"></div>
+            <div id="drill-hint-notes" class="drill-hint-notes hidden"></div>
+            
+            <div id="feedback-drill" class="feedback-area hidden"></div>
         </div>
 
         <!-- ════════════════════════════════════════ -->

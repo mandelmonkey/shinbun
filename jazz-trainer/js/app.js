@@ -20,6 +20,15 @@ const App = (() => {
     let currentProgression = [];
     let earTrainingAnswer = null;
     
+    // Voicing Drill state
+    let drillVoicingType = 'rootlessA';  // rootlessA, rootlessB, shell37, shell73
+    let drillQuality = 'm7';            // chord quality to drill
+    let drillSelectedRoots = new Set([0,2,4,5,7,9,11]); // all naturals by default
+    let drillQueue = [];
+    let drillIndex = 0;
+    let drillShowHint = false;
+    const HINT_TOGGLE_NOTE = 108; // C8 (top of 88-key), also accept 96 (C7, top of 61-key)
+    
     // Modes with settings
     const SUBMIT_DELAY = 800; // ms after last note to auto-submit
 
@@ -61,6 +70,9 @@ const App = (() => {
         // Set up ear training
         initEarTraining();
         
+        // Set up voicing drill
+        initVoicingDrill();
+        
         // Load initial mode
         switchMode('chord-trainer');
         
@@ -87,6 +99,7 @@ const App = (() => {
         
         if (mode === 'chord-trainer') newChord();
         if (mode === 'ii-v-i') startIIVI();
+        if (mode === 'voicing-drill') startDrill();
         if (mode === 'progression') startProgression();
         if (mode === 'ear-training') newEarChallenge();
         if (mode === 'stats') updateStatsDisplay();
@@ -112,6 +125,18 @@ const App = (() => {
     // ── Note Handling ──
 
     function handleNotesChanged(notes) {
+        // Check for hint toggle (top key on 88-key or 61-key keyboard)
+        if (currentMode === 'voicing-drill') {
+            if (notes.has(HINT_TOGGLE_NOTE) || notes.has(96)) {
+                // Remove the toggle note from active set so it doesn't count as played
+                notes.delete(HINT_TOGGLE_NOTE);
+                notes.delete(96);
+                toggleDrillHint();
+                PianoUI.setActiveNotes(notes);
+                return;
+            }
+        }
+        
         PianoUI.setActiveNotes(notes);
         
         // Auto-submit after a pause
@@ -134,6 +159,9 @@ const App = (() => {
                 break;
             case 'ii-v-i':
                 gradeIIVI(notes, responseTime);
+                break;
+            case 'voicing-drill':
+                gradeDrill(notes, responseTime);
                 break;
             case 'progression':
                 gradeProgression(notes, responseTime);
@@ -334,6 +362,290 @@ const App = (() => {
                 MIDIHandler.clearNotes();
                 PianoUI.setActiveNotes(new Set());
             }, 1200);
+        }
+    }
+
+    // ══════════════════════════════════════════════
+    // VOICING DRILL MODE
+    // ══════════════════════════════════════════════
+    // Learn all chords for a specific voicing type.
+    // Select which roots to include, pick a voicing type + quality,
+    // then drill through them. Hit top key to toggle answer overlay.
+
+    const DRILL_VOICING_TYPES = {
+        'rootlessA':  'Rootless A',
+        'rootlessB':  'Rootless B',
+        'shell':      'Shell (3→7)',
+        'shell73':    'Shell (7→3)',
+        'spread':     'Spread (Two-Hand)',
+    };
+
+    const DRILL_QUALITIES = {
+        'm7':     'Minor 7th (ii)',
+        '7':      'Dominant 7th (V)',
+        'maj7':   'Major 7th (I)',
+        'm7b5':   'Half-dim (iiø)',
+        '7b9':    'Dom 7♭9 (V of minor)',
+        '7alt':   'Altered Dom',
+        'dim7':   'Diminished 7th',
+        'm9':     'Minor 9th',
+        '9':      'Dominant 9th',
+        'maj9':   'Major 9th',
+    };
+
+    function initVoicingDrill() {
+        // Build voicing type selector
+        const typeSelect = document.getElementById('drill-voicing-type');
+        if (typeSelect) {
+            for (const [val, label] of Object.entries(DRILL_VOICING_TYPES)) {
+                const opt = document.createElement('option');
+                opt.value = val;
+                opt.textContent = label;
+                typeSelect.appendChild(opt);
+            }
+            typeSelect.addEventListener('change', () => {
+                drillVoicingType = typeSelect.value;
+            });
+        }
+
+        // Build quality selector
+        const qualSelect = document.getElementById('drill-quality');
+        if (qualSelect) {
+            for (const [val, label] of Object.entries(DRILL_QUALITIES)) {
+                const opt = document.createElement('option');
+                opt.value = val;
+                opt.textContent = label;
+                qualSelect.appendChild(opt);
+            }
+            qualSelect.addEventListener('change', () => {
+                drillQuality = qualSelect.value;
+            });
+        }
+
+        // Build root toggle buttons (all 12 notes)
+        const rootGrid = document.getElementById('drill-root-grid');
+        if (rootGrid) {
+            for (let pc = 0; pc < 12; pc++) {
+                const btn = document.createElement('button');
+                btn.className = 'drill-root-btn active';
+                btn.dataset.pc = pc;
+                btn.textContent = Music.pcName(pc);
+                btn.addEventListener('click', () => {
+                    if (drillSelectedRoots.has(pc)) {
+                        drillSelectedRoots.delete(pc);
+                        btn.classList.remove('active');
+                    } else {
+                        drillSelectedRoots.add(pc);
+                        btn.classList.add('active');
+                    }
+                });
+                // Default: only natural notes selected
+                if (![1,3,6,8,10].includes(pc)) {
+                    drillSelectedRoots.add(pc);
+                    btn.classList.add('active');
+                } else {
+                    drillSelectedRoots.delete(pc);
+                    btn.classList.remove('active');
+                }
+                rootGrid.appendChild(btn);
+            }
+        }
+
+        // Quick-select buttons
+        document.getElementById('drill-select-all')?.addEventListener('click', () => {
+            drillSelectedRoots = new Set([0,1,2,3,4,5,6,7,8,9,10,11]);
+            document.querySelectorAll('.drill-root-btn').forEach(b => b.classList.add('active'));
+        });
+        document.getElementById('drill-select-none')?.addEventListener('click', () => {
+            drillSelectedRoots.clear();
+            document.querySelectorAll('.drill-root-btn').forEach(b => b.classList.remove('active'));
+        });
+        document.getElementById('drill-select-naturals')?.addEventListener('click', () => {
+            drillSelectedRoots = new Set([0,2,4,5,7,9,11]);
+            document.querySelectorAll('.drill-root-btn').forEach(b => {
+                b.classList.toggle('active', drillSelectedRoots.has(parseInt(b.dataset.pc)));
+            });
+        });
+
+        // Start button
+        document.getElementById('btn-drill-start')?.addEventListener('click', startDrill);
+        document.getElementById('btn-drill-next')?.addEventListener('click', advanceDrill);
+        document.getElementById('btn-drill-hint')?.addEventListener('click', toggleDrillHint);
+    }
+
+    function startDrill() {
+        if (drillSelectedRoots.size === 0) {
+            const display = document.getElementById('drill-chord-display');
+            if (display) display.textContent = 'Select at least one root!';
+            return;
+        }
+
+        // Build queue: each selected root with the chosen quality
+        drillQueue = [...drillSelectedRoots].sort((a, b) => a - b).map(pc => ({
+            root: pc,
+            quality: drillQuality,
+            bass: null,
+            display: `${Music.pcName(pc)}${drillQuality}`
+        }));
+
+        // Shuffle
+        for (let i = drillQueue.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [drillQueue[i], drillQueue[j]] = [drillQueue[j], drillQueue[i]];
+        }
+
+        drillIndex = 0;
+        drillShowHint = false;
+        previousVoicing = null;
+        updateDrillDisplay();
+    }
+
+    function updateDrillDisplay() {
+        if (drillQueue.length === 0) return;
+
+        const chord = drillQueue[drillIndex];
+        currentChord = chord;
+        chordStartTime = null;
+
+        // Chord display
+        const display = document.getElementById('drill-chord-display');
+        if (display) display.textContent = chord.display;
+
+        // Voicing type label
+        const typeLabel = document.getElementById('drill-voicing-label');
+        if (typeLabel) typeLabel.textContent = DRILL_VOICING_TYPES[drillVoicingType] || drillVoicingType;
+
+        // Progress indicator
+        const progress = document.getElementById('drill-progress');
+        if (progress) progress.textContent = `${drillIndex + 1} / ${drillQueue.length}`;
+
+        // Progress dots
+        const dots = document.getElementById('drill-dots');
+        if (dots) {
+            dots.innerHTML = drillQueue.map((c, i) => {
+                let cls = 'drill-dot';
+                if (i < drillIndex) cls += ' done';
+                else if (i === drillIndex) cls += ' current';
+                return `<span class="${cls}" title="${c.display}">${Music.pcName(c.root)}</span>`;
+            }).join('');
+        }
+
+        clearFeedback();
+        PianoUI.clearAll();
+        MIDIHandler.clearNotes();
+        drillShowHint = false;
+        updateDrillHintDisplay();
+    }
+
+    function toggleDrillHint() {
+        drillShowHint = !drillShowHint;
+        updateDrillHintDisplay();
+    }
+
+    function updateDrillHintDisplay() {
+        if (!currentChord) return;
+
+        const hintBtn = document.getElementById('btn-drill-hint');
+        if (hintBtn) hintBtn.textContent = drillShowHint ? '🙈 Hide Notes' : '👁 Show Notes';
+
+        if (drillShowHint) {
+            // Find the target voicing for the current chord + selected type
+            const voicings = Music.generateVoicings(currentChord);
+            const target = voicings.find(v => {
+                if (drillVoicingType === 'rootlessA') return v.type === 'rootlessA';
+                if (drillVoicingType === 'rootlessB') return v.type === 'rootlessB';
+                if (drillVoicingType === 'shell') return v.type === 'shell' && v.label.includes('3→7');
+                if (drillVoicingType === 'shell73') return v.type === 'shell' && v.label.includes('7→3');
+                if (drillVoicingType === 'spread') return v.type === 'spread';
+                return false;
+            });
+
+            if (target) {
+                PianoUI.setSuggestedNotes(target.notes);
+                // Show note names
+                const hintNotes = document.getElementById('drill-hint-notes');
+                if (hintNotes) {
+                    const names = target.notes.map(n => Music.midiToNoteName(n, true));
+                    const pcs = target.notes.map(n => Music.pcName(n % 12));
+                    hintNotes.textContent = pcs.join(' — ') + '  (' + names.join(', ') + ')';
+                    hintNotes.classList.remove('hidden');
+                }
+            }
+        } else {
+            PianoUI.setSuggestedNotes(new Set());
+            const hintNotes = document.getElementById('drill-hint-notes');
+            if (hintNotes) hintNotes.classList.add('hidden');
+        }
+    }
+
+    function gradeDrill(notes, responseTime) {
+        if (!currentChord || drillQueue.length === 0) return;
+
+        const settings = Stats.getSettings();
+        const result = Music.gradeVoicing(notes, currentChord, settings);
+
+        // Also check if they played the specific voicing type requested
+        const voicings = Music.generateVoicings(currentChord);
+        const target = voicings.find(v => {
+            if (drillVoicingType === 'rootlessA') return v.type === 'rootlessA';
+            if (drillVoicingType === 'rootlessB') return v.type === 'rootlessB';
+            if (drillVoicingType === 'shell') return v.type === 'shell' && v.label.includes('3→7');
+            if (drillVoicingType === 'shell73') return v.type === 'shell' && v.label.includes('7→3');
+            if (drillVoicingType === 'spread') return v.type === 'spread';
+            return false;
+        });
+
+        // Check if played notes match the target voicing (by pitch class)
+        let voicingMatch = false;
+        if (target) {
+            const targetPCs = new Set(target.notes.map(n => n % 12));
+            const playedPCs = new Set(notes.map(n => n % 12));
+            voicingMatch = targetPCs.size === playedPCs.size && 
+                           [...targetPCs].every(pc => playedPCs.has(pc));
+        }
+
+        let vlFeedback = '';
+        if (previousVoicing) {
+            const vl = Music.scoreVoiceLeading(previousVoicing, notes);
+            vlFeedback = vl.feedback;
+        }
+        previousVoicing = [...notes];
+
+        // Enhanced feedback for drill mode
+        const drillFeedback = { ...result };
+        if (voicingMatch) {
+            drillFeedback.score = Math.max(result.score, 95);
+            drillFeedback.grade = 'Excellent';
+            drillFeedback.feedback = [`✅ Correct ${DRILL_VOICING_TYPES[drillVoicingType]} voicing!`, ...result.feedback.filter(f => f.startsWith('✨'))];
+        } else if (result.score >= 75) {
+            drillFeedback.feedback = [`⚠️ Good chord tones, but not the ${DRILL_VOICING_TYPES[drillVoicingType]} voicing`, ...result.feedback];
+        }
+
+        Stats.recordAttempt(currentChord, drillFeedback.score, responseTime);
+        showFeedback(drillFeedback, vlFeedback);
+        PianoUI.setHighlightedNotes(notes);
+
+        // Auto-advance on correct voicing match
+        if (voicingMatch) {
+            setTimeout(() => {
+                advanceDrill();
+                MIDIHandler.clearNotes();
+                PianoUI.setActiveNotes(new Set());
+            }, 1200);
+        }
+    }
+
+    function advanceDrill() {
+        drillIndex++;
+        if (drillIndex >= drillQueue.length) {
+            // Completed the run
+            showFeedback({
+                score: 100, grade: 'Run Complete!',
+                feedback: ['🎉 All roots completed! Starting a new round.']
+            }, '');
+            setTimeout(startDrill, 1500);
+        } else {
+            updateDrillDisplay();
         }
     }
 
@@ -743,6 +1055,7 @@ const App = (() => {
     const FEEDBACK_IDS = {
         'chord-trainer': 'feedback-chord',
         'ii-v-i': 'feedback-iivi',
+        'voicing-drill': 'feedback-drill',
         'progression': 'feedback-prog',
         'standards': 'feedback-standards',
         'ear-training': 'feedback-ear',

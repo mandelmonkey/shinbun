@@ -695,6 +695,133 @@ input[type="range"]::-webkit-slider-thumb {
     margin-top: 6px;
 }
 
+/* ── Voicing Drill ── */
+
+.drill-setup {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.drill-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.drill-row label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.drill-row select {
+    min-width: 180px;
+}
+
+.drill-quick-btns {
+    display: flex;
+    gap: 4px;
+}
+
+.btn-sm {
+    padding: 3px 10px;
+    font-size: 0.75rem;
+}
+
+.drill-root-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+    margin: 8px 0 4px;
+}
+
+.drill-root-btn {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    color: var(--text-muted);
+    padding: 10px 4px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-family: var(--font-chord);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.drill-root-btn:hover {
+    border-color: var(--accent-blue);
+    color: var(--text-primary);
+}
+
+.drill-root-btn.active {
+    background: rgba(74, 158, 255, 0.15);
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+.drill-dots {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 12px 0;
+}
+
+.drill-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 28px;
+    border-radius: 4px;
+    font-family: var(--font-chord);
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--bg-card);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+}
+
+.drill-dot.current {
+    background: rgba(212, 168, 83, 0.15);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    transform: scale(1.15);
+}
+
+.drill-dot.done {
+    background: rgba(74, 222, 128, 0.1);
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+    opacity: 0.7;
+}
+
+.drill-hint-notes {
+    text-align: center;
+    font-family: var(--font-chord);
+    font-size: 1.05rem;
+    color: var(--accent-green);
+    padding: 8px;
+    margin: 8px auto;
+    max-width: 500px;
+    background: rgba(74, 222, 128, 0.08);
+    border-radius: var(--radius);
+    border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.drill-hint-notes.hidden { display: none; }
+
 /* ── Responsive ── */
 
 @media (max-width: 768px) {
