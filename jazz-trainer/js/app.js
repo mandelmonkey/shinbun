@@ -244,15 +244,22 @@ const App = (() => {
             div.className = `voicing-card type-${v.type}`;
             
             const noteNames = v.notes.map(n => Music.midiToNoteName(n, true)).join(' — ');
-            const pcNames = v.notes.map(n => Music.pcName(n % 12)).join(' ');
+            let notesDisplay;
+            if (v.twoHand && v.lh && v.rh) {
+                const lhPc = v.lh.map(n => Music.pcName(n % 12)).join(' ');
+                const rhPc = v.rh.map(n => Music.pcName(n % 12)).join(' ');
+                notesDisplay = `<span class="hint-lh">LH: ${lhPc}</span> <span class="hint-divider">|</span> <span class="hint-rh">RH: ${rhPc}</span>`;
+            } else {
+                notesDisplay = v.notes.map(n => Music.pcName(n % 12)).join(' ');
+            }
             
             div.innerHTML = `
                 <div class="voicing-label">${v.label}</div>
-                <div class="voicing-notes">${pcNames}</div>
+                <div class="voicing-notes">${notesDisplay}</div>
                 <div class="voicing-midi">${noteNames}</div>
                 <div class="voicing-desc">${v.description}</div>
                 <button class="btn-play-voicing" data-notes="${v.notes.join(',')}">♪ Play</button>
-                <button class="btn-show-voicing" data-notes="${v.notes.join(',')}">Show on keyboard</button>
+                <button class="btn-show-voicing" data-notes="${v.notes.join(',')}" ${v.twoHand ? `data-lh="${v.lh.join(',')}" data-rh="${v.rh.join(',')}"` : ''}>Show on keyboard</button>
             `;
             container.appendChild(div);
         }
@@ -266,8 +273,14 @@ const App = (() => {
         });
         container.querySelectorAll('.btn-show-voicing').forEach(btn => {
             btn.addEventListener('click', () => {
-                const notes = btn.dataset.notes.split(',').map(Number);
-                PianoUI.setSuggestedNotes(notes);
+                if (btn.dataset.lh && btn.dataset.rh) {
+                    const lh = btn.dataset.lh.split(',').map(Number);
+                    const rh = btn.dataset.rh.split(',').map(Number);
+                    PianoUI.setTwoHandNotes(lh, rh);
+                } else {
+                    const notes = btn.dataset.notes.split(',').map(Number);
+                    PianoUI.setSuggestedNotes(notes);
+                }
             });
         });
     }
@@ -373,11 +386,14 @@ const App = (() => {
     // then drill through them. Hit top key to toggle answer overlay.
 
     const DRILL_VOICING_TYPES = {
-        'rootlessA':  'Rootless A',
-        'rootlessB':  'Rootless B',
-        'shell':      'Shell (3→7)',
-        'shell73':    'Shell (7→3)',
-        'spread':     'Spread (Two-Hand)',
+        'rootlessA':        'Rootless A (LH)',
+        'rootlessB':        'Rootless B (LH)',
+        'shell':            'Shell 3→7 (LH)',
+        'shell73':          'Shell 7→3 (LH)',
+        'spread':           '🤲 Spread: Root+7 | 3+colour+9',
+        'twoHandShell':     '🤲 Shell | Extensions',
+        'twoHandOpen':      '🤲 Root+5 | 3+7+9',
+        'twoHandRootlessA': '🤲 Rootless A | Colour',
     };
 
     const DRILL_QUALITIES = {
@@ -542,6 +558,23 @@ const App = (() => {
         updateDrillHintDisplay();
     }
 
+    /** Find the target voicing for current drill settings */
+    function findDrillTarget() {
+        if (!currentChord) return null;
+        const voicings = Music.generateVoicings(currentChord);
+        return voicings.find(v => {
+            if (drillVoicingType === 'rootlessA') return v.type === 'rootlessA';
+            if (drillVoicingType === 'rootlessB') return v.type === 'rootlessB';
+            if (drillVoicingType === 'shell') return v.type === 'shell' && v.label.includes('3→7');
+            if (drillVoicingType === 'shell73') return v.type === 'shell' && v.label.includes('7→3');
+            if (drillVoicingType === 'spread') return v.type === 'spread';
+            if (drillVoicingType === 'twoHandShell') return v.type === 'twoHandShell';
+            if (drillVoicingType === 'twoHandOpen') return v.type === 'twoHandOpen';
+            if (drillVoicingType === 'twoHandRootlessA') return v.type === 'twoHandRootlessA';
+            return false;
+        });
+    }
+
     function updateDrillHintDisplay() {
         if (!currentChord) return;
 
@@ -549,30 +582,35 @@ const App = (() => {
         if (hintBtn) hintBtn.textContent = drillShowHint ? '🙈 Hide Notes' : '👁 Show Notes';
 
         if (drillShowHint) {
-            // Find the target voicing for the current chord + selected type
-            const voicings = Music.generateVoicings(currentChord);
-            const target = voicings.find(v => {
-                if (drillVoicingType === 'rootlessA') return v.type === 'rootlessA';
-                if (drillVoicingType === 'rootlessB') return v.type === 'rootlessB';
-                if (drillVoicingType === 'shell') return v.type === 'shell' && v.label.includes('3→7');
-                if (drillVoicingType === 'shell73') return v.type === 'shell' && v.label.includes('7→3');
-                if (drillVoicingType === 'spread') return v.type === 'spread';
-                return false;
-            });
+            const target = findDrillTarget();
 
             if (target) {
-                PianoUI.setSuggestedNotes(target.notes);
-                // Show note names
-                const hintNotes = document.getElementById('drill-hint-notes');
-                if (hintNotes) {
-                    const names = target.notes.map(n => Music.midiToNoteName(n, true));
-                    const pcs = target.notes.map(n => Music.pcName(n % 12));
-                    hintNotes.textContent = pcs.join(' — ') + '  (' + names.join(', ') + ')';
-                    hintNotes.classList.remove('hidden');
+                // Two-hand voicing: show LH and RH in different colours
+                if (target.twoHand && target.lh && target.rh) {
+                    PianoUI.setTwoHandNotes(target.lh, target.rh);
+                    const hintNotes = document.getElementById('drill-hint-notes');
+                    if (hintNotes) {
+                        const lhNames = target.lh.map(n => Music.pcName(n % 12)).join(' ');
+                        const rhNames = target.rh.map(n => Music.pcName(n % 12)).join(' ');
+                        const lhMidi = target.lh.map(n => Music.midiToNoteName(n, true)).join(', ');
+                        const rhMidi = target.rh.map(n => Music.midiToNoteName(n, true)).join(', ');
+                        hintNotes.innerHTML = `<span class="hint-lh">LH: ${lhNames}</span> <span class="hint-divider">|</span> <span class="hint-rh">RH: ${rhNames}</span><br><small style="color:var(--text-muted)">${lhMidi} | ${rhMidi}</small>`;
+                        hintNotes.classList.remove('hidden');
+                    }
+                } else {
+                    // Single hand voicing
+                    PianoUI.setSuggestedNotes(target.notes);
+                    const hintNotes = document.getElementById('drill-hint-notes');
+                    if (hintNotes) {
+                        const pcs = target.notes.map(n => Music.pcName(n % 12)).join(' — ');
+                        const names = target.notes.map(n => Music.midiToNoteName(n, true)).join(', ');
+                        hintNotes.innerHTML = `${pcs} <small style="color:var(--text-muted)">(${names})</small>`;
+                        hintNotes.classList.remove('hidden');
+                    }
                 }
             }
         } else {
-            PianoUI.setSuggestedNotes(new Set());
+            PianoUI.clearAll();
             const hintNotes = document.getElementById('drill-hint-notes');
             if (hintNotes) hintNotes.classList.add('hidden');
         }
@@ -584,16 +622,8 @@ const App = (() => {
         const settings = Stats.getSettings();
         const result = Music.gradeVoicing(notes, currentChord, settings);
 
-        // Also check if they played the specific voicing type requested
-        const voicings = Music.generateVoicings(currentChord);
-        const target = voicings.find(v => {
-            if (drillVoicingType === 'rootlessA') return v.type === 'rootlessA';
-            if (drillVoicingType === 'rootlessB') return v.type === 'rootlessB';
-            if (drillVoicingType === 'shell') return v.type === 'shell' && v.label.includes('3→7');
-            if (drillVoicingType === 'shell73') return v.type === 'shell' && v.label.includes('7→3');
-            if (drillVoicingType === 'spread') return v.type === 'spread';
-            return false;
-        });
+        // Check if they played the specific voicing type requested
+        const target = findDrillTarget();
 
         // Check if played notes match the target voicing (by pitch class)
         let voicingMatch = false;

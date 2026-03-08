@@ -541,7 +541,7 @@ function generateVoicings(chord) {
         }
     }
     
-    // ── Spread voicing (two-hand) ──
+    // ── Spread voicing (two-hand): Root + 7th | 3rd + colour + 9th ──
     {
         const third = q.essential.find(i => i === 3 || i === 4 || i === 5);
         const seventh = q.essential.find(i => i === 10 || i === 11 || i === 9);
@@ -552,20 +552,99 @@ function generateVoicings(chord) {
         const colorTone = q.color.length > 0 ? q.color[0] : actualFifth;
         
         if (third !== undefined && seventh !== undefined) {
-            // LH: root + 7th, RH: 3rd + 5th/color + 9th
             const lhNotes = buildVoicing(root, [0, seventh], LH_LOW);
             const rhIntervals = [third, colorTone, ninth];
-            const rhNotes = buildVoicing(root, rhIntervals, 60); // middle C area
+            const rhNotes = buildVoicing(root, rhIntervals, 60);
             voicings.push({
                 notes: [...lhNotes, ...rhNotes].sort((a, b) => a - b),
-                label: 'Spread (Two-Hand)',
+                lh: lhNotes,
+                rh: rhNotes.sort((a, b) => a - b),
+                label: 'Spread: Root+7 | 3+colour+9',
                 type: 'spread',
-                description: `Root + 7th in left hand; 3rd, colour tone, and 9th in right hand. Rich, open sound.`
+                twoHand: true,
+                description: `LH: root + 7th. RH: 3rd, colour tone, 9th. Rich, open Evans sound.`
             });
         }
     }
     
-    // ── Upper Structure / Colorful ──
+    // ── Two-hand: Shell + Rootless A (LH shell, RH upper) ──
+    {
+        const third = q.essential.find(i => i === 3 || i === 4 || i === 5);
+        const seventh = q.essential.find(i => i === 10 || i === 11 || i === 9);
+        const hasFlatFive = q.essential.includes(6);
+        const hasSharpFive = q.essential.includes(8);
+        const actualFifth = hasFlatFive ? 6 : hasSharpFive ? 8 : 7;
+        const ninth = q.essential.includes(1) ? 1 : 2;
+        
+        if (third !== undefined && seventh !== undefined) {
+            // LH: 3rd + 7th (shell), RH: 5th + 9th + colour
+            const lhNotes = buildVoicing(root, [third, seventh], LH_LOW + 2);
+            const rhColor = q.color.length > 0 ? q.color[0] : actualFifth;
+            const rhNotes = buildVoicing(root, [actualFifth, ninth, rhColor], 60);
+            voicings.push({
+                notes: [...lhNotes, ...rhNotes].sort((a, b) => a - b),
+                lh: lhNotes,
+                rh: rhNotes.sort((a, b) => a - b),
+                label: 'Two-Hand: Shell | Extensions',
+                type: 'twoHandShell',
+                twoHand: true,
+                description: `LH: 3rd + 7th (guide tones). RH: 5th, 9th, colour. Wide, lush spread.`
+            });
+        }
+    }
+    
+    // ── Two-hand: Root+5 | 3+7+9 (open position) ──
+    {
+        const third = q.essential.find(i => i === 3 || i === 4 || i === 5);
+        const seventh = q.essential.find(i => i === 10 || i === 11 || i === 9);
+        const hasFlatFive = q.essential.includes(6);
+        const hasSharpFive = q.essential.includes(8);
+        const actualFifth = hasFlatFive ? 6 : hasSharpFive ? 8 : 7;
+        const ninth = 2;
+        
+        if (third !== undefined && seventh !== undefined) {
+            const lhNotes = buildVoicing(root, [0, actualFifth], LH_LOW);
+            const rhNotes = buildVoicing(root, [third, seventh, ninth], 60);
+            voicings.push({
+                notes: [...lhNotes, ...rhNotes].sort((a, b) => a - b),
+                lh: lhNotes,
+                rh: rhNotes.sort((a, b) => a - b),
+                label: 'Two-Hand: Root+5 | 3+7+9',
+                type: 'twoHandOpen',
+                twoHand: true,
+                description: `LH: root + 5th (open anchor). RH: 3rd, 7th, 9th. Full, balanced voicing.`
+            });
+        }
+    }
+    
+    // ── Two-hand: Rootless A LH | melody/colour RH ──
+    {
+        const third = q.essential.find(i => i === 3 || i === 4 || i === 5);
+        const seventh = q.essential.find(i => i === 10 || i === 11 || i === 9);
+        const hasFlatFive = q.essential.includes(6);
+        const hasSharpFive = q.essential.includes(8);
+        const actualFifth = hasFlatFive ? 6 : hasSharpFive ? 8 : 7;
+        const ninth = q.essential.includes(1) ? 1 : 2;
+        
+        if (third !== undefined && seventh !== undefined) {
+            // LH: rootless A (3-5-7-9), RH: root + colour (higher octave)
+            const lhNotes = buildVoicing(root, [third, actualFifth, seventh, ninth], LH_LOW + 3);
+            const rhColor1 = q.color.length > 0 ? q.color[0] : 0;
+            const rhColor2 = q.color.length > 1 ? q.color[1] : actualFifth;
+            const rhNotes = buildVoicing(root, [0, rhColor1, rhColor2], 64);
+            voicings.push({
+                notes: [...lhNotes, ...rhNotes].sort((a, b) => a - b),
+                lh: lhNotes,
+                rh: rhNotes.sort((a, b) => a - b),
+                label: 'Two-Hand: Rootless A | Colour',
+                type: 'twoHandRootlessA',
+                twoHand: true,
+                description: `LH: rootless A voicing. RH: root + upper extensions in higher register. Very Evans.`
+            });
+        }
+    }
+    
+    // ── Upper Structure / Colorful (single hand) ──
     if (q.color.length > 0) {
         const third = q.essential.find(i => i === 3 || i === 4 || i === 5);
         const seventh = q.essential.find(i => i === 10 || i === 11 || i === 9);

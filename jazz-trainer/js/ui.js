@@ -13,6 +13,8 @@ const PianoUI = (() => {
     let highlightedNotes = new Set();
     let activeNotes = new Set();
     let suggestedNotes = new Set();
+    let lhNotes = new Set();   // left hand notes (blue)
+    let rhNotes = new Set();   // right hand notes (gold)
     let keyElements = {};
 
     function init(containerId, low = 48, high = 84) {
@@ -110,18 +112,30 @@ const PianoUI = (() => {
             
             if (activeNotes.has(m)) classes += ' active';
             if (highlightedNotes.has(m)) classes += ' highlighted';
-            if (suggestedNotes.has(m)) classes += ' suggested';
+            if (lhNotes.has(m)) classes += ' lh-note';
+            if (rhNotes.has(m)) classes += ' rh-note';
+            if (suggestedNotes.has(m) && !lhNotes.has(m) && !rhNotes.has(m)) classes += ' suggested';
             
             el.className = classes;
             
-            // Note label on white keys
+            // Note label
             const existingLabel = el.querySelector('.key-label');
             if (existingLabel) existingLabel.remove();
             
-            if (!isBlack && (activeNotes.has(m) || highlightedNotes.has(m) || suggestedNotes.has(m))) {
+            const showLabel = activeNotes.has(m) || highlightedNotes.has(m) || suggestedNotes.has(m) || lhNotes.has(m) || rhNotes.has(m);
+            if (showLabel) {
                 const label = document.createElement('span');
                 label.className = 'key-label';
-                label.textContent = Music.pcName(m % 12);
+                // Show hand indicator for two-hand voicings
+                if (lhNotes.has(m)) {
+                    label.textContent = 'L';
+                    label.className = 'key-label lh-label';
+                } else if (rhNotes.has(m)) {
+                    label.textContent = 'R';
+                    label.className = 'key-label rh-label';
+                } else {
+                    label.textContent = Music.pcName(m % 12);
+                }
                 el.appendChild(label);
             }
         }
@@ -142,16 +156,27 @@ const PianoUI = (() => {
         updateDisplay();
     }
 
+    /** Show two-hand voicing with LH (blue) and RH (gold) colours */
+    function setTwoHandNotes(lh, rh) {
+        lhNotes = new Set(lh || []);
+        rhNotes = new Set(rh || []);
+        // Also set as suggested so they show on black keys too
+        suggestedNotes = new Set([...(lh || []), ...(rh || [])]);
+        updateDisplay();
+    }
+
     function clearAll() {
         activeNotes.clear();
         highlightedNotes.clear();
         suggestedNotes.clear();
+        lhNotes.clear();
+        rhNotes.clear();
         updateDisplay();
     }
 
     return {
         init, render, setActiveNotes, setHighlightedNotes, setSuggestedNotes,
-        clearAll, updateDisplay,
+        setTwoHandNotes, clearAll, updateDisplay,
     };
 })();
 
