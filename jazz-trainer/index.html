@@ -90,20 +90,40 @@
                     <label>Voicing type:</label>
                     <select id="drill-voicing-type" class="btn"></select>
                 </div>
-                <div class="drill-row">
-                    <label>Chord quality:</label>
-                    <select id="drill-quality" class="btn"></select>
-                </div>
                 
                 <div class="drill-row">
-                    <label>Root notes to include:</label>
-                    <div class="drill-quick-btns">
-                        <button id="drill-select-all" class="btn btn-sm">All</button>
-                        <button id="drill-select-none" class="btn btn-sm">None</button>
-                        <button id="drill-select-naturals" class="btn btn-sm">Naturals</button>
-                    </div>
+                    <label>Chord source:</label>
+                    <select id="drill-source" class="btn">
+                        <option value="roots">Root + Quality</option>
+                        <option value="standard">Standard / Chart</option>
+                    </select>
                 </div>
-                <div id="drill-root-grid" class="drill-root-grid"></div>
+                
+                <!-- Root + Quality mode -->
+                <div id="drill-roots-panel">
+                    <div class="drill-row">
+                        <label>Chord quality:</label>
+                        <select id="drill-quality" class="btn"></select>
+                    </div>
+                    <div class="drill-row">
+                        <label>Root notes:</label>
+                        <div class="drill-quick-btns">
+                            <button id="drill-select-all" class="btn btn-sm">All</button>
+                            <button id="drill-select-none" class="btn btn-sm">None</button>
+                            <button id="drill-select-naturals" class="btn btn-sm">Naturals</button>
+                        </div>
+                    </div>
+                    <div id="drill-root-grid" class="drill-root-grid"></div>
+                </div>
+                
+                <!-- Standard mode -->
+                <div id="drill-standard-panel" class="hidden">
+                    <div class="drill-row">
+                        <label>Standard:</label>
+                        <select id="drill-standard-select" class="btn" style="min-width:220px;"></select>
+                    </div>
+                    <div id="drill-standard-preview" class="drill-standard-preview"></div>
+                </div>
             </div>
             
             <div class="btn-group">

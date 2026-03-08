@@ -409,6 +409,25 @@ const App = (() => {
         'maj9':   'Major 9th',
     };
 
+    let drillSource = 'roots'; // 'roots' or 'standard'
+
+    // Built-in standard chord progressions (public-domain harmonic patterns)
+    const DRILL_STANDARDS = {
+        'Autumn Leaves': 'Cm7 F7 Bbmaj7 Ebmaj7 Am7b5 D7b9 Gm7 Gm7 Cm7 F7 Bbmaj7 Ebmaj7 Am7b5 D7b9 Gm7 Gm7',
+        'All The Things (A)': 'Fm7 Bbm7 Eb7 Abmaj7 Dbmaj7 Dm7 G7 Cmaj7 Cmaj7 Cm7 Fm7 Bb7 Ebmaj7 Abmaj7 Am7b5 D7b9 Gmaj7 Gmaj7',
+        'Blue Bossa': 'Cm7 Cm7 Fm7 Fm7 Dm7b5 G7b9 Cm7 Cm7 Ebm7 Ab7 Dbmaj7 Dbmaj7 Dm7b5 G7b9 Cm7 Cm7',
+        'Fly Me To The Moon': 'Am7 Dm7 G7 Cmaj7 Fmaj7 Bm7b5 E7b9 Am7 Am7 Dm7 G7 Cmaj7 Cmaj7 Fmaj7 Bm7b5 E7b9 Am7 Am7',
+        'Misty': 'Ebmaj7 Bbm7 Eb7 Abmaj7 Abm7 Db7 Ebmaj7 Cm7 Fm7 Bb7 Ebmaj7 Ebmaj7',
+        'Satin Doll': 'Dm7 G7 Em7 A7 Am7 D7 Abm7 Db7 Cmaj7 Cmaj7',
+        'So What': 'Dm7 Dm7 Dm7 Dm7 Dm7 Dm7 Dm7 Dm7 Ebm7 Ebm7 Ebm7 Ebm7 Ebm7 Ebm7 Ebm7 Ebm7 Dm7 Dm7 Dm7 Dm7 Dm7 Dm7 Dm7 Dm7',
+        'Take The A Train': 'Cmaj7 Cmaj7 D7 D7 Dm7 G7 Cmaj7 Cmaj7',
+        'Blues in Bb': 'Bb7 Bb7 Bb7 Bb7 Eb7 Eb7 Bb7 Bb7 F7 Eb7 Bb7 F7',
+        'Blues in F': 'F7 F7 F7 F7 Bb7 Bb7 F7 F7 Gm7 C7 F7 C7',
+        'ii-V-I All Keys': 'Dm7 G7 Cmaj7 Gm7 C7 Fmaj7 Cm7 F7 Bbmaj7 Fm7 Bb7 Ebmaj7 Bbm7 Eb7 Abmaj7 Ebm7 Ab7 Dbmaj7 Abm7 Db7 Gbmaj7 C#m7 F#7 Bmaj7 F#m7 B7 Emaj7 Bm7 E7 Amaj7 Em7 A7 Dmaj7 Am7 D7 Gmaj7',
+        'Rhythm Changes (A)': 'Bbmaj7 Gm7 Cm7 F7 Bbmaj7 Gm7 Cm7 F7 Fm7 Bb7 Ebmaj7 Ab7 Bbmaj7 Gm7 Cm7 F7',
+        'Giant Steps': 'Bmaj7 D7 Gmaj7 Bb7 Ebmaj7 Am7 D7 Gmaj7 Bb7 Ebmaj7 F#7 Bmaj7 Fm7 Bb7 Ebmaj7 Am7 D7 Gmaj7 C#m7 F#7 Bmaj7 Fm7 Bb7 Ebmaj7 C#m7 F#7',
+    };
+
     function initVoicingDrill() {
         // Build voicing type selector
         const typeSelect = document.getElementById('drill-voicing-type');
@@ -421,6 +440,18 @@ const App = (() => {
             }
             typeSelect.addEventListener('change', () => {
                 drillVoicingType = typeSelect.value;
+            });
+        }
+
+        // Source selector (roots vs standard)
+        const sourceSelect = document.getElementById('drill-source');
+        if (sourceSelect) {
+            sourceSelect.addEventListener('change', () => {
+                drillSource = sourceSelect.value;
+                const rootsPanel = document.getElementById('drill-roots-panel');
+                const standardPanel = document.getElementById('drill-standard-panel');
+                if (rootsPanel) rootsPanel.classList.toggle('hidden', drillSource !== 'roots');
+                if (standardPanel) standardPanel.classList.toggle('hidden', drillSource !== 'standard');
             });
         }
 
@@ -437,6 +468,9 @@ const App = (() => {
                 drillQuality = qualSelect.value;
             });
         }
+
+        // Build standard selector (built-in + user custom charts)
+        refreshDrillStandards();
 
         // Build root toggle buttons (all 12 notes)
         const rootGrid = document.getElementById('drill-root-grid');
@@ -455,7 +489,6 @@ const App = (() => {
                         btn.classList.add('active');
                     }
                 });
-                // Default: only natural notes selected
                 if (![1,3,6,8,10].includes(pc)) {
                     drillSelectedRoots.add(pc);
                     btn.classList.add('active');
@@ -489,25 +522,130 @@ const App = (() => {
         document.getElementById('btn-drill-hint')?.addEventListener('click', toggleDrillHint);
     }
 
-    function startDrill() {
-        if (drillSelectedRoots.size === 0) {
-            const display = document.getElementById('drill-chord-display');
-            if (display) display.textContent = 'Select at least one root!';
-            return;
+    function refreshDrillStandards() {
+        const select = document.getElementById('drill-standard-select');
+        if (!select) return;
+        select.innerHTML = '';
+        
+        // Built-in standards
+        const builtInGroup = document.createElement('optgroup');
+        builtInGroup.label = 'Standards';
+        for (const name of Object.keys(DRILL_STANDARDS)) {
+            const opt = document.createElement('option');
+            opt.value = `builtin:${name}`;
+            opt.textContent = name;
+            builtInGroup.appendChild(opt);
         }
+        select.appendChild(builtInGroup);
+        
+        // User custom charts from Standards mode
+        const custom = Stats.getCustomCharts();
+        if (custom.length > 0) {
+            const customGroup = document.createElement('optgroup');
+            customGroup.label = 'Your Charts';
+            for (const chart of custom) {
+                const opt = document.createElement('option');
+                opt.value = `custom:${chart.name}`;
+                opt.textContent = chart.name;
+                customGroup.appendChild(opt);
+            }
+            select.appendChild(customGroup);
+        }
+        
+        // Preview on change
+        select.addEventListener('change', updateDrillStandardPreview);
+        updateDrillStandardPreview();
+    }
+    
+    function updateDrillStandardPreview() {
+        const select = document.getElementById('drill-standard-select');
+        const preview = document.getElementById('drill-standard-preview');
+        if (!select || !preview) return;
+        
+        const val = select.value;
+        let chordSymbols = [];
+        if (val.startsWith('builtin:')) {
+            const str = DRILL_STANDARDS[val.substring(8)];
+            if (str) chordSymbols = str.split(/\s+/).filter(c => c);
+        } else if (val.startsWith('custom:')) {
+            const chart = Stats.getCustomCharts().find(c => c.name === val.substring(7));
+            if (chart) chordSymbols = chart.chords;
+        }
+        
+        // Show unique chords in song order
+        const seen = new Set();
+        const unique = [];
+        for (const sym of chordSymbols) {
+            const parsed = Music.parseChord(sym);
+            if (!parsed) continue;
+            const key = `${parsed.root}-${parsed.quality}`;
+            if (!seen.has(key)) {
+                seen.add(key);
+                unique.push(parsed.display);
+            }
+        }
+        
+        preview.innerHTML = unique.length > 0
+            ? `<span class="preview-label">Unique chords (${unique.length}):</span> ` + unique.map(c => `<span class="prog-chord" style="font-size:0.9rem;padding:3px 8px;">${c}</span>`).join(' ')
+            : '';
+    }
 
-        // Build queue: each selected root with the chosen quality
-        drillQueue = [...drillSelectedRoots].sort((a, b) => a - b).map(pc => ({
-            root: pc,
-            quality: drillQuality,
-            bass: null,
-            display: `${Music.pcName(pc)}${drillQuality}`
-        }));
+    function startDrill() {
+        if (drillSource === 'standard') {
+            // Load from selected standard
+            const select = document.getElementById('drill-standard-select');
+            const val = select?.value;
+            if (!val) return;
+            
+            let chordSymbols = [];
+            if (val.startsWith('builtin:')) {
+                const name = val.substring(8);
+                const str = DRILL_STANDARDS[name];
+                if (str) chordSymbols = str.split(/\s+/).filter(c => c);
+            } else if (val.startsWith('custom:')) {
+                const name = val.substring(7);
+                const chart = Stats.getCustomCharts().find(c => c.name === name);
+                if (chart) chordSymbols = chart.chords;
+            }
+            
+            if (chordSymbols.length === 0) return;
+            
+            // Parse chord symbols — deduplicate for drill (unique chords only, in order of appearance)
+            const seen = new Set();
+            drillQueue = [];
+            for (const sym of chordSymbols) {
+                const parsed = Music.parseChord(sym);
+                if (!parsed) continue;
+                const key = `${parsed.root}-${parsed.quality}`;
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    drillQueue.push(parsed);
+                }
+            }
+            
+            if (drillQueue.length === 0) return;
+            
+            // Don't shuffle standards — keep them in song order
+        } else {
+            // Root + quality mode
+            if (drillSelectedRoots.size === 0) {
+                const display = document.getElementById('drill-chord-display');
+                if (display) display.textContent = 'Select at least one root!';
+                return;
+            }
 
-        // Shuffle
-        for (let i = drillQueue.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [drillQueue[i], drillQueue[j]] = [drillQueue[j], drillQueue[i]];
+            drillQueue = [...drillSelectedRoots].sort((a, b) => a - b).map(pc => ({
+                root: pc,
+                quality: drillQuality,
+                bass: null,
+                display: `${Music.pcName(pc)}${drillQuality}`
+            }));
+
+            // Shuffle root drills
+            for (let i = drillQueue.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [drillQueue[i], drillQueue[j]] = [drillQueue[j], drillQueue[i]];
+            }
         }
 
         drillIndex = 0;
