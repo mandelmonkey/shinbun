@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カラマーゾフの兄弟 — 第一部 第一篇 第三章 — 第二の結婚とその子供たち p.15</title>
+  <style>
+    :root {
+      --bg: #fdf6e3;
+      --text: #2c2c2c;
+      --accent: #8b1a1a;
+      --muted: #888;
+      --border: #e0d6c0;
+      --vocab-bg: #f0e8d0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    ruby { ruby-align: center; }
+    rt { font-size: 0.52em; color: #aaa; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">フョードル・ドストエフスキー</div>
+  <div class="chapter-title">カラマーゾフの兄弟</div>
+  <div class="chapter-sub">第一部 第一篇 第三章 — 第二の結婚とその子供たち</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p>ヴォロホフ<ruby>夫人<rt>ふじん</rt></ruby>は<ruby>間<rt>ま</rt></ruby>もなく<ruby>亡<rt>な</rt></ruby>くなりましたが、<ruby>遺言<rt>ゆいごん</rt></ruby>で<ruby>二人<rt>ふたり</rt></ruby>の<ruby>男<rt>おとこ</rt></ruby>の<ruby>子<rt>こ</rt></ruby>に<ruby>各<rt>かく</rt></ruby>一<ruby>千<rt>せん</rt></ruby>ルーブルを<ruby>残<rt>のこ</rt></ruby>しました。「<ruby>教育<rt>きょういく</rt></ruby>のために<ruby>使<rt>つか</rt></ruby>うこと。ただし、<ruby>成人<rt>せいじん</rt></ruby>するまで<ruby>持<rt>も</rt></ruby>つように<ruby>工夫<rt>くふう</rt></ruby>すること」と<ruby>書<rt>か</rt></ruby>き<ruby>添<rt>そ</rt></ruby>えてありました。</p>
+    <p><ruby>子<rt>こ</rt></ruby>たちの<ruby>養育<rt>よういく</rt></ruby>は、ある<ruby>高潔<rt>こうけつ</rt></ruby>な<ruby>人物<rt>じんぶつ</rt></ruby>、エフィム・ペトローヴィチ・ポレーノフに<ruby>委<rt>ゆだ</rt></ruby>ねられました。<ruby>詳細<rt>しょうさい</rt></ruby>は<ruby>省<rt>はぶ</rt></ruby>きますが、このポレーノフという<ruby>人物<rt>じんぶつ</rt></ruby>は<ruby>子供<rt>こども</rt></ruby>たちの<ruby>教育<rt>きょういく</rt></ruby>にまことに<ruby>熱心<rt>ねっしん</rt></ruby>で、<ruby>有能<rt>ゆうのう</rt></ruby>な<ruby>後見人<rt>こうけんにん</rt></ruby>でした。</p>
+    <p>イワンは<ruby>際立<rt>きわだ</rt></ruby>って<ruby>聡明<rt>そうめい</rt></ruby>な<ruby>少年<rt>しょうねん</rt></ruby>で、<ruby>早<rt>はや</rt></ruby>くから<ruby>学業<rt>がくぎょう</rt></ruby>に<ruby>秀<rt>ひい</rt></ruby>でていました。<ruby>十三歳<rt>じゅうさんさい</rt></ruby>でモスクワの<ruby>名門校<rt>めいもんこう</rt></ruby>に<ruby>送<rt>おく</rt></ruby>られ、のちにモスクワ<ruby>大学<rt>だいがく</rt></ruby>の<ruby>自然科学部<rt>しぜんかがくぶ</rt></ruby>に<ruby>進学<rt>しんがく</rt></ruby>しました。<ruby>在学中<rt>ざいがくちゅう</rt></ruby>は<ruby>雑誌<rt>ざっし</rt></ruby>に<ruby>記事<rt>きじ</rt></ruby>を<ruby>書<rt>か</rt></ruby>き、やがて<ruby>文学界<rt>ぶんがくかい</rt></ruby>で<ruby>知<rt>し</rt></ruby>られるようになりました。</p>
+    <p>アレクセイはというと——<ruby>穏<rt>おだ</rt></ruby>やかで、<ruby>誰<rt>だれ</rt></ruby>からも<ruby>好<rt>す</rt></ruby>かれる<ruby>少年<rt>しょうねん</rt></ruby>でした。<ruby>後<rt>のち</rt></ruby>にポレーノフの<ruby>死後<rt>しご</rt></ruby>、<ruby>別<rt>べつ</rt></ruby>の<ruby>家庭<rt>かてい</rt></ruby>に<ruby>引<rt>ひ</rt></ruby>き<ruby>取<rt>と</rt></ruby>られましたが、その<ruby>話<rt>はなし</rt></ruby>は<ruby>次<rt>つぎ</rt></ruby>の<ruby>章<rt>しょう</rt></ruby>に<ruby>譲<rt>ゆず</rt></ruby>りましょう。<ruby>二人<rt>ふたり</rt></ruby>の<ruby>少年<rt>しょうねん</rt></ruby>は——まるで<ruby>対照的<rt>たいしょうてき</rt></ruby>な<ruby>性格<rt>せいかく</rt></ruby>でありながら——ともにカラマーゾフの<ruby>血<rt>ち</rt></ruby>を<ruby>受<rt>う</rt></ruby>け<ruby>継<rt>つ</rt></ruby>いでいたのでした。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>Madame Vorokhov died not long after, but in her will she left each boy a thousand roubles, 'for their education — provided it be made to last until they come of age.'</p>
+    <p>The children's upbringing was entrusted to a worthy gentleman, Yefim Petrovich Polyenov. I shall spare the details, except to say that he was a zealous and capable guardian, most attentive to the boys' education.</p>
+    <p>Ivan proved a remarkably clever boy, excelling early in his studies. At thirteen he was sent to a prestigious school in Moscow, and later entered the natural sciences faculty at Moscow University. While still a student, he published articles in journals and became known in literary circles.</p>
+    <p>As for Alexey — he was a gentle, universally liked boy. After Polyenov's death, he was taken in by another family, but that story belongs to the next chapter. The two boys — though opposite in temperament — both carried the Karamazov blood in their veins.</p>
+  </div>
+</div>
+
+<div class="page-nav">
+  <a href="page14.html">← 前のページ</a>
+  <span class="page-num">p. 15 / 15</span>
+  <em style="color:#ccc">次のページは準備中</em>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">遺言</td><td class="vocab-reading">ゆいごん</td><td class="vocab-en">will / testament</td></tr>
+    <tr><td class="vocab-kanji">成人</td><td class="vocab-reading">せいじん</td><td class="vocab-en">adult / coming of age</td></tr>
+    <tr><td class="vocab-kanji">養育</td><td class="vocab-reading">よういく</td><td class="vocab-en">upbringing / rearing</td></tr>
+    <tr><td class="vocab-kanji">高潔な</td><td class="vocab-reading">こうけつな</td><td class="vocab-en">noble / high-minded</td></tr>
+    <tr><td class="vocab-kanji">委ねる</td><td class="vocab-reading">ゆだねる</td><td class="vocab-en">to entrust / to leave to</td></tr>
+    <tr><td class="vocab-kanji">聡明な</td><td class="vocab-reading">そうめいな</td><td class="vocab-en">brilliant / intelligent</td></tr>
+    <tr><td class="vocab-kanji">学業</td><td class="vocab-reading">がくぎょう</td><td class="vocab-en">studies / schoolwork</td></tr>
+    <tr><td class="vocab-kanji">秀でる</td><td class="vocab-reading">ひいでる</td><td class="vocab-en">to excel / to stand out</td></tr>
+    <tr><td class="vocab-kanji">名門校</td><td class="vocab-reading">めいもんこう</td><td class="vocab-en">prestigious school</td></tr>
+    <tr><td class="vocab-kanji">進学する</td><td class="vocab-reading">しんがくする</td><td class="vocab-en">to advance to (higher education)</td></tr>
+    <tr><td class="vocab-kanji">対照的な</td><td class="vocab-reading">たいしょうてきな</td><td class="vocab-en">contrasting / opposite</td></tr>
+    <tr><td class="vocab-kanji">受け継ぐ</td><td class="vocab-reading">うけつぐ</td><td class="vocab-en">to inherit</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜に譲る</strong> — to leave/defer to ~ (for later)<br><em>その話は次の章に譲りましょう</em><br>Literary device — the narrator defers the story to the next chapter. 譲る = to yield/cede.</div>
+<div class="grammar-item"><strong>〜でありながら</strong> — while being ~ / despite being ~<br><em>対照的な性格でありながら、ともにカラマーゾフの血を受け継いでいた</em><br>N2 concessive — 'despite being opposite in character, they both inherited...' More formal than ～のに.</div>
+<div class="grammar-item"><strong>〜ようになる</strong> — to reach a state where ~ / to come to ~<br><em>文学界で知られるようになりました</em><br>Marks a gradual change — 'came to be known'. Very common N2/N3 grammar.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
