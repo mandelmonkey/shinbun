@@ -52,9 +52,18 @@
     ruby { ruby-align: center; }
     rt { font-size: 0.52em; color: #aaa; }
     .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .home-nav {
+      text-align: center; margin-top: 32px; margin-bottom: 8px;
+    }
+    .home-nav a {
+      display: inline-block; font-size: 0.8rem; color: var(--muted); text-decoration: none;
+      border: 1px solid var(--border); border-radius: 16px; padding: 5px 16px;
+      letter-spacing: 0.05em;
+    }
+    .home-nav a:active { opacity: 0.7; }
     .page-nav {
       display: flex; justify-content: space-between; align-items: center;
-      margin-top: 32px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+      margin-top: 8px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
     }
     .page-nav a { color: var(--accent); text-decoration: none; }
     .page-nav .page-num { color: var(--muted); }
@@ -130,9 +139,13 @@
   </div>
 </div>
 
+<div class="home-nav">
+  <a href="/shinbun/">🏠 しんぶん Home</a>
+  <a href="/shinbun/karamazov/">📖 目次</a>
+</div>
 <div class="page-nav">
   <span></span>
-  <span class="page-num">p. 1 / 10</span>
+  <span class="page-num">p. 1 / 15</span>
   <a href="page2.html">次のページ →</a>
 </div>
 
