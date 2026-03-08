@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jazz Voicing Trainer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="app-container">
+
+    <!-- ── Header ── -->
+    <header>
+        <div class="logo">
+            ♪ Jazz Voicing Trainer
+            <small>Evans-inspired harmony</small>
+        </div>
+        <nav>
+            <button data-mode="chord-trainer" class="active">Chord Trainer</button>
+            <button data-mode="ii-v-i">ii-V-I</button>
+            <button data-mode="progression">Progressions</button>
+            <button data-mode="standards">Standards</button>
+            <button data-mode="ear-training">Ear Training</button>
+            <button data-mode="stats">Stats</button>
+            <button data-mode="settings">Settings</button>
+        </nav>
+        <div id="midi-status" class="midi-status">
+            <span class="status-dot disconnected"></span> Checking MIDI...
+        </div>
+    </header>
+
+    <main>
+        <!-- ════════════════════════════════════════ -->
+        <!-- CHORD TRAINER MODE                       -->
+        <!-- ════════════════════════════════════════ -->
+        <div id="mode-chord-trainer" class="mode-panel">
+            <h2>Chord Trainer</h2>
+            <p class="mode-description">Play the displayed chord. Graded by function — rootless voicings welcome.</p>
+            
+            <div class="chord-display-area">
+                <div id="chord-display" class="chord-symbol">—</div>
+                <div id="chord-quality-info" class="chord-quality-info"></div>
+            </div>
+            
+            <div class="btn-group">
+                <button id="btn-new-chord" class="btn btn-primary">Next Chord</button>
+                <button id="btn-show-voicings" class="btn">Show Voicings</button>
+                <button id="btn-play-chord" class="btn">♪ Hear It</button>
+            </div>
+            
+            <div id="feedback-chord" class="feedback-area hidden"></div>
+            <div id="voicings-panel" class="hidden"></div>
+        </div>
+
+        <!-- ════════════════════════════════════════ -->
+        <!-- ii-V-I TRAINER                           -->
+        <!-- ════════════════════════════════════════ -->
+        <div id="mode-ii-v-i" class="mode-panel hidden">
+            <h2>ii-V-I Trainer</h2>
+            <p class="mode-description">Practice smooth rootless voicings through ii-V-I progressions. Moves through keys by 5ths.</p>
+            
+            <div id="iivi-key" style="text-align:center;color:var(--text-secondary);margin-bottom:8px;"></div>
+            <div id="iivi-progression" class="progression-bar"></div>
+            
+            <div class="chord-display-area">
+                <div id="iivi-current" class="chord-symbol">—</div>
+            </div>
+            
+            <div class="btn-group">
+                <button id="btn-iivi-next-key" class="btn">Next Key</button>
+                <button id="btn-iivi-random-key" class="btn">Random Key</button>
+                <button id="btn-iivi-minor" class="btn">Switch to Minor</button>
+            </div>
+            
+            <div id="feedback-iivi" class="feedback-area hidden"></div>
+        </div>
+
+        <!-- ════════════════════════════════════════ -->
+        <!-- PROGRESSION TRAINER                      -->
+        <!-- ════════════════════════════════════════ -->
+        <div id="mode-progression" class="mode-panel hidden">
+            <h2>Progression Trainer</h2>
+            <p class="mode-description">Practice common jazz progressions with voice leading scoring.</p>
+            
+            <div class="btn-group">
+                <select id="progression-select" class="btn" style="min-width:200px;"></select>
+                <button id="btn-prog-start" class="btn btn-primary">New Progression</button>
+            </div>
+            
+            <div id="progression-display" class="progression-bar"></div>
+            
+            <div id="feedback-prog" class="feedback-area hidden"></div>
+        </div>
+
+        <!-- ════════════════════════════════════════ -->
+        <!-- STANDARDS PRACTICE                       -->
+        <!-- ════════════════════════════════════════ -->
+        <div id="mode-standards" class="mode-panel hidden">
+            <h2>Standards Practice</h2>
+            <p class="mode-description">Enter your own chord charts and practice with a metronome.</p>
+            
+            <div class="chart-editor">
+                <label>Select a chart</label>
+                <select id="standards-select"></select>
+                
+                <label>Or create new — Name</label>
+                <input type="text" id="standard-name" placeholder="e.g. Blue Bossa">
+                
+                <label>Chords (space or comma separated)</label>
+                <textarea id="standard-chords" placeholder="Cm7 Fm7 Dm7b5 G7b9 Cm7 Cm7 Ebm7 Ab7 Dbmaj7 Dbmaj7 Dm7b5 G7b9 Cm7 Dm7b5 G7b9"></textarea>
+                
+                <label>Beats per chord</label>
+                <input type="number" id="standard-beats" value="4" min="1" max="8" style="width:80px;">
+                
+                <div class="btn-group" style="margin-top:12px;">
+                    <button id="btn-standards-save" class="btn btn-primary">Save Chart</button>
+                </div>
+            </div>
+            
+            <div class="tempo-control">
+                <span style="color:var(--text-secondary);">Tempo:</span>
+                <input type="range" id="standards-tempo" min="40" max="240" value="120">
+                <span id="standards-tempo-display" class="tempo-display">120 BPM</span>
+            </div>
+            
+            <div class="btn-group">
+                <button id="btn-standards-play" class="btn btn-primary">▶ Play</button>
+                <button id="btn-standards-stop" class="btn">⏹ Stop</button>
+            </div>
+            
+            <div id="standards-display" class="progression-bar"></div>
+            <div id="standards-current" class="chord-symbol" style="text-align:center;margin:16px 0;"></div>
+            
+            <div id="feedback-standards" class="feedback-area hidden"></div>
+        </div>
+
+        <!-- ════════════════════════════════════════ -->
+        <!-- EAR TRAINING                             -->
+        <!-- ════════════════════════════════════════ -->
+        <div id="mode-ear-training" class="mode-panel hidden">
+            <h2>Ear Training</h2>
+            <p class="mode-description">Listen to a chord and try to identify and play it back.</p>
+            
+            <div id="ear-prompt" class="ear-prompt">Press "New Challenge" to start</div>
+            
+            <div class="btn-group">
+                <button id="btn-ear-play" class="btn">♪ Play Again</button>
+                <button id="btn-ear-new" class="btn btn-primary">New Challenge</button>
+                <button id="btn-ear-reveal" class="btn">Reveal Answer</button>
+            </div>
+            
+            <div id="ear-answer" class="ear-answer hidden"></div>
+            
+            <div id="feedback-ear" class="feedback-area hidden"></div>
+        </div>
+
+        <!-- ════════════════════════════════════════ -->
+        <!-- STATS DASHBOARD                          -->
+        <!-- ════════════════════════════════════════ -->
+        <div id="mode-stats" class="mode-panel hidden">
+            <h2>Practice Dashboard</h2>
+            <div id="stats-content"></div>
+        </div>
+
+        <!-- ════════════════════════════════════════ -->
+        <!-- SETTINGS                                 -->
+        <!-- ════════════════════════════════════════ -->
+        <div id="mode-settings" class="mode-panel hidden">
+            <h2>Practice Rules</h2>
+            <p class="mode-description">Configure how voicings are graded.</p>
+            
+            <div class="settings-panel">
+                <h3>Grading Rules</h3>
+                <div class="setting-row">
+                    <span class="setting-label">Require 3rd</span>
+                    <input type="checkbox" id="setting-require3rd" checked>
+                </div>
+                <div class="setting-row">
+                    <span class="setting-label">Require 7th</span>
+                    <input type="checkbox" id="setting-require7th" checked>
+                </div>
+                <div class="setting-row">
+                    <span class="setting-label">Allow omitted root (rootless voicings)</span>
+                    <input type="checkbox" id="setting-allowOmittedRoot" checked>
+                </div>
+                <div class="setting-row">
+                    <span class="setting-label">Allow omitted 5th</span>
+                    <input type="checkbox" id="setting-allowOmitted5th" checked>
+                </div>
+                <div class="setting-row">
+                    <span class="setting-label">Allow tensions (9, 11, 13)</span>
+                    <input type="checkbox" id="setting-allowTensions" checked>
+                </div>
+                <div class="setting-row">
+                    <span class="setting-label">Strict mode (penalise unexpected notes)</span>
+                    <input type="checkbox" id="setting-strictMode">
+                </div>
+                <div class="setting-row">
+                    <span class="setting-label">Left hand only mode</span>
+                    <input type="checkbox" id="setting-leftHandOnly" checked>
+                </div>
+            </div>
+            
+            <div class="settings-panel" style="margin-top:16px;">
+                <h3>Input</h3>
+                <p style="color:var(--text-secondary);font-size:0.85rem;">
+                    <strong>MIDI keyboard:</strong> Connect any USB/Bluetooth MIDI device. Chrome/Edge recommended.<br>
+                    <strong>Computer keyboard:</strong> Bottom row (Z–M) = C3–B3, top row (Q–P) = C4–B4.<br>
+                    <strong>Mouse:</strong> Click on the piano keys below.
+                </p>
+            </div>
+        </div>
+
+        <!-- ── Piano (always visible) ── -->
+        <div id="piano-container"></div>
+        <div class="keyboard-hint">
+            Keyboard: Z S X D C V G B H N J M = C3–B3 &nbsp;|&nbsp; Q 2 W 3 E R 5 T 6 Y 7 U = C4–B4
+        </div>
+    </main>
+</div>
+
+<!-- Scripts -->
+<script src="js/music.js"></script>
+<script src="js/midi.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/stats.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

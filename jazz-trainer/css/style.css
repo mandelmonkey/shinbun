@@ -1,0 +1,724 @@
+/* ═══════════════════════════════════════════
+   Jazz Voicing Trainer — Dark Jazz Theme
+   Inspired by Blue Note album covers
+   ═══════════════════════════════════════════ */
+
+:root {
+    --bg-primary: #0a0e17;
+    --bg-secondary: #111827;
+    --bg-card: #1a2235;
+    --bg-hover: #243049;
+    --text-primary: #e8eaf0;
+    --text-secondary: #8899b0;
+    --text-muted: #556680;
+    --accent-blue: #4a9eff;
+    --accent-gold: #d4a853;
+    --accent-warm: #e8a045;
+    --accent-green: #4ade80;
+    --accent-red: #f87171;
+    --accent-purple: #a78bfa;
+    --border: #1e2d44;
+    --piano-white: #f0f0eb;
+    --piano-black: #1a1a1a;
+    --piano-active: #4a9eff;
+    --piano-highlighted: #d4a853;
+    --piano-suggested: rgba(74, 222, 128, 0.6);
+    --radius: 8px;
+    --radius-lg: 12px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-chord: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+    --font-heading: 'Georgia', 'Times New Roman', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    font-family: var(--font-body);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ── */
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--accent-gold);
+    white-space: nowrap;
+}
+
+.logo small {
+    font-size: 0.7em;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-left: 8px;
+}
+
+nav {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav button {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+nav button:hover {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+}
+
+nav button.active {
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    background: rgba(74, 158, 255, 0.08);
+}
+
+.midi-status {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-dot.connected { background: var(--accent-green); }
+.status-dot.disconnected { background: var(--accent-red); }
+.status-dot.unsupported { background: var(--text-muted); }
+
+main {
+    flex: 1;
+    padding: 24px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ── Mode Panels ── */
+
+.mode-panel {
+    animation: fadeIn 0.2s ease;
+}
+
+.mode-panel.hidden {
+    display: none !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Chord Display ── */
+
+.chord-display-area {
+    text-align: center;
+    padding: 32px 0;
+}
+
+.chord-symbol {
+    font-family: var(--font-chord);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    letter-spacing: 2px;
+    text-shadow: 0 2px 12px rgba(212, 168, 83, 0.2);
+    min-height: 1.2em;
+    transition: all 0.3s;
+}
+
+.chord-quality-info {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    font-style: italic;
+}
+
+/* ── Buttons ── */
+
+.btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 8px 18px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    font-family: var(--font-body);
+}
+
+.btn:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent-blue);
+}
+
+.btn-primary {
+    background: var(--accent-blue);
+    color: white;
+    border-color: var(--accent-blue);
+}
+
+.btn-primary:hover {
+    background: #3d8ae0;
+}
+
+.btn-danger {
+    border-color: var(--accent-red);
+    color: var(--accent-red);
+}
+
+.btn-danger:hover {
+    background: rgba(248, 113, 113, 0.1);
+}
+
+.btn-group {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 16px 0;
+}
+
+/* ── Piano Keyboard ── */
+
+#piano-container {
+    margin: 24px auto;
+    max-width: 900px;
+    position: relative;
+}
+
+.piano-keyboard {
+    position: relative;
+    height: 160px;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.piano-whites, .piano-blacks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.piano-blacks { z-index: 2; pointer-events: none; }
+.piano-blacks .piano-key { pointer-events: auto; }
+
+.piano-key {
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    transition: background 0.1s;
+}
+
+.piano-key.white {
+    height: 100%;
+    background: var(--piano-white);
+    border-right: 1px solid #ccc;
+    border-bottom: 3px solid #bbb;
+    border-radius: 0 0 4px 4px;
+}
+
+.piano-key.white:hover { background: #e0e0db; }
+.piano-key.white.active { background: var(--piano-active) !important; }
+.piano-key.white.highlighted { background: var(--piano-highlighted) !important; }
+.piano-key.white.suggested { background: var(--piano-suggested) !important; }
+
+.piano-key.black {
+    height: 60%;
+    background: var(--piano-black);
+    border-radius: 0 0 3px 3px;
+    border-bottom: 2px solid #333;
+    z-index: 2;
+}
+
+.piano-key.black:hover { background: #2a2a2a; }
+.piano-key.black.active { background: var(--piano-active) !important; }
+.piano-key.black.highlighted { background: var(--piano-highlighted) !important; }
+.piano-key.black.suggested { background: var(--piano-suggested) !important; }
+
+.key-label {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--bg-primary);
+    pointer-events: none;
+}
+
+/* ── Feedback ── */
+
+.feedback-area {
+    margin: 16px auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+.feedback-area.hidden { display: none; }
+
+.feedback-score {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 12px 24px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 8px;
+}
+
+.feedback-score.excellent { background: rgba(74, 222, 128, 0.1); color: var(--accent-green); }
+.feedback-score.good { background: rgba(74, 158, 255, 0.1); color: var(--accent-blue); }
+.feedback-score.ok { background: rgba(212, 168, 83, 0.1); color: var(--accent-gold); }
+.feedback-score.poor { background: rgba(248, 113, 113, 0.1); color: var(--accent-red); }
+
+.score-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    font-family: var(--font-chord);
+}
+
+.score-grade {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.feedback-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+}
+
+.feedback-msg {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    padding: 2px 0;
+}
+
+.feedback-msg.vl {
+    color: var(--accent-purple);
+    font-style: italic;
+    margin-top: 4px;
+}
+
+/* ── Progression Display ── */
+
+.progression-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+.prog-chord {
+    font-family: var(--font-chord);
+    font-size: 1.2rem;
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+}
+
+.prog-chord.current {
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    background: rgba(212, 168, 83, 0.1);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(212, 168, 83, 0.15);
+}
+
+.prog-chord.done {
+    color: var(--accent-green);
+    border-color: var(--accent-green);
+    opacity: 0.6;
+}
+
+/* ── Voicing Cards ── */
+
+#voicings-panel {
+    max-width: 700px;
+    margin: 16px auto;
+}
+
+#voicings-panel.hidden { display: none; }
+
+#voicings-panel h3 {
+    color: var(--accent-gold);
+    font-family: var(--font-heading);
+    margin-bottom: 12px;
+}
+
+.voicing-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    transition: border-color 0.2s;
+}
+
+.voicing-card:hover { border-color: var(--accent-blue); }
+
+.voicing-label {
+    font-weight: 600;
+    color: var(--accent-blue);
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.voicing-card.type-shell .voicing-label { color: var(--accent-gold); }
+.voicing-card.type-rootlessA .voicing-label { color: var(--accent-blue); }
+.voicing-card.type-rootlessB .voicing-label { color: var(--accent-purple); }
+.voicing-card.type-spread .voicing-label { color: var(--accent-green); }
+.voicing-card.type-colorful .voicing-label { color: var(--accent-warm); }
+
+.voicing-notes {
+    font-family: var(--font-chord);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    letter-spacing: 2px;
+    margin: 4px 0;
+}
+
+.voicing-midi {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: var(--font-chord);
+}
+
+.voicing-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 6px 0;
+    font-style: italic;
+}
+
+.btn-play-voicing, .btn-show-voicing {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-right: 6px;
+    transition: all 0.2s;
+}
+
+.btn-play-voicing:hover, .btn-show-voicing:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+/* ── Stats ── */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: var(--font-chord);
+    color: var(--accent-blue);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.weak-list { margin-bottom: 20px; }
+
+.weak-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 12px;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    margin-bottom: 4px;
+}
+
+.weak-name {
+    font-family: var(--font-chord);
+    color: var(--accent-warm);
+    min-width: 80px;
+}
+
+.weak-accuracy {
+    font-weight: 600;
+    color: var(--accent-red);
+}
+
+.weak-attempts {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.score-bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 80px;
+    padding: 8px 0;
+}
+
+.score-bar {
+    flex: 1;
+    background: var(--accent-blue);
+    border-radius: 2px 2px 0 0;
+    min-width: 6px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.score-bar:hover { opacity: 1; }
+
+.stats-actions { margin-top: 24px; }
+
+/* ── Settings Panel ── */
+
+.settings-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-top: 16px;
+}
+
+.settings-panel h3 {
+    color: var(--accent-gold);
+    font-family: var(--font-heading);
+    margin-bottom: 16px;
+}
+
+.setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.setting-row:last-child { border-bottom: none; }
+
+.setting-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.setting-row input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-blue);
+}
+
+/* ── Standards Mode ── */
+
+.chart-editor {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.chart-editor label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    margin-top: 10px;
+}
+
+.chart-editor input, .chart-editor textarea, .chart-editor select {
+    width: 100%;
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    font-family: var(--font-chord);
+    font-size: 0.9rem;
+}
+
+.chart-editor textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.chart-editor select {
+    cursor: pointer;
+}
+
+/* Tempo slider */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 200px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.tempo-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0;
+}
+
+.tempo-display {
+    font-family: var(--font-chord);
+    color: var(--accent-blue);
+    min-width: 70px;
+}
+
+/* ── Ear Training ── */
+
+.ear-prompt {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    text-align: center;
+    padding: 20px;
+}
+
+.ear-answer {
+    font-family: var(--font-chord);
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+    text-align: center;
+    padding: 12px;
+}
+
+.ear-answer.hidden { display: none; }
+
+/* ── Section Headers ── */
+
+.mode-panel h2 {
+    font-family: var(--font-heading);
+    color: var(--accent-gold);
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.mode-panel h3 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin: 16px 0 8px;
+}
+
+.mode-description {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    font-style: italic;
+}
+
+/* ── Keyboard Hints ── */
+
+.keyboard-hint {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 8px 12px;
+    }
+    
+    nav { gap: 2px; }
+    nav button { padding: 4px 8px; font-size: 0.75rem; }
+    
+    main { padding: 12px; }
+    
+    .chord-symbol { font-size: 2.8rem; }
+    
+    .piano-keyboard { height: 120px; }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .chord-symbol { font-size: 2.2rem; }
+    .piano-keyboard { height: 100px; }
+    nav button { font-size: 0.7rem; padding: 3px 6px; }
+}
