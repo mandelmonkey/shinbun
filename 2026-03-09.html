@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月9日（月曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月9日（月曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イラン<ruby>新<rt>しん</rt></ruby><ruby>最高<rt>さいこう</rt></ruby><ruby>指導者<rt>しどうしゃ</rt></ruby>にモジタバ<ruby>師<rt>し</rt></ruby>　ハメネイ<ruby>前<rt>まえ</rt></ruby><ruby>師<rt>し</rt></ruby>の<ruby>次男<rt>じなん</rt></ruby></h2>
+              <p class="body">イランの<ruby>専門家<rt>せんもんか</rt></ruby><ruby>会議<rt>かいぎ</rt></ruby>は、<ruby>故<rt>ゆえ</rt></ruby>ハメネイ<ruby>最高<rt>さいこう</rt></ruby><ruby>指導者<rt>しどうしゃ</rt></ruby>の<ruby>次男<rt>じなん</rt></ruby>であるモジタバ<ruby>師<rt>し</rt></ruby>を<ruby>新た<rt>あらた</rt></ruby>な<ruby>最高<rt>さいこう</rt></ruby><ruby>指導者<rt>しどうしゃ</rt></ruby>に<ruby>選出<rt>せんしゅつ</rt></ruby>した。56<ruby>歳<rt>とし</rt></ruby>のモジタバ<ruby>師<rt>し</rt></ruby>はこれまで<ruby>表舞台<rt>おもてぶたい</rt></ruby>に<ruby>出る<rt>でる</rt></ruby>ことが<ruby>少なか<rt>すくなか</rt></ruby>ったが、<ruby>父親<rt>ちちおや</rt></ruby>の<ruby>強硬<rt>きょうこう</rt></ruby><ruby>路線<rt>ろせん</rt></ruby>を<ruby>踏襲<rt>とうしゅう</rt></ruby>するとみられている。トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>は「どうなるか<ruby>見て<rt>みて</rt></ruby>みよう」と<ruby>述べ<rt>のべ</rt></ruby>るにとどまり、<ruby>米国<rt>べいこく</rt></ruby>の<ruby>今後<rt>こんご</rt></ruby>の<ruby>対応<rt>たいおう</rt></ruby>が<ruby>焦点<rt>しょうてん</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Iran Names Mojtaba Khamenei as New Supreme Leader</h2>
+              <p class="body en-body">Iran's Assembly of Experts has chosen Mojtaba Khamenei, the 56-year-old son of the late Supreme Leader, as the country's new top authority. Despite maintaining a low profile throughout his career, Mojtaba is widely expected to continue his father's hardline policies. President Trump responded cautiously, saying only 'let's see what happens', leaving the future of US-Iran relations uncertain.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>原油<rt>げんゆ</rt></ruby><ruby>急騰<rt>きゅうとう</rt></ruby>で<ruby>世界<rt>せかい</rt></ruby><ruby>株安<rt>かぶやす</rt></ruby>　ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby><ruby>封鎖<rt>ふうさ</rt></ruby>の<ruby>懸念<rt>けねん</rt></ruby><ruby>広が<rt>ひろが</rt></ruby>る</h2>
+              <p class="body">ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>の<ruby>封鎖<rt>ふうさ</rt></ruby><ruby>懸念<rt>けねん</rt></ruby>から<ruby>原油価格<rt>げんゆかかく</rt></ruby>が<ruby>急騰<rt>きゅうとう</rt></ruby>し、<ruby>世界<rt>せかい</rt></ruby>の<ruby>株式市場<rt>かぶしきしじょう</rt></ruby>が<ruby>大幅<rt>おおはば</rt></ruby>に<ruby>下落<rt>げらく</rt></ruby>した。カタールのエネルギー<ruby>大臣<rt>だいじん</rt></ruby>は、<ruby>紛争<rt>ふんそう</rt></ruby>が<ruby>続け<rt>つづけ</rt></ruby>ば<ruby>原油<rt>げんゆ</rt></ruby>が1バレル150ドルに<ruby>達す<rt>たっす</rt></ruby>る<ruby>可能性<rt>かのうせい</rt></ruby>を<ruby>警告し<rt>けいこくし</rt></ruby>た。イギリスではインフレの<ruby>加速<rt>かそく</rt></ruby>が<ruby>懸念<rt>けねん</rt></ruby>され、<ruby>住宅<rt>じゅうたく</rt></ruby>ローン<ruby>金利<rt>きんり</rt></ruby>の<ruby>引き上げ<rt>ひきあげ</rt></ruby>やジェット<ruby>燃料<rt>ねんりょう</rt></ruby>の80%<ruby>以上<rt>いじょう</rt></ruby>の<ruby>値上がり<rt>ねあがり</rt></ruby>が<ruby>報告<rt>ほうこく</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Global Markets Slump as Oil Prices Surge on Strait of Hormuz Fears</h2>
+              <p class="body en-body">Oil prices surged and global stock markets slumped sharply amid fears of disruption to the Strait of Hormuz. Qatar's energy minister warned that oil could hit $150 a barrel if the Iran conflict continues. In the UK, inflation fears are mounting as lenders raise mortgage rates and jet fuel prices have soared over 80%.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">グラスゴー<ruby>中央駅<rt>ちゅうおうえき</rt></ruby><ruby>近く<rt>ちかく</rt></ruby>で<ruby>大規模<rt>だいきぼ</rt></ruby><ruby>火災<rt>かさい</rt></ruby>　<ruby>終日<rt>しゅうじつ</rt></ruby><ruby>運休<rt>うんきゅう</rt></ruby>に</h2>
+              <p class="body">グラスゴー<ruby>中央駅<rt>ちゅうおうえき</rt></ruby>に<ruby>隣接<rt>りんせつ</rt></ruby>する<ruby>建物<rt>たてもの</rt></ruby>で<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>火災<rt>かさい</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>し、<ruby>建物<rt>たてもの</rt></ruby>のドームが<ruby>崩壊<rt>ほうかい</rt></ruby>した。スコットレールは<ruby>月曜日<rt>げつようび</rt></ruby><ruby>中<rt>なか</rt></ruby>、<ruby>同駅<rt>どうえき</rt></ruby>を<ruby>発着<rt>はっちゃく</rt></ruby>する<ruby>全列車<rt>ぜんれっしゃ</rt></ruby>の<ruby>運行<rt>うんこう</rt></ruby><ruby>停止<rt>ていし</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>消防隊<rt>しょうぼうたい</rt></ruby>が<ruby>懸命<rt>けんめい</rt></ruby>の<ruby>消火<rt>しょうか</rt></ruby><ruby>活動<rt>かつどう</rt></ruby>を<ruby>続け<rt>つづけ</rt></ruby>ており、<ruby>通勤客<rt>つうきんきゃく</rt></ruby>に<ruby>大き<rt>おおき</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>出て<rt>でて</rt></ruby>いる。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Major Fire Near Glasgow Central Station Forces Full Day Shutdown</h2>
+              <p class="body en-body">A major fire broke out near Glasgow Central Station overnight, causing the dome of a neighbouring building to collapse. ScotRail announced that no trains will operate in or out of the station on Monday. Fire crews continue to battle the blaze as commuters face significant disruption.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">IRA<ruby>爆弾<rt>ばくだん</rt></ruby>テロ<ruby>被害者<rt>ひがいしゃ</rt></ruby>、アダムズ<ruby>元<rt>もと</rt></ruby><ruby>党首<rt>とうしゅ</rt></ruby>を<ruby>民事<rt>みんじ</rt></ruby><ruby>提訴<rt>ていそ</rt></ruby></h2>
+              <p class="body">IRAによる<ruby>爆弾<rt>ばくだん</rt></ruby>テロの<ruby>被害者<rt>ひがいしゃ</rt></ruby>たちが、ジェリー・アダムズ<ruby>元<rt>もと</rt></ruby>シン・フェイン<ruby>党<rt>とう</rt></ruby><ruby>党首<rt>とうしゅ</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>民事訴訟<rt>みんじそしょう</rt></ruby>を<ruby>開始<rt>かいし</rt></ruby>した。1973<ruby>年<rt>ねん</rt></ruby>のロンドンと1996<ruby>年<rt>ねん</rt></ruby>のマンチェスターでの<ruby>自動車<rt>じどうしゃ</rt></ruby><ruby>爆弾<rt>ばくだん</rt></ruby><ruby>事件<rt>じけん</rt></ruby>について、アダムズ<ruby>氏<rt>し</rt></ruby><ruby>個人<rt>こじん</rt></ruby>に<ruby>決定<rt>けってい</rt></ruby><ruby>責任<rt>せきにん</rt></ruby>があったかどうかが<ruby>争<rt>そう</rt></ruby>われる。<ruby>数十年<rt>すうじゅうねん</rt></ruby>にわたる<ruby>被害者<rt>ひがいしゃ</rt></ruby>の<ruby>正義<rt>せいぎ</rt></ruby>を<ruby>求め<rt>もとめ</rt></ruby>る<ruby>闘い<rt>たたかい</rt></ruby>が<ruby>新た<rt>あらた</rt></ruby>な<ruby>段階<rt>だんかい</rt></ruby>に<ruby>入っ<rt>いっっ</rt></ruby>た。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">IRA Bombing Victims Launch Civil Case Against Gerry Adams</h2>
+              <p class="body en-body">Victims of IRA bombings have begun a civil court case against former Sinn Féin leader Gerry Adams. The claimants are seeking a ruling that Adams is personally liable for decisions to plant car bombs in London in 1973 and Manchester in 1996. The case marks a new chapter in the victims' decades-long pursuit of justice.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日経平均<rt>にっけいへいきん</rt></ruby>2800<ruby>円<rt>えん</rt></ruby><ruby>超<rt>ちょう</rt></ruby>の<ruby>暴落<rt>ぼうらく</rt></ruby>　<ruby>過去<rt>かこ</rt></ruby>3<ruby>番目<rt>ばんめ</rt></ruby>の<ruby>記録的<rt>きろくてき</rt></ruby><ruby>下落<rt>げらく</rt></ruby></h2>
+              <p class="body"><ruby>週明け<rt>しゅうあけ</rt></ruby>9<ruby>日<rt>にち</rt></ruby>の<ruby>東京<rt>とうきょう</rt></ruby><ruby>株式市場<rt>かぶしきしじょう</rt></ruby>で、<ruby>日経平均<rt>にっけいへいきん</rt></ruby><ruby>株価<rt>かぶか</rt></ruby>が2800<ruby>円<rt>えん</rt></ruby><ruby>以上<rt>いじょう</rt></ruby><ruby>下落<rt>げらく</rt></ruby>し、5<ruby>万<rt>まん</rt></ruby>2728<ruby>円<rt>えん</rt></ruby>で<ruby>取引<rt>とりひき</rt></ruby>を<ruby>終え<rt>おえ</rt></ruby>た。<ruby>過去<rt>かこ</rt></ruby>3<ruby>番目<rt>ばんめ</rt></ruby>に<ruby>大きい<rt>おおきい</rt></ruby><ruby>記録的<rt>きろくてき</rt></ruby>な<ruby>暴落<rt>ぼうらく</rt></ruby>となった。WTI<ruby>原油<rt>げんゆ</rt></ruby><ruby>先物<rt>さきもの</rt></ruby>が1バレル119ドル<ruby>台<rt>だい</rt></ruby>まで<ruby>上昇<rt>じょうしょう</rt></ruby>するなど、イラン<ruby>情勢<rt>じょうせい</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>た<ruby>原油<rt>げんゆ</rt></ruby><ruby>供給<rt>きょうきゅう</rt></ruby><ruby>不安<rt>ふあん</rt></ruby>が<ruby>重く<rt>おもく</rt></ruby>のしかかり、<ruby>全面<rt>ぜんめん</rt></ruby><ruby>安<rt>あん</rt></ruby>の<ruby>展開<rt>てんかい</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Nikkei Crashes Over 2,800 Points in Third-Largest Drop on Record</h2>
+              <p class="body en-body">Tokyo's Nikkei index plunged over 2,800 points on Monday to close at 52,728, marking the third-largest single-day drop in its history. The sell-off was driven by surging oil prices, with WTI crude hitting $119 per barrel, as concerns over energy supply disruptions from the Iran conflict intensified.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">G7、<ruby>備蓄<rt>びちく</rt></ruby><ruby>石油<rt>せきゆ</rt></ruby>の<ruby>市場<rt>しじょう</rt></ruby><ruby>放出<rt>ほうしゅつ</rt></ruby>を<ruby>緊急<rt>きんきゅう</rt></ruby><ruby>協議<rt>きょうぎ</rt></ruby>へ</h2>
+              <p class="body">フィナンシャル・タイムズの<ruby>報道<rt>ほうどう</rt></ruby>によると、G7の<ruby>財務<rt>ざいむ</rt></ruby><ruby>相<rt>そう</rt></ruby>らがイラン<ruby>情勢<rt>じょうせい</rt></ruby>に<ruby>伴う<rt>ともなう</rt></ruby><ruby>原油価格<rt>げんゆかかく</rt></ruby>の<ruby>急騰<rt>きゅうとう</rt></ruby>に<ruby>対応<rt>たいおう</rt></ruby>するため、9<ruby>日<rt>にち</rt></ruby>に<ruby>緊急<rt>きんきゅう</rt></ruby><ruby>会合<rt>かいごう</rt></ruby>を<ruby>開催<rt>かいさい</rt></ruby>する。IEA<ruby>加盟国<rt>かめいこく</rt></ruby>が<ruby>保有<rt>ほゆう</rt></ruby>する<ruby>備蓄<rt>びちく</rt></ruby><ruby>石油<rt>せきゆ</rt></ruby>の<ruby>市場<rt>しじょう</rt></ruby><ruby>放出<rt>ほうしゅつ</rt></ruby>の<ruby>可能性<rt>かのうせい</rt></ruby>が<ruby>議論<rt>ぎろん</rt></ruby>される<ruby>見通し<rt>みとおし</rt></ruby>だ。また、イラン<ruby>情勢<rt>じょうせい</rt></ruby>の<ruby>影響<rt>えいきょう</rt></ruby>で<ruby>石油<rt>せきゆ</rt></ruby><ruby>化学<rt>かがく</rt></ruby><ruby>製品<rt>せいひん</rt></ruby>の<ruby>原料<rt>げんりょう</rt></ruby>となるエチレンの<ruby>国内<rt>こくない</rt></ruby><ruby>生産<rt>せいさん</rt></ruby>にも<ruby>支障<rt>ししょう</rt></ruby>が<ruby>出始め<rt>ではじめ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">G7 to Hold Emergency Talks on Releasing Strategic Oil Reserves</h2>
+              <p class="body en-body">According to the Financial Times, G7 finance ministers will hold an emergency meeting on Monday to discuss releasing strategic oil reserves held by IEA member nations in response to surging crude prices. Meanwhile, the impact on Japan's real economy is already being felt, with domestic ethylene production disrupted by concerns over stable crude oil supply.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>中東<rt>ちゅうとう</rt></ruby>の<ruby>邦人<rt>ほうじん</rt></ruby><ruby>退避<rt>たいひ</rt></ruby>、チャーター<ruby>便<rt>びん</rt></ruby>を<ruby>追加<rt>ついか</rt></ruby><ruby>運航<rt>うんこう</rt></ruby></h2>
+              <p class="body"><ruby>木原<rt>きはら</rt></ruby><ruby>官房<rt>かんぼう</rt></ruby><ruby>長官<rt>ちょうかん</rt></ruby>は、<ruby>中東<rt>ちゅうとう</rt></ruby>に<ruby>滞在<rt>たいざい</rt></ruby>する<ruby>日本人旅行者<rt>にほんじんりょこうしゃ</rt></ruby>の<ruby>退避<rt>たいひ</rt></ruby>のため、チャーター<ruby>便<rt>びん</rt></ruby>の<ruby>追加<rt>ついか</rt></ruby><ruby>運航<rt>うんこう</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。サウジアラビアからの<ruby>第<rt>だい</rt></ruby>2<ruby>便<rt>びん</rt></ruby>に<ruby>続き<rt>つづき</rt></ruby>、サウジアラビアとUAEからそれぞれ1<ruby>便<rt>びん</rt></ruby>を<ruby>追加<rt>ついか</rt></ruby>する。イラン<ruby>情勢<rt>じょうせい</rt></ruby>の<ruby>緊迫<rt>きんぱく</rt></ruby><ruby>化<rt>か</rt></ruby>に<ruby>伴い<rt>ともない</rt></ruby>、<ruby>邦人<rt>ほうじん</rt></ruby>の<ruby>安全確保<rt>あんぜんかくほ</rt></ruby>が<ruby>急が<rt>いそが</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan Deploys Additional Charter Flights to Evacuate Citizens from Middle East</h2>
+              <p class="body en-body">Chief Cabinet Secretary Kihara announced additional charter flights to evacuate Japanese nationals stranded in the Middle East. Following a second flight from Saudi Arabia, one additional flight each will depart from Saudi Arabia and the UAE. The government is prioritising the safety of citizens abroad as the Iran crisis deepens.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-09 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "専門家会議", "reading": "せんもんかかいぎ", "english": "Assembly of Experts"}, {"word": "選出", "reading": "せんしゅつ", "english": "election/selection"}, {"word": "強硬路線", "reading": "きょうこうろせん", "english": "hardline policy"}, {"word": "踏襲", "reading": "とうしゅう", "english": "to follow/inherit (a policy)"}, {"word": "焦点", "reading": "しょうてん", "english": "focal point/focus"}], [{"word": "急騰", "reading": "きゅうとう", "english": "sharp rise/surge"}, {"word": "封鎖", "reading": "ふうさ", "english": "blockade"}, {"word": "懸念", "reading": "けねん", "english": "concern/apprehension"}, {"word": "住宅ローン", "reading": "じゅうたくローン", "english": "mortgage"}, {"word": "加速", "reading": "かそく", "english": "acceleration"}], [{"word": "崩壊", "reading": "ほうかい", "english": "collapse"}, {"word": "発着", "reading": "はっちゃく", "english": "departures and arrivals"}, {"word": "運行停止", "reading": "うんこうていし", "english": "suspension of service"}, {"word": "消火活動", "reading": "しょうかかつどう", "english": "firefighting operations"}, {"word": "通勤客", "reading": "つうきんきゃく", "english": "commuters"}], [{"word": "民事訴訟", "reading": "みんじそしょう", "english": "civil lawsuit"}, {"word": "自動車爆弾", "reading": "じどうしゃばくだん", "english": "car bomb"}, {"word": "争う", "reading": "あらそう", "english": "to dispute/contest"}, {"word": "党首", "reading": "とうしゅ", "english": "party leader"}, {"word": "正義", "reading": "せいぎ", "english": "justice"}], [{"word": "暴落", "reading": "ぼうらく", "english": "crash/plunge"}, {"word": "先物", "reading": "さきもの", "english": "futures (financial)"}, {"word": "全面安", "reading": "ぜんめんやす", "english": "across-the-board decline"}, {"word": "供給不安", "reading": "きょうきゅうふあん", "english": "supply concerns"}, {"word": "取引", "reading": "とりひき", "english": "trading/transaction"}], [{"word": "備蓄石油", "reading": "びちくせきゆ", "english": "strategic oil reserves"}, {"word": "放出", "reading": "ほうしゅつ", "english": "release"}, {"word": "緊急会合", "reading": "きんきゅうかいごう", "english": "emergency meeting"}, {"word": "石油化学", "reading": "せきゆかがく", "english": "petrochemical"}, {"word": "支障", "reading": "ししょう", "english": "hindrance/disruption"}], [{"word": "官房長官", "reading": "かんぼうちょうかん", "english": "Chief Cabinet Secretary"}, {"word": "退避", "reading": "たいひ", "english": "evacuation"}, {"word": "追加運航", "reading": "ついかうんこう", "english": "additional flights"}, {"word": "邦人", "reading": "ほうじん", "english": "Japanese nationals (abroad)"}, {"word": "緊迫化", "reading": "きんぱくか", "english": "escalation of tensions"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "イラン新最高指導者にモジタバ師　ハメネイ前師の次男"}, {"section": "英国・世界", "headline": "原油急騰で世界株安　ホルムズ海峡封鎖の懸念広がる"}, {"section": "英国・世界", "headline": "グラスゴー中央駅近くで大規模火災　終日運休に"}, {"section": "英国・世界", "headline": "IRA爆弾テロ被害者、アダムズ元党首を民事提訴"}, {"section": "日本", "headline": "日経平均2800円超の暴落　過去3番目の記録的下落"}, {"section": "日本", "headline": "G7、備蓄石油の市場放出を緊急協議へ"}, {"section": "日本", "headline": "中東の邦人退避、チャーター便を追加運航"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
