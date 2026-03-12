@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月12日（木）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月12日（木）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イラン<ruby>攻撃<rt>こうげき</rt></ruby>で<ruby>原油<rt>げんゆ</rt></ruby><ruby>高騰<rt>こうとう</rt></ruby>、G7<ruby>備蓄<rt>びちく</rt></ruby><ruby>放出<rt>ほうしゅつ</rt></ruby>も<ruby>効果<rt>こうか</rt></ruby><ruby>薄<rt>はく</rt></ruby></h2>
+              <p class="body"><ruby>米<rt>こめ</rt></ruby>・イスラエルによる<ruby>爆撃<rt>ばくげき</rt></ruby>が<ruby>続く<rt>つづく</rt></ruby>イランは、ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>での<ruby>船舶<rt>せんぱく</rt></ruby><ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>激化<rt>げきか</rt></ruby>させており、<ruby>原油価格<rt>げんゆかかく</rt></ruby>が<ruby>急騰<rt>きゅうとう</rt></ruby>している。G7はエネルギー<ruby>備蓄<rt>びちく</rt></ruby>の<ruby>過去<rt>かこ</rt></ruby><ruby>最大規模<rt>さいだいきぼ</rt></ruby>の<ruby>放出<rt>ほうしゅつ</rt></ruby>に<ruby>合意<rt>ごうい</rt></ruby>したが、<ruby>価格<rt>かかく</rt></ruby><ruby>上昇<rt>じょうしょう</rt></ruby>は<ruby>止ま<rt>とま</rt></ruby>っていない。イギリスでは<ruby>住宅<rt>じゅうたく</rt></ruby>ローン<ruby>金利<rt>きんり</rt></ruby>が<ruby>昨年<rt>さくねん</rt></ruby>8<ruby>月<rt>がつ</rt></ruby><ruby>以来<rt>いらい</rt></ruby>の<ruby>高水準<rt>こうすいじゅん</rt></ruby>に<ruby>達し<rt>たっし</rt></ruby>、<ruby>家計<rt>かけい</rt></ruby>への<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Oil Prices Surge Despite Record Reserve Release as Iran Attacks Intensify</h2>
+              <p class="body en-body">Iran has intensified attacks on shipping through the Strait of Hormuz as the US-Israeli bombing campaign continues, driving oil prices sharply higher. G7 nations agreed to release a record amount of emergency reserves, but prices have continued to climb. UK mortgage rates have hit their highest level since August last year, putting pressure on household finances.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">マンデルソン<ruby>氏<rt>し</rt></ruby>とエプスタインの<ruby>関係<rt>かんけい</rt></ruby>、<ruby>英<rt>えい</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>に「<ruby>評判<rt>ひょうばん</rt></ruby>リスク」<ruby>警告<rt>けいこく</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>のスターマー<ruby>首相<rt>しゅしょう</rt></ruby>が<ruby>駐米<rt>ちゅうべい</rt></ruby><ruby>大使<rt>たいし</rt></ruby>に<ruby>任命<rt>にんめい</rt></ruby>したマンデルソン<ruby>卿<rt>きょう</rt></ruby>と、<ruby>故<rt>ゆえ</rt></ruby>ジェフリー・エプスタインとのつながりを<ruby>示す<rt>しめす</rt></ruby><ruby>内部<rt>ないぶ</rt></ruby><ruby>文書<rt>ぶんしょ</rt></ruby>が<ruby>公開<rt>こうかい</rt></ruby>された。<ruby>文書<rt>ぶんしょ</rt></ruby>によると、<ruby>任命<rt>にんめい</rt></ruby><ruby>前<rt>まえ</rt></ruby>に「<ruby>首相<rt>しゅしょう</rt></ruby>の<ruby>評判<rt>ひょうばん</rt></ruby>に<ruby>関わ<rt>かかわ</rt></ruby>るリスクがある」という<ruby>警告<rt>けいこく</rt></ruby>が<ruby>出さ<rt>ださ</rt></ruby>れていたことが<ruby>明らか<rt>あきらか</rt></ruby>になった。また、マンデルソン<ruby>氏<rt>し</rt></ruby>が<ruby>大使<rt>たいし</rt></ruby>を<ruby>解任<rt>かいにん</rt></ruby>された<ruby>後に<rt>のちに</rt></ruby>50<ruby>万<rt>まん</rt></ruby>ポンドの<ruby>退職金<rt>たいしょくきん</rt></ruby>を<ruby>検討し<rt>けんとうし</rt></ruby>ていたことも<ruby>文書<rt>ぶんしょ</rt></ruby>に<ruby>記さ<rt>しるさ</rt></ruby>れていた。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">PM Warned of 'Reputational Risk' Over Mandelson's Epstein Links</h2>
+              <p class="body en-body">Internal documents have revealed that Prime Minister Starmer was warned of a 'reputational risk' before appointing Lord Mandelson as US ambassador, due to his links to the late Jeffrey Epstein. The documents also suggest Mandelson explored the possibility of a £500,000 severance payment after being dismissed from the role. Political analysts say the revelations, while not explosive, are far from over.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米<rt>こめ</rt></ruby>、EU・<ruby>中国<rt>ちゅうごく</rt></ruby>・インドへの<ruby>貿易<rt>ぼうえき</rt></ruby><ruby>調査<rt>ちょうさ</rt></ruby>を<ruby>開始<rt>かいし</rt></ruby></h2>
+              <p class="body">トランプ<ruby>政権<rt>せいけん</rt></ruby>は、EUや<ruby>中国<rt>ちゅうごく</rt></ruby>、インドなどの<ruby>主要<rt>しゅよう</rt></ruby><ruby>貿易<rt>ぼうえき</rt></ruby><ruby>相手国<rt>あいてこく</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>て<ruby>新た<rt>あらた</rt></ruby>な<ruby>通商<rt>つうしょう</rt></ruby><ruby>調査<rt>ちょうさ</rt></ruby>を<ruby>開始<rt>かいし</rt></ruby>した。<ruby>最高裁<rt>さいこうさい</rt></ruby>が<ruby>関税<rt>かんぜい</rt></ruby><ruby>政策<rt>せいさく</rt></ruby>の<ruby>一部<rt>いちぶ</rt></ruby>を<ruby>違憲<rt>いけん</rt></ruby>と<ruby>判断<rt>はんだん</rt></ruby>したことをきっかけに、<ruby>政権<rt>せいけん</rt></ruby>は<ruby>別の<rt>べつの</rt></ruby>アプローチを<ruby>模索<rt>もさく</rt></ruby>している。<ruby>貿易<rt>ぼうえき</rt></ruby><ruby>専門家<rt>せんもんか</rt></ruby>たちは、<ruby>今回<rt>こんかい</rt></ruby>の<ruby>調査<rt>ちょうさ</rt></ruby>が<ruby>新た<rt>あらた</rt></ruby>な<ruby>通商<rt>つうしょう</rt></ruby><ruby>摩擦<rt>まさつ</rt></ruby>の<ruby>引き金<rt>ひきがね</rt></ruby>になりかねないと<ruby>警戒<rt>けいかい</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US Launches Trade Probe into EU, China and India After Court Ruling</h2>
+              <p class="body en-body">The Trump administration has launched a new trade investigation targeting major partners including the EU, China and India. The probe follows a Supreme Court ruling that struck down a key part of the administration's tariff policies, prompting the White House to seek alternative approaches. Trade analysts warn the investigation could trigger further economic friction with key allies.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英規<rt>ひでき</rt></ruby><ruby>制<rt>せい</rt></ruby><ruby>当局<rt>とうきょく</rt></ruby>、SNS<ruby>各社<rt>かくしゃ</rt></ruby>に13<ruby>歳<rt>とし</rt></ruby><ruby>未満<rt>みまん</rt></ruby>の<ruby>年齢<rt>ねんれい</rt></ruby><ruby>確認<rt>かくにん</rt></ruby><ruby>強化<rt>きょうか</rt></ruby>を<ruby>要求<rt>ようきゅう</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>の<ruby>情報<rt>じょうほう</rt></ruby>コミッショナーオフィス（ICO）は、インスタグラム、TikTok、YouTube、ロブロックスなどのプラットフォームに<ruby>対し<rt>たいし</rt></ruby>、13<ruby>歳<rt>とし</rt></ruby><ruby>未満<rt>みまん</rt></ruby>の<ruby>子ども<rt>こども</rt></ruby>の<ruby>年齢<rt>ねんれい</rt></ruby><ruby>確認<rt>かくにん</rt></ruby>を<ruby>強化<rt>きょうか</rt></ruby>するよう<ruby>求め<rt>もとめ</rt></ruby>た。<ruby>規制<rt>きせい</rt></ruby><ruby>当局<rt>とうきょく</rt></ruby>は、これらの<ruby>企業<rt>きぎょう</rt></ruby>が<ruby>子ども<rt>こども</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby>を<ruby>製品<rt>せいひん</rt></ruby><ruby>設計<rt>せっけい</rt></ruby>の<ruby>中心<rt>ちゅうしん</rt></ruby>に<ruby>置い<rt>おい</rt></ruby>ていないと<ruby>批判<rt>ひはん</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK Regulator Demands Tougher Age Checks for Under-13s on Social Media</h2>
+              <p class="body en-body">The UK's Information Commissioner's Office has called on platforms including Instagram, Snapchat, TikTok, YouTube and Roblox to tighten age verification for users under 13. The regulator criticised the companies for failing to put children's safety at the heart of their products. The move is part of a broader push to enforce child protection rules under UK online safety legislation.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>東日本<rt>ひがしにほん</rt></ruby><ruby>大震<rt>たいしん</rt></ruby><ruby>災<rt>さい</rt></ruby>・<ruby>福島<rt>ふくしま</rt></ruby><ruby>原発事故<rt>げんぱつじこ</rt></ruby>から15<ruby>年<rt>ねん</rt></ruby>、<ruby>各地<rt>かくち</rt></ruby>で<ruby>追悼<rt>ついとう</rt></ruby></h2>
+              <p class="body">2011<ruby>年<rt>ねん</rt></ruby>3<ruby>月<rt>がつ</rt></ruby>11<ruby>日<rt>にち</rt></ruby>の<ruby>東日本<rt>ひがしにほん</rt></ruby><ruby>大震<rt>たいしん</rt></ruby><ruby>災<rt>さい</rt></ruby>と<ruby>東京電力<rt>とうきょうでんりょく</rt></ruby><ruby>福島<rt>ふくしま</rt></ruby><ruby>第一<rt>だいいち</rt></ruby><ruby>原発事故<rt>げんぱつじこ</rt></ruby>から、11<ruby>日<rt>にち</rt></ruby>で15<ruby>年<rt>ねん</rt></ruby>を<ruby>迎え<rt>むかえ</rt></ruby>た。<ruby>日本各地<rt>にほんかくち</rt></ruby>で<ruby>追悼式<rt>ついとうしき</rt></ruby>が<ruby>行わ<rt>おこなわ</rt></ruby>れ、<ruby>被災者<rt>ひさいしゃ</rt></ruby>たちは「<ruby>震災<rt>しんさい</rt></ruby>の<ruby>記憶<rt>きおく</rt></ruby>と<ruby>教訓<rt>きょうくん</rt></ruby>を<ruby>次の<rt>つぎの</rt></ruby><ruby>世代<rt>せだい</rt></ruby>に<ruby>伝え<rt>つたえ</rt></ruby><ruby>続け<rt>つづけ</rt></ruby>なければならない」と<ruby>訴え<rt>うったえ</rt></ruby>た。<ruby>福島<rt>ふくしま</rt></ruby>では、<ruby>政府<rt>せいふ</rt></ruby>が<ruby>科学技術<rt>かがくぎじゅつ</rt></ruby>を<ruby>活用<rt>かつよう</rt></ruby>した<ruby>新た<rt>あらた</rt></ruby>なまちづくりを<ruby>進め<rt>すすめ</rt></ruby>ており、<ruby>浪江<rt>なみえ</rt></ruby><ruby>町<rt>まち</rt></ruby><ruby>近辺<rt>きんぺん</rt></ruby>では<ruby>復興<rt>ふっこう</rt></ruby>の<ruby>象徴<rt>しょうちょう</rt></ruby>となる<ruby>施設<rt>しせつ</rt></ruby>の<ruby>建設<rt>けんせつ</rt></ruby>が<ruby>始ま<rt>はじま</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan Marks 15 Years Since Great East Japan Earthquake and Fukushima Disaster</h2>
+              <p class="body en-body">Japan has marked the 15th anniversary of the Great East Japan Earthquake, tsunami and Fukushima nuclear disaster, with memorial ceremonies held across the country. Survivors called for the memories and lessons of the catastrophe to be passed on to future generations. In Fukushima Prefecture, the government is investing in science and technology to reshape the region's identity, with construction underway near Namie Station.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>入国前<rt>にゅうこくまえ</rt></ruby>のオンライン<ruby>審査<rt>しんさ</rt></ruby><ruby>導入<rt>どうにゅう</rt></ruby>へ、<ruby>在留<rt>ざいりゅう</rt></ruby><ruby>資格<rt>しかく</rt></ruby><ruby>手数料<rt>てすうりょう</rt></ruby>も<ruby>値上げ<rt>ねあげ</rt></ruby></h2>
+              <p class="body"><ruby>日本政府<rt>にほんせいふ</rt></ruby>は、<ruby>海外<rt>かいがい</rt></ruby>からの<ruby>入国<rt>にゅうこく</rt></ruby><ruby>者<rt>もの</rt></ruby>を<ruby>対象<rt>たいしょう</rt></ruby>にオンラインで<ruby>事前審査<rt>じぜんしんさ</rt></ruby>を<ruby>行う<rt>おこなう</rt></ruby><ruby>制度<rt>せいど</rt></ruby>を<ruby>新設<rt>しんせつ</rt></ruby>するための<ruby>入管<rt>にゅうかん</rt></ruby><ruby>法改正<rt>ほうかいせい</rt></ruby><ruby>案<rt>あん</rt></ruby>を<ruby>閣議<rt>かくぎ</rt></ruby><ruby>決定<rt>けってい</rt></ruby>した。<ruby>外国人<rt>がいこくじん</rt></ruby>の<ruby>在留<rt>ざいりゅう</rt></ruby><ruby>資格<rt>しかく</rt></ruby><ruby>申請<rt>しんせい</rt></ruby><ruby>手数料<rt>てすうりょう</rt></ruby>も<ruby>大幅<rt>おおはば</rt></ruby>に<ruby>引き上げ<rt>ひきあげ</rt></ruby>られる<ruby>見通し<rt>みとおし</rt></ruby>で、<ruby>法案<rt>ほうあん</rt></ruby>は<ruby>現在<rt>げんざい</rt></ruby><ruby>開会<rt>かいかい</rt></ruby><ruby>中の<rt>なかの</rt></ruby><ruby>国会<rt>こっかい</rt></ruby>に<ruby>提出<rt>ていしゅつ</rt></ruby>される<ruby>予定<rt>よてい</rt></ruby>だ。<ruby>訪日<rt>ほうにち</rt></ruby><ruby>外国人<rt>がいこくじん</rt></ruby><ruby>数<rt>かず</rt></ruby>の<ruby>増加<rt>ぞうか</rt></ruby>を<ruby>背景<rt>はいけい</rt></ruby>に、<ruby>入国<rt>にゅうこく</rt></ruby><ruby>管理<rt>かんり</rt></ruby>の<ruby>強化<rt>きょうか</rt></ruby>が<ruby>急務<rt>きゅうむ</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan to Introduce Pre-Entry Online Screening and Hike Residency Fees</h2>
+              <p class="body en-body">The Japanese government has approved a bill to amend immigration law, introducing an online pre-entry screening system for overseas arrivals and significantly raising fees for foreign residents' status applications. The cabinet-endorsed bill will be submitted to the current Diet session. The move comes amid a rapid increase in inbound visitors to Japan, putting pressure on immigration management systems.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-12 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "原油", "reading": "げんゆ", "english": "crude oil"}, {"word": "急騰", "reading": "きゅうとう", "english": "sharp surge in price"}, {"word": "備蓄", "reading": "びちく", "english": "stockpile / emergency reserves"}, {"word": "海峡", "reading": "かいきょう", "english": "strait / channel"}, {"word": "住宅ローン", "reading": "じゅうたくローン", "english": "mortgage"}, {"word": "高水準", "reading": "こうすいじゅん", "english": "high level"}], [{"word": "評判", "reading": "ひょうばん", "english": "reputation"}, {"word": "内部文書", "reading": "ないぶぶんしょ", "english": "internal documents"}, {"word": "任命", "reading": "にんめい", "english": "appointment / appointment to a post"}, {"word": "解任", "reading": "かいにん", "english": "dismissal from a post"}, {"word": "退職金", "reading": "たいしょくきん", "english": "severance pay / retirement payment"}, {"word": "駐米大使", "reading": "ちゅうべいたいし", "english": "US ambassador"}], [{"word": "通商調査", "reading": "つうしょうちょうさ", "english": "trade investigation / probe"}, {"word": "関税", "reading": "かんぜい", "english": "tariff / customs duty"}, {"word": "違憲", "reading": "いけん", "english": "unconstitutional"}, {"word": "貿易相手国", "reading": "ぼうえきあいてこく", "english": "trading partner country"}, {"word": "通商摩擦", "reading": "つうしょうまさつ", "english": "trade friction / trade dispute"}, {"word": "最高裁", "reading": "さいこうさい", "english": "Supreme Court"}], [{"word": "規制当局", "reading": "きせいとうきょく", "english": "regulatory authority"}, {"word": "年齢確認", "reading": "ねんれいかくにん", "english": "age verification"}, {"word": "製品設計", "reading": "せいひんせっけい", "english": "product design"}, {"word": "オンライン安全", "reading": "オンラインあんぜん", "english": "online safety"}, {"word": "プラットフォーム", "reading": "プラットフォーム", "english": "platform (digital)"}, {"word": "強化", "reading": "きょうか", "english": "strengthening / tightening"}], [{"word": "追悼", "reading": "ついとう", "english": "mourning / memorial tribute"}, {"word": "被災者", "reading": "ひさいしゃ", "english": "disaster victim / survivor"}, {"word": "節目", "reading": "ふしめ", "english": "milestone / turning point"}, {"word": "教訓", "reading": "きょうくん", "english": "lesson / moral"}, {"word": "復興", "reading": "ふっこう", "english": "reconstruction / recovery"}, {"word": "原発事故", "reading": "げんぱつじこ", "english": "nuclear power plant accident"}], [{"word": "入管法", "reading": "にゅうかんほう", "english": "Immigration Control Act"}, {"word": "閣議決定", "reading": "かくぎけってい", "english": "cabinet decision"}, {"word": "在留資格", "reading": "ざいりゅうしかく", "english": "residence status / visa category"}, {"word": "審査", "reading": "しんさ", "english": "screening / examination"}, {"word": "手数料", "reading": "てすうりょう", "english": "fee / handling charge"}, {"word": "訪日外国人", "reading": "ほうにちがいこくじん", "english": "foreign visitors to Japan / inbound tourists"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "イラン攻撃で原油高騰、G7備蓄放出も効果薄"}, {"section": "英国・世界", "headline": "マンデルソン氏とエプスタインの関係、英首相に「評判リスク」警告"}, {"section": "英国・世界", "headline": "米、EU・中国・インドへの貿易調査を開始"}, {"section": "英国・世界", "headline": "英規制当局、SNS各社に13歳未満の年齢確認強化を要求"}, {"section": "日本", "headline": "東日本大震災・福島原発事故から15年、各地で追悼"}, {"section": "日本", "headline": "入国前のオンライン審査導入へ、在留資格手数料も値上げ"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
