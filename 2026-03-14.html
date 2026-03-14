@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月14日（土曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月14日（土曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英<rt>えい</rt></ruby><ruby>財務<rt>ざいむ</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>、<ruby>灯油<rt>とうゆ</rt></ruby><ruby>価格<rt>かかく</rt></ruby><ruby>高騰<rt>こうとう</rt></ruby>への<ruby>支援<rt>しえん</rt></ruby><ruby>策<rt>さく</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby></h2>
+              <p class="body">レイチェル・リーヴズ<ruby>財務<rt>ざいむ</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>は、<ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby>の<ruby>影響<rt>えいきょう</rt></ruby>で<ruby>高騰<rt>こうとう</rt></ruby>する<ruby>暖房用<rt>だんぼうよう</rt></ruby><ruby>灯油<rt>とうゆ</rt></ruby>の<ruby>価格<rt>かかく</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>支援<rt>しえん</rt></ruby><ruby>策<rt>さく</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>財務<rt>ざいむ</rt></ruby><ruby>省<rt>しょう</rt></ruby>はエネルギー<ruby>料金<rt>りょうきん</rt></ruby>の<ruby>急騰<rt>きゅうとう</rt></ruby>に<ruby>最も<rt>もっとも</rt></ruby><ruby>脆弱<rt>ぜいじゃく</rt></ruby>な<ruby>世帯<rt>せたい</rt></ruby>を<ruby>支援<rt>しえん</rt></ruby>するため、<ruby>複数<rt>ふくすう</rt></ruby>の<ruby>選択肢<rt>せんたくし</rt></ruby>を<ruby>検討し<rt>けんとうし</rt></ruby>ている。<ruby>一方<rt>いっぽう</rt></ruby>、ガソリン<ruby>小売業<rt>こうりぎょう</rt></ruby><ruby>者<rt>もの</rt></ruby>と<ruby>政府<rt>せいふ</rt></ruby>の<ruby>間<rt>かん</rt></ruby>では「<ruby>暴利<rt>ぼうり</rt></ruby>」をめぐる<ruby>対立<rt>たいりつ</rt></ruby>が<ruby>深ま<rt>ふかま</rt></ruby>っており、<ruby>小売業<rt>こうりぎょう</rt></ruby><ruby>者<rt>もの</rt></ruby><ruby>側<rt>がわ</rt></ruby>はスタッフが<ruby>顧客<rt>こきゃく</rt></ruby>からの<ruby>暴言<rt>ぼうげん</rt></ruby>に<ruby>直面<rt>ちょくめん</rt></ruby>していると<ruby>訴え<rt>うったえ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK Chancellor announces support for rising heating oil costs</h2>
+              <p class="body en-body">Chancellor Rachel Reeves has announced support measures for households struggling with soaring heating oil prices driven by the Middle East crisis. The Treasury is examining different options to help the most vulnerable households facing rising energy bills. Meanwhile, a row has erupted between petrol retailers and the government over accusations of profiteering, with retailers saying their staff face abuse from frustrated customers.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米軍<rt>べいぐん</rt></ruby>、イラン<ruby>最大<rt>さいだい</rt></ruby>の<ruby>原油<rt>げんゆ</rt></ruby><ruby>拠点<rt>きょてん</rt></ruby>カーグ<ruby>島<rt>しま</rt></ruby>を<ruby>攻撃<rt>こうげき</rt></ruby></h2>
+              <p class="body">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>はイラン<ruby>最大<rt>さいだい</rt></ruby>の<ruby>原油<rt>げんゆ</rt></ruby><ruby>積み<rt>つみ</rt></ruby><ruby>出し<rt>だし</rt></ruby><ruby>拠点<rt>きょてん</rt></ruby>であるカーグ<ruby>島<rt>しま</rt></ruby>の<ruby>軍事<rt>ぐんじ</rt></ruby><ruby>施設<rt>しせつ</rt></ruby>への<ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>の<ruby>自由<rt>じゆう</rt></ruby><ruby>航行<rt>こうこう</rt></ruby>を<ruby>求め<rt>もとめ</rt></ruby>る<ruby>圧力<rt>あつりょく</rt></ruby>を<ruby>一段<rt>いちだん</rt></ruby>と<ruby>強め<rt>つよめ</rt></ruby>ている。この<ruby>戦争<rt>せんそう</rt></ruby>の<ruby>影響<rt>えいきょう</rt></ruby>でF1のバーレーンおよびサウジアラビアのグランプリが<ruby>中止<rt>ちゅうし</rt></ruby>となり、<ruby>中東<rt>ちゅうとう</rt></ruby>からの<ruby>民間<rt>みんかん</rt></ruby>フライトも<ruby>制限<rt>せいげん</rt></ruby>されている。イギリスの<ruby>旅行者<rt>りょこうしゃ</rt></ruby>の<ruby>中に<rt>なかに</rt></ruby>は<ruby>帰国<rt>きこく</rt></ruby>できず、ホテル<ruby>代<rt>だい</rt></ruby>が1<ruby>万<rt>まん</rt></ruby>2<ruby>千<rt>せん</rt></ruby>ポンドを<ruby>超え<rt>こえ</rt></ruby>た<ruby>人<rt>にん</rt></ruby>もいる。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US strikes Iran's largest oil export hub on Kharg Island</h2>
+              <p class="body en-body">President Trump announced strikes on military facilities at Kharg Island, Iran's largest oil export hub, intensifying pressure for free navigation through the Strait of Hormuz. The conflict has led to the cancellation of F1's Bahrain and Saudi Arabia Grands Prix scheduled for next month, and restricted civilian flights across the region. Some British holidaymakers remain stranded, with hotel bills exceeding £12,000.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>氏<rt>し</rt></ruby>、ロシア<ruby>石油<rt>せきゆ</rt></ruby><ruby>制裁<rt>せいさい</rt></ruby>を<ruby>緩和<rt>かんわ</rt></ruby>　<ruby>同盟<rt>どうめい</rt></ruby><ruby>国<rt>くに</rt></ruby>は<ruby>批判<rt>ひはん</rt></ruby></h2>
+              <p class="body">アメリカはロシアの<ruby>石油<rt>せきゆ</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>制裁<rt>せいさい</rt></ruby>を<ruby>緩和<rt>かんわ</rt></ruby>し、ロシアが<ruby>滞留<rt>たいりゅう</rt></ruby>している<ruby>原油<rt>げんゆ</rt></ruby>を<ruby>売却<rt>ばいきゃく</rt></ruby>できるようにした。プーチン<ruby>大統領<rt>だいとうりょう</rt></ruby>への<ruby>経済的利益<rt>けいざいてきりえき</rt></ruby>は<ruby>限定的<rt>げんていてき</rt></ruby>だとアメリカは<ruby>主張<rt>しゅちょう</rt></ruby>しているものの、ヨーロッパやカナダの<ruby>首脳<rt>しゅのう</rt></ruby>は<ruby>強く<rt>つよく</rt></ruby><ruby>反発<rt>はんぱつ</rt></ruby>している。イランへの<ruby>軍事行動<rt>ぐんじこうどう</rt></ruby>と<ruby>同時に<rt>どうじに</rt></ruby>ロシアへの<ruby>制裁<rt>せいさい</rt></ruby>を<ruby>緩め<rt>ゆるめ</rt></ruby>るという<ruby>矛盾<rt>むじゅん</rt></ruby>した<ruby>政策<rt>せいさく</rt></ruby>が、<ruby>共和党<rt>きょうわとう</rt></ruby><ruby>内部<rt>ないぶ</rt></ruby>にも<ruby>亀裂<rt>きれつ</rt></ruby>を<ruby>生ん<rt>うん</rt></ruby>でいる。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Trump eases Russia oil sanctions, drawing allied criticism</h2>
+              <p class="body en-body">The US has eased sanctions on Russian oil, allowing Moscow to sell stranded crude. While Washington claims the move would provide only a limited financial boost to Putin, European and Canadian leaders have pushed back sharply. The contradictory approach of military action against Iran while softening the stance on Russia has exposed cracks within Trump's own Republican coalition.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">アルプス<ruby>雪崩<rt>なだれ</rt></ruby>、<ruby>今季<rt>こんき</rt></ruby><ruby>死者<rt>ししゃ</rt></ruby>100<ruby>人<rt>にん</rt></ruby><ruby>超<rt>ちょう</rt></ruby>　<ruby>天候<rt>てんこう</rt></ruby>と<ruby>準備不足<rt>じゅんびぶそく</rt></ruby>が<ruby>原因<rt>げんいん</rt></ruby></h2>
+              <p class="body">フレンチアルプスで<ruby>今<rt>いま</rt></ruby>シーズンの<ruby>雪崩<rt>なだれ</rt></ruby>による<ruby>死者<rt>ししゃ</rt></ruby>が100<ruby>人<rt>にん</rt></ruby>を<ruby>超え<rt>こえ</rt></ruby>た。<ruby>救助隊<rt>きゅうじょたい</rt></ruby>は<ruby>悪天候<rt>あくてんこう</rt></ruby>と<ruby>準備不足<rt>じゅんびぶそく</rt></ruby>のスキーヤーの<ruby>増加<rt>ぞうか</rt></ruby>が<ruby>主な<rt>おもな</rt></ruby><ruby>原因<rt>げんいん</rt></ruby>だと<ruby>指摘<rt>してき</rt></ruby>している。BBCは<ruby>救助<rt>きゅうじょ</rt></ruby>チームに<ruby>同行<rt>どうこう</rt></ruby><ruby>取材<rt>しゅざい</rt></ruby>を<ruby>行い<rt>おこない</rt></ruby>、<ruby>危険<rt>きけん</rt></ruby>な<ruby>状況<rt>じょうきょう</rt></ruby>の<ruby>実態<rt>じったい</rt></ruby>を<ruby>伝え<rt>つたえ</rt></ruby>た。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Alps avalanche deaths pass 100 this season amid weather and ill-prepared skiers</h2>
+              <p class="body en-body">The number of skiers killed by avalanches in the French Alps this season has surpassed 100. Rescue teams blame deteriorating weather conditions and a rise in underprepared skiers venturing into dangerous terrain. The BBC joined a rescue team to document the scale of the crisis.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">JR<ruby>東日本<rt>ひがしにほん</rt></ruby>、<ruby>発足以来<rt>ほっそくいらい</rt></ruby><ruby>初<rt>はつ</rt></ruby>の<ruby>運賃<rt>うんちん</rt></ruby><ruby>値上げ<rt>ねあげ</rt></ruby>　<ruby>平均<rt>へいきん</rt></ruby>7.1％</h2>
+              <p class="body">JR<ruby>東日本<rt>ひがしにほん</rt></ruby>は3<ruby>月<rt>がつ</rt></ruby>14<ruby>日<rt>にち</rt></ruby>、<ruby>運賃<rt>うんちん</rt></ruby>を<ruby>平均<rt>へいきん</rt></ruby>7.1パーセント<ruby>値上げ<rt>ねあげ</rt></ruby>した。<ruby>消費税<rt>しょうひぜい</rt></ruby><ruby>対応<rt>たいおう</rt></ruby>を<ruby>除け<rt>のぞけ</rt></ruby>ば1987<ruby>年<rt>ねん</rt></ruby>の<ruby>会社<rt>かいしゃ</rt></ruby><ruby>発足以来<rt>ほっそくいらい</rt></ruby><ruby>初めて<rt>はじめて</rt></ruby>となる。1<ruby>日<rt>にち</rt></ruby>あたり1600<ruby>万人<rt>ばんにん</rt></ruby>が<ruby>利用<rt>りよう</rt></ruby>する<ruby>日本最大<rt>にほんさいだい</rt></ruby>の<ruby>鉄道会社<rt>てつどうがいしゃ</rt></ruby>であり、コスト<ruby>増加<rt>ぞうか</rt></ruby>と<ruby>乗客数<rt>じょうきゃくすう</rt></ruby>の<ruby>変化<rt>へんか</rt></ruby>が<ruby>値上げ<rt>ねあげ</rt></ruby>の<ruby>背景<rt>はいけい</rt></ruby>にある。<ruby>通勤者<rt>つうきんしゃ</rt></ruby>への<ruby>影響<rt>えいきょう</rt></ruby>は<ruby>大きい<rt>おおきい</rt></ruby>とみられている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">JR East raises fares for first time since 1987, averaging 7.1%</h2>
+              <p class="body en-body">JR East, Japan's largest railway company serving 16 million passengers daily, raised fares by an average of 7.1% on March 14th. Excluding consumption tax adjustments, it marks the first fare increase since the company's founding in 1987. Rising operational costs and shifting passenger numbers are behind the historic move.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>北朝鮮<rt>きたちょうせん</rt></ruby>、<ruby>弾道<rt>だんどう</rt></ruby>ミサイル<ruby>発射<rt>はっしゃ</rt></ruby>　<ruby>日本<rt>にっぽん</rt></ruby>EEZ<ruby>外<rt>そと</rt></ruby>に<ruby>落下<rt>らっか</rt></ruby></h2>
+              <p class="body"><ruby>防衛<rt>ぼうえい</rt></ruby><ruby>省<rt>しょう</rt></ruby>は3<ruby>月<rt>がつ</rt></ruby>14<ruby>日<rt>にち</rt></ruby><ruby>午後<rt>ごご</rt></ruby>、<ruby>北朝鮮<rt>きたちょうせん</rt></ruby>が<ruby>弾道<rt>だんどう</rt></ruby>ミサイルの<ruby>可能性<rt>かのうせい</rt></ruby>があるものを<ruby>発射<rt>はっしゃ</rt></ruby>したと<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>排他的<rt>はいたてき</rt></ruby><ruby>経済<rt>けいざい</rt></ruby><ruby>水域<rt>すいいき</rt></ruby>の<ruby>外側<rt>そとがわ</rt></ruby>に<ruby>落下<rt>らっか</rt></ruby>したとみられる。<ruby>一方<rt>いっぽう</rt></ruby>、<ruby>韓国<rt>かんこく</rt></ruby>の<ruby>首相<rt>しゅしょう</rt></ruby>はトランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>がキム・ジョンウン<ruby>総<rt>そう</rt></ruby><ruby>書記<rt>しょき</rt></ruby>との<ruby>対話<rt>たいわ</rt></ruby>に<ruby>関心<rt>かんしん</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>ていると<ruby>明らか<rt>あきらか</rt></ruby>にした。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">North Korea fires ballistic missile, lands outside Japan's EEZ</h2>
+              <p class="body en-body">Japan's Ministry of Defence reported that North Korea launched what appeared to be a ballistic missile on the afternoon of March 14th. It is believed to have landed outside Japan's Exclusive Economic Zone. Meanwhile, South Korea's prime minister revealed that President Trump has shown interest in dialogue with North Korean leader Kim Jong Un.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">WBC<ruby>準々決勝<rt>じゅんじゅんけっしょう</rt></ruby>、<ruby>日本<rt>にっぽん</rt></ruby>ファンがマイアミに<ruby>続々<rt>ぞくぞく</rt></ruby><ruby>到着<rt>とうちゃく</rt></ruby></h2>
+              <p class="body">WBC（ワールド・ベースボール・クラシック）の<ruby>準々決勝<rt>じゅんじゅんけっしょう</rt></ruby>を<ruby>前<rt>まえ</rt></ruby>に、<ruby>日本代表<rt>にほんだいひょう</rt></ruby>を<ruby>応援<rt>おうえん</rt></ruby>するファンがフロリダ<ruby>州<rt>しゅう</rt></ruby>マイアミに<ruby>続々<rt>ぞくぞく</rt></ruby>と<ruby>到着<rt>とうちゃく</rt></ruby>している。<ruby>日本<rt>にっぽん</rt></ruby>はディフェンディングチャンピオンとして<ruby>大会<rt>たいかい</rt></ruby>に<ruby>臨ん<rt>のぞん</rt></ruby>でおり、<ruby>世界中<rt>せかいじゅう</rt></ruby>の<ruby>野球<rt>やきゅう</rt></ruby>ファンの<ruby>注目<rt>ちゅうもく</rt></ruby>を<ruby>集め<rt>あつめ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japanese fans flock to Miami for WBC quarter-finals</h2>
+              <p class="body en-body">Ahead of the World Baseball Classic quarter-finals, Japanese fans are arriving in droves in Miami, Florida, to cheer on their national team. Japan enters the tournament as defending champions, drawing attention from baseball fans worldwide.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-14 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "灯油", "reading": "とうゆ", "english": "heating oil / kerosene"}, {"word": "高騰", "reading": "こうとう", "english": "sharp rise / surge"}, {"word": "脆弱", "reading": "ぜいじゃく", "english": "vulnerable / fragile"}, {"word": "暴利", "reading": "ぼうり", "english": "excessive profit / profiteering"}, {"word": "対立", "reading": "たいりつ", "english": "conflict / confrontation"}], [{"word": "積み出し", "reading": "つみだし", "english": "shipping / export (loading)"}, {"word": "拠点", "reading": "きょてん", "english": "hub / base"}, {"word": "自由航行", "reading": "じゆうこうこう", "english": "freedom of navigation"}, {"word": "制限", "reading": "せいげん", "english": "restriction"}, {"word": "帰国", "reading": "きこく", "english": "return to one's country"}], [{"word": "制裁", "reading": "せいさい", "english": "sanctions"}, {"word": "緩和", "reading": "かんわ", "english": "easing / relaxation"}, {"word": "滞留", "reading": "たいりゅう", "english": "stagnation / stranded"}, {"word": "矛盾", "reading": "むじゅん", "english": "contradiction"}, {"word": "亀裂", "reading": "きれつ", "english": "crack / rift"}], [{"word": "雪崩", "reading": "なだれ", "english": "avalanche"}, {"word": "救助隊", "reading": "きゅうじょたい", "english": "rescue team"}, {"word": "同行取材", "reading": "どうこうしゅざい", "english": "embedded reporting"}, {"word": "実態", "reading": "じったい", "english": "actual conditions / reality"}], [{"word": "運賃", "reading": "うんちん", "english": "fare / transport charge"}, {"word": "値上げ", "reading": "ねあげ", "english": "price increase"}, {"word": "発足", "reading": "ほっそく", "english": "founding / establishment"}, {"word": "乗客数", "reading": "じょうきゃくすう", "english": "number of passengers"}, {"word": "通勤者", "reading": "つうきんしゃ", "english": "commuter"}], [{"word": "弾道ミサイル", "reading": "だんどうミサイル", "english": "ballistic missile"}, {"word": "排他的経済水域", "reading": "はいたてきけいざいすいいき", "english": "Exclusive Economic Zone (EEZ)"}, {"word": "防衛省", "reading": "ぼうえいしょう", "english": "Ministry of Defence"}, {"word": "対話", "reading": "たいわ", "english": "dialogue / talks"}], [{"word": "準々決勝", "reading": "じゅんじゅんけっしょう", "english": "quarter-finals"}, {"word": "応援", "reading": "おうえん", "english": "support / cheering"}, {"word": "到着", "reading": "とうちゃく", "english": "arrival"}, {"word": "注目", "reading": "ちゅうもく", "english": "attention / spotlight"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "英財務大臣、灯油価格高騰への支援策を発表"}, {"section": "英国・世界", "headline": "米軍、イラン最大の原油拠点カーグ島を攻撃"}, {"section": "英国・世界", "headline": "トランプ氏、ロシア石油制裁を緩和　同盟国は批判"}, {"section": "英国・世界", "headline": "アルプス雪崩、今季死者100人超　天候と準備不足が原因"}, {"section": "日本", "headline": "JR東日本、発足以来初の運賃値上げ　平均7.1％"}, {"section": "日本", "headline": "北朝鮮、弾道ミサイル発射　日本EEZ外に落下"}, {"section": "日本", "headline": "WBC準々決勝、日本ファンがマイアミに続々到着"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
