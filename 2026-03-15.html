@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月15日（日曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月15日（日曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>自民党<rt>じみんとう</rt></ruby>、<ruby>米国<rt>べいこく</rt></ruby><ruby>依存<rt>いぞん</rt></ruby><ruby>脱却<rt>だっきゃく</rt></ruby>へ<ruby>独自<rt>どくじ</rt></ruby><ruby>核<rt>かく</rt></ruby>ミサイル<ruby>開発<rt>かいはつ</rt></ruby>を<ruby>主張<rt>しゅちょう</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>の<ruby>自由民主党<rt>じゆうみんしゅとう</rt></ruby>エド・デイビー<ruby>党首<rt>とうしゅ</rt></ruby>は、<ruby>米国<rt>べいこく</rt></ruby>のトライデントミサイルへの<ruby>依存<rt>いぞん</rt></ruby>を<ruby>終わ<rt>おわ</rt></ruby>らせ、<ruby>完全<rt>かんぜん</rt></ruby>に<ruby>独立<rt>どくりつ</rt></ruby>した<ruby>英国<rt>えいこく</rt></ruby><ruby>独自<rt>どくじ</rt></ruby>の<ruby>核抑止<rt>かくよくし</rt></ruby><ruby>力<rt>ちから</rt></ruby>を<ruby>構築<rt>こうちく</rt></ruby>すべきだと<ruby>政府<rt>せいふ</rt></ruby>に<ruby>求め<rt>もとめ</rt></ruby>た。<ruby>米国<rt>べいこく</rt></ruby>との<ruby>同盟関係<rt>どうめいかんけい</rt></ruby>が<ruby>不安定化<rt>ふあんていか</rt></ruby>する<ruby>中<rt>なか</rt></ruby>、<ruby>英国<rt>えいこく</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>を<ruby>自国<rt>じこく</rt></ruby>で<ruby>確保<rt>かくほ</rt></ruby>する<ruby>必要性<rt>ひつようせい</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>っていると<ruby>主張<rt>しゅちょう</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Lib Dems call for UK to build its own nuclear missiles</h2>
+              <p class="body en-body">Liberal Democrat leader Sir Ed Davey has called on the UK government to develop a fully independent British nuclear deterrent, ending reliance on America's Trident missile system. With the transatlantic alliance growing increasingly unstable, Davey argues Britain must secure its own defence capabilities.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英<rt>えい</rt></ruby><ruby>財務<rt>ざいむ</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>、エネルギー<ruby>価格<rt>かかく</rt></ruby><ruby>高騰<rt>こうとう</rt></ruby>で<ruby>家計<rt>かけい</rt></ruby><ruby>支援<rt>しえん</rt></ruby>を<ruby>検討<rt>けんとう</rt></ruby></h2>
+              <p class="body">リーブス<ruby>財務<rt>ざいむ</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>は、<ruby>中東<rt>ちゅうとう</rt></ruby><ruby>紛争<rt>ふんそう</rt></ruby>による<ruby>原油価格<rt>げんゆかかく</rt></ruby><ruby>高騰<rt>こうとう</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、<ruby>暖房用<rt>だんぼうよう</rt></ruby><ruby>灯油<rt>とうゆ</rt></ruby>やエネルギー<ruby>料金<rt>りょうきん</rt></ruby>の<ruby>上昇<rt>じょうしょう</rt></ruby>に<ruby>苦し<rt>くるし</rt></ruby>む<ruby>家庭<rt>かてい</rt></ruby>への<ruby>支援<rt>しえん</rt></ruby><ruby>策<rt>さく</rt></ruby>を<ruby>検討し<rt>けんとうし</rt></ruby>ていると<ruby>発表<rt>はっぴょう</rt></ruby>した。ガソリン<ruby>小売業<rt>こうりぎょう</rt></ruby><ruby>者<rt>もの</rt></ruby>と<ruby>政府<rt>せいふ</rt></ruby>の<ruby>間<rt>かん</rt></ruby>では、「ぼったくり」という<ruby>表現<rt>ひょうげん</rt></ruby>をめぐって<ruby>対立<rt>たいりつ</rt></ruby>も<ruby>起き<rt>おき</rt></ruby>ている。コロナ<ruby>禍<rt>か</rt></ruby>や<ruby>前<rt>まえ</rt></ruby>トラス<ruby>政権<rt>せいけん</rt></ruby><ruby>時の<rt>ときの</rt></ruby>ように、<ruby>今回<rt>こんかい</rt></ruby>も<ruby>政府<rt>せいふ</rt></ruby>が<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>介入<rt>かいにゅう</rt></ruby>に<ruby>踏み<rt>ふみ</rt></ruby><ruby>切る<rt>きる</rt></ruby>かが<ruby>注目<rt>ちゅうもく</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Chancellor considers support as energy prices surge</h2>
+              <p class="body en-body">Chancellor Rachel Reeves has announced the Treasury is exploring support measures for households struggling with soaring heating oil and energy costs driven by the Middle East conflict. Petrol retailers have clashed with ministers over accusations of profiteering. Whether the government will intervene on the scale seen during Covid or the Truss energy crisis remains a key question.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>、ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby><ruby>防衛<rt>ぼうえい</rt></ruby>に<ruby>各国<rt>かっこく</rt></ruby>の<ruby>艦船<rt>かんせん</rt></ruby><ruby>派遣<rt>はけん</rt></ruby>を<ruby>要請<rt>ようせい</rt></ruby></h2>
+              <p class="body">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>は、イギリス、<ruby>日本<rt>にっぽん</rt></ruby>、フランス、<ruby>韓国<rt>かんこく</rt></ruby>などに<ruby>対し<rt>たいし</rt></ruby>、ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>の<ruby>安全確保<rt>あんぜんかくほ</rt></ruby>のため<ruby>軍艦<rt>ぐんかん</rt></ruby>を<ruby>派遣<rt>はけん</rt></ruby>するよう<ruby>求め<rt>もとめ</rt></ruby>た。イランとの<ruby>軍事衝突<rt>ぐんじしょうとつ</rt></ruby>が<ruby>続く<rt>つづく</rt></ruby><ruby>中<rt>なか</rt></ruby>、<ruby>海峡<rt>かいきょう</rt></ruby>は<ruby>事実上<rt>じじつじょう</rt></ruby>の<ruby>封鎖<rt>ふうさ</rt></ruby><ruby>状態<rt>じょうたい</rt></ruby>にあり、<ruby>世界<rt>せかい</rt></ruby>のエネルギー<ruby>供給<rt>きょうきゅう</rt></ruby>に<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>及ぼ<rt>およぼ</rt></ruby>している。F1のバーレーンGPとサウジアラビアGPも<ruby>中止<rt>ちゅうし</rt></ruby>が<ruby>決定<rt>けってい</rt></ruby>された。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Trump urges UK, Japan and allies to send warships to Strait of Hormuz</h2>
+              <p class="body en-body">President Trump has urged the UK, Japan, France and South Korea to send warships to defend the Strait of Hormuz, a critical oil shipping route effectively blockaded amid the ongoing conflict with Iran. The crisis has disrupted global energy supplies, and Formula 1 has cancelled the Bahrain and Saudi Arabian Grands Prix due to the regional instability.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>第<rt>だい</rt></ruby>98<ruby>回<rt>かい</rt></ruby>アカデミー<ruby>賞<rt>しょう</rt></ruby>、<ruby>今夜<rt>こんや</rt></ruby><ruby>授賞式<rt>じゅしょうしき</rt></ruby></h2>
+              <p class="body"><ruby>第<rt>だい</rt></ruby>98<ruby>回<rt>かい</rt></ruby>アカデミー<ruby>賞<rt>しょう</rt></ruby><ruby>授賞式<rt>じゅしょうしき</rt></ruby>が<ruby>今夜<rt>こんや</rt></ruby>ハリウッドで<ruby>開催<rt>かいさい</rt></ruby>される。「Sinners」「One Battle After Another」「Hamnet」などが<ruby>作品賞<rt>さくひんしょう</rt></ruby>の<ruby>有力候補<rt>ゆうりょくこうほ</rt></ruby>として<ruby>注目<rt>ちゅうもく</rt></ruby>を<ruby>集め<rt>あつめ</rt></ruby>ている。<ruby>今年<rt>こんねん</rt></ruby>は<ruby>多様<rt>たよう</rt></ruby>なジャンルの<ruby>作品<rt>さくひん</rt></ruby>がノミネートされ、<ruby>激戦<rt>げきせん</rt></ruby>が<ruby>予想<rt>よそう</rt></ruby>される。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Oscars 2026: ceremony tonight with Sinners and Hamnet as frontrunners</h2>
+              <p class="body en-body">The 98th Academy Awards ceremony takes place tonight in Hollywood. Sinners, One Battle After Another, and Hamnet are among the frontrunners for Best Picture. This year's diverse slate of nominees promises one of the most competitive races in recent memory.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">WBC<ruby>日本代表<rt>にほんだいひょう</rt></ruby>、ベネズエラに<ruby>逆転負<rt>ぎゃくてんまけ</rt></ruby>けで<ruby>連覇<rt>れんぱ</rt></ruby>ならず</h2>
+              <p class="body">ワールド・ベースボール・クラシックの<ruby>準々決勝<rt>じゅんじゅんけっしょう</rt></ruby>で、<ruby>日本代表<rt>にほんだいひょう</rt></ruby>はベネズエラに5<ruby>対<rt>つい</rt></ruby>8で<ruby>逆転負<rt>ぎゃくてんまけ</rt></ruby>けを<ruby>喫し<rt>きっし</rt></ruby>、<ruby>大会<rt>たいかい</rt></ruby><ruby>連覇<rt>れんぱ</rt></ruby>を<ruby>逃し<rt>のがし</rt></ruby>た。<ruby>日本<rt>にっぽん</rt></ruby>はWBC<ruby>通算<rt>つうさん</rt></ruby>3<ruby>度<rt>ど</rt></ruby>の<ruby>優勝<rt>ゆうしょう</rt></ruby>を<ruby>誇る<rt>ほこる</rt></ruby>が、<ruby>今大会<rt>こんたいかい</rt></ruby>で<ruby>初めて<rt>はじめて</rt></ruby><ruby>準決勝<rt>じゅんけっしょう</rt></ruby><ruby>進出<rt>しんしゅつ</rt></ruby>を<ruby>果た<rt>はた</rt></ruby>せなかった。ファンに<ruby>衝撃<rt>しょうげき</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan knocked out of WBC after shock loss to Venezuela</h2>
+              <p class="body en-body">Japan's national baseball team suffered a shocking 5-8 comeback defeat against Venezuela in the WBC quarter-finals, ending their title defence. Despite three previous tournament victories, Japan failed to reach the semi-finals for the first time in the competition's history.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>各<rt>かく</rt></ruby><ruby>政党<rt>せいとう</rt></ruby>、イラン<ruby>情勢<rt>じょうせい</rt></ruby>への<ruby>政府<rt>せいふ</rt></ruby><ruby>対応<rt>たいおう</rt></ruby>めぐり<ruby>論戦<rt>ろんせん</rt></ruby></h2>
+              <p class="body">NHKの「<ruby>日曜<rt>にちよう</rt></ruby><ruby>討論<rt>とうろん</rt></ruby>」に<ruby>各党<rt>かくとう</rt></ruby>の<ruby>政策<rt>せいさく</rt></ruby><ruby>責任者<rt>せきにんしゃ</rt></ruby>が<ruby>出演<rt>しゅつえん</rt></ruby>し、イラン<ruby>情勢<rt>じょうせい</rt></ruby>への<ruby>政府<rt>せいふ</rt></ruby><ruby>対応<rt>たいおう</rt></ruby>について<ruby>議論<rt>ぎろん</rt></ruby>した。<ruby>自民党<rt>じみんとう</rt></ruby>の<ruby>小林<rt>こばやし</rt></ruby><ruby>政調<rt>せいちょう</rt></ruby><ruby>会長<rt>かいちょう</rt></ruby>は<ruby>新年度予算案<rt>しんねんどよさんあん</rt></ruby>の<ruby>年度内<rt>ねんどない</rt></ruby><ruby>成立<rt>せいりつ</rt></ruby>を<ruby>目指す<rt>めざす</rt></ruby>と<ruby>強調<rt>きょうちょう</rt></ruby>し、<ruby>立憲<rt>りっけん</rt></ruby><ruby>民主<rt>みんしゅ</rt></ruby><ruby>党<rt>とう</rt></ruby>は<ruby>十分<rt>じゅうぶん</rt></ruby>な<ruby>審議<rt>しんぎ</rt></ruby><ruby>時間<rt>じかん</rt></ruby>の<ruby>確保<rt>かくほ</rt></ruby>を<ruby>求め<rt>もとめ</rt></ruby>た。ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>の<ruby>問題<rt>もんだい</rt></ruby>はエネルギーの<ruby>中東<rt>ちゅうとう</rt></ruby><ruby>依存<rt>いぞん</rt></ruby>が<ruby>高い<rt>たかい</rt></ruby><ruby>日本<rt>にっぽん</rt></ruby>にとって<ruby>特に<rt>とくに</rt></ruby><ruby>深刻<rt>しんこく</rt></ruby>な<ruby>課題<rt>かだい</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japanese parties debate government response to Iran crisis</h2>
+              <p class="body en-body">Japanese political parties debated the government's response to the Iran crisis on NHK's Sunday Discussion programme. The LDP's policy chief emphasised passing the new fiscal year budget on time, while the opposition called for thorough deliberation. The Hormuz Strait situation poses a particularly acute challenge for Japan, which relies heavily on Middle Eastern energy imports.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ソウルのカプセルホテルで<ruby>火災<rt>かさい</rt></ruby>、<ruby>日本人<rt>にほんじん</rt></ruby><ruby>女性<rt>じょせい</rt></ruby>2<ruby>人<rt>にん</rt></ruby>が<ruby>意識不明<rt>いしきふめい</rt></ruby></h2>
+              <p class="body"><ruby>韓国<rt>かんこく</rt></ruby>ソウルのカプセルホテルで14<ruby>日夜<rt>にちや</rt></ruby>に<ruby>火災<rt>かさい</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>し、<ruby>外国人<rt>がいこくじん</rt></ruby>10<ruby>人<rt>にん</rt></ruby>が<ruby>負傷<rt>ふしょう</rt></ruby>した。このうち<ruby>日本人<rt>にほんじん</rt></ruby><ruby>女性<rt>じょせい</rt></ruby>2<ruby>人<rt>にん</rt></ruby>が<ruby>意識不明<rt>いしきふめい</rt></ruby>の<ruby>重体<rt>じゅうたい</rt></ruby>となっている。<ruby>出火<rt>しゅっか</rt></ruby><ruby>原因<rt>げんいん</rt></ruby>は<ruby>現在調査中<rt>げんざいちょうさちゅう</rt></ruby>で、<ruby>海外旅行<rt>かいがいりょこう</rt></ruby><ruby>中の<rt>なかの</rt></ruby><ruby>宿泊施設<rt>しゅくはくしせつ</rt></ruby>の<ruby>安全性<rt>あんぜんせい</rt></ruby>があらためて<ruby>問わ<rt>とわ</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Two Japanese women unconscious after Seoul capsule hotel fire</h2>
+              <p class="body en-body">A fire broke out at a capsule hotel in Seoul on Saturday evening, injuring ten foreign nationals. Two Japanese women remain unconscious in critical condition. The cause of the blaze is under investigation, raising fresh concerns about accommodation safety for overseas travellers.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-15 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "核抑止力", "reading": "かくよくしりょく", "english": "nuclear deterrent"}, {"word": "依存", "reading": "いぞん", "english": "dependence/reliance"}, {"word": "同盟関係", "reading": "どうめいかんけい", "english": "alliance"}, {"word": "安全保障", "reading": "あんぜんほしょう", "english": "national security"}, {"word": "脱却", "reading": "だっきゃく", "english": "breaking free from"}], [{"word": "高騰", "reading": "こうとう", "english": "surge/spike (in prices)"}, {"word": "灯油", "reading": "とうゆ", "english": "heating oil/kerosene"}, {"word": "家計", "reading": "かけい", "english": "household finances"}, {"word": "介入", "reading": "かいにゅう", "english": "intervention"}, {"word": "紛争", "reading": "ふんそう", "english": "conflict/dispute"}], [{"word": "海峡", "reading": "かいきょう", "english": "strait/channel"}, {"word": "封鎖", "reading": "ふうさ", "english": "blockade"}, {"word": "艦船", "reading": "かんせん", "english": "warships/naval vessels"}, {"word": "派遣", "reading": "はけん", "english": "dispatch/deployment"}, {"word": "要衝", "reading": "ようしょう", "english": "strategic point"}], [{"word": "授賞式", "reading": "じゅしょうしき", "english": "awards ceremony"}, {"word": "有力候補", "reading": "ゆうりょくこうほ", "english": "frontrunner/strong candidate"}, {"word": "激戦", "reading": "げきせん", "english": "fierce competition"}, {"word": "ノミネート", "reading": "のみねーと", "english": "nomination"}], [{"word": "逆転負け", "reading": "ぎゃくてんまけ", "english": "comeback defeat"}, {"word": "連覇", "reading": "れんぱ", "english": "consecutive championship"}, {"word": "準々決勝", "reading": "じゅんじゅんけっしょう", "english": "quarter-finals"}, {"word": "準決勝", "reading": "じゅんけっしょう", "english": "semi-finals"}, {"word": "喫する", "reading": "きっする", "english": "to suffer (a defeat)"}], [{"word": "政策責任者", "reading": "せいさくせきにんしゃ", "english": "policy chief"}, {"word": "予算案", "reading": "よさんあん", "english": "budget proposal"}, {"word": "審議", "reading": "しんぎ", "english": "deliberation"}, {"word": "年度内", "reading": "ねんどない", "english": "within the fiscal year"}, {"word": "成立", "reading": "せいりつ", "english": "enactment/passage"}], [{"word": "意識不明", "reading": "いしきふめい", "english": "unconscious"}, {"word": "重体", "reading": "じゅうたい", "english": "critical condition"}, {"word": "負傷", "reading": "ふしょう", "english": "injury"}, {"word": "出火原因", "reading": "しゅっかげんいん", "english": "cause of fire"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "自民党、米国依存脱却へ独自核ミサイル開発を主張"}, {"section": "英国・世界", "headline": "英財務大臣、エネルギー価格高騰で家計支援を検討"}, {"section": "英国・世界", "headline": "トランプ大統領、ホルムズ海峡防衛に各国の艦船派遣を要請"}, {"section": "英国・世界", "headline": "第98回アカデミー賞、今夜授賞式"}, {"section": "日本", "headline": "WBC日本代表、ベネズエラに逆転負けで連覇ならず"}, {"section": "日本", "headline": "各政党、イラン情勢への政府対応めぐり論戦"}, {"section": "日本", "headline": "ソウルのカプセルホテルで火災、日本人女性2人が意識不明"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
