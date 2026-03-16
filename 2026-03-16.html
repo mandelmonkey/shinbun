@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月16日（月曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月16日（月曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">スターマー首相、灯油価格高騰への支援策を発表へ</h2>
+              <p class="body">スターマー首相は、イランとの戦争によるエネルギー価格の急騰を受け、暖房用灯油に依存する家庭への支援策を発表する見通しだ。ホルムズ海峡の封鎖により原油価格が高騰し、特にガス管が通っていない農村部の世帯が深刻な打撃を受けている。ミリバンド・エネルギー大臣も「必要であればエネルギー料金に介入する」と述べた。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Starmer to announce support plan for soaring heating oil costs</h2>
+              <p class="body en-body">Prime Minister Starmer is expected to announce support measures for households reliant on heating oil amid soaring energy prices triggered by the war with Iran. The effective blockade of the Strait of Hormuz has driven up crude oil prices, hitting rural households without gas connections especially hard. Energy Secretary Miliband has stated the government will intervene on energy bills if necessary.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ケント州で髄膜炎集団感染、大学生ら2人死亡</h2>
+              <p class="body">ケント州カンタベリー地域で髄膜炎の集団感染が発生し、大学生を含む2人が死亡した。さらに11人が重体で病院に搬送されている。保健当局は感染拡大の防止に向けて緊急対応を進めており、地域住民への注意喚起を行っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Meningitis outbreak in Kent kills two, including university student</h2>
+              <p class="body en-body">A meningitis outbreak in the Canterbury area of Kent has killed two people, including a university student. Eleven others are seriously ill in hospital. Health authorities are mounting an emergency response to contain the spread and have issued warnings to local residents.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">TikTokとMeta、安全性を犠牲にアルゴリズム競争か　内部告発</h2>
+              <p class="body">TikTokとMetaの内部告発者が、両社がユーザー獲得競争の中で安全性を意図的に犠牲にしていたと証言した。アルゴリズムが怒りや対立を煽るコンテンツを優先することを認識しながら、利益を優先して対策を怠っていたという。BBCの取材に対し複数の元社員が実態を明かした。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">TikTok and Meta sacrificed safety in algorithm arms race, whistleblowers say</h2>
+              <p class="body en-body">Whistleblowers from TikTok and Meta have testified that both companies deliberately compromised user safety in their race for engagement. They reportedly knew their algorithms promoted outrage-driven content but prioritised growth over protection. Multiple former employees disclosed the practices to the BBC.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">若者雇用促進へ、企業に1人3000ポンドの補助金</h2>
+              <p class="body">イギリス政府は、18歳から24歳の失業中の若者を雇用した企業に対し、1人当たり3000ポンドの補助金を支給する制度を発表する。若者の失業率が上昇する中、政府は積極的な雇用創出策を打ち出し、若年層の就労支援を強化する方針だ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Firms offered £3,000 per hire to tackle youth unemployment</h2>
+              <p class="body en-body">The UK government will announce a scheme offering firms £3,000 for each unemployed 18-24 year old they hire. With youth unemployment on the rise, the government is pushing proactive job creation measures to strengthen employment support for young people.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">辺野古沖で抗議船転覆、高校生と船長の2人死亡</h2>
+              <p class="body">沖縄県名護市辺野古沖で、米軍基地移設工事に抗議していた船2隻が転覆し、京都の同志社国際高校2年の女子生徒と71歳の船長が死亡した。第11管区海上保安本部が事故の原因を調査している。辺野古の基地移設問題をめぐる抗議活動中の死亡事故は今回が初めて。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Two killed as protest boats capsize off Henoko, Okinawa</h2>
+              <p class="body en-body">Two protest boats capsized off Henoko in Nago, Okinawa during demonstrations against US military base relocation construction. A 17-year-old high school student from Doshisha International High School in Kyoto and a 71-year-old boat captain were killed. The 11th Regional Coast Guard is investigating the cause. This marks the first fatal accident during Henoko base relocation protests.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">岐阜・高知でソメイヨシノ開花、全国最速</h2>
+              <p class="body">3月16日、岐阜市と高知市で全国に先駆けてソメイヨシノの開花が発表された。東海から沖縄にかけて高気圧に覆われ、気温が上昇したことが早い開花につながった。各地の桜の名所では花見の準備が始まっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Cherry blossoms bloom earliest in Gifu and Kochi</h2>
+              <p class="body en-body">Gifu and Kochi announced the earliest cherry blossom bloom in the nation on March 16th. A high-pressure system covering the region from Tokai to Okinawa drove temperatures up, leading to the early flowering. Popular cherry blossom viewing spots across the country are beginning preparations for hanami season.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">政府、石油の民間備蓄放出を開始　ホルムズ海峡封鎖で</h2>
+              <p class="body">日本政府は、ホルムズ海峡の事実上の封鎖を受け、民間企業に保有を義務付けている石油備蓄の放出を開始した。今週中にも中東からのタンカーが大幅に減少する恐れがあり、安定供給の確保が急務となっている。高市首相は日本関連船舶の安全確保に向けて、法律の範囲内でできることを検討すると表明した。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan begins releasing private oil reserves as Strait of Hormuz crisis deepens</h2>
+              <p class="body en-body">The Japanese government has begun releasing mandatory private-sector oil reserves in response to the effective blockade of the Strait of Hormuz. With tanker arrivals from the Middle East expected to drop sharply this week, ensuring stable supply has become urgent. Prime Minister Takaichi stated she is examining what can be done within legal boundaries to protect Japanese-affiliated vessels.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-16 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "灯油", "reading": "とうゆ", "english": "heating oil / kerosene"}, {"word": "高騰", "reading": "こうとう", "english": "soaring / sharp rise"}, {"word": "封鎖", "reading": "ふうさ", "english": "blockade"}, {"word": "農村部", "reading": "のうそんぶ", "english": "rural areas"}, {"word": "介入", "reading": "かいにゅう", "english": "intervention"}], [{"word": "髄膜炎", "reading": "ずいまくえん", "english": "meningitis"}, {"word": "集団感染", "reading": "しゅうだんかんせん", "english": "cluster infection / outbreak"}, {"word": "重体", "reading": "じゅうたい", "english": "critical condition"}, {"word": "注意喚起", "reading": "ちゅういかんき", "english": "alert / warning"}], [{"word": "内部告発", "reading": "ないぶこくはつ", "english": "whistleblowing"}, {"word": "犠牲", "reading": "ぎせい", "english": "sacrifice"}, {"word": "煽る", "reading": "あおる", "english": "to incite / to stoke"}, {"word": "怠る", "reading": "おこたる", "english": "to neglect"}], [{"word": "補助金", "reading": "ほじょきん", "english": "subsidy / grant"}, {"word": "失業率", "reading": "しつぎょうりつ", "english": "unemployment rate"}, {"word": "雇用創出", "reading": "こようそうしゅつ", "english": "job creation"}, {"word": "若年層", "reading": "じゃくねんそう", "english": "young generation / youth demographic"}], [{"word": "転覆", "reading": "てんぷく", "english": "capsizing"}, {"word": "移設", "reading": "いせつ", "english": "relocation"}, {"word": "抗議活動", "reading": "こうぎかつどう", "english": "protest activity"}, {"word": "海上保安本部", "reading": "かいじょうほあんほんぶ", "english": "Coast Guard headquarters"}], [{"word": "開花", "reading": "かいか", "english": "blooming / flowering"}, {"word": "高気圧", "reading": "こうきあつ", "english": "high pressure system"}, {"word": "先駆けて", "reading": "さきがけて", "english": "ahead of / pioneering"}, {"word": "名所", "reading": "めいしょ", "english": "famous spot / landmark"}], [{"word": "備蓄", "reading": "びちく", "english": "stockpile / reserves"}, {"word": "放出", "reading": "ほうしゅつ", "english": "release / discharge"}, {"word": "安定供給", "reading": "あんていきょうきゅう", "english": "stable supply"}, {"word": "急務", "reading": "きゅうむ", "english": "urgent task"}, {"word": "船舶", "reading": "せんぱく", "english": "vessels / ships"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "スターマー首相、灯油価格高騰への支援策を発表へ"}, {"section": "英国・世界", "headline": "ケント州で髄膜炎集団感染、大学生ら2人死亡"}, {"section": "英国・世界", "headline": "TikTokとMeta、安全性を犠牲にアルゴリズム競争か　内部告発"}, {"section": "英国・世界", "headline": "若者雇用促進へ、企業に1人3000ポンドの補助金"}, {"section": "日本", "headline": "辺野古沖で抗議船転覆、高校生と船長の2人死亡"}, {"section": "日本", "headline": "岐阜・高知でソメイヨシノ開花、全国最速"}, {"section": "日本", "headline": "政府、石油の民間備蓄放出を開始　ホルムズ海峡封鎖で"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
