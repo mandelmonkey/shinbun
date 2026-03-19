@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月19日（木曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月19日（木曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イラン戦争で欧州に新たなエネルギー危機、原油110ドル突破</h2>
+              <p class="body">イラン戦争の影響で、ヨーロッパが再びエネルギー危機に直面している。イランのガス田関連施設が攻撃を受けたことへの報復として、イランがカタールのLNG施設を攻撃し、原油価格は1バレル110ドルを突破した。ホルムズ海峡の事実上の封鎖が続く中、エネルギー供給の不安定化が世界経済に深刻な影響を及ぼしている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Iran war pushes Europe into fresh energy crisis as oil tops $110</h2>
+              <p class="body en-body">The Iran war has plunged Europe into yet another energy crisis. After strikes on Iranian gas field infrastructure, Iran retaliated by attacking an LNG facility in Qatar, pushing oil prices above $110 a barrel. With the Strait of Hormuz effectively blocked, energy supply instability is taking a serious toll on the global economy.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">英中銀、イラン戦争の影響で金利据え置きへ</h2>
+              <p class="body">イラン戦争によるインフレ懸念を受け、イングランド銀行は本日の金融政策委員会で金利を据え置く見通しだ。戦争前には利下げが予想されていたが、エネルギー価格の急騰が見通しを一変させた。アメリカの連邦準備制度も同様にトランプ大統領の利下げ圧力にもかかわらず、金利を据え置いた。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Bank of England expected to hold rates amid Iran war fallout</h2>
+              <p class="body en-body">The Bank of England is expected to hold interest rates at today's policy meeting, as the Iran war stokes inflation fears. Analysts had anticipated a rate cut before the conflict began, but surging energy prices have upended the outlook. The US Federal Reserve similarly held rates steady despite pressure from President Trump to cut.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">英政府、鉄鋼国産化目標を発表　輸入依存の脱却へ</h2>
+              <p class="body">イギリス政府は新たな鉄鋼戦略を発表し、国内で使用される鉄鋼の最大半分を国内で生産するという目標を掲げた。エネルギー危機やサプライチェーンの混乱を背景に、輸入依存を減らし、国内産業の強化を目指す方針だ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK sets target to boost domestic steel production and cut imports</h2>
+              <p class="body en-body">The UK government has announced a new steel strategy targeting domestic production of up to half the steel used in Britain. Against a backdrop of energy disruption and supply chain instability, the plan aims to reduce reliance on imports and strengthen national industry.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">世界最長の海岸遊歩道がイングランドで開通</h2>
+              <p class="body">「キング・チャールズ海岸遊歩道」がイングランドで正式に開通し、全海岸線への歩行アクセス権が初めて保障された。世界最長の海岸遊歩道として、国内外のハイカーに注目されている。春の暖かい天候が週末まで続く見通しで、散歩日和が期待されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">World's longest coastal path opens in England</h2>
+              <p class="body en-body">The King Charles coastal path has officially opened in England, granting walkers right of access to the entire coastline for the first time. Billed as the world's longest coastal path, it is drawing attention from hikers at home and abroad. Warm spring weather is expected to continue into the weekend, making for ideal walking conditions.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">高市首相が訪米、トランプ大統領と首脳会談へ</h2>
+              <p class="body">高市早苗首相がワシントンに到着し、日本時間20日未明にトランプ大統領との首脳会談に臨む。緊迫するイラン情勢への対応や、アメリカへの投資を含む経済協力、幅広い分野での連携強化が議題となる見通しだ。ホルムズ海峡の封鎖によるエネルギー供給への影響が日本にとって最大の懸念事項となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">PM Takaichi arrives in US for summit with President Trump</h2>
+              <p class="body en-body">Prime Minister Sanae Takaichi has arrived in Washington ahead of a summit with President Trump in the early hours of 20 March Japan time. The talks are expected to cover responses to the escalating Iran situation, economic cooperation including investment in the US, and broader bilateral ties. The impact of the Strait of Hormuz blockade on energy supplies is Japan's most pressing concern.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">日銀、政策金利0.75％据え置き　イラン情勢を注視</h2>
+              <p class="body">日本銀行は金融政策決定会合で政策金利を0.75パーセントに据え置くことを決めた。イラン情勢の悪化でホルムズ海峡の封鎖が続き、原油価格が上昇する中、円安ドル高も進行している。政府はガソリン価格を1リットル170円程度に抑えるための補助金を本日から開始した。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">BOJ holds policy rate at 0.75% as Iran crisis clouds outlook</h2>
+              <p class="body en-body">The Bank of Japan has decided to maintain its policy rate at 0.75% following the latest monetary policy meeting. With the Strait of Hormuz blockade driving oil prices higher and the yen weakening against the dollar, the central bank opted for caution. The government has launched fuel subsidies today, aiming to cap petrol prices at around 170 yen per litre.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">東京でサクラ開花宣言　平年より5日早く</h2>
+              <p class="body">気象庁は19日午後、東京でサクラが開花したと発表した。開花は平年より5日早く、九州から東北にかけて広い範囲で気温が上昇したことが要因とみられる。今後1週間ほどで満開を迎える見通しだ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Cherry blossoms bloom in Tokyo, five days ahead of schedule</h2>
+              <p class="body en-body">The Japan Meteorological Agency announced on Thursday afternoon that cherry blossoms have bloomed in Tokyo, five days earlier than average. Rising temperatures across a wide area from Kyushu to Tohoku are believed to be behind the early flowering, with full bloom expected within about a week.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-19 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "液化天然ガス", "reading": "えきかてんねんガス", "english": "liquefied natural gas (LNG)"}, {"word": "報復", "reading": "ほうふく", "english": "retaliation"}, {"word": "封鎖", "reading": "ふうさ", "english": "blockade"}, {"word": "不安定化", "reading": "ふあんていか", "english": "destabilisation"}, {"word": "突破", "reading": "とっぱ", "english": "breakthrough; exceeding"}], [{"word": "据え置く", "reading": "すえおく", "english": "to hold; to keep unchanged"}, {"word": "利下げ", "reading": "りさげ", "english": "rate cut"}, {"word": "急騰", "reading": "きゅうとう", "english": "sharp rise; surge"}, {"word": "金融政策委員会", "reading": "きんゆうせいさくいいんかい", "english": "Monetary Policy Committee"}, {"word": "一変", "reading": "いっぺん", "english": "complete change"}], [{"word": "鉄鋼", "reading": "てっこう", "english": "steel"}, {"word": "脱却", "reading": "だっきゃく", "english": "breaking free from"}, {"word": "掲げる", "reading": "かかげる", "english": "to set forth; to advocate"}, {"word": "方針", "reading": "ほうしん", "english": "policy; course of action"}], [{"word": "遊歩道", "reading": "ゆうほどう", "english": "promenade; walking path"}, {"word": "保障", "reading": "ほしょう", "english": "guarantee; assurance"}, {"word": "散歩日和", "reading": "さんぽびより", "english": "perfect weather for a walk"}, {"word": "開通", "reading": "かいつう", "english": "opening (of a road/route)"}], [{"word": "首脳会談", "reading": "しゅのうかいだん", "english": "summit meeting"}, {"word": "緊迫", "reading": "きんぱく", "english": "tension; strain"}, {"word": "連携強化", "reading": "れんけいきょうか", "english": "strengthening of cooperation"}, {"word": "懸念事項", "reading": "けねんじこう", "english": "matter of concern"}, {"word": "訪米", "reading": "ほうべい", "english": "visit to the US"}], [{"word": "据え置き", "reading": "すえおき", "english": "maintaining; holding unchanged"}, {"word": "金融政策決定会合", "reading": "きんゆうせいさくけっていかいごう", "english": "monetary policy meeting"}, {"word": "円安ドル高", "reading": "えんやすドルだか", "english": "weak yen, strong dollar"}, {"word": "補助金", "reading": "ほじょきん", "english": "subsidy"}, {"word": "進行", "reading": "しんこう", "english": "progression; advance"}], [{"word": "開花宣言", "reading": "かいかせんげん", "english": "bloom declaration"}, {"word": "気象庁", "reading": "きしょうちょう", "english": "Japan Meteorological Agency"}, {"word": "平年", "reading": "へいねん", "english": "average year; normal year"}, {"word": "満開", "reading": "まんかい", "english": "full bloom"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "イラン戦争で欧州に新たなエネルギー危機、原油110ドル突破"}, {"section": "英国・世界", "headline": "英中銀、イラン戦争の影響で金利据え置きへ"}, {"section": "英国・世界", "headline": "英政府、鉄鋼国産化目標を発表　輸入依存の脱却へ"}, {"section": "英国・世界", "headline": "世界最長の海岸遊歩道がイングランドで開通"}, {"section": "日本", "headline": "高市首相が訪米、トランプ大統領と首脳会談へ"}, {"section": "日本", "headline": "日銀、政策金利0.75％据え置き　イラン情勢を注視"}, {"section": "日本", "headline": "東京でサクラ開花宣言　平年より5日早く"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
