@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月20日（金曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月20日（金曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イラン戦争、英経済に深刻な打撃　利上げの可能性も</h2>
+              <p class="body">イングランド銀行は金利を3.75%に据え置いたが、イラン戦争による物価ショックが長引けば利上げに踏み切る可能性を示唆した。カタールのガスハブへの攻撃を受け、エネルギー価格が急騰し、株式市場も大きく下落している。これまで利下げ方向だった金融政策の議論が完全に逆転した形だ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Iran war deals severe blow to UK economy, rate hikes possible</h2>
+              <p class="body en-body">The Bank of England held interest rates at 3.75% but warned it could raise them if the price shock from the Iran war persists. Energy prices have surged following strikes on a key gas hub in Qatar, sending stock markets tumbling. The conflict has completely reversed the debate over borrowing costs, which had previously been trending towards cuts.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">労働党内で反乱　移民政策をめぐり議員が反対票の構え</h2>
+              <p class="body">マフムード大臣が推進する移民政策をめぐり、労働党の議員たちが議会手続きを利用して反対票を投じる構えを見せている。与党内の分裂が表面化し、スターマー政権にとって新たな試練となっている。移民問題はブレグジット以来、イギリス政治の最大の争点の一つであり続けている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Labour rebellion brews as MPs threaten vote against migration plans</h2>
+              <p class="body en-body">Labour MPs are considering using parliamentary procedure to force a vote highlighting their opposition to migration plans pushed by Minister Mahmood. The internal party split is becoming increasingly visible, posing a fresh challenge for the Starmer government. Immigration remains one of the most contentious issues in British politics since Brexit.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">労働党のBrexit戦略が大転換　残留派重視にシフト</h2>
+              <p class="body">政治学者ジョン・カーティス教授の分析によると、労働党はこれまでの離脱派取り込み戦略を転換し、残留派を重視する方向にシフトしている。EUとの関係を近づける動きだが、離脱に投票した有権者を遠ざけるリスクも指摘されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Labour's Brexit strategy pivots from Leavers to Remainers</h2>
+              <p class="body en-body">According to analysis by political scientist Sir John Curtice, Labour has shifted its Brexit focus from courting Leave voters to prioritising Remainers. The party is pursuing a closer relationship with the EU, but risks alienating voters who backed Brexit.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">不法廃棄物の大規模撤去に税金投入へ</h2>
+              <p class="body">イギリス政府は、イングランド各地に放置されている大規模な不法廃棄物の撤去に公費を投入すると発表した。長年にわたり環境問題として指摘されてきた違法投棄に、ようやく行政が本格的に対応する形となる。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Taxpayers to fund cleanup of massive illegal waste dumps</h2>
+              <p class="body en-body">The UK government has announced it will use taxpayer funds to clean up some of the largest illegal waste dumps across England. The move marks the first major government intervention in a problem that has blighted communities for years.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">高市首相、トランプ大統領と首脳会談　イラン情勢の沈静化求める</h2>
+              <p class="body">高市首相はワシントンでトランプ大統領と日米首脳会談を行い、イラン情勢の早期沈静化が必要だとの考えを伝えた。ホルムズ海峡への艦船派遣については「日本の法律の範囲内で可能なことに対応する」と慎重な姿勢を示した。アメリカ側は360億ドルに続く日本からの第2弾投資を歓迎するファクトシートを発表している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">PM Takaichi meets Trump, calls for de-escalation on Iran</h2>
+              <p class="body en-body">Prime Minister Takaichi held a summit with President Trump in Washington, conveying that the Iran situation must be de-escalated swiftly. On the question of deploying vessels to the Strait of Hormuz, she took a cautious stance, saying Japan would respond within the limits of its laws. The US issued a fact sheet welcoming a second wave of Japanese investment following an initial $36 billion commitment.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ホルムズ海峡封鎖　IMOが船員2万人の退避計画策定へ</h2>
+              <p class="body">国際海事機関（IMO）は、ホルムズ海峡の事実上の封鎖によりペルシャ湾に約2万人の船員が取り残されていると発表し、安全な退避計画の策定に着手した。エネルギー供給ルートの遮断が長期化すれば、世界経済への影響はさらに拡大する見通しだ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">IMO to draw up evacuation plan for 20,000 sailors trapped by Hormuz blockade</h2>
+              <p class="body en-body">The International Maritime Organization has announced that approximately 20,000 sailors are stranded in the Persian Gulf due to the effective blockade of the Strait of Hormuz, and has begun drawing up a safe evacuation plan. If the disruption to energy supply routes continues, the impact on the global economy is expected to worsen further.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">再エネ賦課金、新年度から引き上げ　年間2万円超に</h2>
+              <p class="body">経済産業省は、再生可能エネルギー拡大のために電気料金に上乗せされている再エネ賦課金を新年度から引き上げると発表した。平均的な家庭の年間負担額は初めて2万円を超える見通しで、イラン情勢によるエネルギー価格高騰と重なり、家計への圧迫が懸念されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Renewable energy surcharge to rise above ¥20,000 per year from April</h2>
+              <p class="body en-body">The Ministry of Economy, Trade and Industry has announced an increase in the renewable energy surcharge added to electricity bills from the new fiscal year. The annual burden on an average household is expected to exceed ¥20,000 for the first time, compounding concerns about household finances amid soaring energy prices driven by the Iran conflict.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-20 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "据え置く", "reading": "すえおく", "english": "to keep unchanged, to hold steady"}, {"word": "物価", "reading": "ぶっか", "english": "prices, cost of living"}, {"word": "急騰", "reading": "きゅうとう", "english": "sharp rise, surge"}, {"word": "踏み切る", "reading": "ふみきる", "english": "to take the plunge, to decide on"}, {"word": "金融政策", "reading": "きんゆうせいさく", "english": "monetary policy"}], [{"word": "反乱", "reading": "はんらん", "english": "rebellion, revolt"}, {"word": "推進", "reading": "すいしん", "english": "to promote, to push forward"}, {"word": "表面化", "reading": "ひょうめんか", "english": "to come to the surface, to become apparent"}, {"word": "試練", "reading": "しれん", "english": "trial, ordeal"}, {"word": "争点", "reading": "そうてん", "english": "point of contention, issue"}], [{"word": "転換", "reading": "てんかん", "english": "shift, conversion"}, {"word": "取り込む", "reading": "とりこむ", "english": "to win over, to attract"}, {"word": "有権者", "reading": "ゆうけんしゃ", "english": "voter, electorate"}, {"word": "遠ざける", "reading": "とおざける", "english": "to alienate, to push away"}], [{"word": "撤去", "reading": "てっきょ", "english": "removal, clearance"}, {"word": "公費", "reading": "こうひ", "english": "public funds"}, {"word": "違法投棄", "reading": "いほうとうき", "english": "illegal dumping"}, {"word": "行政", "reading": "ぎょうせい", "english": "administration, government"}], [{"word": "首脳会談", "reading": "しゅのうかいだん", "english": "summit meeting"}, {"word": "沈静化", "reading": "ちんせいか", "english": "de-escalation, calming down"}, {"word": "艦船", "reading": "かんせん", "english": "warships, naval vessels"}, {"word": "派遣", "reading": "はけん", "english": "dispatch, deployment"}, {"word": "慎重", "reading": "しんちょう", "english": "cautious, prudent"}], [{"word": "封鎖", "reading": "ふうさ", "english": "blockade, lockdown"}, {"word": "退避", "reading": "たいひ", "english": "evacuation, withdrawal"}, {"word": "策定", "reading": "さくてい", "english": "formulation, drawing up"}, {"word": "遮断", "reading": "しゃだん", "english": "cutoff, blockage"}, {"word": "取り残す", "reading": "とりのこす", "english": "to leave behind, to strand"}], [{"word": "賦課金", "reading": "ふかきん", "english": "surcharge, levy"}, {"word": "上乗せ", "reading": "うわのせ", "english": "addition, extra charge"}, {"word": "負担額", "reading": "ふたんがく", "english": "amount of burden, cost borne"}, {"word": "圧迫", "reading": "あっぱく", "english": "pressure, squeeze"}, {"word": "高騰", "reading": "こうとう", "english": "soaring, sharp rise"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "イラン戦争、英経済に深刻な打撃　利上げの可能性も"}, {"section": "英国・世界", "headline": "労働党内で反乱　移民政策をめぐり議員が反対票の構え"}, {"section": "英国・世界", "headline": "労働党のBrexit戦略が大転換　残留派重視にシフト"}, {"section": "英国・世界", "headline": "不法廃棄物の大規模撤去に税金投入へ"}, {"section": "日本", "headline": "高市首相、トランプ大統領と首脳会談　イラン情勢の沈静化求める"}, {"section": "日本", "headline": "ホルムズ海峡封鎖　IMOが船員2万人の退避計画策定へ"}, {"section": "日本", "headline": "再エネ賦課金、新年度から引き上げ　年間2万円超に"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
