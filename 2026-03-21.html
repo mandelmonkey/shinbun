@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月21日（土曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月21日（土曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">英、米軍にホルムズ海峡攻撃用の基地使用を許可</h2>
+              <p class="body">イギリス政府は、イランの「無謀な攻撃」を受けて、アメリカ軍がホルムズ海峡周辺の標的を攻撃するために国内基地を使用することを許可した。ダウニング街の発表によると、閣僚が使用拡大を承認したとのことだ。中東情勢の緊迫化に伴い、英米の軍事協力がさらに深まっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK Allows US to Use Bases for Strait of Hormuz Strikes</h2>
+              <p class="body en-body">The UK government has authorised US forces to use British bases for strikes on targets near the Strait of Hormuz. Downing Street said ministers approved the expansion following what they described as 'reckless strikes' by Iran. The move signals a deepening of Anglo-American military cooperation amid escalating tensions in the Middle East.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">マスク氏、ツイッター投資家を誤解させたと陪審が認定</h2>
+              <p class="body">サンフランシスコの陪審員は、イーロン・マスク氏が2022年のツイッター買収に関する発言で投資家を誤解させたと認定した。マスク氏の主張が投資家グループに損害を与えたという判断だ。SNS上での企業トップの発言が法的責任を問われるケースとして注目を集めている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Jury Finds Elon Musk Misled Twitter Investors</h2>
+              <p class="body en-body">A San Francisco jury has concluded that Elon Musk's statements in 2022 were damaging to a group of Twitter investors. The verdict found that Musk misled shareholders during his acquisition of the social media platform. The case highlights growing legal scrutiny of corporate leaders' public statements on social media.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">英国債利回り、2008年金融危機以来の最高水準に</h2>
+              <p class="body">イギリスの国債利回りが2008年の金融危機以来の最高水準に上昇した。専門家によると、インフレ、金利、公共支出への懸念が背景にある。また、エネルギー調査会社コーンウォール・インサイトは、イラン情勢によるエネルギー価格の急騰を受けて、7月に一般家庭のエネルギー料金が年間332ポンド上昇すると予測している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK Borrowing Costs Hit Highest Level Since 2008 Financial Crisis</h2>
+              <p class="body en-body">UK government bond yields have climbed to their highest level since the 2008 financial crisis, driven by concerns over inflation, interest rates and public spending. Meanwhile, energy consultancy Cornwall Insight forecasts that household energy bills will rise by £332 per year from July, as the Iran conflict pushes up global energy prices.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">コミック・リリーフ、3000万ポンドを調達</h2>
+              <p class="body">BBCのチャリティー番組コミック・リリーフが3000万ポンドを集めた。今年はダヴィナ・マッコールが司会を務め、イドリス・エルバ、キャサリン・ライアン、キャサリン・テイトらが出演した。人気番組「ザ・トレイターズ」の特別コーナーも話題を呼んだ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Comic Relief Raises £30 Million with Star-Studded Telethon</h2>
+              <p class="body en-body">The BBC's annual Comic Relief telethon has raised £30 million. This year's event was hosted by Davina McCall and featured appearances from Idris Elba, Katherine Ryan and Catherine Tate. A special segment featuring the popular show The Traitors also drew significant attention from viewers.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トカラ列島で新種の鳥を発見、45年ぶり</h2>
+              <p class="body">鹿児島県のトカラ列島で分布が確認されていた鳥が新種であることが判明し、「トカラムシクイ」と命名された。国内で新種の鳥が確認されたのは、1981年の沖縄・ヤンバルクイナ以来、45年ぶりのことだ。日本の離島における生物多様性の豊かさを改めて示す発見となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">New Bird Species Discovered in Tokara Islands — First in 45 Years</h2>
+              <p class="body en-body">A bird found on the Tokara Islands in Kagoshima Prefecture has been confirmed as a new species and named 'Tokara Mushikui' (Tokara warbler). It is the first new bird species identified in Japan in 45 years, since the discovery of the Okinawa rail (Yanbaru kuina) in 1981. The finding highlights the rich biodiversity of Japan's remote islands.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">政府、有事シェルター確保へ基本方針案</h2>
+              <p class="body">政府は、有事の際に住民が避難できるシェルターを確保するための基本方針案をまとめた。地下駐車場や地下街をはじめとした地下施設を活用し、民間との連携を推進していく方針だ。中東情勢の緊迫化も背景に、国内の安全保障体制の強化が急がれている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan Drafts Policy for Civilian Emergency Shelters</h2>
+              <p class="body en-body">The Japanese government has drafted a basic policy for securing civilian shelters during emergencies. The plan calls for greater use of underground facilities including car parks and shopping areas, in cooperation with the private sector. The move comes amid heightened global security concerns driven by tensions in the Middle East.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">新名神トンネルで大型トラック追突、6人死亡</h2>
+              <p class="body">三重県亀山市の新名神高速道路のトンネル内で、大型トラックが乗用車3台に追突し、6人が死亡した。トラックは東京方面から広島方面へ荷物を運搬中だった。警察は逮捕された運転手の勤務先である広島市の運送会社を過失運転致死の疑いで捜索した。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Six Killed in Truck Crash on Shin-Meishin Expressway Tunnel</h2>
+              <p class="body en-body">A large truck rear-ended three vehicles inside a tunnel on the Shin-Meishin Expressway in Kameyama, Mie Prefecture, killing six people. The truck was transporting cargo from the Tokyo area towards Hiroshima. Police have searched the arrested driver's employer, a transport company in Hiroshima, on suspicion of negligent driving causing death.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-21 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "許可", "reading": "きょか", "english": "permission; authorisation"}, {"word": "無謀", "reading": "むぼう", "english": "reckless"}, {"word": "閣僚", "reading": "かくりょう", "english": "cabinet minister"}, {"word": "承認", "reading": "しょうにん", "english": "approval"}, {"word": "緊迫", "reading": "きんぱく", "english": "tension; strain"}], [{"word": "陪審員", "reading": "ばいしんいん", "english": "juror"}, {"word": "誤解", "reading": "ごかい", "english": "misunderstanding; misleading"}, {"word": "認定", "reading": "にんてい", "english": "certification; finding"}, {"word": "損害", "reading": "そんがい", "english": "damage; loss"}, {"word": "買収", "reading": "ばいしゅう", "english": "acquisition; buyout"}], [{"word": "国債", "reading": "こくさい", "english": "government bond"}, {"word": "利回り", "reading": "りまわり", "english": "yield; return"}, {"word": "金融危機", "reading": "きんゆうきき", "english": "financial crisis"}, {"word": "急騰", "reading": "きゅうとう", "english": "sharp rise; surge"}, {"word": "公共支出", "reading": "こうきょうししゅつ", "english": "public spending"}], [{"word": "調達", "reading": "ちょうたつ", "english": "fundraising; procurement"}, {"word": "司会", "reading": "しかい", "english": "host; presenter"}, {"word": "出演", "reading": "しゅつえん", "english": "appearance; performance"}, {"word": "話題を呼ぶ", "reading": "わだいをよぶ", "english": "to attract attention"}], [{"word": "新種", "reading": "しんしゅ", "english": "new species"}, {"word": "判明", "reading": "はんめい", "english": "discovery; becoming clear"}, {"word": "命名", "reading": "めいめい", "english": "naming"}, {"word": "生物多様性", "reading": "せいぶつたようせい", "english": "biodiversity"}, {"word": "離島", "reading": "りとう", "english": "remote island"}], [{"word": "有事", "reading": "ゆうじ", "english": "emergency; contingency"}, {"word": "避難", "reading": "ひなん", "english": "evacuation; taking shelter"}, {"word": "基本方針", "reading": "きほんほうしん", "english": "basic policy"}, {"word": "連携", "reading": "れんけい", "english": "cooperation; coordination"}, {"word": "安全保障", "reading": "あんぜんほしょう", "english": "national security"}], [{"word": "追突", "reading": "ついとつ", "english": "rear-end collision"}, {"word": "運搬", "reading": "うんぱん", "english": "transport; haulage"}, {"word": "過失", "reading": "かしつ", "english": "negligence"}, {"word": "捜索", "reading": "そうさく", "english": "search; investigation"}, {"word": "運送会社", "reading": "うんそうがいしゃ", "english": "transport company"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "英、米軍にホルムズ海峡攻撃用の基地使用を許可"}, {"section": "英国・世界", "headline": "マスク氏、ツイッター投資家を誤解させたと陪審が認定"}, {"section": "英国・世界", "headline": "英国債利回り、2008年金融危機以来の最高水準に"}, {"section": "英国・世界", "headline": "コミック・リリーフ、3000万ポンドを調達"}, {"section": "日本", "headline": "トカラ列島で新種の鳥を発見、45年ぶり"}, {"section": "日本", "headline": "政府、有事シェルター確保へ基本方針案"}, {"section": "日本", "headline": "新名神トンネルで大型トラック追突、6人死亡"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
