@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月23日（月曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月23日（月曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">米イラン対立激化、ホルムズ海峡封鎖の危機迫る</h2>
+              <p class="body">トランプ大統領は、イランがホルムズ海峡を48時間以内に開放しなければ発電所を攻撃するとSNSに投稿した。イラン側は発電所が攻撃された場合、海峡を完全に封鎖すると強く反発している。国際エネルギー機関のトップは、この対立が数十年で最悪のエネルギー危機につながる恐れがあると警告した。アジア各国の株式市場は軒並み下落し、原油価格の高騰が世界経済に深刻な影響を与えている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US-Iran Standoff Intensifies as Hormuz Strait Blockade Deadline Looms</h2>
+              <p class="body en-body">President Trump posted on social media that he would attack Iran's power plants unless the country opens the Strait of Hormuz within 48 hours. Iran responded defiantly, threatening to fully blockade the strait if its power infrastructure is targeted. The head of the International Energy Agency warned the conflict could trigger the worst energy crisis in decades, as Asian stock markets slid sharply and rising oil prices rippled through the global economy.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">国連が新たな気候警告、エルニーニョ現象が迫る</h2>
+              <p class="body">国連の気象機関は、地球の気候バランスが記録史上最も崩れていると発表した。エルニーニョ現象の発生が予測される中、世界各地で異常気象がさらに頻発する恐れがある。科学者たちは、温室効果ガスの排出削減をこれまで以上に急ぐ必要があると訴えている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UN Issues Fresh Climate Warning as El Niño Looms</h2>
+              <p class="body en-body">The UN's weather agency declared that the Earth's climate is further out of balance than at any time in recorded history. With an El Niño event forecast to develop, scientists warn of increasingly frequent extreme weather events worldwide and are urging faster greenhouse gas emission reductions.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">英中間層、レジャー支出を大幅削減　生活費負担が深刻化</h2>
+              <p class="body">年収約5万5千ポンドの英国の平均的な世帯が、レジャー活動への支出を週40ポンドも削減していることが公式統計から明らかになった。家族での外食が一回52ポンドにもなる現状に、「もう正当化できない」という声が上がっている。原油価格の上昇がエネルギー料金に転嫁される見通しもあり、家計への圧迫はさらに強まりそうだ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK Middle-Income Families Slash Leisure Spending as Living Costs Bite</h2>
+              <p class="body en-body">Official figures reveal that an average UK household earning around £55,000 has cut leisure spending by £40 per week. Families say they can no longer justify £52 lunches out, as the cost of living continues to squeeze budgets. With oil price rises expected to push energy bills higher still, further household belt-tightening appears inevitable.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">仏地方選、社会党がパリ・マルセイユで勝利維持</h2>
+              <p class="body">フランスの地方選挙で、社会党がパリとマルセイユの市政を維持した。一方、ニースなど一部の都市では国民連合が勝利を収め、極右勢力の地方浸透が進んでいることも明らかになった。今回の結果は、主流派政党にとっては一定の安堵材料となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">French Socialists Hold Power in Paris and Marseille in Local Elections</h2>
+              <p class="body en-body">France's Socialist Party retained control of Paris and Marseille in local elections, providing relief for the mainstream left. However, Marine Le Pen's National Rally won in Nice and several other towns, demonstrating the far right's growing footprint in local government across the country.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">官房長官、日米首脳会談でホルムズ海峡の「具体的約束なし」</h2>
+              <p class="body">木原官房長官は、先日の日米首脳会談において、ホルムズ海峡の航行の安全確保について具体的な約束をした事実はないと述べた。日本は原油輸入の多くをホルムズ海峡経由に依存しており、米イラン対立の激化は日本のエネルギー安全保障に直結する問題である。関係国と意思疎通しながら必要な対応をとっていく方針を示した。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan Says No Specific Commitments on Hormuz Strait at US-Japan Summit</h2>
+              <p class="body en-body">Chief Cabinet Secretary Kihara stated that no specific commitments were made regarding the security of the Strait of Hormuz at the recent US-Japan summit. Japan relies heavily on the strait for its oil imports, making the escalating US-Iran confrontation a direct threat to its energy security. The government indicated it would coordinate with relevant nations while taking necessary measures.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">「紀州のドン・ファン」事件、二審も元妻に無罪判決</h2>
+              <p class="body">和歌山県の資産家に覚醒剤を摂取させて殺害したとして殺人罪に問われた元妻の二審判決が大阪高裁で言い渡され、一審に続いて無罪となった。有罪率が99パーセント以上とされる日本の刑事裁判において、二度にわたる無罪判決は極めて異例のケースである。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">'Don Juan of Kishu' Murder Case: Ex-Wife Acquitted Again on Appeal</h2>
+              <p class="body en-body">The Osaka High Court acquitted the ex-wife accused of murdering a wealthy Wakayama businessman by administering stimulant drugs, upholding the not-guilty verdict from the first trial. In Japan's criminal justice system, where the conviction rate exceeds 99 percent, consecutive acquittals represent an exceptionally rare outcome.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">身延山久遠寺、樹齢400年のしだれ桜が見頃</h2>
+              <p class="body">山梨県身延町の身延山久遠寺で、樹齢およそ400年のしだれ桜が見頃を迎えている。今年は例年より約一週間早い3月14日頃から咲き始め、多くの参拝客を楽しませている。見頃は今週いっぱい続く見込みだ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">400-Year-Old Weeping Cherry Trees in Full Bloom at Minobusan Kuonji</h2>
+              <p class="body en-body">The famous weeping cherry trees, estimated to be around 400 years old, are now in full bloom at Minobusan Kuonji Temple in Minobu, Yamanashi Prefecture. Blossoming began about a week earlier than usual around 14 March, delighting visitors and temple-goers. The blooms are expected to last through the end of the week.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-23 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "封鎖", "reading": "ふうさ", "english": "blockade"}, {"word": "発電所", "reading": "はつでんしょ", "english": "power plant"}, {"word": "反発", "reading": "はんぱつ", "english": "backlash; opposition"}, {"word": "高騰", "reading": "こうとう", "english": "surge; sharp rise"}, {"word": "軒並み", "reading": "のきなみ", "english": "across the board"}], [{"word": "気象機関", "reading": "きしょうきかん", "english": "weather agency"}, {"word": "異常気象", "reading": "いじょうきしょう", "english": "extreme weather"}, {"word": "頻発", "reading": "ひんぱつ", "english": "frequent occurrence"}, {"word": "温室効果ガス", "reading": "おんしつこうかガス", "english": "greenhouse gas"}, {"word": "排出削減", "reading": "はいしゅつさくげん", "english": "emission reduction"}], [{"word": "世帯", "reading": "せたい", "english": "household"}, {"word": "削減", "reading": "さくげん", "english": "reduction; cutback"}, {"word": "正当化", "reading": "せいとうか", "english": "justification"}, {"word": "転嫁", "reading": "てんか", "english": "pass on (costs)"}, {"word": "家計", "reading": "かけい", "english": "household finances"}], [{"word": "市政", "reading": "しせい", "english": "municipal government"}, {"word": "極右", "reading": "きょくう", "english": "far right"}, {"word": "浸透", "reading": "しんとう", "english": "penetration; spread"}, {"word": "安堵", "reading": "あんど", "english": "relief"}], [{"word": "官房長官", "reading": "かんぼうちょうかん", "english": "Chief Cabinet Secretary"}, {"word": "航行", "reading": "こうこう", "english": "navigation; sailing"}, {"word": "依存", "reading": "いぞん", "english": "dependence"}, {"word": "意思疎通", "reading": "いしそつう", "english": "communication; mutual understanding"}, {"word": "安全保障", "reading": "あんぜんほしょう", "english": "security"}], [{"word": "資産家", "reading": "しさんか", "english": "wealthy person"}, {"word": "覚醒剤", "reading": "かくせいざい", "english": "stimulant drug"}, {"word": "摂取", "reading": "せっしゅ", "english": "ingestion; intake"}, {"word": "無罪", "reading": "むざい", "english": "not guilty; acquittal"}, {"word": "異例", "reading": "いれい", "english": "exceptional; unprecedented"}], [{"word": "樹齢", "reading": "じゅれい", "english": "age of a tree"}, {"word": "しだれ桜", "reading": "しだれざくら", "english": "weeping cherry tree"}, {"word": "見頃", "reading": "みごろ", "english": "best time to see"}, {"word": "参拝客", "reading": "さんぱいきゃく", "english": "temple/shrine visitor"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "米イラン対立激化、ホルムズ海峡封鎖の危機迫る"}, {"section": "英国・世界", "headline": "国連が新たな気候警告、エルニーニョ現象が迫る"}, {"section": "英国・世界", "headline": "英中間層、レジャー支出を大幅削減　生活費負担が深刻化"}, {"section": "英国・世界", "headline": "仏地方選、社会党がパリ・マルセイユで勝利維持"}, {"section": "日本", "headline": "官房長官、日米首脳会談でホルムズ海峡の「具体的約束なし」"}, {"section": "日本", "headline": "「紀州のドン・ファン」事件、二審も元妻に無罪判決"}, {"section": "日本", "headline": "身延山久遠寺、樹齢400年のしだれ桜が見頃"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
