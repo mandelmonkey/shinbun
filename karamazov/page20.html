@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カラマーゾフの兄弟 — 第一部 第一篇 第四章 — 三男のアリョーシャ p.20</title>
+  <style>
+    :root {
+      --bg: #fdf6e3;
+      --text: #2c2c2c;
+      --accent: #8b1a1a;
+      --muted: #888;
+      --border: #e0d6c0;
+      --vocab-bg: #f0e8d0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    ruby { ruby-align: center; }
+    rt { font-size: 0.52em; color: #aaa; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .home-nav {
+      text-align: center; margin-top: 32px; margin-bottom: 8px;
+    }
+    .home-nav a {
+      display: inline-block; font-size: 0.8rem; color: var(--muted); text-decoration: none;
+      border: 1px solid var(--border); border-radius: 16px; padding: 5px 16px;
+      letter-spacing: 0.05em;
+    }
+    .home-nav a:active { opacity: 0.7; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 8px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">フョードル・ドストエフスキー</div>
+  <div class="chapter-title">カラマーゾフの兄弟</div>
+  <div class="chapter-sub">第一部 第一篇 第四章 — 三男のアリョーシャ</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p>アリョーシャは<ruby>母<rt>はは</rt></ruby>の<ruby>墓<rt>はか</rt></ruby>を<ruby>訪<rt>たず</rt></ruby>ねるためにこの<ruby>町<rt>まち</rt></ruby>にやって<ruby>来<rt>き</rt></ruby>ました。<ruby>父<rt>ちち</rt></ruby>フョードルは<ruby>墓<rt>はか</rt></ruby>の<ruby>場所<rt>ばしょ</rt></ruby>さえ<ruby>覚<rt>おぼ</rt></ruby>えていませんでしたが、<ruby>下男<rt>げなん</rt></ruby>のグリゴーリイが<ruby>町<rt>まち</rt></ruby>の<ruby>墓地<rt>ぼち</rt></ruby>の<ruby>片隅<rt>かたすみ</rt></ruby>にある<ruby>鋳鉄<rt>ちゅうてつ</rt></ruby>の<ruby>墓石<rt>はかいし</rt></ruby>へと<ruby>案内<rt>あんない</rt></ruby>してくれました。その<ruby>墓石<rt>はかいし</rt></ruby>はグリゴーリイが<ruby>自費<rt>じひ</rt></ruby>で<ruby>建<rt>た</rt></ruby>てたものでした。</p>
+    <p>アリョーシャは<ruby>母<rt>はは</rt></ruby>の<ruby>墓<rt>はか</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>で<ruby>特別<rt>とくべつ</rt></ruby>な<ruby>感情<rt>かんじょう</rt></ruby>を<ruby>見<rt>み</rt></ruby>せませんでした。グリゴーリイの<ruby>丁寧<rt>ていねい</rt></ruby>な<ruby>説明<rt>せつめい</rt></ruby>を<ruby>聞<rt>き</rt></ruby>き、<ruby>頭<rt>あたま</rt></ruby>を<ruby>下<rt>さ</rt></ruby>げ、<ruby>一言<rt>ひとこと</rt></ruby>も<ruby>発<rt>はっ</rt></ruby>さずに<ruby>立<rt>た</rt></ruby>ち<ruby>去<rt>さ</rt></ruby>りました。しかしこの<ruby>小<rt>ちい</rt></ruby>さな<ruby>出来事<rt>できごと</rt></ruby>は、フョードルに<ruby>奇妙<rt>きみょう</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>与<rt>あた</rt></ruby>えました。<ruby>彼<rt>かれ</rt></ruby>は<ruby>突然<rt>とつぜん</rt></ruby><ruby>千<rt>せん</rt></ruby>ルーブルを<ruby>修道院<rt>しゅうどういん</rt></ruby>に<ruby>寄進<rt>きしん</rt></ruby>したのです——ただし<ruby>亡<rt>な</rt></ruby>き<ruby>妻<rt>つま</rt></ruby>の<ruby>追悼<rt>ついとう</rt></ruby>のためではなく、<ruby>最初<rt>さいしょ</rt></ruby>の<ruby>妻<rt>つま</rt></ruby>アデライーダのためでした。</p>
+    <p>やがてアリョーシャは<ruby>修道院<rt>しゅうどういん</rt></ruby>に<ruby>入<rt>はい</rt></ruby>りたいと<ruby>宣言<rt>せんげん</rt></ruby>しました。<ruby>修道僧<rt>しゅうどうそう</rt></ruby>たちも<ruby>彼<rt>かれ</rt></ruby>を<ruby>見習<rt>みなら</rt></ruby>いとして<ruby>受<rt>う</rt></ruby>け<ruby>入<rt>い</rt></ruby>れる<ruby>用意<rt>ようい</rt></ruby>があると。<ruby>父<rt>ちち</rt></ruby>は<ruby>半<rt>なか</rt></ruby>ば<ruby>酔<rt>よ</rt></ruby>っていましたが、<ruby>静<rt>しず</rt></ruby>かに<ruby>聞<rt>き</rt></ruby>いたあと、こう<ruby>言<rt>い</rt></ruby>いました。「ふむ……お<ruby>前<rt>まえ</rt></ruby>がそこに<ruby>行<rt>い</rt></ruby>きたいのか、わが<ruby>優<rt>やさ</rt></ruby>しい<ruby>息子<rt>むすこ</rt></ruby>よ」</p>
+    <p>「お<ruby>前<rt>まえ</rt></ruby>を<ruby>手放<rt>てばな</rt></ruby>すのは<ruby>惜<rt>お</rt></ruby>しいよ、アリョーシャ。<ruby>信<rt>しん</rt></ruby>じてくれるか。だがお<ruby>前<rt>まえ</rt></ruby>は<ruby>罪人<rt>つみびと</rt></ruby>どもの<ruby>為<rt>ため</rt></ruby>に<ruby>祈<rt>いの</rt></ruby>ってくれるだろう。わしらはここでずいぶん<ruby>罪<rt>つみ</rt></ruby>を<ruby>犯<rt>おか</rt></ruby>してきたからな。お<ruby>前<rt>まえ</rt></ruby>は<ruby>燃<rt>も</rt></ruby>え<ruby>上<rt>あ</rt></ruby>がり、<ruby>燃<rt>も</rt></ruby>え<ruby>尽<rt>つ</rt></ruby>き、そしてまた<ruby>戻<rt>もど</rt></ruby>ってくるだろう。<ruby>私<rt>わたし</rt></ruby>はそれを<ruby>待<rt>ま</rt></ruby>っているよ。お<ruby>前<rt>まえ</rt></ruby>はこの<ruby>世<rt>よ</rt></ruby>で<ruby>唯一<rt>ゆいいつ</rt></ruby>、<ruby>私<rt>わたし</rt></ruby>を<ruby>裁<rt>さば</rt></ruby>かなかった<ruby>人間<rt>にんげん</rt></ruby>だからな」——そう<ruby>言<rt>い</rt></ruby>うと<ruby>老人<rt>ろうじん</rt></ruby>は<ruby>泣<rt>な</rt></ruby>き<ruby>出<rt>だ</rt></ruby>しました。<ruby>邪悪<rt>じゃあく</rt></ruby>で、<ruby>感傷的<rt>かんしょうてき</rt></ruby>な<ruby>人間<rt>にんげん</rt></ruby>だったのです。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>Alyosha had come to the town to visit his mother's grave. His father Fyodor could not even remember where she was buried, but the servant Grigory led him to a remote corner of the town cemetery, to a cast-iron tombstone — erected at Grigory's own expense.</p>
+    <p>Alyosha showed no particular emotion at the sight of his mother's grave. He listened to Grigory's solemn account, stood with bowed head, and walked away without uttering a word. But this small episode had a strange effect on Fyodor — he suddenly donated a thousand roubles to the monastery, not for his second wife's soul, but for the first, Adelaïda.</p>
+    <p>Soon after, Alyosha announced that he wished to enter the monastery, and that the monks were willing to receive him as a novice. The old man listened in half-drunken silence, then said: 'H'm... So that's where you want to be, my gentle boy?'</p>
+    <p>'I'm sorry to lose you, Alyosha. Would you believe it? But you'll pray for us sinners — we have sinned too much here. You will burn and you will burn out, and you will come back again. And I will wait for you. You are the only creature in the world who has not condemned me.' And he began to blubber. He was wicked and sentimental.</p>
+  </div>
+</div>
+
+<div class="home-nav">
+  <a href="/shinbun/">🏠 しんぶん Home</a>
+  <a href="/shinbun/karamazov/">📖 目次</a>
+</div>
+<div class="page-nav">
+  <a href="page19.html">← 前のページ</a>
+  <span class="page-num">p. 20 / 20</span>
+  <em style="color:#ccc">次のページは準備中</em>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">墓地</td><td class="vocab-reading">ぼち</td><td class="vocab-en">cemetery / graveyard</td></tr>
+    <tr><td class="vocab-kanji">鋳鉄</td><td class="vocab-reading">ちゅうてつ</td><td class="vocab-en">cast iron</td></tr>
+    <tr><td class="vocab-kanji">自費で</td><td class="vocab-reading">じひで</td><td class="vocab-en">at one's own expense</td></tr>
+    <tr><td class="vocab-kanji">寄進する</td><td class="vocab-reading">きしんする</td><td class="vocab-en">to donate (to a temple/shrine)</td></tr>
+    <tr><td class="vocab-kanji">追悼</td><td class="vocab-reading">ついとう</td><td class="vocab-en">memorial / mourning</td></tr>
+    <tr><td class="vocab-kanji">見習い</td><td class="vocab-reading">みならい</td><td class="vocab-en">novice / apprentice</td></tr>
+    <tr><td class="vocab-kanji">手放す</td><td class="vocab-reading">てばなす</td><td class="vocab-en">to let go of / to part with</td></tr>
+    <tr><td class="vocab-kanji">罪人</td><td class="vocab-reading">つみびと</td><td class="vocab-en">sinner</td></tr>
+    <tr><td class="vocab-kanji">燃え尽きる</td><td class="vocab-reading">もえつきる</td><td class="vocab-en">to burn out</td></tr>
+    <tr><td class="vocab-kanji">邪悪な</td><td class="vocab-reading">じゃあくな</td><td class="vocab-en">wicked / evil</td></tr>
+    <tr><td class="vocab-kanji">感傷的な</td><td class="vocab-reading">かんしょうてきな</td><td class="vocab-en">sentimental</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜さえ…ない</strong> — not even ~<br><em>墓の場所さえ覚えていませんでした</em><br>N2 emphasis — 'did not even remember the location of the grave.' さえ + negative = 'not even.'</div>
+<div class="grammar-item"><strong>〜ずに</strong> — without ~ing<br><em>一言も発さずに立ち去りました</em><br>N2 negative conjunctive — 'left without uttering a single word.' More literary than ～ないで.</div>
+<div class="grammar-item"><strong>〜からな</strong> — because ~ (emphatic, masculine)<br><em>私を裁かなかった人間だからな</em><br>Casual masculine sentence-ender — adds emotional weight. Fyodor's rough, intimate speech style.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
