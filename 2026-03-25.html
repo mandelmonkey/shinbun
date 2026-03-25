@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月25日（水曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月25日（水曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>原油<rt>げんゆ</rt></ruby>150ドルなら<ruby>世界的<rt>せかいてき</rt></ruby><ruby>景気<rt>けいき</rt></ruby><ruby>後退<rt>こうたい</rt></ruby>、ブラックロックCEO<ruby>警告<rt>けいこく</rt></ruby></h2>
+              <p class="body"><ruby>米<rt>こめ</rt></ruby><ruby>資産<rt>しさん</rt></ruby><ruby>運用<rt>うんよう</rt></ruby><ruby>最大手<rt>さいおおて</rt></ruby>ブラックロックのラリー・フィンクCEOは、<ruby>原油価格<rt>げんゆかかく</rt></ruby>が1バレル150ドルに<ruby>達し<rt>たっし</rt></ruby><ruby>高<rt>たか</rt></ruby><ruby>止まり<rt>どまり</rt></ruby>すれば、<ruby>世界経済<rt>せかいけいざい</rt></ruby>に「<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>」を<ruby>及ぼ<rt>およぼ</rt></ruby>すと<ruby>警告し<rt>けいこくし</rt></ruby>た。<ruby>米国<rt>べいこく</rt></ruby>とイランの<ruby>紛争<rt>ふんそう</rt></ruby>により<ruby>原油価格<rt>げんゆかかく</rt></ruby>は100ドルを<ruby>超え<rt>こえ</rt></ruby>て<ruby>推移<rt>すいい</rt></ruby>しており、<ruby>欧州<rt>おうしゅう</rt></ruby>ではエネルギー<ruby>不足<rt>ふそく</rt></ruby>の<ruby>懸念<rt>けねん</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>っている。<ruby>一方<rt>いっぽう</rt></ruby>、トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>がイランとの<ruby>和平交渉<rt>わへいこうしょう</rt></ruby>に<ruby>前向き<rt>まえむき</rt></ruby>な<ruby>姿勢<rt>しせい</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>たことで、<ruby>一時的<rt>いちじてき</rt></ruby>に<ruby>価格<rt>かかく</rt></ruby>は<ruby>下落<rt>げらく</rt></ruby>した。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">BlackRock CEO warns oil at $150 would trigger global recession</h2>
+              <p class="body en-body">BlackRock CEO Larry Fink has warned that oil prices reaching $150 per barrel for a sustained period would have 'profound implications' for the world economy. Oil has been trading above $100 amid the US-Iran conflict, with Shell warning that shortages will hit Europe. Prices dipped temporarily after President Trump signalled openness to peace negotiations with Iran.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>初<rt>はつ</rt></ruby>の<ruby>女性<rt>じょせい</rt></ruby>カンタベリー<ruby>大<rt>だい</rt></ruby><ruby>主教<rt>しゅきょう</rt></ruby>が<ruby>就任<rt>しゅうにん</rt></ruby><ruby>式<rt>しき</rt></ruby>、<ruby>歴史的瞬間<rt>れきしてきしゅんかん</rt></ruby></h2>
+              <p class="body">カンタベリー<ruby>大聖堂<rt>だいせいどう</rt></ruby>で、イングランド<ruby>国教<rt>こっきょう</rt></ruby><ruby>会<rt>かい</rt></ruby><ruby>初<rt>はつ</rt></ruby>の<ruby>女性<rt>じょせい</rt></ruby><ruby>大<rt>だい</rt></ruby><ruby>主教<rt>しゅきょう</rt></ruby>の<ruby>就任<rt>しゅうにん</rt></ruby><ruby>式<rt>しき</rt></ruby>が<ruby>執り<rt>とり</rt></ruby><ruby>行わ<rt>おこなわ</rt></ruby>れる。ウィリアム<ruby>皇太子<rt>こうたいし</rt></ruby><ruby>夫妻<rt>ふさい</rt></ruby>をはじめ、<ruby>看護<rt>かんご</rt></ruby><ruby>師<rt>し</rt></ruby>やケアワーカーも<ruby>招待<rt>しょうたい</rt></ruby>されており、<ruby>新大<rt>しんだい</rt></ruby><ruby>主教<rt>しゅきょう</rt></ruby>の<ruby>医療<rt>いりょう</rt></ruby><ruby>分野<rt>ぶんや</rt></ruby>での<ruby>経歴<rt>けいれき</rt></ruby>を<ruby>反映<rt>はんえい</rt></ruby>した<ruby>構成<rt>こうせい</rt></ruby>となっている。<ruby>約<rt>やく</rt></ruby>500<ruby>年<rt>ねん</rt></ruby>の<ruby>歴史<rt>れきし</rt></ruby>を<ruby>持つ<rt>もつ</rt></ruby><ruby>同職<rt>どうしょく</rt></ruby>において、<ruby>女性<rt>じょせい</rt></ruby>の<ruby>就任<rt>しゅうにん</rt></ruby>は<ruby>画期的<rt>かっきてき</rt></ruby>な<ruby>出来事<rt>できごと</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">First female Archbishop of Canterbury to be enthroned in historic ceremony</h2>
+              <p class="body en-body">Canterbury Cathedral will host the enthronement of the Church of England's first female Archbishop of Canterbury. The Prince and Princess of Wales will attend alongside nurses and carers, reflecting the new archbishop's past career in healthcare. The appointment marks a historic milestone for a role that dates back nearly 500 years.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英<rt>えい</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>、10<ruby>代<rt>だい</rt></ruby><ruby>向け<rt>むけ</rt></ruby>SNS<ruby>禁止<rt>きんし</rt></ruby>とデジタル<ruby>門限<rt>もんげん</rt></ruby>の<ruby>試験<rt>しけん</rt></ruby><ruby>開始<rt>かいし</rt></ruby></h2>
+              <p class="body">イギリス<ruby>政府<rt>せいふ</rt></ruby>は、ティーンエイジャーを<ruby>対象<rt>たいしょう</rt></ruby>にソーシャルメディアの<ruby>利用制限<rt>りようせいげん</rt></ruby>やデジタル<ruby>門限<rt>もんげん</rt></ruby>の<ruby>試験<rt>しけん</rt></ruby>プログラムを<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>若者<rt>わかもの</rt></ruby>とその<ruby>保護者<rt>ほごしゃ</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>、<ruby>制限<rt>せいげん</rt></ruby><ruby>前後<rt>ぜんご</rt></ruby>にインタビューを<ruby>実施<rt>じっし</rt></ruby>し、<ruby>効果<rt>こうか</rt></ruby>を<ruby>検証<rt>けんしょう</rt></ruby>する。<ruby>同時期<rt>どうじき</rt></ruby>に<ruby>米国<rt>べいこく</rt></ruby>ニューメキシコ<ruby>州<rt>しゅう</rt></ruby>では、メタ<ruby>社<rt>しゃ</rt></ruby>が<ruby>子ども<rt>こども</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby>に<ruby>関し<rt>かんし</rt></ruby>てユーザーを<ruby>欺<rt>ぎ</rt></ruby>いたとして3<ruby>億<rt>おく</rt></ruby>7500<ruby>万<rt>まん</rt></ruby>ドルの<ruby>賠償<rt>ばいしょう</rt></ruby>を<ruby>命じ<rt>めいじ</rt></ruby>られた。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK to trial social media bans and digital curfews for teenagers</h2>
+              <p class="body en-body">The UK government has announced a trial programme imposing social media bans and digital curfews on teenagers. Young people and their parents will be interviewed before and after the restrictions to assess their impact. Meanwhile, Meta has been ordered to pay $375 million by a New Mexico court for misleading users over child safety.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">OpenAI、<ruby>動画<rt>どうが</rt></ruby><ruby>生成<rt>せいせい</rt></ruby>アプリSora<ruby>閉鎖<rt>へいさ</rt></ruby>　ディズニーとの<ruby>提携<rt>ていけい</rt></ruby>も<ruby>終了<rt>しゅうりょう</rt></ruby></h2>
+              <p class="body">OpenAIはAI<ruby>動画<rt>どうが</rt></ruby><ruby>生成<rt>せいせい</rt></ruby>アプリ「Sora」の<ruby>閉鎖<rt>へいさ</rt></ruby>とディズニーとの<ruby>提携<rt>ていけい</rt></ruby><ruby>終了<rt>しゅうりょう</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。Soraは<ruby>発表当初<rt>はっぴょうとうしょ</rt></ruby>、メディア<ruby>業界<rt>ぎょうかい</rt></ruby>に<ruby>衝撃<rt>しょうげき</rt></ruby>を<ruby>与え<rt>あたえ</rt></ruby>たが、わずか2<ruby>年足<rt>としたり</rt></ruby>らずでのサービス<ruby>終了<rt>しゅうりょう</rt></ruby>となった。AI<ruby>技術<rt>ぎじゅつ</rt></ruby>の<ruby>急速<rt>きゅうそく</rt></ruby>な<ruby>発展<rt>はってん</rt></ruby>と<ruby>市場競争<rt>しじょうきょうそう</rt></ruby>の<ruby>激し<rt>はげし</rt></ruby>さを<ruby>物語る<rt>ものがたる</rt></ruby><ruby>結果<rt>けっか</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">OpenAI shuts down Sora video app, ends Disney partnership</h2>
+              <p class="body en-body">OpenAI has announced the closure of its AI video-generation app Sora and the end of its partnership with Disney. Sora sent shockwaves through the media industry when it launched, but has been shut down in less than two years. The move underscores the rapid pace of change and fierce competition in the AI industry.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>自衛隊員<rt>じえいたいいん</rt></ruby>が<ruby>中国<rt>ちゅうごく</rt></ruby><ruby>大使館<rt>たいしかん</rt></ruby>に<ruby>侵入<rt>しんにゅう</rt></ruby>、<ruby>日中関係<rt>にっちゅうかんけい</rt></ruby>にさらなる<ruby>悪影響<rt>あくえいきょう</rt></ruby></h2>
+              <p class="body">23<ruby>歳<rt>とし</rt></ruby>の<ruby>陸上<rt>りくじょう</rt></ruby><ruby>自衛隊員<rt>じえいたいいん</rt></ruby>・<ruby>村田<rt>むらた</rt></ruby><ruby>航大<rt>こうだい</rt></ruby><ruby>容疑者<rt>ようぎしゃ</rt></ruby>が、<ruby>東京<rt>とうきょう</rt></ruby>の<ruby>中国<rt>ちゅうごく</rt></ruby><ruby>大使館<rt>たいしかん</rt></ruby>に<ruby>不法<rt>ふほう</rt></ruby><ruby>侵入<rt>しんにゅう</rt></ruby>した<ruby>疑い<rt>うたがい</rt></ruby>で<ruby>逮捕<rt>たいほ</rt></ruby>された。<ruby>容疑者<rt>ようぎしゃ</rt></ruby>は「<ruby>大使<rt>たいし</rt></ruby>に<ruby>強硬<rt>きょうこう</rt></ruby>な<ruby>発言<rt>はつげん</rt></ruby>を<ruby>控え<rt>ひかえ</rt></ruby>るよう<ruby>伝え<rt>つたえ</rt></ruby>たかった」と<ruby>供述<rt>きょうじゅつ</rt></ruby>しており、<ruby>現場<rt>げんば</rt></ruby>からナイフが<ruby>見つ<rt>みつ</rt></ruby>かった。<ruby>中国<rt>ちゅうごく</rt></ruby><ruby>外務省<rt>がいむしょう</rt></ruby>は「<ruby>深い<rt>ふかい</rt></ruby><ruby>衝撃<rt>しょうげき</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>た」として<ruby>厳重<rt>げんじゅう</rt></ruby>に<ruby>抗議<rt>こうぎ</rt></ruby>し、<ruby>加藤<rt>かとう</rt></ruby><ruby>官房<rt>かんぼう</rt></ruby><ruby>長官<rt>ちょうかん</rt></ruby>は「<ruby>誠に<rt>まことに</rt></ruby><ruby>遺憾<rt>いかん</rt></ruby>」と<ruby>述べ<rt>のべ</rt></ruby>た。<ruby>高市<rt>たかいち</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>の<ruby>台湾<rt>たいわん</rt></ruby>に<ruby>関す<rt>かんす</rt></ruby>る<ruby>発言<rt>はつげん</rt></ruby><ruby>以降<rt>いこう</rt></ruby><ruby>悪化<rt>あっか</rt></ruby>している<ruby>日中関係<rt>にっちゅうかんけい</rt></ruby>に、さらなる<ruby>影<rt>かげ</rt></ruby>を<ruby>落と<rt>おと</rt></ruby>す<ruby>事件<rt>じけん</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japanese soldier arrested after breaking into Chinese embassy in Tokyo</h2>
+              <p class="body en-body">A 23-year-old member of Japan's Ground Self-Defence Forces, Kodai Murata, was arrested on suspicion of trespassing at the Chinese embassy in Tokyo. The suspect reportedly told investigators he wanted to ask the ambassador to refrain from hardline remarks. A knife was found at the scene. China expressed 'deep shock' and lodged a strong protest, while Japan's chief cabinet secretary called the incident 'truly regrettable'. The break-in further strains ties already damaged by PM Takaichi's comments on Taiwan.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>内閣<rt>ないかく</rt></ruby>がドローン<ruby>規制強化<rt>きせいきょうか</rt></ruby>を<ruby>閣議<rt>かくぎ</rt></ruby><ruby>決定<rt>けってい</rt></ruby>、<ruby>飛行<rt>ひこう</rt></ruby><ruby>禁止区域<rt>きんしくいき</rt></ruby>を<ruby>拡大<rt>かくだい</rt></ruby></h2>
+              <p class="body"><ruby>日本<rt>にっぽん</rt></ruby>の<ruby>内閣<rt>ないかく</rt></ruby>は<ruby>無人<rt>むじん</rt></ruby><ruby>航空機<rt>こうくうき</rt></ruby>の<ruby>利用<rt>りよう</rt></ruby><ruby>規制<rt>きせい</rt></ruby>を<ruby>強化<rt>きょうか</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>を<ruby>閣議<rt>かくぎ</rt></ruby><ruby>決定<rt>けってい</rt></ruby>した。<ruby>指定さ<rt>していさ</rt></ruby>れた<ruby>重要<rt>じゅうよう</rt></ruby><ruby>施設<rt>しせつ</rt></ruby><ruby>周辺<rt>しゅうへん</rt></ruby>の<ruby>飛行<rt>ひこう</rt></ruby><ruby>禁止区域<rt>きんしくいき</rt></ruby>が、<ruby>従来<rt>じゅうらい</rt></ruby>の<ruby>約<rt>やく</rt></ruby>300メートルから<ruby>大幅<rt>おおはば</rt></ruby>に<ruby>拡大<rt>かくだい</rt></ruby>される。<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby><ruby>環境<rt>かんきょう</rt></ruby>の<ruby>変化<rt>へんか</rt></ruby>に<ruby>伴い<rt>ともない</rt></ruby>、ドローンの<ruby>悪用<rt>あくよう</rt></ruby><ruby>防止<rt>ぼうし</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>た<ruby>対策<rt>たいさく</rt></ruby>が<ruby>急が<rt>いそが</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan's cabinet approves tighter drone regulations, expanding no-fly zones</h2>
+              <p class="body en-body">Japan's cabinet has approved tighter regulations on drone use, significantly expanding no-fly zones around designated key facilities beyond the previous limit of approximately 300 metres. The move comes amid growing security concerns and aims to prevent the misuse of unmanned aircraft.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>政府<rt>せいふ</rt></ruby>、<ruby>地下街<rt>ちかがい</rt></ruby>・<ruby>地下鉄<rt>ちかてつ</rt></ruby>を<ruby>緊急<rt>きんきゅう</rt></ruby>シェルターとして<ruby>活用<rt>かつよう</rt></ruby>へ</h2>
+              <p class="body"><ruby>日本政府<rt>にほんせいふ</rt></ruby>は、<ruby>地下街<rt>ちかがい</rt></ruby>や<ruby>地下鉄<rt>ちかてつ</rt></ruby>の<ruby>駅<rt>えき</rt></ruby>を<ruby>有事<rt>ゆうじ</rt></ruby>の<ruby>際の<rt>さいの</rt></ruby><ruby>緊急避難<rt>きんきゅうひなん</rt></ruby>シェルターとして<ruby>活用<rt>かつよう</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>北朝鮮<rt>きたちょうせん</rt></ruby>のミサイル<ruby>脅威<rt>きょうい</rt></ruby>や<ruby>地域<rt>ちいき</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby><ruby>情勢<rt>じょうせい</rt></ruby>を<ruby>踏ま<rt>ふま</rt></ruby>え、<ruby>既存<rt>きぞん</rt></ruby>のインフラを<ruby>最大限<rt>さいだいげん</rt></ruby>に<ruby>活用<rt>かつよう</rt></ruby>した<ruby>市民<rt>しみん</rt></ruby><ruby>保護策<rt>ほごさく</rt></ruby>を<ruby>進め<rt>すすめ</rt></ruby>る。<ruby>都市部<rt>としぶ</rt></ruby>の<ruby>地下空間<rt>ちかくうかん</rt></ruby>を<ruby>防護<rt>ぼうご</rt></ruby><ruby>施設<rt>しせつ</rt></ruby>として<ruby>整備<rt>せいび</rt></ruby>することで、<ruby>迅速<rt>じんそく</rt></ruby>な<ruby>避難<rt>ひなん</rt></ruby><ruby>体制<rt>たいせい</rt></ruby>の<ruby>構築<rt>こうちく</rt></ruby>を<ruby>目指す<rt>めざす</rt></ruby>。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan to convert underground malls and subways into emergency shelters</h2>
+              <p class="body en-body">The Japanese government has announced plans to repurpose underground shopping malls and subway stations as emergency bunkers. The initiative responds to North Korean missile threats and the evolving regional security landscape, seeking to maximise the use of existing infrastructure for civilian protection. The aim is to establish rapid evacuation systems by converting urban underground spaces into protective facilities.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-25 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "景気後退", "reading": "けいきこうたい", "english": "recession"}, {"word": "資産運用", "reading": "しさんうんよう", "english": "asset management"}, {"word": "高止まり", "reading": "たかどまり", "english": "remaining at a high level"}, {"word": "紛争", "reading": "ふんそう", "english": "conflict"}, {"word": "和平交渉", "reading": "わへいこうしょう", "english": "peace negotiations"}], [{"word": "大主教", "reading": "だいしゅきょう", "english": "archbishop"}, {"word": "就任式", "reading": "しゅうにんしき", "english": "enthronement ceremony"}, {"word": "国教会", "reading": "こっきょうかい", "english": "state church / Church of England"}, {"word": "画期的", "reading": "かっきてき", "english": "epoch-making, groundbreaking"}], [{"word": "門限", "reading": "もんげん", "english": "curfew"}, {"word": "利用制限", "reading": "りようせいげん", "english": "usage restrictions"}, {"word": "検証", "reading": "けんしょう", "english": "verification, assessment"}, {"word": "賠償", "reading": "ばいしょう", "english": "compensation, damages"}, {"word": "欺く", "reading": "あざむく", "english": "to deceive, mislead"}], [{"word": "提携", "reading": "ていけい", "english": "partnership, tie-up"}, {"word": "閉鎖", "reading": "へいさ", "english": "closure, shutdown"}, {"word": "衝撃", "reading": "しょうげき", "english": "shock, impact"}, {"word": "市場競争", "reading": "しじょうきょうそう", "english": "market competition"}], [{"word": "不法侵入", "reading": "ふほうしんにゅう", "english": "illegal entry, trespassing"}, {"word": "陸上自衛隊", "reading": "りくじょうじえいたい", "english": "Ground Self-Defence Forces"}, {"word": "強硬", "reading": "きょうこう", "english": "hardline, tough"}, {"word": "遺憾", "reading": "いかん", "english": "regrettable"}, {"word": "抗議", "reading": "こうぎ", "english": "protest"}], [{"word": "閣議決定", "reading": "かくぎけってい", "english": "cabinet decision"}, {"word": "飛行禁止区域", "reading": "ひこうきんしくいき", "english": "no-fly zone"}, {"word": "無人航空機", "reading": "むじんこうくうき", "english": "unmanned aircraft, drone"}, {"word": "悪用", "reading": "あくよう", "english": "misuse, abuse"}], [{"word": "緊急避難", "reading": "きんきゅうひなん", "english": "emergency evacuation"}, {"word": "有事", "reading": "ゆうじ", "english": "emergency, contingency"}, {"word": "防護施設", "reading": "ぼうごしせつ", "english": "protective facility"}, {"word": "避難体制", "reading": "ひなんたいせい", "english": "evacuation system"}, {"word": "整備", "reading": "せいび", "english": "development, maintenance"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "原油150ドルなら世界的景気後退、ブラックロックCEO警告"}, {"section": "英国・世界", "headline": "初の女性カンタベリー大主教が就任式、歴史的瞬間"}, {"section": "英国・世界", "headline": "英政府、10代向けSNS禁止とデジタル門限の試験開始"}, {"section": "英国・世界", "headline": "OpenAI、動画生成アプリSora閉鎖　ディズニーとの提携も終了"}, {"section": "日本", "headline": "自衛隊員が中国大使館に侵入、日中関係にさらなる悪影響"}, {"section": "日本", "headline": "内閣がドローン規制強化を閣議決定、飛行禁止区域を拡大"}, {"section": "日本", "headline": "政府、地下街・地下鉄を緊急シェルターとして活用へ"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
