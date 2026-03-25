@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カラマーゾフの兄弟 — 第一部 第一篇 第四章 — 三男のアリョーシャ p.16</title>
+  <style>
+    :root {
+      --bg: #fdf6e3;
+      --text: #2c2c2c;
+      --accent: #8b1a1a;
+      --muted: #888;
+      --border: #e0d6c0;
+      --vocab-bg: #f0e8d0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    ruby { ruby-align: center; }
+    rt { font-size: 0.52em; color: #aaa; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .home-nav {
+      text-align: center; margin-top: 32px; margin-bottom: 8px;
+    }
+    .home-nav a {
+      display: inline-block; font-size: 0.8rem; color: var(--muted); text-decoration: none;
+      border: 1px solid var(--border); border-radius: 16px; padding: 5px 16px;
+      letter-spacing: 0.05em;
+    }
+    .home-nav a:active { opacity: 0.7; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 8px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">フョードル・ドストエフスキー</div>
+  <div class="chapter-title">カラマーゾフの兄弟</div>
+  <div class="chapter-sub">第一部 第一篇 第四章 — 三男のアリョーシャ</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p>アリョーシャはまだ<ruby>二十歳<rt>はたち</rt></ruby>で、<ruby>兄<rt>あに</rt></ruby>のイワンは<ruby>二十四歳<rt>にじゅうよんさい</rt></ruby>、<ruby>長兄<rt>ちょうけい</rt></ruby>のドミートリイは<ruby>二十七歳<rt>にじゅうななさい</rt></ruby>でした。まず<ruby>最初<rt>さいしょ</rt></ruby>に<ruby>言<rt>い</rt></ruby>っておかなくてはならないのは、このアリョーシャという<ruby>若者<rt>わかもの</rt></ruby>は、<ruby>決<rt>けっ</rt></ruby>して<ruby>狂信者<rt>きょうしんしゃ</rt></ruby>ではなく、<ruby>私<rt>わたし</rt></ruby>の<ruby>見<rt>み</rt></ruby>るところ、<ruby>神秘主義者<rt>しんぴしゅぎしゃ</rt></ruby>でさえなかったということです。</p>
+    <p><ruby>彼<rt>かれ</rt></ruby>はただ、<ruby>人類<rt>じんるい</rt></ruby>を<ruby>早<rt>はや</rt></ruby>くから<ruby>愛<rt>あい</rt></ruby>した<ruby>人間<rt>にんげん</rt></ruby>でした。<ruby>修道院<rt>しゅうどういん</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby>を<ruby>選<rt>えら</rt></ruby>んだのは、それが<ruby>当時<rt>とうじ</rt></ruby>の<ruby>彼<rt>かれ</rt></ruby>にとって、<ruby>俗世<rt>ぞくせ</rt></ruby>の<ruby>闇<rt>やみ</rt></ruby>から<ruby>愛<rt>あい</rt></ruby>の<ruby>光<rt>ひかり</rt></ruby>へと<ruby>向<rt>む</rt></ruby>かう<ruby>魂<rt>たましい</rt></ruby>にとっての<ruby>理想的<rt>りそうてき</rt></ruby>な<ruby>逃<rt>に</rt></ruby>げ<ruby>道<rt>みち</rt></ruby>に<ruby>思<rt>おも</rt></ruby>えたからにほかなりません。</p>
+    <p>そしてこの<ruby>道<rt>みち</rt></ruby>に<ruby>惹<rt>ひ</rt></ruby>かれたのは、そこに<ruby>一人<rt>ひとり</rt></ruby>の<ruby>非凡<rt>ひぼん</rt></ruby>な<ruby>人物<rt>じんぶつ</rt></ruby>——<ruby>有名<rt>ゆうめい</rt></ruby>な<ruby>長老<rt>ちょうろう</rt></ruby>ゾシマを<ruby>見<rt>み</rt></ruby>いだしたからでした。アリョーシャは<ruby>燃<rt>も</rt></ruby>えるような<ruby>若<rt>わか</rt></ruby>い<ruby>心<rt>こころ</rt></ruby>のすべてを<ruby>傾<rt>かたむ</rt></ruby>けて、この<ruby>長老<rt>ちょうろう</rt></ruby>に<ruby>愛着<rt>あいちゃく</rt></ruby>を<ruby>抱<rt>いだ</rt></ruby>いたのです。</p>
+    <p>しかし、<ruby>彼<rt>かれ</rt></ruby>がこの<ruby>時点<rt>じてん</rt></ruby>ですでに<ruby>非常<rt>ひじょう</rt></ruby>に<ruby>風変<rt>ふうが</rt></ruby>わりな<ruby>人間<rt>にんげん</rt></ruby>であったことは<ruby>否定<rt>ひてい</rt></ruby>しません。<ruby>揺<rt>ゆ</rt></ruby>りかごの<ruby>頃<rt>ころ</rt></ruby>からそうだったのです。すでに<ruby>述<rt>の</rt></ruby>べたように、<ruby>彼<rt>かれ</rt></ruby>は<ruby>四歳<rt>よんさい</rt></ruby>で<ruby>母<rt>はは</rt></ruby>を<ruby>亡<rt>な</rt></ruby>くしましたが、その<ruby>顔<rt>かお</rt></ruby>を、その<ruby>愛撫<rt>あいぶ</rt></ruby>を、<ruby>生涯<rt>しょうがい</rt></ruby>にわたって<ruby>覚<rt>おぼ</rt></ruby>えていました。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>Alyosha was only twenty, his brother Ivan twenty-four, and their elder brother Dmitri twenty-seven. First of all, I must explain that this young man was by no means a fanatic, and — in my opinion at least — was not even a mystic.</p>
+    <p>He was simply an early lover of humanity, and if he adopted the monastic life, it was simply because at that time it struck him as the ideal escape for his soul struggling from the darkness of worldly wickedness to the light of love.</p>
+    <p>And what drew him to this path was that he found in the monastery an extraordinary being — our celebrated elder, Zossima — to whom he became attached with all the warm first love of his ardent heart.</p>
+    <p>But I do not dispute that he was very strange even at that time, and had been so from his cradle. I have mentioned already that though he lost his mother in his fourth year, he remembered her all his life — her face, her caresses.</p>
+  </div>
+</div>
+
+<div class="home-nav">
+  <a href="/shinbun/">🏠 しんぶん Home</a>
+  <a href="/shinbun/karamazov/">📖 目次</a>
+</div>
+<div class="page-nav">
+  <a href="page15.html">← 前のページ</a>
+  <span class="page-num">p. 16 / 20</span>
+  <a href="page17.html">次のページ →</a>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">狂信者</td><td class="vocab-reading">きょうしんしゃ</td><td class="vocab-en">fanatic / zealot</td></tr>
+    <tr><td class="vocab-kanji">神秘主義者</td><td class="vocab-reading">しんぴしゅぎしゃ</td><td class="vocab-en">mystic</td></tr>
+    <tr><td class="vocab-kanji">修道院</td><td class="vocab-reading">しゅうどういん</td><td class="vocab-en">monastery</td></tr>
+    <tr><td class="vocab-kanji">俗世</td><td class="vocab-reading">ぞくせ</td><td class="vocab-en">secular world</td></tr>
+    <tr><td class="vocab-kanji">非凡な</td><td class="vocab-reading">ひぼんな</td><td class="vocab-en">extraordinary / remarkable</td></tr>
+    <tr><td class="vocab-kanji">長老</td><td class="vocab-reading">ちょうろう</td><td class="vocab-en">elder (monastic)</td></tr>
+    <tr><td class="vocab-kanji">愛着</td><td class="vocab-reading">あいちゃく</td><td class="vocab-en">attachment / affection</td></tr>
+    <tr><td class="vocab-kanji">風変わりな</td><td class="vocab-reading">ふうがわりな</td><td class="vocab-en">eccentric / peculiar</td></tr>
+    <tr><td class="vocab-kanji">愛撫</td><td class="vocab-reading">あいぶ</td><td class="vocab-en">caress / tenderness</td></tr>
+    <tr><td class="vocab-kanji">生涯</td><td class="vocab-reading">しょうがい</td><td class="vocab-en">lifetime / one's whole life</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜にほかならない</strong> — nothing other than ~ / precisely because ~<br><em>理想的な逃げ道に思えたからにほかなりません</em><br>N2 emphasis — 'it was none other than because it seemed like an ideal escape.' Strong assertion.</div>
+<div class="grammar-item"><strong>〜を傾ける</strong> — to devote / to pour into ~<br><em>若い心のすべてを傾けて</em><br>Literary — 'pouring all of his young heart into.' 傾ける = to incline/tilt, figuratively to dedicate.</div>
+<div class="grammar-item"><strong>〜にわたって</strong> — over the course of ~ / throughout ~<br><em>生涯にわたって覚えていました</em><br>N2 pattern — 'remembered throughout his entire life.' Indicates duration/span.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
