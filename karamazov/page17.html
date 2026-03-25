@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カラマーゾフの兄弟 — 第一部 第一篇 第四章 — 三男のアリョーシャ p.17</title>
+  <style>
+    :root {
+      --bg: #fdf6e3;
+      --text: #2c2c2c;
+      --accent: #8b1a1a;
+      --muted: #888;
+      --border: #e0d6c0;
+      --vocab-bg: #f0e8d0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
+      line-height: 2.0;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 120px;
+    }
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+    }
+    .book-title { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 6px; text-transform: uppercase; }
+    .chapter-title { font-size: 1.45rem; color: var(--accent); font-weight: bold; margin-bottom: 4px; }
+    .chapter-sub { font-size: 0.85rem; color: var(--muted); }
+    .flip-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px; padding: 10px 16px;
+      background: var(--vocab-bg); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .lang-label { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+    .flip-btn {
+      background: var(--accent); color: white; border: none;
+      padding: 7px 18px; border-radius: 20px; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; letter-spacing: 0.03em;
+    }
+    .flip-btn:active { opacity: 0.75; }
+    .text-panel { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .text-panel p { margin-bottom: 1.5em; font-size: 1.08rem; text-align: justify; }
+    .panel-en { display: none; color: #3a3a3a; font-family: Georgia, 'Times New Roman', serif; }
+    .panel-en p { color: #333; }
+    .panel-en .en-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: -0.8em; margin-bottom: 1.4em; }
+    ruby { ruby-align: center; }
+    rt { font-size: 0.52em; color: #aaa; }
+    .tap-hint { text-align: center; font-size: 0.78rem; color: var(--muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .home-nav {
+      text-align: center; margin-top: 32px; margin-bottom: 8px;
+    }
+    .home-nav a {
+      display: inline-block; font-size: 0.8rem; color: var(--muted); text-decoration: none;
+      border: 1px solid var(--border); border-radius: 16px; padding: 5px 16px;
+      letter-spacing: 0.05em;
+    }
+    .home-nav a:active { opacity: 0.7; }
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 8px; font-size: 0.85rem; color: var(--muted); padding: 0 4px;
+    }
+    .page-nav a { color: var(--accent); text-decoration: none; }
+    .page-nav .page-num { color: var(--muted); }
+    .vocab-toggle {
+      position: fixed; bottom: 24px; right: 20px;
+      background: var(--accent); color: white; border: none;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.5rem; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.28); z-index: 100;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .vocab-panel {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      max-height: 62vh; overflow-y: auto;
+      background: var(--bg); border-top: 2px solid var(--accent);
+      padding: 18px 20px 40px; z-index: 99;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.15);
+    }
+    .vocab-panel.open { display: block; }
+    .vocab-panel h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.08em; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 18px; }
+    .vocab-table tr { border-bottom: 1px solid var(--border); }
+    .vocab-table td { padding: 8px 4px; vertical-align: top; }
+    .vocab-kanji { font-weight: bold; width: 36%; }
+    .vocab-reading { color: var(--muted); width: 28%; font-size: 0.82rem; }
+    .vocab-en { color: #555; width: 36%; }
+    .grammar-section h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.06em; }
+    .grammar-item {
+      background: var(--vocab-bg); border-radius: 8px;
+      padding: 11px 13px; margin-bottom: 10px;
+      font-size: 0.86rem; line-height: 1.65;
+    }
+    .grammar-item strong { color: var(--accent); }
+    .grammar-item em { color: #555; }
+    .close-vocab {
+      display: block; margin: 0 auto 14px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 16px; padding: 5px 18px;
+      font-size: 0.82rem; color: var(--muted);
+      cursor: pointer; font-family: inherit;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="book-title">フョードル・ドストエフスキー</div>
+  <div class="chapter-title">カラマーゾフの兄弟</div>
+  <div class="chapter-sub">第一部 第一篇 第四章 — 三男のアリョーシャ</div>
+</header>
+
+<div class="flip-bar">
+  <span class="lang-label" id="lang-label">🇯🇵 日本語</span>
+  <button class="flip-btn" id="flip-btn" onclick="toggleLang()">🇬🇧 英語に切り替え</button>
+</div>
+
+<div class="tap-hint" id="tap-hint">テキストをタップして英語に切り替え / tap text to flip</div>
+
+<div class="text-panel" onclick="toggleLang()">
+  <div class="panel-jp" id="panel-jp">
+    <p><ruby>彼<rt>かれ</rt></ruby>はある<ruby>静<rt>しず</rt></ruby>かな<ruby>夏<rt>なつ</rt></ruby>の<ruby>夕暮<rt>ゆうぐ</rt></ruby>れを<ruby>覚<rt>おぼ</rt></ruby>えていました。<ruby>開<rt>あ</rt></ruby>いた<ruby>窓<rt>まど</rt></ruby>、<ruby>斜<rt>なな</rt></ruby>めに<ruby>差<rt>さ</rt></ruby>し<ruby>込<rt>こ</rt></ruby>む<ruby>夕日<rt>ゆうひ</rt></ruby>の<ruby>光<rt>ひかり</rt></ruby>。<ruby>部屋<rt>へや</rt></ruby>の<ruby>隅<rt>すみ</rt></ruby>にある<ruby>聖像<rt>せいぞう</rt></ruby>、その<ruby>前<rt>まえ</rt></ruby>に<ruby>灯<rt>とも</rt></ruby>された<ruby>小<rt>ちい</rt></ruby>さなランプ。そして<ruby>聖像<rt>せいぞう</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>にひざまずく<ruby>母<rt>はは</rt></ruby>が、<ruby>泣<rt>な</rt></ruby>き<ruby>叫<rt>さけ</rt></ruby>びながら<ruby>彼<rt>かれ</rt></ruby>を<ruby>両腕<rt>りょううで</rt></ruby>で<ruby>抱<rt>だ</rt></ruby>きしめ、<ruby>聖母<rt>せいぼ</rt></ruby>マリアに<ruby>祈<rt>いの</rt></ruby>りを<ruby>捧<rt>ささ</rt></ruby>げている——それが<ruby>彼<rt>かれ</rt></ruby>の<ruby>記憶<rt>きおく</rt></ruby>の<ruby>絵<rt>え</rt></ruby>でした。</p>
+    <p><ruby>幼年時代<rt>ようねんじだい</rt></ruby>から<ruby>青年期<rt>せいねんき</rt></ruby>にかけて、<ruby>彼<rt>かれ</rt></ruby>は<ruby>決<rt>けっ</rt></ruby>して<ruby>感情<rt>かんじょう</rt></ruby>を<ruby>表<rt>おもて</rt></ruby>に<ruby>出<rt>だ</rt></ruby>すような<ruby>性格<rt>せいかく</rt></ruby>ではありませんでした。<ruby>口数<rt>くちかず</rt></ruby>も<ruby>少<rt>すく</rt></ruby>なかったのですが、それは<ruby>内気<rt>うちき</rt></ruby>さや<ruby>陰気<rt>いんき</rt></ruby>さからではなく、<ruby>何<rt>なに</rt></ruby>か<ruby>内面的<rt>ないめんてき</rt></ruby>な——<ruby>彼個人<rt>かれこじん</rt></ruby>にとって<ruby>非常<rt>ひじょう</rt></ruby>に<ruby>重要<rt>じゅうよう</rt></ruby>な——<ruby>思索<rt>しさく</rt></ruby>に<ruby>没頭<rt>ぼっとう</rt></ruby>していたからでした。</p>
+    <p>しかし<ruby>彼<rt>かれ</rt></ruby>は<ruby>人<rt>ひと</rt></ruby>が<ruby>好<rt>す</rt></ruby>きでした。<ruby>生涯<rt>しょうがい</rt></ruby>を<ruby>通<rt>つう</rt></ruby>じて<ruby>他人<rt>たにん</rt></ruby>を<ruby>無条件<rt>むじょうけん</rt></ruby>に<ruby>信頼<rt>しんらい</rt></ruby>しているように<ruby>見<rt>み</rt></ruby>えました。それでいて、<ruby>誰<rt>だれ</rt></ruby>も<ruby>彼<rt>かれ</rt></ruby>を<ruby>お人好<rt>ひとよ</rt></ruby>しだとか<ruby>世間知<rt>せけんし</rt></ruby>らずだとは<ruby>思<rt>おも</rt></ruby>いませんでした。</p>
+    <p><ruby>彼<rt>かれ</rt></ruby>には<ruby>何<rt>なに</rt></ruby>か——<ruby>人<rt>ひと</rt></ruby>を<ruby>裁<rt>さば</rt></ruby>くことを<ruby>決<rt>けっ</rt></ruby>して<ruby>引<rt>ひ</rt></ruby>き<ruby>受<rt>う</rt></ruby>けようとしない<ruby>何<rt>なに</rt></ruby>かがありました。<ruby>誰<rt>だれ</rt></ruby>のことも<ruby>非難<rt>ひなん</rt></ruby>せず、すべてを<ruby>受<rt>う</rt></ruby>け<ruby>入<rt>い</rt></ruby>れるのです。しばしば<ruby>深<rt>ふか</rt></ruby>く<ruby>悲<rt>かな</rt></ruby>しみながらも。</p>
+  </div>
+  <div class="panel-en" id="panel-en">
+    <p>He remembered one still summer evening, an open window, the slanting rays of the setting sun. In a corner of the room the holy image, before it a lighted lamp, and on her knees before the image his mother, sobbing hysterically, snatching him up in both arms and praying for him to the Mother of God — that was the picture in his memory.</p>
+    <p>In his childhood and youth he was by no means expansive, and talked little indeed, but not from shyness or sullen unsociability; quite the contrary — from a sort of inner preoccupation, entirely personal and of great importance to him.</p>
+    <p>But he was fond of people: he seemed throughout his life to put implicit trust in others, yet no one ever looked on him as a simpleton or naïve person.</p>
+    <p>There was something about him which made one feel that he would never take it upon himself to judge others — that he would never condemn anyone for anything. He seemed to accept everything without the least condemnation, though often grieving bitterly.</p>
+  </div>
+</div>
+
+<div class="home-nav">
+  <a href="/shinbun/">🏠 しんぶん Home</a>
+  <a href="/shinbun/karamazov/">📖 目次</a>
+</div>
+<div class="page-nav">
+  <a href="page16.html">← 前のページ</a>
+  <span class="page-num">p. 17 / 20</span>
+  <a href="page18.html">次のページ →</a>
+</div>
+
+<button class="vocab-toggle" onclick="toggleVocab()" title="語彙を開く">📖</button>
+
+<div class="vocab-panel" id="vocab-panel">
+  <button class="close-vocab" onclick="toggleVocab()">✕ 閉じる</button>
+  <h3>📖 語彙チートシート — Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><td class="vocab-kanji">夕暮れ</td><td class="vocab-reading">ゆうぐれ</td><td class="vocab-en">dusk / twilight</td></tr>
+    <tr><td class="vocab-kanji">聖像</td><td class="vocab-reading">せいぞう</td><td class="vocab-en">icon / holy image</td></tr>
+    <tr><td class="vocab-kanji">聖母</td><td class="vocab-reading">せいぼ</td><td class="vocab-en">Holy Mother (Virgin Mary)</td></tr>
+    <tr><td class="vocab-kanji">幼年時代</td><td class="vocab-reading">ようねんじだい</td><td class="vocab-en">early childhood</td></tr>
+    <tr><td class="vocab-kanji">内気な</td><td class="vocab-reading">うちきな</td><td class="vocab-en">shy / introverted</td></tr>
+    <tr><td class="vocab-kanji">思索</td><td class="vocab-reading">しさく</td><td class="vocab-en">contemplation / thought</td></tr>
+    <tr><td class="vocab-kanji">没頭する</td><td class="vocab-reading">ぼっとうする</td><td class="vocab-en">to be absorbed in</td></tr>
+    <tr><td class="vocab-kanji">無条件に</td><td class="vocab-reading">むじょうけんに</td><td class="vocab-en">unconditionally</td></tr>
+    <tr><td class="vocab-kanji">お人好し</td><td class="vocab-reading">おひとよし</td><td class="vocab-en">good-natured fool / pushover</td></tr>
+    <tr><td class="vocab-kanji">非難する</td><td class="vocab-reading">ひなんする</td><td class="vocab-en">to criticize / to condemn</td></tr>
+  </table>
+  <div class="grammar-section">
+    <h4>🗒 文法メモ — Grammar Notes</h4>
+<div class="grammar-item"><strong>〜にかけて</strong> — from ~ through to ~ / spanning ~<br><em>幼年時代から青年期にかけて</em><br>N2 time span — 'from childhood through to youth.' Indicates a period stretching between two points.</div>
+<div class="grammar-item"><strong>それでいて</strong> — and yet / despite that<br><em>それでいて、誰も彼をお人好しだとは思いませんでした</em><br>Conjunctive — introduces a surprising contrast. 'And yet, nobody thought him a fool.'</div>
+<div class="grammar-item"><strong>〜ようとしない</strong> — refuses to ~ / will not ~<br><em>人を裁くことを決して引き受けようとしない</em><br>N2 volitional + しない — expresses persistent refusal or unwillingness.</div>
+  </div>
+</div>
+
+<script>
+  let isJP = true;
+  function toggleLang() {
+    isJP = !isJP;
+    document.getElementById('panel-jp').style.display = isJP ? 'block' : 'none';
+    document.getElementById('panel-en').style.display = isJP ? 'none' : 'block';
+    document.getElementById('lang-label').textContent = isJP ? '🇯🇵 日本語' : '🇬🇧 English';
+    document.getElementById('flip-btn').textContent = isJP ? '🇬🇧 英語に切り替え' : '🇯🇵 日本語に切り替え';
+    document.getElementById('tap-hint').textContent = isJP
+      ? 'テキストをタップして英語に切り替え / tap text to flip'
+      : 'Tap text to return to Japanese / タップで日本語へ';
+  }
+  function toggleVocab() {
+    document.getElementById('vocab-panel').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
