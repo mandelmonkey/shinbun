@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年3月29日（日曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年3月29日（日曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イラン<ruby>紛争<rt>ふんそう</rt></ruby><ruby>一ヶ月<rt>いっかげつ</rt></ruby>、トランプ<ruby>氏<rt>し</rt></ruby>の<ruby>直感<rt>ちょっかん</rt></ruby><ruby>戦略<rt>せんりゃく</rt></ruby>に<ruby>限界<rt>げんかい</rt></ruby></h2>
+              <p class="body"><ruby>米国<rt>べいこく</rt></ruby>とイランの<ruby>紛争<rt>ふんそう</rt></ruby>が<ruby>開始<rt>かいし</rt></ruby>から<ruby>一ヶ月<rt>いっかげつ</rt></ruby>を<ruby>迎え<rt>むかえ</rt></ruby>た。BBCの<ruby>分析<rt>ぶんせき</rt></ruby>によると、トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>の<ruby>直感<rt>ちょっかん</rt></ruby>に<ruby>基づ<rt>もとづ</rt></ruby>く<ruby>戦争<rt>せんそう</rt></ruby><ruby>指揮<rt>しき</rt></ruby>は<ruby>効果<rt>こうか</rt></ruby>を<ruby>上げ<rt>あげ</rt></ruby>ていない。<ruby>出口<rt>でぐち</rt></ruby><ruby>戦略<rt>せんりゃく</rt></ruby>が<ruby>見え<rt>みえ</rt></ruby>ない<ruby>中<rt>なか</rt></ruby>、<ruby>国内外<rt>こくないがい</rt></ruby>で<ruby>批判<rt>ひはん</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>っている。<ruby>米国内<rt>べいこくない</rt></ruby>では「No Kings」と<ruby>題し<rt>だいし</rt></ruby>た<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>反戦<rt>はんせん</rt></ruby><ruby>抗議運動<rt>こうぎうんどう</rt></ruby>が<ruby>全米<rt>ぜんべい</rt></ruby>で<ruby>展開<rt>てんかい</rt></ruby>され、ミネソタ<ruby>州<rt>しゅう</rt></ruby>ではブルース・スプリングスティーンが<ruby>抗議<rt>こうぎ</rt></ruby><ruby>集会<rt>しゅうかい</rt></ruby>でライブを<ruby>行った<rt>いった</rt></ruby>。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">One month into Iran conflict, Trump's instinct-based strategy shows its limits</h2>
+              <p class="body en-body">The US conflict with Iran has reached the one-month mark, with BBC analysis suggesting that President Trump's gut-instinct approach to the war is proving ineffective. With no exit strategy in sight, criticism is mounting both domestically and internationally. Across the US, large-scale 'No Kings' anti-war protests have taken place, with Bruce Springsteen performing at a rally in Minnesota.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby><ruby>危機<rt>きき</rt></ruby>、<ruby>食品<rt>しょくひん</rt></ruby>・<ruby>医薬品<rt>いやくひん</rt></ruby>・<ruby>電子機器<rt>でんしきき</rt></ruby>に<ruby>波及<rt>はきゅう</rt></ruby>か</h2>
+              <p class="body">フーシ<ruby>派<rt>は</rt></ruby>による<ruby>紅海<rt>こうかい</rt></ruby>への<ruby>脅威<rt>きょうい</rt></ruby>に<ruby>加え<rt>くわえ</rt></ruby>、ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>の<ruby>封鎖<rt>ふうさ</rt></ruby>が<ruby>長引け<rt>ながびけ</rt></ruby>ば、<ruby>食品<rt>しょくひん</rt></ruby>、<ruby>医薬品<rt>いやくひん</rt></ruby>、スマートフォンなど<ruby>広範<rt>こうはん</rt></ruby>な<ruby>商品<rt>しょうひん</rt></ruby>の<ruby>価格<rt>かかく</rt></ruby><ruby>高騰<rt>こうとう</rt></ruby>が<ruby>避け<rt>さけ</rt></ruby>られない<ruby>状況<rt>じょうきょう</rt></ruby>だ。<ruby>世界<rt>せかい</rt></ruby>の<ruby>原油<rt>げんゆ</rt></ruby><ruby>輸送<rt>ゆそう</rt></ruby>の<ruby>約<rt>やく</rt></ruby><ruby>二割<rt>にわり</rt></ruby>がホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>を<ruby>通過<rt>つうか</rt></ruby>しており、<ruby>供給<rt>きょうきゅう</rt></ruby><ruby>網<rt>あみ</rt></ruby>への<ruby>影響<rt>えいきょう</rt></ruby>は<ruby>甚大<rt>じんだい</rt></ruby>である。<ruby>物流<rt>ぶつりゅう</rt></ruby>の<ruby>専門家<rt>せんもんか</rt></ruby>は、<ruby>代替<rt>だいたい</rt></ruby>ルートの<ruby>確保<rt>かくほ</rt></ruby>に<ruby>数ヶ月<rt>すうかげつ</rt></ruby>を<ruby>要す<rt>ようす</rt></ruby>ると<ruby>警告し<rt>けいこくし</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Hormuz Strait crisis threatens food, medicine and electronics supply chains</h2>
+              <p class="body en-body">Beyond the Houthi threat to Red Sea shipping, a prolonged closure of the Strait of Hormuz could drive up prices on everything from food and medicine to smartphones. Roughly a fifth of the world's oil passes through the strait, making the supply chain impact potentially severe. Logistics experts warn it could take months to secure alternative routes.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英国<rt>えいこく</rt></ruby>ガソリン150ペンス<ruby>突破<rt>とっぱ</rt></ruby>、<ruby>消費者<rt>しょうひしゃ</rt></ruby><ruby>信頼感<rt>しんらいかん</rt></ruby>も<ruby>急落<rt>きゅうらく</rt></ruby></h2>
+              <p class="body"><ruby>中東<rt>ちゅうとう</rt></ruby><ruby>紛争<rt>ふんそう</rt></ruby>の<ruby>影響<rt>えいきょう</rt></ruby>で<ruby>英国<rt>えいこく</rt></ruby>のガソリン<ruby>価格<rt>かかく</rt></ruby>がリッター150ペンスを<ruby>超え<rt>こえ</rt></ruby>、イースター<ruby>休暇<rt>きゅうか</rt></ruby><ruby>前<rt>まえ</rt></ruby>のドライバーに<ruby>打撃<rt>だげき</rt></ruby>を<ruby>与え<rt>あたえ</rt></ruby>ている。アスダの<ruby>最高<rt>さいこう</rt></ruby><ruby>経営<rt>けいえい</rt></ruby><ruby>責任者<rt>せきにんしゃ</rt></ruby>は<ruby>不当<rt>ふとう</rt></ruby><ruby>利益<rt>りえき</rt></ruby>の<ruby>指摘<rt>してき</rt></ruby>を<ruby>否定<rt>ひてい</rt></ruby>した。<ruby>一方<rt>いっぽう</rt></ruby>、GfKの<ruby>調査<rt>ちょうさ</rt></ruby>では<ruby>消費者<rt>しょうひしゃ</rt></ruby><ruby>信頼感<rt>しんらいかん</rt></ruby><ruby>指数<rt>しすう</rt></ruby>が<ruby>低下<rt>ていか</rt></ruby>し、イラン<ruby>戦争<rt>せんそう</rt></ruby>の「<ruby>恐怖<rt>きょうふ</rt></ruby>の<ruby>波紋<rt>はもん</rt></ruby>」が<ruby>英国<rt>えいこく</rt></ruby><ruby>経済<rt>けいざい</rt></ruby><ruby>全体<rt>ぜんたい</rt></ruby>に<ruby>広が<rt>ひろが</rt></ruby>っていることが<ruby>明らか<rt>あきらか</rt></ruby>になった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK petrol tops 150p per litre as consumer confidence drops sharply</h2>
+              <p class="body en-body">Petrol prices in the UK have surpassed 150p per litre due to the Middle East conflict, hitting motorists ahead of the Easter break. Asda's chief executive rejected claims of profiteering. Meanwhile, a GfK survey revealed falling consumer confidence, with a 'ripple of fear' from the Iran war spreading across the broader UK economy.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日本大<rt>にほんだい</rt></ruby><ruby>手<rt>て</rt></ruby><ruby>海運<rt>かいうん</rt></ruby>、ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby><ruby>航行<rt>こうこう</rt></ruby>を<ruby>全面<rt>ぜんめん</rt></ruby><ruby>停止<rt>ていし</rt></ruby></h2>
+              <p class="body"><ruby>日本<rt>にっぽん</rt></ruby>の<ruby>大手<rt>おおて</rt></ruby><ruby>海運<rt>かいうん</rt></ruby><ruby>会社<rt>かいしゃ</rt></ruby>がホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>の<ruby>航行<rt>こうこう</rt></ruby>を<ruby>全面的<rt>ぜんめんてき</rt></ruby>に<ruby>停止<rt>ていし</rt></ruby>した。<ruby>日本<rt>にっぽん</rt></ruby>は<ruby>原油<rt>げんゆ</rt></ruby><ruby>輸入<rt>ゆにゅう</rt></ruby>の<ruby>九割以上<rt>きゅうわりいじょう</rt></ruby>を<ruby>中東地域<rt>ちゅうとうちいき</rt></ruby>に<ruby>依存<rt>いぞん</rt></ruby>しており、<ruby>供給<rt>きょうきゅう</rt></ruby>の<ruby>長期的<rt>ちょうきてき</rt></ruby>な<ruby>途絶<rt>とぜつ</rt></ruby>は<ruby>経済<rt>けいざい</rt></ruby>に<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>及ぼ<rt>およぼ</rt></ruby>す<ruby>恐れ<rt>おそれ</rt></ruby>がある。<ruby>政府<rt>せいふ</rt></ruby>は<ruby>戦略的<rt>せんりゃくてき</rt></ruby><ruby>石油<rt>せきゆ</rt></ruby><ruby>備蓄<rt>びちく</rt></ruby>の<ruby>放出<rt>ほうしゅつ</rt></ruby>を<ruby>含む<rt>ふくむ</rt></ruby><ruby>対応策<rt>たいおうさく</rt></ruby>を<ruby>検討し<rt>けんとうし</rt></ruby>ているとされる。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan's major shipping firms halt all Hormuz Strait transit</h2>
+              <p class="body en-body">Japan's largest shipping companies have fully suspended transit through the Strait of Hormuz. With over 90% of Japan's crude oil imports coming from the Middle East, a prolonged disruption could have severe economic consequences. The government is reportedly considering countermeasures including the release of strategic petroleum reserves.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>前日<rt>ぜんじつ</rt></ruby><ruby>銀<rt>ぎん</rt></ruby><ruby>総裁<rt>そうさい</rt></ruby><ruby>黒田<rt>くろだ</rt></ruby><ruby>氏<rt>し</rt></ruby>、「<ruby>利上げ<rt>りあげ</rt></ruby>1.5%まで<ruby>問題<rt>もんだい</rt></ruby>なし」</h2>
+              <p class="body"><ruby>前日<rt>ぜんじつ</rt></ruby><ruby>本<rt>ほん</rt></ruby><ruby>銀行<rt>ぎんこう</rt></ruby><ruby>総裁<rt>そうさい</rt></ruby>の<ruby>黒田<rt>くろだ</rt></ruby><ruby>春彦<rt>はるひこ</rt></ruby><ruby>氏<rt>し</rt></ruby>が<ruby>朝日新聞<rt>あさひしんぶん</rt></ruby>のインタビューで、<ruby>今後<rt>こんご</rt></ruby><ruby>二年間<rt>にねんかん</rt></ruby>であと<ruby>三<rt>さん</rt></ruby>〜<ruby>四<rt>し</rt></ruby><ruby>回<rt>かい</rt></ruby>の<ruby>利上げ<rt>りあげ</rt></ruby>が<ruby>可能<rt>かのう</rt></ruby>だとの<ruby>見解<rt>けんかい</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。<ruby>現在<rt>げんざい</rt></ruby>の<ruby>基準<rt>きじゅん</rt></ruby><ruby>金利<rt>きんり</rt></ruby>は0.75パーセントだが、1.5パーセントまで<ruby>引き上げ<rt>ひきあげ</rt></ruby>ても<ruby>日本経済<rt>にほんけいざい</rt></ruby>への<ruby>悪影響<rt>あくえいきょう</rt></ruby>はないと<ruby>述べ<rt>のべ</rt></ruby>た。<ruby>黒田<rt>くろだ</rt></ruby><ruby>氏<rt>し</rt></ruby>はデフレの<ruby>時代<rt>じだい</rt></ruby>は<ruby>完全<rt>かんぜん</rt></ruby>に<ruby>終わ<rt>おわ</rt></ruby>ったと<ruby>強調<rt>きょうちょう</rt></ruby>し、タカイチ<ruby>政権<rt>せいけん</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby><ruby>財政支出<rt>ざいせいししゅつ</rt></ruby>の<ruby>拡大<rt>かくだい</rt></ruby>を<ruby>控え<rt>ひかえ</rt></ruby>るよう<ruby>求め<rt>もとめ</rt></ruby>た。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Ex-BOJ Governor Kuroda: 'No problem' raising rates to 1.5%</h2>
+              <p class="body en-body">Former Bank of Japan Governor Haruhiko Kuroda told the Asahi Shimbun that three to four more rate hikes over the next two years are feasible. With the benchmark rate currently at 0.75%, Kuroda said raising it to 1.5% would not harm the Japanese economy. He emphasised that the era of deflation is definitively over, and urged the Takaichi government to exercise restraint in fiscal spending.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>氏<rt>し</rt></ruby>「<ruby>真珠湾<rt>しんじゅわん</rt></ruby>」<ruby>発言<rt>はつげん</rt></ruby>、<ruby>日本国内<rt>にほんこくない</rt></ruby>に<ruby>動揺<rt>どうよう</rt></ruby><ruby>広が<rt>ひろが</rt></ruby>る</h2>
+              <p class="body">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>がタカイチ<ruby>首相<rt>しゅしょう</rt></ruby>との<ruby>会談<rt>かいだん</rt></ruby><ruby>中<rt>なか</rt></ruby>、イラン<ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>正当化<rt>せいとうか</rt></ruby>する<ruby>際に<rt>さいに</rt></ruby>「サプライズのことを<ruby>一番<rt>いちばん</rt></ruby>よく<ruby>知って<rt>しって</rt></ruby>いるのは<ruby>日本<rt>にっぽん</rt></ruby>だろう」と<ruby>真珠湾攻撃<rt>しんじゅわんこうげき</rt></ruby>に<ruby>言及<rt>げんきゅう</rt></ruby>し、<ruby>日本国内<rt>にほんこくない</rt></ruby>で<ruby>大き<rt>おおき</rt></ruby>な<ruby>動揺<rt>どうよう</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。タカイチ<ruby>首相<rt>しゅしょう</rt></ruby>は<ruby>憲法<rt>けんぽう</rt></ruby><ruby>九条<rt>きゅうじょう</rt></ruby>の<ruby>制約<rt>せいやく</rt></ruby>を<ruby>説明し<rt>せつめいし</rt></ruby>つつ<ruby>外交的<rt>がいこうてき</rt></ruby>に<ruby>対処<rt>たいしょ</rt></ruby>したが、<ruby>歴史的<rt>れきしてき</rt></ruby><ruby>引用<rt>いんよう</rt></ruby>の<ruby>仕方<rt>しかた</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>批判<rt>ひはん</rt></ruby>の<ruby>声<rt>こえ</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Trump's Pearl Harbor remark sparks unease across Japan</h2>
+              <p class="body en-body">President Trump's reference to Pearl Harbor during his meeting with Prime Minister Takaichi — saying 'Who knows surprise better than Japan?' while defending the Iran strikes — has caused widespread unease in Japan. While Takaichi managed the diplomatic situation by explaining the constraints of Article 9, criticism of Trump's use of the historical reference continues to grow.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-03-29 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "紛争", "reading": "ふんそう", "english": "conflict; dispute"}, {"word": "直感", "reading": "ちょっかん", "english": "intuition; instinct"}, {"word": "出口戦略", "reading": "でぐちせんりゃく", "english": "exit strategy"}, {"word": "抗議運動", "reading": "こうぎうんどう", "english": "protest movement"}, {"word": "展開", "reading": "てんかい", "english": "development; deployment"}], [{"word": "封鎖", "reading": "ふうさ", "english": "blockade; closure"}, {"word": "価格高騰", "reading": "かかくこうとう", "english": "price surge"}, {"word": "供給網", "reading": "きょうきゅうもう", "english": "supply chain; supply network"}, {"word": "甚大", "reading": "じんだい", "english": "enormous; immense"}, {"word": "代替ルート", "reading": "だいたいルート", "english": "alternative route"}], [{"word": "不当利益", "reading": "ふとうりえき", "english": "profiteering; unfair profit"}, {"word": "最高経営責任者", "reading": "さいこうけいえいせきにんしゃ", "english": "chief executive officer (CEO)"}, {"word": "信頼感指数", "reading": "しんらいかんしすう", "english": "confidence index"}, {"word": "波紋", "reading": "はもん", "english": "ripple; repercussion"}], [{"word": "海運", "reading": "かいうん", "english": "maritime shipping"}, {"word": "航行", "reading": "こうこう", "english": "navigation; sailing"}, {"word": "途絶", "reading": "とぜつ", "english": "interruption; severance"}, {"word": "石油備蓄", "reading": "せきゆびちく", "english": "petroleum reserves"}, {"word": "放出", "reading": "ほうしゅつ", "english": "release; discharge"}], [{"word": "利上げ", "reading": "りあげ", "english": "interest rate hike"}, {"word": "基準金利", "reading": "きじゅんきんり", "english": "benchmark interest rate"}, {"word": "見解", "reading": "けんかい", "english": "opinion; view"}, {"word": "財政支出", "reading": "ざいせいししゅつ", "english": "fiscal spending"}, {"word": "デフレ", "reading": "デフレ", "english": "deflation"}], [{"word": "動揺", "reading": "どうよう", "english": "unrest; agitation"}, {"word": "正当化", "reading": "せいとうか", "english": "justification"}, {"word": "言及", "reading": "げんきゅう", "english": "reference; mention"}, {"word": "憲法九条", "reading": "けんぽうきゅうじょう", "english": "Article 9 of the Constitution"}, {"word": "外交的", "reading": "がいこうてき", "english": "diplomatic"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "イラン紛争一ヶ月、トランプ氏の直感戦略に限界"}, {"section": "英国・世界", "headline": "ホルムズ海峡危機、食品・医薬品・電子機器に波及か"}, {"section": "英国・世界", "headline": "英国ガソリン150ペンス突破、消費者信頼感も急落"}, {"section": "日本", "headline": "日本大手海運、ホルムズ海峡航行を全面停止"}, {"section": "日本", "headline": "前日銀総裁黒田氏、「利上げ1.5%まで問題なし」"}, {"section": "日本", "headline": "トランプ氏「真珠湾」発言、日本国内に動揺広がる"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
