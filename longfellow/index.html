@@ -164,10 +164,11 @@
     <div id="transcript"></div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/vapi.umd.min.js"></script>
-  <script>
+  <script type="module">
+    import Vapi from 'https://esm.sh/@vapi-ai/web@2.5.2';
+
     // ── CONFIG ──────────────────────────────────────────────
-    const PIN = '1889';  // Kipling's "If" was published 1895, but 1889 is when he returned to London
+    const PIN = '1889';
     const VAPI_PUBLIC_KEY = '383df668-1ca5-4daf-9957-f131d2f19436';
     const ASSISTANT_ID = '807f3ed2-8d3e-41ce-99c2-ab95f152e586';
     // ────────────────────────────────────────────────────────
@@ -177,20 +178,20 @@
     let isInCall = false;
 
     // PIN logic
-    function addPin(n) {
+    window.addPin = function(n) {
       if (pinEntry.length >= 4) return;
       pinEntry += n;
       updateDots();
       if (pinEntry.length === 4) {
         setTimeout(checkPin, 200);
       }
-    }
+    };
 
-    function delPin() {
+    window.delPin = function() {
       pinEntry = pinEntry.slice(0, -1);
       updateDots();
       document.getElementById('pin-error').textContent = '';
-    }
+    };
 
     function updateDots() {
       const dots = document.querySelectorAll('.pin-dot');
@@ -206,14 +207,13 @@
         document.getElementById('pin-error').textContent = 'Incorrect PIN';
         pinEntry = '';
         updateDots();
-        // Vibrate if available
         if (navigator.vibrate) navigator.vibrate(200);
       }
     }
 
     // Vapi logic
     function initVapi() {
-      vapi = new window.Vapi(VAPI_PUBLIC_KEY);
+      vapi = new Vapi(VAPI_PUBLIC_KEY);
 
       vapi.on('call-start', () => {
         isInCall = true;
@@ -254,7 +254,7 @@
       });
     }
 
-    function toggleCall() {
+    window.toggleCall = function() {
       if (!vapi) return;
       if (isInCall) {
         vapi.stop();
@@ -263,7 +263,7 @@
         document.getElementById('transcript').innerHTML = '';
         vapi.start(ASSISTANT_ID);
       }
-    }
+    };
   </script>
 </body>
 </html>
