@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#1a1a2e">
+  <link rel="manifest" href="manifest.json">
+  <title>Longfellow</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* PIN Screen */
+    #pin-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    #pin-screen h1 { font-size: 28px; color: #c4a35a; }
+    #pin-screen .subtitle { font-size: 14px; color: #888; }
+    #pin-dots {
+      display: flex;
+      gap: 16px;
+      margin: 12px 0;
+    }
+    .pin-dot {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      border: 2px solid #c4a35a;
+      background: transparent;
+      transition: background 0.15s;
+    }
+    .pin-dot.filled { background: #c4a35a; }
+    #pin-error {
+      color: #e74c3c;
+      font-size: 14px;
+      height: 20px;
+    }
+    .pin-pad {
+      display: grid;
+      grid-template-columns: repeat(3, 80px);
+      gap: 12px;
+    }
+    .pin-btn {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      border: 1px solid #333;
+      background: #16213e;
+      color: #e0e0e0;
+      font-size: 28px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.1s;
+    }
+    .pin-btn:active { background: #c4a35a; color: #1a1a2e; }
+    .pin-btn.empty { visibility: hidden; }
+    .pin-btn.backspace { font-size: 20px; }
+
+    /* Call Screen */
+    #call-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      text-align: center;
+    }
+    #call-screen h1 { font-size: 32px; color: #c4a35a; }
+    #status {
+      font-size: 16px;
+      color: #888;
+      min-height: 24px;
+    }
+    #call-btn {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: none;
+      background: #27ae60;
+      color: white;
+      font-size: 48px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #call-btn:active { transform: scale(0.95); }
+    #call-btn.active {
+      background: #e74c3c;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(231,76,60,0.4); }
+      50% { box-shadow: 0 0 0 20px rgba(231,76,60,0); }
+    }
+    #transcript {
+      width: 90%;
+      max-width: 400px;
+      height: 120px;
+      overflow-y: auto;
+      font-size: 14px;
+      color: #aaa;
+      text-align: left;
+      padding: 12px;
+      background: #16213e;
+      border-radius: 12px;
+      line-height: 1.5;
+    }
+    .emoji { font-size: 64px; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <!-- PIN Screen -->
+  <div id="pin-screen">
+    <div class="emoji">🎩</div>
+    <h1>Longfellow</h1>
+    <div class="subtitle">Enter PIN to connect</div>
+    <div id="pin-dots">
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+      <div class="pin-dot"></div>
+    </div>
+    <div id="pin-error"></div>
+    <div class="pin-pad">
+      <button class="pin-btn" onclick="addPin('1')">1</button>
+      <button class="pin-btn" onclick="addPin('2')">2</button>
+      <button class="pin-btn" onclick="addPin('3')">3</button>
+      <button class="pin-btn" onclick="addPin('4')">4</button>
+      <button class="pin-btn" onclick="addPin('5')">5</button>
+      <button class="pin-btn" onclick="addPin('6')">6</button>
+      <button class="pin-btn" onclick="addPin('7')">7</button>
+      <button class="pin-btn" onclick="addPin('8')">8</button>
+      <button class="pin-btn" onclick="addPin('9')">9</button>
+      <button class="pin-btn empty"></button>
+      <button class="pin-btn" onclick="addPin('0')">0</button>
+      <button class="pin-btn backspace" onclick="delPin()">⌫</button>
+    </div>
+  </div>
+
+  <!-- Call Screen -->
+  <div id="call-screen">
+    <div class="emoji">🎩</div>
+    <h1>Longfellow</h1>
+    <div id="status">Tap to call</div>
+    <button id="call-btn" onclick="toggleCall()">📞</button>
+    <div id="transcript"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/vapi.umd.min.js"></script>
+  <script>
+    // ── CONFIG ──────────────────────────────────────────────
+    const PIN = '1889';  // Kipling's "If" was published 1895, but 1889 is when he returned to London
+    const VAPI_PUBLIC_KEY = 'd7f9b1cf-6a81-4492-9a41-35999091c4c0';
+    const ASSISTANT_ID = '807f3ed2-8d3e-41ce-99c2-ab95f152e586';
+    // ────────────────────────────────────────────────────────
+
+    let pinEntry = '';
+    let vapi = null;
+    let isInCall = false;
+
+    // PIN logic
+    function addPin(n) {
+      if (pinEntry.length >= 4) return;
+      pinEntry += n;
+      updateDots();
+      if (pinEntry.length === 4) {
+        setTimeout(checkPin, 200);
+      }
+    }
+
+    function delPin() {
+      pinEntry = pinEntry.slice(0, -1);
+      updateDots();
+      document.getElementById('pin-error').textContent = '';
+    }
+
+    function updateDots() {
+      const dots = document.querySelectorAll('.pin-dot');
+      dots.forEach((d, i) => d.classList.toggle('filled', i < pinEntry.length));
+    }
+
+    function checkPin() {
+      if (pinEntry === PIN) {
+        document.getElementById('pin-screen').style.display = 'none';
+        document.getElementById('call-screen').style.display = 'flex';
+        initVapi();
+      } else {
+        document.getElementById('pin-error').textContent = 'Incorrect PIN';
+        pinEntry = '';
+        updateDots();
+        // Vibrate if available
+        if (navigator.vibrate) navigator.vibrate(200);
+      }
+    }
+
+    // Vapi logic
+    function initVapi() {
+      vapi = new window.Vapi(VAPI_PUBLIC_KEY);
+
+      vapi.on('call-start', () => {
+        isInCall = true;
+        document.getElementById('call-btn').classList.add('active');
+        document.getElementById('call-btn').textContent = '🔴';
+        document.getElementById('status').textContent = 'Connected';
+      });
+
+      vapi.on('call-end', () => {
+        isInCall = false;
+        document.getElementById('call-btn').classList.remove('active');
+        document.getElementById('call-btn').textContent = '📞';
+        document.getElementById('status').textContent = 'Call ended — tap to call again';
+      });
+
+      vapi.on('speech-start', () => {
+        document.getElementById('status').textContent = 'Longfellow is speaking...';
+      });
+
+      vapi.on('speech-end', () => {
+        document.getElementById('status').textContent = 'Listening...';
+      });
+
+      vapi.on('message', (msg) => {
+        if (msg.type === 'transcript' && msg.transcript) {
+          const el = document.getElementById('transcript');
+          const role = msg.role === 'assistant' ? '🎩' : '🗣️';
+          el.innerHTML += `<div>${role} ${msg.transcript}</div>`;
+          el.scrollTop = el.scrollHeight;
+        }
+      });
+
+      vapi.on('error', (e) => {
+        document.getElementById('status').textContent = 'Error: ' + (e.message || 'Connection failed');
+        isInCall = false;
+        document.getElementById('call-btn').classList.remove('active');
+        document.getElementById('call-btn').textContent = '📞';
+      });
+    }
+
+    function toggleCall() {
+      if (!vapi) return;
+      if (isInCall) {
+        vapi.stop();
+      } else {
+        document.getElementById('status').textContent = 'Connecting...';
+        document.getElementById('transcript').innerHTML = '';
+        vapi.start(ASSISTANT_ID);
+      }
+    }
+  </script>
+</body>
+</html>
