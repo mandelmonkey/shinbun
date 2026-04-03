@@ -165,7 +165,7 @@
     <div id="transcript"></div>
   </div>
 
-  <div id="version">v4</div>
+  <div id="version">v5</div>
   <script src="vapi-bundle.js"></script>
   <script>
 
@@ -228,12 +228,10 @@
       clearKeepalive();
       keepaliveTimer = setTimeout(() => {
         if (!isInCall || !vapi) return;
-        try {
-          document.getElementById('status').textContent = 'Keeping the line warm...';
-          vapi.say('One moment, I am still thinking.', false, true, true);
-        } catch (e) {
-          console.warn('Keepalive say failed', e);
-        }
+        // Only update UI status; do NOT call vapi.say() as it conflicts
+        // with the SSE response from the webhook. The webhook sends SSE
+        // comment keepalives to keep the connection alive instead.
+        document.getElementById('status').textContent = 'Thinking...';
       }, 8000);
     }
 
