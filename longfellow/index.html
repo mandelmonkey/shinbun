@@ -165,7 +165,7 @@
     <div id="transcript"></div>
   </div>
 
-  <div id="version">v3</div>
+  <div id="version">v4</div>
   <script src="vapi-bundle.js"></script>
   <script>
 
@@ -214,11 +214,35 @@
     }
 
     // Vapi logic
+    let keepaliveTimer = null;
+    let lastUserTranscriptAt = 0;
+
+    function clearKeepalive() {
+      if (keepaliveTimer) {
+        clearTimeout(keepaliveTimer);
+        keepaliveTimer = null;
+      }
+    }
+
+    function scheduleKeepalive() {
+      clearKeepalive();
+      keepaliveTimer = setTimeout(() => {
+        if (!isInCall || !vapi) return;
+        try {
+          document.getElementById('status').textContent = 'Keeping the line warm...';
+          vapi.say('One moment, I am still thinking.', false, true, true);
+        } catch (e) {
+          console.warn('Keepalive say failed', e);
+        }
+      }, 8000);
+    }
+
     function initVapi() {
       vapi = new window.Vapi(VAPI_PUBLIC_KEY);
 
       vapi.on('call-start', () => {
         isInCall = true;
+        clearKeepalive();
         document.getElementById('call-btn').classList.add('active');
         document.getElementById('call-btn').textContent = '🔴';
         document.getElementById('status').textContent = 'Connected';
@@ -226,12 +250,14 @@
 
       vapi.on('call-end', () => {
         isInCall = false;
+        clearKeepalive();
         document.getElementById('call-btn').classList.remove('active');
         document.getElementById('call-btn').textContent = '📞';
         document.getElementById('status').textContent = 'Call ended — tap to call again';
       });
 
       vapi.on('speech-start', () => {
+        clearKeepalive();
         document.getElementById('status').textContent = 'Longfellow is speaking...';
       });
 
@@ -245,6 +271,14 @@
           const role = msg.role === 'assistant' ? '🎩' : '🗣️';
           el.innerHTML += `<div>${role} ${msg.transcript}</div>`;
           el.scrollTop = el.scrollHeight;
+
+          if (msg.role === 'user') {
+            lastUserTranscriptAt = Date.now();
+            document.getElementById('status').textContent = 'Thinking...';
+            scheduleKeepalive();
+          } else if (msg.role === 'assistant') {
+            clearKeepalive();
+          }
         }
       });
 
