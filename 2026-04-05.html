@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年4月5日（日曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年4月5日（日曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米軍機<rt>べいぐんき</rt></ruby><ruby>乗員<rt>じょういん</rt></ruby>をイランで<ruby>救出<rt>きゅうしゅつ</rt></ruby></h2>
+              <p class="body">イラン<ruby>南部<rt>なんぶ</rt></ruby>で<ruby>撃墜<rt>げきつい</rt></ruby>された<ruby>米軍<rt>べいぐん</rt></ruby><ruby>戦闘機<rt>せんとうき</rt></ruby>をめぐり、<ruby>行方不明<rt>ゆくえふめい</rt></ruby>となっていた<ruby>乗組員<rt>のりくみいん</rt></ruby>の<ruby>救出<rt>きゅうしゅつ</rt></ruby>が<ruby>発表<rt>はっぴょう</rt></ruby>された。<ruby>人命<rt>じんめい</rt></ruby><ruby>救助<rt>きゅうじょ</rt></ruby>は<ruby>前進<rt>ぜんしん</rt></ruby>したものの、<ruby>地域<rt>ちいき</rt></ruby>の<ruby>軍事的<rt>ぐんじてき</rt></ruby><ruby>緊張<rt>きんちょう</rt></ruby>はなお<ruby>高く<rt>たかく</rt></ruby>、<ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby>の<ruby>先行き<rt>さきゆき</rt></ruby>には<ruby>不透明感<rt>ふとうめいかん</rt></ruby>が<ruby>残っ<rt>のこっ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US aircrew member rescued in Iran</h2>
+              <p class="body en-body">The rescue of a missing crew member from a US fighter jet shot down in southern Iran has been announced. While the operation marks progress in saving lives, military tensions in the region remain high and the outlook is still uncertain.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ストーム・デイブで<ruby>英<rt>えい</rt></ruby><ruby>交通<rt>こうつう</rt></ruby>に<ruby>乱れ<rt>みだれ</rt></ruby></h2>
+              <p class="body">ストーム・デイブの<ruby>影響<rt>えいきょう</rt></ruby>で、<ruby>英国<rt>えいこく</rt></ruby>では<ruby>道路<rt>どうろ</rt></ruby>と<ruby>鉄道<rt>てつどう</rt></ruby>に<ruby>乱れ<rt>みだれ</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>った。<ruby>復活祭<rt>ふっかつさい</rt></ruby>の<ruby>日曜日<rt>にちようび</rt></ruby>にかけて<ruby>天気<rt>てんき</rt></ruby>は<ruby>回復<rt>かいふく</rt></ruby>に<ruby>向か<rt>むか</rt></ruby>う<ruby>見通し<rt>みとおし</rt></ruby>だが、<ruby>当局<rt>とうきょく</rt></ruby>は<ruby>引き続き<rt>ひきつづき</rt></ruby><ruby>移動時<rt>いどうじ</rt></ruby>の<ruby>注意<rt>ちゅうい</rt></ruby>を<ruby>呼び<rt>よび</rt></ruby>かけている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Storm Dave disrupts UK travel</h2>
+              <p class="body en-body">Storm Dave caused disruption on roads and railways across the United Kingdom. Conditions are expected to improve on Easter Sunday, but authorities are still urging travelers to remain cautious.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英年<rt>えいねん</rt></ruby><ruby>金<rt>きん</rt></ruby><ruby>受給<rt>じゅきゅう</rt></ruby><ruby>開始年<rt>かいしねん</rt></ruby><ruby>齢<rt>れい</rt></ruby>が67<ruby>歳<rt>とし</rt></ruby>へ</h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>では<ruby>国民年金<rt>こくみんねんきん</rt></ruby>の<ruby>受給<rt>じゅきゅう</rt></ruby><ruby>開始年<rt>かいしねん</rt></ruby><ruby>齢<rt>れい</rt></ruby>が<ruby>六十七歳<rt>ろくじゅうななさい</rt></ruby>へ<ruby>引き上げ<rt>ひきあげ</rt></ruby>られ<ruby>始め<rt>はじめ</rt></ruby>た。<ruby>制度<rt>せいど</rt></ruby><ruby>変更<rt>へんこう</rt></ruby>は<ruby>今後<rt>こんご</rt></ruby><ruby>二年<rt>にねん</rt></ruby>ほどかけて<ruby>段階的<rt>だんかいてき</rt></ruby>に<ruby>進め<rt>すすめ</rt></ruby>られ、<ruby>家計<rt>かけい</rt></ruby><ruby>設計<rt>せっけい</rt></ruby>や<ruby>退職<rt>たいしょく</rt></ruby><ruby>時期<rt>じき</rt></ruby>への<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>注目<rt>ちゅうもく</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK pension age begins rising to 67</h2>
+              <p class="body en-body">The UK has begun raising the state pension age to 67. The change will be introduced in stages over the next two years and is expected to affect household planning and retirement decisions.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米<rt>こめ</rt></ruby><ruby>雇用<rt>こよう</rt></ruby>、<ruby>戦時<rt>せんじ</rt></ruby><ruby>不安<rt>ふあん</rt></ruby>の<ruby>中<rt>なか</rt></ruby>でも<ruby>堅調<rt>けんちょう</rt></ruby></h2>
+              <p class="body"><ruby>米国<rt>べいこく</rt></ruby>では<ruby>三月<rt>さんがつ</rt></ruby>の<ruby>雇用者<rt>こようしゃ</rt></ruby><ruby>数<rt>かず</rt></ruby>が<ruby>市場<rt>しじょう</rt></ruby><ruby>予想<rt>よそう</rt></ruby>を<ruby>上回り<rt>うわまわり</rt></ruby>、<ruby>労働<rt>ろうどう</rt></ruby><ruby>市場<rt>しじょう</rt></ruby>の<ruby>底堅さ<rt>そこがたさ</rt></ruby>が<ruby>示さ<rt>しめさ</rt></ruby>れた。イラン<ruby>情勢<rt>じょうせい</rt></ruby>をめぐる<ruby>不安<rt>ふあん</rt></ruby>が<ruby>続く<rt>つづく</rt></ruby><ruby>一方<rt>いっぽう</rt></ruby>で、<ruby>経済<rt>けいざい</rt></ruby><ruby>指標<rt>しひょう</rt></ruby>の<ruby>強さ<rt>つよさ</rt></ruby>が<ruby>投資家<rt>とうしか</rt></ruby><ruby>心理<rt>しんり</rt></ruby>を<ruby>下<rt>した</rt></ruby><ruby>支え<rt>ささえ</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US jobs remain strong despite war fears</h2>
+              <p class="body en-body">US employers added more jobs than expected in March, pointing to resilience in the labor market. Even as fears over the Iran conflict persist, strong economic data is helping support investor sentiment.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日本<rt>にっぽん</rt></ruby>で<ruby>初任給<rt>しょにんきゅう</rt></ruby><ruby>引き上げ<rt>ひきあげ</rt></ruby><ruby>広が<rt>ひろが</rt></ruby>る</h2>
+              <p class="body"><ruby>日本<rt>にっぽん</rt></ruby>では<ruby>新年度<rt>しんねんど</rt></ruby>の<ruby>始まり<rt>はじまり</rt></ruby>に<ruby>合わ<rt>あわ</rt></ruby>せ、<ruby>多く<rt>おおく</rt></ruby>の<ruby>企業<rt>きぎょう</rt></ruby>が<ruby>新入社員<rt>しんにゅうしゃいん</rt></ruby>の<ruby>初任給<rt>しょにんきゅう</rt></ruby>を<ruby>引き上げ<rt>ひきあげ</rt></ruby>ている。<ruby>背景<rt>はいけい</rt></ruby>には<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>人手不足<rt>ひとでぶそく</rt></ruby>があり、<ruby>学生<rt>がくせい</rt></ruby>アルバイトを<ruby>正社員<rt>せいしゃいん</rt></ruby>として<ruby>確保<rt>かくほ</rt></ruby>したい<ruby>企業<rt>きぎょう</rt></ruby>の<ruby>動き<rt>うごき</rt></ruby>も<ruby>目立っ<rt>めだっ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Starting salaries rise in Japan</h2>
+              <p class="body en-body">In Japan, many companies are raising starting salaries for new employees at the start of the business year. The trend is being driven by labor shortages, with firms also trying to retain student part-time workers as full-time staff.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日本<rt>にっぽん</rt></ruby>、<ruby>代替<rt>だいたい</rt></ruby><ruby>調達<rt>ちょうたつ</rt></ruby>で<ruby>原油<rt>げんゆ</rt></ruby><ruby>確保<rt>かくほ</rt></ruby>へ</h2>
+              <p class="body"><ruby>日本政府<rt>にほんせいふ</rt></ruby>は、ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>を<ruby>通ら<rt>とうら</rt></ruby>ない<ruby>代替<rt>だいたい</rt></ruby>ルートや<ruby>備蓄<rt>びちく</rt></ruby>の<ruby>活用<rt>かつよう</rt></ruby>によって、<ruby>来年<rt>らいねん</rt></ruby><ruby>初め<rt>はじめ</rt></ruby>ごろまで<ruby>必要<rt>ひつよう</rt></ruby>な<ruby>原油<rt>げんゆ</rt></ruby>を<ruby>確保<rt>かくほ</rt></ruby>できるとの<ruby>見通し<rt>みとおし</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。<ruby>中東<rt>ちゅうとう</rt></ruby><ruby>以外<rt>いがい</rt></ruby>の<ruby>供給源<rt>きょうきゅうげん</rt></ruby>も<ruby>組み合わせ<rt>くみあわせ</rt></ruby>、<ruby>安定供給<rt>あんていきょうきゅう</rt></ruby>の<ruby>維持<rt>いじ</rt></ruby>を<ruby>図る<rt>はかる</rt></ruby>。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan seeks oil security through alternative routes</h2>
+              <p class="body en-body">Japan's government says it expects to secure enough crude oil through early next year by using routes that bypass the Strait of Hormuz and by tapping stockpiles. It also plans to combine supplies from outside the Middle East to maintain stability.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>渋谷<rt>しぶや</rt></ruby>スクランブル<ruby>交差点<rt>こうさてん</rt></ruby>で<ruby>放火<rt>ほうか</rt></ruby><ruby>騒ぎ<rt>さわぎ</rt></ruby></h2>
+              <p class="body"><ruby>東京<rt>とうきょう</rt></ruby>・<ruby>渋谷<rt>しぶや</rt></ruby>のスクランブル<ruby>交差点<rt>こうさてん</rt></ruby>で<ruby>液体<rt>えきたい</rt></ruby>をまいて<ruby>火<rt>ひ</rt></ruby>をつけたとして、<ruby>男<rt>おとこ</rt></ruby>が<ruby>逮捕<rt>たいほ</rt></ruby>された。<ruby>火<rt>ひ</rt></ruby>はおよそ<ruby>一平<rt>いっぺい</rt></ruby><ruby>方<rt>ほう</rt></ruby>メートルに<ruby>広が<rt>ひろが</rt></ruby>ったが、<ruby>警察<rt>けいさつ</rt></ruby>によるとけが<ruby>人<rt>にん</rt></ruby>は<ruby>確認さ<rt>かくにんさ</rt></ruby>れていない。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Fire incident at Shibuya scramble crossing</h2>
+              <p class="body en-body">A man was arrested after allegedly pouring liquid and setting a fire at Tokyo's Shibuya scramble crossing. The flames spread across about one square meter, but police say no injuries have been confirmed.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-04-05 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "撃墜", "reading": "げきつい", "english": "shooting down of an aircraft"}, {"word": "乗組員", "reading": "のりくみいん", "english": "crew member"}, {"word": "救出", "reading": "きゅうしゅつ", "english": "rescue"}, {"word": "軍事的緊張", "reading": "ぐんじてききんちょう", "english": "military tension"}, {"word": "先行き", "reading": "さきゆき", "english": "outlook"}], [{"word": "影響", "reading": "えいきょう", "english": "impact"}, {"word": "鉄道", "reading": "てつどう", "english": "railway"}, {"word": "乱れ", "reading": "みだれ", "english": "disruption"}, {"word": "見通し", "reading": "みとおし", "english": "outlook"}, {"word": "当局", "reading": "とうきょく", "english": "authorities"}], [{"word": "国民年金", "reading": "こくみんねんきん", "english": "state pension"}, {"word": "受給", "reading": "じゅきゅう", "english": "receipt of benefits"}, {"word": "引き上げ", "reading": "ひきあげ", "english": "increase"}, {"word": "段階的", "reading": "だんかいてき", "english": "phased"}, {"word": "退職時期", "reading": "たいしょくじき", "english": "retirement timing"}], [{"word": "雇用者数", "reading": "こようしゃすう", "english": "number of employed people/jobs added"}, {"word": "市場予想", "reading": "しじょうよそう", "english": "market forecast"}, {"word": "労働市場", "reading": "ろうどうしじょう", "english": "labor market"}, {"word": "底堅さ", "reading": "そこがたさ", "english": "firmness/resilience"}, {"word": "投資家心理", "reading": "とうしかしんり", "english": "investor sentiment"}], [{"word": "初任給", "reading": "しょにんきゅう", "english": "starting salary"}, {"word": "新入社員", "reading": "しんにゅうしゃいん", "english": "new employee"}, {"word": "引き上げる", "reading": "ひきあげる", "english": "to raise"}, {"word": "人手不足", "reading": "ひとでぶそく", "english": "labor shortage"}, {"word": "正社員", "reading": "せいしゃいん", "english": "full-time employee"}], [{"word": "代替ルート", "reading": "だいたいルート", "english": "alternative route"}, {"word": "備蓄", "reading": "びちく", "english": "stockpile"}, {"word": "原油", "reading": "げんゆ", "english": "crude oil"}, {"word": "安定供給", "reading": "あんていきょうきゅう", "english": "stable supply"}, {"word": "供給源", "reading": "きょうきゅうげん", "english": "supply source"}], [{"word": "放火", "reading": "ほうか", "english": "arson"}, {"word": "交差点", "reading": "こうさてん", "english": "intersection"}, {"word": "逮捕", "reading": "たいほ", "english": "arrest"}, {"word": "液体", "reading": "えきたい", "english": "liquid"}, {"word": "確認", "reading": "かくにん", "english": "confirmation"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "米軍機乗員をイランで救出"}, {"section": "英国・世界", "headline": "ストーム・デイブで英交通に乱れ"}, {"section": "英国・世界", "headline": "英年金受給開始年齢が67歳へ"}, {"section": "英国・世界", "headline": "米雇用、戦時不安の中でも堅調"}, {"section": "日本", "headline": "日本で初任給引き上げ広がる"}, {"section": "日本", "headline": "日本、代替調達で原油確保へ"}, {"section": "日本", "headline": "渋谷スクランブル交差点で放火騒ぎ"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
