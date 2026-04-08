@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年4月8日（水曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年4月8日（水曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米<rt>こめ</rt></ruby>・イラン、2<ruby>週間<rt>しゅうかん</rt></ruby>の<ruby>停戦<rt>ていせん</rt></ruby>で<ruby>合意<rt>ごうい</rt></ruby>　ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>が<ruby>再開<rt>さいかい</rt></ruby><ruby>通<rt>とおり</rt></ruby></h2>
+              <p class="body">アメリカとイランは8<ruby>日<rt>にち</rt></ruby>、2<ruby>週間<rt>しゅうかん</rt></ruby>にわたる<ruby>停戦<rt>ていせん</rt></ruby>で<ruby>合意<rt>ごうい</rt></ruby>した。イランのアラグチ<ruby>外相<rt>がいしょう</rt></ruby>は「<ruby>攻撃<rt>こうげき</rt></ruby>が<ruby>停止<rt>ていし</rt></ruby>されれば、2<ruby>週間<rt>しゅうかん</rt></ruby>ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby>な<ruby>航行<rt>こうこう</rt></ruby>が<ruby>可能に<rt>かのうに</rt></ruby>なる」と<ruby>述べ<rt>のべ</rt></ruby>た。<ruby>仲介<rt>ちゅうかい</rt></ruby>にあたったパキスタンによると、<ruby>戦闘<rt>せんとう</rt></ruby><ruby>終結<rt>しゅうけつ</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>た<ruby>本格的<rt>ほんかくてき</rt></ruby>な<ruby>協議<rt>きょうぎ</rt></ruby>が10<ruby>日<rt>にち</rt></ruby>にイスラマバードで<ruby>行わ<rt>おこなわ</rt></ruby>れる<ruby>予定<rt>よてい</rt></ruby>だという。<ruby>停戦<rt>ていせん</rt></ruby><ruby>合意<rt>ごうい</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>て<ruby>国際原油価格<rt>こくさいげんゆかかく</rt></ruby>は<ruby>急落<rt>きゅうらく</rt></ruby>し、WTI<ruby>先物<rt>さきもの</rt></ruby>は<ruby>一時<rt>いちじ</rt></ruby>1バレル91ドル<ruby>台<rt>だい</rt></ruby>まで<ruby>下落<rt>げらく</rt></ruby>した。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US and Iran agree two-week ceasefire; Strait of Hormuz to reopen</h2>
+              <p class="body en-body">The United States and Iran agreed to a two-week ceasefire on Wednesday, with Tehran's foreign minister stating that the Strait of Hormuz would be open for safe navigation during the truce. Pakistan, which brokered the deal, said talks aimed at ending the conflict would begin in Islamabad on April 10. International oil prices fell sharply on the news, with WTI futures briefly dropping below $92 per barrel.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>停戦<rt>ていせん</rt></ruby><ruby>合意<rt>ごうい</rt></ruby>で<ruby>原油<rt>げんゆ</rt></ruby><ruby>急落<rt>きゅうらく</rt></ruby>、エネルギー<ruby>市場<rt>しじょう</rt></ruby>に<ruby>安堵<rt>あんど</rt></ruby></h2>
+              <p class="body"><ruby>米<rt>こめ</rt></ruby>・イランの<ruby>停戦<rt>ていせん</rt></ruby><ruby>合意<rt>ごうい</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、<ruby>国際<rt>こくさい</rt></ruby><ruby>原油<rt>げんゆ</rt></ruby><ruby>市場<rt>しじょう</rt></ruby>では<ruby>価格<rt>かかく</rt></ruby>が<ruby>急激<rt>きゅうげき</rt></ruby>に<ruby>下落<rt>げらく</rt></ruby>した。ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>の<ruby>封鎖<rt>ふうさ</rt></ruby>が<ruby>続い<rt>つづい</rt></ruby>ていた<ruby>期間<rt>きかん</rt></ruby>、<ruby>航空会社<rt>こうくうがいしゃ</rt></ruby>は<ruby>相次<rt>あいつぎ</rt></ruby>いで<ruby>減便<rt>げんびん</rt></ruby>や<ruby>運賃<rt>うんちん</rt></ruby><ruby>値上げ<rt>ねあげ</rt></ruby>を<ruby>余儀な<rt>よぎな</rt></ruby>くされており、エネルギーコストの<ruby>上昇<rt>じょうしょう</rt></ruby>は<ruby>英国<rt>えいこく</rt></ruby>を<ruby>含む<rt>ふくむ</rt></ruby><ruby>各国<rt>かっこく</rt></ruby>の<ruby>家計<rt>かけい</rt></ruby>にも<ruby>打撃<rt>だげき</rt></ruby>を<ruby>与え<rt>あたえ</rt></ruby>ていた。<ruby>今回<rt>こんかい</rt></ruby>の<ruby>合意<rt>ごうい</rt></ruby>により、<ruby>市場<rt>しじょう</rt></ruby><ruby>関係者<rt>かんけいしゃ</rt></ruby>はエネルギー<ruby>供給<rt>きょうきゅう</rt></ruby>の<ruby>安定化<rt>あんていか</rt></ruby>への<ruby>期待<rt>きたい</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Oil prices plunge as US-Iran ceasefire eases energy market fears</h2>
+              <p class="body en-body">International oil prices fell sharply following the US-Iran ceasefire agreement, with Brent crude declining significantly after weeks of elevated prices caused by the blockade of the Strait of Hormuz. Airlines had been cutting flights and raising fares due to soaring jet fuel costs, and household energy bills across the UK and beyond had risen sharply. Markets welcomed the news as a potential turning point for global energy supplies.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">カニエ・ウェスト<ruby>入国<rt>にゅうこく</rt></ruby><ruby>禁止<rt>きんし</rt></ruby>で<ruby>音楽<rt>おんがく</rt></ruby>フェス<ruby>中止<rt>ちゅうし</rt></ruby>に</h2>
+              <p class="body">ロンドンで7<ruby>月<rt>がつ</rt></ruby>に<ruby>開催予定<rt>かいさいよてい</rt></ruby>だった「ワイヤレス・フェスティバル」は、ヘッドライナーのカニエ・ウェストが<ruby>英国<rt>えいこく</rt></ruby>への<ruby>入国<rt>にゅうこく</rt></ruby>を<ruby>禁止<rt>きんし</rt></ruby>されたことを<ruby>受け<rt>うけ</rt></ruby>、<ruby>開催中止<rt>かいさいちゅうし</rt></ruby>が<ruby>決定<rt>けってい</rt></ruby>した。<ruby>当局<rt>とうきょく</rt></ruby>は<ruby>過去<rt>かこ</rt></ruby>の<ruby>反<rt>はん</rt></ruby>ユダヤ<ruby>的<rt>てき</rt></ruby><ruby>発言<rt>はつげん</rt></ruby>を<ruby>禁止<rt>きんし</rt></ruby>の<ruby>理由<rt>りゆう</rt></ruby>として<ruby>挙げ<rt>あげ</rt></ruby>ており、スポンサーのペプシも<ruby>撤退<rt>てったい</rt></ruby>を<ruby>表明<rt>ひょうめい</rt></ruby>していた。スターマー<ruby>首相<rt>しゅしょう</rt></ruby>は<ruby>今回<rt>こんかい</rt></ruby>の<ruby>事態<rt>じたい</rt></ruby>を「<ruby>深く<rt>ふかく</rt></ruby><ruby>懸念<rt>けねん</rt></ruby>している」と<ruby>述べ<rt>のべ</rt></ruby>た。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Wireless Festival cancelled after UK blocks Kanye West entry</h2>
+              <p class="body en-body">London's Wireless Festival has been cancelled after rapper Kanye West was blocked from entering the United Kingdom due to his history of antisemitic remarks. Sponsor PepsiCo had already withdrawn from the event, and Prime Minister Keir Starmer described the situation as 'deeply concerning'. The cancellation has reignited debate in Britain about the line between artistic freedom and accountability for public statements.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ユニバーサル・ミュージックに9<ruby>兆円<rt>ちょうえん</rt></ruby>の<ruby>買収<rt>ばいしゅう</rt></ruby><ruby>提案<rt>ていあん</rt></ruby></h2>
+              <p class="body">テイラー・スウィフトら<ruby>世界的<rt>せかいてき</rt></ruby>アーティストを<ruby>擁す<rt>ようす</rt></ruby>る<ruby>音楽<rt>おんがく</rt></ruby><ruby>大手<rt>おおて</rt></ruby>ユニバーサル・ミュージック・グループに<ruby>対し<rt>たいし</rt></ruby>、<ruby>著名<rt>ちょめい</rt></ruby><ruby>投資家<rt>とうしか</rt></ruby>ビル・アックマン<ruby>氏<rt>し</rt></ruby><ruby>率い<rt>ひきい</rt></ruby>るパーシング・スクエアが640<ruby>億<rt>おく</rt></ruby>ドル（<ruby>約<rt>やく</rt></ruby>9<ruby>兆円<rt>ちょうえん</rt></ruby>）<ruby>規模<rt>きぼ</rt></ruby>の<ruby>買収<rt>ばいしゅう</rt></ruby>を<ruby>提案<rt>ていあん</rt></ruby>した。ストリーミング<ruby>時代<rt>じだい</rt></ruby>における<ruby>音楽<rt>おんがく</rt></ruby><ruby>著作権<rt>ちょさくけん</rt></ruby>の<ruby>資産価値<rt>しさんかち</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>評価<rt>ひょうか</rt></ruby>されているとみられ、<ruby>業界<rt>ぎょうかい</rt></ruby>に<ruby>大き<rt>おおき</rt></ruby>な<ruby>波紋<rt>はもん</rt></ruby>を<ruby>広げ<rt>ひろげ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Universal Music receives $64bn takeover bid from Pershing Square</h2>
+              <p class="body en-body">Pershing Square, the investment firm run by billionaire Bill Ackman, has made a $64 billion takeover offer for Universal Music Group, home to artists including Taylor Swift and Sabrina Carpenter. The proposal reflects growing investor appetite for music rights in the streaming era, and comes as the recorded music industry has seen several years of sustained revenue growth. Universal has not yet responded publicly to the offer.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>停戦<rt>ていせん</rt></ruby><ruby>合意<rt>ごうい</rt></ruby>で<ruby>日経平均<rt>にっけいへいきん</rt></ruby>が<ruby>急騰<rt>きゅうとう</rt></ruby>、<ruby>一時<rt>いちじ</rt></ruby>2800<ruby>円<rt>えん</rt></ruby><ruby>超高<rt>ちょうこう</rt></ruby></h2>
+              <p class="body">8<ruby>日<rt>にち</rt></ruby>の<ruby>東京<rt>とうきょう</rt></ruby><ruby>株式市場<rt>かぶしきしじょう</rt></ruby>は、<ruby>米<rt>こめ</rt></ruby>・イランの<ruby>停戦<rt>ていせん</rt></ruby><ruby>合意<rt>ごうい</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>てイラン<ruby>情勢<rt>じょうせい</rt></ruby>への<ruby>懸念<rt>けねん</rt></ruby>が<ruby>一気<rt>いっき</rt></ruby>に<ruby>和ら<rt>やわら</rt></ruby>ぎ、<ruby>日経平均<rt>にっけいへいきん</rt></ruby><ruby>株価<rt>かぶか</rt></ruby>が<ruby>一時<rt>いちじ</rt></ruby>2800<ruby>円<rt>えん</rt></ruby><ruby>以上<rt>いじょう</rt></ruby>の<ruby>大幅<rt>おおはば</rt></ruby><ruby>上昇<rt>じょうしょう</rt></ruby>となった。エネルギーコスト<ruby>高騰<rt>こうとう</rt></ruby>の<ruby>長期化<rt>ちょうきか</rt></ruby>を<ruby>警戒<rt>けいかい</rt></ruby>していた<ruby>投資家<rt>とうしか</rt></ruby>の<ruby>間に<rt>まに</rt></ruby><ruby>安堵感<rt>あんどかん</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>り、<ruby>輸送<rt>ゆそう</rt></ruby>・<ruby>航空<rt>こうくう</rt></ruby>・<ruby>製造業<rt>せいぞうぎょう</rt></ruby>を<ruby>中心<rt>ちゅうしん</rt></ruby>に<ruby>幅広い<rt>はばひろい</rt></ruby><ruby>銘柄<rt>めいがら</rt></ruby>が<ruby>買い<rt>かい</rt></ruby><ruby>戻さ<rt>もどさ</rt></ruby>れた。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Nikkei surges over 2,800 points on US-Iran ceasefire news</h2>
+              <p class="body en-body">Tokyo's Nikkei 225 index surged by more than 2,800 points on Wednesday after the announcement of the US-Iran ceasefire eased fears over prolonged energy price inflation. Investors had been anxiously watching the conflict's impact on oil supplies, and the relief rally swept across transport, aviation, and manufacturing stocks. The sharp rise reflects Japan's particular vulnerability to Middle East energy disruptions given its heavy reliance on imported oil.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>北朝鮮<rt>きたちょうせん</rt></ruby>が<ruby>弾道<rt>だんどう</rt></ruby>ミサイル<ruby>発射<rt>はっしゃ</rt></ruby>、<ruby>日本<rt>にっぽん</rt></ruby>のEEZ<ruby>外<rt>そと</rt></ruby>に<ruby>落下<rt>らっか</rt></ruby>か</h2>
+              <p class="body"><ruby>韓国<rt>かんこく</rt></ruby><ruby>軍<rt>ぐん</rt></ruby>の<ruby>合同<rt>ごうどう</rt></ruby><ruby>参謀本部<rt>さんぼうほんぶ</rt></ruby>は8<ruby>日<rt>にち</rt></ruby><ruby>午後<rt>ごご</rt></ruby>2<ruby>時半<rt>じはん</rt></ruby>ごろ、<ruby>北朝鮮<rt>きたちょうせん</rt></ruby>が<ruby>日本海<rt>にほんかい</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>て<ruby>弾道<rt>だんどう</rt></ruby>ミサイルを<ruby>発射<rt>はっしゃ</rt></ruby>したと<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>日本政府<rt>にほんせいふ</rt></ruby>によると、ミサイルは<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>排他的<rt>はいたてき</rt></ruby><ruby>経済<rt>けいざい</rt></ruby><ruby>水域<rt>すいいき</rt></ruby>（EEZ）の<ruby>外<rt>そと</rt></ruby>に<ruby>落下<rt>らっか</rt></ruby>したとみられる。<ruby>世界<rt>せかい</rt></ruby>が<ruby>米<rt>こめ</rt></ruby>・イランの<ruby>停戦<rt>ていせん</rt></ruby><ruby>交渉<rt>こうしょう</rt></ruby>に<ruby>注目<rt>ちゅうもく</rt></ruby>する<ruby>中<rt>なか</rt></ruby>での<ruby>発射<rt>はっしゃ</rt></ruby>に、<ruby>日本<rt>にっぽん</rt></ruby>や<ruby>韓国<rt>かんこく</rt></ruby>の<ruby>当局<rt>とうきょく</rt></ruby>は<ruby>警戒<rt>けいかい</rt></ruby>を<ruby>強め<rt>つよめ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">North Korea fires ballistic missile toward Sea of Japan</h2>
+              <p class="body en-body">South Korea's Joint Chiefs of Staff announced on Wednesday afternoon that North Korea had fired what appeared to be a ballistic missile toward the Sea of Japan. Japanese officials said the projectile appeared to have landed outside Japan's Exclusive Economic Zone. The launch, timed as international attention was focused on the US-Iran ceasefire negotiations, has prompted heightened alerts from Japanese and South Korean authorities.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>川崎製鉄<rt>かわさきせいてつ</rt></ruby><ruby>所<rt>ところ</rt></ruby>で<ruby>高所<rt>こうしょ</rt></ruby><ruby>転落<rt>てんらく</rt></ruby><ruby>事故<rt>じこ</rt></ruby>、3<ruby>人死<rt>ひとじに</rt></ruby><ruby>亡<rt>ぼう</rt></ruby></h2>
+              <p class="body">7<ruby>日<rt>にち</rt></ruby>、<ruby>川崎市<rt>かわさきし</rt></ruby>にある<ruby>製鉄所<rt>せいてつしょ</rt></ruby>でクレーンの<ruby>解体作業<rt>かいたいさぎょう</rt></ruby><ruby>中に<rt>なかに</rt></ruby><ruby>高所<rt>こうしょ</rt></ruby>で<ruby>作業<rt>さぎょう</rt></ruby>していた5<ruby>人<rt>にん</rt></ruby>が<ruby>転落<rt>てんらく</rt></ruby>し、3<ruby>人<rt>にん</rt></ruby>が<ruby>死亡<rt>しぼう</rt></ruby>した。クレーンに<ruby>取り付け<rt>とりつけ</rt></ruby>られた<ruby>重り<rt>おもり</rt></ruby>が<ruby>外れ<rt>はずれ</rt></ruby>、<ruby>作業員<rt>さぎょういん</rt></ruby>が<ruby>巻き込ま<rt>まきこま</rt></ruby>れたとみられている。1<ruby>人<rt>にん</rt></ruby>はいまだ<ruby>行方不明<rt>ゆくえふめい</rt></ruby>で、<ruby>警察<rt>けいさつ</rt></ruby>と<ruby>消防<rt>しょうぼう</rt></ruby>が<ruby>捜索<rt>そうさく</rt></ruby>を<ruby>続け<rt>つづけ</rt></ruby>ている。<ruby>労働<rt>ろうどう</rt></ruby><ruby>安全<rt>あんぜん</rt></ruby><ruby>当局<rt>とうきょく</rt></ruby>は<ruby>事故<rt>じこ</rt></ruby>の<ruby>詳しい<rt>くわしい</rt></ruby><ruby>状況<rt>じょうきょう</rt></ruby>を<ruby>調べ<rt>しらべ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Three workers killed in fall at Kawasaki steelworks</h2>
+              <p class="body en-body">Three workers were killed and one remains missing after five men fell from height at a steelworks in Kawasaki on Tuesday. Police believe a counterweight attached to a crane being dismantled came loose, causing the workers to fall along with it. Authorities are continuing to search for the missing worker while investigators examine the circumstances of the accident. The incident has prompted renewed scrutiny of safety standards in heavy industrial workplaces.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-04-08 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "停戦", "reading": "ていせん", "english": "ceasefire, truce"}, {"word": "合意", "reading": "ごうい", "english": "agreement, consensus"}, {"word": "海峡", "reading": "かいきょう", "english": "strait, channel"}, {"word": "航行", "reading": "こうこう", "english": "navigation, sailing"}, {"word": "仲介", "reading": "ちゅうかい", "english": "mediation, brokerage"}, {"word": "原油", "reading": "げんゆ", "english": "crude oil"}], [{"word": "急落", "reading": "きゅうらく", "english": "sharp drop, sudden fall"}, {"word": "封鎖", "reading": "ふうさ", "english": "blockade, closure"}, {"word": "減便", "reading": "げんびん", "english": "flight reduction, service cuts"}, {"word": "運賃", "reading": "うんちん", "english": "fare, freight charge"}, {"word": "家計", "reading": "かけい", "english": "household finances, family budget"}, {"word": "安定化", "reading": "あんていか", "english": "stabilisation"}], [{"word": "入国禁止", "reading": "にゅうこくきんし", "english": "entry ban, barred from entering"}, {"word": "反ユダヤ", "reading": "はんゆだや", "english": "antisemitic"}, {"word": "撤退", "reading": "てったい", "english": "withdrawal, pulling out"}, {"word": "首相", "reading": "しゅしょう", "english": "prime minister"}, {"word": "開催中止", "reading": "かいさいちゅうし", "english": "cancellation of an event"}, {"word": "発言", "reading": "はつげん", "english": "statement, remark"}], [{"word": "買収", "reading": "ばいしゅう", "english": "acquisition, takeover"}, {"word": "提案", "reading": "ていあん", "english": "proposal, offer"}, {"word": "著作権", "reading": "ちょさくけん", "english": "copyright, intellectual property"}, {"word": "資産価値", "reading": "しさんかち", "english": "asset value"}, {"word": "投資家", "reading": "とうしか", "english": "investor"}, {"word": "波紋", "reading": "はもん", "english": "ripples, repercussions"}], [{"word": "急騰", "reading": "きゅうとう", "english": "sharp rise, sudden surge"}, {"word": "日経平均株価", "reading": "にっけいへいきんかぶか", "english": "Nikkei Stock Average"}, {"word": "安堵感", "reading": "あんどかん", "english": "sense of relief"}, {"word": "銘柄", "reading": "めいがら", "english": "stock, brand, issue"}, {"word": "買い戻し", "reading": "かいもどし", "english": "buyback, short-covering"}, {"word": "懸念", "reading": "けねん", "english": "concern, worry"}], [{"word": "弾道ミサイル", "reading": "だんどうミサイル", "english": "ballistic missile"}, {"word": "排他的経済水域", "reading": "はいたてきけいざいすいいき", "english": "Exclusive Economic Zone (EEZ)"}, {"word": "合同参謀本部", "reading": "ごうどうさんぼうほんぶ", "english": "Joint Chiefs of Staff"}, {"word": "発射", "reading": "はっしゃ", "english": "launch, firing"}, {"word": "警戒", "reading": "けいかい", "english": "vigilance, alert"}, {"word": "落下", "reading": "らっか", "english": "fall, descent"}], [{"word": "製鉄所", "reading": "せいてつじょ", "english": "steelworks, iron foundry"}, {"word": "解体", "reading": "かいたい", "english": "dismantling, demolition"}, {"word": "転落", "reading": "てんらく", "english": "fall, tumble"}, {"word": "重り", "reading": "おもり", "english": "counterweight, weight"}, {"word": "行方不明", "reading": "ゆくえふめい", "english": "missing, whereabouts unknown"}, {"word": "労働安全", "reading": "ろうどうあんぜん", "english": "occupational safety"}]];
+    const LABELS  = [{"section": "国際", "headline": "米・イラン、2週間の停戦で合意　ホルムズ海峡が再開通"}, {"section": "国際", "headline": "停戦合意で原油急落、エネルギー市場に安堵"}, {"section": "英国", "headline": "カニエ・ウェスト入国禁止で音楽フェス中止に"}, {"section": "経済", "headline": "ユニバーサル・ミュージックに9兆円の買収提案"}, {"section": "日本", "headline": "停戦合意で日経平均が急騰、一時2800円超高"}, {"section": "日本", "headline": "北朝鮮が弾道ミサイル発射、日本のEEZ外に落下か"}, {"section": "日本・社会", "headline": "川崎製鉄所で高所転落事故、3人死亡"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
