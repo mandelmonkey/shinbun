@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年4月11日（土）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年4月11日（土）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">アルテミスII<ruby>号<rt>ごう</rt></ruby>、<ruby>月<rt>がつ</rt></ruby><ruby>周回<rt>しゅうかい</rt></ruby><ruby>飛行<rt>ひこう</rt></ruby>を<ruby>終え<rt>おえ</rt></ruby><ruby>無事帰還<rt>ぶじきかん</rt></ruby></h2>
+              <p class="body"><ruby>米<rt>こめ</rt></ruby><ruby>航空宇宙<rt>こうくううちゅう</rt></ruby><ruby>局<rt>きょく</rt></ruby>（NASA）のアルテミスII<ruby>号<rt>ごう</rt></ruby>に<ruby>搭乗<rt>とうじょう</rt></ruby>した<ruby>宇宙飛行士<rt>うちゅうひこうし</rt></ruby>4<ruby>名<rt>めい</rt></ruby>が、9<ruby>日間<rt>にちかん</rt></ruby>にわたる<ruby>月<rt>がつ</rt></ruby><ruby>周回<rt>しゅうかい</rt></ruby><ruby>飛行<rt>ひこう</rt></ruby>を<ruby>終え<rt>おえ</rt></ruby>て<ruby>太平洋<rt>たいへいよう</rt></ruby>に<ruby>着水<rt>ちゃくすい</rt></ruby>した。<ruby>今回<rt>こんかい</rt></ruby>のミッションは、<ruby>人類<rt>じんるい</rt></ruby>が<ruby>地球<rt>ちきゅう</rt></ruby>から<ruby>最も<rt>もっとも</rt></ruby><ruby>遠く<rt>とおく</rt></ruby>まで<ruby>到達<rt>とうたつ</rt></ruby>した<ruby>歴史的<rt>れきしてき</rt></ruby>な<ruby>飛行<rt>ひこう</rt></ruby>となり、「ほぼ<ruby>完璧<rt>かんぺき</rt></ruby>」と<ruby>評価<rt>ひょうか</rt></ruby>されている。ただし、<ruby>実際<rt>じっさい</rt></ruby>の<ruby>月面<rt>げつめん</rt></ruby><ruby>着陸<rt>ちゃくりく</rt></ruby>にはまだ<ruby>多く<rt>おおく</rt></ruby>の<ruby>技術的<rt>ぎじゅつてき</rt></ruby><ruby>課題<rt>かだい</rt></ruby>が<ruby>残さ<rt>のこさ</rt></ruby>れており、<ruby>乗組員<rt>のりくみいん</rt></ruby>は<ruby>帰還後<rt>きかんご</rt></ruby>に<ruby>医療<rt>いりょう</rt></ruby><ruby>検査<rt>けんさ</rt></ruby>を<ruby>受ける<rt>うける</rt></ruby><ruby>予定<rt>よてい</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Artemis II crew returns safely after historic Moon flyby</h2>
+              <p class="body en-body">Four astronauts aboard NASA's Artemis II have splashed down in the Pacific Ocean after completing a nine-day Moon flyby mission. The voyage took the crew further from Earth than any humans in history and was described as near-flawless. However, significant technical challenges remain before an actual lunar landing can take place.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英<rt>えい</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>、チャゴス<ruby>諸<rt>しょ</rt></ruby><ruby>島<rt>しま</rt></ruby>の<ruby>主権<rt>しゅけん</rt></ruby><ruby>移譲<rt>いじょう</rt></ruby><ruby>合意<rt>ごうい</rt></ruby>を<ruby>棚上げ<rt>たなあげ</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>は、チャゴス<ruby>諸<rt>しょ</rt></ruby><ruby>島<rt>しま</rt></ruby>の<ruby>主権<rt>しゅけん</rt></ruby>をモーリシャスに<ruby>移譲<rt>いじょう</rt></ruby>する<ruby>合意<rt>ごうい</rt></ruby>を<ruby>事実上<rt>じじつじょう</rt></ruby><ruby>棚上げ<rt>たなあげ</rt></ruby>した。トランプ<ruby>政権<rt>せいけん</rt></ruby>の<ruby>反対<rt>はんたい</rt></ruby>が<ruby>主な<rt>おもな</rt></ruby><ruby>要因<rt>よういん</rt></ruby>であり、<ruby>合意<rt>ごうい</rt></ruby>の<ruby>完全<rt>かんぜん</rt></ruby>な<ruby>破棄<rt>はき</rt></ruby>ではないものの、<ruby>期限<rt>きげん</rt></ruby><ruby>内<rt>ない</rt></ruby>の<ruby>最終決定<rt>さいしゅうけってい</rt></ruby>には<ruby>至ら<rt>いたら</rt></ruby>なかった。<ruby>同<rt>どう</rt></ruby><ruby>諸<rt>しょ</rt></ruby><ruby>島<rt>しま</rt></ruby>にはディエゴガルシア<ruby>米軍基地<rt>べいぐんきち</rt></ruby>が<ruby>置か<rt>おか</rt></ruby>れており、その<ruby>将来<rt>しょうらい</rt></ruby>が<ruby>外交上<rt>がいこうじょう</rt></ruby>の<ruby>焦点<rt>しょうてん</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK shelves Chagos Islands sovereignty deal amid US opposition</h2>
+              <p class="body en-body">The UK government has effectively shelved its deal to transfer sovereignty of the Chagos Islands to Mauritius, following opposition from the Trump administration. While officials say they have not entirely abandoned the agreement, they were unable to finalise it in time. The islands host the strategically important Diego Garcia military base.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby><ruby>閉鎖<rt>へいさ</rt></ruby><ruby>長期化<rt>ちょうきか</rt></ruby>、EU<ruby>航空<rt>こうくう</rt></ruby><ruby>燃料不足<rt>ねんりょうぶそく</rt></ruby>を<ruby>警告<rt>けいこく</rt></ruby></h2>
+              <p class="body"><ruby>欧州<rt>おうしゅう</rt></ruby>の<ruby>航空業界<rt>こうくうぎょうかい</rt></ruby><ruby>団体<rt>だんたい</rt></ruby>は、ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>の<ruby>閉鎖<rt>へいさ</rt></ruby>が3<ruby>週間<rt>しゅうかん</rt></ruby><ruby>以内<rt>いない</rt></ruby>に<ruby>解除<rt>かいじょ</rt></ruby>されなければ<ruby>航空<rt>こうくう</rt></ruby><ruby>燃料<rt>ねんりょう</rt></ruby>が<ruby>不足<rt>ふそく</rt></ruby>する<ruby>恐れ<rt>おそれ</rt></ruby>があると<ruby>警告し<rt>けいこくし</rt></ruby>た。イランとの<ruby>紛争<rt>ふんそう</rt></ruby>に<ruby>起因<rt>きいん</rt></ruby>するこの<ruby>閉鎖<rt>へいさ</rt></ruby>は、<ruby>原油価格<rt>げんゆかかく</rt></ruby>を<ruby>高騰<rt>こうとう</rt></ruby>させ、<ruby>米国<rt>べいこく</rt></ruby>のインフレ<ruby>率を<rt>ひきを</rt></ruby><ruby>約<rt>やく</rt></ruby>2<ruby>年<rt>ねん</rt></ruby>ぶりの<ruby>高水準<rt>こうすいじゅん</rt></ruby>となる3.3%に<ruby>押し<rt>おし</rt></ruby><ruby>上げ<rt>あげ</rt></ruby>ている。タンカー<ruby>会社<rt>かいしゃ</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>ては、<ruby>海峡<rt>かいきょう</rt></ruby><ruby>通過<rt>つうか</rt></ruby>にあたりイランへの<ruby>通行料<rt>つうこうりょう</rt></ruby>を<ruby>支払わ<rt>しはらわ</rt></ruby>ないよう<ruby>勧告<rt>かんこく</rt></ruby>が<ruby>出さ<rt>ださ</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">EU warns of aviation fuel shortages as Strait of Hormuz stays shut</h2>
+              <p class="body en-body">European aviation industry bodies have warned that fuel shortages could hit airlines if the Strait of Hormuz does not reopen within three weeks. The closure, linked to the Iran conflict, has driven up oil prices and pushed US inflation to 3.3%, its highest in nearly two years. Tanker companies are being advised not to pay tolls to Iran for passage through the strait.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ハンガリー<ruby>総選挙<rt>そうせんきょ</rt></ruby>、<ruby>野党<rt>やとう</rt></ruby><ruby>指導者<rt>しどうしゃ</rt></ruby>に<ruby>勝利<rt>しょうり</rt></ruby>の<ruby>機運<rt>きうん</rt></ruby></h2>
+              <p class="body">ハンガリーの<ruby>総選挙<rt>そうせんきょ</rt></ruby>を<ruby>前<rt>まえ</rt></ruby>に、ペーテル・マジャル<ruby>氏<rt>し</rt></ruby><ruby>率い<rt>ひきい</rt></ruby>る<ruby>野党<rt>やとう</rt></ruby><ruby>勢力<rt>せいりょく</rt></ruby>が<ruby>世論調査<rt>よろんちょうさ</rt></ruby>でリードしている。ブダペストでは<ruby>数万人<rt>すうまんにん</rt></ruby>の<ruby>反<rt>はん</rt></ruby>オルバン<ruby>支持者<rt>しじしゃ</rt></ruby>が<ruby>最終<rt>さいしゅう</rt></ruby><ruby>集会<rt>しゅうかい</rt></ruby>に<ruby>参加<rt>さんか</rt></ruby>し、<ruby>長期<rt>ちょうき</rt></ruby><ruby>政権<rt>せいけん</rt></ruby>を<ruby>握る<rt>にぎる</rt></ruby>オルバン<ruby>首相<rt>しゅしょう</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>最大<rt>さいだい</rt></ruby>の<ruby>脅威<rt>きょうい</rt></ruby>と<ruby>見な<rt>みな</rt></ruby>されている。この<ruby>選挙<rt>せんきょ</rt></ruby>は、<ruby>欧州<rt>おうしゅう</rt></ruby>における<ruby>民主主義<rt>みんしゅしゅぎ</rt></ruby>の<ruby>強靭<rt>きょうじん</rt></ruby>さを<ruby>測る<rt>はかる</rt></ruby><ruby>試金石<rt>しきんせき</rt></ruby>として<ruby>各国<rt>かっこく</rt></ruby>から<ruby>注目<rt>ちゅうもく</rt></ruby>を<ruby>集め<rt>あつめ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Hungary opposition leader senses victory as voters head to polls</h2>
+              <p class="body en-body">Opposition leader Péter Magyar is leading in polls ahead of Hungary's elections, with tens of thousands of anti-Orbán supporters rallying in Budapest. Magyar's movement represents the most serious challenge to Viktor Orbán's long-standing grip on power. The vote is being closely watched across Europe as a test of democratic resilience.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日本<rt>にっぽん</rt></ruby>、<ruby>米<rt>こめ</rt></ruby><ruby>建国<rt>けんこく</rt></ruby>250<ruby>周年<rt>しゅうねん</rt></ruby>に<ruby>桜<rt>さくら</rt></ruby>250<ruby>本<rt>ほん</rt></ruby>を<ruby>寄贈<rt>きぞう</rt></ruby></h2>
+              <p class="body"><ruby>日本政府<rt>にほんせいふ</rt></ruby>は、アメリカ<ruby>建国<rt>けんこく</rt></ruby>250<ruby>周年<rt>しゅうねん</rt></ruby>を<ruby>記念<rt>きねん</rt></ruby>して250<ruby>本<rt>ほん</rt></ruby>の<ruby>桜<rt>さくら</rt></ruby>の<ruby>木<rt>き</rt></ruby>を<ruby>米国<rt>べいこく</rt></ruby>に<ruby>贈る<rt>おくる</rt></ruby>と<ruby>発表<rt>はっぴょう</rt></ruby>した。1912<ruby>年<rt>ねん</rt></ruby>に<ruby>東京<rt>とうきょう</rt></ruby>が<ruby>約<rt>やく</rt></ruby>3000<ruby>本<rt>ほん</rt></ruby>の<ruby>桜<rt>さくら</rt></ruby>をワシントンDCに<ruby>贈っ<rt>おくっ</rt></ruby>た<ruby>歴史<rt>れきし</rt></ruby>を<ruby>踏ま<rt>ふま</rt></ruby>えたもので、ポトマック<ruby>川沿い<rt>かわぞい</rt></ruby>の<ruby>桜<rt>さくら</rt></ruby><ruby>並木<rt>なみき</rt></ruby>は<ruby>現在<rt>げんざい</rt></ruby>も<ruby>首都<rt>しゅと</rt></ruby>の<ruby>象徴的<rt>しょうちょうてき</rt></ruby>な<ruby>風景<rt>ふうけい</rt></ruby>となっている。<ruby>今回<rt>こんかい</rt></ruby>の<ruby>寄贈<rt>きぞう</rt></ruby>は、<ruby>両国間<rt>りょうこくかん</rt></ruby>の<ruby>長年<rt>ながねん</rt></ruby>にわたる<ruby>友好関係<rt>ゆうこうかんけい</rt></ruby>を<ruby>改め<rt>あらため</rt></ruby>て<ruby>示す<rt>しめす</rt></ruby>ものである。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan gifts 250 cherry trees to US for America's 250th birthday</h2>
+              <p class="body en-body">Japan is sending 250 cherry blossom trees to the United States to mark America's 250th anniversary. The gesture echoes the historic 1912 donation of around 3,000 cherry trees from Tokyo, which now famously line the Potomac River in Washington DC. The gift symbolises the enduring friendship between the two nations.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日銀<rt>にちぎん</rt></ruby>、<ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby><ruby>受け<rt>うけ</rt></ruby>インフレ<ruby>対応<rt>たいおう</rt></ruby>に<ruby>苦慮<rt>くりょ</rt></ruby></h2>
+              <p class="body"><ruby>日本銀行<rt>にっぽんぎんこう</rt></ruby>は、<ruby>中東<rt>ちゅうとう</rt></ruby><ruby>紛争<rt>ふんそう</rt></ruby>の<ruby>激化<rt>げきか</rt></ruby>によるエネルギー<ruby>価格<rt>かかく</rt></ruby><ruby>上昇<rt>じょうしょう</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、<ruby>金融<rt>きんゆう</rt></ruby><ruby>政策<rt>せいさく</rt></ruby>の<ruby>舵取<rt>かじとり</rt></ruby>りに<ruby>苦慮<rt>くりょ</rt></ruby>している。<ruby>急激<rt>きゅうげき</rt></ruby>な<ruby>利上げ<rt>りあげ</rt></ruby>は<ruby>脆弱<rt>ぜいじゃく</rt></ruby>な<ruby>景気回復<rt>けいきかいふく</rt></ruby>を<ruby>損な<rt>そこな</rt></ruby>う<ruby>恐れ<rt>おそれ</rt></ruby>がある<ruby>一方<rt>いっぽう</rt></ruby>、<ruby>輸入<rt>ゆにゅう</rt></ruby>エネルギーコストの<ruby>増大<rt>ぞうだい</rt></ruby>が<ruby>家計<rt>かけい</rt></ruby>と<ruby>企業<rt>きぎょう</rt></ruby>を<ruby>圧迫<rt>あっぱく</rt></ruby>し<ruby>続け<rt>つづけ</rt></ruby>ている。アナリストの<ruby>多く<rt>おおく</rt></ruby>は、<ruby>次回<rt>じかい</rt></ruby>の<ruby>政策決定<rt>せいさくけってい</rt></ruby><ruby>会合<rt>かいごう</rt></ruby>で<ruby>金利<rt>きんり</rt></ruby>が<ruby>据え置か<rt>すえおか</rt></ruby>れると<ruby>予想<rt>よそう</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Bank of Japan cautious on inflation as Middle East tensions mount</h2>
+              <p class="body en-body">The Bank of Japan faces a delicate balancing act as the Middle East conflict drives up energy prices and adds inflationary pressure. Raising rates too aggressively risks undermining the fragile economic recovery, yet rising imported energy costs continue to squeeze households and businesses. Most analysts expect the BOJ to hold rates steady at its next policy meeting.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>東京<rt>とうきょう</rt></ruby>のホテルで<ruby>刺傷<rt>ししょう</rt></ruby><ruby>事件<rt>じけん</rt></ruby>、<ruby>女<rt>おんな</rt></ruby>を<ruby>逮捕<rt>たいほ</rt></ruby></h2>
+              <p class="body"><ruby>東京都内<rt>とうきょうとない</rt></ruby>のホテルで<ruby>女<rt>おんな</rt></ruby>が2<ruby>人<rt>にん</rt></ruby>を<ruby>刃物<rt>はもの</rt></ruby>で<ruby>刺す<rt>さす</rt></ruby><ruby>事件<rt>じけん</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>し、<ruby>警視庁<rt>けいしちょう</rt></ruby>は<ruby>容疑者<rt>ようぎしゃ</rt></ruby>の<ruby>女<rt>おんな</rt></ruby>をその<ruby>場<rt>ば</rt></ruby>で<ruby>逮捕<rt>たいほ</rt></ruby>した。<ruby>被害者<rt>ひがいしゃ</rt></ruby>の<ruby>一人<rt>ひとり</rt></ruby>は<ruby>右目<rt>みぎめ</rt></ruby>と<ruby>両肩<rt>りょうかた</rt></ruby>に<ruby>負傷<rt>ふしょう</rt></ruby>し、<ruby>全治<rt>ぜんち</rt></ruby><ruby>約<rt>やく</rt></ruby>2<ruby>週間<rt>しゅうかん</rt></ruby>と<ruby>診断<rt>しんだん</rt></ruby>されている。<ruby>警察<rt>けいさつ</rt></ruby>は<ruby>犯行<rt>はんこう</rt></ruby>の<ruby>動機<rt>どうき</rt></ruby>について<ruby>捜査<rt>そうさ</rt></ruby>を<ruby>進め<rt>すすめ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Woman arrested after stabbing two people at Tokyo hotel</h2>
+              <p class="body en-body">Police in Tokyo have arrested a woman after two people were stabbed at a hotel in the city. One victim sustained injuries to her right eye and both shoulders, requiring about two weeks of treatment. Authorities are investigating the motive behind the attack.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-04-11 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "宇宙飛行士", "reading": "うちゅうひこうし", "english": "astronaut"}, {"word": "周回飛行", "reading": "しゅうかいひこう", "english": "orbital flight; flyby"}, {"word": "着水", "reading": "ちゃくすい", "english": "splashdown; water landing"}, {"word": "月面着陸", "reading": "げつめんちゃくりく", "english": "lunar landing"}, {"word": "帰還", "reading": "きかん", "english": "return (from a mission)"}], [{"word": "主権", "reading": "しゅけん", "english": "sovereignty"}, {"word": "移譲", "reading": "いじょう", "english": "transfer; handover"}, {"word": "棚上げ", "reading": "たなあげ", "english": "shelving; putting on hold"}, {"word": "破棄", "reading": "はき", "english": "annulment; abrogation"}, {"word": "外交", "reading": "がいこう", "english": "diplomacy"}], [{"word": "海峡", "reading": "かいきょう", "english": "strait; channel"}, {"word": "閉鎖", "reading": "へいさ", "english": "closure; blockade"}, {"word": "高騰", "reading": "こうとう", "english": "surge; sharp rise"}, {"word": "通行料", "reading": "つうこうりょう", "english": "toll; passage fee"}, {"word": "勧告", "reading": "かんこく", "english": "recommendation; advisory"}], [{"word": "総選挙", "reading": "そうせんきょ", "english": "general election"}, {"word": "野党", "reading": "やとう", "english": "opposition party"}, {"word": "世論調査", "reading": "よろんちょうさ", "english": "opinion poll"}, {"word": "長期政権", "reading": "ちょうきせいけん", "english": "long-term administration"}, {"word": "試金石", "reading": "しきんせき", "english": "touchstone; litmus test"}], [{"word": "寄贈", "reading": "きぞう", "english": "donation; gift"}, {"word": "建国", "reading": "けんこく", "english": "founding of a nation"}, {"word": "桜並木", "reading": "さくらなみき", "english": "row of cherry trees"}, {"word": "象徴的", "reading": "しょうちょうてき", "english": "symbolic"}, {"word": "友好関係", "reading": "ゆうこうかんけい", "english": "friendly relations"}], [{"word": "金融政策", "reading": "きんゆうせいさく", "english": "monetary policy"}, {"word": "利上げ", "reading": "りあげ", "english": "interest rate hike"}, {"word": "据え置き", "reading": "すえおき", "english": "keeping unchanged; holding steady"}, {"word": "脆弱", "reading": "ぜいじゃく", "english": "fragile; vulnerable"}, {"word": "圧迫", "reading": "あっぱく", "english": "pressure; strain"}], [{"word": "刺傷", "reading": "ししょう", "english": "stab wound"}, {"word": "刃物", "reading": "はもの", "english": "bladed weapon; knife"}, {"word": "警視庁", "reading": "けいしちょう", "english": "Metropolitan Police (Tokyo)"}, {"word": "全治", "reading": "ぜんち", "english": "full recovery (medical)"}, {"word": "犯行", "reading": "はんこう", "english": "criminal act; offence"}]];
+    const LABELS  = [{"section": "国際", "headline": "アルテミスII号、月周回飛行を終え無事帰還"}, {"section": "英国", "headline": "英政府、チャゴス諸島の主権移譲合意を棚上げ"}, {"section": "経済", "headline": "ホルムズ海峡閉鎖長期化、EU航空燃料不足を警告"}, {"section": "国際", "headline": "ハンガリー総選挙、野党指導者に勝利の機運"}, {"section": "日本・社会", "headline": "日本、米建国250周年に桜250本を寄贈"}, {"section": "日本・経済", "headline": "日銀、中東情勢受けインフレ対応に苦慮"}, {"section": "日本・社会", "headline": "東京のホテルで刺傷事件、女を逮捕"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
