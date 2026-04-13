@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年4月13日（月）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年4月13日（月）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ハンガリー<ruby>総選挙<rt>そうせんきょ</rt></ruby>、<ruby>野党<rt>やとう</rt></ruby>マジャル<ruby>氏<rt>し</rt></ruby>が<ruby>圧勝<rt>あっしょう</rt></ruby>　オルバーン<ruby>政権<rt>せいけん</rt></ruby>16<ruby>年<rt>ねん</rt></ruby>に<ruby>幕<rt>まく</rt></ruby></h2>
+              <p class="body">ハンガリーの<ruby>総選挙<rt>そうせんきょ</rt></ruby>で<ruby>野党<rt>やとう</rt></ruby>のペーテル・マジャル<ruby>氏<rt>し</rt></ruby>が<ruby>圧勝<rt>あっしょう</rt></ruby>し、オルバーン・ヴィクトル<ruby>首相<rt>しゅしょう</rt></ruby>の16<ruby>年間<rt>ねんかん</rt></ruby>にわたる<ruby>政権<rt>せいけん</rt></ruby>に<ruby>終止符<rt>しゅうしふ</rt></ruby>が<ruby>打た<rt>うた</rt></ruby>れた。マジャル<ruby>氏<rt>し</rt></ruby>はオルバーン<ruby>政権<rt>せいけん</rt></ruby>の<ruby>元<rt>もと</rt></ruby><ruby>内部<rt>ないぶ</rt></ruby><ruby>関係者<rt>かんけいしゃ</rt></ruby>であり、<ruby>幅広い<rt>はばひろい</rt></ruby><ruby>有権者<rt>ゆうけんしゃ</rt></ruby>に<ruby>変革<rt>へんかく</rt></ruby>の<ruby>必要性<rt>ひつようせい</rt></ruby>を<ruby>訴え<rt>うったえ</rt></ruby>て<ruby>支持<rt>しじ</rt></ruby>を<ruby>集め<rt>あつめ</rt></ruby>た。この<ruby>結果<rt>けっか</rt></ruby>はEUとの<ruby>関係<rt>かんけい</rt></ruby><ruby>再構築<rt>さいこうちく</rt></ruby>や<ruby>中欧<rt>ちゅうおう</rt></ruby>の<ruby>政治的<rt>せいじてき</rt></ruby><ruby>均衡<rt>きんこう</rt></ruby>に<ruby>大き<rt>おおき</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>与え<rt>あたえ</rt></ruby>る<ruby>可能性<rt>かのうせい</rt></ruby>がある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Hungary's opposition leader Magyar wins landslide, ending Orbán's 16-year rule</h2>
+              <p class="body en-body">Opposition leader Péter Magyar won a landslide victory in Hungary's general election, ending Viktor Orbán's 16-year rule. Magyar, a former insider in the Orbán government, persuaded a broad coalition of voters that the country needed a change of direction. The result could reshape Hungary's relations with the EU and alter the political balance across Central Europe.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英<rt>えい</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>、<ruby>議会<rt>ぎかい</rt></ruby><ruby>採決<rt>さいけつ</rt></ruby>なしでEU<ruby>単一<rt>たんいつ</rt></ruby><ruby>市場<rt>しじょう</rt></ruby><ruby>規則<rt>きそく</rt></ruby>を<ruby>採用<rt>さいよう</rt></ruby>する<ruby>法案<rt>ほうあん</rt></ruby>を<ruby>検討<rt>けんとう</rt></ruby></h2>
+              <p class="body">スターマー<ruby>政権<rt>せいけん</rt></ruby>はEU<ruby>単一<rt>たんいつ</rt></ruby><ruby>市場<rt>しじょう</rt></ruby>の<ruby>規則<rt>きそく</rt></ruby>を<ruby>議会<rt>ぎかい</rt></ruby>での<ruby>個別<rt>こべつ</rt></ruby><ruby>採決<rt>さいけつ</rt></ruby>なしに<ruby>採用<rt>さいよう</rt></ruby>できる<ruby>法案<rt>ほうあん</rt></ruby>を<ruby>計画<rt>けいかく</rt></ruby>していることが<ruby>明らか<rt>あきらか</rt></ruby>になった。<ruby>支持<rt>しじ</rt></ruby><ruby>派<rt>は</rt></ruby>は<ruby>貿易摩擦<rt>ぼうえきまさつ</rt></ruby>の<ruby>軽減<rt>けいげん</rt></ruby>と<ruby>経済的<rt>けいざいてき</rt></ruby><ruby>連携<rt>れんけい</rt></ruby>の<ruby>強化<rt>きょうか</rt></ruby>を<ruby>主張<rt>しゅちょう</rt></ruby>する<ruby>一方<rt>いっぽう</rt></ruby>、<ruby>批判<rt>ひはん</rt></ruby><ruby>派<rt>は</rt></ruby>は<ruby>主権<rt>しゅけん</rt></ruby>の<ruby>侵害<rt>しんがい</rt></ruby>と<ruby>民主的<rt>みんしゅてき</rt></ruby><ruby>監視<rt>かんし</rt></ruby>の<ruby>低下<rt>ていか</rt></ruby>を<ruby>懸念<rt>けねん</rt></ruby>している。この<ruby>提案<rt>ていあん</rt></ruby>はBrexit<ruby>後の<rt>のちの</rt></ruby>UK-EU<ruby>関係<rt>かんけい</rt></ruby>が<ruby>予想以上<rt>よそういじょう</rt></ruby>に<ruby>深く<rt>ふかく</rt></ruby><ruby>再編<rt>さいへん</rt></ruby>される<ruby>可能性<rt>かのうせい</rt></ruby>を<ruby>示唆す<rt>しさす</rt></ruby>るものである。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK considers legislation to adopt EU single market rules without parliamentary vote</h2>
+              <p class="body en-body">The Starmer government is planning legislation that would allow the UK to adopt EU single market rules without each change being voted on in Parliament. Supporters argue it would reduce trade friction and improve economic alignment, while critics raise concerns about sovereignty and democratic scrutiny. The proposal suggests a deeper practical reset in UK-EU relations than many had expected.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>原油価格<rt>げんゆかかく</rt></ruby>が100ドル<ruby>突破<rt>とっぱ</rt></ruby>　<ruby>米国<rt>べいこく</rt></ruby>のイラン<ruby>港<rt>みなと</rt></ruby><ruby>封鎖<rt>ふうさ</rt></ruby><ruby>計画<rt>けいかく</rt></ruby>で<ruby>市場<rt>しじょう</rt></ruby><ruby>動揺<rt>どうよう</rt></ruby></h2>
+              <p class="body">イランとの<ruby>和平交渉<rt>わへいこうしょう</rt></ruby>が<ruby>決裂<rt>けつれつ</rt></ruby>し、<ruby>米国<rt>べいこく</rt></ruby>がイランの<ruby>港湾<rt>こうわん</rt></ruby><ruby>封鎖<rt>ふうさ</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>したことを<ruby>受け<rt>うけ</rt></ruby>、<ruby>原油価格<rt>げんゆかかく</rt></ruby>が1バレル100ドルを<ruby>超え<rt>こえ</rt></ruby>た。<ruby>市場<rt>しじょう</rt></ruby>ではエネルギー<ruby>供給<rt>きょうきゅう</rt></ruby>の<ruby>途絶<rt>とぜつ</rt></ruby>が<ruby>懸念<rt>けねん</rt></ruby>されており、インフレ、<ruby>航空運賃<rt>こうくううんちん</rt></ruby>、<ruby>物流<rt>ぶつりゅう</rt></ruby>コストなど<ruby>中東<rt>ちゅうとう</rt></ruby>を<ruby>越え<rt>こえ</rt></ruby>て<ruby>広範<rt>こうはん</rt></ruby>な<ruby>経済的<rt>けいざいてき</rt></ruby><ruby>影響<rt>えいきょう</rt></ruby>が<ruby>予想<rt>よそう</rt></ruby>される。<ruby>世界的<rt>せかいてき</rt></ruby>な<ruby>生活<rt>せいかつ</rt></ruby>コスト<ruby>圧迫<rt>あっぱく</rt></ruby>がさらに<ruby>深刻化<rt>しんこくか</rt></ruby>する<ruby>恐れ<rt>おそれ</rt></ruby>がある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Oil surges past $100 as US moves toward blockading Iranian ports</h2>
+              <p class="body en-body">Oil prices surged above $100 a barrel after peace talks with Iran collapsed and Washington announced plans to blockade Iranian ports. Markets fear the move could disrupt energy supplies and deepen the global cost-of-living squeeze through higher fuel and transport costs. The economic fallout could spread rapidly, affecting inflation, aviation, shipping, and consumer prices worldwide.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英国<rt>えいこく</rt></ruby>、ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>の<ruby>米<rt>こめ</rt></ruby><ruby>封鎖作戦<rt>ふうささくせん</rt></ruby>への<ruby>不参加<rt>ふさんか</rt></ruby>を<ruby>表明<rt>ひょうめい</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>はペルシャ<ruby>湾<rt>わん</rt></ruby>で<ruby>掃海艇<rt>そうかいてい</rt></ruby>やドローン<ruby>対策<rt>たいさく</rt></ruby><ruby>能力<rt>のうりょく</rt></ruby>を<ruby>維持す<rt>いじす</rt></ruby>るものの、トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>が<ruby>提案<rt>ていあん</rt></ruby>するイラン<ruby>港湾<rt>こうわん</rt></ruby><ruby>封鎖<rt>ふうさ</rt></ruby>には<ruby>参加<rt>さんか</rt></ruby>しないと<ruby>表明<rt>ひょうめい</rt></ruby>した。この<ruby>決定<rt>けってい</rt></ruby>は<ruby>米国<rt>べいこく</rt></ruby>との<ruby>同盟関係<rt>どうめいかんけい</rt></ruby>を<ruby>維持し<rt>いじし</rt></ruby>つつ、<ruby>地域<rt>ちいき</rt></ruby><ruby>紛争<rt>ふんそう</rt></ruby>の<ruby>拡大<rt>かくだい</rt></ruby>に<ruby>巻き込ま<rt>まきこま</rt></ruby>れるリスクを<ruby>回避<rt>かいひ</rt></ruby>する<ruby>狙い<rt>ねらい</rt></ruby>がある。ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>は<ruby>世界<rt>せかい</rt></ruby><ruby>有数<rt>ゆうすう</rt></ruby>の<ruby>石油<rt>せきゆ</rt></ruby>・<ruby>貿易<rt>ぼうえき</rt></ruby><ruby>輸送<rt>ゆそう</rt></ruby>ルートであり、<ruby>今後<rt>こんご</rt></ruby>の<ruby>動向<rt>どうこう</rt></ruby>が<ruby>注目<rt>ちゅうもく</rt></ruby>される。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK refuses to join US blockade in the Strait of Hormuz</h2>
+              <p class="body en-body">Britain announced it will continue operating minesweepers and anti-drone capabilities in the Persian Gulf but will not join Trump's proposed blockade of Iranian ports. The decision reflects an attempt to balance its alliance with Washington against the risks of deeper involvement in a widening regional conflict. The Strait of Hormuz remains one of the world's most sensitive shipping routes for oil and trade.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>高市<rt>たかいち</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>、<ruby>国会<rt>こっかい</rt></ruby><ruby>後半<rt>こうはん</rt></ruby>の<ruby>重要<rt>じゅうよう</rt></ruby><ruby>法案<rt>ほうあん</rt></ruby><ruby>審議<rt>しんぎ</rt></ruby>へ<ruby>連立<rt>れんりつ</rt></ruby><ruby>協力<rt>きょうりょく</rt></ruby>を<ruby>要請<rt>ようせい</rt></ruby></h2>
+              <p class="body"><ruby>高市<rt>たかいち</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>は<ruby>政府<rt>せいふ</rt></ruby>・<ruby>与党<rt>よとう</rt></ruby><ruby>連絡会議<rt>れんらくかいぎ</rt></ruby>で、<ruby>予算<rt>よさん</rt></ruby><ruby>成立<rt>せいりつ</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby><ruby>国会<rt>こっかい</rt></ruby><ruby>後半<rt>こうはん</rt></ruby>は<ruby>重要<rt>じゅうよう</rt></ruby><ruby>法案<rt>ほうあん</rt></ruby>の<ruby>審議<rt>しんぎ</rt></ruby>に<ruby>注力<rt>ちゅうりょく</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。<ruby>連立<rt>れんりつ</rt></ruby>パートナーに<ruby>対し<rt>たいし</rt></ruby><ruby>引き続き<rt>ひきつづき</rt></ruby>の<ruby>協力<rt>きょうりょく</rt></ruby>を<ruby>求め<rt>もとめ</rt></ruby>、<ruby>政権<rt>せいけん</rt></ruby>の<ruby>求心力<rt>きゅうしんりょく</rt></ruby><ruby>維持<rt>いじ</rt></ruby>を<ruby>図る<rt>はかる</rt></ruby><ruby>構え<rt>かまえ</rt></ruby>である。<ruby>政治的<rt>せいじてき</rt></ruby>にデリケートな<ruby>法案<rt>ほうあん</rt></ruby>が<ruby>控え<rt>ひかえ</rt></ruby>ており、<ruby>与野党<rt>よやとう</rt></ruby><ruby>間の<rt>まの</rt></ruby><ruby>攻防<rt>こうぼう</rt></ruby>が<ruby>激化<rt>げきか</rt></ruby>する<ruby>見通し<rt>みとおし</rt></ruby>だ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">PM Takaichi seeks coalition support for key bills in second half of Diet session</h2>
+              <p class="body en-body">Prime Minister Takaichi told a government-ruling party liaison meeting that with the budget now passed, the focus will shift to deliberation on major bills in the second half of the parliamentary session. She asked coalition partners for continued cooperation to move the agenda forward. Politically sensitive legislation lies ahead, and clashes between ruling and opposition parties are expected to intensify.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日本<rt>にっぽん</rt></ruby><ruby>含む<rt>ふくむ</rt></ruby><ruby>非核<rt>ひかく</rt></ruby>12カ<ruby>国<rt>くに</rt></ruby>、NPT<ruby>運用<rt>うんよう</rt></ruby><ruby>検討会<rt>けんとうかい</rt></ruby><ruby>議<rt>ぎ</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby><ruby>共同<rt>きょうどう</rt></ruby><ruby>声明<rt>せいめい</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby></h2>
+              <p class="body"><ruby>日本<rt>にっぽん</rt></ruby>を<ruby>含む<rt>ふくむ</rt></ruby>12の<ruby>非核<rt>ひかく</rt></ruby><ruby>兵器<rt>へいき</rt></ruby><ruby>国<rt>くに</rt></ruby>が<ruby>核<rt>かく</rt></ruby><ruby>不<rt>ふ</rt></ruby><ruby>拡散<rt>かくさん</rt></ruby><ruby>条約<rt>じょうやく</rt></ruby>（NPT）の<ruby>運用<rt>うんよう</rt></ruby><ruby>検討<rt>けんとう</rt></ruby>プロセスに<ruby>向け<rt>むけ</rt></ruby>て<ruby>共同<rt>きょうどう</rt></ruby><ruby>声明<rt>せいめい</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>し、<ruby>全<rt>ぜん</rt></ruby><ruby>加盟国<rt>かめいこく</rt></ruby>に<ruby>対話<rt>たいわ</rt></ruby>と<ruby>協力<rt>きょうりょく</rt></ruby>を<ruby>呼び<rt>よび</rt></ruby>かけた。<ruby>世界的<rt>せかいてき</rt></ruby>な<ruby>緊張<rt>きんちょう</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>る<ruby>中<rt>なか</rt></ruby>、NPTの<ruby>維持<rt>いじ</rt></ruby>と<ruby>強化<rt>きょうか</rt></ruby>を<ruby>目指す<rt>めざす</rt></ruby><ruby>内容<rt>ないよう</rt></ruby>である。<ruby>唯一<rt>ゆいいつ</rt></ruby>の<ruby>被爆<rt>ひばく</rt></ruby><ruby>国<rt>くに</rt></ruby>として<ruby>複雑<rt>ふくざつ</rt></ruby>な<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby><ruby>環境<rt>かんきょう</rt></ruby>の<ruby>中に<rt>なかに</rt></ruby><ruby>置か<rt>おか</rt></ruby>れた<ruby>日本<rt>にっぽん</rt></ruby>にとって、<ruby>特に<rt>とくに</rt></ruby><ruby>重要な<rt>じゅうような</rt></ruby><ruby>外交的<rt>がいこうてき</rt></ruby><ruby>意義<rt>いぎ</rt></ruby>を<ruby>持つ<rt>もつ</rt></ruby><ruby>声明<rt>せいめい</rt></ruby>だ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan and 11 non-nuclear states call for constructive engagement ahead of NPT review</h2>
+              <p class="body en-body">Japan and 11 other non-nuclear states issued a joint statement ahead of the NPT review process, urging all signatories to engage in dialogue and cooperation. The group aims to preserve and strengthen the treaty amid renewed global tensions. The statement carries special significance for Japan as the only country to have experienced atomic bombings while navigating complex security alliances.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>後期<rt>こうき</rt></ruby><ruby>高齢者<rt>こうれいしゃ</rt></ruby>の<ruby>保険料<rt>ほけんりょう</rt></ruby>、<ruby>月額<rt>げつがく</rt></ruby><ruby>平均<rt>へいきん</rt></ruby>7,989<ruby>円<rt>えん</rt></ruby>で<ruby>過去<rt>かこ</rt></ruby><ruby>最高<rt>さいこう</rt></ruby>に</h2>
+              <p class="body">75<ruby>歳<rt>とし</rt></ruby><ruby>以上<rt>いじょう</rt></ruby>を<ruby>対象<rt>たいしょう</rt></ruby>とする<ruby>後期<rt>こうき</rt></ruby><ruby>高齢者<rt>こうれいしゃ</rt></ruby><ruby>医療制度<rt>いりょうせいど</rt></ruby>の<ruby>保険料<rt>ほけんりょう</rt></ruby>が、<ruby>今年度<rt>こんねんど</rt></ruby>と<ruby>来年度<rt>らいねんど</rt></ruby>の<ruby>月額<rt>げつがく</rt></ruby><ruby>平均<rt>へいきん</rt></ruby>7,989<ruby>円<rt>えん</rt></ruby>となり、<ruby>過去<rt>かこ</rt></ruby><ruby>最高<rt>さいこう</rt></ruby>を<ruby>更新<rt>こうしん</rt></ruby>する<ruby>見通し<rt>みとおし</rt></ruby>である。<ruby>医療費<rt>いりょうひ</rt></ruby>の<ruby>増大<rt>ぞうだい</rt></ruby>と<ruby>高齢化<rt>こうれいか</rt></ruby>の<ruby>進行<rt>しんこう</rt></ruby>が<ruby>主な<rt>おもな</rt></ruby><ruby>要因<rt>よういん</rt></ruby>であり、<ruby>年金生活<rt>ねんきんせいかつ</rt></ruby><ruby>者<rt>もの</rt></ruby>への<ruby>負担<rt>ふたん</rt></ruby>が<ruby>重く<rt>おもく</rt></ruby>なっている。<ruby>社会保障<rt>しゃかいほしょう</rt></ruby><ruby>制度<rt>せいど</rt></ruby>の<ruby>長期的<rt>ちょうきてき</rt></ruby>な<ruby>持続<rt>じぞく</rt></ruby><ruby>可能性<rt>かのうせい</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>問わ<rt>とわ</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Insurance premiums for Japan's elderly healthcare system hit record high</h2>
+              <p class="body en-body">Insurance premiums for Japan's late-stage elderly healthcare system covering people aged 75 and over are expected to average a record 7,989 yen per month. The increase is driven by rising medical costs and the financial pressures of an ageing society. The development raises renewed questions about the long-term sustainability of Japan's social security system.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-04-13 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "総選挙", "reading": "そうせんきょ", "english": "general election"}, {"word": "圧勝", "reading": "あっしょう", "english": "landslide victory"}, {"word": "終止符", "reading": "しゅうしふ", "english": "full stop; end"}, {"word": "有権者", "reading": "ゆうけんしゃ", "english": "voter; eligible voter"}, {"word": "均衡", "reading": "きんこう", "english": "balance; equilibrium"}], [{"word": "採決", "reading": "さいけつ", "english": "vote; division"}, {"word": "貿易摩擦", "reading": "ぼうえきまさつ", "english": "trade friction"}, {"word": "主権", "reading": "しゅけん", "english": "sovereignty"}, {"word": "監視", "reading": "かんし", "english": "oversight; surveillance"}, {"word": "示唆", "reading": "しさ", "english": "suggestion; implication"}], [{"word": "決裂", "reading": "けつれつ", "english": "breakdown; rupture"}, {"word": "港湾封鎖", "reading": "こうわんふうさ", "english": "port blockade"}, {"word": "途絶", "reading": "とぜつ", "english": "disruption; interruption"}, {"word": "物流", "reading": "ぶつりゅう", "english": "logistics; distribution"}, {"word": "圧迫", "reading": "あっぱく", "english": "pressure; squeeze"}], [{"word": "掃海艇", "reading": "そうかいてい", "english": "minesweeper"}, {"word": "同盟", "reading": "どうめい", "english": "alliance"}, {"word": "紛争", "reading": "ふんそう", "english": "conflict; dispute"}, {"word": "海峡", "reading": "かいきょう", "english": "strait; channel"}, {"word": "動向", "reading": "どうこう", "english": "trend; developments"}], [{"word": "連立", "reading": "れんりつ", "english": "coalition"}, {"word": "審議", "reading": "しんぎ", "english": "deliberation; debate"}, {"word": "求心力", "reading": "きゅうしんりょく", "english": "centripetal force; cohesion"}, {"word": "攻防", "reading": "こうぼう", "english": "offensive and defensive; clash"}, {"word": "激化", "reading": "げきか", "english": "intensification"}], [{"word": "核不拡散条約", "reading": "かくふかくさんじょうやく", "english": "Nuclear Non-Proliferation Treaty"}, {"word": "加盟国", "reading": "かめいこく", "english": "member state; signatory"}, {"word": "被爆国", "reading": "ひばくこく", "english": "atomic-bombed nation"}, {"word": "外交的", "reading": "がいこうてき", "english": "diplomatic"}, {"word": "安全保障", "reading": "あんぜんほしょう", "english": "national security"}], [{"word": "後期高齢者", "reading": "こうきこうれいしゃ", "english": "late-stage elderly (aged 75+)"}, {"word": "保険料", "reading": "ほけんりょう", "english": "insurance premium"}, {"word": "持続可能性", "reading": "じぞくかのうせい", "english": "sustainability"}, {"word": "年金", "reading": "ねんきん", "english": "pension"}, {"word": "更新", "reading": "こうしん", "english": "renewal; setting a new record"}]];
+    const LABELS  = [{"section": "国際", "headline": "ハンガリー総選挙、野党マジャル氏が圧勝　オルバーン政権16年に幕"}, {"section": "英国", "headline": "英政府、議会採決なしでEU単一市場規則を採用する法案を検討"}, {"section": "経済", "headline": "原油価格が100ドル突破　米国のイラン港封鎖計画で市場動揺"}, {"section": "英国・世界", "headline": "英国、ホルムズ海峡の米封鎖作戦への不参加を表明"}, {"section": "日本・政治", "headline": "高市首相、国会後半の重要法案審議へ連立協力を要請"}, {"section": "日本・政治", "headline": "日本含む非核12カ国、NPT運用検討会議に向け共同声明を発表"}, {"section": "日本・社会", "headline": "後期高齢者の保険料、月額平均7,989円で過去最高に"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
