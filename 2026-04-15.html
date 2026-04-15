@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年4月15日（水曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年4月15日（水曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">BBC<ruby>潜入<rt>せんにゅう</rt></ruby><ruby>調査<rt>ちょうさ</rt></ruby>、<ruby>移民<rt>いみん</rt></ruby>の<ruby>虚偽<rt>きょぎ</rt></ruby><ruby>亡命<rt>ぼうめい</rt></ruby><ruby>申請<rt>しんせい</rt></ruby>を<ruby>指導<rt>しどう</rt></ruby>する<ruby>仲介<rt>ちゅうかい</rt></ruby><ruby>業者<rt>ぎょうしゃ</rt></ruby>を<ruby>暴露<rt>ばくろ</rt></ruby></h2>
+              <p class="body">BBCの<ruby>潜入<rt>せんにゅう</rt></ruby><ruby>調査<rt>ちょうさ</rt></ruby>により、<ruby>一部<rt>いちぶ</rt></ruby>の<ruby>法律<rt>ほうりつ</rt></ruby>アドバイザーや<ruby>仲介<rt>ちゅうかい</rt></ruby><ruby>人<rt>にん</rt></ruby>が<ruby>移民<rt>いみん</rt></ruby>に<ruby>高額<rt>こうがく</rt></ruby>の<ruby>料金<rt>りょうきん</rt></ruby>を<ruby>請求<rt>せいきゅう</rt></ruby>し、<ruby>性的<rt>せいてき</rt></ruby><ruby>指向<rt>しこう</rt></ruby>に<ruby>基づ<rt>もとづ</rt></ruby>く<ruby>虚偽<rt>きょぎ</rt></ruby>の<ruby>亡命<rt>ぼうめい</rt></ruby><ruby>申請<rt>しんせい</rt></ruby>を<ruby>指導<rt>しどう</rt></ruby>していることが<ruby>明らか<rt>あきらか</rt></ruby>になった。<ruby>報告書<rt>ほうこくしょ</rt></ruby>は<ruby>亡命<rt>ぼうめい</rt></ruby><ruby>制度<rt>せいど</rt></ruby>の<ruby>周辺<rt>しゅうへん</rt></ruby>に「<ruby>影<rt>かげ</rt></ruby>の<ruby>産業<rt>さんぎょう</rt></ruby>」が<ruby>存在<rt>そんざい</rt></ruby>すると<ruby>指摘<rt>してき</rt></ruby>し、<ruby>詐欺<rt>さぎ</rt></ruby>や<ruby>監視<rt>かんし</rt></ruby><ruby>体制<rt>たいせい</rt></ruby>の<ruby>不備<rt>ふび</rt></ruby>、すでに<ruby>逼迫<rt>ひっぱく</rt></ruby>している<ruby>移民<rt>いみん</rt></ruby><ruby>審査<rt>しんさ</rt></ruby>への<ruby>圧力<rt>あつりょく</rt></ruby>について<ruby>疑問<rt>ぎもん</rt></ruby>を<ruby>呈し<rt>ていし</rt></ruby>ている。この<ruby>問題<rt>もんだい</rt></ruby>は、<ruby>正当<rt>せいとう</rt></ruby>な<ruby>保護<rt>ほご</rt></ruby>を<ruby>求め<rt>もとめ</rt></ruby>る<ruby>人々<rt>ひとびと</rt></ruby>の<ruby>信頼性<rt>しんらいせい</rt></ruby>にも<ruby>悪影響<rt>あくえいきょう</rt></ruby>を<ruby>及ぼ<rt>およぼ</rt></ruby>す<ruby>恐れ<rt>おそれ</rt></ruby>がある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">BBC undercover probe exposes brokers coaching migrants on false asylum claims</h2>
+              <p class="body en-body">A BBC undercover investigation has revealed that some legal advisers and middlemen are charging migrants large sums to coach them into making false sexuality-based asylum claims. The report describes a shadow industry around the asylum system, raising concerns about fraud, oversight failures and the strain on already stretched immigration processes.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">IMF、イラン<ruby>紛争<rt>ふんそう</rt></ruby>でイギリスの<ruby>成長率<rt>せいちょうりつ</rt></ruby><ruby>予測<rt>よそく</rt></ruby>を<ruby>下方修正<rt>かほうしゅうせい</rt></ruby></h2>
+              <p class="body">IMFはイギリスの<ruby>経済成長<rt>けいざいせいちょう</rt></ruby><ruby>率<rt>りつ</rt></ruby><ruby>予測<rt>よそく</rt></ruby>を<ruby>引き下げ<rt>ひきさげ</rt></ruby>、イランとの<ruby>紛争<rt>ふんそう</rt></ruby>が<ruby>主要<rt>しゅよう</rt></ruby><ruby>経済<rt>けいざい</rt></ruby><ruby>国<rt>くに</rt></ruby>の<ruby>中<rt>なか</rt></ruby>でイギリスに<ruby>最も<rt>もっとも</rt></ruby><ruby>大き<rt>おおき</rt></ruby>な<ruby>打撃<rt>だげき</rt></ruby>を<ruby>与え<rt>あたえ</rt></ruby>ていると<ruby>警告し<rt>けいこくし</rt></ruby>た。エネルギーコストの<ruby>上昇<rt>じょうしょう</rt></ruby>、<ruby>消費者<rt>しょうひしゃ</rt></ruby><ruby>信頼感<rt>しんらいかん</rt></ruby>の<ruby>低下<rt>ていか</rt></ruby>、<ruby>世界的<rt>せかいてき</rt></ruby>な<ruby>混乱<rt>こんらん</rt></ruby>の<ruby>拡大<rt>かくだい</rt></ruby>が<ruby>懸念<rt>けねん</rt></ruby><ruby>材料<rt>ざいりょう</rt></ruby>として<ruby>挙げ<rt>あげ</rt></ruby>られている。IMFは、<ruby>紛争<rt>ふんそう</rt></ruby>の<ruby>長期化<rt>ちょうきか</rt></ruby>がイギリスだけでなく<ruby>世界経済<rt>せかいけいざい</rt></ruby><ruby>全体<rt>ぜんたい</rt></ruby>をさらに<ruby>不安定<rt>ふあんてい</rt></ruby>にする<ruby>恐れ<rt>おそれ</rt></ruby>があると<ruby>指摘<rt>してき</rt></ruby>した。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">IMF cuts UK growth forecast as Iran conflict hits Britain hardest among major economies</h2>
+              <p class="body en-body">The IMF has cut its UK growth forecast, warning that the Iran conflict is hitting Britain harder than other major economies. Rising energy costs, weaker consumer confidence and wider global disruption are all cited as concerns. The fund cautioned that a prolonged conflict could push both the UK and the global economy further off course.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>住宅<rt>じゅうたく</rt></ruby><ruby>購入<rt>こうにゅう</rt></ruby><ruby>支援<rt>しえん</rt></ruby><ruby>制度<rt>せいど</rt></ruby>、<ruby>恩恵<rt>おんけい</rt></ruby>は<ruby>高所<rt>こうしょ</rt></ruby><ruby>得<rt>え</rt></ruby><ruby>者<rt>もの</rt></ruby>に<ruby>偏重<rt>へんちょう</rt></ruby>とIFS<ruby>分析<rt>ぶんせき</rt></ruby></h2>
+              <p class="body">イギリスの<ruby>財政<rt>ざいせい</rt></ruby><ruby>研究所<rt>けんきゅうしょ</rt></ruby>（IFS）は、<ruby>住宅<rt>じゅうたく</rt></ruby><ruby>購入<rt>こうにゅう</rt></ruby><ruby>支援<rt>しえん</rt></ruby><ruby>制度<rt>せいど</rt></ruby>「ヘルプ・トゥ・バイ」が<ruby>支援<rt>しえん</rt></ruby>を<ruby>最も<rt>もっとも</rt></ruby><ruby>必要<rt>ひつよう</rt></ruby>としていた<ruby>低所<rt>ていしょ</rt></ruby><ruby>得<rt>え</rt></ruby><ruby>世帯<rt>せたい</rt></ruby>よりも、<ruby>高所<rt>こうしょ</rt></ruby><ruby>得<rt>え</rt></ruby><ruby>者<rt>もの</rt></ruby>に<ruby>不均衡<rt>ふきんこう</rt></ruby>な<ruby>恩恵<rt>おんけい</rt></ruby>をもたらしていたとする<ruby>分析結果<rt>ぶんせきけっか</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。この<ruby>指摘<rt>してき</rt></ruby>は、<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>住宅補助<rt>じゅうたくほじょ</rt></ruby><ruby>金<rt>きん</rt></ruby>が<ruby>住宅<rt>じゅうたく</rt></ruby>の<ruby>手頃<rt>てごろ</rt></ruby>さを<ruby>改善<rt>かいぜん</rt></ruby>するよりも<ruby>価格<rt>かかく</rt></ruby>を<ruby>押し<rt>おし</rt></ruby><ruby>上げ<rt>あげ</rt></ruby>ているのではないかという<ruby>議論<rt>ぎろん</rt></ruby>を<ruby>激化<rt>げきか</rt></ruby>させる<ruby>可能性<rt>かのうせい</rt></ruby>がある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Help to Buy mostly benefited high earners, IFS analysis finds</h2>
+              <p class="body en-body">The Institute for Fiscal Studies says the Help to Buy scheme disproportionately benefited higher earners rather than the lower-income households it was meant to support. The finding is likely to fuel debate over whether large housing subsidies inflate prices rather than improve affordability.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">インド<ruby>洋<rt>ひろし</rt></ruby>で<ruby>移民<rt>いみん</rt></ruby><ruby>船<rt>ふね</rt></ruby><ruby>沈没<rt>ちんぼつ</rt></ruby>、<ruby>約<rt>やく</rt></ruby>250<ruby>人<rt>にん</rt></ruby>が<ruby>行方不明<rt>ゆくえふめい</rt></ruby></h2>
+              <p class="body">インド<ruby>洋<rt>ひろし</rt></ruby>で<ruby>移民<rt>いみん</rt></ruby>を<ruby>乗せ<rt>のせ</rt></ruby>た<ruby>船<rt>ふね</rt></ruby>が<ruby>荒天<rt>こうてん</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<ruby>沈没<rt>ちんぼつ</rt></ruby>し、<ruby>国連<rt>こくれん</rt></ruby>によると<ruby>約<rt>やく</rt></ruby>250<ruby>人<rt>にん</rt></ruby>が<ruby>行方不明<rt>ゆくえふめい</rt></ruby>となっている。<ruby>強風<rt>きょうふう</rt></ruby>と<ruby>高波<rt>たかなみ</rt></ruby>が<ruby>原因<rt>げんいん</rt></ruby>とみられ、<ruby>不正規<rt>ふせいき</rt></ruby><ruby>移民<rt>いみん</rt></ruby>ルートの<ruby>危険性<rt>きけんせい</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>浮き彫り<rt>うきぼり</rt></ruby>となった。この<ruby>事故<rt>じこ</rt></ruby>は、<ruby>長距離<rt>ちょうきょり</rt></ruby>の<ruby>海上<rt>かいじょう</rt></ruby><ruby>横断<rt>おうだん</rt></ruby>を<ruby>試み<rt>こころみ</rt></ruby>る<ruby>人々<rt>ひとびと</rt></ruby>が<ruby>直面<rt>ちょくめん</rt></ruby>する<ruby>人道的<rt>じんどうてき</rt></ruby>コストの<ruby>深刻<rt>しんこく</rt></ruby>さを<ruby>示し<rt>しめし</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Around 250 missing after migrant boat sinks in Indian Ocean</h2>
+              <p class="body en-body">A migrant boat sank in rough seas and strong winds in the Indian Ocean, leaving around 250 people missing according to the United Nations. The disaster underlines the continuing dangers of irregular migration routes and the devastating humanitarian cost facing those who attempt long sea crossings.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>高市<rt>たかいち</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>、<ruby>石油<rt>せきゆ</rt></ruby><ruby>由来<rt>ゆらい</rt></ruby><ruby>医療用<rt>いりょうよう</rt></ruby><ruby>品<rt>ひん</rt></ruby>の<ruby>安定供給<rt>あんていきょうきゅう</rt></ruby><ruby>支援<rt>しえん</rt></ruby>を<ruby>表明<rt>ひょうめい</rt></ruby>へ</h2>
+              <p class="body">NHKの<ruby>報道<rt>ほうどう</rt></ruby>によると、<ruby>高市<rt>たかいち</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>はアジア<ruby>諸国<rt>しょこく</rt></ruby>とのオンライン<ruby>首脳<rt>しゅのう</rt></ruby><ruby>会議<rt>かいぎ</rt></ruby>において、<ruby>石油<rt>せきゆ</rt></ruby><ruby>由来<rt>ゆらい</rt></ruby>の<ruby>原材料<rt>げんざいりょう</rt></ruby>から<ruby>製造<rt>せいぞう</rt></ruby>される<ruby>医療用<rt>いりょうよう</rt></ruby><ruby>品<rt>ひん</rt></ruby>の<ruby>安定供給<rt>あんていきょうきゅう</rt></ruby><ruby>確保<rt>かくほ</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>た<ruby>支援<rt>しえん</rt></ruby>を<ruby>表明<rt>ひょうめい</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>である。<ruby>日本<rt>にっぽん</rt></ruby>は<ruby>地域<rt>ちいき</rt></ruby>サプライチェーンの<ruby>強化<rt>きょうか</rt></ruby>を<ruby>柱<rt>はしら</rt></ruby>とする<ruby>議長<rt>ぎちょう</rt></ruby><ruby>声明<rt>せいめい</rt></ruby>の<ruby>取り<rt>とり</rt></ruby>まとめにも<ruby>関与<rt>かんよ</rt></ruby>する<ruby>見通し<rt>みとおし</rt></ruby>で、<ruby>海外<rt>かいがい</rt></ruby><ruby>紛争<rt>ふんそう</rt></ruby>が<ruby>国内<rt>こくない</rt></ruby>の<ruby>経済<rt>けいざい</rt></ruby><ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby><ruby>政策<rt>せいさく</rt></ruby>に<ruby>直接影響<rt>ちょくせつえいきょう</rt></ruby>していることを<ruby>示す<rt>しめす</rt></ruby><ruby>動き<rt>うごき</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan PM to back securing oil-derived medical supplies at Asian summit</h2>
+              <p class="body en-body">NHK reports that Prime Minister Takaichi plans to express support at an online summit with Asian nations for securing a stable supply of medical goods made from oil-derived materials. Japan is also expected to help draft a chair's statement focused on strengthening regional supply chains, reflecting how overseas conflict is shaping domestic economic security planning.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>埼玉<rt>さいたま</rt></ruby>・<ruby>八潮<rt>やしお</rt></ruby><ruby>市<rt>し</rt></ruby>の<ruby>道路<rt>どうろ</rt></ruby><ruby>陥没<rt>かんぼつ</rt></ruby><ruby>現場付近<rt>げんばふきん</rt></ruby>、<ruby>約<rt>やく</rt></ruby>1<ruby>年<rt>ねん</rt></ruby>3か<ruby>月<rt>がつ</rt></ruby>ぶりに<ruby>部分<rt>ぶぶん</rt></ruby><ruby>再開<rt>さいかい</rt></ruby><ruby>通<rt>とおり</rt></ruby></h2>
+              <p class="body"><ruby>埼玉県<rt>さいたまけん</rt></ruby><ruby>八潮<rt>やしお</rt></ruby><ruby>市<rt>し</rt></ruby>で<ruby>発生<rt>はっせい</rt></ruby>した<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>道路<rt>どうろ</rt></ruby><ruby>陥没<rt>かんぼつ</rt></ruby>の<ruby>現場付近<rt>げんばふきん</rt></ruby>の<ruby>県道<rt>けんどう</rt></ruby>が、<ruby>仮の<rt>かりの</rt></ruby><ruby>片側一車線<rt>かたがわいっしゃせん</rt></ruby>として<ruby>約<rt>やく</rt></ruby>1<ruby>年<rt>ねん</rt></ruby>3か<ruby>月<rt>がつ</rt></ruby>ぶりに<ruby>部分的<rt>ぶぶんてき</rt></ruby>に<ruby>再開<rt>さいかい</rt></ruby><ruby>通し<rt>とうし</rt></ruby>た。<ruby>長期間<rt>ちょうきかん</rt></ruby>の<ruby>交通規制<rt>こうつうきせい</rt></ruby>により<ruby>地元<rt>じもと</rt></ruby><ruby>住民<rt>じゅうみん</rt></ruby>や<ruby>事業者<rt>じぎょうしゃ</rt></ruby>は<ruby>大き<rt>おおき</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>ており、<ruby>今回<rt>こんかい</rt></ruby>の<ruby>再開<rt>さいかい</rt></ruby><ruby>通<rt>とおり</rt></ruby>は<ruby>復旧<rt>ふっきゅう</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>た<ruby>象徴的<rt>しょうちょうてき</rt></ruby>な<ruby>前進<rt>ぜんしん</rt></ruby>と<ruby>位置<rt>いち</rt></ruby>づけられている。<ruby>完全復旧<rt>かんぜんふっきゅう</rt></ruby>の<ruby>時期<rt>じき</rt></ruby>については<ruby>未定<rt>みてい</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Saitama road collapse site partially reopens after 15 months</h2>
+              <p class="body en-body">A prefectural road near the site of a major collapse in Yashio, Saitama, has reopened on a temporary one-lane basis after roughly 15 months of restrictions. The reopening marks a symbolic step forward for local residents and businesses affected by the prolonged disruption, though a full restoration timeline remains unclear.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>漫画家<rt>まんがか</rt></ruby>・<ruby>東海林<rt>しょうじ</rt></ruby>さだおさん<ruby>死去<rt>しきょ</rt></ruby>、88<ruby>歳<rt>とし</rt></ruby></h2>
+              <p class="body">サラリーマンの<ruby>日常<rt>にちじょう</rt></ruby>を<ruby>温かい<rt>あたたかい</rt></ruby>ユーモアで<ruby>描い<rt>えがい</rt></ruby>た<ruby>漫画家<rt>まんがか</rt></ruby>でエッセイストの<ruby>東海林<rt>しょうじ</rt></ruby>さだおさんが<ruby>心不全<rt>しんふぜん</rt></ruby>のため88<ruby>歳<rt>とし</rt></ruby>で<ruby>死去<rt>しきょ</rt></ruby>した。<ruby>代表作<rt>だいひょうさく</rt></ruby>「タンマ<ruby>君<rt>くん</rt></ruby>」「アサッテ<ruby>君<rt>くん</rt></ruby>」は<ruby>戦後<rt>せんご</rt></ruby><ruby>日本<rt>にっぽん</rt></ruby>の<ruby>働く<rt>はたらく</rt></ruby><ruby>人々<rt>ひとびと</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby>を<ruby>鋭い<rt>するどい</rt></ruby><ruby>観察力<rt>かんさつりょく</rt></ruby>で<ruby>捉え<rt>とらえ</rt></ruby>、<ruby>幅広い<rt>はばひろい</rt></ruby><ruby>読者<rt>どくしゃ</rt></ruby>に<ruby>愛さ<rt>あいさ</rt></ruby>れた。その<ruby>死<rt>し</rt></ruby>は<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>文化的<rt>ぶんかてき</rt></ruby><ruby>損失<rt>そんしつ</rt></ruby>として<ruby>広く<rt>ひろく</rt></ruby><ruby>惜し<rt>おし</rt></ruby>まれている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Manga artist and essayist Sadao Shoji dies at 88</h2>
+              <p class="body en-body">Sadao Shoji, the manga artist and essayist known for humorous works depicting everyday salaryman life such as Tanma-kun and Asatte-kun, has died of heart failure at the age of 88. His work captured ordinary postwar working life with warmth, wit and sharp observation, and his passing is being mourned as a significant cultural loss in Japan.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-04-15 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "潜入調査", "reading": "せんにゅうちょうさ", "english": "undercover investigation"}, {"word": "仲介人", "reading": "ちゅうかいにん", "english": "middleman; broker"}, {"word": "亡命申請", "reading": "ぼうめいしんせい", "english": "asylum claim"}, {"word": "虚偽", "reading": "きょぎ", "english": "false; fraudulent"}, {"word": "逼迫", "reading": "ひっぱく", "english": "strain; pressure"}], [{"word": "成長率", "reading": "せいちょうりつ", "english": "growth rate"}, {"word": "下方修正", "reading": "かほうしゅうせい", "english": "downward revision"}, {"word": "紛争", "reading": "ふんそう", "english": "conflict; dispute"}, {"word": "打撃", "reading": "だげき", "english": "blow; impact"}, {"word": "信頼感", "reading": "しんらいかん", "english": "confidence; trust"}], [{"word": "財政研究所", "reading": "ざいせいけんきゅうじょ", "english": "Institute for Fiscal Studies"}, {"word": "恩恵", "reading": "おんけい", "english": "benefit; favour"}, {"word": "偏重", "reading": "へんちょう", "english": "disproportionate emphasis; bias"}, {"word": "補助金", "reading": "ほじょきん", "english": "subsidy; grant"}, {"word": "手頃さ", "reading": "てごろさ", "english": "affordability"}], [{"word": "沈没", "reading": "ちんぼつ", "english": "sinking; submersion"}, {"word": "行方不明", "reading": "ゆくえふめい", "english": "missing; unaccounted for"}, {"word": "荒天", "reading": "こうてん", "english": "rough weather; stormy conditions"}, {"word": "浮き彫り", "reading": "うきぼり", "english": "to bring into relief; highlight"}, {"word": "人道的", "reading": "じんどうてき", "english": "humanitarian"}], [{"word": "首脳会議", "reading": "しゅのうかいぎ", "english": "summit meeting"}, {"word": "安定供給", "reading": "あんていきょうきゅう", "english": "stable supply"}, {"word": "石油由来", "reading": "せきゆゆらい", "english": "oil-derived"}, {"word": "議長声明", "reading": "ぎちょうせいめい", "english": "chair's statement"}, {"word": "経済安全保障", "reading": "けいざいあんぜんほしょう", "english": "economic security"}], [{"word": "陥没", "reading": "かんぼつ", "english": "collapse; cave-in"}, {"word": "県道", "reading": "けんどう", "english": "prefectural road"}, {"word": "再開通", "reading": "さいかいつう", "english": "reopening (of a road)"}, {"word": "片側一車線", "reading": "かたがわいちしゃせん", "english": "one-lane (single direction)"}, {"word": "復旧", "reading": "ふっきゅう", "english": "restoration; recovery"}], [{"word": "死去", "reading": "しきょ", "english": "death; passing"}, {"word": "心不全", "reading": "しんふぜん", "english": "heart failure"}, {"word": "代表作", "reading": "だいひょうさく", "english": "representative work; masterpiece"}, {"word": "観察力", "reading": "かんさつりょく", "english": "power of observation"}, {"word": "惜しまれる", "reading": "おしまれる", "english": "to be mourned; lamented"}]];
+    const LABELS  = [{"section": "英国", "headline": "BBC潜入調査、移民の虚偽亡命申請を指導する仲介業者を暴露"}, {"section": "経済", "headline": "IMF、イラン紛争でイギリスの成長率予測を下方修正"}, {"section": "英国", "headline": "住宅購入支援制度、恩恵は高所得者に偏重とIFS分析"}, {"section": "国際", "headline": "インド洋で移民船沈没、約250人が行方不明"}, {"section": "日本・政治", "headline": "高市首相、石油由来医療用品の安定供給支援を表明へ"}, {"section": "日本・社会", "headline": "埼玉・八潮市の道路陥没現場付近、約1年3か月ぶりに部分再開通"}, {"section": "日本・社会", "headline": "漫画家・東海林さだおさん死去、88歳"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
