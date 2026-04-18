@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年4月18日（土）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年4月18日（土）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">マンデルソン<ruby>卿<rt>きょう</rt></ruby>の<ruby>審査<rt>しんさ</rt></ruby><ruby>不合格<rt>ふごうかく</rt></ruby>、<ruby>首相<rt>しゅしょう</rt></ruby>「<ruby>報告<rt>ほうこく</rt></ruby>なし」に<ruby>批判<rt>ひはん</rt></ruby><ruby>殺到<rt>さっとう</rt></ruby></h2>
+              <p class="body">スターマー<ruby>首相<rt>しゅしょう</rt></ruby>は、マンデルソン<ruby>卿<rt>きょう</rt></ruby>がセキュリティ<ruby>審査<rt>しんさ</rt></ruby>に<ruby>不合格<rt>ふごうかく</rt></ruby>となったにもかかわらず、<ruby>自身<rt>じしん</rt></ruby>に<ruby>報告<rt>ほうこく</rt></ruby>がなかったことについて「<ruby>驚く<rt>おどろく</rt></ruby>べきことだ」と<ruby>述べ<rt>のべ</rt></ruby>た。<ruby>野党<rt>やとう</rt></ruby><ruby>各党<rt>かくとう</rt></ruby>は<ruby>政府<rt>せいふ</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>を<ruby>求め<rt>もとめ</rt></ruby>ており、<ruby>来週<rt>らいしゅう</rt></ruby>にはスターマー<ruby>首相<rt>しゅしょう</rt></ruby>および<ruby>外務省<rt>がいむしょう</rt></ruby><ruby>高官<rt>こうかん</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>議会<rt>ぎかい</rt></ruby>での<ruby>追及<rt>ついきゅう</rt></ruby>が<ruby>予想<rt>よそう</rt></ruby>される。この<ruby>問題<rt>もんだい</rt></ruby>は、<ruby>政権<rt>せいけん</rt></ruby>の<ruby>危機<rt>きき</rt></ruby><ruby>管理能力<rt>かんりのうりょく</rt></ruby>と<ruby>政府<rt>せいふ</rt></ruby><ruby>内<rt>ない</rt></ruby>の<ruby>信頼<rt>しんらい</rt></ruby><ruby>体制<rt>たいせい</rt></ruby>を<ruby>問う<rt>とう</rt></ruby><ruby>重大な<rt>じゅうだいな</rt></ruby><ruby>試金石<rt>しきんせき</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">PM under fire after Mandelson's vetting failure went unreported</h2>
+              <p class="body en-body">Prime Minister Starmer said it was 'staggering' that he was not informed Lord Mandelson had failed security vetting. Opposition parties are demanding answers, with parliamentary questioning of Starmer and senior Foreign Office officials expected next week. The affair has become a major test of competence and trust at the top of government.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イラン<ruby>停戦<rt>ていせん</rt></ruby>で<ruby>市場<rt>しじょう</rt></ruby><ruby>安定<rt>あんてい</rt></ruby>、<ruby>英<rt>えい</rt></ruby><ruby>住宅<rt>じゅうたく</rt></ruby>ローン<ruby>金利<rt>きんり</rt></ruby>が<ruby>低下<rt>ていか</rt></ruby>へ</h2>
+              <p class="body">イランをめぐる<ruby>停戦<rt>ていせん</rt></ruby>の<ruby>動き<rt>うごき</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>て<ruby>金融<rt>きんゆう</rt></ruby><ruby>市場<rt>しじょう</rt></ruby>が<ruby>安定<rt>あんてい</rt></ruby>し、<ruby>英国<rt>えいこく</rt></ruby>の<ruby>主要<rt>しゅよう</rt></ruby><ruby>金融機関<rt>きんゆうきかん</rt></ruby>が<ruby>住宅<rt>じゅうたく</rt></ruby>ローン<ruby>金利<rt>きんり</rt></ruby>の<ruby>引き下げ<rt>ひきさげ</rt></ruby>を<ruby>開始<rt>かいし</rt></ruby>した。<ruby>原油価格<rt>げんゆかかく</rt></ruby>の<ruby>急騰<rt>きゅうとう</rt></ruby>と<ruby>地政学<rt>ちせいがく</rt></ruby><ruby>的<rt>てき</rt></ruby><ruby>不安<rt>ふあん</rt></ruby>が<ruby>借入<rt>しゃくにゅう</rt></ruby>コストを<ruby>押し<rt>おし</rt></ruby><ruby>上げ<rt>あげ</rt></ruby>ていたが、<ruby>今回<rt>こんかい</rt></ruby>の<ruby>金利<rt>きんり</rt></ruby><ruby>低下<rt>ていか</rt></ruby>は<ruby>家計<rt>かけい</rt></ruby>にとって<ruby>歓迎<rt>かんげい</rt></ruby>すべき<ruby>動き<rt>うごき</rt></ruby>である。<ruby>地政学<rt>ちせいがく</rt></ruby><ruby>的<rt>てき</rt></ruby><ruby>緊張<rt>きんちょう</rt></ruby>がいかに<ruby>迅速<rt>じんそく</rt></ruby>に<ruby>英国<rt>えいこく</rt></ruby>の<ruby>家計<rt>かけい</rt></ruby>に<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>及ぼ<rt>およぼ</rt></ruby>すかを<ruby>改め<rt>あらため</rt></ruby>て<ruby>示す<rt>しめす</rt></ruby><ruby>結果<rt>けっか</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Mortgage rates fall as markets calm over Iran ceasefire</h2>
+              <p class="body en-body">Major UK lenders have begun cutting mortgage rates after financial markets stabilised following a possible Iran ceasefire. The earlier spike in oil prices and geopolitical uncertainty had pushed borrowing costs higher, making the pullback significant for households. The move underscores how quickly international tensions can feed through into everyday British finances.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>原油価格<rt>げんゆかかく</rt></ruby><ruby>急落<rt>きゅうらく</rt></ruby>、イランがホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>の<ruby>開放<rt>かいほう</rt></ruby>を<ruby>表明<rt>ひょうめい</rt></ruby></h2>
+              <p class="body">イランが<ruby>停戦<rt>ていせん</rt></ruby><ruby>期間中<rt>きかんちゅう</rt></ruby>もホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>を<ruby>商業船<rt>しょうぎょうせん</rt></ruby><ruby>舶<rt>はく</rt></ruby>に<ruby>開放<rt>かいほう</rt></ruby>すると<ruby>発表<rt>はっぴょう</rt></ruby>したことを<ruby>受け<rt>うけ</rt></ruby>、ブレント<ruby>原油価格<rt>げんゆかかく</rt></ruby>が<ruby>大幅<rt>おおはば</rt></ruby>に<ruby>下落<rt>げらく</rt></ruby>した。<ruby>投資家<rt>とうしか</rt></ruby>は<ruby>世界<rt>せかい</rt></ruby><ruby>最重要<rt>さいじゅうよう</rt></ruby>エネルギー<ruby>輸送路<rt>ゆそうろ</rt></ruby>の<ruby>長期<rt>ちょうき</rt></ruby><ruby>閉鎖<rt>へいさ</rt></ruby>を<ruby>懸念<rt>けねん</rt></ruby>しており、インフレや<ruby>燃料費<rt>ねんりょうひ</rt></ruby>、<ruby>国際<rt>こくさい</rt></ruby><ruby>貿易<rt>ぼうえき</rt></ruby>への<ruby>波及<rt>はきゅう</rt></ruby>を<ruby>恐れ<rt>おそれ</rt></ruby>ていた。<ruby>価格<rt>かかく</rt></ruby>の<ruby>下落<rt>げらく</rt></ruby>は<ruby>当面<rt>とうめん</rt></ruby>のパニックを<ruby>和ら<rt>やわら</rt></ruby>げたものの、<ruby>広範<rt>こうはん</rt></ruby>な<ruby>交渉<rt>こうしょう</rt></ruby>が<ruby>継続<rt>けいぞく</rt></ruby>しており<ruby>情勢<rt>じょうせい</rt></ruby>は<ruby>依然<rt>いぜん</rt></ruby>として<ruby>不安定<rt>ふあんてい</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Oil prices plunge as Iran pledges to keep Strait of Hormuz open</h2>
+              <p class="body en-body">Brent crude fell sharply after Iran announced the vital Strait of Hormuz would remain open to commercial shipping during the ceasefire. Investors had feared a prolonged disruption to one of the world's most important energy corridors, with knock-on effects for inflation, fuel costs, and global trade. While the price drop eased immediate panic, the broader situation remains fragile as negotiations continue.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英国<rt>えいこく</rt></ruby>の<ruby>若年<rt>じゃくねん</rt></ruby><ruby>男性<rt>だんせい</rt></ruby>、3<ruby>人<rt>にん</rt></ruby>に1<ruby>人<rt>にん</rt></ruby>が<ruby>親<rt>おや</rt></ruby>と<ruby>同居<rt>どうきょ</rt></ruby>　<ruby>過去<rt>かこ</rt></ruby><ruby>最高水準<rt>さいこうすいじゅん</rt></ruby></h2>
+              <p class="body">BBCの<ruby>報道<rt>ほうどう</rt></ruby>によると、<ruby>英国<rt>えいこく</rt></ruby>で20<ruby>歳<rt>とし</rt></ruby>から34<ruby>歳<rt>とし</rt></ruby>の<ruby>男性<rt>だんせい</rt></ruby>のうち<ruby>親<rt>おや</rt></ruby>と<ruby>同居<rt>どうきょ</rt></ruby>する<ruby>割合<rt>わりあい</rt></ruby>が2007<ruby>年<rt>ねん</rt></ruby><ruby>以降<rt>いこう</rt></ruby>で<ruby>最高水準<rt>さいこうすいじゅん</rt></ruby>に<ruby>達し<rt>たっし</rt></ruby>た。<ruby>住宅費<rt>じゅうたくひ</rt></ruby>の<ruby>高騰<rt>こうとう</rt></ruby>、<ruby>停滞<rt>ていたい</rt></ruby>する<ruby>購買力<rt>こうばいりょく</rt></ruby>、そして<ruby>広範<rt>こうはん</rt></ruby>な<ruby>生活費<rt>せいかつひ</rt></ruby>の<ruby>圧迫<rt>あっぱく</rt></ruby>が<ruby>若者<rt>わかもの</rt></ruby>の<ruby>自立<rt>じりつ</rt></ruby>を<ruby>遅ら<rt>おくら</rt></ruby>せている。この<ruby>数字<rt>すうじ</rt></ruby>は、<ruby>仕事<rt>しごと</rt></ruby>・<ruby>住居<rt>じゅうきょ</rt></ruby>・<ruby>家族<rt>かぞく</rt></ruby><ruby>生活<rt>せいかつ</rt></ruby>をめぐる<ruby>若年層<rt>じゃくねんそう</rt></ruby>の<ruby>生き方<rt>いきかた</rt></ruby>における<ruby>長期的<rt>ちょうきてき</rt></ruby>な<ruby>社会<rt>しゃかい</rt></ruby><ruby>変化<rt>へんか</rt></ruby>を<ruby>映し<rt>うつし</rt></ruby><ruby>出し<rt>だし</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">More than one in three young UK men now live with their parents</h2>
+              <p class="body en-body">The share of UK men aged 20 to 34 living with their parents has reached its highest level since at least 2007, according to the BBC. Soaring housing costs, stagnant affordability, and broader cost-of-living pressures are delaying independence for many young adults. The figures reflect a long-term social shift in how younger people navigate work, rent, and family life.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>長野県<rt>ながのけん</rt></ruby><ruby>北部<rt>ほくぶ</rt></ruby>で<ruby>震度<rt>しんど</rt></ruby>5<ruby>強<rt>きょう</rt></ruby>の<ruby>地震<rt>じしん</rt></ruby>、<ruby>津波<rt>つなみ</rt></ruby>の<ruby>心配<rt>しんぱい</rt></ruby>なし</h2>
+              <p class="body">18<ruby>日<rt>にち</rt></ruby><ruby>午後<rt>ごご</rt></ruby>、<ruby>長野県<rt>ながのけん</rt></ruby><ruby>北部<rt>ほくぶ</rt></ruby>を<ruby>震源<rt>しんげん</rt></ruby>とする<ruby>強い<rt>つよい</rt></ruby><ruby>地震<rt>じしん</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>し、<ruby>一部地域<rt>いちぶちいき</rt></ruby>で<ruby>震度<rt>しんど</rt></ruby>5<ruby>弱か<rt>よわか</rt></ruby>ら5<ruby>強<rt>きょう</rt></ruby>を<ruby>観測<rt>かんそく</rt></ruby>した。<ruby>気象庁<rt>きしょうちょう</rt></ruby>は<ruby>津波<rt>つなみ</rt></ruby>の<ruby>危険<rt>きけん</rt></ruby>はないと<ruby>発表<rt>はっぴょう</rt></ruby>したが、<ruby>住民<rt>じゅうみん</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby><ruby>余震<rt>よしん</rt></ruby>への<ruby>警戒<rt>けいかい</rt></ruby>を<ruby>呼び<rt>よび</rt></ruby>かけている。<ruby>長野県<rt>ながのけん</rt></ruby><ruby>北部<rt>ほくぶ</rt></ruby>は<ruby>山岳地帯<rt>さんがくちたい</rt></ruby>であり、<ruby>人口<rt>じんこう</rt></ruby><ruby>密集<rt>みっしゅう</rt></ruby><ruby>地<rt>ち</rt></ruby>や<ruby>交通網<rt>こうつうもう</rt></ruby>への<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>懸念<rt>けねん</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Strong earthquake strikes northern Nagano, no tsunami risk</h2>
+              <p class="body en-body">A strong earthquake struck northern Nagano Prefecture on Saturday afternoon, with shaking measured at lower 5 to upper 5 on Japan's seismic intensity scale. Authorities said there was no tsunami risk but urged residents to remain alert for aftershocks. The region's mountainous terrain, population centres, and transport links have raised concerns about potential impact.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>長野<rt>ながの</rt></ruby><ruby>地震<rt>じしん</rt></ruby>、<ruby>大町<rt>おおまち</rt></ruby><ruby>市周辺<rt>ししゅうへん</rt></ruby>でインフラ<ruby>被害<rt>ひがい</rt></ruby>の<ruby>確認<rt>かくにん</rt></ruby><ruby>進む<rt>すすむ</rt></ruby></h2>
+              <p class="body"><ruby>地震発生<rt>じしんはっせい</rt></ruby><ruby>後<rt>のち</rt></ruby>、<ruby>大町<rt>おおまち</rt></ruby><ruby>市<rt>し</rt></ruby>および<ruby>長野県<rt>ながのけん</rt></ruby><ruby>北部<rt>ほくぶ</rt></ruby>の<ruby>周辺<rt>しゅうへん</rt></ruby><ruby>地域<rt>ちいき</rt></ruby>では、<ruby>自治体<rt>じちたい</rt></ruby>がけが<ruby>人<rt>にん</rt></ruby>の<ruby>有無<rt>うむ</rt></ruby>やインフラの<ruby>被害状況<rt>ひがいじょうきょう</rt></ruby>について<ruby>情報収集<rt>じょうほうしゅうしゅう</rt></ruby>を<ruby>進め<rt>すすめ</rt></ruby>ている。<ruby>道路<rt>どうろ</rt></ruby>・<ruby>鉄道<rt>てつどう</rt></ruby>・ライフラインへの<ruby>影響<rt>えいきょう</rt></ruby><ruby>確認<rt>かくにん</rt></ruby>が<ruby>急が<rt>いそが</rt></ruby>れており、<ruby>公的機関<rt>こうてききかん</rt></ruby>が<ruby>安全<rt>あんぜん</rt></ruby><ruby>情報<rt>じょうほう</rt></ruby>を<ruby>随時<rt>ずいじ</rt></ruby><ruby>発信<rt>はっしん</rt></ruby>している。<ruby>山間部<rt>さんかんぶ</rt></ruby>における<ruby>迅速<rt>じんそく</rt></ruby>な<ruby>状況<rt>じょうきょう</rt></ruby><ruby>把握<rt>はあく</rt></ruby>が<ruby>当面<rt>とうめん</rt></ruby>の<ruby>課題<rt>かだい</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Authorities assess infrastructure damage around Omachi after Nagano quake</h2>
+              <p class="body en-body">Following the earthquake, officials in Omachi and surrounding areas of northern Nagano are gathering information on injuries, infrastructure damage, and transport disruptions. Checks on roads, railways, and utilities are under way, with public agencies issuing regular safety updates. Rapid assessment in the mountainous terrain remains the immediate challenge.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>立山<rt>たてやま</rt></ruby><ruby>黒部<rt>くろべ</rt></ruby>アルペンルート、<ruby>地震<rt>じしん</rt></ruby>で<ruby>一部<rt>いちぶ</rt></ruby><ruby>運休<rt>うんきゅう</rt></ruby>　<ruby>観光客<rt>かんこうきゃく</rt></ruby>に<ruby>影響<rt>えいきょう</rt></ruby></h2>
+              <p class="body"><ruby>地震<rt>じしん</rt></ruby>の<ruby>影響<rt>えいきょう</rt></ruby>で、<ruby>立山<rt>たてやま</rt></ruby><ruby>黒部<rt>くろべ</rt></ruby>アルペンルートの<ruby>黒部湖<rt>くろべこ</rt></ruby>から<ruby>室堂<rt>しつどう</rt></ruby><ruby>間の<rt>まの</rt></ruby>ケーブルカー、ロープウェイ、<ruby>電気<rt>でんき</rt></ruby>バスが<ruby>安全<rt>あんぜん</rt></ruby><ruby>点検<rt>てんけん</rt></ruby>のため<ruby>運休<rt>うんきゅう</rt></ruby>となった。<ruby>同<rt>どう</rt></ruby>ルートは<ruby>長野県<rt>ながのけん</rt></ruby>と<ruby>富山県<rt>とやまけん</rt></ruby>を<ruby>結ぶ<rt>むすぶ</rt></ruby><ruby>人気<rt>にんき</rt></ruby><ruby>観光路線<rt>かんこうろせん</rt></ruby>であり、<ruby>観光<rt>かんこう</rt></ruby>シーズン<ruby>中の<rt>なかの</rt></ruby><ruby>運休<rt>うんきゅう</rt></ruby>は<ruby>旅行者<rt>りょこうしゃ</rt></ruby>に<ruby>大き<rt>おおき</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>与え<rt>あたえ</rt></ruby>ている。<ruby>運行<rt>うんこう</rt></ruby><ruby>再開<rt>さいかい</rt></ruby>の<ruby>見通し<rt>みとおし</rt></ruby>は<ruby>安全確認<rt>あんぜんかくにん</rt></ruby>の<ruby>結果次第<rt>けっかしだい</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Tateyama Kurobe Alpine Route suspends services after earthquake</h2>
+              <p class="body en-body">Cable car, ropeway, and electric bus services on the Tateyama Kurobe Alpine Route between Kurobeko and Murodo were suspended for safety checks following the earthquake. The route is a major tourist attraction linking Nagano and Toyama prefectures, and the stoppage during peak sightseeing season is affecting travellers. Services will resume once safety inspections are complete.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-04-18 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "審査", "reading": "しんさ", "english": "screening; vetting"}, {"word": "不合格", "reading": "ふごうかく", "english": "failure (to pass)"}, {"word": "追及", "reading": "ついきゅう", "english": "questioning; pressing for answers"}, {"word": "危機管理", "reading": "ききかんり", "english": "crisis management"}, {"word": "試金石", "reading": "しきんせき", "english": "touchstone; litmus test"}], [{"word": "住宅ローン", "reading": "じゅうたくローン", "english": "mortgage; home loan"}, {"word": "金利", "reading": "きんり", "english": "interest rate"}, {"word": "借入コスト", "reading": "かりいれコスト", "english": "borrowing costs"}, {"word": "地政学的", "reading": "ちせいがくてき", "english": "geopolitical"}, {"word": "家計", "reading": "かけい", "english": "household finances"}], [{"word": "原油", "reading": "げんゆ", "english": "crude oil"}, {"word": "海峡", "reading": "かいきょう", "english": "strait; channel"}, {"word": "商業船舶", "reading": "しょうぎょうせんぱく", "english": "commercial shipping"}, {"word": "波及", "reading": "はきゅう", "english": "ripple effect; spread"}, {"word": "不安定", "reading": "ふあんてい", "english": "unstable; volatile"}], [{"word": "同居", "reading": "どうきょ", "english": "living together; cohabitation"}, {"word": "高騰", "reading": "こうとう", "english": "surge; sharp rise"}, {"word": "購買力", "reading": "こうばいりょく", "english": "purchasing power"}, {"word": "自立", "reading": "じりつ", "english": "independence; self-reliance"}, {"word": "若年層", "reading": "じゃくねんそう", "english": "younger generation"}], [{"word": "震源", "reading": "しんげん", "english": "epicentre"}, {"word": "震度", "reading": "しんど", "english": "seismic intensity"}, {"word": "余震", "reading": "よしん", "english": "aftershock"}, {"word": "山岳地帯", "reading": "さんがくちたい", "english": "mountainous region"}, {"word": "交通網", "reading": "こうつうもう", "english": "transport network"}], [{"word": "被害状況", "reading": "ひがいじょうきょう", "english": "damage situation; extent of damage"}, {"word": "ライフライン", "reading": "ライフライン", "english": "lifeline; essential utilities"}, {"word": "状況把握", "reading": "じょうきょうはあく", "english": "grasping the situation; assessment"}, {"word": "随時", "reading": "ずいじ", "english": "at any time; as needed"}, {"word": "山間部", "reading": "さんかんぶ", "english": "mountainous area"}], [{"word": "運休", "reading": "うんきゅう", "english": "suspension of services"}, {"word": "安全点検", "reading": "あんぜんてんけん", "english": "safety inspection"}, {"word": "観光路線", "reading": "かんこうろせん", "english": "tourist route"}, {"word": "運行再開", "reading": "うんこうさいかい", "english": "resumption of services"}, {"word": "見通し", "reading": "みとおし", "english": "outlook; prospect"}]];
+    const LABELS  = [{"section": "英国", "headline": "マンデルソン卿の審査不合格、首相「報告なし」に批判殺到"}, {"section": "経済", "headline": "イラン停戦で市場安定、英住宅ローン金利が低下へ"}, {"section": "国際", "headline": "原油価格急落、イランがホルムズ海峡の開放を表明"}, {"section": "英国・世界", "headline": "英国の若年男性、3人に1人が親と同居　過去最高水準"}, {"section": "日本・社会", "headline": "長野県北部で震度5強の地震、津波の心配なし"}, {"section": "日本・社会", "headline": "長野地震、大町市周辺でインフラ被害の確認進む"}, {"section": "日本・社会", "headline": "立山黒部アルペンルート、地震で一部運休　観光客に影響"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
