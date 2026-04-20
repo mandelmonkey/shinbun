@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年4月20日（月曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年4月20日（月曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">スターマー<ruby>首相<rt>しゅしょう</rt></ruby>、マンデルソン<ruby>審査<rt>しんさ</rt></ruby>スキャンダルで<ruby>議会<rt>ぎかい</rt></ruby><ruby>答弁<rt>とうべん</rt></ruby>へ</h2>
+              <p class="body">スターマー<ruby>首相<rt>しゅしょう</rt></ruby>は20<ruby>日<rt>にち</rt></ruby>、マンデルソン<ruby>元<rt>もと</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>の<ruby>審査<rt>しんさ</rt></ruby>をめぐるスキャンダルについて<ruby>下院<rt>かいん</rt></ruby>で<ruby>答弁<rt>とうべん</rt></ruby>する<ruby>予定<rt>よてい</rt></ruby>である。<ruby>首相<rt>しゅしょう</rt></ruby>は、<ruby>公務員<rt>こうむいん</rt></ruby>が<ruby>自身<rt>じしん</rt></ruby>に<ruby>重要な<rt>じゅうような</rt></ruby><ruby>情報<rt>じょうほう</rt></ruby>を<ruby>隠し<rt>かくし</rt></ruby>ていたことに「<ruby>驚愕<rt>きょうがく</rt></ruby>した」と<ruby>述べ<rt>のべ</rt></ruby>た。この<ruby>問題<rt>もんだい</rt></ruby>は<ruby>政府<rt>せいふ</rt></ruby><ruby>内<rt>ない</rt></ruby>の<ruby>信頼<rt>しんらい</rt></ruby>と<ruby>統制<rt>とうせい</rt></ruby>を<ruby>問う<rt>とう</rt></ruby>ものとなっており、<ruby>英国<rt>えいこく</rt></ruby>メディアは<ruby>今日<rt>きょう</rt></ruby>の<ruby>答弁<rt>とうべん</rt></ruby>を「<ruby>大き<rt>おおき</rt></ruby>な<ruby>対決<rt>たいけつ</rt></ruby>」として<ruby>報じ<rt>ほうじ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Starmer faces Commons showdown over Mandelson vetting scandal</h2>
+              <p class="body en-body">Prime Minister Keir Starmer is set to face MPs over the widening Mandelson vetting scandal after saying he was staggered to learn civil servants had withheld information from him. The story has become a major test of trust and political control inside government. British newspapers are framing today's statement as a significant showdown.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>氏<rt>し</rt></ruby>「イラン<ruby>船<rt>ふね</rt></ruby><ruby>拿捕<rt>だほ</rt></ruby>」<ruby>発表<rt>はっぴょう</rt></ruby>で<ruby>原油価格<rt>げんゆかかく</rt></ruby><ruby>上昇<rt>じょうしょう</rt></ruby></h2>
+              <p class="body">トランプ<ruby>米大統領<rt>べいだいとうりょう</rt></ruby>がイランの<ruby>船舶<rt>せんぱく</rt></ruby>を<ruby>拿捕<rt>だほ</rt></ruby>したと<ruby>発表<rt>はっぴょう</rt></ruby>したことを<ruby>受け<rt>うけ</rt></ruby>、<ruby>原油価格<rt>げんゆかかく</rt></ruby>が<ruby>再び<rt>ふたたび</rt></ruby><ruby>上昇<rt>じょうしょう</rt></ruby>した。<ruby>米国<rt>べいこく</rt></ruby>・イスラエル・イランをめぐる<ruby>緊張<rt>きんちょう</rt></ruby>の<ruby>高ま<rt>たかま</rt></ruby>りにより、トレーダーの<ruby>間<rt>かん</rt></ruby>では<ruby>主要<rt>しゅよう</rt></ruby>な<ruby>海上<rt>かいじょう</rt></ruby><ruby>輸送<rt>ゆそう</rt></ruby>ルートにおける<ruby>供給<rt>きょうきゅう</rt></ruby><ruby>途絶<rt>とぜつ</rt></ruby>への<ruby>懸念<rt>けねん</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。<ruby>燃料<rt>ねんりょう</rt></ruby><ruby>価格<rt>かかく</rt></ruby>やインフレ、<ruby>輸送<rt>ゆそう</rt></ruby>コストへの<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>世界的<rt>せかいてき</rt></ruby>に<ruby>注目<rt>ちゅうもく</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Oil prices rise after Trump says Iranian vessel seized</h2>
+              <p class="body en-body">Oil prices moved higher after Donald Trump said an Iranian vessel had been seized, adding fresh volatility to already tense energy markets. Traders are worried about supply disruption around key shipping routes amid the wider conflict involving the US, Israel and Iran. The situation could affect fuel costs, inflation and transport prices globally.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>政権<rt>せいけん</rt></ruby><ruby>周辺<rt>しゅうへん</rt></ruby>にインサイダー<ruby>取引<rt>とりひき</rt></ruby>の<ruby>疑惑<rt>ぎわく</rt></ruby><ruby>浮上<rt>ふじょう</rt></ruby></h2>
+              <p class="body">BBCの<ruby>調査<rt>ちょうさ</rt></ruby>により、トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>の<ruby>公式発表<rt>こうしきはっぴょう</rt></ruby><ruby>直前<rt>ちょくぜん</rt></ruby>に<ruby>不自然<rt>ふしぜん</rt></ruby>な<ruby>取引<rt>とりひき</rt></ruby>の<ruby>急増<rt>きゅうぞう</rt></ruby>パターンが<ruby>確認さ<rt>かくにんさ</rt></ruby>れた。<ruby>一部<rt>いちぶ</rt></ruby>の<ruby>投資家<rt>とうしか</rt></ruby>が<ruby>特権的<rt>とっけんてき</rt></ruby>なタイミングを<ruby>利用<rt>りよう</rt></ruby>して<ruby>利益<rt>りえき</rt></ruby>を<ruby>得て<rt>えて</rt></ruby>いた<ruby>可能性<rt>かのうせい</rt></ruby>が<ruby>指摘<rt>してき</rt></ruby>されている。<ruby>不正<rt>ふせい</rt></ruby>の<ruby>証拠<rt>しょうこ</rt></ruby>は<ruby>確定し<rt>かくていし</rt></ruby>ていないものの、<ruby>大統領<rt>だいとうりょう</rt></ruby><ruby>権力<rt>けんりょく</rt></ruby>と<ruby>金融<rt>きんゆう</rt></ruby><ruby>市場<rt>しじょう</rt></ruby>の<ruby>透明性<rt>とうめいせい</rt></ruby>をめぐる<ruby>新た<rt>あらた</rt></ruby>な<ruby>疑問<rt>ぎもん</rt></ruby>が<ruby>浮上<rt>ふじょう</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Insider trading suspicions loom over Trump's presidency</h2>
+              <p class="body en-body">A BBC investigation has identified a pattern of unusual trading spikes ahead of public announcements by President Trump, raising questions about possible insider dealing. The report suggests some investors may have benefited from privileged timing. While the findings do not prove wrongdoing, they add political pressure by blending financial markets, transparency and presidential power.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ニュージーランド・ウェリントンで<ruby>非常事態<rt>ひじょうじたい</rt></ruby><ruby>宣言<rt>せんげん</rt></ruby>、<ruby>大規模<rt>だいきぼ</rt></ruby><ruby>洪水<rt>こうずい</rt></ruby><ruby>発生<rt>はっせい</rt></ruby></h2>
+              <p class="body">ニュージーランド<ruby>当局<rt>とうきょく</rt></ruby>はウェリントンで<ruby>非常事態<rt>ひじょうじたい</rt></ruby>を<ruby>宣言<rt>せんげん</rt></ruby>した。<ruby>激しい<rt>はげしい</rt></ruby><ruby>洪水<rt>こうずい</rt></ruby>により<ruby>車両<rt>しゃりょう</rt></ruby>が<ruby>水没<rt>すいぼつ</rt></ruby>し、<ruby>樹木<rt>じゅもく</rt></ruby>が<ruby>倒れ<rt>たおれ</rt></ruby>、<ruby>各地<rt>かくち</rt></ruby>で<ruby>地<rt>ち</rt></ruby>すべりが<ruby>発生<rt>はっせい</rt></ruby>している。<ruby>道路<rt>どうろ</rt></ruby>や<ruby>住宅地<rt>じゅうたくち</rt></ruby>に<ruby>大き<rt>おおき</rt></ruby>な<ruby>被害<rt>ひがい</rt></ruby>が<ruby>出て<rt>でて</rt></ruby>おり、<ruby>気象<rt>きしょう</rt></ruby>の<ruby>激甚<rt>げきじん</rt></ruby><ruby>化<rt>か</rt></ruby>を<ruby>改め<rt>あらため</rt></ruby>て<ruby>示す<rt>しめす</rt></ruby><ruby>事態<rt>じたい</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">New Zealand declares state of emergency in Wellington as floods hit</h2>
+              <p class="body en-body">Authorities in New Zealand have declared a state of emergency in Wellington after severe flooding submerged vehicles, uprooted trees and triggered landslides. Major disruption has been reported across roads and neighbourhoods, underscoring the intensity of the weather event.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>小池<rt>こいけ</rt></ruby><ruby>都知事<rt>とちじ</rt></ruby>、<ruby>地方税<rt>ちほうぜい</rt></ruby><ruby>制<rt>せい</rt></ruby><ruby>改革<rt>かいかく</rt></ruby>を<ruby>財務<rt>ざいむ</rt></ruby><ruby>相<rt>そう</rt></ruby>に<ruby>要請<rt>ようせい</rt></ruby></h2>
+              <p class="body"><ruby>東京都<rt>とうきょうと</rt></ruby>の<ruby>小池<rt>こいけ</rt></ruby><ruby>百合子<rt>ゆりこ</rt></ruby><ruby>知事<rt>ちじ</rt></ruby>は<ruby>片山<rt>かたやま</rt></ruby><ruby>財務<rt>ざいむ</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>と<ruby>会談<rt>かいだん</rt></ruby>し、<ruby>東京<rt>とうきょう</rt></ruby>と<ruby>地方<rt>ちほう</rt></ruby>の<ruby>税収<rt>ぜいしゅう</rt></ruby><ruby>格差<rt>かくさ</rt></ruby>をめぐる<ruby>問題<rt>もんだい</rt></ruby>について、<ruby>地方税<rt>ちほうぜい</rt></ruby><ruby>制度<rt>せいど</rt></ruby>そのものの<ruby>見直し<rt>みなおし</rt></ruby>を<ruby>求め<rt>もとめ</rt></ruby>た。<ruby>知事<rt>ちじ</rt></ruby>は、<ruby>東京<rt>とうきょう</rt></ruby>の<ruby>税収<rt>ぜいしゅう</rt></ruby>を<ruby>単に<rt>たんに</rt></ruby><ruby>他地域<rt>たちいき</rt></ruby>へ<ruby>再分配<rt>さいぶんぱい</rt></ruby>することには<ruby>反対<rt>はんたい</rt></ruby>の<ruby>立場<rt>たちば</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。この<ruby>問題<rt>もんだい</rt></ruby>は<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>地域間<rt>ちいきかん</rt></ruby><ruby>格差<rt>かくさ</rt></ruby>と<ruby>中央政府<rt>ちゅうおうせいふ</rt></ruby>による<ruby>地方<rt>ちほう</rt></ruby><ruby>財政<rt>ざいせい</rt></ruby>の<ruby>均衡<rt>きんこう</rt></ruby><ruby>策<rt>さく</rt></ruby>をめぐる<ruby>長年<rt>ながねん</rt></ruby>の<ruby>論争<rt>ろんそう</rt></ruby>に<ruby>関わ<rt>かかわ</rt></ruby>るものである。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Tokyo governor urges finance minister to reform local tax system</h2>
+              <p class="body en-body">Tokyo Governor Yuriko Koike met Finance Minister Katayama and argued that the dispute over tax revenue differences between Tokyo and other regions should be addressed by reforming the local tax system itself. She opposed simply redistributing Tokyo's tax income to other parts of the country. The issue touches a long-running debate about regional inequality in Japan.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>政府<rt>せいふ</rt></ruby>、イラン<ruby>情勢<rt>じょうせい</rt></ruby><ruby>受け<rt>うけ</rt></ruby><ruby>石油供給<rt>せきゆきょうきゅう</rt></ruby>を<ruby>注視<rt>ちゅうし</rt></ruby>も<ruby>節電<rt>せつでん</rt></ruby><ruby>要請<rt>ようせい</rt></ruby>は<ruby>見送り<rt>みおくり</rt></ruby></h2>
+              <p class="body"><ruby>官房<rt>かんぼう</rt></ruby><ruby>長官<rt>ちょうかん</rt></ruby>は、イラン<ruby>情勢<rt>じょうせい</rt></ruby>に<ruby>関連し<rt>かんれんし</rt></ruby>て<ruby>国内<rt>こくない</rt></ruby>の<ruby>石油供給<rt>せきゆきょうきゅう</rt></ruby>に<ruby>現時点<rt>げんじてん</rt></ruby>で<ruby>直接的<rt>ちょくせつてき</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>は<ruby>確認さ<rt>かくにんさ</rt></ruby>れていないと<ruby>述べ<rt>のべ</rt></ruby>、<ruby>国民<rt>こくみん</rt></ruby>への<ruby>節電<rt>せつでん</rt></ruby>や<ruby>消費<rt>しょうひ</rt></ruby><ruby>削減<rt>さくげん</rt></ruby>の<ruby>呼び<rt>よび</rt></ruby>かけは<ruby>行わ<rt>おこなわ</rt></ruby>ないとした。<ruby>一方<rt>いっぽう</rt></ruby>で、<ruby>代替<rt>だいたい</rt></ruby><ruby>調達<rt>ちょうたつ</rt></ruby><ruby>先の<rt>さきの</rt></ruby><ruby>確保<rt>かくほ</rt></ruby>やその<ruby>他の<rt>ほかの</rt></ruby><ruby>対策<rt>たいさく</rt></ruby>について<ruby>政府<rt>せいふ</rt></ruby>は<ruby>引き続き<rt>ひきつづき</rt></ruby><ruby>注視<rt>ちゅうし</rt></ruby>していく<ruby>方針<rt>ほうしん</rt></ruby>である。<ruby>海外<rt>かいがい</rt></ruby>の<ruby>紛争<rt>ふんそう</rt></ruby>が<ruby>日本<rt>にっぽん</rt></ruby>のエネルギー<ruby>政策<rt>せいさく</rt></ruby>に<ruby>直結<rt>ちょっけつ</rt></ruby>している<ruby>現状<rt>げんじょう</rt></ruby>が<ruby>浮き彫り<rt>うきぼり</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan monitoring oil supply risks from Iran tensions, holds off on energy-saving call</h2>
+              <p class="body en-body">Japan's chief cabinet secretary said there has been no immediate impact on domestic oil supply from the Iran situation and that the government is not yet calling on the public to save energy. However, officials are closely monitoring alternative procurement and other measures. The situation highlights how overseas conflicts directly feed into Japanese energy planning.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>各地<rt>かくち</rt></ruby>で<ruby>夏日<rt>かじつ</rt></ruby><ruby>到来<rt>とうらい</rt></ruby>、4<ruby>月<rt>がつ</rt></ruby>としては<ruby>異例<rt>いれい</rt></ruby>の<ruby>暑さ<rt>あつさ</rt></ruby>に<ruby>注意喚起<rt>ちゅういかんき</rt></ruby></h2>
+              <p class="body"><ruby>日本各地<rt>にほんかくち</rt></ruby>で<ruby>気温<rt>きおん</rt></ruby>が25<ruby>度<rt>ど</rt></ruby>を<ruby>超え<rt>こえ</rt></ruby>、<ruby>特に<rt>とくに</rt></ruby><ruby>日本海側<rt>にほんかいがわ</rt></ruby>を<ruby>中心<rt>ちゅうしん</rt></ruby>に<ruby>夏<rt>なつ</rt></ruby>のような<ruby>暑さ<rt>あつさ</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。<ruby>気象庁<rt>きしょうちょう</rt></ruby>は<ruby>今後<rt>こんご</rt></ruby>さらに<ruby>多く<rt>おおく</rt></ruby>の<ruby>地域<rt>ちいき</rt></ruby>で<ruby>気温<rt>きおん</rt></ruby>が<ruby>上昇<rt>じょうしょう</rt></ruby>する<ruby>見込み<rt>みこみ</rt></ruby>だと<ruby>発表<rt>はっぴょう</rt></ruby>した。こまめな<ruby>水分<rt>すいぶん</rt></ruby><ruby>補給<rt>ほきゅう</rt></ruby>や<ruby>体調<rt>たいちょう</rt></ruby><ruby>管理<rt>かんり</rt></ruby>が<ruby>呼び<rt>よび</rt></ruby>かけられており、4<ruby>月<rt>がつ</rt></ruby>としては<ruby>異例<rt>いれい</rt></ruby>の<ruby>早い<rt>はやい</rt></ruby><ruby>暑さ<rt>あつさ</rt></ruby>への<ruby>警戒<rt>けいかい</rt></ruby>が<ruby>求め<rt>もとめ</rt></ruby>られている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Summer-like heat sweeps Japan with early health warnings issued</h2>
+              <p class="body en-body">Temperatures have climbed above 25°C across parts of Japan, especially along the Sea of Japan coast, bringing summer-like conditions unusually early. Forecasters say more regions may see similar heat later in the day. Authorities are urging people to stay hydrated and manage their health carefully.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-04-20 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "審査", "reading": "しんさ", "english": "vetting; screening"}, {"word": "答弁", "reading": "とうべん", "english": "parliamentary response"}, {"word": "驚愕", "reading": "きょうがく", "english": "astonishment; shock"}, {"word": "公務員", "reading": "こうむいん", "english": "civil servant"}, {"word": "統制", "reading": "とうせい", "english": "control; regulation"}], [{"word": "拿捕", "reading": "だほ", "english": "seizure; capture (of a vessel)"}, {"word": "原油", "reading": "げんゆ", "english": "crude oil"}, {"word": "供給途絶", "reading": "きょうきゅうとぜつ", "english": "supply disruption"}, {"word": "海上輸送", "reading": "かいじょうゆそう", "english": "maritime transport"}, {"word": "緊張", "reading": "きんちょう", "english": "tension"}], [{"word": "疑惑", "reading": "ぎわく", "english": "suspicion; allegations"}, {"word": "急増", "reading": "きゅうぞう", "english": "sharp increase; spike"}, {"word": "投資家", "reading": "とうしか", "english": "investor"}, {"word": "透明性", "reading": "とうめいせい", "english": "transparency"}, {"word": "不正", "reading": "ふせい", "english": "fraud; misconduct"}], [{"word": "非常事態", "reading": "ひじょうじたい", "english": "state of emergency"}, {"word": "洪水", "reading": "こうずい", "english": "flood"}, {"word": "地すべり", "reading": "じすべり", "english": "landslide"}, {"word": "水没", "reading": "すいぼつ", "english": "submersion; inundation"}, {"word": "激甚化", "reading": "げきじんか", "english": "intensification (of disasters)"}], [{"word": "税収格差", "reading": "ぜいしゅうかくさ", "english": "tax revenue gap"}, {"word": "再分配", "reading": "さいぶんぱい", "english": "redistribution"}, {"word": "地方税制", "reading": "ちほうぜいせい", "english": "local tax system"}, {"word": "均衡", "reading": "きんこう", "english": "balance; equilibrium"}, {"word": "会談", "reading": "かいだん", "english": "meeting; talks"}], [{"word": "節電", "reading": "せつでん", "english": "power saving"}, {"word": "代替調達", "reading": "だいたいちょうたつ", "english": "alternative procurement"}, {"word": "注視", "reading": "ちゅうし", "english": "close monitoring"}, {"word": "官房長官", "reading": "かんぼうちょうかん", "english": "chief cabinet secretary"}, {"word": "消費削減", "reading": "しょうひさくげん", "english": "consumption reduction"}], [{"word": "夏日", "reading": "なつび", "english": "summer day (above 25°C)"}, {"word": "注意喚起", "reading": "ちゅういかんき", "english": "alert; warning"}, {"word": "水分補給", "reading": "すいぶんほきゅう", "english": "hydration"}, {"word": "気象庁", "reading": "きしょうちょう", "english": "Japan Meteorological Agency"}, {"word": "異例", "reading": "いれい", "english": "unusual; exceptional"}]];
+    const LABELS  = [{"section": "英国", "headline": "スターマー首相、マンデルソン審査スキャンダルで議会答弁へ"}, {"section": "国際", "headline": "トランプ氏「イラン船拿捕」発表で原油価格上昇"}, {"section": "国際", "headline": "トランプ政権周辺にインサイダー取引の疑惑浮上"}, {"section": "国際", "headline": "ニュージーランド・ウェリントンで非常事態宣言、大規模洪水発生"}, {"section": "日本・政治", "headline": "小池都知事、地方税制改革を財務相に要請"}, {"section": "日本・経済", "headline": "政府、イラン情勢受け石油供給を注視も節電要請は見送り"}, {"section": "日本・社会", "headline": "各地で夏日到来、4月としては異例の暑さに注意喚起"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
