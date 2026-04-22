@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年4月22日（水曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年4月22日（水曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">スターマー<ruby>首相<rt>しゅしょう</rt></ruby>の<ruby>高官<rt>こうかん</rt></ruby><ruby>解任<rt>かいにん</rt></ruby>、<ruby>公務員<rt>こうむいん</rt></ruby>に<ruby>動揺<rt>どうよう</rt></ruby><ruby>広が<rt>ひろが</rt></ruby>る</h2>
+              <p class="body">スターマー<ruby>首相<rt>しゅしょう</rt></ruby>が<ruby>外務省<rt>がいむしょう</rt></ruby>の<ruby>高官<rt>こうかん</rt></ruby>サー・オリー・ロビンズを<ruby>解任<rt>かいにん</rt></ruby>し、<ruby>公務員<rt>こうむいん</rt></ruby>の<ruby>間に<rt>まに</rt></ruby><ruby>動揺<rt>どうよう</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。<ruby>労働組合<rt>ろうどうくみあい</rt></ruby>の<ruby>幹部<rt>かんぶ</rt></ruby>は、この<ruby>解任<rt>かいにん</rt></ruby>が<ruby>率直<rt>そっちょく</rt></ruby>な<ruby>助言<rt>じょげん</rt></ruby>を<ruby>控え<rt>ひかえ</rt></ruby>させる「<ruby>冷たい<rt>つめたい</rt></ruby>メッセージ」になったと<ruby>批判<rt>ひはん</rt></ruby>した。<ruby>大臣<rt>だいじん</rt></ruby>と<ruby>官僚<rt>かんりょう</rt></ruby>の<ruby>信頼関係<rt>しんらいかんけい</rt></ruby>や<ruby>説明<rt>せつめい</rt></ruby><ruby>責任<rt>せきにん</rt></ruby>をめぐる<ruby>議論<rt>ぎろん</rt></ruby>が<ruby>一層<rt>いっそう</rt></ruby><ruby>活発化<rt>かっぱつか</rt></ruby>しており、<ruby>政治<rt>せいじ</rt></ruby>と<ruby>行政<rt>ぎょうせい</rt></ruby>の<ruby>関係<rt>かんけい</rt></ruby>が<ruby>問わ<rt>とわ</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Starmer's dismissal of senior official sends chill through civil service</h2>
+              <p class="body en-body">Prime Minister Keir Starmer is facing criticism after dismissing senior Foreign Office civil servant Sir Olly Robbins. Union leaders say the move has sent a chilling message through the civil service, raising concerns that officials may become more cautious about giving frank advice. The fallout is fuelling a broader debate about trust and accountability between ministers and the state bureaucracy.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>氏<rt>し</rt></ruby>の<ruby>停戦<rt>ていせん</rt></ruby><ruby>延長<rt>えんちょう</rt></ruby>で<ruby>原油価格<rt>げんゆかかく</rt></ruby>が<ruby>下落<rt>げらく</rt></ruby></h2>
+              <p class="body">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>がイラン<ruby>紛争<rt>ふんそう</rt></ruby>に<ruby>関連す<rt>かんれんす</rt></ruby>る<ruby>停戦<rt>ていせん</rt></ruby>の<ruby>延長<rt>えんちょう</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>し、<ruby>原油価格<rt>げんゆかかく</rt></ruby>が<ruby>下落<rt>げらく</rt></ruby>した。ただし、<ruby>交渉<rt>こうしょう</rt></ruby>が<ruby>続く<rt>つづく</rt></ruby><ruby>間<rt>かん</rt></ruby>もイランの<ruby>港湾<rt>こうわん</rt></ruby><ruby>封鎖<rt>ふうさ</rt></ruby>は<ruby>維持さ<rt>いじさ</rt></ruby>れるため、エネルギー<ruby>市場<rt>しじょう</rt></ruby>の<ruby>緊張<rt>きんちょう</rt></ruby>は<ruby>解消<rt>かいしょう</rt></ruby>されていない。<ruby>輸送<rt>ゆそう</rt></ruby>コストやインフレ、<ruby>消費者<rt>しょうひしゃ</rt></ruby><ruby>物価<rt>ぶっか</rt></ruby>への<ruby>波及<rt>はきゅう</rt></ruby>が<ruby>引き続き<rt>ひきつづき</rt></ruby><ruby>懸念<rt>けねん</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Oil prices dip as Trump extends Iran ceasefire</h2>
+              <p class="body en-body">Oil prices eased after President Trump announced an extension to the ceasefire linked to the Iran conflict. However, the US will maintain its blockade of Iranian ports while talks continue, keeping energy markets on edge. The prolonged instability raises ongoing concerns about transport costs, inflation, and consumer prices.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>鳥<rt>とり</rt></ruby>インフルH5N1ワクチン、<ruby>臨床<rt>りんしょう</rt></ruby><ruby>試験<rt>しけん</rt></ruby>を<ruby>開始<rt>かいし</rt></ruby></h2>
+              <p class="body">H5N1<ruby>型<rt>かた</rt></ruby><ruby>鳥<rt>とり</rt></ruby>インフルエンザを<ruby>対象<rt>たいしょう</rt></ruby>とした<ruby>新た<rt>あらた</rt></ruby>なワクチンの<ruby>臨床<rt>りんしょう</rt></ruby><ruby>試験<rt>しけん</rt></ruby>が<ruby>英国<rt>えいこく</rt></ruby>で<ruby>始ま<rt>はじま</rt></ruby>った。<ruby>人<rt>にん</rt></ruby>から<ruby>人<rt>にん</rt></ruby>への<ruby>持続的<rt>じぞくてき</rt></ruby>な<ruby>感染<rt>かんせん</rt></ruby>は<ruby>確認さ<rt>かくにんさ</rt></ruby>れていないが、ウイルスの<ruby>変異<rt>へんい</rt></ruby>に<ruby>備え<rt>そなえ</rt></ruby><ruby>早期<rt>そうき</rt></ruby>の<ruby>防衛<rt>ぼうえい</rt></ruby><ruby>体制<rt>たいせい</rt></ruby><ruby>構築<rt>こうちく</rt></ruby>が<ruby>目指さ<rt>めざさ</rt></ruby>れている。<ruby>新型<rt>しんがた</rt></ruby>コロナウイルスの<ruby>教訓<rt>きょうくん</rt></ruby>を<ruby>生か<rt>いか</rt></ruby>し、パンデミック<ruby>前<rt>まえ</rt></ruby>の<ruby>段階<rt>だんかい</rt></ruby>でワクチン<ruby>開発<rt>かいはつ</rt></ruby>を<ruby>進め<rt>すすめ</rt></ruby>る<ruby>戦略<rt>せんりゃく</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Bird flu vaccine trial begins against potential pandemic strain</h2>
+              <p class="body en-body">A new vaccine trial targeting the H5N1 bird flu strain has begun in the UK. Although sustained human-to-human transmission has not yet emerged, researchers are preparing defences in case the virus mutates. The trial reflects a post-Covid strategy of building medical countermeasures early rather than waiting for a crisis to escalate.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">メタ<ruby>社<rt>しゃ</rt></ruby>、<ruby>従業員<rt>じゅうぎょういん</rt></ruby>の<ruby>操作<rt>そうさ</rt></ruby>データをAI<ruby>学習<rt>がくしゅう</rt></ruby>に<ruby>活用<rt>かつよう</rt></ruby>へ</h2>
+              <p class="body">メタ<ruby>社<rt>しゃ</rt></ruby>は<ruby>従業員<rt>じゅうぎょういん</rt></ruby>のクリックやキーストロークなど、<ruby>詳細<rt>しょうさい</rt></ruby>な<ruby>職場<rt>しょくば</rt></ruby><ruby>活動<rt>かつどう</rt></ruby>データをAIの<ruby>学習<rt>がくしゅう</rt></ruby>に<ruby>活用<rt>かつよう</rt></ruby>する<ruby>計画<rt>けいかく</rt></ruby>を<ruby>明らか<rt>あきらか</rt></ruby>にした。プライバシーや<ruby>職場<rt>しょくば</rt></ruby><ruby>監視<rt>かんし</rt></ruby>の<ruby>在り<rt>あり</rt></ruby><ruby>方<rt>ほう</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>懸念<rt>けねん</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>っている。<ruby>大手<rt>おおて</rt></ruby>テック<ruby>企業<rt>きぎょう</rt></ruby>がAIモデル<ruby>改善<rt>かいぜん</rt></ruby>のため<ruby>独自<rt>どくじ</rt></ruby>データの<ruby>収集<rt>しゅうしゅう</rt></ruby>を<ruby>加速<rt>かそく</rt></ruby>させている<ruby>実態<rt>じったい</rt></ruby>を<ruby>浮き彫り<rt>うきぼり</rt></ruby>にするものである。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Meta to use employees' clicks and keystrokes to train AI</h2>
+              <p class="body en-body">Meta plans to use detailed workplace activity data, including employees' clicks and keystrokes, to train its AI systems. The move raises questions about privacy and the extent of workplace surveillance. It highlights the growing pressure inside big tech firms to gather proprietary data in the race to improve AI models.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米<rt>こめ</rt></ruby>、イラン<ruby>停戦<rt>ていせん</rt></ruby><ruby>延長<rt>えんちょう</rt></ruby>も<ruby>港湾<rt>こうわん</rt></ruby><ruby>封鎖<rt>ふうさ</rt></ruby>は<ruby>継続<rt>けいぞく</rt></ruby></h2>
+              <p class="body">NHKの<ruby>報道<rt>ほうどう</rt></ruby>によると、トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>はイランとの<ruby>停戦<rt>ていせん</rt></ruby><ruby>期限<rt>きげん</rt></ruby>を<ruby>延長<rt>えんちょう</rt></ruby>する<ruby>一方<rt>いっぽう</rt></ruby>、<ruby>米軍<rt>べいぐん</rt></ruby>によるイランの<ruby>港湾<rt>こうわん</rt></ruby><ruby>封鎖<rt>ふうさ</rt></ruby>の<ruby>継続<rt>けいぞく</rt></ruby>を<ruby>命じ<rt>めいじ</rt></ruby>た。イラン<ruby>側<rt>がわ</rt></ruby>は<ruby>封鎖<rt>ふうさ</rt></ruby>を<ruby>事実上<rt>じじつじょう</rt></ruby>の<ruby>敵対<rt>てきたい</rt></ruby><ruby>行為<rt>こうい</rt></ruby>と<ruby>見な<rt>みな</rt></ruby>しており、<ruby>両国<rt>りょうごく</rt></ruby>の<ruby>交渉<rt>こうしょう</rt></ruby>は<ruby>依然<rt>いぜん</rt></ruby>として<ruby>不透明<rt>ふとうめい</rt></ruby>である。<ruby>戦術的<rt>せんじゅつてき</rt></ruby>な<ruby>緊張<rt>きんちょう</rt></ruby><ruby>緩和<rt>かんわ</rt></ruby>と<ruby>圧力<rt>あつりょく</rt></ruby><ruby>維持<rt>いじ</rt></ruby>の<ruby>併用<rt>へいよう</rt></ruby>により、<ruby>外交<rt>がいこう</rt></ruby>の<ruby>行方<rt>なめがた</rt></ruby>は<ruby>予断<rt>よだん</rt></ruby>を<ruby>許さ<rt>ゆるさ</rt></ruby>ない<ruby>状況<rt>じょうきょう</rt></ruby>にある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US extends Iran ceasefire but maintains maritime blockade</h2>
+              <p class="body en-body">President Trump will extend the ceasefire deadline with Iran but has ordered the US military to continue blocking vessels entering and leaving Iranian ports. Iran reportedly views the continued blockade as effectively hostile, showing that the two sides remain far apart. The combination of tactical de-escalation and sustained pressure leaves negotiations fragile and uncertain.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>三陸<rt>さんりく</rt></ruby><ruby>沖<rt>おき</rt></ruby><ruby>地震<rt>じしん</rt></ruby><ruby>後<rt>のち</rt></ruby>、<ruby>千<rt>せん</rt></ruby><ruby>島<rt>しま</rt></ruby>・<ruby>日本海溝<rt>にほんかいこう</rt></ruby><ruby>沿い<rt>そい</rt></ruby>の<ruby>警戒<rt>けいかい</rt></ruby><ruby>続く<rt>つづく</rt></ruby></h2>
+              <p class="body"><ruby>三陸<rt>さんりく</rt></ruby><ruby>沖<rt>おき</rt></ruby>で<ruby>発生<rt>はっせい</rt></ruby>した<ruby>大地震<rt>だいじしん</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、<ruby>気象庁<rt>きしょうちょう</rt></ruby>は<ruby>千<rt>せん</rt></ruby><ruby>島<rt>しま</rt></ruby><ruby>海溝<rt>かいこう</rt></ruby>・<ruby>日本海溝<rt>にほんかいこう</rt></ruby><ruby>沿い<rt>そい</rt></ruby>で<ruby>大規模<rt>だいきぼ</rt></ruby><ruby>地震<rt>じしん</rt></ruby>のリスクが<ruby>一時的<rt>いちじてき</rt></ruby>に<ruby>上昇<rt>じょうしょう</rt></ruby>していると<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>北海道<rt>ほっかいどう</rt></ruby>から<ruby>千葉<rt>ちば</rt></ruby>にかけての182<ruby>自治体<rt>じちたい</rt></ruby>に<ruby>防災<rt>ぼうさい</rt></ruby><ruby>体制<rt>たいせい</rt></ruby>の<ruby>再点検<rt>さいてんけん</rt></ruby>が<ruby>呼び<rt>よび</rt></ruby>かけられている。<ruby>日常生活<rt>にちじょうせいかつ</rt></ruby>と<ruby>長期的<rt>ちょうきてき</rt></ruby>な<ruby>防災<rt>ぼうさい</rt></ruby><ruby>意識<rt>いしき</rt></ruby>の<ruby>両立<rt>りょうりつ</rt></ruby>という<ruby>日本特有<rt>にほんとくゆう</rt></ruby>の<ruby>課題<rt>かだい</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>浮き彫り<rt>うきぼり</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan warns of heightened quake risk along Kuril and Japan Trenches</h2>
+              <p class="body en-body">Following a major earthquake off the Sanriku coast, the Japan Meteorological Agency says the risk of a further large quake along the Kuril and Japan Trenches is temporarily elevated. Authorities are urging 182 municipalities from Hokkaido to Chiba to review emergency preparations. The story underscores Japan's constant balancing act between daily life and disaster readiness.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>東京<rt>とうきょう</rt></ruby>23<ruby>区<rt>く</rt></ruby>ワンルーム<ruby>家賃<rt>やちん</rt></ruby>、<ruby>過去<rt>かこ</rt></ruby><ruby>最高<rt>さいこう</rt></ruby>を<ruby>更新<rt>こうしん</rt></ruby></h2>
+              <p class="body"><ruby>民間<rt>みんかん</rt></ruby><ruby>調査<rt>ちょうさ</rt></ruby>によると、<ruby>東京<rt>とうきょう</rt></ruby>23<ruby>区<rt>く</rt></ruby>のワンルームマンションの3<ruby>月平均<rt>つきへいきん</rt></ruby><ruby>家賃<rt>やちん</rt></ruby>は<ruby>前年比<rt>ぜんねんひ</rt></ruby><ruby>約<rt>やく</rt></ruby>13パーセント<ruby>上昇<rt>じょうしょう</rt></ruby>し、<ruby>約<rt>やく</rt></ruby>11<ruby>万<rt>まん</rt></ruby>2<ruby>千円<rt>せんえん</rt></ruby>と<ruby>過去<rt>かこ</rt></ruby><ruby>最高<rt>さいこう</rt></ruby>を<ruby>記録<rt>きろく</rt></ruby>した。<ruby>春<rt>はる</rt></ruby>の<ruby>転居<rt>てんきょ</rt></ruby>シーズンに<ruby>合わ<rt>あわ</rt></ruby>せた<ruby>貸主<rt>かしぬし</rt></ruby>の<ruby>値上げ<rt>ねあげ</rt></ruby>が<ruby>背景<rt>はいけい</rt></ruby>にあるとみられる。<ruby>都市部<rt>としぶ</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby>コスト<ruby>上昇<rt>じょうしょう</rt></ruby>は、<ruby>若年層<rt>じゃくねんそう</rt></ruby>や<ruby>単身者<rt>たんしんしゃ</rt></ruby>に<ruby>特に<rt>とくに</rt></ruby><ruby>重い<rt>おもい</rt></ruby><ruby>負担<rt>ふたん</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Average rent for single-person apartments in Tokyo hits record high</h2>
+              <p class="body en-body">A private survey shows average March rents for single-occupancy apartments in Tokyo's 23 wards rose about 13 percent year on year to roughly 112,000 yen, the highest on record. The increase is linked to landlords raising rents during the spring moving season. The report adds to a wider picture of cost-of-living pressure in urban Japan, particularly for younger workers and those living alone.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-04-22 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "解任", "reading": "かいにん", "english": "dismissal"}, {"word": "公務員", "reading": "こうむいん", "english": "civil servant"}, {"word": "労働組合", "reading": "ろうどうくみあい", "english": "labor union"}, {"word": "率直", "reading": "そっちょく", "english": "frank, candid"}, {"word": "説明責任", "reading": "せつめいせきにん", "english": "accountability"}, {"word": "官僚", "reading": "かんりょう", "english": "bureaucrat"}], [{"word": "原油", "reading": "げんゆ", "english": "crude oil"}, {"word": "停戦", "reading": "ていせん", "english": "ceasefire"}, {"word": "港湾封鎖", "reading": "こうわんふうさ", "english": "port blockade"}, {"word": "波及", "reading": "はきゅう", "english": "ripple effect, spread"}, {"word": "消費者物価", "reading": "しょうひしゃぶっか", "english": "consumer prices"}], [{"word": "臨床試験", "reading": "りんしょうしけん", "english": "clinical trial"}, {"word": "変異", "reading": "へんい", "english": "mutation"}, {"word": "防衛体制", "reading": "ぼうえいたいせい", "english": "defense system"}, {"word": "教訓", "reading": "きょうくん", "english": "lesson learned"}, {"word": "感染", "reading": "かんせん", "english": "infection"}], [{"word": "操作", "reading": "そうさ", "english": "operation, manipulation"}, {"word": "職場監視", "reading": "しょくばかんし", "english": "workplace surveillance"}, {"word": "活用", "reading": "かつよう", "english": "utilization, practical use"}, {"word": "独自", "reading": "どくじ", "english": "proprietary, unique"}, {"word": "浮き彫り", "reading": "うきぼり", "english": "to bring to light, highlight"}], [{"word": "敵対行為", "reading": "てきたいこうい", "english": "hostile act"}, {"word": "不透明", "reading": "ふとうめい", "english": "opaque, unclear"}, {"word": "緊張緩和", "reading": "きんちょうかんわ", "english": "de-escalation, détente"}, {"word": "外交", "reading": "がいこう", "english": "diplomacy"}, {"word": "予断を許さない", "reading": "よだんをゆるさない", "english": "unpredictable, cannot let one's guard down"}], [{"word": "気象庁", "reading": "きしょうちょう", "english": "Japan Meteorological Agency"}, {"word": "海溝", "reading": "かいこう", "english": "ocean trench"}, {"word": "自治体", "reading": "じちたい", "english": "municipality"}, {"word": "防災", "reading": "ぼうさい", "english": "disaster prevention"}, {"word": "再点検", "reading": "さいてんけん", "english": "reinspection, review"}], [{"word": "家賃", "reading": "やちん", "english": "rent"}, {"word": "過去最高", "reading": "かこさいこう", "english": "all-time high, record high"}, {"word": "転居", "reading": "てんきょ", "english": "moving, relocation"}, {"word": "貸主", "reading": "かしぬし", "english": "landlord"}, {"word": "単身者", "reading": "たんしんしゃ", "english": "person living alone"}]];
+    const LABELS  = [{"section": "英国", "headline": "スターマー首相の高官解任、公務員に動揺広がる"}, {"section": "国際", "headline": "トランプ氏の停戦延長で原油価格が下落"}, {"section": "英国・世界", "headline": "鳥インフルH5N1ワクチン、臨床試験を開始"}, {"section": "経済", "headline": "メタ社、従業員の操作データをAI学習に活用へ"}, {"section": "国際", "headline": "米、イラン停戦延長も港湾封鎖は継続"}, {"section": "日本・社会", "headline": "三陸沖地震後、千島・日本海溝沿いの警戒続く"}, {"section": "日本・経済", "headline": "東京23区ワンルーム家賃、過去最高を更新"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
