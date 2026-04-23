@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年4月23日（木曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年4月23日（木曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英<rt>えい</rt></ruby>コンビニ<ruby>型<rt>かた</rt></ruby><ruby>商店<rt>しょうてん</rt></ruby>で<ruby>薬物<rt>やくぶつ</rt></ruby><ruby>密売<rt>みつばい</rt></ruby>、BBC<ruby>潜入<rt>せんにゅう</rt></ruby><ruby>取材<rt>しゅざい</rt></ruby>で<ruby>発覚<rt>はっかく</rt></ruby></h2>
+              <p class="body">BBCの<ruby>潜入<rt>せんにゅう</rt></ruby><ruby>取材<rt>しゅざい</rt></ruby>により、イギリス<ruby>各地<rt>かくち</rt></ruby>のコンビニ<ruby>型<rt>かた</rt></ruby><ruby>商店<rt>しょうてん</rt></ruby>がコカイン、<ruby>大麻<rt>たいま</rt></ruby>、<ruby>処方<rt>しょほう</rt></ruby><ruby>薬<rt>くすり</rt></ruby>の<ruby>密売<rt>みつばい</rt></ruby><ruby>拠点<rt>きょてん</rt></ruby>として<ruby>利用<rt>りよう</rt></ruby>されている<ruby>実態<rt>じったい</rt></ruby>が<ruby>明らか<rt>あきらか</rt></ruby>になった。<ruby>犯罪<rt>はんざい</rt></ruby><ruby>組織<rt>そしき</rt></ruby>が<ruby>一般的<rt>いっぱんてき</rt></ruby>な<ruby>店舗<rt>てんぽ</rt></ruby>を<ruby>隠れ<rt>かくれ</rt></ruby><ruby>蓑<rt>みの</rt></ruby>にしており、<ruby>問題<rt>もんだい</rt></ruby>は<ruby>一部<rt>いちぶ</rt></ruby>の<ruby>店舗<rt>てんぽ</rt></ruby>にとどまらず<ruby>広範囲<rt>こうはんい</rt></ruby>に<ruby>及ん<rt>およん</rt></ruby>でいるとされる。<ruby>警察<rt>けいさつ</rt></ruby>や<ruby>地方自治体<rt>ちほうじちたい</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>、<ruby>免許制度<rt>めんきょせいど</rt></ruby>や<ruby>取り締まり<rt>とりしまり</rt></ruby>の<ruby>強化<rt>きょうか</rt></ruby>を<ruby>求め<rt>もとめ</rt></ruby>る<ruby>声<rt>こえ</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">BBC undercover probe reveals drug sales in UK mini-marts</h2>
+              <p class="body en-body">A BBC undercover investigation has revealed that mini-marts across the UK are being used by criminal gangs to sell cocaine, cannabis and prescription drugs behind ordinary shopfronts. The problem appears to be widespread rather than limited to isolated cases. The report is expected to increase pressure on police, councils and regulators to tighten oversight of small retail premises.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イラン<ruby>紛争<rt>ふんそう</rt></ruby>で<ruby>燃料<rt>ねんりょう</rt></ruby><ruby>高騰<rt>こうとう</rt></ruby>、<ruby>英<rt>えい</rt></ruby>インフレ<ruby>率<rt>りつ</rt></ruby>が<ruby>上昇<rt>じょうしょう</rt></ruby></h2>
+              <p class="body">イランとの<ruby>紛争<rt>ふんそう</rt></ruby>に<ruby>起因<rt>きいん</rt></ruby>するエネルギー<ruby>価格<rt>かかく</rt></ruby>の<ruby>上昇<rt>じょうしょう</rt></ruby>が、イギリスの<ruby>生活費<rt>せいかつひ</rt></ruby><ruby>全般<rt>ぜんぱん</rt></ruby>に<ruby>波及<rt>はきゅう</rt></ruby>していることが<ruby>最新<rt>さいしん</rt></ruby>のインフレデータで<ruby>示さ<rt>しめさ</rt></ruby>れた。<ruby>燃料<rt>ねんりょう</rt></ruby><ruby>価格<rt>かかく</rt></ruby>の<ruby>高騰<rt>こうとう</rt></ruby>は<ruby>交通費<rt>こうつうひ</rt></ruby>や<ruby>家計<rt>かけい</rt></ruby>、<ruby>企業<rt>きぎょう</rt></ruby>コストに<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>及ぼ<rt>およぼ</rt></ruby>しており、エコノミストは<ruby>賃金<rt>ちんぎん</rt></ruby>や<ruby>消費者<rt>しょうひしゃ</rt></ruby><ruby>信頼感<rt>しんらいかん</rt></ruby>への<ruby>連鎖的<rt>れんさてき</rt></ruby><ruby>影響<rt>えいきょう</rt></ruby>を<ruby>注視<rt>ちゅうし</rt></ruby>している。<ruby>海外<rt>かいがい</rt></ruby>の<ruby>紛争<rt>ふんそう</rt></ruby>がイギリス<ruby>国内<rt>こくない</rt></ruby>の<ruby>物価<rt>ぶっか</rt></ruby><ruby>形成<rt>けいせい</rt></ruby>にどれほど<ruby>直結<rt>ちょっけつ</rt></ruby>しているかを<ruby>示す<rt>しめす</rt></ruby><ruby>重要な<rt>じゅうような</rt></ruby><ruby>指標<rt>しひょう</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK inflation climbs as Iran conflict drives up fuel prices</h2>
+              <p class="body en-body">New inflation data show that rising energy costs linked to the Iran conflict are feeding through into UK living costs. Higher fuel prices are affecting transport, household budgets and business expenses. Economists are watching closely for knock-on effects on wages and consumer confidence.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>中国<rt>ちゅうごく</rt></ruby>、<ruby>関税<rt>かんぜい</rt></ruby>には<ruby>耐え<rt>たえ</rt></ruby>たがイラン<ruby>紛争<rt>ふんそう</rt></ruby>が<ruby>経済<rt>けいざい</rt></ruby>に<ruby>打撃<rt>だげき</rt></ruby></h2>
+              <p class="body"><ruby>中国<rt>ちゅうごく</rt></ruby>は<ruby>米国<rt>べいこく</rt></ruby>の<ruby>関税<rt>かんぜい</rt></ruby><ruby>圧力<rt>あつりょく</rt></ruby>を<ruby>吸収<rt>きゅうしゅう</rt></ruby>することに<ruby>成功<rt>せいこう</rt></ruby>したが、<ruby>中東危機<rt>ちゅうとうきき</rt></ruby>が<ruby>工場<rt>こうじょう</rt></ruby><ruby>受注<rt>じゅちゅう</rt></ruby>やコスト、<ruby>雇用<rt>こよう</rt></ruby>に<ruby>打撃<rt>だげき</rt></ruby>を<ruby>与え<rt>あたえ</rt></ruby>ていることがBBCの<ruby>報道<rt>ほうどう</rt></ruby>で<ruby>明らか<rt>あきらか</rt></ruby>になった。<ruby>輸送<rt>ゆそう</rt></ruby>リスクの<ruby>増大<rt>ぞうだい</rt></ruby>、エネルギー<ruby>価格<rt>かかく</rt></ruby>の<ruby>上昇<rt>じょうしょう</rt></ruby>、<ruby>輸出<rt>ゆしゅつ</rt></ruby><ruby>需要<rt>じゅよう</rt></ruby>の<ruby>減退<rt>げんたい</rt></ruby>が<ruby>製造業<rt>せいぞうぎょう</rt></ruby>を<ruby>圧迫<rt>あっぱく</rt></ruby>している。イラン<ruby>周辺<rt>しゅうへん</rt></ruby>の<ruby>不安定<rt>ふあんてい</rt></ruby>さが、<ruby>当該地域<rt>とうがいちいき</rt></ruby>をはるかに<ruby>超え<rt>こえ</rt></ruby>た<ruby>世界経済<rt>せかいけいざい</rt></ruby><ruby>全体<rt>ぜんたい</rt></ruby>に<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>及ぼ<rt>およぼ</rt></ruby>している<ruby>構図<rt>こうず</rt></ruby>が<ruby>浮き彫り<rt>うきぼり</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">China weathered Trump's tariffs but Iran war takes economic toll</h2>
+              <p class="body en-body">China managed to absorb pressure from earlier US tariffs, but the current Middle East crisis is now hurting factory orders, costs and jobs. Shipping risks, rising energy prices and weaker export demand are weighing on the manufacturing sector. The situation underlines how instability around Iran is rippling far beyond the immediate region.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>仏<rt>ほとけ</rt></ruby>、<ruby>英仏<rt>えいふつ</rt></ruby><ruby>海峡<rt>かいきょう</rt></ruby>の<ruby>密航<rt>みっこう</rt></ruby><ruby>阻止<rt>そし</rt></ruby>へビーチに<ruby>機動隊<rt>きどうたい</rt></ruby><ruby>配備<rt>はいび</rt></ruby></h2>
+              <p class="body">フランスは<ruby>新た<rt>あらた</rt></ruby>な<ruby>三年<rt>さんねん</rt></ruby><ruby>間の<rt>まの</rt></ruby><ruby>合意<rt>ごうい</rt></ruby>に<ruby>基づ<rt>もとづ</rt></ruby>き、<ruby>英仏<rt>えいふつ</rt></ruby><ruby>海峡<rt>かいきょう</rt></ruby>を<ruby>小型<rt>こがた</rt></ruby>ボートで<ruby>渡る<rt>わたる</rt></ruby><ruby>不法<rt>ふほう</rt></ruby><ruby>移民<rt>いみん</rt></ruby>を<ruby>阻止<rt>そし</rt></ruby>するため、<ruby>機動隊<rt>きどうたい</rt></ruby>をビーチに<ruby>配備<rt>はいび</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>沿岸<rt>えんがん</rt></ruby>での<ruby>取り締まり<rt>とりしまり</rt></ruby>が<ruby>暴力的<rt>ぼうりょくてき</rt></ruby>な<ruby>抵抗<rt>ていこう</rt></ruby>や<ruby>組織的<rt>そしきてき</rt></ruby>な<ruby>密航<rt>みっこう</rt></ruby>ネットワークに<ruby>直面<rt>ちょくめん</rt></ruby>する<ruby>中<rt>なか</rt></ruby>、より<ruby>強力<rt>きょうりょく</rt></ruby>な<ruby>対応<rt>たいおう</rt></ruby>が<ruby>求め<rt>もとめ</rt></ruby>られている。この<ruby>合意<rt>ごうい</rt></ruby>が<ruby>密航<rt>みっこう</rt></ruby><ruby>件数<rt>けんすう</rt></ruby>の<ruby>減少<rt>げんしょう</rt></ruby>につながるか、それとも<ruby>緊張<rt>きんちょう</rt></ruby>をさらに<ruby>激化<rt>げきか</rt></ruby>させるかが<ruby>注目<rt>ちゅうもく</rt></ruby>される。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">France to deploy riot police on beaches to stop Channel crossings</h2>
+              <p class="body en-body">France will deploy riot-trained officers to beaches under a new three-year agreement aimed at curbing small-boat crossings to the UK. The move comes as coastal policing faces violent resistance and organised smuggling networks. The deal will be closely watched as a test of whether harder enforcement can reduce crossings without escalating tensions.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日経平均<rt>にっけいへいきん</rt></ruby>、<ruby>史上初<rt>しじょうはつ</rt></ruby>の6<ruby>万円<rt>まんえん</rt></ruby><ruby>台<rt>だい</rt></ruby>に<ruby>到達<rt>とうたつ</rt></ruby></h2>
+              <p class="body"><ruby>東京<rt>とうきょう</rt></ruby><ruby>株式市場<rt>かぶしきしじょう</rt></ruby>で<ruby>日経平均<rt>にっけいへいきん</rt></ruby><ruby>株価<rt>かぶか</rt></ruby>が<ruby>取引<rt>とりひき</rt></ruby><ruby>中に<rt>なかに</rt></ruby><ruby>初めて<rt>はじめて</rt></ruby>6<ruby>万円<rt>まんえん</rt></ruby>の<ruby>大台<rt>おおだい</rt></ruby>を<ruby>突破<rt>とっぱ</rt></ruby>した。<ruby>約半年<rt>やくはんとし</rt></ruby><ruby>間<rt>かん</rt></ruby>で1<ruby>万円<rt>まんえん</rt></ruby><ruby>近く<rt>ちかく</rt></ruby><ruby>上昇<rt>じょうしょう</rt></ruby>する<ruby>歴史的<rt>れきしてき</rt></ruby>な<ruby>上昇<rt>じょうしょう</rt></ruby><ruby>相場<rt>そうば</rt></ruby>を<ruby>記録<rt>きろく</rt></ruby>している。しかしNHKの<ruby>報道<rt>ほうどう</rt></ruby>によれば、イラン<ruby>情勢<rt>じょうせい</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>懸念<rt>けねん</rt></ruby>が<ruby>依然<rt>いぜん</rt></ruby>として<ruby>市場<rt>しじょう</rt></ruby>に<ruby>影<rt>かげ</rt></ruby>を<ruby>落と<rt>おと</rt></ruby>しており、<ruby>投資家<rt>とうしか</rt></ruby>は<ruby>楽観<rt>らくかん</rt></ruby>と<ruby>警戒<rt>けいかい</rt></ruby>の<ruby>間<rt>かん</rt></ruby>で<ruby>揺れ<rt>ゆれ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Nikkei average breaks above 60,000 for the first time</h2>
+              <p class="body en-body">The Nikkei stock average rose above the 60,000 level for the first time during trading on the Tokyo Stock Exchange, extending a remarkable rally of roughly 10,000 points in about half a year. However, concerns over the situation involving Iran continue to hang over the market, leaving investors caught between optimism and caution.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>国家<rt>こっか</rt></ruby><ruby>情報局<rt>じょうほうきょく</rt></ruby><ruby>創設<rt>そうせつ</rt></ruby><ruby>法案<rt>ほうあん</rt></ruby>、<ruby>衆院<rt>しゅういん</rt></ruby>を<ruby>通過<rt>つうか</rt></ruby></h2>
+              <p class="body"><ruby>国家<rt>こっか</rt></ruby><ruby>情報局<rt>じょうほうきょく</rt></ruby>を<ruby>創設<rt>そうせつ</rt></ruby>する<ruby>法案<rt>ほうあん</rt></ruby>が<ruby>衆議院<rt>しゅうぎいん</rt></ruby>を<ruby>通過<rt>つうか</rt></ruby>した。<ruby>政府<rt>せいふ</rt></ruby>の<ruby>情報収集<rt>じょうほうしゅうしゅう</rt></ruby>・<ruby>分析<rt>ぶんせき</rt></ruby><ruby>能力<rt>のうりょく</rt></ruby>を<ruby>強化<rt>きょうか</rt></ruby>する<ruby>狙い<rt>ねらい</rt></ruby>がある。<ruby>野党<rt>やとう</rt></ruby>も<ruby>法案<rt>ほうあん</rt></ruby>を<ruby>支持<rt>しじ</rt></ruby>しており、<ruby>今国会中<rt>こんこっかいちゅう</rt></ruby>に<ruby>参議院<rt>さんぎいん</rt></ruby>も<ruby>通過<rt>つうか</rt></ruby>して<ruby>成立<rt>せいりつ</rt></ruby>する<ruby>見通し<rt>みとおし</rt></ruby>である。<ruby>与野党<rt>よやとう</rt></ruby>の<ruby>幅広い<rt>はばひろい</rt></ruby><ruby>合意<rt>ごうい</rt></ruby>は、<ruby>国家<rt>こっか</rt></ruby><ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>における<ruby>情報<rt>じょうほう</rt></ruby><ruby>機能<rt>きのう</rt></ruby>の<ruby>強化<rt>きょうか</rt></ruby>について、<ruby>政治的<rt>せいじてき</rt></ruby>コンセンサスが<ruby>形成<rt>けいせい</rt></ruby>されていることを<ruby>示し<rt>しめし</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Bill to create National Intelligence Bureau clears lower house</h2>
+              <p class="body en-body">Japan's lower house passed legislation to establish a new National Intelligence Bureau aimed at strengthening the government's intelligence capabilities. With opposition parties also supporting the measure, the bill is expected to clear the upper house and become law during the current Diet session. The broad cross-party agreement signals a political consensus around stronger national security coordination.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>岩手<rt>いわて</rt></ruby>・<ruby>大槌<rt>おおつち</rt></ruby><ruby>町<rt>まち</rt></ruby>の<ruby>山火<rt>やまび</rt></ruby><ruby>事<rt>こと</rt></ruby>、200ヘクタールに<ruby>拡大<rt>かくだい</rt></ruby>し<ruby>住宅<rt>じゅうたく</rt></ruby>に<ruby>迫る<rt>せまる</rt></ruby></h2>
+              <p class="body"><ruby>岩手県<rt>いわてけん</rt></ruby><ruby>大槌<rt>おおつち</rt></ruby><ruby>町<rt>まち</rt></ruby>で<ruby>水曜日<rt>すいようび</rt></ruby>に<ruby>発生<rt>はっせい</rt></ruby>した<ruby>森林<rt>しんりん</rt></ruby><ruby>火災<rt>かさい</rt></ruby>が<ruby>拡大<rt>かくだい</rt></ruby>を<ruby>続け<rt>つづけ</rt></ruby>、<ruby>焼失<rt>しょうしつ</rt></ruby><ruby>面積<rt>めんせき</rt></ruby>は<ruby>約<rt>やく</rt></ruby>200ヘクタールに<ruby>達し<rt>たっし</rt></ruby>た。<ruby>一部<rt>いちぶ</rt></ruby>の<ruby>地点<rt>ちてん</rt></ruby>では<ruby>炎<rt>ほのお</rt></ruby>が<ruby>住宅<rt>じゅうたく</rt></ruby>から<ruby>約<rt>やく</rt></ruby>100メートルの<ruby>距離<rt>きょり</rt></ruby>に<ruby>迫っ<rt>せまっ</rt></ruby>ており、<ruby>自衛隊<rt>じえいたい</rt></ruby>のヘリコプターも<ruby>消火<rt>しょうか</rt></ruby><ruby>活動<rt>かつどう</rt></ruby>に<ruby>加わ<rt>くわわ</rt></ruby>っている。<ruby>環境<rt>かんきょう</rt></ruby><ruby>被害<rt>ひがい</rt></ruby>にとどまらず、<ruby>住民<rt>じゅうみん</rt></ruby>の<ruby>生命<rt>せいめい</rt></ruby>・<ruby>財産<rt>ざいさん</rt></ruby>への<ruby>直接的<rt>ちょくせつてき</rt></ruby><ruby>脅威<rt>きょうい</rt></ruby>となっており、<ruby>早急<rt>さっきゅう</rt></ruby>な<ruby>対応<rt>たいおう</rt></ruby>が<ruby>求め<rt>もとめ</rt></ruby>られている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Wildfire in Otsuchi, Iwate spreads to 200 hectares, nears homes</h2>
+              <p class="body en-body">A forest fire that broke out in Otsuchi, Iwate Prefecture on Wednesday has continued to spread, with the burned area reaching approximately 200 hectares. In some places the flames have come within about 100 metres of homes, and Self-Defence Force helicopters have joined water-dropping operations. The fire now poses a direct threat to residents as well as causing significant environmental damage.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-04-23 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "潜入取材", "reading": "せんにゅうしゅざい", "english": "undercover reporting"}, {"word": "密売", "reading": "みつばい", "english": "illicit sale; drug dealing"}, {"word": "隠れ蓑", "reading": "かくれみの", "english": "cover; front (for illegal activity)"}, {"word": "犯罪組織", "reading": "はんざいそしき", "english": "criminal organisation"}, {"word": "取り締まり", "reading": "とりしまり", "english": "crackdown; enforcement"}], [{"word": "紛争", "reading": "ふんそう", "english": "conflict; dispute"}, {"word": "高騰", "reading": "こうとう", "english": "surge; sharp rise"}, {"word": "波及", "reading": "はきゅう", "english": "ripple effect; spread"}, {"word": "消費者信頼感", "reading": "しょうひしゃしんらいかん", "english": "consumer confidence"}, {"word": "指標", "reading": "しひょう", "english": "indicator; index"}], [{"word": "関税", "reading": "かんぜい", "english": "tariff; customs duty"}, {"word": "圧迫", "reading": "あっぱく", "english": "pressure; strain"}, {"word": "受注", "reading": "じゅちゅう", "english": "orders received"}, {"word": "減退", "reading": "げんたい", "english": "decline; decrease"}, {"word": "浮き彫り", "reading": "うきぼり", "english": "to bring into relief; highlight"}], [{"word": "機動隊", "reading": "きどうたい", "english": "riot police; mobile unit"}, {"word": "密航", "reading": "みっこう", "english": "illegal crossing; smuggling"}, {"word": "不法移民", "reading": "ふほういみん", "english": "illegal immigrant"}, {"word": "激化", "reading": "げきか", "english": "intensification; escalation"}, {"word": "合意", "reading": "ごうい", "english": "agreement; accord"}], [{"word": "大台", "reading": "おおだい", "english": "milestone level; major threshold"}, {"word": "突破", "reading": "とっぱ", "english": "to break through; surpass"}, {"word": "上昇相場", "reading": "じょうしょうそうば", "english": "bull market; rising market"}, {"word": "警戒", "reading": "けいかい", "english": "vigilance; caution"}, {"word": "投資家", "reading": "とうしか", "english": "investor"}], [{"word": "衆議院", "reading": "しゅうぎいん", "english": "House of Representatives (lower house)"}, {"word": "参議院", "reading": "さんぎいん", "english": "House of Councillors (upper house)"}, {"word": "情報収集", "reading": "じょうほうしゅうしゅう", "english": "intelligence gathering"}, {"word": "成立", "reading": "せいりつ", "english": "enactment; passage into law"}, {"word": "国家安全保障", "reading": "こっかあんぜんほしょう", "english": "national security"}], [{"word": "森林火災", "reading": "しんりんかさい", "english": "forest fire; wildfire"}, {"word": "焼失", "reading": "しょうしつ", "english": "burned down; destroyed by fire"}, {"word": "自衛隊", "reading": "じえいたい", "english": "Self-Defence Forces"}, {"word": "消火活動", "reading": "しょうかかつどう", "english": "firefighting operations"}, {"word": "脅威", "reading": "きょうい", "english": "threat; menace"}]];
+    const LABELS  = [{"section": "英国", "headline": "英コンビニ型商店で薬物密売、BBC潜入取材で発覚"}, {"section": "英国・経済", "headline": "イラン紛争で燃料高騰、英インフレ率が上昇"}, {"section": "国際", "headline": "中国、関税には耐えたがイラン紛争が経済に打撃"}, {"section": "英国・世界", "headline": "仏、英仏海峡の密航阻止へビーチに機動隊配備"}, {"section": "日本・経済", "headline": "日経平均、史上初の6万円台に到達"}, {"section": "日本・政治", "headline": "国家情報局創設法案、衆院を通過"}, {"section": "日本・社会", "headline": "岩手・大槌町の山火事、200ヘクタールに拡大し住宅に迫る"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
