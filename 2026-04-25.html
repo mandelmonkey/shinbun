@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年4月25日（土）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年4月25日（土）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">フォークランド<ruby>退役軍人<rt>たいえきぐんじん</rt></ruby>、<ruby>米<rt>こめ</rt></ruby>の<ruby>領有権<rt>りょうゆうけん</rt></ruby><ruby>見直し<rt>みなおし</rt></ruby><ruby>報道<rt>ほうどう</rt></ruby>に<ruby>強い<rt>つよい</rt></ruby><ruby>懸念<rt>けねん</rt></ruby></h2>
+              <p class="body">フォークランド<ruby>紛争<rt>ふんそう</rt></ruby>の<ruby>退役軍人<rt>たいえきぐんじん</rt></ruby>サイモン・ウェストン<ruby>氏<rt>し</rt></ruby>は、アメリカがイギリスのフォークランド<ruby>諸<rt>しょ</rt></ruby><ruby>島<rt>しま</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>領有権<rt>りょうゆうけん</rt></ruby>を<ruby>見直す<rt>みなおす</rt></ruby><ruby>可能性<rt>かのうせい</rt></ruby>があるとの<ruby>報道<rt>ほうどう</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、<ruby>自ら<rt>みずから</rt></ruby>の<ruby>戦時中<rt>せんじちゅう</rt></ruby>の<ruby>犠牲<rt>ぎせい</rt></ruby>が<ruby>無意味<rt>むいみ</rt></ruby>に<ruby>感じ<rt>かんじ</rt></ruby>られると<ruby>述べ<rt>のべ</rt></ruby>た。この<ruby>問題<rt>もんだい</rt></ruby>は、<ruby>国王<rt>こくおう</rt></ruby>の<ruby>訪米<rt>ほうべい</rt></ruby>を<ruby>前<rt>まえ</rt></ruby>に<ruby>英米<rt>えいべい</rt></ruby><ruby>間の<rt>まの</rt></ruby>「<ruby>特別<rt>とくべつ</rt></ruby>な<ruby>関係<rt>かんけい</rt></ruby>」の<ruby>健全性<rt>けんぜんせい</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>不安<rt>ふあん</rt></ruby>を<ruby>一層<rt>いっそう</rt></ruby><ruby>強め<rt>つよめ</rt></ruby>ている。ワシントンの<ruby>支持<rt>しじ</rt></ruby>がもはや<ruby>当然<rt>とうぜん</rt></ruby><ruby>視<rt>し</rt></ruby>できないのではないかという<ruby>懸念<rt>けねん</rt></ruby>が、<ruby>英国内<rt>えいこくない</rt></ruby>で<ruby>広が<rt>ひろが</rt></ruby>りつつある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Falklands veteran voices alarm over US review of British sovereignty</h2>
+              <p class="body en-body">Falklands veteran Simon Weston said reports that the United States may be reviewing Britain's claim to the Falkland Islands make his wartime sacrifice feel irrelevant. The story has heightened anxiety about the health of the special relationship ahead of the King's upcoming US visit. Concerns are growing in Britain that Washington's support can no longer be taken for granted.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">スターマー<ruby>首相<rt>しゅしょう</rt></ruby>、<ruby>選挙<rt>せんきょ</rt></ruby><ruby>直前<rt>ちょくぜん</rt></ruby>の<ruby>党内<rt>とうない</rt></ruby><ruby>論争<rt>ろんそう</rt></ruby>で<ruby>苦境<rt>くきょう</rt></ruby>に</h2>
+              <p class="body">ピーター・マンデルソン<ruby>氏<rt>し</rt></ruby>の<ruby>審査<rt>しんさ</rt></ruby>をめぐる<ruby>論争<rt>ろんそう</rt></ruby>が、キア・スターマー<ruby>首相<rt>しゅしょう</rt></ruby>の<ruby>党内<rt>とうない</rt></ruby>での<ruby>権威<rt>けんい</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>疑問<rt>ぎもん</rt></ruby>を<ruby>再燃<rt>さいねん</rt></ruby>させた。スコットランド、ウェールズ、イングランドの<ruby>地方選挙<rt>ちほうせんきょ</rt></ruby>まで<ruby>二週間<rt>にしゅうかん</rt></ruby>を<ruby>切る<rt>きる</rt></ruby><ruby>中<rt>なか</rt></ruby>、<ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>の<ruby>安定性<rt>あんていせい</rt></ruby>が<ruby>試さ<rt>ためさ</rt></ruby>れている。<ruby>選挙結果<rt>せんきょけっか</rt></ruby>が<ruby>振る<rt>ふる</rt></ruby>わなければ、<ruby>党内<rt>とうない</rt></ruby>からの<ruby>批判<rt>ひはん</rt></ruby>がさらに<ruby>激化<rt>げきか</rt></ruby>する<ruby>可能性<rt>かのうせい</rt></ruby>がある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Starmer faces grim week as internal row erupts before elections</h2>
+              <p class="body en-body">A row over the vetting of Peter Mandelson has revived questions about Keir Starmer's authority within the Labour Party. The controversy comes just two weeks before elections in Scotland, Wales and England. Poor results could deepen internal criticism and shift the mood around the prime minister.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>中国<rt>ちゅうごく</rt></ruby>BYD、「<ruby>米国<rt>べいこく</rt></ruby><ruby>市場<rt>しじょう</rt></ruby>なしでも<ruby>成長<rt>せいちょう</rt></ruby><ruby>可能<rt>かのう</rt></ruby>」と<ruby>強気<rt>つよき</rt></ruby><ruby>姿勢<rt>しせい</rt></ruby></h2>
+              <p class="body"><ruby>中国<rt>ちゅうごく</rt></ruby>の<ruby>電気自動車<rt>でんきじどうしゃ</rt></ruby><ruby>大手<rt>おおて</rt></ruby>BYDは、アメリカ<ruby>市場<rt>しじょう</rt></ruby>がなくても<ruby>事業<rt>じぎょう</rt></ruby><ruby>拡大<rt>かくだい</rt></ruby>が<ruby>可能<rt>かのう</rt></ruby>であるとの<ruby>見解<rt>けんかい</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。<ruby>燃料<rt>ねんりょう</rt></ruby><ruby>価格<rt>かかく</rt></ruby>の<ruby>上昇<rt>じょうしょう</rt></ruby>と<ruby>世界的<rt>せかいてき</rt></ruby>な<ruby>脱化<rt>だっか</rt></ruby><ruby>石<rt>いし</rt></ruby><ruby>燃料<rt>ねんりょう</rt></ruby>の<ruby>潮流<rt>ちょうりゅう</rt></ruby>が<ruby>電気自動車<rt>でんきじどうしゃ</rt></ruby>に<ruby>追い風<rt>おいかぜ</rt></ruby>になると<ruby>分析<rt>ぶんせき</rt></ruby>している。<ruby>中国<rt>ちゅうごく</rt></ruby>メーカーが<ruby>米国<rt>べいこく</rt></ruby>の<ruby>需要<rt>じゅよう</rt></ruby>に<ruby>依存<rt>いぞん</rt></ruby>せずにグローバル<ruby>規模<rt>きぼ</rt></ruby>を<ruby>構築<rt>こうちく</rt></ruby>する<ruby>自信<rt>じしん</rt></ruby>を<ruby>深め<rt>ふかめ</rt></ruby>ており、<ruby>国際的<rt>こくさいてき</rt></ruby>な<ruby>自動車<rt>じどうしゃ</rt></ruby><ruby>産業<rt>さんぎょう</rt></ruby>の<ruby>勢力<rt>せいりょく</rt></ruby><ruby>図<rt>ず</rt></ruby>に<ruby>変化<rt>へんか</rt></ruby>が<ruby>生じ<rt>しょうじ</rt></ruby>つつある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">China's BYD says it can thrive without the US market</h2>
+              <p class="body en-body">Chinese electric vehicle giant BYD has declared it can keep expanding even without access to the American market. The company argues that rising fuel prices and the global shift away from fossil fuels continue to favour EVs. The stance signals growing confidence among Chinese manufacturers in building global scale independently of US demand.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英中<rt>えいちゅう</rt></ruby><ruby>央<rt>おう</rt></ruby><ruby>銀行<rt>ぎんこう</rt></ruby><ruby>副<rt>ふく</rt></ruby><ruby>総裁<rt>そうさい</rt></ruby>、<ruby>株式市場<rt>かぶしきしじょう</rt></ruby>の<ruby>過大評価<rt>かだいひょうか</rt></ruby>に<ruby>異例<rt>いれい</rt></ruby>の<ruby>警告<rt>けいこく</rt></ruby></h2>
+              <p class="body">イングランド<ruby>銀行<rt>ぎんこう</rt></ruby>の<ruby>副<rt>ふく</rt></ruby><ruby>総裁<rt>そうさい</rt></ruby>は、<ruby>現在<rt>げんざい</rt></ruby>の<ruby>株式市場<rt>かぶしきしじょう</rt></ruby>が<ruby>過大評価<rt>かだいひょうか</rt></ruby>されており、<ruby>下落<rt>げらく</rt></ruby>のリスクがあると<ruby>警告し<rt>けいこくし</rt></ruby>た。<ruby>中央<rt>ちゅうおう</rt></ruby><ruby>銀行<rt>ぎんこう</rt></ruby>の<ruby>高官<rt>こうかん</rt></ruby>がこれほど<ruby>率直<rt>そっちょく</rt></ruby>に<ruby>市場<rt>しじょう</rt></ruby>の<ruby>脆弱<rt>ぜいじゃく</rt></ruby><ruby>性<rt>せい</rt></ruby>を<ruby>指摘<rt>してき</rt></ruby>するのは<ruby>異例<rt>いれい</rt></ruby>である。インフレや<ruby>借入<rt>しゃくにゅう</rt></ruby>コストへの<ruby>不安<rt>ふあん</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>る<ruby>中<rt>なか</rt></ruby>、<ruby>資産<rt>しさん</rt></ruby><ruby>価格<rt>かかく</rt></ruby>が<ruby>経済<rt>けいざい</rt></ruby>の<ruby>実態<rt>じったい</rt></ruby>を<ruby>反映<rt>はんえい</rt></ruby>しているかどうかについて、<ruby>政策<rt>せいさく</rt></ruby><ruby>立案<rt>りつあん</rt></ruby><ruby>者<rt>もの</rt></ruby>の<ruby>間<rt>かん</rt></ruby>で<ruby>懸念<rt>けねん</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Bank of England deputy warns stock markets are overvalued and vulnerable</h2>
+              <p class="body en-body">A Bank of England deputy governor has warned that stock markets appear overvalued and may be due for a correction. The unusually blunt language from a senior central banker comes amid household anxiety over inflation and borrowing costs. Policymakers are increasingly uneasy about whether asset prices reflect economic reality.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>岩手<rt>いわて</rt></ruby>・<ruby>大槌<rt>おおつち</rt></ruby><ruby>町<rt>まち</rt></ruby>の<ruby>山火<rt>やまび</rt></ruby><ruby>事<rt>こと</rt></ruby>、<ruby>四日目<rt>よっかめ</rt></ruby>も<ruby>延焼<rt>えんしょう</rt></ruby><ruby>続く<rt>つづく</rt></ruby></h2>
+              <p class="body"><ruby>岩手県<rt>いわてけん</rt></ruby><ruby>大槌<rt>おおつち</rt></ruby><ruby>町<rt>まち</rt></ruby>で<ruby>発生<rt>はっせい</rt></ruby>した<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>山火<rt>やまび</rt></ruby><ruby>事<rt>こと</rt></ruby>は<ruby>四日目<rt>よっかめ</rt></ruby>に<ruby>入り<rt>いり</rt></ruby>、<ruby>複数<rt>ふくすう</rt></ruby>の<ruby>地区<rt>ちく</rt></ruby>で<ruby>炎<rt>ほのお</rt></ruby>が<ruby>住宅<rt>じゅうたく</rt></ruby>に<ruby>近づ<rt>ちかづ</rt></ruby>いている。<ruby>消防<rt>しょうぼう</rt></ruby><ruby>活動<rt>かつどう</rt></ruby>には<ruby>千人以上<rt>せんにんいじょう</rt></ruby>が<ruby>投入<rt>とうにゅう</rt></ruby>され、<ruby>延焼<rt>えんしょう</rt></ruby><ruby>防止<rt>ぼうし</rt></ruby>に<ruby>全力<rt>ぜんりょく</rt></ruby>を<ruby>挙げ<rt>あげ</rt></ruby>ている。<ruby>大規模<rt>だいきぼ</rt></ruby><ruby>自然災害<rt>しぜんさいがい</rt></ruby>が<ruby>地域<rt>ちいき</rt></ruby>コミュニティに<ruby>与え<rt>あたえ</rt></ruby>る<ruby>負担<rt>ふたん</rt></ruby>の<ruby>大きさ<rt>おおきさ</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>浮き彫り<rt>うきぼり</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Iwate wildfire enters fourth day as flames approach residential areas</h2>
+              <p class="body en-body">A major wildfire in Otsuchi, Iwate Prefecture, has entered its fourth day, with flames now approaching homes in several districts. More than 1,000 personnel are involved in firefighting efforts to contain the blaze. The disaster underscores the heavy burden large-scale natural events place on regional communities.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>与野党<rt>よやとう</rt></ruby>、<ruby>選挙<rt>せんきょ</rt></ruby><ruby>中の<rt>なかの</rt></ruby>SNS<ruby>偽<rt>にせ</rt></ruby><ruby>情報<rt>じょうほう</rt></ruby><ruby>規制<rt>きせい</rt></ruby>を<ruby>本格<rt>ほんかく</rt></ruby><ruby>議論<rt>ぎろん</rt></ruby>へ</h2>
+              <p class="body"><ruby>与野党<rt>よやとう</rt></ruby>の<ruby>選挙制度<rt>せんきょせいど</rt></ruby><ruby>協議会<rt>きょうぎかい</rt></ruby>は、<ruby>選挙<rt>せんきょ</rt></ruby><ruby>期間中<rt>きかんちゅう</rt></ruby>にSNS<ruby>上で<rt>うえで</rt></ruby><ruby>拡散<rt>かくさん</rt></ruby>する<ruby>偽<rt>にせ</rt></ruby><ruby>情報<rt>じょうほう</rt></ruby>への<ruby>対策<rt>たいさく</rt></ruby>について<ruby>本格的<rt>ほんかくてき</rt></ruby>な<ruby>議論<rt>ぎろん</rt></ruby>に<ruby>入っ<rt>いっっ</rt></ruby>た。プラットフォーム<ruby>事業者<rt>じぎょうしゃ</rt></ruby>の<ruby>責任<rt>せきにん</rt></ruby>の<ruby>明確化<rt>めいかくか</rt></ruby>、<ruby>削除<rt>さくじょ</rt></ruby><ruby>要請<rt>ようせい</rt></ruby>の<ruby>正式<rt>せいしき</rt></ruby>な<ruby>手続き<rt>てつづき</rt></ruby><ruby>整備<rt>せいび</rt></ruby>、<ruby>悪質<rt>あくしつ</rt></ruby>な<ruby>場合<rt>ばあい</rt></ruby>の<ruby>収益<rt>しゅうえき</rt></ruby><ruby>化<rt>か</rt></ruby><ruby>停止<rt>ていし</rt></ruby>などが<ruby>論点<rt>ろんてん</rt></ruby>として<ruby>挙げ<rt>あげ</rt></ruby>られている。<ruby>日本<rt>にっぽん</rt></ruby>がオンライン<ruby>上の<rt>うえの</rt></ruby><ruby>偽<rt>にせ</rt></ruby><ruby>情報<rt>じょうほう</rt></ruby>を<ruby>選挙<rt>せんきょ</rt></ruby>における<ruby>喫緊<rt>きっきん</rt></ruby>の<ruby>課題<rt>かだい</rt></ruby>として<ruby>位置<rt>いち</rt></ruby>づけ<ruby>始め<rt>はじめ</rt></ruby>たことを<ruby>示す<rt>しめす</rt></ruby><ruby>動き<rt>うごき</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan's parties move toward tougher social media rules for elections</h2>
+              <p class="body en-body">A cross-party election council in Japan has begun formal discussions on tackling misinformation spread on social media during campaigns. Proposals include clarifying platform operators' responsibilities, creating official takedown request channels, and halting monetisation in serious cases. The move signals that Japan is treating online misinformation as an increasingly urgent electoral issue.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">JR<ruby>福知山線<rt>ふくちやません</rt></ruby><ruby>脱線事故<rt>だっせんじこ</rt></ruby>から21<ruby>年<rt>ねん</rt></ruby>、<ruby>尼崎<rt>あまがさき</rt></ruby>で<ruby>追悼式<rt>ついとうしき</rt></ruby></h2>
+              <p class="body">2005<ruby>年<rt>ねん</rt></ruby>のJR<ruby>福知山線<rt>ふくちやません</rt></ruby><ruby>脱線事故<rt>だっせんじこ</rt></ruby>から21<ruby>年<rt>ねん</rt></ruby>を<ruby>迎え<rt>むかえ</rt></ruby>、<ruby>兵庫県<rt>ひょうごけん</rt></ruby><ruby>尼崎市<rt>あまがさきし</rt></ruby>で<ruby>追悼式<rt>ついとうしき</rt></ruby>が<ruby>行わ<rt>おこなわ</rt></ruby>れた。<ruby>事故<rt>じこ</rt></ruby>では107<ruby>人<rt>にん</rt></ruby>が<ruby>犠牲<rt>ぎせい</rt></ruby>となり、<ruby>遺族<rt>いぞく</rt></ruby>やJR<ruby>西日本<rt>にしにほん</rt></ruby>の<ruby>関係者<rt>かんけいしゃ</rt></ruby>が<ruby>祈り<rt>いのり</rt></ruby>を<ruby>捧げ<rt>ささげ</rt></ruby>た。<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>鉄道<rt>てつどう</rt></ruby><ruby>史上<rt>しじょう</rt></ruby><ruby>最も<rt>もっとも</rt></ruby><ruby>深刻<rt>しんこく</rt></ruby>な<ruby>事故<rt>じこ</rt></ruby>の<ruby>一つ<rt>ひとつ</rt></ruby>として、<ruby>安全<rt>あんぜん</rt></ruby><ruby>文化<rt>ぶんか</rt></ruby>と<ruby>社会<rt>しゃかい</rt></ruby>の<ruby>記憶<rt>きおく</rt></ruby>に<ruby>今<rt>いま</rt></ruby>なお<ruby>大き<rt>おおき</rt></ruby>な<ruby>影<rt>かげ</rt></ruby>を<ruby>落と<rt>おと</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan marks 21 years since deadly Amagasaki train derailment</h2>
+              <p class="body en-body">Friday marked 21 years since the JR Fukuchiyama Line derailment in Amagasaki, Hyogo Prefecture, which killed 107 people. Bereaved families and West Japan Railway officials attended a memorial ceremony. The anniversary remains a powerful reminder of one of Japan's most serious rail accidents and its lasting impact on safety culture.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-04-25 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "退役軍人", "reading": "たいえきぐんじん", "english": "veteran"}, {"word": "領有権", "reading": "りょうゆうけん", "english": "territorial sovereignty"}, {"word": "犠牲", "reading": "ぎせい", "english": "sacrifice"}, {"word": "訪米", "reading": "ほうべい", "english": "visit to the US"}, {"word": "当然視", "reading": "とうぜんし", "english": "taking for granted"}], [{"word": "審査", "reading": "しんさ", "english": "vetting, screening"}, {"word": "論争", "reading": "ろんそう", "english": "controversy, dispute"}, {"word": "権威", "reading": "けんい", "english": "authority"}, {"word": "地方選挙", "reading": "ちほうせんきょ", "english": "local elections"}, {"word": "激化", "reading": "げきか", "english": "intensification"}], [{"word": "電気自動車", "reading": "でんきじどうしゃ", "english": "electric vehicle"}, {"word": "事業拡大", "reading": "じぎょうかくだい", "english": "business expansion"}, {"word": "脱化石燃料", "reading": "だつかせきねんりょう", "english": "moving away from fossil fuels"}, {"word": "追い風", "reading": "おいかぜ", "english": "tailwind, favourable conditions"}, {"word": "勢力図", "reading": "せいりょくず", "english": "power map, balance of power"}], [{"word": "過大評価", "reading": "かだいひょうか", "english": "overvaluation"}, {"word": "副総裁", "reading": "ふくそうさい", "english": "deputy governor"}, {"word": "脆弱性", "reading": "ぜいじゃくせい", "english": "vulnerability, fragility"}, {"word": "借入コスト", "reading": "かりいれコスト", "english": "borrowing costs"}, {"word": "政策立案者", "reading": "せいさくりつあんしゃ", "english": "policymaker"}], [{"word": "山火事", "reading": "やまかじ", "english": "wildfire, forest fire"}, {"word": "延焼", "reading": "えんしょう", "english": "spread of fire"}, {"word": "消防活動", "reading": "しょうぼうかつどう", "english": "firefighting operations"}, {"word": "投入", "reading": "とうにゅう", "english": "deployment, commitment of resources"}, {"word": "浮き彫り", "reading": "うきぼり", "english": "brought into relief, highlighted"}], [{"word": "偽情報", "reading": "ぎじょうほう", "english": "misinformation, disinformation"}, {"word": "協議会", "reading": "きょうぎかい", "english": "council, advisory committee"}, {"word": "拡散", "reading": "かくさん", "english": "spread, dissemination"}, {"word": "収益化", "reading": "しゅうえきか", "english": "monetisation"}, {"word": "喫緊", "reading": "きっきん", "english": "urgent, pressing"}], [{"word": "脱線事故", "reading": "だっせんじこ", "english": "derailment accident"}, {"word": "追悼式", "reading": "ついとうしき", "english": "memorial ceremony"}, {"word": "犠牲", "reading": "ぎせい", "english": "victim, sacrifice"}, {"word": "遺族", "reading": "いぞく", "english": "bereaved family"}, {"word": "鉄道史", "reading": "てつどうし", "english": "railway history"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "フォークランド退役軍人、米の領有権見直し報道に強い懸念"}, {"section": "英国", "headline": "スターマー首相、選挙直前の党内論争で苦境に"}, {"section": "経済", "headline": "中国BYD、「米国市場なしでも成長可能」と強気姿勢"}, {"section": "経済", "headline": "英中央銀行副総裁、株式市場の過大評価に異例の警告"}, {"section": "日本・社会", "headline": "岩手・大槌町の山火事、四日目も延焼続く"}, {"section": "日本・政治", "headline": "与野党、選挙中のSNS偽情報規制を本格議論へ"}, {"section": "日本・社会", "headline": "JR福知山線脱線事故から21年、尼崎で追悼式"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
