@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年4月28日（火曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年4月28日（火曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">チャールズ<ruby>国王<rt>こくおう</rt></ruby>、<ruby>米<rt>こめ</rt></ruby><ruby>議会<rt>ぎかい</rt></ruby>で<ruby>民主主義<rt>みんしゅしゅぎ</rt></ruby>の<ruby>価値<rt>かち</rt></ruby>を<ruby>訴え<rt>うったえ</rt></ruby>へ</h2>
+              <p class="body">チャールズ<ruby>国王<rt>こくおう</rt></ruby>は4<ruby>日間<rt>にちかん</rt></ruby>の<ruby>米国<rt>べいこく</rt></ruby><ruby>公式<rt>こうしき</rt></ruby><ruby>訪問<rt>ほうもん</rt></ruby>を<ruby>開始<rt>かいし</rt></ruby>し、<ruby>火曜日<rt>かようび</rt></ruby>に<ruby>米<rt>こめ</rt></ruby><ruby>議会<rt>ぎかい</rt></ruby>で<ruby>演説<rt>えんぜつ</rt></ruby>を<ruby>行う<rt>おこなう</rt></ruby><ruby>予定<rt>よてい</rt></ruby>である。<ruby>演説<rt>えんぜつ</rt></ruby>では<ruby>民主主義<rt>みんしゅしゅぎ</rt></ruby>の<ruby>価値<rt>かち</rt></ruby>を<ruby>強調<rt>きょうちょう</rt></ruby>するとともに、<ruby>土曜日<rt>どようび</rt></ruby>に<ruby>発生<rt>はっせい</rt></ruby>した<ruby>銃撃<rt>じゅうげき</rt></ruby><ruby>事件<rt>じけん</rt></ruby>への<ruby>衝撃<rt>しょうげき</rt></ruby>にも<ruby>言及<rt>げんきゅう</rt></ruby>する<ruby>見通し<rt>みとおし</rt></ruby>だ。<ruby>今回<rt>こんかい</rt></ruby>の<ruby>訪問<rt>ほうもん</rt></ruby>は<ruby>儀礼的<rt>ぎれいてき</rt></ruby>な<ruby>側面<rt>そくめん</rt></ruby>に<ruby>加え<rt>くわえ</rt></ruby>、<ruby>政治的<rt>せいじてき</rt></ruby>にも<ruby>大き<rt>おおき</rt></ruby>な<ruby>意味<rt>いみ</rt></ruby>を<ruby>持つ<rt>もつ</rt></ruby>ものとなっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">King Charles to defend democratic values in address to US Congress</h2>
+              <p class="body en-body">King Charles III has begun a four-day state visit to the United States and is due to address Congress on Tuesday. The speech is expected to stress democratic values while acknowledging the shock of Saturday's gun attack, giving the visit both ceremonial and political significance.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>氏<rt>し</rt></ruby><ruby>暗殺<rt>あんさつ</rt></ruby><ruby>未遂<rt>みすい</rt></ruby>、31<ruby>歳<rt>とし</rt></ruby>の<ruby>男<rt>おとこ</rt></ruby>を<ruby>起訴<rt>きそ</rt></ruby></h2>
+              <p class="body">カリフォルニア<ruby>州<rt>しゅう</rt></ruby><ruby>出身<rt>しゅっしん</rt></ruby>の31<ruby>歳<rt>とし</rt></ruby>の<ruby>男<rt>おとこ</rt></ruby>が、ワシントンでの<ruby>夕食会<rt>ゆうしょくかい</rt></ruby>でトランプ<ruby>前<rt>まえ</rt></ruby><ruby>大統領<rt>だいとうりょう</rt></ruby>の<ruby>暗殺<rt>あんさつ</rt></ruby>を<ruby>試み<rt>こころみ</rt></ruby>た<ruby>容疑<rt>ようぎ</rt></ruby>で<ruby>起訴<rt>きそ</rt></ruby>された。<ruby>検察側<rt>けんさつがわ</rt></ruby>によると、<ruby>容疑者<rt>ようぎしゃ</rt></ruby>はできるだけ<ruby>多く<rt>おおく</rt></ruby>の<ruby>高官<rt>こうかん</rt></ruby>を<ruby>殺害<rt>さつがい</rt></ruby>する<ruby>意図<rt>いと</rt></ruby>があったとされる。<ruby>事件<rt>じけん</rt></ruby>は<ruby>米国内<rt>べいこくない</rt></ruby>の<ruby>政治的<rt>せいじてき</rt></ruby><ruby>暴力<rt>ぼうりょく</rt></ruby>や<ruby>過激<rt>かげき</rt></ruby><ruby>主義<rt>しゅぎ</rt></ruby>をめぐる<ruby>議論<rt>ぎろん</rt></ruby>を<ruby>再燃<rt>さいねん</rt></ruby>させている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Man charged with attempted assassination of Trump at Washington dinner</h2>
+              <p class="body en-body">A 31-year-old man from California has been charged after allegedly trying to assassinate Donald Trump at a Washington dinner. Prosecutors say he intended to kill as many senior officials as possible. The case has reignited debate about political violence, extremism, and security in the United States.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ロシア<ruby>関連<rt>かんれん</rt></ruby>スーパーヨット、<ruby>封鎖<rt>ふうさ</rt></ruby><ruby>中の<rt>なかの</rt></ruby>ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>を<ruby>通過<rt>つうか</rt></ruby></h2>
+              <p class="body">プーチン<ruby>大統領<rt>だいとうりょう</rt></ruby>の<ruby>側近<rt>そっきん</rt></ruby>と<ruby>関係<rt>かんけい</rt></ruby>があるとされる<ruby>全長<rt>ぜんちょう</rt></ruby>141メートルのスーパーヨットが、<ruby>封鎖<rt>ふうさ</rt></ruby><ruby>下に<rt>したに</rt></ruby>あるホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>を<ruby>通過<rt>つうか</rt></ruby>した。<ruby>同<rt>どう</rt></ruby><ruby>海峡<rt>かいきょう</rt></ruby>は<ruby>戦略的<rt>せんりゃくてき</rt></ruby>に<ruby>極め<rt>きわめ</rt></ruby>て<ruby>重要な<rt>じゅうような</rt></ruby><ruby>水路<rt>すいろ</rt></ruby>であり、<ruby>今回<rt>こんかい</rt></ruby>の<ruby>航行<rt>こうこう</rt></ruby>は<ruby>制裁措置<rt>せいさいそち</rt></ruby>の<ruby>不均等<rt>ふきんとう</rt></ruby>な<ruby>適用<rt>てきよう</rt></ruby>を<ruby>浮き彫り<rt>うきぼり</rt></ruby>にしている。<ruby>湾岸<rt>わんがん</rt></ruby><ruby>地域<rt>ちいき</rt></ruby>におけるエリート<ruby>層<rt>そう</rt></ruby>の<ruby>富<rt>とみ</rt></ruby>と<ruby>地政学<rt>ちせいがく</rt></ruby><ruby>的な<rt>てきな</rt></ruby><ruby>力関係<rt>ちからかんけい</rt></ruby>への<ruby>懸念<rt>けねん</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>高ま<rt>たかま</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Russian-linked superyacht sails through Strait of Hormuz despite blockade</h2>
+              <p class="body en-body">A 141-metre superyacht reportedly linked to a close ally of Vladimir Putin has passed through the Strait of Hormuz despite an ongoing blockade. The passage highlights the strategic importance of the waterway and the uneven enforcement of restrictions during regional crises.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">クレアーズ、<ruby>英国<rt>えいこく</rt></ruby>・アイルランド<ruby>全<rt>ぜん</rt></ruby>154<ruby>店舗<rt>てんぽ</rt></ruby>を<ruby>閉鎖<rt>へいさ</rt></ruby>　1,300<ruby>人<rt>にん</rt></ruby><ruby>失職<rt>しっしょく</rt></ruby>へ</h2>
+              <p class="body">アクセサリーチェーンのクレアーズが<ruby>英国<rt>えいこく</rt></ruby>とアイルランドの<ruby>全<rt>ぜん</rt></ruby>154<ruby>店舗<rt>てんぽ</rt></ruby>を<ruby>閉鎖<rt>へいさ</rt></ruby>し、<ruby>約<rt>やく</rt></ruby>1,300<ruby>人<rt>にん</rt></ruby>の<ruby>雇用<rt>こよう</rt></ruby>が<ruby>失わ<rt>うしなわ</rt></ruby>れる<ruby>見通し<rt>みとおし</rt></ruby>である。コスト<ruby>上昇<rt>じょうしょう</rt></ruby>、<ruby>消費<rt>しょうひ</rt></ruby><ruby>行動<rt>こうどう</rt></ruby>の<ruby>変化<rt>へんか</rt></ruby>、<ruby>消費者<rt>しょうひしゃ</rt></ruby><ruby>信頼感<rt>しんらいかん</rt></ruby>の<ruby>低下<rt>ていか</rt></ruby>が<ruby>実<rt>み</rt></ruby><ruby>店舗<rt>てんぽ</rt></ruby><ruby>型<rt>かた</rt></ruby><ruby>小売業<rt>こうりぎょう</rt></ruby>を<ruby>圧迫<rt>あっぱく</rt></ruby>し<ruby>続け<rt>つづけ</rt></ruby>ている。<ruby>同社<rt>どうしゃ</rt></ruby>の<ruby>撤退<rt>てったい</rt></ruby>は、<ruby>英国<rt>えいこく</rt></ruby>の<ruby>商店街<rt>しょうてんがい</rt></ruby>が<ruby>直面<rt>ちょくめん</rt></ruby>する<ruby>構造的<rt>こうぞうてき</rt></ruby>な<ruby>困難<rt>こんなん</rt></ruby>を<ruby>象徴<rt>しょうちょう</rt></ruby>する<ruby>出来事<rt>できごと</rt></ruby>と<ruby>言え<rt>いえ</rt></ruby>る。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Claire's closes all 154 UK and Ireland stores with 1,300 jobs lost</h2>
+              <p class="body en-body">Retail chain Claire's has shut all 154 of its standalone stores across the UK and Ireland, putting roughly 1,300 jobs at risk. The closure reflects the mounting pressure on high-street retailers from rising costs, shifting shopping habits, and weak consumer confidence.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>麻疹<rt>ましん</rt></ruby><ruby>感染<rt>かんせん</rt></ruby>362<ruby>人<rt>にん</rt></ruby>に<ruby>拡大<rt>かくだい</rt></ruby>、<ruby>専門家<rt>せんもんか</rt></ruby>がワクチン<ruby>接種<rt>せっしゅ</rt></ruby>を<ruby>呼び<rt>よび</rt></ruby>かけ</h2>
+              <p class="body">NHKによると、<ruby>今年<rt>こんねん</rt></ruby>の<ruby>国内<rt>こくない</rt></ruby><ruby>麻疹<rt>ましん</rt></ruby><ruby>確認<rt>かくにん</rt></ruby><ruby>数<rt>かず</rt></ruby>が362<ruby>人<rt>にん</rt></ruby>に<ruby>達し<rt>たっし</rt></ruby>、<ruby>前週<rt>ぜんしゅう</rt></ruby>より50<ruby>人以上<rt>ひといじょう</rt></ruby><ruby>増加<rt>ぞうか</rt></ruby>した。<ruby>増加<rt>ぞうか</rt></ruby>のペースは2020<ruby>年<rt>ねん</rt></ruby><ruby>以来<rt>いらい</rt></ruby><ruby>最速<rt>さいそく</rt></ruby>であり、<ruby>専門家<rt>せんもんか</rt></ruby>は<ruby>感染<rt>かんせん</rt></ruby>がさらに<ruby>広が<rt>ひろが</rt></ruby>れば<ruby>重症<rt>じゅうしょう</rt></ruby><ruby>例<rt>れい</rt></ruby>が<ruby>出る<rt>でる</rt></ruby><ruby>恐れ<rt>おそれ</rt></ruby>があると<ruby>警告し<rt>けいこくし</rt></ruby>ている。<ruby>未<rt>ひつじ</rt></ruby><ruby>接種<rt>せっしゅ</rt></ruby><ruby>者<rt>もの</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>、<ruby>速やか<rt>すみやか</rt></ruby>なワクチン<ruby>接種<rt>せっしゅ</rt></ruby>が<ruby>強く<rt>つよく</rt></ruby><ruby>推奨<rt>すいしょう</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Measles cases in Japan rise to 362 as experts urge vaccination</h2>
+              <p class="body en-body">The number of confirmed measles cases in Japan this year has risen to 362, more than 50 higher than the previous week. Experts warn the pace of increase is the fastest since 2020 and urge unvaccinated individuals to get vaccinated as soon as possible.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日中<rt>にっちゅう</rt></ruby>、<ruby>国連安保理<rt>こくれんあんぽり</rt></ruby>で<ruby>東<rt>ひがし</rt></ruby>・<ruby>南<rt>みなみ</rt></ruby>シナ<ruby>海<rt>うみ</rt></ruby>めぐり<ruby>応酬<rt>おうしゅう</rt></ruby></h2>
+              <p class="body"><ruby>国連<rt>こくれん</rt></ruby><ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby><ruby>理事会<rt>りじかい</rt></ruby>の<ruby>海洋<rt>かいよう</rt></ruby><ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>に<ruby>関す<rt>かんす</rt></ruby>る<ruby>会合<rt>かいごう</rt></ruby>で、<ruby>日本<rt>にっぽん</rt></ruby>は<ruby>東<rt>ひがし</rt></ruby>シナ<ruby>海<rt>うみ</rt></ruby>および<ruby>南<rt>みなみ</rt></ruby>シナ<ruby>海<rt>うみ</rt></ruby>における<ruby>中国<rt>ちゅうごく</rt></ruby>の<ruby>海洋<rt>かいよう</rt></ruby><ruby>活動<rt>かつどう</rt></ruby>に<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>懸念<rt>けねん</rt></ruby>を<ruby>表明<rt>ひょうめい</rt></ruby>した。<ruby>中国側<rt>ちゅうごくがわ</rt></ruby>は<ruby>強く<rt>つよく</rt></ruby><ruby>反発<rt>はんぱつ</rt></ruby>し、<ruby>会議<rt>かいぎ</rt></ruby>は<ruby>両国間<rt>りょうこくかん</rt></ruby>の<ruby>直接的<rt>ちょくせつてき</rt></ruby>な<ruby>批判<rt>ひはん</rt></ruby>の<ruby>応酬<rt>おうしゅう</rt></ruby>となった。<ruby>領土<rt>りょうど</rt></ruby>をめぐる<ruby>地域的<rt>ちいきてき</rt></ruby><ruby>緊張<rt>きんちょう</rt></ruby>が、<ruby>国際的<rt>こくさいてき</rt></ruby>な<ruby>外交<rt>がいこう</rt></ruby>の<ruby>場<rt>ば</rt></ruby>に<ruby>波及<rt>はきゅう</rt></ruby>している<ruby>現状<rt>げんじょう</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>浮き彫り<rt>うきぼり</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan and China clash at UN Security Council over East and South China Seas</h2>
+              <p class="body en-body">At a UN Security Council meeting on maritime safety, Japan expressed serious concern about China's continued activity in the East and South China Seas. China pushed back sharply, and the session became a direct exchange of criticism, underscoring how regional territorial tensions continue to spill into global diplomatic forums.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">JR<ruby>西日本<rt>にしにほん</rt></ruby>、りそなグループと<ruby>資本提携<rt>しほんていけい</rt></ruby>へ　<ruby>金融<rt>きんゆう</rt></ruby><ruby>事業<rt>じぎょう</rt></ruby>に<ruby>進出<rt>しんしゅつ</rt></ruby></h2>
+              <p class="body">NHKによると、JR<ruby>西日本<rt>にしにほん</rt></ruby>がりそなグループとの<ruby>業務<rt>ぎょうむ</rt></ruby>・<ruby>資本提携<rt>しほんていけい</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>て<ruby>最終<rt>さいしゅう</rt></ruby><ruby>調整<rt>ちょうせい</rt></ruby>に<ruby>入っ<rt>いっっ</rt></ruby>た。<ruby>傘下<rt>さんか</rt></ruby><ruby>銀行<rt>ぎんこう</rt></ruby>の<ruby>約<rt>やく</rt></ruby>20パーセントの<ruby>株式<rt>かぶしき</rt></ruby><ruby>取得<rt>しゅとく</rt></ruby>を<ruby>目指し<rt>めざし</rt></ruby>、<ruby>交通<rt>こうつう</rt></ruby>・<ruby>決済<rt>けっさい</rt></ruby><ruby>事業<rt>じぎょう</rt></ruby>から<ruby>預金<rt>よきん</rt></ruby>・<ruby>融資<rt>ゆうし</rt></ruby><ruby>分野<rt>ぶんや</rt></ruby>への<ruby>進出<rt>しんしゅつ</rt></ruby>を<ruby>図る<rt>はかる</rt></ruby>。<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>鉄道事業<rt>てつどうじぎょう</rt></ruby><ruby>者<rt>もの</rt></ruby>が<ruby>顧客<rt>こきゃく</rt></ruby><ruby>基盤<rt>きばん</rt></ruby>を<ruby>活用<rt>かつよう</rt></ruby>して<ruby>経済<rt>けいざい</rt></ruby><ruby>圏<rt>けん</rt></ruby>の<ruby>拡大<rt>かくだい</rt></ruby>を<ruby>目指す<rt>めざす</rt></ruby><ruby>動き<rt>うごき</rt></ruby>として<ruby>注目<rt>ちゅうもく</rt></ruby>される。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">JR West nears capital alliance with Resona Group to expand into banking</h2>
+              <p class="body en-body">JR West is reportedly in final talks on a business and capital alliance with financial giant Resona Group. The railway company aims to acquire around 20 percent of a Resona subsidiary bank, expanding beyond transport and payments into deposits and loans.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-04-28 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "公式訪問", "reading": "こうしきほうもん", "english": "state visit"}, {"word": "米議会", "reading": "べいぎかい", "english": "US Congress"}, {"word": "演説", "reading": "えんぜつ", "english": "speech; address"}, {"word": "民主主義", "reading": "みんしゅしゅぎ", "english": "democracy"}, {"word": "儀礼的", "reading": "ぎれいてき", "english": "ceremonial"}], [{"word": "暗殺未遂", "reading": "あんさつみすい", "english": "attempted assassination"}, {"word": "起訴", "reading": "きそ", "english": "indictment; prosecution"}, {"word": "容疑者", "reading": "ようぎしゃ", "english": "suspect"}, {"word": "高官", "reading": "こうかん", "english": "senior official"}, {"word": "過激主義", "reading": "かげきしゅぎ", "english": "extremism"}, {"word": "再燃", "reading": "さいねん", "english": "reignition; flare-up"}], [{"word": "側近", "reading": "そっきん", "english": "close aide; associate"}, {"word": "封鎖", "reading": "ふうさ", "english": "blockade"}, {"word": "海峡", "reading": "かいきょう", "english": "strait"}, {"word": "制裁措置", "reading": "せいさいそち", "english": "sanctions; punitive measures"}, {"word": "地政学的", "reading": "ちせいがくてき", "english": "geopolitical"}], [{"word": "閉鎖", "reading": "へいさ", "english": "closure; shutdown"}, {"word": "雇用", "reading": "こよう", "english": "employment"}, {"word": "消費者信頼感", "reading": "しょうひしゃしんらいかん", "english": "consumer confidence"}, {"word": "実店舗型", "reading": "じつてんぽがた", "english": "bricks-and-mortar"}, {"word": "撤退", "reading": "てったい", "english": "withdrawal; pullout"}], [{"word": "麻疹", "reading": "ましん", "english": "measles"}, {"word": "感染", "reading": "かんせん", "english": "infection"}, {"word": "重症例", "reading": "じゅうしょうれい", "english": "severe case"}, {"word": "未接種者", "reading": "みせっしゅしゃ", "english": "unvaccinated person"}, {"word": "推奨", "reading": "すいしょう", "english": "recommendation"}], [{"word": "安全保障理事会", "reading": "あんぜんほしょうりじかい", "english": "Security Council"}, {"word": "海洋活動", "reading": "かいようかつどう", "english": "maritime activity"}, {"word": "懸念", "reading": "けねん", "english": "concern; apprehension"}, {"word": "応酬", "reading": "おうしゅう", "english": "exchange (of criticism)"}, {"word": "波及", "reading": "はきゅう", "english": "spread; ripple effect"}], [{"word": "資本提携", "reading": "しほんていけい", "english": "capital alliance"}, {"word": "傘下", "reading": "さんか", "english": "subsidiary; under the umbrella of"}, {"word": "株式取得", "reading": "かぶしきしゅとく", "english": "share acquisition"}, {"word": "融資", "reading": "ゆうし", "english": "financing; loans"}, {"word": "経済圏", "reading": "けいざいけん", "english": "economic zone/ecosystem"}]];
+    const LABELS  = [{"section": "英国・世界", "headline": "チャールズ国王、米議会で民主主義の価値を訴えへ"}, {"section": "国際", "headline": "トランプ氏暗殺未遂、31歳の男を起訴"}, {"section": "国際", "headline": "ロシア関連スーパーヨット、封鎖中のホルムズ海峡を通過"}, {"section": "英国", "headline": "クレアーズ、英国・アイルランド全154店舗を閉鎖　1,300人失職へ"}, {"section": "日本・社会", "headline": "麻疹感染362人に拡大、専門家がワクチン接種を呼びかけ"}, {"section": "日本・政治", "headline": "日中、国連安保理で東・南シナ海めぐり応酬"}, {"section": "日本・経済", "headline": "JR西日本、りそなグループと資本提携へ　金融事業に進出"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
