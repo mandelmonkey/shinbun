@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年5月1日（金）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年5月1日（金）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">メージャー<ruby>元首相<rt>もとしゅしょう</rt></ruby>、<ruby>首相<rt>しゅしょう</rt></ruby><ruby>頻繁<rt>ひんぱん</rt></ruby><ruby>交代<rt>こうたい</rt></ruby>に<ruby>警鐘<rt>けいしょう</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>の<ruby>元首相<rt>もとしゅしょう</rt></ruby>ジョン・メージャー<ruby>氏<rt>し</rt></ruby>がBBCのインタビューで、<ruby>英国<rt>えいこく</rt></ruby>は<ruby>首相<rt>しゅしょう</rt></ruby>を<ruby>短期間<rt>たんきかん</rt></ruby>で<ruby>次々<rt>つぎつぎ</rt></ruby>と<ruby>交代<rt>こうたい</rt></ruby>させるべきではないと<ruby>警告し<rt>けいこくし</rt></ruby>た。メージャー<ruby>氏<rt>し</rt></ruby>は、<ruby>政治<rt>せいじ</rt></ruby><ruby>指導者<rt>しどうしゃ</rt></ruby>たちが<ruby>長期的<rt>ちょうきてき</rt></ruby>な<ruby>国家<rt>こっか</rt></ruby><ruby>課題<rt>かだい</rt></ruby>に<ruby>真剣<rt>しんけん</rt></ruby>に<ruby>向き<rt>むき</rt></ruby><ruby>合っ<rt>あっ</rt></ruby>ていないため、<ruby>若い<rt>わかい</rt></ruby><ruby>世代<rt>せだい</rt></ruby>を<ruby>失望<rt>しつぼう</rt></ruby>させていると<ruby>指摘<rt>してき</rt></ruby>。<ruby>政治<rt>せいじ</rt></ruby>の<ruby>安定性<rt>あんていせい</rt></ruby>と<ruby>指導力<rt>しどうりょく</rt></ruby>の<ruby>信頼性<rt>しんらいせい</rt></ruby>をめぐる<ruby>議論<rt>ぎろん</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Former PM John Major warns against frequent leadership changes</h2>
+              <p class="body en-body">Former Conservative prime minister John Major told the BBC that Britain must stop cycling through leaders so quickly. He argued that political leaders are failing younger generations by not dealing seriously with long-term national problems. The remarks have fuelled a wider debate about political stability and leadership credibility in the UK.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イラン<ruby>紛争<rt>ふんそう</rt></ruby>で<ruby>週<rt>しゅう</rt></ruby>100<ruby>億<rt>おく</rt></ruby><ruby>食分<rt>しょくぶん</rt></ruby>の<ruby>食料<rt>しょくりょう</rt></ruby>が<ruby>危機<rt>きき</rt></ruby>に<ruby>直面<rt>ちょくめん</rt></ruby></h2>
+              <p class="body"><ruby>肥料<rt>ひりょう</rt></ruby><ruby>大手<rt>おおて</rt></ruby>ヤラ・インターナショナルのCEOは、イランをめぐる<ruby>紛争<rt>ふんそう</rt></ruby>が<ruby>肥料<rt>ひりょう</rt></ruby><ruby>供給<rt>きょうきゅう</rt></ruby>を<ruby>大幅<rt>おおはば</rt></ruby>に<ruby>減少<rt>げんしょう</rt></ruby>させる<ruby>恐れ<rt>おそれ</rt></ruby>があると<ruby>警告し<rt>けいこくし</rt></ruby>た。<ruby>供給<rt>きょうきゅう</rt></ruby><ruby>不足<rt>ふそく</rt></ruby>により<ruby>世界各地<rt>せかいかくち</rt></ruby>の<ruby>農作物<rt>のうさくぶつ</rt></ruby>の<ruby>収穫量<rt>しゅうかくりょう</rt></ruby>が<ruby>落ち込み<rt>おちこみ</rt></ruby>、<ruby>週<rt>しゅう</rt></ruby>あたり<ruby>約<rt>やく</rt></ruby>100<ruby>億<rt>おく</rt></ruby><ruby>食分<rt>しょくぶん</rt></ruby>の<ruby>食料<rt>しょくりょう</rt></ruby>が<ruby>危険<rt>きけん</rt></ruby>にさらされる<ruby>可能性<rt>かのうせい</rt></ruby>があるとの<ruby>見方<rt>みかた</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。<ruby>地政学<rt>ちせいがく</rt></ruby><ruby>的<rt>てき</rt></ruby><ruby>紛争<rt>ふんそう</rt></ruby>が<ruby>食料<rt>しょくりょう</rt></ruby>インフレやサプライチェーンに<ruby>直接影響<rt>ちょくせつえいきょう</rt></ruby>を<ruby>及ぼ<rt>およぼ</rt></ruby>す<ruby>構図<rt>こうず</rt></ruby>が<ruby>鮮明<rt>せんめい</rt></ruby>になっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Iran conflict puts 10 billion meals a week at risk, fertiliser boss warns</h2>
+              <p class="body en-body">The CEO of fertiliser giant Yara warned that disruption linked to the Iran conflict could sharply reduce global fertiliser supply. He said lower availability would hurt crop yields worldwide, potentially putting the equivalent of 10 billion meals a week at risk. The warning highlights how geopolitical conflict directly feeds into food inflation and supply chain instability.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ミャンマー<ruby>軍<rt>ぐん</rt></ruby>、スー・チー<ruby>氏<rt>し</rt></ruby>を<ruby>自宅<rt>じたく</rt></ruby><ruby>軟禁<rt>なんきん</rt></ruby>に<ruby>移行<rt>いこう</rt></ruby></h2>
+              <p class="body">ミャンマー<ruby>軍事<rt>ぐんじ</rt></ruby><ruby>政権<rt>せいけん</rt></ruby>は、2021<ruby>年<rt>ねん</rt></ruby>のクーデター<ruby>以来<rt>いらい</rt></ruby><ruby>拘束<rt>こうそく</rt></ruby>していたアウン・サン・スー・チー<ruby>氏<rt>し</rt></ruby>を<ruby>自宅<rt>じたく</rt></ruby><ruby>軟禁<rt>なんきん</rt></ruby>に<ruby>移し<rt>うつし</rt></ruby>たと<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>象徴的<rt>しょうちょうてき</rt></ruby>な<ruby>変化<rt>へんか</rt></ruby>とみられるが、<ruby>軍<rt>ぐん</rt></ruby>が<ruby>実権<rt>じっけん</rt></ruby>を<ruby>握り<rt>にぎり</rt></ruby><ruby>続け<rt>つづけ</rt></ruby>ている<ruby>状況<rt>じょうきょう</rt></ruby>に<ruby>変わり<rt>かわり</rt></ruby>はなく、<ruby>民主主義<rt>みんしゅしゅぎ</rt></ruby>の<ruby>回復<rt>かいふく</rt></ruby>は<ruby>依然<rt>いぜん</rt></ruby>として<ruby>遠い<rt>とおい</rt></ruby>。<ruby>国際社会<rt>こくさいしゃかい</rt></ruby>からの<ruby>圧力<rt>あつりょく</rt></ruby>やミャンマーの<ruby>政治的<rt>せいじてき</rt></ruby><ruby>将来<rt>しょうらい</rt></ruby>をめぐる<ruby>新た<rt>あらた</rt></ruby>な<ruby>議論<rt>ぎろん</rt></ruby>が<ruby>予想<rt>よそう</rt></ruby>される。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Myanmar military moves Aung San Suu Kyi to house arrest</h2>
+              <p class="body en-body">Myanmar's military announced that Aung San Suu Kyi has been moved from detention to house arrest, having been held since the 2021 coup. While symbolically significant, the change does not alter the fact that the military remains in full control. The development is expected to raise new questions about international pressure and Myanmar's political future.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英<rt>えい</rt></ruby>「<ruby>賃借人<rt>ちんしゃくにん</rt></ruby><ruby>権利<rt>けんり</rt></ruby><ruby>法<rt>ほう</rt></ruby>」<ruby>施行<rt>しこう</rt></ruby>、30<ruby>年<rt>ねん</rt></ruby>ぶりの<ruby>大<rt>だい</rt></ruby><ruby>改革<rt>かいかく</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>で<ruby>新た<rt>あらた</rt></ruby>な「<ruby>賃借人<rt>ちんしゃくにん</rt></ruby><ruby>権利<rt>けんり</rt></ruby><ruby>法<rt>ほう</rt></ruby>」が<ruby>施行<rt>しこう</rt></ruby>され、イングランドにおける<ruby>約<rt>やく</rt></ruby>30<ruby>年<rt>ねん</rt></ruby>ぶりの<ruby>賃貸<rt>ちんたい</rt></ruby><ruby>制度<rt>せいど</rt></ruby>の<ruby>大幅<rt>おおはば</rt></ruby><ruby>改革<rt>かいかく</rt></ruby>が<ruby>始ま<rt>はじま</rt></ruby>った。<ruby>数百万人<rt>すうひゃくまんにん</rt></ruby>の<ruby>賃借人<rt>ちんしゃくにん</rt></ruby>と<ruby>家主<rt>やぬし</rt></ruby>に<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>及ぼ<rt>およぼ</rt></ruby>すもので、<ruby>賃貸<rt>ちんたい</rt></ruby><ruby>関係<rt>かんけい</rt></ruby>の<ruby>規制<rt>きせい</rt></ruby>や<ruby>紛争<rt>ふんそう</rt></ruby><ruby>処理<rt>しょり</rt></ruby>の<ruby>方法<rt>ほうほう</rt></ruby>が<ruby>大きく<rt>おおきく</rt></ruby><ruby>変わ<rt>かわ</rt></ruby>る。<ruby>住宅費<rt>じゅうたくひ</rt></ruby>の<ruby>高騰<rt>こうとう</rt></ruby>や<ruby>賃貸<rt>ちんたい</rt></ruby>の<ruby>不安定<rt>ふあんてい</rt></ruby>さが<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>社会問題<rt>しゃかいもんだい</rt></ruby>となっている<ruby>中<rt>なか</rt></ruby>、<ruby>注目<rt>ちゅうもく</rt></ruby>の<ruby>法改正<rt>ほうかいせい</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK Renters' Rights Act takes effect in biggest reform in 30 years</h2>
+              <p class="body en-body">The new Renters' Rights Act has come into force, marking the biggest overhaul of renting rules in England in around 30 years. The changes affect millions of tenants and landlords, significantly reforming how rental relationships are regulated and disputes are handled. The legislation arrives at a time when housing costs and rental insecurity remain major social and political issues.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>政府<rt>せいふ</rt></ruby>・<ruby>日銀<rt>にちぎん</rt></ruby>、<ruby>急激<rt>きゅうげき</rt></ruby>な<ruby>円高<rt>えんだか</rt></ruby><ruby>受け<rt>うけ</rt></ruby><ruby>為替<rt>かわせ</rt></ruby><ruby>介入<rt>かいにゅう</rt></ruby>か</h2>
+              <p class="body">4<ruby>月<rt>がつ</rt></ruby>30<ruby>日夜<rt>にちや</rt></ruby>の<ruby>外国為替<rt>がいこくかわせ</rt></ruby><ruby>市場<rt>しじょう</rt></ruby>で<ruby>急速<rt>きゅうそく</rt></ruby>な<ruby>円高<rt>えんだか</rt></ruby>が<ruby>進行<rt>しんこう</rt></ruby>し、<ruby>一時<rt>いちじ</rt></ruby>1ドル155<ruby>円台<rt>えんだい</rt></ruby>を<ruby>記録<rt>きろく</rt></ruby>した。<ruby>関係者<rt>かんけいしゃ</rt></ruby>によると、<ruby>政府<rt>せいふ</rt></ruby>と<ruby>日本銀行<rt>にっぽんぎんこう</rt></ruby>が<ruby>市場<rt>しじょう</rt></ruby><ruby>介入<rt>かいにゅう</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>したとされるが、<ruby>財務<rt>ざいむ</rt></ruby><ruby>省<rt>しょう</rt></ruby><ruby>幹部<rt>かんぶ</rt></ruby>は<ruby>翌朝<rt>よくちょう</rt></ruby>の<ruby>取材<rt>しゅざい</rt></ruby>で<ruby>介入<rt>かいにゅう</rt></ruby>の<ruby>有無<rt>うむ</rt></ruby>について<ruby>明言<rt>めいげん</rt></ruby>を<ruby>避け<rt>さけ</rt></ruby>た。<ruby>投機<rt>とうき</rt></ruby><ruby>的な<rt>てきな</rt></ruby><ruby>為替<rt>かわせ</rt></ruby><ruby>変動<rt>へんどう</rt></ruby>への<ruby>対応<rt>たいおう</rt></ruby>と、<ruby>急激<rt>きゅうげき</rt></ruby>な<ruby>相場<rt>そうば</rt></ruby><ruby>変動<rt>へんどう</rt></ruby>がもたらす<ruby>経済的<rt>けいざいてき</rt></ruby><ruby>影響<rt>えいきょう</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>問わ<rt>とわ</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan reportedly intervenes in currency market after sudden yen surge</h2>
+              <p class="body en-body">The foreign exchange market saw a rapid yen appreciation on the night of 30 April, briefly reaching the 155-yen level against the dollar. Sources say the government and the Bank of Japan carried out market intervention, though a senior Finance Ministry official declined to confirm or deny it. The episode underscores Japan's continuing struggle with speculative currency moves and their economic consequences.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">JR<ruby>西日本<rt>にしにほん</rt></ruby>とりそな、<ruby>資本<rt>しほん</rt></ruby><ruby>業務提携<rt>ぎょうむていけい</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby></h2>
+              <p class="body">JR<ruby>西日本<rt>にしにほん</rt></ruby>とりそなホールディングスが<ruby>資本<rt>しほん</rt></ruby><ruby>業務提携<rt>ぎょうむていけい</rt></ruby>を<ruby>正式<rt>せいしき</rt></ruby>に<ruby>発表<rt>はっぴょう</rt></ruby>した。JR<ruby>西日本<rt>にしにほん</rt></ruby>はりそな<ruby>傘下<rt>さんか</rt></ruby>の<ruby>関西<rt>かんさい</rt></ruby>みらい<ruby>銀行<rt>ぎんこう</rt></ruby>の<ruby>株式<rt>かぶしき</rt></ruby>20%を<ruby>取得<rt>しゅとく</rt></ruby>し、<ruby>来年度中<rt>らいねんどちゅう</rt></ruby>に<ruby>新た<rt>あらた</rt></ruby>な<ruby>銀行<rt>ぎんこう</rt></ruby>サービスの<ruby>開始<rt>かいし</rt></ruby>を<ruby>目指す<rt>めざす</rt></ruby>。<ruby>鉄道事業<rt>てつどうじぎょう</rt></ruby><ruby>者<rt>もの</rt></ruby>が<ruby>金融<rt>きんゆう</rt></ruby><ruby>分野<rt>ぶんや</rt></ruby>に<ruby>進出<rt>しんしゅつ</rt></ruby>する<ruby>動き<rt>うごき</rt></ruby>は、<ruby>交通<rt>こうつう</rt></ruby>を<ruby>超え<rt>こえ</rt></ruby>た<ruby>経済<rt>けいざい</rt></ruby><ruby>圏<rt>けん</rt></ruby>の<ruby>構築<rt>こうちく</rt></ruby>を<ruby>図る<rt>はかる</rt></ruby><ruby>日本企業<rt>にほんきぎょう</rt></ruby>の<ruby>新た<rt>あらた</rt></ruby>な<ruby>戦略<rt>せんりゃく</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">JR West and Resona announce capital and business alliance</h2>
+              <p class="body en-body">JR West and the Resona financial group have formally announced a capital and business partnership. JR West will acquire a 20% stake in Kansai Mirai Bank, under the Resona umbrella, with plans to launch new banking services during the next fiscal year. The move illustrates how Japanese railway operators are expanding beyond transport to build broader economic ecosystems.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>錦織<rt>にしきおり</rt></ruby><ruby>圭<rt>けい</rt></ruby>、<ruby>現役引退<rt>げんえきいんたい</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby></h2>
+              <p class="body">テニスの<ruby>錦織<rt>にしきおり</rt></ruby><ruby>圭<rt>けい</rt></ruby><ruby>選手<rt>せんしゅ</rt></ruby>が36<ruby>歳<rt>とし</rt></ruby>でプロテニスからの<ruby>引退<rt>いんたい</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>世界<rt>せかい</rt></ruby>ランキング<ruby>最高<rt>さいこう</rt></ruby>4<ruby>位<rt>くらい</rt></ruby>を<ruby>記録<rt>きろく</rt></ruby>し、<ruby>日本男子<rt>にほんだんし</rt></ruby>テニス<ruby>史上<rt>しじょう</rt></ruby><ruby>最も<rt>もっとも</rt></ruby><ruby>成功<rt>せいこう</rt></ruby>した<ruby>選手<rt>せんしゅ</rt></ruby>の<ruby>一人<rt>ひとり</rt></ruby>として<ruby>知ら<rt>しら</rt></ruby>れる。<ruby>錦織<rt>にしきおり</rt></ruby><ruby>選手<rt>せんしゅ</rt></ruby>の<ruby>活躍<rt>かつやく</rt></ruby>は<ruby>日本<rt>にっぽん</rt></ruby>におけるテニス<ruby>人気<rt>にんき</rt></ruby>の<ruby>向上<rt>こうじょう</rt></ruby>に<ruby>大きく<rt>おおきく</rt></ruby><ruby>貢献<rt>こうけん</rt></ruby>しており、その<ruby>引退<rt>いんたい</rt></ruby>は<ruby>一つ<rt>ひとつ</rt></ruby>の<ruby>時代<rt>じだい</rt></ruby>の<ruby>終わり<rt>おわり</rt></ruby>を<ruby>意味<rt>いみ</rt></ruby>する。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Kei Nishikori announces retirement from professional tennis</h2>
+              <p class="body en-body">Kei Nishikori, who reached a career-high world ranking of number four, has announced his retirement from professional tennis at the age of 36. He is regarded as one of the most successful male players in Japanese tennis history. His retirement marks the end of an era that significantly raised the profile of tennis in Japan.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-05-01 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "元首相", "reading": "もとしゅしょう", "english": "former prime minister"}, {"word": "警鐘", "reading": "けいしょう", "english": "alarm; warning bell"}, {"word": "交代", "reading": "こうたい", "english": "change; replacement"}, {"word": "指摘", "reading": "してき", "english": "to point out"}, {"word": "信頼性", "reading": "しんらいせい", "english": "credibility; reliability"}], [{"word": "肥料", "reading": "ひりょう", "english": "fertiliser"}, {"word": "紛争", "reading": "ふんそう", "english": "conflict; dispute"}, {"word": "収穫量", "reading": "しゅうかくりょう", "english": "crop yield; harvest volume"}, {"word": "供給不足", "reading": "きょうきゅうぶそく", "english": "supply shortage"}, {"word": "地政学的", "reading": "ちせいがくてき", "english": "geopolitical"}], [{"word": "軍事政権", "reading": "ぐんじせいけん", "english": "military regime; junta"}, {"word": "自宅軟禁", "reading": "じたくなんきん", "english": "house arrest"}, {"word": "クーデター", "reading": "クーデター", "english": "coup d'état"}, {"word": "実権", "reading": "じっけん", "english": "real power; actual authority"}, {"word": "民主主義", "reading": "みんしゅしゅぎ", "english": "democracy"}], [{"word": "施行", "reading": "しこう", "english": "enforcement; coming into effect"}, {"word": "賃借人", "reading": "ちんしゃくにん", "english": "tenant; renter"}, {"word": "家主", "reading": "やぬし", "english": "landlord"}, {"word": "法改正", "reading": "ほうかいせい", "english": "legal reform; amendment"}, {"word": "高騰", "reading": "こうとう", "english": "sharp rise; surge (in prices)"}], [{"word": "為替介入", "reading": "かわせかいにゅう", "english": "currency intervention"}, {"word": "円高", "reading": "えんだか", "english": "yen appreciation; strong yen"}, {"word": "投機的", "reading": "とうきてき", "english": "speculative"}, {"word": "財務省", "reading": "ざいむしょう", "english": "Ministry of Finance"}, {"word": "明言", "reading": "めいげん", "english": "clear statement; explicit comment"}], [{"word": "資本業務提携", "reading": "しほんぎょうむていけい", "english": "capital and business alliance"}, {"word": "傘下", "reading": "さんか", "english": "under the umbrella of; subsidiary"}, {"word": "株式", "reading": "かぶしき", "english": "shares; stock"}, {"word": "経済圏", "reading": "けいざいけん", "english": "economic zone; ecosystem"}, {"word": "鉄道事業者", "reading": "てつどうじぎょうしゃ", "english": "railway operator"}], [{"word": "現役引退", "reading": "げんえきいんたい", "english": "retirement from active play"}, {"word": "世界ランキング", "reading": "せかいランキング", "english": "world ranking"}, {"word": "貢献", "reading": "こうけん", "english": "contribution"}, {"word": "活躍", "reading": "かつやく", "english": "active role; outstanding performance"}, {"word": "人気", "reading": "にんき", "english": "popularity"}]];
+    const LABELS  = [{"section": "英国", "headline": "メージャー元首相、首相頻繁交代に警鐘"}, {"section": "国際", "headline": "イラン紛争で週100億食分の食料が危機に直面"}, {"section": "国際", "headline": "ミャンマー軍、スー・チー氏を自宅軟禁に移行"}, {"section": "英国・世界", "headline": "英「賃借人権利法」施行、30年ぶりの大改革"}, {"section": "日本・経済", "headline": "政府・日銀、急激な円高受け為替介入か"}, {"section": "日本・経済", "headline": "JR西日本とりそな、資本業務提携を発表"}, {"section": "日本・社会", "headline": "錦織圭、現役引退を発表"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
