@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年5月9日（土）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年5月9日（土）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">プライド・カムリ、ウェールズ<ruby>議会<rt>ぎかい</rt></ruby>で<ruby>第一<rt>だいいち</rt></ruby><ruby>党<rt>とう</rt></ruby>に</h2>
+              <p class="body">ウェールズ<ruby>議会<rt>ぎかい</rt></ruby><ruby>選挙<rt>せんきょ</rt></ruby>でプライド・カムリが<ruby>第一<rt>だいいち</rt></ruby><ruby>党<rt>とう</rt></ruby>となり、<ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>の<ruby>約<rt>やく</rt></ruby><ruby>百年<rt>ひゃくねん</rt></ruby>にわたる<ruby>優勢<rt>ゆうせい</rt></ruby>に<ruby>終止符<rt>しゅうしふ</rt></ruby>が<ruby>打た<rt>うた</rt></ruby>れた。<ruby>同党<rt>どうとう</rt></ruby>は<ruby>今回<rt>こんかい</rt></ruby>の<ruby>結果<rt>けっか</rt></ruby>を<ruby>歴史的<rt>れきしてき</rt></ruby><ruby>転換<rt>てんかん</rt></ruby>と<ruby>位置<rt>いち</rt></ruby>づけ、ウェールズ<ruby>政府<rt>せいふ</rt></ruby>を<ruby>主導<rt>しゅどう</rt></ruby>する<ruby>正当性<rt>せいとうせい</rt></ruby>があると<ruby>主張<rt>しゅちょう</rt></ruby>している。この<ruby>結果<rt>けっか</rt></ruby>は、<ruby>英国<rt>えいこく</rt></ruby><ruby>全土<rt>ぜんど</rt></ruby>で<ruby>従来<rt>じゅうらい</rt></ruby>の<ruby>二<rt>に</rt></ruby><ruby>大政<rt>たいせい</rt></ruby><ruby>党<rt>とう</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>支持<rt>しじ</rt></ruby>が<ruby>弱ま<rt>よわま</rt></ruby>っている<ruby>傾向<rt>けいこう</rt></ruby>を<ruby>反映<rt>はんえい</rt></ruby>するものとも<ruby>分析<rt>ぶんせき</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Plaid Cymru becomes largest party in Welsh Parliament</h2>
+              <p class="body en-body">Plaid Cymru has become the largest party in the Welsh Parliament, ending Labour's roughly century-long dominance in Wales. The party is framing the result as a historic shift and argues it now has a mandate to lead the Welsh government. The outcome also feeds a broader debate about whether support for the UK's traditional major parties is weakening.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">SNPスコットランド<ruby>選挙<rt>せんきょ</rt></ruby><ruby>勝利<rt>しょうり</rt></ruby>、リフォーム<ruby>党<rt>とう</rt></ruby>と<ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>が<ruby>二位<rt>にい</rt></ruby>で<ruby>並ぶ<rt>ならぶ</rt></ruby></h2>
+              <p class="body">スコットランド<ruby>議会<rt>ぎかい</rt></ruby><ruby>選挙<rt>せんきょ</rt></ruby>でジョン・スウィニー<ruby>率い<rt>ひきい</rt></ruby>るSNPが<ruby>第一<rt>だいいち</rt></ruby><ruby>党<rt>とう</rt></ruby>を<ruby>確保<rt>かくほ</rt></ruby>したが、<ruby>過半数<rt>かはんすう</rt></ruby>には<ruby>届か<rt>とどか</rt></ruby>なかった。<ruby>注目<rt>ちゅうもく</rt></ruby>すべきはリフォーム<ruby>党<rt>とう</rt></ruby>と<ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>が<ruby>二位<rt>にい</rt></ruby>で<ruby>同数<rt>どうすう</rt></ruby>となった<ruby>点<rt>てん</rt></ruby>であり、スコットランドの<ruby>政治<rt>せいじ</rt></ruby><ruby>地図<rt>ちず</rt></ruby>がより<ruby>断片化<rt>だんぺんか</rt></ruby>していることを<ruby>示唆し<rt>しさし</rt></ruby>ている。ウェールズやイングランドの<ruby>選挙結果<rt>せんきょけっか</rt></ruby>と<ruby>合わ<rt>あわ</rt></ruby>せると、<ruby>英国<rt>えいこく</rt></ruby><ruby>政治<rt>せいじ</rt></ruby>は<ruby>予測<rt>よそく</rt></ruby><ruby>困難<rt>こんなん</rt></ruby>な<ruby>多党<rt>たとう</rt></ruby><ruby>制<rt>せい</rt></ruby>の<ruby>時代<rt>じだい</rt></ruby>に<ruby>入り<rt>いり</rt></ruby>つつあると<ruby>見ら<rt>みら</rt></ruby>れる。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">SNP wins Scottish election as Reform and Labour tie for second</h2>
+              <p class="body en-body">John Swinney's SNP finished as the leading party in the Scottish election but fell short of an outright majority. The more striking result was the tie for second place between Reform and Labour, suggesting an increasingly fragmented political landscape. Together with the Welsh and English results, it reinforces the sense that British politics is entering a less predictable multi-party phase.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">グレート・ウェスタン<ruby>鉄道<rt>てつどう</rt></ruby>、<ruby>数か月<rt>すうかげつ</rt></ruby><ruby>以内<rt>いない</rt></ruby>に<ruby>再<rt>さい</rt></ruby><ruby>国有化<rt>こくゆうか</rt></ruby>へ</h2>
+              <p class="body">ロンドンと<ruby>南<rt>みなみ</rt></ruby>ウェールズおよびイングランド<ruby>西部<rt>せいぶ</rt></ruby>を<ruby>結ぶ<rt>むすぶ</rt></ruby>グレート・ウェスタン<ruby>鉄道<rt>てつどう</rt></ruby>が、<ruby>政府<rt>せいふ</rt></ruby><ruby>管理下<rt>かんりか</rt></ruby>に<ruby>移行<rt>いこう</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>が<ruby>発表<rt>はっぴょう</rt></ruby>された。この<ruby>再<rt>さい</rt></ruby><ruby>国有化<rt>こくゆうか</rt></ruby>は、<ruby>労働<rt>ろうどう</rt></ruby><ruby>党政<rt>とうせい</rt></ruby><ruby>権<rt>けん</rt></ruby>にとって<ruby>鉄道<rt>てつどう</rt></ruby><ruby>分野<rt>ぶんや</rt></ruby>での<ruby>公的<rt>こうてき</rt></ruby><ruby>所有<rt>しょゆう</rt></ruby>の<ruby>具体的<rt>ぐたいてき</rt></ruby>な<ruby>実績<rt>じっせき</rt></ruby>となる。<ruby>今後<rt>こんご</rt></ruby>、サービスの<ruby>信頼性<rt>しんらいせい</rt></ruby>や<ruby>運賃<rt>うんちん</rt></ruby>への<ruby>影響<rt>えいきょう</rt></ruby>、<ruby>再<rt>さい</rt></ruby><ruby>国有化<rt>こくゆうか</rt></ruby>が<ruby>乗客<rt>じょうきゃく</rt></ruby>にとって<ruby>目に<rt>めに</rt></ruby><ruby>見え<rt>みえ</rt></ruby>る<ruby>改善<rt>かいぜん</rt></ruby>をもたらすかどうかが<ruby>議論<rt>ぎろん</rt></ruby>の<ruby>焦点<rt>しょうてん</rt></ruby>となるだろう。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Great Western Railway to be renationalised within months</h2>
+              <p class="body en-body">Great Western Railway, the operator linking London with South Wales and the West of England, is set to come under government control. The move gives Labour a concrete example of public ownership in the rail sector. It is expected to revive arguments about service reliability, fares, and whether renationalisation can deliver visible improvements for passengers.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>、ロシア・ウクライナ<ruby>間の<rt>まの</rt></ruby><ruby>三日間<rt>みっかかん</rt></ruby><ruby>停戦<rt>ていせん</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby></h2>
+              <p class="body">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>はロシアとウクライナが<ruby>三日間<rt>みっかかん</rt></ruby>の<ruby>停戦<rt>ていせん</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>すると<ruby>発表<rt>はっぴょう</rt></ruby>した。しかし、<ruby>双方<rt>そうほう</rt></ruby>はこれまでの<ruby>戦闘<rt>せんとう</rt></ruby><ruby>休止<rt>きゅうし</rt></ruby>を<ruby>相手側<rt>あいてがわ</rt></ruby>が<ruby>破っ<rt>やぶっ</rt></ruby>たと<ruby>非難<rt>ひなん</rt></ruby>し<ruby>合っ<rt>あっ</rt></ruby>ており、<ruby>今回<rt>こんかい</rt></ruby>の<ruby>停戦<rt>ていせん</rt></ruby>が<ruby>実効性<rt>じっこうせい</rt></ruby>を<ruby>持つ<rt>もつ</rt></ruby>かは<ruby>不透明<rt>ふとうめい</rt></ruby>である。<ruby>発表<rt>はっぴょう</rt></ruby>はソ<ruby>連の<rt>つらの</rt></ruby><ruby>対独<rt>たいどく</rt></ruby><ruby>戦勝<rt>せんしょう</rt></ruby><ruby>記念日<rt>きねんび</rt></ruby>と<ruby>時期<rt>じき</rt></ruby>が<ruby>重なっ<rt>かさなっ</rt></ruby>ており、<ruby>軍事的<rt>ぐんじてき</rt></ruby><ruby>意義<rt>いぎ</rt></ruby>に<ruby>加え<rt>くわえ</rt></ruby><ruby>政治的<rt>せいじてき</rt></ruby>な<ruby>計算<rt>けいさん</rt></ruby>も<ruby>指摘<rt>してき</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Trump announces three-day Russia-Ukraine ceasefire</h2>
+              <p class="body en-body">Donald Trump announced that Russia and Ukraine would observe a three-day ceasefire, even as both sides accuse each other of breaking earlier truces. The timing overlaps with commemorations of the Soviet victory over Nazi Germany, giving the announcement both military and political significance. The key question remains whether the ceasefire will hold in practice.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>磐越<rt>ばんえつ</rt></ruby><ruby>道<rt>みち</rt></ruby>バス<ruby>事故<rt>じこ</rt></ruby>、<ruby>運転手<rt>うんてんしゅ</rt></ruby>に<ruby>複数<rt>ふくすう</rt></ruby>の<ruby>事故歴<rt>じこれき</rt></ruby>か</h2>
+              <p class="body"><ruby>福島<rt>ふくしま</rt></ruby><ruby>県<rt>けん</rt></ruby>の<ruby>磐越自動車道<rt>ばんえつじどうしゃどう</rt></ruby>で<ruby>発生<rt>はっせい</rt></ruby>したマイクロバス<ruby>事故<rt>じこ</rt></ruby>で、<ruby>逮捕<rt>たいほ</rt></ruby>された<ruby>六十八歳<rt>ろくじゅうはっさい</rt></ruby>の<ruby>運転手<rt>うんてんしゅ</rt></ruby>が<ruby>最近<rt>さいきん</rt></ruby><ruby>数か月間<rt>すうかげつかん</rt></ruby>に<ruby>複数<rt>ふくすう</rt></ruby>の<ruby>事故<rt>じこ</rt></ruby>を<ruby>起こ<rt>おこ</rt></ruby>していた<ruby>可能性<rt>かのうせい</rt></ruby>があることが<ruby>判明<rt>はんめい</rt></ruby>した。<ruby>新潟県<rt>にいがたけん</rt></ruby>の<ruby>高校生<rt>こうこうせい</rt></ruby>が<ruby>部活動<rt>ぶかつどう</rt></ruby>の<ruby>遠征中<rt>えんせいちゅう</rt></ruby>に<ruby>被害<rt>ひがい</rt></ruby>に<ruby>遭い<rt>あい</rt></ruby>、<ruby>死傷者<rt>ししょうしゃ</rt></ruby>が<ruby>出て<rt>でて</rt></ruby>いる。<ruby>捜査<rt>そうさ</rt></ruby><ruby>当局<rt>とうきょく</rt></ruby>は<ruby>運転手<rt>うんてんしゅ</rt></ruby>の<ruby>直近<rt>ちょっきん</rt></ruby>の<ruby>事故歴<rt>じこれき</rt></ruby>に<ruby>加え<rt>くわえ</rt></ruby>、<ruby>学校<rt>がっこう</rt></ruby><ruby>行事<rt>ぎょうじ</rt></ruby>における<ruby>交通安全<rt>こうつうあんぜん</rt></ruby><ruby>管理体制<rt>かんりたいせい</rt></ruby>の<ruby>問題<rt>もんだい</rt></ruby>についても<ruby>調査<rt>ちょうさ</rt></ruby>を<ruby>進め<rt>すすめ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Police probe driver's crash history after fatal school bus accident</h2>
+              <p class="body en-body">The 68-year-old driver arrested after a fatal microbus crash on the Banetsu Expressway in Fukushima may have been involved in multiple accidents in recent months. High school students from Niigata were killed or injured while travelling for a school club trip. Investigators are examining both the driver's recent record and the broader management of transport safety for student travel.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>自民党<rt>じみんとう</rt></ruby>、<ruby>外国人<rt>がいこくじん</rt></ruby><ruby>住民<rt>じゅうみん</rt></ruby><ruby>政策<rt>せいさく</rt></ruby>の<ruby>厳格<rt>げんかく</rt></ruby><ruby>化<rt>か</rt></ruby>を<ruby>前面<rt>ぜんめん</rt></ruby>に</h2>
+              <p class="body"><ruby>自民党<rt>じみんとう</rt></ruby>は<ruby>公式<rt>こうしき</rt></ruby>サイト<ruby>上で<rt>うえで</rt></ruby><ruby>外国人<rt>がいこくじん</rt></ruby><ruby>住民<rt>じゅうみん</rt></ruby>に<ruby>関す<rt>かんす</rt></ruby>る<ruby>政策<rt>せいさく</rt></ruby>を<ruby>目立つ<rt>めだつ</rt></ruby><ruby>形<rt>かたち</rt></ruby>で<ruby>掲載<rt>けいさい</rt></ruby>し<ruby>始め<rt>はじめ</rt></ruby>た。<ruby>在留<rt>ざいりゅう</rt></ruby><ruby>資格<rt>しかく</rt></ruby>の<ruby>厳格<rt>げんかく</rt></ruby>な<ruby>運用<rt>うんよう</rt></ruby>や<ruby>不法<rt>ふほう</rt></ruby><ruby>滞在<rt>たいざい</rt></ruby><ruby>者<rt>もの</rt></ruby>への<ruby>取り締まり<rt>とりしまり</rt></ruby><ruby>強化<rt>きょうか</rt></ruby>が<ruby>主な<rt>おもな</rt></ruby><ruby>内容<rt>ないよう</rt></ruby>である。<ruby>来年<rt>らいねん</rt></ruby>の<ruby>統一<rt>とういつ</rt></ruby><ruby>地方選挙<rt>ちほうせんきょ</rt></ruby>を<ruby>見据え<rt>みすえ</rt></ruby>た<ruby>動き<rt>うごき</rt></ruby>とみられ、<ruby>移民<rt>いみん</rt></ruby><ruby>政策<rt>せいさく</rt></ruby>が<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>主流<rt>しゅりゅう</rt></ruby><ruby>政治<rt>せいじ</rt></ruby>における<ruby>明確<rt>めいかく</rt></ruby>な<ruby>争点<rt>そうてん</rt></ruby>として<ruby>浮上<rt>ふじょう</rt></ruby>しつつあることを<ruby>示し<rt>しめし</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">LDP highlights tougher foreign resident policies ahead of elections</h2>
+              <p class="body en-body">Japan's ruling Liberal Democratic Party has given greater prominence to its foreign resident policies on its website, including stricter handling of residence status and stronger measures against illegal overstays. The timing appears linked to preparations for next year's unified local elections. The move signals that immigration policy is becoming a more explicit issue in mainstream Japanese politics.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ハンタウイルス、クルーズ<ruby>船<rt>ふね</rt></ruby><ruby>関連<rt>かんれん</rt></ruby>の<ruby>感染者<rt>かんせんしゃ</rt></ruby><ruby>六人<rt>ろくにん</rt></ruby>に</h2>
+              <p class="body"><ruby>世界<rt>せかい</rt></ruby><ruby>保健<rt>ほけん</rt></ruby><ruby>機関<rt>きかん</rt></ruby>はクルーズ<ruby>船<rt>ふね</rt></ruby>に<ruby>関連す<rt>かんれんす</rt></ruby>るハンタウイルスの<ruby>確認<rt>かくにん</rt></ruby><ruby>感染者数<rt>かんせんしゃすう</rt></ruby>を<ruby>六人<rt>ろくにん</rt></ruby>に<ruby>引き上げ<rt>ひきあげ</rt></ruby>た。NHKはこの<ruby>情報<rt>じょうほう</rt></ruby>と<ruby>合わ<rt>あわ</rt></ruby>せて、<ruby>症状<rt>しょうじょう</rt></ruby>や<ruby>感染経路<rt>かんせんけいろ</rt></ruby>に<ruby>関す<rt>かんす</rt></ruby>る<ruby>解説記事<rt>かいせつきじ</rt></ruby>を<ruby>掲載<rt>けいさい</rt></ruby>し、<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>旅行者<rt>りょこうしゃ</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>注意喚起<rt>ちゅういかんき</rt></ruby>を<ruby>行って<rt>いって</rt></ruby>いる。<ruby>閉鎖<rt>へいさ</rt></ruby><ruby>空間<rt>くうかん</rt></ruby>であるクルーズ<ruby>船<rt>ふね</rt></ruby>での<ruby>感染<rt>かんせん</rt></ruby><ruby>拡大<rt>かくだい</rt></ruby>リスクが<ruby>懸念<rt>けねん</rt></ruby>されており、<ruby>今後<rt>こんご</rt></ruby>の<ruby>推移<rt>すいい</rt></ruby>が<ruby>注視<rt>ちゅうし</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">WHO raises cruise-linked hantavirus cases to six</h2>
+              <p class="body en-body">The WHO has confirmed six hantavirus infections linked to a cruise-ship outbreak. NHK paired the update with an explainer on symptoms and transmission risks aimed at Japanese audiences. Concern centres on the potential for the disease to spread further in the confined environment of a cruise ship.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-05-09 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "議会", "reading": "ぎかい", "english": "parliament"}, {"word": "第一党", "reading": "だいいっとう", "english": "largest/leading party"}, {"word": "終止符", "reading": "しゅうしふ", "english": "full stop; end"}, {"word": "優勢", "reading": "ゆうせい", "english": "dominance; superiority"}, {"word": "正当性", "reading": "せいとうせい", "english": "legitimacy"}], [{"word": "過半数", "reading": "かはんすう", "english": "majority"}, {"word": "断片化", "reading": "だんぺんか", "english": "fragmentation"}, {"word": "示唆", "reading": "しさ", "english": "suggestion; implication"}, {"word": "多党制", "reading": "たとうせい", "english": "multi-party system"}, {"word": "予測困難", "reading": "よそくこんなん", "english": "difficult to predict"}], [{"word": "再国有化", "reading": "さいこくゆうか", "english": "renationalisation"}, {"word": "移行", "reading": "いこう", "english": "transition; transfer"}, {"word": "運賃", "reading": "うんちん", "english": "fare; transport charge"}, {"word": "公的所有", "reading": "こうてきしょゆう", "english": "public ownership"}, {"word": "信頼性", "reading": "しんらいせい", "english": "reliability"}], [{"word": "停戦", "reading": "ていせん", "english": "ceasefire"}, {"word": "非難", "reading": "ひなん", "english": "criticism; condemnation"}, {"word": "実効性", "reading": "じっこうせい", "english": "effectiveness; enforceability"}, {"word": "対独戦勝記念日", "reading": "たいどくせんしょうきねんび", "english": "Victory Day (over Nazi Germany)"}, {"word": "不透明", "reading": "ふとうめい", "english": "unclear; opaque"}], [{"word": "磐越自動車道", "reading": "ばんえつじどうしゃどう", "english": "Banetsu Expressway"}, {"word": "逮捕", "reading": "たいほ", "english": "arrest"}, {"word": "遠征", "reading": "えんせい", "english": "expedition; away trip"}, {"word": "死傷者", "reading": "ししょうしゃ", "english": "casualties (dead and injured)"}, {"word": "管理体制", "reading": "かんりたいせい", "english": "management system"}], [{"word": "在留資格", "reading": "ざいりゅうしかく", "english": "residence status"}, {"word": "厳格化", "reading": "げんかくか", "english": "tightening; making stricter"}, {"word": "不法滞在", "reading": "ふほうたいざい", "english": "illegal stay; overstay"}, {"word": "取り締まり", "reading": "とりしまり", "english": "crackdown; enforcement"}, {"word": "争点", "reading": "そうてん", "english": "issue; point of contention"}], [{"word": "世界保健機関", "reading": "せかいほけんきかん", "english": "World Health Organisation (WHO)"}, {"word": "感染経路", "reading": "かんせんけいろ", "english": "route of infection; transmission path"}, {"word": "注意喚起", "reading": "ちゅういかんき", "english": "alert; raising awareness"}, {"word": "閉鎖空間", "reading": "へいさくうかん", "english": "enclosed/confined space"}, {"word": "推移", "reading": "すいい", "english": "trend; development; transition"}]];
+    const LABELS  = [{"section": "英国", "headline": "プライド・カムリ、ウェールズ議会で第一党に"}, {"section": "英国", "headline": "SNPスコットランド選挙勝利、リフォーム党と労働党が二位で並ぶ"}, {"section": "英国・経済", "headline": "グレート・ウェスタン鉄道、数か月以内に再国有化へ"}, {"section": "国際", "headline": "トランプ大統領、ロシア・ウクライナ間の三日間停戦を発表"}, {"section": "日本・社会", "headline": "磐越道バス事故、運転手に複数の事故歴か"}, {"section": "日本・政治", "headline": "自民党、外国人住民政策の厳格化を前面に"}, {"section": "国際", "headline": "ハンタウイルス、クルーズ船関連の感染者六人に"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
