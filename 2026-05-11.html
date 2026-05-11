@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年5月11日（月）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年5月11日（月）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">スターマー<ruby>首相<rt>しゅしょう</rt></ruby>、<ruby>政権<rt>せいけん</rt></ruby><ruby>立て直し<rt>たてなおし</rt></ruby>へ<ruby>重要<rt>じゅうよう</rt></ruby><ruby>演説<rt>えんぜつ</rt></ruby></h2>
+              <p class="body">スターマー<ruby>首相<rt>しゅしょう</rt></ruby>は<ruby>月曜日<rt>げつようび</rt></ruby>に<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>演説<rt>えんぜつ</rt></ruby>を<ruby>行い<rt>おこない</rt></ruby>、<ruby>政権<rt>せいけん</rt></ruby>の<ruby>方向性<rt>ほうこうせい</rt></ruby>を<ruby>立て直す<rt>たてなおす</rt></ruby><ruby>方針<rt>ほうしん</rt></ruby>である。<ruby>与党<rt>よとう</rt></ruby>・<ruby>労働<rt>ろうどう</rt></ruby><ruby>党内<rt>とうない</rt></ruby><ruby>部<rt>ぶ</rt></ruby>からの<ruby>批判<rt>ひはん</rt></ruby>が<ruby>強ま<rt>つよま</rt></ruby>る<ruby>中<rt>なか</rt></ruby>、<ruby>国王<rt>こくおう</rt></ruby><ruby>演説<rt>えんぜつ</rt></ruby>ではEUとの<ruby>関係<rt>かんけい</rt></ruby><ruby>強化<rt>きょうか</rt></ruby>、<ruby>福祉<rt>ふくし</rt></ruby><ruby>削減<rt>さくげん</rt></ruby>、エネルギー<ruby>自立<rt>じりつ</rt></ruby>を<ruby>含む<rt>ふくむ</rt></ruby><ruby>重要<rt>じゅうよう</rt></ruby><ruby>法案<rt>ほうあん</rt></ruby>が<ruby>盛り込ま<rt>もりこま</rt></ruby>れる<ruby>見通し<rt>みとおし</rt></ruby>だ。<ruby>首相<rt>しゅしょう</rt></ruby>の<ruby>権威<rt>けんい</rt></ruby>と<ruby>政権<rt>せいけん</rt></ruby>の<ruby>将来<rt>しょうらい</rt></ruby>を<ruby>左右<rt>さゆう</rt></ruby>する<ruby>決定的<rt>けっていてき</rt></ruby>な<ruby>局面<rt>きょくめん</rt></ruby>とされている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Starmer to deliver crucial reset speech as Labour pressure mounts</h2>
+              <p class="body en-body">Prime Minister Keir Starmer will deliver a major speech on Monday to reset the direction of his premiership amid growing criticism from within Labour. The upcoming King's Speech is expected to include legislation on EU alignment, welfare cuts and energy independence. The moment is being framed as decisive for Starmer's authority and the government's agenda.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>氏<rt>し</rt></ruby>、イランの<ruby>回答<rt>かいとう</rt></ruby>を<ruby>拒否<rt>きょひ</rt></ruby>　<ruby>原油価格<rt>げんゆかかく</rt></ruby><ruby>急騰<rt>きゅうとう</rt></ruby></h2>
+              <p class="body">イランは<ruby>米国<rt>べいこく</rt></ruby>の<ruby>提案<rt>ていあん</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>、<ruby>全面<rt>ぜんめん</rt></ruby><ruby>停戦<rt>ていせん</rt></ruby>や<ruby>制裁<rt>せいさい</rt></ruby><ruby>解除<rt>かいじょ</rt></ruby>などの<ruby>条件<rt>じょうけん</rt></ruby>を<ruby>要求<rt>ようきゅう</rt></ruby>した。トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>はこの<ruby>回答<rt>かいとう</rt></ruby>を「<ruby>全く<rt>まったく</rt></ruby><ruby>受け入れ<rt>うけいれ</rt></ruby>られない」と<ruby>拒否<rt>きょひ</rt></ruby>している。ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>が<ruby>事実上<rt>じじつじょう</rt></ruby><ruby>封鎖<rt>ふうさ</rt></ruby>された<ruby>状態<rt>じょうたい</rt></ruby>が<ruby>続い<rt>つづい</rt></ruby>ており、<ruby>世界的<rt>せかいてき</rt></ruby>なエネルギー<ruby>輸送<rt>ゆそう</rt></ruby>の<ruby>混乱<rt>こんらん</rt></ruby>から<ruby>原油価格<rt>げんゆかかく</rt></ruby>が<ruby>急騰<rt>きゅうとう</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Trump rejects Iran's response as oil prices surge over Hormuz disruption</h2>
+              <p class="body en-body">Iran responded to a US proposal by demanding a ceasefire on all fronts, sanctions relief and other conditions. Donald Trump called the response 'totally unacceptable'. With the Strait of Hormuz effectively shut, oil prices have risen sharply as global energy shipments face disruption.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米中<rt>べいちゅう</rt></ruby><ruby>首脳<rt>しゅのう</rt></ruby><ruby>会談<rt>かいだん</rt></ruby>へ　<ruby>関税<rt>かんぜい</rt></ruby><ruby>休戦<rt>きゅうせん</rt></ruby>の<ruby>行方<rt>なめがた</rt></ruby>に<ruby>注目<rt>ちゅうもく</rt></ruby></h2>
+              <p class="body">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>と<ruby>習<rt>しゅう</rt></ruby><ruby>近平<rt>きんぺい</rt></ruby><ruby>国家<rt>こっか</rt></ruby><ruby>主席<rt>しゅせき</rt></ruby>が、<ruby>約<rt>やく</rt></ruby><ruby>十年<rt>じゅうねん</rt></ruby>ぶりとなる<ruby>米大統領<rt>べいだいとうりょう</rt></ruby><ruby>訪中<rt>ほうちゅう</rt></ruby>で<ruby>首脳<rt>しゅのう</rt></ruby><ruby>会談<rt>かいだん</rt></ruby>を<ruby>行う<rt>おこなう</rt></ruby><ruby>予定<rt>よてい</rt></ruby>である。<ruby>両国<rt>りょうごく</rt></ruby>は<ruby>脆弱<rt>ぜいじゃく</rt></ruby>な<ruby>関税<rt>かんぜい</rt></ruby><ruby>休戦<rt>きゅうせん</rt></ruby>の<ruby>維持<rt>いじ</rt></ruby>を<ruby>模索<rt>もさく</rt></ruby>しており、<ruby>会談<rt>かいだん</rt></ruby>では<ruby>貿易摩擦<rt>ぼうえきまさつ</rt></ruby>の<ruby>安定化<rt>あんていか</rt></ruby>が<ruby>焦点<rt>しょうてん</rt></ruby>となる。イラン<ruby>情勢<rt>じょうせい</rt></ruby>も<ruby>議題<rt>ぎだい</rt></ruby>に<ruby>上る<rt>のぼる</rt></ruby><ruby>可能性<rt>かのうせい</rt></ruby>があり、<ruby>地政学<rt>ちせいがく</rt></ruby>と<ruby>世界経済<rt>せかいけいざい</rt></ruby>の<ruby>両面<rt>りょうめん</rt></ruby>で<ruby>注視<rt>ちゅうし</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Trump and Xi set to meet amid fragile tariff truce</h2>
+              <p class="body en-body">The US and Chinese leaders are preparing for the first presidential visit to China in nearly a decade. Both sides are trying to preserve a fragile tariff truce, making the talks a key test of whether trade tensions can be stabilised. The Iran situation may also feature on the agenda, adding geopolitical weight to the summit.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ハンタウイルス<ruby>感染<rt>かんせん</rt></ruby>のクルーズ<ruby>船<rt>ふね</rt></ruby>　<ruby>英国人<rt>えいこくじん</rt></ruby><ruby>乗客<rt>じょうきゃく</rt></ruby>が<ruby>帰国<rt>きこく</rt></ruby>・<ruby>隔離<rt>かくり</rt></ruby></h2>
+              <p class="body">ハンタウイルスの<ruby>集団<rt>しゅうだん</rt></ruby><ruby>感染<rt>かんせん</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>したクルーズ<ruby>船<rt>ふね</rt></ruby>からイギリス<ruby>人<rt>にん</rt></ruby><ruby>乗客<rt>じょうきゃく</rt></ruby>が<ruby>帰国<rt>きこく</rt></ruby>し、<ruby>予防措置<rt>よぼうそち</rt></ruby>として72<ruby>時間<rt>じかん</rt></ruby>の<ruby>病院<rt>びょういん</rt></ruby><ruby>隔離<rt>かくり</rt></ruby>に<ruby>入っ<rt>いっっ</rt></ruby>た。<ruby>現時点<rt>げんじてん</rt></ruby>では<ruby>症状<rt>しょうじょう</rt></ruby>を<ruby>訴え<rt>うったえ</rt></ruby>た<ruby>乗客<rt>じょうきゃく</rt></ruby>はいないが、<ruby>保健<rt>ほけん</rt></ruby><ruby>当局<rt>とうきょく</rt></ruby>は<ruby>経過<rt>けいか</rt></ruby>を<ruby>注意深く<rt>ちゅういぶかく</rt></ruby><ruby>観察<rt>かんさつ</rt></ruby>している。<ruby>感染<rt>かんせん</rt></ruby><ruby>源<rt>げん</rt></ruby>の<ruby>調査<rt>ちょうさ</rt></ruby>も<ruby>継続中<rt>けいぞくちゅう</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">British passengers from hantavirus cruise ship monitored after return</h2>
+              <p class="body en-body">British passengers from a cruise ship linked to a hantavirus outbreak returned to the UK and entered a 72-hour hospital isolation as a precaution. No symptoms have been reported so far, but health authorities are monitoring them closely. An investigation into the source of the outbreak continues.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米価<rt>べいか</rt></ruby><ruby>見通し<rt>みとおし</rt></ruby><ruby>低迷<rt>ていめい</rt></ruby>　<ruby>在庫<rt>ざいこ</rt></ruby><ruby>増<rt>ぞう</rt></ruby>で<ruby>下落<rt>げらく</rt></ruby><ruby>予想<rt>よそう</rt></ruby><ruby>続く<rt>つづく</rt></ruby></h2>
+              <p class="body">NHKの<ruby>報道<rt>ほうどう</rt></ruby>によると、<ruby>今後<rt>こんご</rt></ruby><ruby>三<rt>さん</rt></ruby>か<ruby>月間<rt>げっかん</rt></ruby>の<ruby>米<rt>こめ</rt></ruby>の<ruby>価格<rt>かかく</rt></ruby><ruby>見通し<rt>みとおし</rt></ruby>を<ruby>示す<rt>しめす</rt></ruby><ruby>指数<rt>しすう</rt></ruby>は、<ruby>前月<rt>ぜんげつ</rt></ruby>からわずかに<ruby>上昇<rt>じょうしょう</rt></ruby>したものの、<ruby>依然<rt>いぜん</rt></ruby>として<ruby>低い<rt>ひくい</rt></ruby><ruby>水準<rt>すいじゅん</rt></ruby>にとどまっている。<ruby>在庫<rt>ざいこ</rt></ruby>の<ruby>増加<rt>ぞうか</rt></ruby>を<ruby>背景<rt>はいけい</rt></ruby>に、<ruby>業界<rt>ぎょうかい</rt></ruby><ruby>関係者<rt>かんけいしゃ</rt></ruby>の<ruby>間<rt>かん</rt></ruby>では<ruby>価格<rt>かかく</rt></ruby>がさらに<ruby>下落<rt>げらく</rt></ruby>するとの<ruby>見方<rt>みかた</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。<ruby>米価<rt>べいか</rt></ruby>の<ruby>動向<rt>どうこう</rt></ruby>は<ruby>家計<rt>かけい</rt></ruby>や<ruby>農家<rt>のうか</rt></ruby>の<ruby>経営<rt>けいえい</rt></ruby>、<ruby>食品<rt>しょくひん</rt></ruby>インフレの<ruby>議論<rt>ぎろん</rt></ruby>にも<ruby>直結<rt>ちょっけつ</rt></ruby>する<ruby>重要な<rt>じゅうような</rt></ruby><ruby>指標<rt>しひょう</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan rice price outlook stays weak as inventories build</h2>
+              <p class="body en-body">An index measuring expectations for rice prices over the next three months remains at a low level despite a slight rise from the previous month. Industry participants increasingly expect prices to continue falling as inventories build. Rice prices directly affect household budgets, farm incomes and the broader debate around food inflation.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日経平均<rt>にっけいへいきん</rt></ruby>、<ruby>取引<rt>とりひき</rt></ruby><ruby>時間中<rt>じかんちゅう</rt></ruby>の<ruby>最高値<rt>さいたかね</rt></ruby><ruby>更新<rt>こうしん</rt></ruby><ruby>後に<rt>のちに</rt></ruby><ruby>反落<rt>はんらく</rt></ruby></h2>
+              <p class="body"><ruby>月曜日<rt>げつようび</rt></ruby>の<ruby>東京<rt>とうきょう</rt></ruby><ruby>株式市場<rt>かぶしきしじょう</rt></ruby>で、<ruby>日経平均<rt>にっけいへいきん</rt></ruby><ruby>株価<rt>かぶか</rt></ruby>が600ポイント<ruby>以上<rt>いじょう</rt></ruby><ruby>急騰<rt>きゅうとう</rt></ruby>し、<ruby>一時<rt>いちじ</rt></ruby>6<ruby>万<rt>まん</rt></ruby>3000<ruby>円<rt>えん</rt></ruby>を<ruby>超え<rt>こえ</rt></ruby>て<ruby>取引<rt>とりひき</rt></ruby><ruby>時間中<rt>じかんちゅう</rt></ruby>の<ruby>最高値<rt>さいたかね</rt></ruby>を<ruby>更新<rt>こうしん</rt></ruby>した。しかし、その<ruby>後<rt>のち</rt></ruby>は<ruby>利益<rt>りえき</rt></ruby><ruby>確定<rt>かくてい</rt></ruby>の<ruby>売り<rt>うり</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>り、<ruby>終値<rt>おわりね</rt></ruby>はマイナス<ruby>圏<rt>けん</rt></ruby>に<ruby>転落<rt>てんらく</rt></ruby>した。<ruby>日本<rt>にっぽん</rt></ruby><ruby>株<rt>かぶ</rt></ruby>の<ruby>力強い<rt>ちからづよい</rt></ruby><ruby>上昇<rt>じょうしょう</rt></ruby><ruby>基調<rt>きちょう</rt></ruby>と、<ruby>投資家<rt>とうしか</rt></ruby>の<ruby>慎重<rt>しんちょう</rt></ruby><ruby>姿勢<rt>しせい</rt></ruby>が<ruby>交錯<rt>こうさく</rt></ruby>する<ruby>展開<rt>てんかい</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Nikkei hits intraday record before turning lower</h2>
+              <p class="body en-body">The Nikkei average surged more than 600 points on Monday and briefly climbed above 63,000, setting a new intraday record. However, profit-taking later pushed the market into negative territory. The session highlighted both strong momentum in Japanese equities and lingering caution among traders.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>大相撲<rt>おおずもう</rt></ruby><ruby>夏場所<rt>なつばしょ</rt></ruby>、<ruby>横綱<rt>よこづな</rt></ruby><ruby>不在<rt>ふざい</rt></ruby>の<ruby>異例<rt>いれい</rt></ruby>の<ruby>展開<rt>てんかい</rt></ruby>に</h2>
+              <p class="body"><ruby>横綱<rt>よこづな</rt></ruby>の<ruby>照<rt>しょう</rt></ruby>ノ<ruby>富士<rt>ふじ</rt></ruby>が<ruby>右足<rt>みぎあし</rt></ruby>の<ruby>負傷<rt>ふしょう</rt></ruby>により、<ruby>大相撲<rt>おおずもう</rt></ruby><ruby>夏場所<rt>なつばしょ</rt></ruby>の<ruby>二日目<rt>ふつかめ</rt></ruby>から<ruby>休場<rt>きゅうじょう</rt></ruby>することが<ruby>発表<rt>はっぴょう</rt></ruby>された。<ruby>横綱<rt>よこづな</rt></ruby>の<ruby>大<rt>だい</rt></ruby>の<ruby>里<rt>さと</rt></ruby>も<ruby>初日<rt>しょにち</rt></ruby>から<ruby>休場<rt>きゅうじょう</rt></ruby>しており、<ruby>夏場所<rt>なつばしょ</rt></ruby>は<ruby>横綱<rt>よこづな</rt></ruby><ruby>不在<rt>ふざい</rt></ruby>という<ruby>異例<rt>いれい</rt></ruby>の<ruby>事態<rt>じたい</rt></ruby>となった。<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>伝統的<rt>でんとうてき</rt></ruby>な<ruby>国技<rt>こくぎ</rt></ruby>において、<ruby>横綱<rt>よこづな</rt></ruby>が<ruby>一人<rt>ひとり</rt></ruby>も<ruby>土俵<rt>どひょう</rt></ruby>に<ruby>上が<rt>あが</rt></ruby>らない<ruby>場所<rt>ばしょ</rt></ruby>は<ruby>極め<rt>きわめ</rt></ruby>て<ruby>珍しく<rt>めずらしく</rt></ruby>、<ruby>大き<rt>おおき</rt></ruby>な<ruby>注目<rt>ちゅうもく</rt></ruby>を<ruby>集め<rt>あつめ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Summer Grand Sumo left without any yokozuna after Hoshoryu withdraws</h2>
+              <p class="body en-body">Yokozuna Hoshoryu has withdrawn from the Summer Grand Sumo Tournament from the second day due to a right-leg injury. With yokozuna Onosato already absent from the opening day, the tournament will continue without any yokozuna competing — a highly unusual development in Japan's national sport.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-05-11 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "立て直し", "reading": "たてなおし", "english": "rebuilding / reset"}, {"word": "与党", "reading": "よとう", "english": "ruling party"}, {"word": "福祉削減", "reading": "ふくしさくげん", "english": "welfare cuts"}, {"word": "方針", "reading": "ほうしん", "english": "policy / direction"}, {"word": "盛り込む", "reading": "もりこむ", "english": "to include / incorporate"}], [{"word": "制裁解除", "reading": "せいさいかいじょ", "english": "lifting of sanctions"}, {"word": "停戦", "reading": "ていせん", "english": "ceasefire"}, {"word": "封鎖", "reading": "ふうさ", "english": "blockade"}, {"word": "急騰", "reading": "きゅうとう", "english": "sharp rise / surge"}, {"word": "混乱", "reading": "こんらん", "english": "disruption / turmoil"}], [{"word": "首脳会談", "reading": "しゅのうかいだん", "english": "summit meeting"}, {"word": "関税", "reading": "かんぜい", "english": "tariff"}, {"word": "貿易摩擦", "reading": "ぼうえきまさつ", "english": "trade friction"}, {"word": "脆弱", "reading": "ぜいじゃく", "english": "fragile / vulnerable"}, {"word": "地政学", "reading": "ちせいがく", "english": "geopolitics"}], [{"word": "集団感染", "reading": "しゅうだんかんせん", "english": "cluster infection / outbreak"}, {"word": "隔離", "reading": "かくり", "english": "isolation / quarantine"}, {"word": "予防措置", "reading": "よぼうそち", "english": "precautionary measure"}, {"word": "保健当局", "reading": "ほけんとうきょく", "english": "health authorities"}, {"word": "感染源", "reading": "かんせんげん", "english": "source of infection"}], [{"word": "米価", "reading": "べいか", "english": "rice price"}, {"word": "在庫", "reading": "ざいこ", "english": "inventory / stock"}, {"word": "下落", "reading": "げらく", "english": "decline / fall"}, {"word": "指数", "reading": "しすう", "english": "index / indicator"}, {"word": "食品インフレ", "reading": "しょくひんインフレ", "english": "food inflation"}], [{"word": "急騰", "reading": "きゅうとう", "english": "sharp rise / surge"}, {"word": "最高値", "reading": "さいたかね", "english": "record high"}, {"word": "利益確定", "reading": "りえきかくてい", "english": "profit-taking"}, {"word": "反落", "reading": "はんらく", "english": "pullback / decline after a rise"}, {"word": "上昇基調", "reading": "じょうしょうきちょう", "english": "upward trend"}], [{"word": "横綱", "reading": "よこづな", "english": "yokozuna (sumo grand champion)"}, {"word": "休場", "reading": "きゅうじょう", "english": "withdrawal from a tournament"}, {"word": "負傷", "reading": "ふしょう", "english": "injury"}, {"word": "国技", "reading": "こくぎ", "english": "national sport"}, {"word": "土俵", "reading": "どひょう", "english": "sumo ring"}]];
+    const LABELS  = [{"section": "英国", "headline": "スターマー首相、政権立て直しへ重要演説"}, {"section": "国際", "headline": "トランプ氏、イランの回答を拒否　原油価格急騰"}, {"section": "国際", "headline": "米中首脳会談へ　関税休戦の行方に注目"}, {"section": "英国・世界", "headline": "ハンタウイルス感染のクルーズ船　英国人乗客が帰国・隔離"}, {"section": "日本・経済", "headline": "米価見通し低迷　在庫増で下落予想続く"}, {"section": "日本・経済", "headline": "日経平均、取引時間中の最高値更新後に反落"}, {"section": "日本・社会", "headline": "大相撲夏場所、横綱不在の異例の展開に"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
