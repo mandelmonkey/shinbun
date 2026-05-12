@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年5月12日（火）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年5月12日（火）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">スターマー<ruby>首相<rt>しゅしょう</rt></ruby>、<ruby>党内<rt>とうない</rt></ruby><ruby>反乱<rt>はんらん</rt></ruby>で<ruby>求心力<rt>きゅうしんりょく</rt></ruby><ruby>低下<rt>ていか</rt></ruby></h2>
+              <p class="body"><ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>の<ruby>議員<rt>ぎいん</rt></ruby>らが<ruby>首相<rt>しゅしょう</rt></ruby>への<ruby>不信感<rt>ふしんかん</rt></ruby>を<ruby>公然<rt>こうぜん</rt></ruby>と<ruby>表明<rt>ひょうめい</rt></ruby>し、<ruby>党内<rt>とうない</rt></ruby>の<ruby>不満<rt>ふまん</rt></ruby>が<ruby>水面下<rt>すいめんか</rt></ruby>から<ruby>表面<rt>ひょうめん</rt></ruby>に<ruby>噴出<rt>ふんしゅつ</rt></ruby>した。これまで<ruby>私的<rt>してき</rt></ruby>な<ruby>場<rt>ば</rt></ruby>にとどまっていた<ruby>批判<rt>ひはん</rt></ruby>が<ruby>公<rt>こう</rt></ruby>の<ruby>場<rt>ば</rt></ruby>に<ruby>移っ<rt>うつっ</rt></ruby>たことで、<ruby>政権<rt>せいけん</rt></ruby>の<ruby>安定性<rt>あんていせい</rt></ruby>に<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>疑問<rt>ぎもん</rt></ruby>が<ruby>生じ<rt>しょうじ</rt></ruby>ている。スターマー<ruby>首相<rt>しゅしょう</rt></ruby>の<ruby>指導力<rt>しどうりょく</rt></ruby>が<ruby>問わ<rt>とわ</rt></ruby>れる<ruby>局面<rt>きょくめん</rt></ruby>であり、<ruby>今後<rt>こんご</rt></ruby>の<ruby>政策<rt>せいさく</rt></ruby><ruby>遂行<rt>すいこう</rt></ruby><ruby>能力<rt>のうりょく</rt></ruby>にも<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>及ぶ<rt>およぶ</rt></ruby><ruby>可能性<rt>かのうせい</rt></ruby>がある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Starmer's authority drains as Labour MPs openly revolt</h2>
+              <p class="body en-body">Labour MPs have begun openly declaring their loss of confidence in the prime minister, marking a shift from private grumbling to public rebellion. The development raises serious questions about the government's stability and its ability to push through policy. BBC political editor Chris Mason has described this as a possible turning point for the administration.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英<rt>えい</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>、ブリティッシュ・スチール<ruby>国有化<rt>こくゆうか</rt></ruby>を<ruby>正式発表<rt>せいしきはっぴょう</rt></ruby></h2>
+              <p class="body">スターマー<ruby>首相<rt>しゅしょう</rt></ruby>は、<ruby>約<rt>やく</rt></ruby><ruby>一年間<rt>いちねんかん</rt></ruby><ruby>政府<rt>せいふ</rt></ruby><ruby>管理下<rt>かんりか</rt></ruby>にあったブリティッシュ・スチールを<ruby>正式<rt>せいしき</rt></ruby>に<ruby>国有化<rt>こくゆうか</rt></ruby>する<ruby>法案<rt>ほうあん</rt></ruby>を<ruby>今週中<rt>こんしゅうちゅう</rt></ruby>に<ruby>議会<rt>ぎかい</rt></ruby>へ<ruby>提出<rt>ていしゅつ</rt></ruby>すると<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>国有化<rt>こくゆうか</rt></ruby>は<ruby>雇用<rt>こよう</rt></ruby>の<ruby>維持<rt>いじ</rt></ruby>、エネルギーコストの<ruby>管理<rt>かんり</rt></ruby>、<ruby>製造業<rt>せいぞうぎょう</rt></ruby>の<ruby>強靱<rt>きょうじん</rt></ruby><ruby>化<rt>か</rt></ruby>を<ruby>目的<rt>もくてき</rt></ruby>としており、イギリスの<ruby>産業<rt>さんぎょう</rt></ruby><ruby>政策<rt>せいさく</rt></ruby>における<ruby>大き<rt>おおき</rt></ruby>な<ruby>方向転換<rt>ほうこうてんかん</rt></ruby>である。<ruby>戦略的<rt>せんりゃくてき</rt></ruby><ruby>産業<rt>さんぎょう</rt></ruby>への<ruby>国家<rt>こっか</rt></ruby><ruby>介入<rt>かいにゅう</rt></ruby>が<ruby>再び<rt>ふたたび</rt></ruby><ruby>政治<rt>せいじ</rt></ruby>の<ruby>焦点<rt>しょうてん</rt></ruby>に<ruby>浮上<rt>ふじょう</rt></ruby>した<ruby>形<rt>かたち</rt></ruby>だ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK government announces British Steel nationalisation</h2>
+              <p class="body en-body">Prime Minister Starmer announced plans to introduce legislation this week to formally nationalise British Steel, which has been under government control for almost a year. The move aims to protect jobs, manage energy costs and strengthen manufacturing resilience. It marks a significant shift in UK industrial policy, with state intervention in strategic industries returning to the political agenda.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby><ruby>訪中<rt>ほうちゅう</rt></ruby>、<ruby>習<rt>しゅう</rt></ruby><ruby>主席<rt>しゅせき</rt></ruby>との<ruby>首脳<rt>しゅのう</rt></ruby><ruby>会談<rt>かいだん</rt></ruby>で<ruby>米中<rt>べいちゅう</rt></ruby><ruby>関係<rt>かんけい</rt></ruby>の<ruby>行方<rt>なめがた</rt></ruby><ruby>占<rt>せん</rt></ruby>う</h2>
+              <p class="body">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>が<ruby>中国<rt>ちゅうごく</rt></ruby>を<ruby>訪問<rt>ほうもん</rt></ruby>し、<ruby>習<rt>しゅう</rt></ruby><ruby>近平<rt>きんぺい</rt></ruby><ruby>主席<rt>しゅせき</rt></ruby>との<ruby>首脳<rt>しゅのう</rt></ruby><ruby>会談<rt>かいだん</rt></ruby>に<ruby>臨ん<rt>のぞん</rt></ruby>でいる。<ruby>貿易<rt>ぼうえき</rt></ruby>、<ruby>戦略的<rt>せんりゃくてき</rt></ruby><ruby>競争<rt>きょうそう</rt></ruby>、<ruby>企業間<rt>きぎょうかん</rt></ruby>の<ruby>連携<rt>れんけい</rt></ruby>など<ruby>幅広い<rt>はばひろい</rt></ruby><ruby>議題<rt>ぎだい</rt></ruby>が<ruby>取り上げ<rt>とりあげ</rt></ruby>られ、<ruby>多数<rt>たすう</rt></ruby>のアメリカ<ruby>企業<rt>きぎょう</rt></ruby><ruby>幹部<rt>かんぶ</rt></ruby>も<ruby>同行<rt>どうこう</rt></ruby>した。BBCはこの<ruby>会談<rt>かいだん</rt></ruby>を<ruby>数年来<rt>すうねんらい</rt></ruby>で<ruby>最も<rt>もっとも</rt></ruby><ruby>重要な<rt>じゅうような</rt></ruby><ruby>米中<rt>べいちゅう</rt></ruby><ruby>首脳<rt>しゅのう</rt></ruby><ruby>会談<rt>かいだん</rt></ruby>と<ruby>位置<rt>いち</rt></ruby>づけており、<ruby>関税<rt>かんぜい</rt></ruby>やサプライチェーン、<ruby>両国<rt>りょうごく</rt></ruby><ruby>関係<rt>かんけい</rt></ruby>の<ruby>基調<rt>きちょう</rt></ruby>を<ruby>長期<rt>ちょうき</rt></ruby>にわたり<ruby>左右<rt>さゆう</rt></ruby>する<ruby>可能性<rt>かのうせい</rt></ruby>がある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Trump visits China for landmark summit with Xi Jinping</h2>
+              <p class="body en-body">President Trump is in China for a summit with Xi Jinping described as the most significant US-China encounter in years. Trade, strategic rivalry and business ties are all on the table, with a large delegation of American executives in attendance. The outcome could shape tariffs, supply chains and the broader tone of superpower relations for years to come.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ハンタウイルス<ruby>感染<rt>かんせん</rt></ruby>クルーズ<ruby>船<rt>ふね</rt></ruby>、<ruby>下船<rt>げせん</rt></ruby><ruby>後に<rt>のちに</rt></ruby><ruby>新た<rt>あらた</rt></ruby>な<ruby>陽性<rt>ようせい</rt></ruby><ruby>者<rt>もの</rt></ruby>3<ruby>人<rt>にん</rt></ruby></h2>
+              <p class="body">ハンタウイルスの<ruby>集団<rt>しゅうだん</rt></ruby><ruby>感染<rt>かんせん</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>したクルーズ<ruby>船<rt>ふね</rt></ruby>から<ruby>乗客<rt>じょうきゃく</rt></ruby><ruby>全員<rt>ぜんいん</rt></ruby>が<ruby>下船<rt>げせん</rt></ruby>したが、<ruby>帰宅後<rt>きたくご</rt></ruby>に<ruby>新たに<rt>あらたに</rt></ruby>3<ruby>人<rt>にん</rt></ruby>の<ruby>陽性<rt>ようせい</rt></ruby>が<ruby>確認さ<rt>かくにんさ</rt></ruby>れた。WHOは<ruby>乗船<rt>じょうせん</rt></ruby><ruby>者<rt>もの</rt></ruby><ruby>全員<rt>ぜんいん</rt></ruby>に42<ruby>日間<rt>にちかん</rt></ruby>の<ruby>隔離<rt>かくり</rt></ruby>を<ruby>推奨<rt>すいしょう</rt></ruby>しており、<ruby>感染<rt>かんせん</rt></ruby><ruby>拡大<rt>かくだい</rt></ruby>への<ruby>警戒<rt>けいかい</rt></ruby>が<ruby>続い<rt>つづい</rt></ruby>ている。<ruby>公衆衛生<rt>こうしゅうえいせい</rt></ruby><ruby>当局<rt>とうきょく</rt></ruby>は<ruby>国際的<rt>こくさいてき</rt></ruby>な<ruby>連携<rt>れんけい</rt></ruby>を<ruby>強め<rt>つよめ</rt></ruby>、<ruby>帰国<rt>きこく</rt></ruby><ruby>者<rt>もの</rt></ruby>の<ruby>健康<rt>けんこう</rt></ruby><ruby>監視<rt>かんし</rt></ruby><ruby>体制<rt>たいせい</rt></ruby>を<ruby>強化<rt>きょうか</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Three more test positive after leaving hantavirus cruise ship</h2>
+              <p class="body en-body">All passengers have disembarked from the cruise ship linked to a hantavirus outbreak, but three more have tested positive after returning home. The WHO is recommending 42 days of isolation for everyone who was on board. Health authorities are strengthening international coordination and monitoring of returned passengers.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日米<rt>にちべい</rt></ruby><ruby>財務<rt>ざいむ</rt></ruby><ruby>相<rt>そう</rt></ruby><ruby>会談<rt>かいだん</rt></ruby>、<ruby>為替<rt>かわせ</rt></ruby><ruby>協調<rt>きょうちょう</rt></ruby>で<ruby>一致<rt>いっち</rt></ruby>と<ruby>財務<rt>ざいむ</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>が<ruby>表明<rt>ひょうめい</rt></ruby></h2>
+              <p class="body"><ruby>日本<rt>にっぽん</rt></ruby>の<ruby>財務<rt>ざいむ</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>は<ruby>訪日<rt>ほうにち</rt></ruby><ruby>中の<rt>なかの</rt></ruby>ベッセント<ruby>米<rt>こめ</rt></ruby><ruby>財務<rt>ざいむ</rt></ruby><ruby>長官<rt>ちょうかん</rt></ruby>と<ruby>会談<rt>かいだん</rt></ruby>し、<ruby>先月<rt>せんげつ</rt></ruby>の<ruby>市場<rt>しじょう</rt></ruby><ruby>介入<rt>かいにゅう</rt></ruby>を<ruby>含む<rt>ふくむ</rt></ruby><ruby>最近<rt>さいきん</rt></ruby>の<ruby>為替<rt>かわせ</rt></ruby><ruby>動向<rt>どうこう</rt></ruby>について<ruby>協議<rt>きょうぎ</rt></ruby>した。<ruby>会談後<rt>かいだんご</rt></ruby>、<ruby>大臣<rt>だいじん</rt></ruby>はアメリカ<ruby>側<rt>がわ</rt></ruby>が<ruby>両国<rt>りょうごく</rt></ruby>の<ruby>緊密<rt>きんみつ</rt></ruby>な<ruby>連携<rt>れんけい</rt></ruby>に<ruby>十分<rt>じゅうぶん</rt></ruby>な<ruby>理解<rt>りかい</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>たと<ruby>述べ<rt>のべ</rt></ruby>た。<ruby>円相場<rt>えんそうば</rt></ruby>の<ruby>安定<rt>あんてい</rt></ruby>は<ruby>物価<rt>ぶっか</rt></ruby>やエネルギー<ruby>輸入<rt>ゆにゅう</rt></ruby>コストに<ruby>直結<rt>ちょっけつ</rt></ruby>するため、<ruby>今回<rt>こんかい</rt></ruby>の<ruby>合意<rt>ごうい</rt></ruby>は<ruby>市場<rt>しじょう</rt></ruby>に<ruby>安心感<rt>あんしんかん</rt></ruby>を<ruby>与え<rt>あたえ</rt></ruby>る<ruby>狙い<rt>ねらい</rt></ruby>がある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan finance minister says US aligned on currency coordination</h2>
+              <p class="body en-body">Japan's finance minister met visiting US Treasury Secretary Scott Bessent to discuss recent exchange-rate movements, including Japan's market intervention last month. The minister said afterwards that the American side showed full understanding of close coordination between the two countries. The yen's stability is critical for inflation and import costs in Japan.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">アゼルバイジャン<ruby>産<rt>さん</rt></ruby><ruby>原油<rt>げんゆ</rt></ruby>が<ruby>日本<rt>にっぽん</rt></ruby>に<ruby>到着<rt>とうちゃく</rt></ruby>、<ruby>中東<rt>ちゅうとう</rt></ruby><ruby>依存<rt>いぞん</rt></ruby>の<ruby>軽減<rt>けいげん</rt></ruby>へ</h2>
+              <p class="body">イランをめぐる<ruby>緊張<rt>きんちょう</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>る<ruby>中<rt>なか</rt></ruby>、アゼルバイジャン<ruby>産の<rt>うの</rt></ruby><ruby>原油<rt>げんゆ</rt></ruby>が12<ruby>日<rt>にち</rt></ruby>に<ruby>日本<rt>にっぽん</rt></ruby>へ<ruby>到着<rt>とうちゃく</rt></ruby>した。<ruby>中東<rt>ちゅうとう</rt></ruby>からの<ruby>調達<rt>ちょうたつ</rt></ruby>に<ruby>偏っ<rt>かたよっ</rt></ruby>ていた<ruby>日本<rt>にっぽん</rt></ruby>のエネルギー<ruby>供給<rt>きょうきゅう</rt></ruby>の<ruby>多様化<rt>たようか</rt></ruby>を<ruby>図る<rt>はかる</rt></ruby><ruby>具体的<rt>ぐたいてき</rt></ruby>な<ruby>動き<rt>うごき</rt></ruby>として<ruby>注目<rt>ちゅうもく</rt></ruby>される。<ruby>地政学<rt>ちせいがく</rt></ruby><ruby>的<rt>てき</rt></ruby>リスクに<ruby>対する<rt>たいする</rt></ruby><ruby>日本<rt>にっぽん</rt></ruby>の<ruby>脆弱<rt>ぜいじゃく</rt></ruby><ruby>性<rt>せい</rt></ruby>が<ruby>指摘<rt>してき</rt></ruby>される<ruby>中<rt>なか</rt></ruby>、<ruby>調達<rt>ちょうたつ</rt></ruby><ruby>先の<rt>さきの</rt></ruby><ruby>分散<rt>ぶんさん</rt></ruby>は<ruby>製油<rt>せいゆ</rt></ruby><ruby>所<rt>ところ</rt></ruby>の<ruby>計画<rt>けいかく</rt></ruby>や<ruby>長期的<rt>ちょうきてき</rt></ruby>なエネルギー<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>にとって<ruby>重要な<rt>じゅうような</rt></ruby><ruby>意味<rt>いみ</rt></ruby>を<ruby>持つ<rt>もつ</rt></ruby>。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Azerbaijani crude arrives in Japan as alternative to Middle East oil</h2>
+              <p class="body en-body">A shipment of Azerbaijani crude oil reached Japan on 12 May amid growing concerns over supply stability due to tensions involving Iran. The delivery represents a concrete step in Japan's efforts to diversify energy procurement away from the Middle East. The move has implications for refinery planning and long-term energy security.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>磐越<rt>ばんえつ</rt></ruby><ruby>道<rt>みち</rt></ruby>バス<ruby>事故<rt>じこ</rt></ruby>、<ruby>直前<rt>ちょくぜん</rt></ruby><ruby>映像<rt>えいぞう</rt></ruby>を<ruby>警察<rt>けいさつ</rt></ruby>が<ruby>分析<rt>ぶんせき</rt></ruby>　<ruby>原因解明<rt>げんいんかいめい</rt></ruby>へ</h2>
+              <p class="body"><ruby>福島<rt>ふくしま</rt></ruby><ruby>県<rt>けん</rt></ruby>の<ruby>磐越自動車道<rt>ばんえつじどうしゃどう</rt></ruby>で21<ruby>人<rt>にん</rt></ruby>が<ruby>死傷<rt>ししょう</rt></ruby>したスクールバス<ruby>事故<rt>じこ</rt></ruby>で、<ruby>事故<rt>じこ</rt></ruby><ruby>直前<rt>ちょくぜん</rt></ruby>に<ruby>生徒<rt>せいと</rt></ruby>の<ruby>一人<rt>ひとり</rt></ruby>が<ruby>車内<rt>しゃない</rt></ruby>で<ruby>撮影<rt>さつえい</rt></ruby>した<ruby>映像<rt>えいぞう</rt></ruby>の<ruby>存在<rt>そんざい</rt></ruby>が<ruby>明らか<rt>あきらか</rt></ruby>になった。<ruby>警察<rt>けいさつ</rt></ruby>はこの<ruby>映像<rt>えいぞう</rt></ruby>を<ruby>分析<rt>ぶんせき</rt></ruby>し、バスの<ruby>走行状況<rt>そうこうじょうきょう</rt></ruby>や<ruby>事故<rt>じこ</rt></ruby>に<ruby>至る<rt>いたる</rt></ruby><ruby>経緯<rt>けいい</rt></ruby>の<ruby>解明<rt>かいめい</rt></ruby>を<ruby>進め<rt>すすめ</rt></ruby>ている。<ruby>部活動<rt>ぶかつどう</rt></ruby>の<ruby>遠征中<rt>えんせいちゅう</rt></ruby>に<ruby>起き<rt>おき</rt></ruby>たこの<ruby>惨事<rt>さんじ</rt></ruby>は、<ruby>学校<rt>がっこう</rt></ruby>の<ruby>課外<rt>かがい</rt></ruby><ruby>活動<rt>かつどう</rt></ruby>における<ruby>安全<rt>あんぜん</rt></ruby><ruby>管理体制<rt>かんりたいせい</rt></ruby>や<ruby>運転手<rt>うんてんしゅ</rt></ruby>の<ruby>勤務<rt>きんむ</rt></ruby><ruby>環境<rt>かんきょう</rt></ruby>について<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>問題<rt>もんだい</rt></ruby>を<ruby>提起<rt>ていき</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Police examine video taken before deadly school bus crash</h2>
+              <p class="body en-body">Investigators have obtained video footage filmed by a student moments before a school club bus crashed on the Banetsu Expressway in Fukushima, killing and injuring 21 people. Police are analysing the footage to reconstruct the bus's movements and understand what happened in the final moments. The tragedy has raised urgent questions about safety oversight for school trips and driver working conditions.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-05-12 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "求心力", "reading": "きゅうしんりょく", "english": "centripetal force; leadership pull"}, {"word": "不信感", "reading": "ふしんかん", "english": "sense of distrust"}, {"word": "水面下", "reading": "すいめんか", "english": "below the surface; behind the scenes"}, {"word": "噴出", "reading": "ふんしゅつ", "english": "eruption; outburst"}, {"word": "政策遂行", "reading": "せいさくすいこう", "english": "policy implementation"}], [{"word": "国有化", "reading": "こくゆうか", "english": "nationalisation"}, {"word": "法案", "reading": "ほうあん", "english": "bill; legislation"}, {"word": "強靱化", "reading": "きょうじんか", "english": "strengthening; making resilient"}, {"word": "産業政策", "reading": "さんぎょうせいさく", "english": "industrial policy"}, {"word": "方向転換", "reading": "ほうこうてんかん", "english": "change of direction; policy shift"}], [{"word": "首脳会談", "reading": "しゅのうかいだん", "english": "summit meeting"}, {"word": "戦略的競争", "reading": "せんりゃくてききょうそう", "english": "strategic competition"}, {"word": "企業幹部", "reading": "きぎょうかんぶ", "english": "corporate executives"}, {"word": "関税", "reading": "かんぜい", "english": "tariffs"}, {"word": "基調", "reading": "きちょう", "english": "underlying tone; keynote"}], [{"word": "集団感染", "reading": "しゅうだんかんせん", "english": "cluster infection; outbreak"}, {"word": "下船", "reading": "げせん", "english": "disembarkation"}, {"word": "隔離", "reading": "かくり", "english": "isolation; quarantine"}, {"word": "公衆衛生", "reading": "こうしゅうえいせい", "english": "public health"}, {"word": "健康監視", "reading": "けんこうかんし", "english": "health monitoring"}], [{"word": "為替", "reading": "かわせ", "english": "foreign exchange"}, {"word": "市場介入", "reading": "しじょうかいにゅう", "english": "market intervention"}, {"word": "協調", "reading": "きょうちょう", "english": "coordination; cooperation"}, {"word": "物価", "reading": "ぶっか", "english": "commodity prices; cost of living"}, {"word": "合意", "reading": "ごうい", "english": "agreement; consensus"}], [{"word": "原油", "reading": "げんゆ", "english": "crude oil"}, {"word": "調達", "reading": "ちょうたつ", "english": "procurement; sourcing"}, {"word": "多様化", "reading": "たようか", "english": "diversification"}, {"word": "脆弱性", "reading": "ぜいじゃくせい", "english": "vulnerability"}, {"word": "製油所", "reading": "せいゆしょ", "english": "oil refinery"}], [{"word": "死傷", "reading": "ししょう", "english": "casualties; killed and injured"}, {"word": "走行状況", "reading": "そうこうじょうきょう", "english": "driving conditions; travel status"}, {"word": "経緯", "reading": "けいい", "english": "circumstances; sequence of events"}, {"word": "惨事", "reading": "さんじ", "english": "disaster; tragedy"}, {"word": "安全管理体制", "reading": "あんぜんかんりたいせい", "english": "safety management system"}]];
+    const LABELS  = [{"section": "英国", "headline": "スターマー首相、党内反乱で求心力低下"}, {"section": "英国・経済", "headline": "英政府、ブリティッシュ・スチール国有化を正式発表"}, {"section": "国際", "headline": "トランプ大統領訪中、習主席との首脳会談で米中関係の行方占う"}, {"section": "国際", "headline": "ハンタウイルス感染クルーズ船、下船後に新たな陽性者3人"}, {"section": "日本・経済", "headline": "日米財務相会談、為替協調で一致と財務大臣が表明"}, {"section": "日本・経済", "headline": "アゼルバイジャン産原油が日本に到着、中東依存の軽減へ"}, {"section": "日本・社会", "headline": "磐越道バス事故、直前映像を警察が分析　原因解明へ"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
