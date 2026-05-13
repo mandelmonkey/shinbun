@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年5月13日（水）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年5月13日（水）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">スターマー<ruby>首相<rt>しゅしょう</rt></ruby>に<ruby>指導力<rt>しどうりょく</rt></ruby><ruby>危機<rt>きき</rt></ruby>、<ruby>閣僚<rt>かくりょう</rt></ruby><ruby>複数<rt>ふくすう</rt></ruby><ruby>辞任<rt>じにん</rt></ruby></h2>
+              <p class="body">キア・スターマー<ruby>首相<rt>しゅしょう</rt></ruby>が<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>指導力<rt>しどうりょく</rt></ruby>の<ruby>危機<rt>きき</rt></ruby>に<ruby>直面<rt>ちょくめん</rt></ruby>している。<ruby>複数<rt>ふくすう</rt></ruby>の<ruby>閣僚<rt>かくりょう</rt></ruby>が<ruby>辞任<rt>じにん</rt></ruby>し、<ruby>労働<rt>ろうどう</rt></ruby><ruby>党議<rt>とうぎ</rt></ruby><ruby>員<rt>いん</rt></ruby>が<ruby>公然<rt>こうぜん</rt></ruby>と<ruby>首相<rt>しゅしょう</rt></ruby>の<ruby>続投<rt>ぞくとう</rt></ruby>を<ruby>議論<rt>ぎろん</rt></ruby>する<ruby>事態<rt>じたい</rt></ruby>に<ruby>発展<rt>はってん</rt></ruby>した。チャールズ<ruby>三世<rt>さんせい</rt></ruby><ruby>国王<rt>こくおう</rt></ruby>による<ruby>施政<rt>しせい</rt></ruby><ruby>方針<rt>ほうしん</rt></ruby><ruby>演説<rt>えんぜつ</rt></ruby>が<ruby>予定<rt>よてい</rt></ruby>されるなか、<ruby>政府<rt>せいふ</rt></ruby>の<ruby>安定性<rt>あんていせい</rt></ruby>と<ruby>党内<rt>とうない</rt></ruby><ruby>混乱<rt>こんらん</rt></ruby>の<ruby>対照<rt>たいしょう</rt></ruby>が<ruby>際<rt>きわ</rt></ruby><ruby>立つ<rt>たつ</rt></ruby><ruby>展開<rt>てんかい</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Starmer faces leadership crisis as ministers resign</h2>
+              <p class="body en-body">Prime Minister Keir Starmer is facing a serious leadership crisis. Multiple ministers have resigned and Labour MPs are openly debating whether he should remain in office. The situation is made more striking by the timing, with King Charles III due to deliver the King's Speech to Parliament.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英国<rt>えいこく</rt></ruby><ruby>債<rt>さい</rt></ruby><ruby>利回り<rt>りまわり</rt></ruby><ruby>急上昇<rt>きゅうじょうしょう</rt></ruby>、<ruby>政治<rt>せいじ</rt></ruby><ruby>不安<rt>ふあん</rt></ruby>で<ruby>借入<rt>しゃくにゅう</rt></ruby>コスト<ruby>増大<rt>ぞうだい</rt></ruby></h2>
+              <p class="body">スターマー<ruby>首相<rt>しゅしょう</rt></ruby>の<ruby>進退<rt>しんたい</rt></ruby>をめぐる<ruby>不透明感<rt>ふとうめいかん</rt></ruby>から、<ruby>英国<rt>えいこく</rt></ruby><ruby>債<rt>さい</rt></ruby>の<ruby>利回り<rt>りまわり</rt></ruby>が<ruby>急上昇<rt>きゅうじょうしょう</rt></ruby>している。<ruby>投資家<rt>とうしか</rt></ruby>は<ruby>政治的<rt>せいじてき</rt></ruby><ruby>混乱<rt>こんらん</rt></ruby>を<ruby>財政<rt>ざいせい</rt></ruby><ruby>政策<rt>せいさく</rt></ruby>のリスクと<ruby>捉え<rt>とらえ</rt></ruby>、<ruby>債券<rt>さいけん</rt></ruby><ruby>市場<rt>しじょう</rt></ruby>で<ruby>売り<rt>うり</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>った。<ruby>政治<rt>せいじ</rt></ruby>の<ruby>不安定<rt>ふあんてい</rt></ruby>さが<ruby>借入<rt>しゃくにゅう</rt></ruby>コストに<ruby>直結<rt>ちょっけつ</rt></ruby>する<ruby>構図<rt>こうず</rt></ruby>が<ruby>鮮明<rt>せんめい</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK borrowing costs surge amid political uncertainty</h2>
+              <p class="body en-body">British bond yields have jumped sharply as investor nerves over the prime minister's future grow. Markets are treating the leadership drama as a potential risk to fiscal policy and near-term stability. The episode is a stark reminder of how quickly political uncertainty can move borrowing costs.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby><ruby>訪中<rt>ほうちゅう</rt></ruby>、<ruby>習<rt>しゅう</rt></ruby><ruby>近平<rt>きんぺい</rt></ruby>との<ruby>首脳<rt>しゅのう</rt></ruby><ruby>会談<rt>かいだん</rt></ruby>へ</h2>
+              <p class="body">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>が<ruby>中国<rt>ちゅうごく</rt></ruby>を<ruby>訪問<rt>ほうもん</rt></ruby>し、<ruby>習<rt>しゅう</rt></ruby><ruby>近平<rt>きんぺい</rt></ruby><ruby>国家<rt>こっか</rt></ruby><ruby>主席<rt>しゅせき</rt></ruby>との<ruby>首脳<rt>しゅのう</rt></ruby><ruby>会談<rt>かいだん</rt></ruby>に<ruby>臨む<rt>のぞむ</rt></ruby>。イーロン・マスク<ruby>氏<rt>し</rt></ruby>やティム・クック<ruby>氏<rt>し</rt></ruby>ら<ruby>米大<rt>べいだい</rt></ruby><ruby>手<rt>て</rt></ruby><ruby>企業<rt>きぎょう</rt></ruby>のトップが<ruby>同行<rt>どうこう</rt></ruby>しており、<ruby>商業的<rt>しょうぎょうてき</rt></ruby><ruby>利益<rt>りえき</rt></ruby>と<ruby>外交<rt>がいこう</rt></ruby>の<ruby>密接<rt>みっせつ</rt></ruby>な<ruby>関係<rt>かんけい</rt></ruby>が<ruby>浮き彫り<rt>うきぼり</rt></ruby>となっている。イラン<ruby>情勢<rt>じょうせい</rt></ruby>や<ruby>貿易<rt>ぼうえき</rt></ruby><ruby>問題<rt>もんだい</rt></ruby>など、<ruby>戦略的<rt>せんりゃくてき</rt></ruby>ライバル<ruby>関係<rt>かんけい</rt></ruby>の<ruby>微妙な<rt>びみょうな</rt></ruby>バランスが<ruby>試さ<rt>ためさ</rt></ruby>れる<ruby>訪問<rt>ほうもん</rt></ruby>となる<ruby>見通し<rt>みとおし</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Trump heads to China for summit talks with Xi Jinping</h2>
+              <p class="body en-body">President Trump is visiting China for talks with President Xi Jinping. Major US executives including Elon Musk and Tim Cook are joining the trip, underscoring the tight link between commercial interests and diplomacy. The visit is expected to test the delicate balance between strategic rivalry, trade, and the wider Iran crisis.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米<rt>こめ</rt></ruby>インフレ<ruby>率<rt>りつ</rt></ruby>3.8%に<ruby>上昇<rt>じょうしょう</rt></ruby>、エネルギー<ruby>価格<rt>かかく</rt></ruby><ruby>高騰<rt>こうとう</rt></ruby>が<ruby>主因<rt>しゅいん</rt></ruby></h2>
+              <p class="body"><ruby>米国<rt>べいこく</rt></ruby>のインフレ<ruby>率<rt>りつ</rt></ruby>が3.8パーセントに<ruby>上昇<rt>じょうしょう</rt></ruby>し、2023<ruby>年<rt>ねん</rt></ruby>5<ruby>月<rt>がつ</rt></ruby><ruby>以来<rt>いらい</rt></ruby>の<ruby>高水準<rt>こうすいじゅん</rt></ruby>を<ruby>記録<rt>きろく</rt></ruby>した。イラン<ruby>紛争<rt>ふんそう</rt></ruby>に<ruby>関連す<rt>かんれんす</rt></ruby>るエネルギー<ruby>価格<rt>かかく</rt></ruby>の<ruby>高騰<rt>こうとう</rt></ruby>が<ruby>主な<rt>おもな</rt></ruby><ruby>要因<rt>よういん</rt></ruby>である。インフレが<ruby>高<rt>たか</rt></ruby><ruby>止まり<rt>どまり</rt></ruby>すれば、<ruby>連邦<rt>れんぽう</rt></ruby><ruby>準備<rt>じゅんび</rt></ruby><ruby>制度<rt>せいど</rt></ruby><ruby>理事会<rt>りじかい</rt></ruby>の<ruby>利下げ<rt>りさげ</rt></ruby><ruby>判断<rt>はんだん</rt></ruby>が<ruby>困難<rt>こんなん</rt></ruby>になり、<ruby>市場<rt>しじょう</rt></ruby>への<ruby>圧力<rt>あつりょく</rt></ruby>がさらに<ruby>強ま<rt>つよま</rt></ruby>る<ruby>可能性<rt>かのうせい</rt></ruby>がある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US inflation climbs to 3.8% as energy costs surge</h2>
+              <p class="body en-body">US inflation has risen to 3.8%, its highest level since May 2023, driven largely by energy price increases linked to the Iran conflict. If inflation remains sticky, it could complicate the Federal Reserve's path toward rate cuts and add pressure to already nervous markets.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米中<rt>べいちゅう</rt></ruby><ruby>首脳<rt>しゅのう</rt></ruby><ruby>会談<rt>かいだん</rt></ruby>を<ruby>前<rt>まえ</rt></ruby>に<ruby>日本<rt>にっぽん</rt></ruby>、イラン<ruby>問題<rt>もんだい</rt></ruby>の<ruby>進展<rt>しんてん</rt></ruby>を<ruby>注視<rt>ちゅうし</rt></ruby></h2>
+              <p class="body">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>が<ruby>中国<rt>ちゅうごく</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>て<ruby>出発<rt>しゅっぱつ</rt></ruby>し、14<ruby>日<rt>にち</rt></ruby>に<ruby>習<rt>しゅう</rt></ruby><ruby>近平<rt>きんぺい</rt></ruby><ruby>主席<rt>しゅせき</rt></ruby>との<ruby>首脳<rt>しゅのう</rt></ruby><ruby>会談<rt>かいだん</rt></ruby>が<ruby>予定<rt>よてい</rt></ruby>されている。<ruby>主要<rt>しゅよう</rt></ruby><ruby>議題<rt>ぎだい</rt></ruby>の<ruby>一つ<rt>ひとつ</rt></ruby>であるイラン<ruby>情勢<rt>じょうせい</rt></ruby>について、<ruby>現在<rt>げんざい</rt></ruby>の<ruby>膠着状態<rt>こうちゃくじょうたい</rt></ruby>を<ruby>打破<rt>だは</rt></ruby>する<ruby>糸口<rt>いとぐち</rt></ruby>が<ruby>見つ<rt>みつ</rt></ruby>かるかに<ruby>関心<rt>かんしん</rt></ruby>が<ruby>集ま<rt>あつま</rt></ruby>っている。<ruby>安定<rt>あんてい</rt></ruby>したシーレーンとエネルギー<ruby>供給<rt>きょうきゅう</rt></ruby>に<ruby>依存<rt>いぞん</rt></ruby>する<ruby>日本<rt>にっぽん</rt></ruby>にとって、<ruby>外交<rt>がいこう</rt></ruby>の<ruby>行方<rt>なめがた</rt></ruby>は<ruby>直接的<rt>ちょくせつてき</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>持つ<rt>もつ</rt></ruby>。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan watches US-China summit for progress on Iran</h2>
+              <p class="body en-body">President Trump has departed for China and is expected to meet Xi Jinping on 14 May. One key focus is whether the two leaders can find an opening to break the deadlock on Iran. For Japan, which depends heavily on stable sea lanes and energy flows, the diplomatic outcome matters directly.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ニデック、<ruby>無許可<rt>むきょか</rt></ruby>の<ruby>設計変更<rt>せっけいへんこう</rt></ruby>など<ruby>不正行為<rt>ふせいこうい</rt></ruby>の<ruby>疑い<rt>うたがい</rt></ruby><ruby>公表<rt>こうひょう</rt></ruby></h2>
+              <p class="body">ニデック（<ruby>旧日<rt>きゅうじつ</rt></ruby><ruby>本<rt>ほん</rt></ruby><ruby>電産<rt>でんさん</rt></ruby>）は、<ruby>家電<rt>かでん</rt></ruby><ruby>向け<rt>むけ</rt></ruby><ruby>部品<rt>ぶひん</rt></ruby>などで<ruby>不正行為<rt>ふせいこうい</rt></ruby>の<ruby>疑い<rt>うたがい</rt></ruby>があることを<ruby>公表<rt>こうひょう</rt></ruby>した。<ruby>顧客<rt>こきゃく</rt></ruby>の<ruby>許可<rt>きょか</rt></ruby>を<ruby>得ず<rt>えず</rt></ruby>に<ruby>製品<rt>せいひん</rt></ruby><ruby>設計<rt>せっけい</rt></ruby>を<ruby>変更<rt>へんこう</rt></ruby>していた<ruby>事案<rt>じあん</rt></ruby>が<ruby>発覚<rt>はっかく</rt></ruby>したもので、<ruby>以前<rt>いぜん</rt></ruby>の<ruby>不適切<rt>ふてきせつ</rt></ruby>な<ruby>会計<rt>かいけい</rt></ruby><ruby>処理<rt>しょり</rt></ruby>に<ruby>続く<rt>つづく</rt></ruby><ruby>問題<rt>もんだい</rt></ruby>となる。<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>大手<rt>おおて</rt></ruby>メーカーにおけるガバナンスと<ruby>信頼性<rt>しんらいせい</rt></ruby>の<ruby>課題<rt>かだい</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>浮上<rt>ふじょう</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Nidec discloses suspected unauthorised design changes</h2>
+              <p class="body en-body">Nidec, formerly known as Nippon Densan, has disclosed suspected improper practices including unauthorised design changes to parts for home appliances. The revelations follow earlier findings of improper accounting and raise broader questions about governance and trust at the major Japanese manufacturer.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">iPS<ruby>細胞<rt>さいぼう</rt></ruby>パーキンソン<ruby>病<rt>びょう</rt></ruby><ruby>治療薬<rt>ちりょうやく</rt></ruby>、<ruby>保険<rt>ほけん</rt></ruby><ruby>適用<rt>てきよう</rt></ruby>を<ruby>承認<rt>しょうにん</rt></ruby></h2>
+              <p class="body"><ruby>中央<rt>ちゅうおう</rt></ruby><ruby>社会保険<rt>しゃかいほけん</rt></ruby><ruby>医療<rt>いりょう</rt></ruby><ruby>協議会<rt>きょうぎかい</rt></ruby>は、iPS<ruby>細胞<rt>さいぼう</rt></ruby>を<ruby>用いた<rt>もちいた</rt></ruby>パーキンソン<ruby>病<rt>びょう</rt></ruby><ruby>治療薬<rt>ちりょうやく</rt></ruby>「アムシプリ」の<ruby>保険<rt>ほけん</rt></ruby><ruby>適用<rt>てきよう</rt></ruby>を<ruby>承認<rt>しょうにん</rt></ruby>した。1<ruby>回<rt>かい</rt></ruby>の<ruby>治療費<rt>ちりょうひ</rt></ruby>は<ruby>約<rt>やく</rt></ruby>5530<ruby>万円<rt>まんえん</rt></ruby>と<ruby>高額<rt>こうがく</rt></ruby>であるが、<ruby>再生<rt>さいせい</rt></ruby><ruby>医療<rt>いりょう</rt></ruby>の<ruby>実用化<rt>じつようか</rt></ruby>における<ruby>重要な<rt>じゅうような</rt></ruby><ruby>節目<rt>ふしめ</rt></ruby>となる。<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>再生<rt>さいせい</rt></ruby><ruby>医療<rt>いりょう</rt></ruby><ruby>分野<rt>ぶんや</rt></ruby>にとって、<ruby>医療<rt>いりょう</rt></ruby><ruby>政策上<rt>せいさくじょう</rt></ruby>も<ruby>大き<rt>おおき</rt></ruby>な<ruby>前進<rt>ぜんしん</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">iPS cell Parkinson's treatment approved for insurance coverage</h2>
+              <p class="body en-body">Japan's Central Social Insurance Medical Council has approved insurance coverage for Amshipri, a regenerative medicine product using iPS cells to treat Parkinson's disease. The listed cost of roughly 55.3 million yen per treatment highlights both the promise and the expense of cutting-edge therapies. It marks a significant milestone for Japan's regenerative medicine sector.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-05-13 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "指導力", "reading": "しどうりょく", "english": "leadership ability"}, {"word": "閣僚", "reading": "かくりょう", "english": "cabinet minister"}, {"word": "辞任", "reading": "じにん", "english": "resignation"}, {"word": "続投", "reading": "ぞくとう", "english": "staying in office"}, {"word": "施政方針演説", "reading": "しせいほうしんえんぜつ", "english": "policy address / King's Speech"}], [{"word": "国債", "reading": "こくさい", "english": "government bond"}, {"word": "利回り", "reading": "りまわり", "english": "yield"}, {"word": "不透明感", "reading": "ふとうめいかん", "english": "sense of uncertainty"}, {"word": "財政政策", "reading": "ざいせいせいさく", "english": "fiscal policy"}, {"word": "借入コスト", "reading": "かりいれコスト", "english": "borrowing cost"}], [{"word": "首脳会談", "reading": "しゅのうかいだん", "english": "summit meeting"}, {"word": "同行", "reading": "どうこう", "english": "accompanying"}, {"word": "浮き彫り", "reading": "うきぼり", "english": "brought into relief"}, {"word": "戦略的", "reading": "せんりゃくてき", "english": "strategic"}, {"word": "見通し", "reading": "みとおし", "english": "outlook / prospect"}], [{"word": "高騰", "reading": "こうとう", "english": "sharp rise / surge"}, {"word": "高止まり", "reading": "たかどまり", "english": "staying at a high level"}, {"word": "連邦準備制度理事会", "reading": "れんぽうじゅんびせいどりじかい", "english": "Federal Reserve Board"}, {"word": "利下げ", "reading": "りさげ", "english": "interest rate cut"}, {"word": "紛争", "reading": "ふんそう", "english": "conflict / dispute"}], [{"word": "膠着状態", "reading": "こうちゃくじょうたい", "english": "deadlock / stalemate"}, {"word": "糸口", "reading": "いとぐち", "english": "clue / lead / opening"}, {"word": "シーレーン", "reading": "シーレーン", "english": "sea lane"}, {"word": "依存", "reading": "いぞん", "english": "dependence"}, {"word": "行方", "reading": "ゆくえ", "english": "whereabouts / outcome"}], [{"word": "不正行為", "reading": "ふせいこうい", "english": "misconduct / fraud"}, {"word": "発覚", "reading": "はっかく", "english": "discovery / exposure"}, {"word": "不適切", "reading": "ふてきせつ", "english": "inappropriate / improper"}, {"word": "会計処理", "reading": "かいけいしょり", "english": "accounting treatment"}, {"word": "浮上", "reading": "ふじょう", "english": "surfacing / emerging"}], [{"word": "保険適用", "reading": "ほけんてきよう", "english": "insurance coverage"}, {"word": "再生医療", "reading": "さいせいいりょう", "english": "regenerative medicine"}, {"word": "承認", "reading": "しょうにん", "english": "approval"}, {"word": "節目", "reading": "ふしめ", "english": "milestone / turning point"}, {"word": "高額", "reading": "こうがく", "english": "expensive / high cost"}]];
+    const LABELS  = [{"section": "英国", "headline": "スターマー首相に指導力危機、閣僚複数辞任"}, {"section": "英国・経済", "headline": "英国債利回り急上昇、政治不安で借入コスト増大"}, {"section": "国際", "headline": "トランプ大統領訪中、習近平との首脳会談へ"}, {"section": "経済", "headline": "米インフレ率3.8%に上昇、エネルギー価格高騰が主因"}, {"section": "日本・政治", "headline": "米中首脳会談を前に日本、イラン問題の進展を注視"}, {"section": "日本・経済", "headline": "ニデック、無許可の設計変更など不正行為の疑い公表"}, {"section": "日本・社会", "headline": "iPS細胞パーキンソン病治療薬、保険適用を承認"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
