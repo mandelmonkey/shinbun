@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年5月14日（木）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年5月14日（木）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ストリーティング<ruby>保健<rt>ほけん</rt></ruby><ruby>相<rt>そう</rt></ruby>、スターマー<ruby>首相<rt>しゅしょう</rt></ruby>に<ruby>党首<rt>とうしゅ</rt></ruby><ruby>選<rt>せん</rt></ruby><ruby>挑戦<rt>ちょうせん</rt></ruby>か</h2>
+              <p class="body"><ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>のウェス・ストリーティング<ruby>保健<rt>ほけん</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>が、キア・スターマー<ruby>首相<rt>しゅしょう</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>て<ruby>党首<rt>とうしゅ</rt></ruby><ruby>選<rt>せん</rt></ruby>への<ruby>挑戦<rt>ちょうせん</rt></ruby>を<ruby>検討し<rt>けんとうし</rt></ruby>ていることが<ruby>明らか<rt>あきらか</rt></ruby>になった。BBCの<ruby>政治<rt>せいじ</rt></ruby>エディターによると、ストリーティング<ruby>氏<rt>し</rt></ruby>の<ruby>同盟<rt>どうめい</rt></ruby><ruby>者<rt>もの</rt></ruby>たちは<ruby>挑戦<rt>ちょうせん</rt></ruby>に<ruby>踏み<rt>ふみ</rt></ruby><ruby>切る<rt>きる</rt></ruby>ことを<ruby>期待し<rt>きたいし</rt></ruby>ている。この<ruby>動き<rt>うごき</rt></ruby>は<ruby>国会<rt>こっかい</rt></ruby><ruby>開会式<rt>かいかいしき</rt></ruby>と<ruby>重なり<rt>かさなり</rt></ruby>、<ruby>国王<rt>こくおう</rt></ruby><ruby>演説<rt>えんぜつ</rt></ruby>で37<ruby>本<rt>ほん</rt></ruby>の<ruby>法案<rt>ほうあん</rt></ruby>が<ruby>発表<rt>はっぴょう</rt></ruby>されたにもかかわらず、スターマー<ruby>首相<rt>しゅしょう</rt></ruby>は<ruby>終日<rt>しゅうじつ</rt></ruby><ruby>議員<rt>ぎいん</rt></ruby>の<ruby>説得<rt>せっとく</rt></ruby>に<ruby>追わ<rt>おわ</rt></ruby>れた。<ruby>最近<rt>さいきん</rt></ruby>の<ruby>選挙<rt>せんきょ</rt></ruby><ruby>敗北<rt>はいぼく</rt></ruby>により<ruby>首相<rt>しゅしょう</rt></ruby>の<ruby>求心力<rt>きゅうしんりょく</rt></ruby>は<ruby>著しく<rt>いちじるしく</rt></ruby><ruby>低下<rt>ていか</rt></ruby>しており、<ruby>今後<rt>こんご</rt></ruby>24<ruby>時間<rt>じかん</rt></ruby>が<ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>にとって<ruby>決定的<rt>けっていてき</rt></ruby>な<ruby>局面<rt>きょくめん</rt></ruby>となる。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Health Secretary Streeting expected to challenge PM Starmer for Labour leadership</h2>
+              <p class="body en-body">Labour Health Secretary Wes Streeting is reportedly considering a leadership challenge against Prime Minister Keir Starmer. The drama overshadowed the State Opening of Parliament, where the King's Speech laid out 37 bills while Starmer spent the day persuading nervous MPs. Recent election defeats have badly weakened the PM's authority, making the next 24 hours decisive for the party.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イラン<ruby>戦争<rt>せんそう</rt></ruby>で<ruby>欧州<rt>おうしゅう</rt></ruby>の<ruby>航空運賃<rt>こうくううんちん</rt></ruby><ruby>値上げ<rt>ねあげ</rt></ruby>「<ruby>不可避<rt>ふかひ</rt></ruby>」</h2>
+              <p class="body"><ruby>国際航空<rt>こくさいこうくう</rt></ruby><ruby>運送<rt>うんそう</rt></ruby><ruby>協会<rt>きょうかい</rt></ruby>（IATA）のウィリー・ウォルシュ<ruby>会長<rt>かいちょう</rt></ruby>は、イラン<ruby>戦争<rt>せんそう</rt></ruby>の<ruby>影響<rt>えいきょう</rt></ruby>でジェット<ruby>燃料<rt>ねんりょう</rt></ruby><ruby>価格<rt>かかく</rt></ruby>が<ruby>高騰<rt>こうとう</rt></ruby>し、<ruby>欧州<rt>おうしゅう</rt></ruby>の<ruby>航空運賃<rt>こうくううんちん</rt></ruby><ruby>値上げ<rt>ねあげ</rt></ruby>は<ruby>避け<rt>さけ</rt></ruby>られないとの<ruby>見解<rt>けんかい</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。<ruby>英国<rt>えいこく</rt></ruby>では<ruby>夏<rt>なつ</rt></ruby>のピークシーズンに<ruby>燃料不足<rt>ねんりょうぶそく</rt></ruby>に<ruby>陥る<rt>おちいる</rt></ruby><ruby>可能性<rt>かのうせい</rt></ruby>も<ruby>指摘<rt>してき</rt></ruby>されている。ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>が<ruby>即座<rt>そくざ</rt></ruby>に<ruby>再開<rt>さいかい</rt></ruby>されたとしても、<ruby>原油<rt>げんゆ</rt></ruby><ruby>供給<rt>きょうきゅう</rt></ruby><ruby>網<rt>あみ</rt></ruby>と<ruby>精製<rt>せいせい</rt></ruby><ruby>能力<rt>のうりょく</rt></ruby>への<ruby>打撃<rt>だげき</rt></ruby>により、<ruby>価格<rt>かかく</rt></ruby>の<ruby>高<rt>たか</rt></ruby><ruby>止まり<rt>どまり</rt></ruby>は<ruby>数か月<rt>すうかげつ</rt></ruby>から<ruby>来年<rt>らいねん</rt></ruby>まで<ruby>続く<rt>つづく</rt></ruby><ruby>恐れ<rt>おそれ</rt></ruby>があるという。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Higher European air fares 'inevitable' due to Iran war</h2>
+              <p class="body en-body">IATA chief Willie Walsh warned that higher air fares across Europe are unavoidable as the Iran war has driven up jet fuel prices and disrupted Gulf supplies. The UK could face fuel shortages during the peak summer season. Even if the Strait of Hormuz reopened immediately, damage to crude supply chains and refining capacity could keep prices elevated for months.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">キューバ、ディーゼルと<ruby>重油<rt>じゅうゆ</rt></ruby>が<ruby>完全<rt>かんぜん</rt></ruby><ruby>枯渇<rt>こかつ</rt></ruby></h2>
+              <p class="body">キューバのエネルギー<ruby>大臣<rt>だいじん</rt></ruby>は、<ruby>国内<rt>こくない</rt></ruby>のディーゼルと<ruby>重油<rt>じゅうゆ</rt></ruby>の<ruby>在庫<rt>ざいこ</rt></ruby>が<ruby>完全<rt>かんぜん</rt></ruby>に<ruby>枯渇<rt>こかつ</rt></ruby>し、エネルギーシステムが<ruby>危機的<rt>ききてき</rt></ruby><ruby>状態<rt>じょうたい</rt></ruby>にあると<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>首都<rt>しゅと</rt></ruby>ハバナでは20〜22<ruby>時間<rt>じかん</rt></ruby>に<ruby>及ぶ<rt>およぶ</rt></ruby><ruby>停電<rt>ていでん</rt></ruby>が<ruby>続き<rt>つづき</rt></ruby>、<ruby>市民<rt>しみん</rt></ruby>による<ruby>抗議<rt>こうぎ</rt></ruby>デモが<ruby>発生<rt>はっせい</rt></ruby>している。<ruby>病院<rt>びょういん</rt></ruby>、<ruby>学校<rt>がっこう</rt></ruby>、<ruby>政府機関<rt>せいふきかん</rt></ruby>、<ruby>観光<rt>かんこう</rt></ruby><ruby>産業<rt>さんぎょう</rt></ruby>にも<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。ベネズエラとメキシコからの<ruby>供給<rt>きょうきゅう</rt></ruby>は、トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>による<ruby>関税<rt>かんぜい</rt></ruby>の<ruby>脅威<rt>きょうい</rt></ruby>と<ruby>米国<rt>べいこく</rt></ruby>の<ruby>制裁<rt>せいさい</rt></ruby><ruby>強化<rt>きょうか</rt></ruby>を<ruby>背景<rt>はいけい</rt></ruby>に<ruby>大幅<rt>おおはば</rt></ruby>に<ruby>減少<rt>げんしょう</rt></ruby>した。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Cuba runs out of diesel and fuel oil entirely</h2>
+              <p class="body en-body">Cuba's energy minister announced the country has completely run out of diesel and fuel oil, pushing the national energy system into a critical state. Havana is experiencing blackouts lasting 20 to 22 hours, sparking protests, while hospitals, schools and tourism have been severely disrupted. Venezuela and Mexico cut supplies under pressure from Trump's tariff threats and broader US sanctions.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英<rt>えい</rt></ruby><ruby>歳入<rt>さいにゅう</rt></ruby><ruby>関税<rt>かんぜい</rt></ruby><ruby>庁<rt>ちょう</rt></ruby>、AI<ruby>詐欺<rt>さぎ</rt></ruby><ruby>検知<rt>けんち</rt></ruby>に<ruby>英<rt>えい</rt></ruby><ruby>企業<rt>きぎょう</rt></ruby>と1.75<ruby>億<rt>おく</rt></ruby>ポンド<ruby>契約<rt>けいやく</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby><ruby>歳入<rt>さいにゅう</rt></ruby><ruby>関税<rt>かんぜい</rt></ruby><ruby>庁<rt>ちょう</rt></ruby>（HMRC）は、<ruby>英国<rt>えいこく</rt></ruby><ruby>企業<rt>きぎょう</rt></ruby>クオンテクサと10<ruby>年間<rt>ねんかん</rt></ruby>で1<ruby>億<rt>おく</rt></ruby>7500<ruby>万<rt>まん</rt></ruby>ポンドの<ruby>契約<rt>けいやく</rt></ruby>を<ruby>締結<rt>ていけつ</rt></ruby>した。<ruby>同社<rt>どうしゃ</rt></ruby>のAI<ruby>技術<rt>ぎじゅつ</rt></ruby>を<ruby>活用<rt>かつよう</rt></ruby>し、<ruby>詐欺<rt>さぎ</rt></ruby><ruby>検出<rt>けんしゅつ</rt></ruby>、<ruby>確定申告<rt>かくていしんこく</rt></ruby>のエラー<ruby>発見<rt>はっけん</rt></ruby>、<ruby>顧客<rt>こきゃく</rt></ruby><ruby>対応<rt>たいおう</rt></ruby>の<ruby>効率化<rt>こうりつか</rt></ruby>を<ruby>図る<rt>はかる</rt></ruby>。システムはHMRCのデータと<ruby>外部<rt>がいぶ</rt></ruby><ruby>情報<rt>じょうほう</rt></ruby>を<ruby>統合<rt>とうごう</rt></ruby>し、<ruby>企業<rt>きぎょう</rt></ruby>や<ruby>個人<rt>こじん</rt></ruby>の<ruby>隠れ<rt>かくれ</rt></ruby>たネットワークを<ruby>特定<rt>とくてい</rt></ruby>するが、<ruby>最終判断<rt>さいしゅうはんだん</rt></ruby>は<ruby>人間<rt>にんげん</rt></ruby>が<ruby>行う<rt>おこなう</rt></ruby><ruby>方針<rt>ほうしん</rt></ruby>である。<ruby>米国<rt>べいこく</rt></ruby>の<ruby>大手<rt>おおて</rt></ruby>IT<ruby>企業<rt>きぎょう</rt></ruby>への<ruby>依存<rt>いぞん</rt></ruby><ruby>軽減<rt>けいげん</rt></ruby>を<ruby>目指す<rt>めざす</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>のデジタル<ruby>主権<rt>しゅけん</rt></ruby><ruby>戦略<rt>せんりゃく</rt></ruby>の<ruby>一環<rt>いっかん</rt></ruby>でもある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">HMRC signs £175m AI fraud detection deal with British tech firm</h2>
+              <p class="body en-body">HMRC has signed a 10-year, £175 million contract with British company Quantexa to use AI for fraud detection, tax return error identification and customer service support. The system will link HMRC data with external sources to identify hidden networks, with human staff retaining final decision-making authority. The deal also supports the government's push for digital sovereignty by favouring a UK firm.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ホンダ、<ruby>上場<rt>じょうじょう</rt></ruby><ruby>以来<rt>いらい</rt></ruby><ruby>初<rt>はつ</rt></ruby>の<ruby>通期<rt>つうき</rt></ruby><ruby>赤字<rt>あかじ</rt></ruby>　EV<ruby>投資<rt>とうし</rt></ruby>が<ruby>重荷<rt>おもに</rt></ruby></h2>
+              <p class="body">ホンダは2025<ruby>年度<rt>ねんど</rt></ruby><ruby>決算<rt>けっさん</rt></ruby>で<ruby>営業<rt>えいぎょう</rt></ruby><ruby>損失<rt>そんしつ</rt></ruby>4143<ruby>億円<rt>おくえん</rt></ruby>、<ruby>最終<rt>さいしゅう</rt></ruby><ruby>純<rt>じゅん</rt></ruby><ruby>損失<rt>そんしつ</rt></ruby>4239<ruby>億円<rt>おくえん</rt></ruby>を<ruby>計上<rt>けいじょう</rt></ruby>し、<ruby>上場<rt>じょうじょう</rt></ruby><ruby>以来<rt>いらい</rt></ruby><ruby>初<rt>はつ</rt></ruby>の<ruby>通期<rt>つうき</rt></ruby><ruby>赤字<rt>あかじ</rt></ruby>となった。<ruby>電気自動車<rt>でんきじどうしゃ</rt></ruby>（EV）<ruby>関連<rt>かんれん</rt></ruby>の<ruby>投資<rt>とうし</rt></ruby>と<ruby>事業<rt>じぎょう</rt></ruby><ruby>再編<rt>さいへん</rt></ruby>に<ruby>伴う<rt>ともなう</rt></ruby><ruby>損失<rt>そんしつ</rt></ruby>が<ruby>主因<rt>しゅいん</rt></ruby>である。この<ruby>結果<rt>けっか</rt></ruby>は、<ruby>世界的<rt>せかいてき</rt></ruby>なEV<ruby>転換<rt>てんかん</rt></ruby>が<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>大手<rt>おおて</rt></ruby>メーカーにとっていかに<ruby>巨額<rt>きょがく</rt></ruby>のコストを<ruby>伴う<rt>ともなう</rt></ruby>かを<ruby>浮き彫り<rt>うきぼり</rt></ruby>にしており、<ruby>業界全体<rt>ぎょうかいぜんたい</rt></ruby>への<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>注視<rt>ちゅうし</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Honda posts first full-year loss since listing as EV costs mount</h2>
+              <p class="body en-body">Honda reported an operating loss of ¥414.3 billion and a net loss of ¥423.9 billion for fiscal 2025, marking its first full-year loss since listing. The red ink was driven by electric vehicle investments and business restructuring costs. The result highlights how expensive the global EV transition has become for even Japan's biggest automakers.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ENEOS<ruby>管理<rt>かんり</rt></ruby>タンカー、ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>を<ruby>通過<rt>つうか</rt></ruby></h2>
+              <p class="body">ENEOSホールディングスが<ruby>管理<rt>かんり</rt></ruby>する<ruby>原油<rt>げんゆ</rt></ruby>タンカーが、<ruby>事実上<rt>じじつじょう</rt></ruby><ruby>封鎖<rt>ふうさ</rt></ruby><ruby>状態<rt>じょうたい</rt></ruby>にあるホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>を<ruby>通過<rt>つうか</rt></ruby>したことが<ruby>判明<rt>はんめい</rt></ruby>した。<ruby>日本企業<rt>にほんきぎょう</rt></ruby><ruby>管理<rt>かんり</rt></ruby>の<ruby>船舶<rt>せんぱく</rt></ruby>としては、<ruby>先月<rt>せんげつ</rt></ruby>の<ruby>出光<rt>いでみつ</rt></ruby><ruby>丸<rt>まる</rt></ruby>に<ruby>続き<rt>つづき</rt></ruby>2<ruby>隻<rt>せき</rt></ruby><ruby>目の<rt>めの</rt></ruby><ruby>通過<rt>つうか</rt></ruby>となる。<ruby>日本<rt>にっぽん</rt></ruby>はエネルギー<ruby>輸入<rt>ゆにゅう</rt></ruby>の<ruby>多く<rt>おおく</rt></ruby>を<ruby>同<rt>どう</rt></ruby><ruby>海峡<rt>かいきょう</rt></ruby><ruby>経由<rt>けいゆ</rt></ruby>に<ruby>依存<rt>いぞん</rt></ruby>しており、<ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby>の<ruby>緊迫<rt>きんぱく</rt></ruby><ruby>化<rt>か</rt></ruby>が<ruby>続く<rt>つづく</rt></ruby><ruby>中<rt>なか</rt></ruby>、<ruby>航路<rt>こうろ</rt></ruby>の<ruby>安全確保<rt>あんぜんかくほ</rt></ruby>と<ruby>燃料<rt>ねんりょう</rt></ruby><ruby>調達<rt>ちょうたつ</rt></ruby>の<ruby>安定<rt>あんてい</rt></ruby>が<ruby>喫緊<rt>きっきん</rt></ruby>の<ruby>課題<rt>かだい</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">ENEOS-managed crude tanker passes through Strait of Hormuz</h2>
+              <p class="body en-body">A crude oil tanker managed by ENEOS Holdings has passed through the Strait of Hormuz despite the waterway's effective closure during the regional crisis. It is only the second Japanese-managed vessel known to have made the passage, following the IDEMITSU MARU last month. The development is significant for Japan's energy security as Middle East tensions continue to affect shipping routes.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米<rt>こめ</rt></ruby>VC<ruby>大手<rt>おおて</rt></ruby>a16z、この<ruby>夏<rt>なつ</rt></ruby>に<ruby>日本<rt>にっぽん</rt></ruby><ruby>拠点<rt>きょてん</rt></ruby><ruby>設立<rt>せつりつ</rt></ruby>へ</h2>
+              <p class="body"><ruby>米大<rt>べいだい</rt></ruby><ruby>手<rt>て</rt></ruby>ベンチャーキャピタル、アンドリーセン・ホロウィッツ（a16z）の<ruby>創業者<rt>そうぎょうしゃ</rt></ruby>が、<ruby>高市<rt>たかいち</rt></ruby><ruby>早苗<rt>さなえ</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>にこの<ruby>夏<rt>なつ</rt></ruby>の<ruby>日本<rt>にっぽん</rt></ruby><ruby>拠点<rt>きょてん</rt></ruby><ruby>設立<rt>せつりつ</rt></ruby><ruby>計画<rt>けいかく</rt></ruby>を<ruby>伝え<rt>つたえ</rt></ruby>る<ruby>見通し<rt>みとおし</rt></ruby>であることが<ruby>分か<rt>わか</rt></ruby>った。<ruby>同社<rt>どうしゃ</rt></ruby>は<ruby>防衛<rt>ぼうえい</rt></ruby><ruby>関連<rt>かんれん</rt></ruby>の<ruby>投資<rt>とうし</rt></ruby>に<ruby>注力<rt>ちゅうりょく</rt></ruby>しており、<ruby>高市<rt>たかいち</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>はスタートアップが<ruby>国家<rt>こっか</rt></ruby><ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>に<ruby>果た<rt>はた</rt></ruby>す<ruby>役割<rt>やくわり</rt></ruby>を<ruby>重視<rt>じゅうし</rt></ruby>する<ruby>姿勢<rt>しせい</rt></ruby>を<ruby>示す<rt>しめす</rt></ruby><ruby>方針<rt>ほうしん</rt></ruby>である。<ruby>先端技術<rt>せんたんぎじゅつ</rt></ruby>や<ruby>防衛<rt>ぼうえい</rt></ruby><ruby>分野<rt>ぶんや</rt></ruby>における<ruby>戦略的<rt>せんりゃくてき</rt></ruby>な<ruby>海外<rt>かいがい</rt></ruby><ruby>投資<rt>とうし</rt></ruby>の<ruby>誘致<rt>ゆうち</rt></ruby>を<ruby>進め<rt>すすめ</rt></ruby>る<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>動き<rt>うごき</rt></ruby>を<ruby>象徴<rt>しょうちょう</rt></ruby>する<ruby>出来事<rt>できごと</rt></ruby>となりそうだ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Andreessen Horowitz to open Japan office this summer</h2>
+              <p class="body en-body">The founder of US venture capital giant Andreessen Horowitz is expected to inform PM Sanae Takaichi of plans to establish a Japan base this summer. The firm is especially active in defence-related investment, and Takaichi is set to emphasise the role of startups in national security. The move underlines Japan's push to attract strategic foreign investment in advanced technology and defence innovation.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-05-14 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "党首選", "reading": "とうしゅせん", "english": "party leadership election"}, {"word": "挑戦", "reading": "ちょうせん", "english": "challenge"}, {"word": "国会開会式", "reading": "こっかいかいかいしき", "english": "State Opening of Parliament"}, {"word": "求心力", "reading": "きゅうしんりょく", "english": "centripetal force; leadership pull"}, {"word": "説得", "reading": "せっとく", "english": "persuasion"}], [{"word": "航空運賃", "reading": "こうくううんちん", "english": "air fares"}, {"word": "高騰", "reading": "こうとう", "english": "surge; sharp rise"}, {"word": "不可避", "reading": "ふかひ", "english": "inevitable; unavoidable"}, {"word": "精製能力", "reading": "せいせいのうりょく", "english": "refining capacity"}, {"word": "供給網", "reading": "きょうきゅうもう", "english": "supply chain/network"}], [{"word": "枯渇", "reading": "こかつ", "english": "depletion; exhaustion"}, {"word": "停電", "reading": "ていでん", "english": "power outage; blackout"}, {"word": "抗議デモ", "reading": "こうぎデモ", "english": "protest demonstration"}, {"word": "制裁", "reading": "せいさい", "english": "sanctions"}, {"word": "在庫", "reading": "ざいこ", "english": "inventory; stock"}], [{"word": "歳入関税庁", "reading": "さいにゅうかんぜいちょう", "english": "HMRC (revenue and customs agency)"}, {"word": "詐欺", "reading": "さぎ", "english": "fraud"}, {"word": "確定申告", "reading": "かくていしんこく", "english": "tax return; final tax filing"}, {"word": "締結", "reading": "ていけつ", "english": "conclusion (of a contract)"}, {"word": "主権", "reading": "しゅけん", "english": "sovereignty"}], [{"word": "通期赤字", "reading": "つうきあかじ", "english": "full-year loss"}, {"word": "上場", "reading": "じょうじょう", "english": "stock market listing"}, {"word": "事業再編", "reading": "じぎょうさいへん", "english": "business restructuring"}, {"word": "浮き彫り", "reading": "うきぼり", "english": "bringing into relief; highlighting"}, {"word": "計上", "reading": "けいじょう", "english": "recording (a figure/loss)"}], [{"word": "海峡", "reading": "かいきょう", "english": "strait; channel"}, {"word": "封鎖", "reading": "ふうさ", "english": "blockade; closure"}, {"word": "船舶", "reading": "せんぱく", "english": "vessel; ship"}, {"word": "喫緊", "reading": "きっきん", "english": "urgent; pressing"}, {"word": "燃料調達", "reading": "ねんりょうちょうたつ", "english": "fuel procurement"}], [{"word": "拠点", "reading": "きょてん", "english": "base; foothold"}, {"word": "防衛", "reading": "ぼうえい", "english": "defence; national defence"}, {"word": "誘致", "reading": "ゆうち", "english": "attraction; invitation (of investment)"}, {"word": "注力", "reading": "ちゅうりょく", "english": "focus; concentrate efforts"}, {"word": "方針", "reading": "ほうしん", "english": "policy; course of action"}]];
+    const LABELS  = [{"section": "英国", "headline": "ストリーティング保健相、スターマー首相に党首選挑戦か"}, {"section": "国際", "headline": "イラン戦争で欧州の航空運賃値上げ「不可避」"}, {"section": "国際", "headline": "キューバ、ディーゼルと重油が完全枯渇"}, {"section": "英国・経済", "headline": "英歳入関税庁、AI詐欺検知に英企業と1.75億ポンド契約"}, {"section": "日本・経済", "headline": "ホンダ、上場以来初の通期赤字　EV投資が重荷"}, {"section": "日本・経済", "headline": "ENEOS管理タンカー、ホルムズ海峡を通過"}, {"section": "日本・経済", "headline": "米VC大手a16z、この夏に日本拠点設立へ"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
