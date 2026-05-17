@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年5月17日（日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年5月17日（日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby><ruby>党首<rt>とうしゅ</rt></ruby><ruby>争い<rt>あらそい</rt></ruby>、ブレグジット<ruby>問題<rt>もんだい</rt></ruby><ruby>再燃<rt>さいねん</rt></ruby></h2>
+              <p class="body"><ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>の<ruby>次期<rt>じき</rt></ruby><ruby>党首<rt>とうしゅ</rt></ruby><ruby>候補<rt>こうほ</rt></ruby>たちがEUとの<ruby>関係<rt>かんけい</rt></ruby>について<ruby>立場<rt>たちば</rt></ruby>を<ruby>表明<rt>ひょうめい</rt></ruby>する<ruby>中<rt>なか</rt></ruby>、ブレグジットが<ruby>再び<rt>ふたたび</rt></ruby><ruby>国内<rt>こくない</rt></ruby><ruby>政治<rt>せいじ</rt></ruby>の<ruby>中心<rt>ちゅうしん</rt></ruby><ruby>議題<rt>ぎだい</rt></ruby>に<ruby>浮上<rt>ふじょう</rt></ruby>している。メイカーフィールド<ruby>補欠<rt>ほけつ</rt></ruby><ruby>選挙<rt>せんきょ</rt></ruby>でも<ruby>主要<rt>しゅよう</rt></ruby><ruby>争点<rt>そうてん</rt></ruby>になると<ruby>見ら<rt>みら</rt></ruby>れ、<ruby>一度<rt>いちど</rt></ruby>は<ruby>決着<rt>けっちゃく</rt></ruby>がついたと<ruby>思わ<rt>おもわ</rt></ruby>れた<ruby>問題<rt>もんだい</rt></ruby>が<ruby>再び<rt>ふたたび</rt></ruby><ruby>主流<rt>しゅりゅう</rt></ruby>の<ruby>政治論<rt>せいじろん</rt></ruby><ruby>争<rt>そう</rt></ruby>に<ruby>戻り<rt>もどり</rt></ruby>つつある。<ruby>英国<rt>えいこく</rt></ruby><ruby>政治<rt>せいじ</rt></ruby>の<ruby>不安定<rt>ふあんてい</rt></ruby>さと<ruby>野党<rt>やとう</rt></ruby>の<ruby>方向性<rt>ほうこうせい</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>不透明感<rt>ふとうめいかん</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Labour leadership race puts Brexit back in spotlight</h2>
+              <p class="body en-body">Brexit is returning to the centre of British domestic politics as potential Labour leadership contenders stake out positions on the UK's relationship with the European Union. The issue is also expected to shape the coming Makerfield by-election, suggesting arguments once thought settled are re-entering mainstream debate.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英国<rt>えいこく</rt></ruby><ruby>債<rt>さい</rt></ruby><ruby>利回り<rt>りまわり</rt></ruby><ruby>上昇<rt>じょうしょう</rt></ruby>、ポンドも<ruby>下落<rt>げらく</rt></ruby>　<ruby>政治<rt>せいじ</rt></ruby><ruby>混乱<rt>こんらん</rt></ruby>が<ruby>市場<rt>しじょう</rt></ruby>を<ruby>直撃<rt>ちょくげき</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>の<ruby>政治的<rt>せいじてき</rt></ruby><ruby>混乱<rt>こんらん</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、<ruby>国債<rt>こくさい</rt></ruby><ruby>利回り<rt>りまわり</rt></ruby>が<ruby>上昇<rt>じょうしょう</rt></ruby>し、ポンドが<ruby>下落<rt>げらく</rt></ruby>した。アナリストは、バーナム<ruby>氏<rt>し</rt></ruby>が<ruby>率い<rt>ひきい</rt></ruby>る<ruby>政権<rt>せいけん</rt></ruby>が<ruby>公的<rt>こうてき</rt></ruby><ruby>借入<rt>しゃくにゅう</rt></ruby>を<ruby>拡大<rt>かくだい</rt></ruby>する<ruby>可能性<rt>かのうせい</rt></ruby>への<ruby>懸念<rt>けねん</rt></ruby>が、<ruby>投資家<rt>とうしか</rt></ruby>の<ruby>慎重<rt>しんちょう</rt></ruby><ruby>姿勢<rt>しせい</rt></ruby>を<ruby>招い<rt>まねい</rt></ruby>ていると<ruby>指摘<rt>してき</rt></ruby>する。<ruby>党首<rt>とうしゅ</rt></ruby><ruby>争い<rt>あらそい</rt></ruby>の<ruby>行方<rt>なめがた</rt></ruby>が<ruby>財政<rt>ざいせい</rt></ruby><ruby>政策<rt>せいさく</rt></ruby>への<ruby>信頼<rt>しんらい</rt></ruby>に<ruby>直接影響<rt>ちょくせつえいきょう</rt></ruby>を<ruby>及ぼ<rt>およぼ</rt></ruby>している<ruby>格好<rt>かっこう</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK borrowing costs rise and pound falls amid political turmoil</h2>
+              <p class="body en-body">Financial markets reacted nervously to Britain's latest political turbulence, with government borrowing costs rising and the pound weakening. Analysts say fears that a Burnham-led government could rely on higher public borrowing have made investors more cautious about UK fiscal policy.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">WHO、コンゴのエボラ<ruby>流行<rt>りゅうこう</rt></ruby>を「<ruby>国際的<rt>こくさいてき</rt></ruby><ruby>緊急事態<rt>きんきゅうじたい</rt></ruby>」に<ruby>指定<rt>してい</rt></ruby></h2>
+              <p class="body"><ruby>世界<rt>せかい</rt></ruby><ruby>保健<rt>ほけん</rt></ruby><ruby>機関<rt>きかん</rt></ruby>は、コンゴ<ruby>民主<rt>みんしゅ</rt></ruby><ruby>共和国<rt>きょうわこく</rt></ruby>におけるエボラ<ruby>出血<rt>しゅっけつ</rt></ruby><ruby>熱<rt>ねつ</rt></ruby>の<ruby>流行<rt>りゅうこう</rt></ruby>を「<ruby>国際的<rt>こくさいてき</rt></ruby>に<ruby>懸念<rt>けねん</rt></ruby>される<ruby>公衆衛生<rt>こうしゅうえいせい</rt></ruby><ruby>上の<rt>うえの</rt></ruby><ruby>緊急事態<rt>きんきゅうじたい</rt></ruby>」に<ruby>指定し<rt>していし</rt></ruby>た。<ruby>感染者数<rt>かんせんしゃすう</rt></ruby>は<ruby>約<rt>やく</rt></ruby>246<ruby>人<rt>にん</rt></ruby>、<ruby>死者<rt>ししゃ</rt></ruby>は<ruby>約<rt>やく</rt></ruby>80<ruby>人<rt>にん</rt></ruby>に<ruby>上る<rt>のぼる</rt></ruby>。WHOは、パンデミック<ruby>緊急事態<rt>きんきゅうじたい</rt></ruby>の<ruby>基準<rt>きじゅん</rt></ruby>には<ruby>達し<rt>たっし</rt></ruby>ていないものの、<ruby>国際的<rt>こくさいてき</rt></ruby>な<ruby>資金援助<rt>しきんえんじょ</rt></ruby>や<ruby>医療<rt>いりょう</rt></ruby><ruby>支援<rt>しえん</rt></ruby>、<ruby>国境<rt>こっきょう</rt></ruby>を<ruby>越え<rt>こえ</rt></ruby>た<ruby>監視<rt>かんし</rt></ruby><ruby>体制<rt>たいせい</rt></ruby>の<ruby>強化<rt>きょうか</rt></ruby>が<ruby>不可欠<rt>ふかけつ</rt></ruby>であるとしている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">WHO declares DR Congo Ebola outbreak a global health emergency</h2>
+              <p class="body en-body">The World Health Organization has declared the Ebola outbreak in the Democratic Republic of Congo a global health emergency, with roughly 246 cases and around 80 deaths reported. The declaration is expected to increase pressure for international funding, medical support, and cross-border monitoring.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英軍<rt>えいぐん</rt></ruby><ruby>戦闘機<rt>せんとうき</rt></ruby>に<ruby>対<rt>つい</rt></ruby>ドローンミサイル<ruby>搭載<rt>とうさい</rt></ruby>へ</h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>は<ruby>戦闘機<rt>せんとうき</rt></ruby>に<ruby>新型<rt>しんがた</rt></ruby>の<ruby>対<rt>つい</rt></ruby>ドローンミサイルシステムを<ruby>搭載<rt>とうさい</rt></ruby>する<ruby>準備<rt>じゅんび</rt></ruby>を<ruby>進め<rt>すすめ</rt></ruby>ている。イランのシャヘドドローンなどの<ruby>低コスト<rt>ていこすと</rt></ruby>の<ruby>脅威<rt>きょうい</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>、<ruby>安価<rt>あんか</rt></ruby>かつ<ruby>効果的<rt>こうかてき</rt></ruby>な<ruby>迎撃<rt>げいげき</rt></ruby><ruby>手段<rt>しゅだん</rt></ruby>を<ruby>確保<rt>かくほ</rt></ruby>する<ruby>狙い<rt>ねらい</rt></ruby>である。<ruby>低コスト<rt>ていこすと</rt></ruby>ドローンが<ruby>現代<rt>げんだい</rt></ruby>の<ruby>戦争<rt>せんそう</rt></ruby>を<ruby>急速<rt>きゅうそく</rt></ruby>に<ruby>変え<rt>かえ</rt></ruby>つつある<ruby>中<rt>なか</rt></ruby>、<ruby>英国<rt>えいこく</rt></ruby>は<ruby>中東<rt>ちゅうとう</rt></ruby>などで<ruby>見ら<rt>みら</rt></ruby>れる<ruby>新た<rt>あらた</rt></ruby>な<ruby>脅威<rt>きょうい</rt></ruby>に<ruby>柔軟に<rt>じゅうなんに</rt></ruby><ruby>対応<rt>たいおう</rt></ruby>できる<ruby>防衛<rt>ぼうえい</rt></ruby><ruby>態勢<rt>たいせい</rt></ruby>の<ruby>構築<rt>こうちく</rt></ruby>を<ruby>目指し<rt>めざし</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">British fighter jets to be equipped with anti-drone missiles</h2>
+              <p class="body en-body">The UK is preparing to equip its fighter jets with new anti-drone missile systems designed as a cheaper way to counter threats such as Iranian Shahed drones. The move reflects how rapidly low-cost drones are changing modern warfare and Britain's push to adapt its defence spending accordingly.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>栃木<rt>とちぎ</rt></ruby><ruby>強盗<rt>ごうとう</rt></ruby><ruby>殺人<rt>さつじん</rt></ruby>、「<ruby>指示<rt>しじ</rt></ruby><ruby>役<rt>やく</rt></ruby>」の28<ruby>歳男<rt>としおとこ</rt></ruby>を<ruby>逮捕<rt>たいほ</rt></ruby></h2>
+              <p class="body"><ruby>栃木県<rt>とちぎけん</rt></ruby><ruby>上三川<rt>かみのかわ</rt></ruby><ruby>町<rt>まち</rt></ruby>の<ruby>住宅<rt>じゅうたく</rt></ruby>で<ruby>起き<rt>おき</rt></ruby>た<ruby>強盗<rt>ごうとう</rt></ruby><ruby>殺人事件<rt>さつじんじけん</rt></ruby>で、<ruby>警察<rt>けいさつ</rt></ruby>は<ruby>指示<rt>しじ</rt></ruby><ruby>役<rt>やく</rt></ruby>とみられる28<ruby>歳<rt>とし</rt></ruby>の<ruby>男<rt>おとこ</rt></ruby>を<ruby>逮捕<rt>たいほ</rt></ruby>した。<ruby>事件<rt>じけん</rt></ruby>では<ruby>一家<rt>いっか</rt></ruby>3<ruby>人<rt>にん</rt></ruby>が<ruby>死傷<rt>ししょう</rt></ruby>しており、<ruby>容疑者<rt>ようぎしゃ</rt></ruby>は<ruby>実行犯<rt>じっこうはん</rt></ruby>に<ruby>遠隔<rt>えんかく</rt></ruby>で<ruby>指示<rt>しじ</rt></ruby>を<ruby>出し<rt>だし</rt></ruby>ていたと<ruby>見ら<rt>みら</rt></ruby>れている。<ruby>警察<rt>けいさつ</rt></ruby>は<ruby>他に<rt>ほかに</rt></ruby>も<ruby>関与<rt>かんよ</rt></ruby><ruby>者<rt>もの</rt></ruby>がいるとみて<ruby>捜査<rt>そうさ</rt></ruby>を<ruby>続け<rt>つづけ</rt></ruby>ており、<ruby>事件<rt>じけん</rt></ruby>の<ruby>全容<rt>ぜんよう</rt></ruby>はまだ<ruby>明らか<rt>あきらか</rt></ruby>になっていない。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Alleged ringleader arrested in Tochigi robbery-murder case</h2>
+              <p class="body en-body">Police have arrested a 28-year-old man suspected of orchestrating a robbery-murder at a home in Kaminokawa, Tochigi Prefecture, that left three family members dead or injured. Investigators believe he directed the attack remotely rather than carrying it out himself, and the search for additional suspects continues.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">5<ruby>月中<rt>がつちゅう</rt></ruby><ruby>旬<rt>じゅん</rt></ruby>に<ruby>真夏日<rt>まなつび</rt></ruby>、<ruby>各地<rt>かくち</rt></ruby>で<ruby>熱中<rt>ねっちゅう</rt></ruby><ruby>症<rt>しょう</rt></ruby>に<ruby>警戒<rt>けいかい</rt></ruby></h2>
+              <p class="body">5<ruby>月中<rt>がつちゅう</rt></ruby><ruby>旬<rt>じゅん</rt></ruby>にもかかわらず、<ruby>日本各地<rt>にほんかくち</rt></ruby>で<ruby>朝<rt>あさ</rt></ruby>から<ruby>気温<rt>きおん</rt></ruby>が30<ruby>度<rt>ど</rt></ruby>に<ruby>達す<rt>たっす</rt></ruby>る<ruby>真夏<rt>まなつ</rt></ruby><ruby>並み<rt>なみ</rt></ruby>の<ruby>暑さ<rt>あつさ</rt></ruby>となっている。<ruby>気象庁<rt>きしょうちょう</rt></ruby>は<ruby>午後<rt>ごご</rt></ruby>にかけてさらに<ruby>気温<rt>きおん</rt></ruby>が<ruby>上が<rt>あが</rt></ruby>ると<ruby>予測<rt>よそく</rt></ruby>しており、<ruby>熱中<rt>ねっちゅう</rt></ruby><ruby>症<rt>しょう</rt></ruby>への<ruby>注意<rt>ちゅうい</rt></ruby>を<ruby>呼び<rt>よび</rt></ruby>かけている。<ruby>夏<rt>なつ</rt></ruby><ruby>本番<rt>ほんばん</rt></ruby>を<ruby>前<rt>まえ</rt></ruby>に<ruby>体<rt>からだ</rt></ruby>が<ruby>暑さ<rt>あつさ</rt></ruby>に<ruby>順応<rt>じゅんのう</rt></ruby>していない<ruby>時期<rt>じき</rt></ruby>の<ruby>急な<rt>きゅうな</rt></ruby><ruby>高温<rt>こうおん</rt></ruby>は、<ruby>特に<rt>とくに</rt></ruby><ruby>危険<rt>きけん</rt></ruby>であるとされる。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Midsummer heat hits Japan in mid-May, heatstroke warnings issued</h2>
+              <p class="body en-body">Large parts of Japan are experiencing unusually hot weather for mid-May, with some areas reaching 30 degrees Celsius from the morning. Forecasters warn that temperatures will rise further through the afternoon, raising the risk of heatstroke before bodies have acclimatised to summer heat.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・スポーツ</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>大谷<rt>おおたに</rt></ruby><ruby>翔平<rt>しょうへい</rt></ruby>、5<ruby>打点<rt>だてん</rt></ruby>の<ruby>大活躍<rt>だいかつやく</rt></ruby>でドジャース4<ruby>連勝<rt>れんしょう</rt></ruby></h2>
+              <p class="body">ドジャースの<ruby>大谷<rt>おおたに</rt></ruby><ruby>翔平<rt>しょうへい</rt></ruby><ruby>選手<rt>せんしゅ</rt></ruby>が<ruby>古巣<rt>ふるす</rt></ruby>エンゼルス<ruby>戦<rt>せん</rt></ruby>で<ruby>長打<rt>ちょうだ</rt></ruby>2<ruby>本<rt>ほん</rt></ruby>を<ruby>含む<rt>ふくむ</rt></ruby>5<ruby>打点<rt>だてん</rt></ruby>を<ruby>記録<rt>きろく</rt></ruby>し、<ruby>今季<rt>こんき</rt></ruby><ruby>一試合<rt>いっしあい</rt></ruby>での<ruby>最多<rt>さいた</rt></ruby><ruby>打点<rt>だてん</rt></ruby>となった。この<ruby>活躍<rt>かつやく</rt></ruby>によりドジャースは4<ruby>連勝<rt>れんしょう</rt></ruby>を<ruby>達成<rt>たっせい</rt></ruby>した。<ruby>大谷<rt>おおたに</rt></ruby><ruby>選手<rt>せんしゅ</rt></ruby>は<ruby>野球界<rt>やきゅうかい</rt></ruby>を<ruby>超え<rt>こえ</rt></ruby>た<ruby>国民的<rt>こくみんてき</rt></ruby><ruby>存在<rt>そんざい</rt></ruby>であり、<ruby>海外<rt>かいがい</rt></ruby>での<ruby>活躍<rt>かつやく</rt></ruby>は<ruby>日本国内<rt>にほんこくない</rt></ruby>でも<ruby>幅広い<rt>はばひろい</rt></ruby><ruby>関心<rt>かんしん</rt></ruby>を<ruby>集め<rt>あつめ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Ohtani drives in five as Dodgers win fourth straight</h2>
+              <p class="body en-body">Shohei Ohtani recorded five RBIs with two extra-base hits against his former team, the Angels, marking his highest single-game total of the season. The performance powered the Dodgers to their fourth consecutive victory and drew widespread attention across Japan.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-05-17 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "党首", "reading": "とうしゅ", "english": "party leader"}, {"word": "浮上", "reading": "ふじょう", "english": "to surface, to emerge"}, {"word": "補欠選挙", "reading": "ほけつせんきょ", "english": "by-election"}, {"word": "争点", "reading": "そうてん", "english": "point of contention"}, {"word": "不透明感", "reading": "ふとうめいかん", "english": "sense of uncertainty"}], [{"word": "国債", "reading": "こくさい", "english": "government bond"}, {"word": "利回り", "reading": "りまわり", "english": "yield, rate of return"}, {"word": "借入", "reading": "かりいれ", "english": "borrowing"}, {"word": "財政政策", "reading": "ざいせいせいさく", "english": "fiscal policy"}, {"word": "慎重姿勢", "reading": "しんちょうしせい", "english": "cautious stance"}], [{"word": "緊急事態", "reading": "きんきゅうじたい", "english": "state of emergency"}, {"word": "公衆衛生", "reading": "こうしゅうえいせい", "english": "public health"}, {"word": "感染者", "reading": "かんせんしゃ", "english": "infected person"}, {"word": "監視体制", "reading": "かんしたいせい", "english": "monitoring system"}, {"word": "不可欠", "reading": "ふかけつ", "english": "indispensable, essential"}], [{"word": "搭載", "reading": "とうさい", "english": "to equip, to mount"}, {"word": "迎撃", "reading": "げいげき", "english": "interception"}, {"word": "脅威", "reading": "きょうい", "english": "threat"}, {"word": "防衛態勢", "reading": "ぼうえいたいせい", "english": "defence posture"}, {"word": "戦闘機", "reading": "せんとうき", "english": "fighter jet"}], [{"word": "強盗殺人", "reading": "ごうとうさつじん", "english": "robbery-murder"}, {"word": "指示役", "reading": "しじやく", "english": "ringleader, person giving orders"}, {"word": "死傷", "reading": "ししょう", "english": "casualties (dead and injured)"}, {"word": "実行犯", "reading": "じっこうはん", "english": "perpetrator"}, {"word": "全容", "reading": "ぜんよう", "english": "full picture, entire scope"}], [{"word": "真夏日", "reading": "まなつび", "english": "midsummer day (over 30°C)"}, {"word": "熱中症", "reading": "ねっちゅうしょう", "english": "heatstroke"}, {"word": "気象庁", "reading": "きしょうちょう", "english": "Japan Meteorological Agency"}, {"word": "順応", "reading": "じゅんのう", "english": "acclimatisation, adaptation"}, {"word": "高温", "reading": "こうおん", "english": "high temperature"}], [{"word": "打点", "reading": "だてん", "english": "RBI (runs batted in)"}, {"word": "長打", "reading": "ちょうだ", "english": "extra-base hit"}, {"word": "古巣", "reading": "ふるす", "english": "former team/home"}, {"word": "連勝", "reading": "れんしょう", "english": "consecutive wins"}, {"word": "国民的", "reading": "こくみんてき", "english": "national (beloved by all)"}]];
+    const LABELS  = [{"section": "英国", "headline": "労働党党首争い、ブレグジット問題再燃"}, {"section": "経済", "headline": "英国債利回り上昇、ポンドも下落　政治混乱が市場を直撃"}, {"section": "国際", "headline": "WHO、コンゴのエボラ流行を「国際的緊急事態」に指定"}, {"section": "英国・世界", "headline": "英軍戦闘機に対ドローンミサイル搭載へ"}, {"section": "日本・社会", "headline": "栃木強盗殺人、「指示役」の28歳男を逮捕"}, {"section": "日本・社会", "headline": "5月中旬に真夏日、各地で熱中症に警戒"}, {"section": "日本・スポーツ", "headline": "大谷翔平、5打点の大活躍でドジャース4連勝"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
