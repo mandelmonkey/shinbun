@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年5月20日（水）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年5月20日（水）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英<rt>えい</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>、<ruby>燃料<rt>ねんりょう</rt></ruby><ruby>高騰<rt>こうとう</rt></ruby><ruby>受け<rt>うけ</rt></ruby>ロシア<ruby>産<rt>さん</rt></ruby><ruby>石油<rt>せきゆ</rt></ruby><ruby>制裁<rt>せいさい</rt></ruby>を<ruby>一部<rt>いちぶ</rt></ruby><ruby>緩和<rt>かんわ</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>はロシア<ruby>産<rt>さん</rt></ruby><ruby>石油製品<rt>せきゆせいひん</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>制裁<rt>せいさい</rt></ruby>の<ruby>一部<rt>いちぶ</rt></ruby>を<ruby>免除<rt>めんじょ</rt></ruby>する<ruby>措置<rt>そち</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。ホルムズ<ruby>海峡<rt>かいきょう</rt></ruby>の<ruby>事実上<rt>じじつじょう</rt></ruby>の<ruby>封鎖<rt>ふうさ</rt></ruby>により<ruby>燃料<rt>ねんりょう</rt></ruby><ruby>供給<rt>きょうきゅう</rt></ruby>が<ruby>逼迫<rt>ひっぱく</rt></ruby>し、<ruby>価格<rt>かかく</rt></ruby>が<ruby>急騰<rt>きゅうとう</rt></ruby>していることが<ruby>背景<rt>はいけい</rt></ruby>にある。<ruby>政府<rt>せいふ</rt></ruby>は<ruby>外交<rt>がいこう</rt></ruby><ruby>政策上<rt>せいさくじょう</rt></ruby>の<ruby>目標<rt>もくひょう</rt></ruby>と<ruby>国民<rt>こくみん</rt></ruby>の<ruby>生活費<rt>せいかつひ</rt></ruby><ruby>負担<rt>ふたん</rt></ruby>とのバランスを<ruby>迫ら<rt>せまら</rt></ruby>れており、<ruby>家庭<rt>かてい</rt></ruby>や<ruby>企業<rt>きぎょう</rt></ruby>への<ruby>経済的<rt>けいざいてき</rt></ruby><ruby>影響<rt>えいきょう</rt></ruby>を<ruby>考慮し<rt>こうりょし</rt></ruby>た<ruby>判断<rt>はんだん</rt></ruby>であると<ruby>説明し<rt>せつめいし</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK eases Russian oil sanctions as fuel prices surge</h2>
+              <p class="body en-body">The UK government has issued a waiver easing some sanctions on Russian oil products amid mounting pressure on fuel supplies. The effective blockade of the Strait of Hormuz has pushed prices higher, raising fears of broader economic disruption. Officials say the move reflects the tension between foreign policy objectives and the immediate cost-of-living pressure on households and businesses.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英<rt>えい</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>、スーパーに<ruby>主食<rt>しゅしょく</rt></ruby><ruby>品<rt>ひん</rt></ruby>の<ruby>自主的<rt>じしゅてき</rt></ruby><ruby>価格<rt>かかく</rt></ruby><ruby>制限<rt>せいげん</rt></ruby>を<ruby>要請<rt>ようせい</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>は<ruby>大手<rt>おおて</rt></ruby>スーパーマーケットに<ruby>対し<rt>たいし</rt></ruby>、<ruby>卵<rt>たまご</rt></ruby>やパン、<ruby>牛乳<rt>ぎゅうにゅう</rt></ruby>などの<ruby>主食<rt>しゅしょく</rt></ruby><ruby>品<rt>ひん</rt></ruby>について<ruby>自主的<rt>じしゅてき</rt></ruby>な<ruby>価格<rt>かかく</rt></ruby><ruby>上限<rt>じょうげん</rt></ruby>を<ruby>設け<rt>もうけ</rt></ruby>るよう<ruby>要請<rt>ようせい</rt></ruby>した。<ruby>生活費<rt>せいかつひ</rt></ruby>の<ruby>高<rt>たか</rt></ruby><ruby>止まり<rt>どまり</rt></ruby>が<ruby>続く<rt>つづく</rt></ruby><ruby>中<rt>なか</rt></ruby>、<ruby>消費者<rt>しょうひしゃ</rt></ruby>の<ruby>負担<rt>ふたん</rt></ruby><ruby>軽減<rt>けいげん</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>た<ruby>目に<rt>めに</rt></ruby><ruby>見え<rt>みえ</rt></ruby>る<ruby>対策<rt>たいさく</rt></ruby>を<ruby>打ち出す<rt>うちだす</rt></ruby><ruby>狙い<rt>ねらい</rt></ruby>である。しかし、<ruby>小売業<rt>こうりぎょう</rt></ruby><ruby>界<rt>かい</rt></ruby>からは<ruby>価格<rt>かかく</rt></ruby>への<ruby>政治<rt>せいじ</rt></ruby><ruby>介入<rt>かいにゅう</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>懸念<rt>けねん</rt></ruby>の<ruby>声<rt>こえ</rt></ruby>も<ruby>上が<rt>あが</rt></ruby>っており、<ruby>供給<rt>きょうきゅう</rt></ruby>の<ruby>歪み<rt>ひずみ</rt></ruby>や<ruby>実効性<rt>じっこうせい</rt></ruby>をめぐる<ruby>議論<rt>ぎろん</rt></ruby>が<ruby>続い<rt>つづい</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK government urges supermarkets to cap staple food prices</h2>
+              <p class="body en-body">Ministers have asked supermarkets to consider voluntary price caps on staple goods such as eggs, bread and milk. The proposal comes as the government seeks visible ways to ease pressure on families facing stubbornly high living costs. Retailers remain wary of government interference in pricing, with debate focusing on whether voluntary restraint can help consumers without creating supply distortions.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>偽<rt>にせ</rt></ruby><ruby>自動車<rt>じどうしゃ</rt></ruby><ruby>保険<rt>ほけん</rt></ruby>を<ruby>販売<rt>はんばい</rt></ruby>する「ゴーストブローカー」、<ruby>若者<rt>わかもの</rt></ruby>を<ruby>標的<rt>ひょうてき</rt></ruby>に</h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>の<ruby>金融<rt>きんゆう</rt></ruby><ruby>監督<rt>かんとく</rt></ruby><ruby>当局<rt>とうきょく</rt></ruby>は、SNSを<ruby>通じ<rt>つうじ</rt></ruby>て16<ruby>歳<rt>とし</rt></ruby>から25<ruby>歳<rt>とし</rt></ruby>の<ruby>若者<rt>わかもの</rt></ruby>に<ruby>偽<rt>にせ</rt></ruby>の<ruby>自動車<rt>じどうしゃ</rt></ruby><ruby>保険<rt>ほけん</rt></ruby>を<ruby>販売<rt>はんばい</rt></ruby>する「ゴーストブローカー」と<ruby>呼ば<rt>よば</rt></ruby>れる<ruby>犯罪<rt>はんざい</rt></ruby>グループについて<ruby>警告<rt>けいこく</rt></ruby>を<ruby>発し<rt>はっし</rt></ruby>た。<ruby>若年<rt>じゃくねん</rt></ruby>ドライバーにとって<ruby>正規<rt>せいき</rt></ruby>の<ruby>保険料<rt>ほけんりょう</rt></ruby>は<ruby>高額<rt>こうがく</rt></ruby>であり、<ruby>格安<rt>かくやす</rt></ruby>の<ruby>広告<rt>こうこく</rt></ruby>は<ruby>特に<rt>とくに</rt></ruby><ruby>魅力的<rt>みりょくてき</rt></ruby>に<ruby>映る<rt>うつる</rt></ruby>。<ruby>詐欺<rt>さぎ</rt></ruby>が<ruby>一般的<rt>いっぱんてき</rt></ruby>なオンラインプラットフォーム<ruby>上で<rt>うえで</rt></ruby><ruby>拡大<rt>かくだい</rt></ruby>している<ruby>実態<rt>じったい</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>浮き彫り<rt>うきぼり</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Ghost brokers target young drivers with fake car insurance online</h2>
+              <p class="body en-body">Britain's financial watchdog has warned that criminal 'ghost brokers' are selling fake car insurance to younger drivers through social media. The scam exploits the high cost of insurance for new motorists, making cut-price offers especially tempting. It highlights how fraud increasingly spreads through everyday online platforms.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>氏<rt>し</rt></ruby><ruby>支持<rt>しじ</rt></ruby>の<ruby>候補<rt>こうほ</rt></ruby>、<ruby>共和党<rt>きょうわとう</rt></ruby><ruby>予備選<rt>よびせん</rt></ruby>で<ruby>現職<rt>げんしょく</rt></ruby>マッシー<ruby>氏<rt>し</rt></ruby>に<ruby>勝利<rt>しょうり</rt></ruby></h2>
+              <p class="body"><ruby>米<rt>こめ</rt></ruby>ケンタッキー<ruby>州<rt>しゅう</rt></ruby>の<ruby>共和党<rt>きょうわとう</rt></ruby><ruby>予備選<rt>よびせん</rt></ruby>で、トランプ<ruby>前<rt>まえ</rt></ruby><ruby>大統領<rt>だいとうりょう</rt></ruby>が<ruby>支持<rt>しじ</rt></ruby>する<ruby>候補<rt>こうほ</rt></ruby>がトーマス・マッシー<ruby>下院<rt>かいん</rt></ruby><ruby>議員<rt>ぎいん</rt></ruby>を<ruby>破っ<rt>やぶっ</rt></ruby>た。マッシー<ruby>氏<rt>し</rt></ruby>は<ruby>長年<rt>ながねん</rt></ruby>にわたり<ruby>保守派<rt>ほしゅは</rt></ruby>として<ruby>知ら<rt>しら</rt></ruby>れてきたが、トランプ<ruby>氏<rt>し</rt></ruby>への<ruby>忠誠度<rt>ちゅうせいど</rt></ruby>が<ruby>問わ<rt>とわ</rt></ruby>れる<ruby>形<rt>かたち</rt></ruby>での<ruby>敗北<rt>はいぼく</rt></ruby>となった。この<ruby>結果<rt>けっか</rt></ruby>は、<ruby>共和党<rt>きょうわとう</rt></ruby><ruby>内<rt>ない</rt></ruby>の<ruby>党規<rt>とうき</rt></ruby><ruby>律<rt>りつ</rt></ruby>がイデオロギーよりも<ruby>個人<rt>こじん</rt></ruby>への<ruby>忠誠<rt>ちゅうせい</rt></ruby>を<ruby>軸<rt>じく</rt></ruby>に<ruby>形成<rt>けいせい</rt></ruby>されつつあることを<ruby>示す<rt>しめす</rt></ruby>ものと<ruby>見ら<rt>みら</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Trump-backed challenger ousts Republican veteran Massie in primary</h2>
+              <p class="body en-body">A Trump-backed candidate has defeated long-serving Congressman Thomas Massie in a Kentucky Republican primary. The result suggests that even established conservatives may struggle if they are seen as disloyal to Trump's movement. It signals that internal party discipline in US politics is increasingly shaped by personal allegiance rather than ideology.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>沖縄<rt>おきなわ</rt></ruby><ruby>本<rt>ほん</rt></ruby><ruby>島<rt>しま</rt></ruby><ruby>付近<rt>ふきん</rt></ruby>で<ruby>震度<rt>しんど</rt></ruby>5<ruby>強<rt>きょう</rt></ruby>、<ruby>津波<rt>つなみ</rt></ruby>の<ruby>心配<rt>しんぱい</rt></ruby>なし</h2>
+              <p class="body"><ruby>沖縄<rt>おきなわ</rt></ruby><ruby>本<rt>ほん</rt></ruby><ruby>島<rt>しま</rt></ruby><ruby>付近<rt>ふきん</rt></ruby>を<ruby>震源<rt>しんげん</rt></ruby>とするマグニチュード5.9の<ruby>地震<rt>じしん</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>し、<ruby>最大<rt>さいだい</rt></ruby><ruby>震度<rt>しんど</rt></ruby>5<ruby>強<rt>きょう</rt></ruby>を<ruby>観測<rt>かんそく</rt></ruby>した。<ruby>気象庁<rt>きしょうちょう</rt></ruby>は<ruby>津波<rt>つなみ</rt></ruby>の<ruby>心配<rt>しんぱい</rt></ruby>はないと<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>大き<rt>おおき</rt></ruby>な<ruby>被害<rt>ひがい</rt></ruby>は<ruby>確認さ<rt>かくにんさ</rt></ruby>れていないものの、<ruby>地震<rt>じしん</rt></ruby><ruby>大国<rt>たいこく</rt></ruby>である<ruby>日本<rt>にっぽん</rt></ruby>において<ruby>防災<rt>ぼうさい</rt></ruby><ruby>意識<rt>いしき</rt></ruby>の<ruby>維持<rt>いじ</rt></ruby>がいかに<ruby>重要<rt>じゅうよう</rt></ruby>であるかを<ruby>改め<rt>あらため</rt></ruby>て<ruby>示す<rt>しめす</rt></ruby><ruby>出来事<rt>できごと</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Strong earthquake hits near Okinawa, no tsunami warning</h2>
+              <p class="body en-body">A magnitude 5.9 earthquake struck near Okinawa Main Island, registering upper 5 on Japan's seismic intensity scale. The Japan Meteorological Agency said there was no risk of a tsunami. While no major damage was reported, the quake serves as a reminder of how central disaster preparedness remains in daily life in Japan.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日韓<rt>にっかん</rt></ruby><ruby>首脳<rt>しゅのう</rt></ruby>、エネルギー<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>での<ruby>協力<rt>きょうりょく</rt></ruby><ruby>強化<rt>きょうか</rt></ruby>に<ruby>合意<rt>ごうい</rt></ruby></h2>
+              <p class="body"><ruby>高市<rt>たかいち</rt></ruby><ruby>早苗<rt>さなえ</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>と<ruby>韓国<rt>かんこく</rt></ruby>のイ・ジェミョン<ruby>大統領<rt>だいとうりょう</rt></ruby>が<ruby>首脳<rt>しゅのう</rt></ruby><ruby>会談<rt>かいだん</rt></ruby>を<ruby>行い<rt>おこない</rt></ruby>、エネルギー<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby><ruby>分野<rt>ぶんや</rt></ruby>での<ruby>協力<rt>きょうりょく</rt></ruby><ruby>強化<rt>きょうか</rt></ruby>に<ruby>合意<rt>ごうい</rt></ruby>した。<ruby>備蓄<rt>びちく</rt></ruby><ruby>体制<rt>たいせい</rt></ruby>の<ruby>整備<rt>せいび</rt></ruby>やインド<ruby>太平洋地域<rt>たいへいようちいき</rt></ruby>の<ruby>安定<rt>あんてい</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>た<ruby>連携<rt>れんけい</rt></ruby>について<ruby>協議<rt>きょうぎ</rt></ruby>が<ruby>行わ<rt>おこなわ</rt></ruby>れた。<ruby>世界的<rt>せかいてき</rt></ruby>なエネルギー<ruby>供給<rt>きょうきゅう</rt></ruby>の<ruby>不確実性<rt>ふかくじつせい</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>る<ruby>中<rt>なか</rt></ruby>、<ruby>日韓<rt>にっかん</rt></ruby><ruby>両国<rt>りょうごく</rt></ruby>が<ruby>実務的<rt>じつむてき</rt></ruby>な<ruby>経済<rt>けいざい</rt></ruby><ruby>課題<rt>かだい</rt></ruby>を<ruby>通じ<rt>つうじ</rt></ruby>て<ruby>関係<rt>かんけい</rt></ruby><ruby>安定化<rt>あんていか</rt></ruby>を<ruby>図る<rt>はかる</rt></ruby><ruby>姿勢<rt>しせい</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た<ruby>形<rt>かたち</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan and South Korea agree to strengthen energy security cooperation</h2>
+              <p class="body en-body">Prime Minister Takaichi Sanae and South Korean President Lee Jae Myung agreed at a summit to strengthen cooperation on energy security. Discussions covered stockpiling and broader resilience measures for the Indo-Pacific region. The meeting signals that Tokyo and Seoul are seeking to turn practical economic concerns into steadier regional cooperation.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>東京<rt>とうきょう</rt></ruby>のリチウムイオン<ruby>電池<rt>でんち</rt></ruby><ruby>火災<rt>かさい</rt></ruby>、2025<ruby>年<rt>ねん</rt></ruby>に<ruby>過去<rt>かこ</rt></ruby><ruby>最多<rt>さいた</rt></ruby>を<ruby>記録<rt>きろく</rt></ruby></h2>
+              <p class="body"><ruby>東京<rt>とうきょう</rt></ruby><ruby>消防庁<rt>しょうぼうちょう</rt></ruby>によると、リチウムイオン<ruby>電池<rt>でんち</rt></ruby>が<ruby>原因<rt>げんいん</rt></ruby>の<ruby>火災<rt>かさい</rt></ruby><ruby>件数<rt>けんすう</rt></ruby>が2025<ruby>年<rt>ねん</rt></ruby>に<ruby>過去<rt>かこ</rt></ruby><ruby>最多<rt>さいた</rt></ruby>を<ruby>記録<rt>きろく</rt></ruby>した。スマートフォンやモバイルバッテリー、<ruby>電動<rt>でんどう</rt></ruby><ruby>自転車<rt>じてんしゃ</rt></ruby>など<ruby>充電式<rt>じゅうでんしき</rt></ruby><ruby>機器<rt>きき</rt></ruby>の<ruby>普及<rt>ふきゅう</rt></ruby>が<ruby>背景<rt>はいけい</rt></ruby>にある。<ruby>消費者<rt>しょうひしゃ</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>ては<ruby>正しい<rt>ただしい</rt></ruby><ruby>充電<rt>じゅうでん</rt></ruby><ruby>方法<rt>ほうほう</rt></ruby>の<ruby>遵守<rt>じゅんしゅ</rt></ruby>や<ruby>劣化<rt>れっか</rt></ruby>した<ruby>電池<rt>でんち</rt></ruby>の<ruby>適切<rt>てきせつ</rt></ruby>な<ruby>廃棄<rt>はいき</rt></ruby>が<ruby>呼び<rt>よび</rt></ruby>かけられている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Lithium-ion battery fires in Tokyo hit record high in 2025</h2>
+              <p class="body en-body">Tokyo firefighting authorities say the number of fires caused by lithium-ion batteries reached a record high in 2025. The increase reflects the spread of rechargeable devices in everyday life, from phones and power banks to e-bikes. Consumers are being urged to follow correct charging practices and dispose of degraded batteries properly.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-05-20 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "制裁", "reading": "せいさい", "english": "sanctions"}, {"word": "緩和", "reading": "かんわ", "english": "easing; relaxation"}, {"word": "逼迫", "reading": "ひっぱく", "english": "strain; tightening"}, {"word": "封鎖", "reading": "ふうさ", "english": "blockade"}, {"word": "急騰", "reading": "きゅうとう", "english": "sharp rise; surge"}], [{"word": "主食品", "reading": "しゅしょくひん", "english": "staple foods"}, {"word": "価格上限", "reading": "かかくじょうげん", "english": "price cap"}, {"word": "負担軽減", "reading": "ふたんけいげん", "english": "burden reduction"}, {"word": "高止まり", "reading": "たかどまり", "english": "remaining high; plateauing at a high level"}, {"word": "歪み", "reading": "ゆがみ", "english": "distortion"}], [{"word": "金融監督当局", "reading": "きんゆうかんとくとうきょく", "english": "financial regulatory authority"}, {"word": "詐欺", "reading": "さぎ", "english": "fraud; scam"}, {"word": "標的", "reading": "ひょうてき", "english": "target"}, {"word": "格安", "reading": "かくやす", "english": "bargain; cut-price"}, {"word": "浮き彫り", "reading": "うきぼり", "english": "to bring to light; to highlight"}], [{"word": "予備選", "reading": "よびせん", "english": "primary election"}, {"word": "現職", "reading": "げんしょく", "english": "incumbent"}, {"word": "下院議員", "reading": "かいんぎいん", "english": "member of the House of Representatives"}, {"word": "忠誠", "reading": "ちゅうせい", "english": "loyalty; allegiance"}, {"word": "党規律", "reading": "とうきりつ", "english": "party discipline"}], [{"word": "震源", "reading": "しんげん", "english": "epicentre"}, {"word": "震度", "reading": "しんど", "english": "seismic intensity"}, {"word": "気象庁", "reading": "きしょうちょう", "english": "Japan Meteorological Agency"}, {"word": "防災意識", "reading": "ぼうさいいしき", "english": "disaster prevention awareness"}, {"word": "観測", "reading": "かんそく", "english": "observation; recording"}], [{"word": "首脳会談", "reading": "しゅのうかいだん", "english": "summit meeting"}, {"word": "備蓄", "reading": "びちく", "english": "stockpiling; reserves"}, {"word": "連携", "reading": "れんけい", "english": "cooperation; coordination"}, {"word": "不確実性", "reading": "ふかくじつせい", "english": "uncertainty"}, {"word": "安定化", "reading": "あんていか", "english": "stabilisation"}], [{"word": "消防庁", "reading": "しょうぼうちょう", "english": "fire department; fire agency"}, {"word": "火災件数", "reading": "かさいけんすう", "english": "number of fires"}, {"word": "充電式", "reading": "じゅうでんしき", "english": "rechargeable"}, {"word": "普及", "reading": "ふきゅう", "english": "spread; proliferation"}, {"word": "劣化", "reading": "れっか", "english": "degradation; deterioration"}, {"word": "廃棄", "reading": "はいき", "english": "disposal; discarding"}]];
+    const LABELS  = [{"section": "英国", "headline": "英政府、燃料高騰受けロシア産石油制裁を一部緩和"}, {"section": "英国・経済", "headline": "英政府、スーパーに主食品の自主的価格制限を要請"}, {"section": "英国・社会", "headline": "偽自動車保険を販売する「ゴーストブローカー」、若者を標的に"}, {"section": "国際", "headline": "トランプ氏支持の候補、共和党予備選で現職マッシー氏に勝利"}, {"section": "日本・社会", "headline": "沖縄本島付近で震度5強、津波の心配なし"}, {"section": "日本・政治", "headline": "日韓首脳、エネルギー安全保障での協力強化に合意"}, {"section": "日本・社会", "headline": "東京のリチウムイオン電池火災、2025年に過去最多を記録"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
