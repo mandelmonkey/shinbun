@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年5月22日（金）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年5月22日（金）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">サウスポート<ruby>事件<rt>じけん</rt></ruby>の<ruby>生存者<rt>せいぞんしゃ</rt></ruby><ruby>家族<rt>かぞく</rt></ruby>、<ruby>匿名<rt>とくめい</rt></ruby><ruby>措置<rt>そち</rt></ruby>の「<ruby>見え<rt>みえ</rt></ruby>ない<ruby>被害者<rt>ひがいしゃ</rt></ruby>」<ruby>化<rt>か</rt></ruby>を<ruby>批判<rt>ひはん</rt></ruby></h2>
+              <p class="body"><ruby>昨年<rt>さくねん</rt></ruby>のサウスポートナイフ<ruby>襲撃<rt>しゅうげき</rt></ruby><ruby>事件<rt>じけん</rt></ruby>で<ruby>生き<rt>いき</rt></ruby><ruby>延び<rt>のび</rt></ruby>た<ruby>少女<rt>しょうじょ</rt></ruby>5<ruby>人<rt>にん</rt></ruby>の<ruby>親<rt>おや</rt></ruby>たちが、<ruby>裁判所<rt>さいばんしょ</rt></ruby>の<ruby>匿名<rt>とくめい</rt></ruby><ruby>命令<rt>めいれい</rt></ruby>に<ruby>異議<rt>いぎ</rt></ruby>を<ruby>唱え<rt>となえ</rt></ruby>ている。<ruby>子供<rt>こども</rt></ruby>たちの<ruby>身元<rt>みもと</rt></ruby>を<ruby>保護<rt>ほご</rt></ruby>する<ruby>措置<rt>そち</rt></ruby>が、<ruby>公<rt>こう</rt></ruby>の<ruby>議論<rt>ぎろん</rt></ruby>から<ruby>少女<rt>しょうじょ</rt></ruby>たちの<ruby>存在<rt>そんざい</rt></ruby>をほぼ<ruby>消し去る<rt>けしさる</rt></ruby><ruby>結果<rt>けっか</rt></ruby>を<ruby>招い<rt>まねい</rt></ruby>たと<ruby>主張<rt>しゅちょう</rt></ruby>している。<ruby>親<rt>おや</rt></ruby>たちは、<ruby>娘<rt>むすめ</rt></ruby>たちが<ruby>今<rt>いま</rt></ruby>もトラウマと<ruby>闘い<rt>たたかい</rt></ruby>ながら<ruby>生活<rt>せいかつ</rt></ruby>を<ruby>立て直し<rt>たてなおし</rt></ruby>ていることを<ruby>社会<rt>しゃかい</rt></ruby>に<ruby>知って<rt>しって</rt></ruby>ほしいと<ruby>訴え<rt>うったえ</rt></ruby>ており、<ruby>児童<rt>じどう</rt></ruby><ruby>保護<rt>ほご</rt></ruby>とプライバシー、<ruby>被害者<rt>ひがいしゃ</rt></ruby>の<ruby>認知<rt>にんち</rt></ruby>のバランスをめぐる<ruby>議論<rt>ぎろん</rt></ruby>が<ruby>再燃<rt>さいねん</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Southport survivors' families say anonymity has made their girls invisible</h2>
+              <p class="body en-body">Parents of five girls who survived the Southport knife attack are challenging a court order that protects their children's identities. They argue the measure has had the unintended effect of making the girls almost invisible in public discussion. The case has reignited debate over balancing child protection, privacy, and recognition for victims still rebuilding their lives.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英国<rt>えいこく</rt></ruby>で5<ruby>月<rt>がつ</rt></ruby>の<ruby>記録的<rt>きろくてき</rt></ruby><ruby>猛暑<rt>もうしょ</rt></ruby>か、「<ruby>異例<rt>いれい</rt></ruby>」の<ruby>健康<rt>けんこう</rt></ruby><ruby>警報<rt>けいほう</rt></ruby>を<ruby>発令<rt>はつれい</rt></ruby>へ</h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby><ruby>気象庁<rt>きしょうちょう</rt></ruby>は、<ruby>今週末<rt>こんしゅうまつ</rt></ruby>にかけて5<ruby>月<rt>がつ</rt></ruby>としては<ruby>観測<rt>かんそく</rt></ruby><ruby>史上最高<rt>しじょうさいこう</rt></ruby><ruby>気温<rt>きおん</rt></ruby>に<ruby>迫る<rt>せまる</rt></ruby><ruby>猛暑<rt>もうしょ</rt></ruby>が<ruby>到来<rt>とうらい</rt></ruby>する<ruby>可能性<rt>かのうせい</rt></ruby>があると<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>高齢者<rt>こうれいしゃ</rt></ruby>や<ruby>子供<rt>こども</rt></ruby>、<ruby>持病<rt>じびょう</rt></ruby>のある<ruby>人<rt>にん</rt></ruby>にとって<ruby>危険<rt>きけん</rt></ruby>な<ruby>水準<rt>すいじゅん</rt></ruby>に<ruby>達す<rt>たっす</rt></ruby>るおそれがあり、<ruby>政府<rt>せいふ</rt></ruby>は「<ruby>異例<rt>いれい</rt></ruby>」の<ruby>暑さ<rt>あつさ</rt></ruby><ruby>健康<rt>けんこう</rt></ruby><ruby>警報<rt>けいほう</rt></ruby>の<ruby>発令<rt>はつれい</rt></ruby>を<ruby>準備<rt>じゅんび</rt></ruby>している。<ruby>専門家<rt>せんもんか</rt></ruby>は、<ruby>近年<rt>きんねん</rt></ruby>のイギリスにおける<ruby>季節外<rt>きせつがい</rt></ruby>れの<ruby>高温<rt>こうおん</rt></ruby><ruby>傾向<rt>けいこう</rt></ruby>が<ruby>加速<rt>かそく</rt></ruby>していると<ruby>指摘<rt>してき</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK braces for record May heat as extraordinary health alerts issued</h2>
+              <p class="body en-body">UK forecasters say the country could see one of its hottest May days on record as a sharp heatwave builds. Health alerts are being issued as temperatures may reach dangerous levels for older people, children, and those with existing conditions. Experts note the accelerating trend of unseasonable heat in Britain.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英国<rt>えいこく</rt></ruby>、<ruby>湾岸<rt>わんがん</rt></ruby>6カ<ruby>国<rt>くに</rt></ruby>と37<ruby>億<rt>おく</rt></ruby>ポンド<ruby>規模<rt>きぼ</rt></ruby>の<ruby>貿易<rt>ぼうえき</rt></ruby><ruby>協定<rt>きょうてい</rt></ruby>を<ruby>締結<rt>ていけつ</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>は<ruby>湾岸<rt>わんがん</rt></ruby><ruby>協力<rt>きょうりょく</rt></ruby><ruby>会議<rt>かいぎ</rt></ruby>（GCC）<ruby>加盟<rt>かめい</rt></ruby>6カ<ruby>国<rt>くに</rt></ruby>との<ruby>間<rt>かん</rt></ruby>で、<ruby>推定<rt>すいてい</rt></ruby>37<ruby>億<rt>おく</rt></ruby>ポンド<ruby>規模<rt>きぼ</rt></ruby>の<ruby>貿易<rt>ぼうえき</rt></ruby><ruby>協定<rt>きょうてい</rt></ruby>を<ruby>正式<rt>せいしき</rt></ruby>に<ruby>締結<rt>ていけつ</rt></ruby>した。<ruby>英国製<rt>えいこくせい</rt></ruby><ruby>品<rt>ひん</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>関税<rt>かんぜい</rt></ruby>の<ruby>引き下げ<rt>ひきさげ</rt></ruby>や<ruby>商業<rt>しょうぎょう</rt></ruby><ruby>関係<rt>かんけい</rt></ruby>の<ruby>強化<rt>きょうか</rt></ruby>が<ruby>見込ま<rt>みこま</rt></ruby>れ、<ruby>政府<rt>せいふ</rt></ruby>は<ruby>経済成長<rt>けいざいせいちょう</rt></ruby>と<ruby>輸出<rt>ゆしゅつ</rt></ruby><ruby>促進<rt>そくしん</rt></ruby>の<ruby>成果<rt>せいか</rt></ruby>として<ruby>位置<rt>いち</rt></ruby>づけている。しかし、<ruby>湾岸諸国<rt>わんがんしょこく</rt></ruby>の<ruby>人権<rt>じんけん</rt></ruby><ruby>状況<rt>じょうきょう</rt></ruby>をめぐり、<ruby>経済的利益<rt>けいざいてきりえき</rt></ruby>が<ruby>政治的<rt>せいじてき</rt></ruby><ruby>妥協<rt>だきょう</rt></ruby>に<ruby>値<rt>あたい</rt></ruby>するかどうかについて<ruby>野党<rt>やとう</rt></ruby>や<ruby>人権団体<rt>じんけんだんたい</rt></ruby>から<ruby>批判<rt>ひはん</rt></ruby>の<ruby>声<rt>こえ</rt></ruby>も<ruby>上が<rt>あが</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK signs £3.7bn trade deal with six Gulf states</h2>
+              <p class="body en-body">Britain has signed a trade deal with six Gulf Cooperation Council states worth an estimated £3.7 billion. The agreement is expected to reduce tariffs on British exports and strengthen commercial ties. Critics are raising questions about human rights and whether the economic benefits justify the political compromises involved.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>、ポーランドへ5000<ruby>人<rt>にん</rt></ruby>の<ruby>追加<rt>ついか</rt></ruby><ruby>派兵<rt>はへい</rt></ruby>を<ruby>表明<rt>ひょうめい</rt></ruby></h2>
+              <p class="body">トランプ<ruby>米大統領<rt>べいだいとうりょう</rt></ruby>はポーランドに5000<ruby>人<rt>にん</rt></ruby>の<ruby>追加<rt>ついか</rt></ruby><ruby>部隊<rt>ぶたい</rt></ruby>を<ruby>派遣<rt>はけん</rt></ruby>すると<ruby>発表<rt>はっぴょう</rt></ruby>した。この<ruby>決定<rt>けってい</rt></ruby>は、<ruby>国防総省<rt>こくぼうそうしょう</rt></ruby>が<ruby>別の<rt>べつの</rt></ruby><ruby>配備<rt>はいび</rt></ruby><ruby>計画<rt>けいかく</rt></ruby>を<ruby>撤回<rt>てっかい</rt></ruby>したわずか1<ruby>週間後<rt>しゅうかんご</rt></ruby>に<ruby>行わ<rt>おこなわ</rt></ruby>れたもので、<ruby>欧州<rt>おうしゅう</rt></ruby><ruby>防衛<rt>ぼうえい</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby>アメリカの<ruby>方針<rt>ほうしん</rt></ruby>が<ruby>場当たり的<rt>ばあたりてき</rt></ruby>だとの<ruby>批判<rt>ひはん</rt></ruby>を<ruby>招い<rt>まねい</rt></ruby>ている。NATO<ruby>同盟<rt>どうめい</rt></ruby><ruby>国<rt>くに</rt></ruby>にとっては、この<ruby>動き<rt>うごき</rt></ruby>が<ruby>東欧<rt>とうおう</rt></ruby>への<ruby>長期的<rt>ちょうきてき</rt></ruby>な<ruby>関与<rt>かんよ</rt></ruby>の<ruby>表れ<rt>あらわれ</rt></ruby>なのか、<ruby>短期的<rt>たんきてき</rt></ruby>な<ruby>戦術<rt>せんじゅつ</rt></ruby><ruby>判断<rt>はんだん</rt></ruby>に<ruby>過ぎな<rt>すぎな</rt></ruby>いのかが<ruby>焦点<rt>しょうてん</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Trump announces 5,000 additional troops for Poland</h2>
+              <p class="body en-body">President Trump has announced the deployment of 5,000 additional troops to Poland, just a week after the Pentagon cancelled another planned deployment. The move has drawn criticism that the US approach to European defence is unpredictable. NATO allies are watching closely to determine whether the decision signals lasting commitment to eastern Europe or merely another short-term adjustment.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>辺野古<rt>へのこ</rt></ruby><ruby>沖<rt>おき</rt></ruby>ボート<ruby>事故<rt>じこ</rt></ruby>で<ruby>刑事告訴<rt>けいじこくそ</rt></ruby>、<ruby>無登録<rt>むとうろく</rt></ruby><ruby>運航<rt>うんこう</rt></ruby>の<ruby>疑い<rt>うたがい</rt></ruby></h2>
+              <p class="body"><ruby>沖縄県<rt>おきなわけん</rt></ruby><ruby>名護<rt>なご</rt></ruby><ruby>市<rt>し</rt></ruby><ruby>辺野古<rt>へのこ</rt></ruby><ruby>沖<rt>おき</rt></ruby>で<ruby>発生<rt>はっせい</rt></ruby>したボート<ruby>事故<rt>じこ</rt></ruby>について、<ruby>当局<rt>とうきょく</rt></ruby>が<ruby>刑事告訴<rt>けいじこくそ</rt></ruby>を<ruby>行った<rt>いった</rt></ruby>。この<ruby>事故<rt>じこ</rt></ruby>では<ruby>修学旅行<rt>しゅうがくりょこう</rt></ruby><ruby>中の<rt>なかの</rt></ruby><ruby>高校生<rt>こうこうせい</rt></ruby>と<ruby>船長<rt>せんちょう</rt></ruby>が<ruby>死亡<rt>しぼう</rt></ruby>しており、<ruby>当該<rt>とうがい</rt></ruby><ruby>船舶<rt>せんぱく</rt></ruby>が<ruby>法律上<rt>ほうりつじょう</rt></ruby><ruby>義務<rt>ぎむ</rt></ruby>づけられた<ruby>登録<rt>とうろく</rt></ruby>なしに<ruby>運航<rt>うんこう</rt></ruby>されていた<ruby>疑い<rt>うたがい</rt></ruby>が<ruby>浮上<rt>ふじょう</rt></ruby>している。<ruby>事故現場<rt>じこげんば</rt></ruby>が<ruby>米軍基地<rt>べいぐんきち</rt></ruby><ruby>移設<rt>いせつ</rt></ruby><ruby>計画<rt>けいかく</rt></ruby>の<ruby>関連<rt>かんれん</rt></ruby><ruby>海域<rt>かいいき</rt></ruby>に<ruby>近い<rt>ちかい</rt></ruby>こともあり、<ruby>規制<rt>きせい</rt></ruby>の<ruby>不備<rt>ふび</rt></ruby>に<ruby>加え<rt>くわえ</rt></ruby><ruby>政治的<rt>せいじてき</rt></ruby>な<ruby>議論<rt>ぎろん</rt></ruby>も<ruby>再燃<rt>さいねん</rt></ruby>する<ruby>見通し<rt>みとおし</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Criminal complaint filed over fatal Henoko boat accident</h2>
+              <p class="body en-body">Japanese authorities have filed a criminal complaint following a fatal boat accident off Henoko, Okinawa, in which a high school student on a study trip and the boat captain died. The vessel is suspected of having operated without legally required registration. The incident's proximity to the controversial base relocation area adds a political dimension to the regulatory concerns.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">こども<ruby>家庭<rt>かてい</rt></ruby><ruby>庁<rt>ちょう</rt></ruby>、<ruby>児童<rt>じどう</rt></ruby><ruby>相談所<rt>そうだんしょ</rt></ruby>に48<ruby>時間以内<rt>じかんいない</rt></ruby>の<ruby>安全確認<rt>あんぜんかくにん</rt></ruby>を<ruby>厳格<rt>げんかく</rt></ruby><ruby>指示<rt>しじ</rt></ruby></h2>
+              <p class="body"><ruby>東京都内<rt>とうきょうとない</rt></ruby>で<ruby>知的障害<rt>ちてきしょうがい</rt></ruby>のある<ruby>少女<rt>しょうじょ</rt></ruby>が<ruby>監禁<rt>かんきん</rt></ruby>されていた<ruby>事件<rt>じけん</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、こども<ruby>家庭<rt>かてい</rt></ruby><ruby>庁<rt>ちょう</rt></ruby>は<ruby>全国<rt>ぜんこく</rt></ruby>の<ruby>児童<rt>じどう</rt></ruby><ruby>相談所<rt>そうだんしょ</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>て、<ruby>虐待<rt>ぎゃくたい</rt></ruby><ruby>通報<rt>つうほう</rt></ruby>から48<ruby>時間以内<rt>じかんいない</rt></ruby>に<ruby>子供<rt>こども</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby>を<ruby>確認す<rt>かくにんす</rt></ruby>るよう<ruby>改め<rt>あらため</rt></ruby>て<ruby>厳格<rt>げんかく</rt></ruby>な<ruby>指示<rt>しじ</rt></ruby>を<ruby>出し<rt>だし</rt></ruby>た。<ruby>今回<rt>こんかい</rt></ruby>の<ruby>事件<rt>じけん</rt></ruby>では<ruby>通報<rt>つうほう</rt></ruby>から<ruby>保護<rt>ほご</rt></ruby>まで3<ruby>日<rt>にち</rt></ruby>を<ruby>要し<rt>ようし</rt></ruby>ており、<ruby>既存<rt>きぞん</rt></ruby>の<ruby>対応<rt>たいおう</rt></ruby><ruby>基準<rt>きじゅん</rt></ruby>が<ruby>形骸<rt>けいがい</rt></ruby><ruby>化し<rt>かし</rt></ruby>ていたことが<ruby>明らか<rt>あきらか</rt></ruby>になった。<ruby>地方<rt>ちほう</rt></ruby>の<ruby>児童<rt>じどう</rt></ruby><ruby>保護<rt>ほご</rt></ruby><ruby>体制<rt>たいせい</rt></ruby>が<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>事案<rt>じあん</rt></ruby>に<ruby>十分<rt>じゅうぶん</rt></ruby><ruby>迅速<rt>じんそく</rt></ruby>に<ruby>対応<rt>たいおう</rt></ruby>できているか、<ruby>改め<rt>あらため</rt></ruby>て<ruby>厳しい<rt>いかめしい</rt></ruby><ruby>目<rt>め</rt></ruby>が<ruby>向け<rt>むけ</rt></ruby>られている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan orders child centers to confirm safety within 48 hours after abuse report</h2>
+              <p class="body en-body">Japan's Children and Families Agency has ordered child consultation centers nationwide to strictly confirm a child's safety within 48 hours of receiving an abuse report. The directive follows a case in Tokyo where a teenage girl with an intellectual disability was confined, with protection coming three days after the initial report. The incident has intensified scrutiny of whether local child protection systems can respond quickly enough in severe cases.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>東大<rt>とうだい</rt></ruby><ruby>元<rt>もと</rt></ruby><ruby>准教授<rt>じゅんきょうじゅ</rt></ruby>に<ruby>収賄罪<rt>しゅうわいざい</rt></ruby>で<ruby>執行<rt>しっこう</rt></ruby><ruby>猶予<rt>ゆうよ</rt></ruby><ruby>付き<rt>つき</rt></ruby><ruby>有罪判決<rt>ゆうざいはんけつ</rt></ruby></h2>
+              <p class="body"><ruby>東京地方<rt>とうきょうちほう</rt></ruby><ruby>裁判所<rt>さいばんしょ</rt></ruby>は、<ruby>収賄罪<rt>しゅうわいざい</rt></ruby>に<ruby>問わ<rt>とわ</rt></ruby>れた<ruby>東京大学<rt>とうきょうだいがく</rt></ruby><ruby>大学院<rt>だいがくいん</rt></ruby>の<ruby>元<rt>もと</rt></ruby><ruby>准教授<rt>じゅんきょうじゅ</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>、<ruby>執行<rt>しっこう</rt></ruby><ruby>猶予<rt>ゆうよ</rt></ruby><ruby>付き<rt>つき</rt></ruby>の<ruby>有罪判決<rt>ゆうざいはんけつ</rt></ruby>を<ruby>言い渡し<rt>いいわたし</rt></ruby>た。<ruby>被告<rt>ひこく</rt></ruby>は<ruby>高級<rt>こうきゅう</rt></ruby>クラブでの<ruby>接待<rt>せったい</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>ていたとされ、<ruby>裁判所<rt>さいばんしょ</rt></ruby>は<ruby>受動的<rt>じゅどうてき</rt></ruby>に<ruby>接待<rt>せったい</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>たのではなく、<ruby>積極的に<rt>せっきょくてきに</rt></ruby>そのような<ruby>待遇<rt>たいぐう</rt></ruby>を<ruby>求め<rt>もとめ</rt></ruby>る<ruby>意思<rt>いし</rt></ruby>があったと<ruby>認定<rt>にんてい</rt></ruby>した。この<ruby>判決<rt>はんけつ</rt></ruby>は、エリート<ruby>学術<rt>がくじゅつ</rt></ruby><ruby>機関<rt>きかん</rt></ruby>における<ruby>倫理<rt>りんり</rt></ruby>とガバナンスに<ruby>対する<rt>たいする</rt></ruby><ruby>懸念<rt>けねん</rt></ruby>を<ruby>強め<rt>つよめ</rt></ruby>、<ruby>透明性<rt>とうめいせい</rt></ruby><ruby>確保<rt>かくほ</rt></ruby>の<ruby>重要性<rt>じゅうようせい</rt></ruby>を<ruby>改め<rt>あらため</rt></ruby>て<ruby>浮き彫り<rt>うきぼり</rt></ruby>にしている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Former University of Tokyo professor given suspended sentence in bribery case</h2>
+              <p class="body en-body">A Tokyo court has handed a suspended sentence to a former associate professor at the University of Tokyo's graduate school in a bribery case involving entertainment at expensive clubs. The court found that the defendant had actively sought such treatment rather than merely accepting it. The ruling has heightened concerns about ethics and governance at elite academic institutions.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-05-22 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "匿名", "reading": "とくめい", "english": "anonymity"}, {"word": "襲撃", "reading": "しゅうげき", "english": "attack / assault"}, {"word": "異議", "reading": "いぎ", "english": "objection / dissent"}, {"word": "措置", "reading": "そち", "english": "measure / step"}, {"word": "再燃", "reading": "さいねん", "english": "reignition / flare-up"}], [{"word": "猛暑", "reading": "もうしょ", "english": "intense heat / heatwave"}, {"word": "観測史上", "reading": "かんそくしじょう", "english": "in recorded history"}, {"word": "発令", "reading": "はつれい", "english": "issuing (an order/alert)"}, {"word": "持病", "reading": "じびょう", "english": "chronic illness"}, {"word": "加速", "reading": "かそく", "english": "acceleration"}], [{"word": "締結", "reading": "ていけつ", "english": "conclusion (of a treaty/deal)"}, {"word": "関税", "reading": "かんぜい", "english": "tariff / customs duty"}, {"word": "輸出促進", "reading": "ゆしゅつそくしん", "english": "export promotion"}, {"word": "妥協", "reading": "だきょう", "english": "compromise"}, {"word": "人権団体", "reading": "じんけんだんたい", "english": "human rights organization"}], [{"word": "派兵", "reading": "はへい", "english": "dispatch of troops"}, {"word": "撤回", "reading": "てっかい", "english": "withdrawal / retraction"}, {"word": "場当たり的", "reading": "ばあたりてき", "english": "ad hoc / improvised"}, {"word": "同盟国", "reading": "どうめいこく", "english": "allied nation"}, {"word": "関与", "reading": "かんよ", "english": "involvement / engagement"}], [{"word": "刑事告訴", "reading": "けいじこくそ", "english": "criminal complaint"}, {"word": "修学旅行", "reading": "しゅうがくりょこう", "english": "school excursion / study trip"}, {"word": "船舶", "reading": "せんぱく", "english": "vessel / ship"}, {"word": "不備", "reading": "ふび", "english": "deficiency / inadequacy"}, {"word": "海域", "reading": "かいいき", "english": "sea area / waters"}], [{"word": "監禁", "reading": "かんきん", "english": "confinement / imprisonment"}, {"word": "虐待", "reading": "ぎゃくたい", "english": "abuse / maltreatment"}, {"word": "通報", "reading": "つうほう", "english": "report / notification"}, {"word": "形骸化", "reading": "けいがいか", "english": "becoming a mere formality"}, {"word": "児童相談所", "reading": "じどうそうだんじょ", "english": "child consultation center"}], [{"word": "収賄", "reading": "しゅうわい", "english": "bribery / accepting bribes"}, {"word": "執行猶予", "reading": "しっこうゆうよ", "english": "suspended sentence"}, {"word": "接待", "reading": "せったい", "english": "entertainment / hospitality"}, {"word": "准教授", "reading": "じゅんきょうじゅ", "english": "associate professor"}, {"word": "浮き彫り", "reading": "うきぼり", "english": "bringing to light / highlighting"}]];
+    const LABELS  = [{"section": "英国", "headline": "サウスポート事件の生存者家族、匿名措置の「見えない被害者」化を批判"}, {"section": "英国", "headline": "英国で5月の記録的猛暑か、「異例」の健康警報を発令へ"}, {"section": "経済", "headline": "英国、湾岸6カ国と37億ポンド規模の貿易協定を締結"}, {"section": "国際", "headline": "トランプ大統領、ポーランドへ5000人の追加派兵を表明"}, {"section": "日本・社会", "headline": "辺野古沖ボート事故で刑事告訴、無登録運航の疑い"}, {"section": "日本・社会", "headline": "こども家庭庁、児童相談所に48時間以内の安全確認を厳格指示"}, {"section": "日本・社会", "headline": "東大元准教授に収賄罪で執行猶予付き有罪判決"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
