@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年5月26日（火曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年5月26日（火曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米軍<rt>べいぐん</rt></ruby>、イランのミサイル<ruby>施設<rt>しせつ</rt></ruby>と<ruby>艦船<rt>かんせん</rt></ruby>に<ruby>新た<rt>あらた</rt></ruby>な<ruby>攻撃<rt>こうげき</rt></ruby></h2>
+              <p class="body"><ruby>米軍<rt>べいぐん</rt></ruby>はイランのミサイル<ruby>施設<rt>しせつ</rt></ruby>および<ruby>艦船<rt>かんせん</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>、<ruby>新た<rt>あらた</rt></ruby>な<ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>した。<ruby>米中<rt>べいちゅう</rt></ruby><ruby>央<rt>おう</rt></ruby><ruby>軍<rt>ぐん</rt></ruby>はこれを<ruby>自衛<rt>じえい</rt></ruby><ruby>措置<rt>そち</rt></ruby>と<ruby>説明し<rt>せつめいし</rt></ruby>ている。<ruby>一方<rt>いっぽう</rt></ruby>、イランの<ruby>上級<rt>じょうきゅう</rt></ruby><ruby>交渉<rt>こうしょう</rt></ruby><ruby>官<rt>かん</rt></ruby>がカタールに<ruby>到着<rt>とうちゃく</rt></ruby>し、<ruby>戦争<rt>せんそう</rt></ruby><ruby>終結<rt>しゅうけつ</rt></ruby>を<ruby>目指す<rt>めざす</rt></ruby><ruby>外交<rt>がいこう</rt></ruby><ruby>協議<rt>きょうぎ</rt></ruby>に<ruby>臨ん<rt>のぞん</rt></ruby>でおり、<ruby>軍事的<rt>ぐんじてき</rt></ruby>エスカレーションと<ruby>外交<rt>がいこう</rt></ruby>が<ruby>同時に<rt>どうじに</rt></ruby><ruby>進行<rt>しんこう</rt></ruby>する<ruby>異例<rt>いれい</rt></ruby>の<ruby>展開<rt>てんかい</rt></ruby>となっている。<ruby>今回<rt>こんかい</rt></ruby>の<ruby>動き<rt>うごき</rt></ruby>はエネルギー<ruby>市場<rt>しじょう</rt></ruby>や<ruby>地域<rt>ちいき</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>、<ruby>国際<rt>こくさい</rt></ruby><ruby>交渉<rt>こうしょう</rt></ruby>の<ruby>行方<rt>なめがた</rt></ruby>に<ruby>広く<rt>ひろく</rt></ruby><ruby>影響<rt>えいきょう</rt></ruby>を<ruby>及ぼ<rt>およぼ</rt></ruby>す<ruby>可能性<rt>かのうせい</rt></ruby>がある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US launches fresh strikes on Iranian missile sites and boats</h2>
+              <p class="body en-body">The US military carried out fresh strikes on Iranian missile sites and boats, describing the action as self-defense. At the same time, senior Iranian negotiators arrived in Qatar for talks aimed at ending the war, placing military escalation and diplomacy on the table simultaneously. The developments could have wide-ranging effects on energy markets, regional security, and the pace of international negotiations.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イングランド、5<ruby>月<rt>がつ</rt></ruby>の<ruby>最高気温<rt>さいこうきおん</rt></ruby><ruby>記録<rt>きろく</rt></ruby>を<ruby>更新<rt>こうしん</rt></ruby>か　35<ruby>度<rt>ど</rt></ruby>の<ruby>予想<rt>よそう</rt></ruby></h2>
+              <p class="body">ロンドンの<ruby>一部<rt>いちぶ</rt></ruby>では<ruby>月曜日<rt>げつようび</rt></ruby>に34.8<ruby>度<rt>ど</rt></ruby>を<ruby>記録<rt>きろく</rt></ruby>し、イングランドでは<ruby>火曜日<rt>かようび</rt></ruby>にさらに<ruby>気温<rt>きおん</rt></ruby>が<ruby>上昇<rt>じょうしょう</rt></ruby>して35<ruby>度<rt>ど</rt></ruby>に<ruby>達す<rt>たっす</rt></ruby>る<ruby>可能性<rt>かのうせい</rt></ruby>があると<ruby>気象<rt>きしょう</rt></ruby><ruby>当局<rt>とうきょく</rt></ruby>が<ruby>発表<rt>はっぴょう</rt></ruby>した。BBCはこの<ruby>暑さ<rt>あつさ</rt></ruby>を5<ruby>月<rt>がつ</rt></ruby>としては<ruby>例外的<rt>れいがいてき</rt></ruby>と<ruby>報じ<rt>ほうじ</rt></ruby>ており、<ruby>交通機関<rt>こうつうきかん</rt></ruby>の<ruby>混乱<rt>こんらん</rt></ruby>や<ruby>熱中<rt>ねっちゅう</rt></ruby><ruby>症<rt>しょう</rt></ruby>のリスク、<ruby>公共<rt>こうきょう</rt></ruby>サービスへの<ruby>負荷<rt>ふか</rt></ruby>が<ruby>懸念<rt>けねん</rt></ruby>されている。<ruby>異常気象<rt>いじょうきしょう</rt></ruby>が<ruby>予想<rt>よそう</rt></ruby>より<ruby>早い<rt>はやい</rt></ruby><ruby>時期<rt>じき</rt></ruby>に<ruby>到来<rt>とうらい</rt></ruby>する<ruby>傾向<rt>けいこう</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>注目<rt>ちゅうもく</rt></ruby>を<ruby>集め<rt>あつめ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">England could break May heat record with 35°C forecast</h2>
+              <p class="body en-body">Parts of London reached 34.8°C on Monday, and forecasters say temperatures in some areas of England could climb to 35°C on Tuesday. The BBC describes the heat as exceptional for May, raising concerns about transport disruption, health risks, and pressure on public services. The event highlights a pattern of extreme weather arriving earlier than expected.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英<rt>えい</rt></ruby>ネクストCEO、<ruby>初級<rt>しょきゅう</rt></ruby><ruby>職<rt>しょく</rt></ruby>の「<ruby>劇的<rt>げきてき</rt></ruby>な」<ruby>減少<rt>げんしょう</rt></ruby>を<ruby>警告<rt>けいこく</rt></ruby></h2>
+              <p class="body"><ruby>英<rt>えい</rt></ruby><ruby>大手<rt>おおて</rt></ruby><ruby>小売<rt>こうり</rt></ruby>チェーン「ネクスト」のウルフソンCEOは、<ruby>初級<rt>しょきゅう</rt></ruby>レベルの<ruby>求人<rt>きゅうじん</rt></ruby>が<ruby>急激<rt>きゅうげき</rt></ruby>に<ruby>減少<rt>げんしょう</rt></ruby>していると<ruby>警告し<rt>けいこくし</rt></ruby>た。<ruby>現在<rt>げんざい</rt></ruby>、<ruby>一つ<rt>ひとつ</rt></ruby>のポジションに<ruby>対する<rt>たいする</rt></ruby><ruby>応募者<rt>おうぼしゃ</rt></ruby><ruby>数<rt>かず</rt></ruby>は2<ruby>年前<rt>ねんまえ</rt></ruby>の<ruby>約<rt>やく</rt></ruby>2<ruby>倍<rt>ばい</rt></ruby>に<ruby>達し<rt>たっし</rt></ruby>ているという。この<ruby>状況<rt>じょうきょう</rt></ruby>は<ruby>若年層<rt>じゃくねんそう</rt></ruby>や<ruby>初めて<rt>はじめて</rt></ruby><ruby>就職<rt>しゅうしょく</rt></ruby>を<ruby>目指す<rt>めざす</rt></ruby><ruby>人々<rt>ひとびと</rt></ruby>にとって<ruby>厳しい<rt>いかめしい</rt></ruby><ruby>労働<rt>ろうどう</rt></ruby><ruby>市場<rt>しじょう</rt></ruby>を<ruby>示唆し<rt>しさし</rt></ruby>ており、<ruby>雇用<rt>こよう</rt></ruby>、<ruby>自動化<rt>じどうか</rt></ruby>、<ruby>景況<rt>けいきょう</rt></ruby><ruby>感<rt>かん</rt></ruby>をめぐる<ruby>英国内<rt>えいこくない</rt></ruby>の<ruby>幅広い<rt>はばひろい</rt></ruby><ruby>議論<rt>ぎろん</rt></ruby>につながっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Next boss warns of 'dramatic' fall in entry-level jobs</h2>
+              <p class="body en-body">Next chief executive Lord Wolfson says the retailer now receives roughly twice as many applicants per role as it did two years ago, warning that entry-level opportunities are shrinking sharply. The trend suggests a tougher labour market for younger workers and those seeking their first foothold in employment. It feeds into a broader UK debate around hiring, automation, and weak confidence.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">「SNSは<ruby>喫煙<rt>きつえん</rt></ruby>と<ruby>同等<rt>どうとう</rt></ruby>の<ruby>害<rt>がい</rt></ruby>」<ruby>英<rt>えい</rt></ruby><ruby>医学<rt>いがく</rt></ruby>アカデミーが<ruby>警告<rt>けいこく</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby><ruby>王立<rt>おうりつ</rt></ruby><ruby>医学<rt>いがく</rt></ruby>アカデミーは、ソーシャルメディアが<ruby>若者<rt>わかもの</rt></ruby>にとって<ruby>喫煙<rt>きつえん</rt></ruby>と<ruby>同等<rt>どうとう</rt></ruby>の<ruby>健康<rt>けんこう</rt></ruby>リスクをもたらすとの<ruby>見解<rt>けんかい</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>医師<rt>いし</rt></ruby>が<ruby>若い<rt>わかい</rt></ruby><ruby>患者<rt>かんじゃ</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>てスクリーンタイムやSNS<ruby>利用<rt>りよう</rt></ruby>について<ruby>日常的<rt>にちじょうてき</rt></ruby>に<ruby>確認す<rt>かくにんす</rt></ruby>べきだと<ruby>提言<rt>ていげん</rt></ruby>している。<ruby>生活習慣<rt>せいかつしゅうかん</rt></ruby>の<ruby>問題<rt>もんだい</rt></ruby>を<ruby>公衆衛生<rt>こうしゅうえいせい</rt></ruby><ruby>上の<rt>うえの</rt></ruby><ruby>警告<rt>けいこく</rt></ruby>として<ruby>位置<rt>いち</rt></ruby>づけたことで、<ruby>子ども<rt>こども</rt></ruby>や10<ruby>代<rt>だい</rt></ruby>のデジタルプラットフォーム<ruby>利用<rt>りよう</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>規制強化<rt>きせいきょうか</rt></ruby>の<ruby>圧力<rt>あつりょく</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Social media as harmful as smoking for young people, top UK doctors say</h2>
+              <p class="body en-body">The Academy of Medical Royal Colleges says social media poses health risks to young people comparable to smoking, and recommends that doctors routinely ask younger patients about screen time and social media use. By framing the issue as a public-health warning rather than a lifestyle concern, the report increases pressure for stronger safeguards around how children and teenagers use digital platforms.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>国家<rt>こっか</rt></ruby><ruby>情報局<rt>じょうほうきょく</rt></ruby><ruby>設立<rt>せつりつ</rt></ruby><ruby>法案<rt>ほうあん</rt></ruby>、<ruby>参院<rt>さんいん</rt></ruby><ruby>委員会<rt>いいんかい</rt></ruby>で<ruby>可決<rt>かけつ</rt></ruby>へ</h2>
+              <p class="body"><ruby>高市<rt>たかいち</rt></ruby><ruby>早苗<rt>さなえ</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>は<ruby>参議院<rt>さんぎいん</rt></ruby>の<ruby>委員会<rt>いいんかい</rt></ruby>で、<ruby>正確<rt>せいかく</rt></ruby>な<ruby>情報<rt>じょうほう</rt></ruby>に<ruby>基づ<rt>もとづ</rt></ruby>く<ruby>判断<rt>はんだん</rt></ruby>と<ruby>危機<rt>きき</rt></ruby>の<ruby>未然<rt>みぜん</rt></ruby><ruby>防止<rt>ぼうし</rt></ruby>のために、<ruby>国家<rt>こっか</rt></ruby><ruby>情報局<rt>じょうほうきょく</rt></ruby>の<ruby>設立<rt>せつりつ</rt></ruby>が<ruby>不可欠<rt>ふかけつ</rt></ruby>だと<ruby>述べ<rt>のべ</rt></ruby>た。NHKによると、<ruby>同法案<rt>どうほうあん</rt></ruby>は<ruby>火曜日<rt>かようび</rt></ruby>に<ruby>委員会<rt>いいんかい</rt></ruby>で<ruby>過半数<rt>かはんすう</rt></ruby>の<ruby>賛成<rt>さんせい</rt></ruby>を<ruby>得て<rt>えて</rt></ruby><ruby>可決<rt>かけつ</rt></ruby>される<ruby>見通し<rt>みとおし</rt></ruby>である。<ruby>国家<rt>こっか</rt></ruby><ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>、<ruby>国家<rt>こっか</rt></ruby>の<ruby>情報収集<rt>じょうほうしゅうしゅう</rt></ruby><ruby>能力<rt>のうりょく</rt></ruby>、<ruby>東<rt>ひがし</rt></ruby>アジアの<ruby>地政学<rt>ちせいがく</rt></ruby><ruby>的<rt>てき</rt></ruby>リスクへの<ruby>対応<rt>たいおう</rt></ruby>をめぐり、<ruby>国内<rt>こくない</rt></ruby>の<ruby>議論<rt>ぎろん</rt></ruby>が<ruby>活発化<rt>かっぱつか</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan's National Intelligence Agency bill heads for committee approval</h2>
+              <p class="body en-body">Prime Minister Sanae Takaichi told an upper house committee that Japan needs a National Intelligence Agency to support accurate decision-making and prevent crises before they occur. NHK reports the bill is expected to pass committee on Tuesday with majority support. The proposal has intensified domestic debate around national security, state intelligence capacity, and Japan's response to rising geopolitical risks in East Asia.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>政府<rt>せいふ</rt></ruby>、<ruby>電気<rt>でんき</rt></ruby>・ガス<ruby>代<rt>だい</rt></ruby><ruby>補助<rt>ほじょ</rt></ruby>に5135<ruby>億円<rt>おくえん</rt></ruby>の<ruby>予備費<rt>よびひ</rt></ruby><ruby>支出<rt>ししゅつ</rt></ruby>を<ruby>決定<rt>けってい</rt></ruby></h2>
+              <p class="body"><ruby>日本政府<rt>にほんせいふ</rt></ruby>は<ruby>今年度<rt>こんねんど</rt></ruby>の<ruby>予備費<rt>よびひ</rt></ruby>から5135<ruby>億円<rt>おくえん</rt></ruby>を<ruby>支出<rt>ししゅつ</rt></ruby>し、7<ruby>月<rt>がつ</rt></ruby>から3ヶ<ruby>月間<rt>げっかん</rt></ruby>にわたり<ruby>電気料金<rt>でんきりょうきん</rt></ruby>とガス<ruby>料金<rt>りょうきん</rt></ruby>の<ruby>補助<rt>ほじょ</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>することを<ruby>閣議<rt>かくぎ</rt></ruby><ruby>決定<rt>けってい</rt></ruby>した。<ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby>の<ruby>不安定化<rt>ふあんていか</rt></ruby>に<ruby>伴う<rt>ともなう</rt></ruby>エネルギーコストの<ruby>上昇<rt>じょうしょう</rt></ruby>が<ruby>背景<rt>はいけい</rt></ruby>にある。<ruby>海外<rt>かいがい</rt></ruby>の<ruby>紛争<rt>ふんそう</rt></ruby>が<ruby>日本国内<rt>にほんこくない</rt></ruby>の<ruby>家計<rt>かけい</rt></ruby><ruby>支援<rt>しえん</rt></ruby><ruby>策<rt>さく</rt></ruby>やインフレ<ruby>管理<rt>かんり</rt></ruby>に<ruby>直結<rt>ちょっけつ</rt></ruby>している<ruby>構図<rt>こうず</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>浮き彫り<rt>うきぼり</rt></ruby>になった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan approves ¥513.5 billion in reserves for energy bill subsidies</h2>
+              <p class="body en-body">Japan's government has decided to spend ¥513.5 billion from this fiscal year's reserve funds to subsidize electricity and gas bills for three months starting in July. The move is linked to instability in the Middle East and resulting pressure on energy costs. It highlights how overseas conflict is feeding directly into household support policy and inflation management in Japan.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>岡本<rt>おかもと</rt></ruby><ruby>多<rt>た</rt></ruby><ruby>緒<rt>お</rt></ruby>、カンヌ<ruby>映画祭<rt>えいがさい</rt></ruby>で<ruby>日本人初<rt>にほんじんはつ</rt></ruby>の<ruby>最優秀<rt>さいゆうしゅう</rt></ruby><ruby>女優<rt>じょゆう</rt></ruby><ruby>賞<rt>しょう</rt></ruby></h2>
+              <p class="body"><ruby>岡本<rt>おかもと</rt></ruby><ruby>多<rt>た</rt></ruby><ruby>緒<rt>お</rt></ruby>がカンヌ<ruby>映画祭<rt>えいがさい</rt></ruby>で<ruby>日本人<rt>にほんじん</rt></ruby>として<ruby>初めて<rt>はじめて</rt></ruby><ruby>最優秀<rt>さいゆうしゅう</rt></ruby><ruby>女優<rt>じょゆう</rt></ruby><ruby>賞<rt>しょう</rt></ruby>を<ruby>受賞<rt>じゅしょう</rt></ruby>し、<ruby>記者会見<rt>きしゃかいけん</rt></ruby>に<ruby>臨ん<rt>のぞん</rt></ruby>だ。<ruby>会見<rt>かいけん</rt></ruby>には<ruby>共同受賞<rt>きょうどうじゅしょう</rt></ruby><ruby>者<rt>もの</rt></ruby>のヴィルジニー・エフィラと<ruby>濱口<rt>はまぐち</rt></ruby><ruby>竜介<rt>りゅうすけ</rt></ruby><ruby>監督<rt>かんとく</rt></ruby>も<ruby>出席<rt>しゅっせき</rt></ruby>した。この<ruby>受賞<rt>じゅしょう</rt></ruby>は<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>国際<rt>こくさい</rt></ruby><ruby>映画界<rt>えいがかい</rt></ruby>における<ruby>存在感<rt>そんざいかん</rt></ruby>を<ruby>一層<rt>いっそう</rt></ruby><ruby>高め<rt>たかめ</rt></ruby>るものであり、<ruby>政治<rt>せいじ</rt></ruby>・<ruby>経済<rt>けいざい</rt></ruby>の<ruby>厳しい<rt>いかめしい</rt></ruby>ニュースが<ruby>続く<rt>つづく</rt></ruby><ruby>中<rt>なか</rt></ruby>での<ruby>文化的<rt>ぶんかてき</rt></ruby><ruby>快挙<rt>かいきょ</rt></ruby>として<ruby>注目<rt>ちゅうもく</rt></ruby>を<ruby>集め<rt>あつめ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Tao Okamoto becomes first Japanese performer to win Cannes best actress</h2>
+              <p class="body en-body">Tao Okamoto became the first Japanese performer to win the best actress prize at the Cannes Film Festival and appeared at a press conference alongside fellow winner Virginie Efira and director Ryusuke Hamaguchi. The award reinforces Japan's growing visibility in international cinema and offers an uplifting cultural success story amid a day of challenging political and economic headlines.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-05-26 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "艦船", "reading": "かんせん", "english": "warship / naval vessel"}, {"word": "自衛措置", "reading": "じえいそち", "english": "self-defense measure"}, {"word": "エスカレーション", "reading": "エスカレーション", "english": "escalation"}, {"word": "外交協議", "reading": "がいこうきょうぎ", "english": "diplomatic talks"}, {"word": "異例", "reading": "いれい", "english": "unprecedented / unusual"}], [{"word": "気象当局", "reading": "きしょうとうきょく", "english": "meteorological authority"}, {"word": "例外的", "reading": "れいがいてき", "english": "exceptional / extraordinary"}, {"word": "熱中症", "reading": "ねっちゅうしょう", "english": "heatstroke"}, {"word": "混乱", "reading": "こんらん", "english": "disruption / confusion"}, {"word": "異常気象", "reading": "いじょうきしょう", "english": "extreme weather"}], [{"word": "求人", "reading": "きゅうじん", "english": "job opening / vacancy"}, {"word": "応募者", "reading": "おうぼしゃ", "english": "applicant"}, {"word": "若年層", "reading": "じゃくねんそう", "english": "younger generation"}, {"word": "景況感", "reading": "けいきょうかん", "english": "business sentiment"}, {"word": "自動化", "reading": "じどうか", "english": "automation"}], [{"word": "喫煙", "reading": "きつえん", "english": "smoking"}, {"word": "公衆衛生", "reading": "こうしゅうえいせい", "english": "public health"}, {"word": "提言", "reading": "ていげん", "english": "recommendation / proposal"}, {"word": "規制強化", "reading": "きせいきょうか", "english": "tightening of regulations"}, {"word": "見解", "reading": "けんかい", "english": "opinion / view"}], [{"word": "未然防止", "reading": "みぜんぼうし", "english": "prevention / pre-emption"}, {"word": "不可欠", "reading": "ふかけつ", "english": "indispensable / essential"}, {"word": "過半数", "reading": "かはんすう", "english": "majority"}, {"word": "地政学的", "reading": "ちせいがくてき", "english": "geopolitical"}, {"word": "情報収集", "reading": "じょうほうしゅうしゅう", "english": "intelligence gathering"}], [{"word": "予備費", "reading": "よびひ", "english": "reserve funds"}, {"word": "閣議決定", "reading": "かくぎけってい", "english": "cabinet decision"}, {"word": "補助", "reading": "ほじょ", "english": "subsidy / assistance"}, {"word": "浮き彫り", "reading": "うきぼり", "english": "brought into relief / highlighted"}, {"word": "インフレ", "reading": "インフレ", "english": "inflation"}], [{"word": "最優秀女優賞", "reading": "さいゆうしゅうじょゆうしょう", "english": "best actress award"}, {"word": "快挙", "reading": "かいきょ", "english": "remarkable achievement"}, {"word": "存在感", "reading": "そんざいかん", "english": "presence / visibility"}, {"word": "共同受賞者", "reading": "きょうどうじゅしょうしゃ", "english": "co-winner"}, {"word": "国際映画界", "reading": "こくさいえいがかい", "english": "international film world"}]];
+    const LABELS  = [{"section": "国際", "headline": "米軍、イランのミサイル施設と艦船に新たな攻撃"}, {"section": "英国", "headline": "イングランド、5月の最高気温記録を更新か　35度の予想"}, {"section": "経済", "headline": "英ネクストCEO、初級職の「劇的な」減少を警告"}, {"section": "英国・世界", "headline": "「SNSは喫煙と同等の害」英医学アカデミーが警告"}, {"section": "日本・政治", "headline": "国家情報局設立法案、参院委員会で可決へ"}, {"section": "日本・経済", "headline": "政府、電気・ガス代補助に5135億円の予備費支出を決定"}, {"section": "日本・社会", "headline": "岡本多緒、カンヌ映画祭で日本人初の最優秀女優賞"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
