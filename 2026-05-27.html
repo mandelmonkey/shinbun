@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年5月27日（水）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年5月27日（水）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ブレア<ruby>元首相<rt>もとしゅしょう</rt></ruby>、<ruby>労働<rt>ろうどう</rt></ruby><ruby>党政<rt>とうせい</rt></ruby><ruby>権<rt>けん</rt></ruby>に「<ruby>一貫<rt>いっかん</rt></ruby>した<ruby>計画<rt>けいかく</rt></ruby>なし」と<ruby>批判<rt>ひはん</rt></ruby></h2>
+              <p class="body">トニー・ブレア<ruby>元首相<rt>もとしゅしょう</rt></ruby>がキア・スターマー<ruby>政権<rt>せいけん</rt></ruby>を<ruby>厳しく<rt>いかめしく</rt></ruby><ruby>批判<rt>ひはん</rt></ruby>し、<ruby>次の<rt>つぎの</rt></ruby><ruby>選挙<rt>せんきょ</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>た<ruby>説得力<rt>せっとくりょく</rt></ruby>のある<ruby>国家<rt>こっか</rt></ruby><ruby>計画<rt>けいかく</rt></ruby>がないと<ruby>指摘<rt>してき</rt></ruby>した。この<ruby>発言<rt>はつげん</rt></ruby>は<ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>の<ruby>政策<rt>せいさく</rt></ruby><ruby>方針<rt>ほうしん</rt></ruby>と<ruby>党内<rt>とうない</rt></ruby>の<ruby>結束<rt>けっそく</rt></ruby>に<ruby>疑問<rt>ぎもん</rt></ruby>を<ruby>投げ<rt>なげ</rt></ruby>かけるものである。<ruby>野党<rt>やとう</rt></ruby>にとっては<ruby>政権<rt>せいけん</rt></ruby>を<ruby>攻撃<rt>こうげき</rt></ruby>する<ruby>新た<rt>あらた</rt></ruby>な<ruby>材料<rt>ざいりょう</rt></ruby>となり、スターマー<ruby>政権<rt>せいけん</rt></ruby>にとっては<ruby>困難<rt>こんなん</rt></ruby>な<ruby>時期<rt>じき</rt></ruby>にさらなる<ruby>打撃<rt>だげき</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Blair slams Labour government for lacking coherent plan</h2>
+              <p class="body en-body">Former prime minister Tony Blair has sharply criticised the Starmer government, saying Labour is heading into the next election without a convincing national plan. The intervention raises questions about the party's strategy and internal unity. It also gives the opposition fresh ammunition at a difficult moment for the government.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イラン<ruby>紛争<rt>ふんそう</rt></ruby>の<ruby>影響<rt>えいきょう</rt></ruby>、<ruby>英<rt>えい</rt></ruby><ruby>家庭<rt>かてい</rt></ruby>のエネルギー<ruby>料金<rt>りょうきん</rt></ruby>に<ruby>初めて<rt>はじめて</rt></ruby><ruby>波及<rt>はきゅう</rt></ruby></h2>
+              <p class="body">イランとの<ruby>紛争<rt>ふんそう</rt></ruby>の<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>英国<rt>えいこく</rt></ruby>の<ruby>家庭用<rt>かていよう</rt></ruby>エネルギー<ruby>料金<rt>りょうきん</rt></ruby>に<ruby>及ぶ<rt>およぶ</rt></ruby><ruby>見通し<rt>みとおし</rt></ruby>であることが<ruby>明らか<rt>あきらか</rt></ruby>になった。<ruby>一般的<rt>いっぱんてき</rt></ruby>な<ruby>家庭<rt>かてい</rt></ruby>では<ruby>年間<rt>ねんかん</rt></ruby><ruby>約<rt>やく</rt></ruby>200ポンドの<ruby>値上がり<rt>ねあがり</rt></ruby>が<ruby>予想<rt>よそう</rt></ruby>されている。<ruby>地政学<rt>ちせいがく</rt></ruby><ruby>的な<rt>てきな</rt></ruby><ruby>不安定<rt>ふあんてい</rt></ruby>さが<ruby>家計<rt>かけい</rt></ruby>に<ruby>直結<rt>ちょっけつ</rt></ruby>する<ruby>形<rt>かたち</rt></ruby>となり、<ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby>エネルギー<ruby>価格<rt>かかく</rt></ruby>の<ruby>脆弱<rt>ぜいじゃく</rt></ruby><ruby>性<rt>せい</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>浮き彫り<rt>うきぼり</rt></ruby>になった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Iran conflict set to push UK household energy bills up by £200</h2>
+              <p class="body en-body">The effects of the Iran conflict are expected to push up UK household gas and electricity costs, with a typical home forecast to pay about £200 more per year. The story links geopolitical instability directly to ordinary household budgets and underlines how vulnerable energy prices remain to events in the Middle East.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イスラエル、レバノンへの<ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>激化<rt>げきか</rt></ruby>　<ruby>多数<rt>たすう</rt></ruby>の<ruby>死者<rt>ししゃ</rt></ruby></h2>
+              <p class="body">イスラエルはレバノンでヒズボラ<ruby>関連<rt>かんれん</rt></ruby>の<ruby>約<rt>やく</rt></ruby>100か<ruby>所<rt>ところ</rt></ruby>を<ruby>攻撃<rt>こうげき</rt></ruby>し、<ruby>多数<rt>たすう</rt></ruby>の<ruby>死者<rt>ししゃ</rt></ruby>が<ruby>出た<rt>でた</rt></ruby>。ネタニヤフ<ruby>首相<rt>しゅしょう</rt></ruby>はイランが<ruby>支援<rt>しえん</rt></ruby>するヒズボラを「<ruby>壊滅<rt>かいめつ</rt></ruby>させる」と<ruby>宣言<rt>せんげん</rt></ruby>している。<ruby>越境<rt>えっきょう</rt></ruby><ruby>紛争<rt>ふんそう</rt></ruby>の<ruby>激化<rt>げきか</rt></ruby>により、<ruby>地域<rt>ちいき</rt></ruby><ruby>危機<rt>きき</rt></ruby>がさらに<ruby>拡大<rt>かくだい</rt></ruby>し<ruby>制御<rt>せいぎょ</rt></ruby><ruby>困難<rt>こんなん</rt></ruby>になるとの<ruby>懸念<rt>けねん</rt></ruby>が<ruby>強ま<rt>つよま</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Dozens killed as Israel intensifies strikes on Lebanon</h2>
+              <p class="body en-body">Israel says it struck about 100 Hezbollah-related sites in Lebanon, killing dozens. Prime Minister Netanyahu has vowed to 'crush' the Iran-backed group. The escalation adds to fears that the regional crisis could widen and become harder to contain.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際・科学</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">NASA、<ruby>月面<rt>げつめん</rt></ruby><ruby>恒久<rt>こうきゅう</rt></ruby><ruby>基地<rt>きち</rt></ruby><ruby>建設<rt>けんせつ</rt></ruby>の<ruby>次段<rt>じだん</rt></ruby><ruby>階<rt>かい</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby></h2>
+              <p class="body">NASAは<ruby>月面<rt>げつめん</rt></ruby>にホッピングドローンや<ruby>探査<rt>たんさ</rt></ruby><ruby>車<rt>くるま</rt></ruby>を<ruby>送る<rt>おくる</rt></ruby><ruby>計画<rt>けいかく</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>し、<ruby>恒久的<rt>こうきゅうてき</rt></ruby>な<ruby>月面<rt>げつめん</rt></ruby><ruby>基地<rt>きち</rt></ruby>の<ruby>建設<rt>けんせつ</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>た<ruby>次の<rt>つぎの</rt></ruby><ruby>段階<rt>だんかい</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。<ruby>月<rt>がつ</rt></ruby><ruby>探査<rt>たんさ</rt></ruby>は<ruby>短期滞在<rt>たんきたいざい</rt></ruby>から<ruby>持続的<rt>じぞくてき</rt></ruby>なインフラ<ruby>構築<rt>こうちく</rt></ruby>へと<ruby>移行<rt>いこう</rt></ruby>しつつある。<ruby>宇宙<rt>うちゅう</rt></ruby><ruby>政策<rt>せいさく</rt></ruby>における<ruby>各国間<rt>かっこくかん</rt></ruby>の<ruby>競争<rt>きょうそう</rt></ruby>と<ruby>野心<rt>やしん</rt></ruby>がますます<ruby>高ま<rt>たかま</rt></ruby>っていることを<ruby>反映<rt>はんえい</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">NASA unveils next steps toward permanent Moon base</h2>
+              <p class="body en-body">NASA has outlined plans to send hopping drones and roving vehicles to the Moon as part of a longer-term effort to build a permanent lunar base. Lunar exploration is shifting from short visits toward sustained infrastructure. The project reflects growing competition and ambition in space policy.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>神奈川県<rt>かながわけん</rt></ruby>の<ruby>市<rt>し</rt></ruby>、AI<ruby>搭載<rt>とうさい</rt></ruby><ruby>回収<rt>かいしゅう</rt></ruby>ボックスで<ruby>電池<rt>でんち</rt></ruby>を<ruby>安全<rt>あんぜん</rt></ruby><ruby>分別<rt>ふんべつ</rt></ruby>へ</h2>
+              <p class="body"><ruby>神奈川県<rt>かながわけん</rt></ruby>の<ruby>市<rt>し</rt></ruby>が7<ruby>月<rt>がつ</rt></ruby>からAI<ruby>搭載<rt>とうさい</rt></ruby>の<ruby>回収<rt>かいしゅう</rt></ruby>ボックスを<ruby>用いて<rt>もちいて</rt></ruby><ruby>各種<rt>かくしゅ</rt></ruby><ruby>電池<rt>でんち</rt></ruby>を<ruby>安全<rt>あんぜん</rt></ruby>に<ruby>分別<rt>ふんべつ</rt></ruby>する<ruby>実証<rt>じっしょう</rt></ruby><ruby>実験<rt>じっけん</rt></ruby>を<ruby>開始<rt>かいし</rt></ruby>する。<ruby>充電式<rt>じゅうでんしき</rt></ruby><ruby>機器<rt>きき</rt></ruby>の<ruby>普及<rt>ふきゅう</rt></ruby>に<ruby>伴い<rt>ともない</rt></ruby>、リチウムイオン<ruby>電池<rt>でんち</rt></ruby>による<ruby>発火<rt>はっか</rt></ruby><ruby>事故<rt>じこ</rt></ruby>が<ruby>増加<rt>ぞうか</rt></ruby>しており、<ruby>火災<rt>かさい</rt></ruby>リスクの<ruby>低減<rt>ていげん</rt></ruby>と<ruby>適正<rt>てきせい</rt></ruby>な<ruby>廃棄<rt>はいき</rt></ruby><ruby>処理<rt>しょり</rt></ruby>が<ruby>課題<rt>かだい</rt></ruby>となっている。<ruby>地方自治体<rt>ちほうじちたい</rt></ruby>がAIを<ruby>日常<rt>にちじょう</rt></ruby>の<ruby>公共<rt>こうきょう</rt></ruby><ruby>安全<rt>あんぜん</rt></ruby>に<ruby>活用<rt>かつよう</rt></ruby>する<ruby>実用的<rt>じつようてき</rt></ruby>な<ruby>事例<rt>じれい</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japanese city to use AI collection box for safe battery sorting</h2>
+              <p class="body en-body">A city in Kanagawa Prefecture will begin an experimental project in July using an AI-equipped collection box to sort different kinds of batteries safely. The effort aims to reduce fire risk from increasingly common rechargeable devices. It is a practical example of local governments using AI for everyday public-safety problems.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>中国<rt>ちゅうごく</rt></ruby><ruby>公船<rt>こうせん</rt></ruby>2<ruby>隻<rt>せき</rt></ruby>、<ruby>尖閣<rt>せんかく</rt></ruby><ruby>諸<rt>しょ</rt></ruby><ruby>島<rt>しま</rt></ruby><ruby>周辺<rt>しゅうへん</rt></ruby>の<ruby>領海<rt>りょうかい</rt></ruby>に<ruby>侵入<rt>しんにゅう</rt></ruby></h2>
+              <p class="body"><ruby>中国<rt>ちゅうごく</rt></ruby>の<ruby>公船<rt>こうせん</rt></ruby>2<ruby>隻<rt>せき</rt></ruby>が<ruby>月曜日<rt>げつようび</rt></ruby>に<ruby>東<rt>ひがし</rt></ruby>シナ<ruby>海<rt>うみ</rt></ruby>の<ruby>尖閣<rt>せんかく</rt></ruby><ruby>諸<rt>しょ</rt></ruby><ruby>島<rt>しま</rt></ruby><ruby>周辺<rt>しゅうへん</rt></ruby>で<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>領海<rt>りょうかい</rt></ruby>に<ruby>侵入<rt>しんにゅう</rt></ruby>した。<ruby>尖閣<rt>せんかく</rt></ruby><ruby>諸<rt>しょ</rt></ruby><ruby>島<rt>しま</rt></ruby>をめぐる<ruby>問題<rt>もんだい</rt></ruby>は<ruby>日中<rt>にっちゅう</rt></ruby><ruby>間<rt>かん</rt></ruby>で<ruby>最も<rt>もっとも</rt></ruby><ruby>敏感<rt>びんかん</rt></ruby>な<ruby>海洋<rt>かいよう</rt></ruby><ruby>紛争<rt>ふんそう</rt></ruby>の<ruby>一つ<rt>ひとつ</rt></ruby>である。<ruby>短時間<rt>たんじかん</rt></ruby>の<ruby>侵入<rt>しんにゅう</rt></ruby>であっても<ruby>外交的<rt>がいこうてき</rt></ruby><ruby>緊張<rt>きんちょう</rt></ruby>を<ruby>高め<rt>たかめ</rt></ruby>、<ruby>国内<rt>こくない</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>への<ruby>関心<rt>かんしん</rt></ruby>を<ruby>一層<rt>いっそう</rt></ruby><ruby>強め<rt>つよめ</rt></ruby>る<ruby>要因<rt>よういん</rt></ruby>となる。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Two Chinese government ships enter Japan's waters near Senkaku Islands</h2>
+              <p class="body en-body">Two Chinese government ships entered Japan's territorial waters near the Senkaku Islands in the East China Sea on Monday. The dispute over the islands is one of the most sensitive maritime issues between Japan and China. Even brief entries can raise diplomatic tension and sharpen domestic concern about security.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>新潟<rt>にいがた</rt></ruby>・<ruby>胎内<rt>たいない</rt></ruby><ruby>市<rt>し</rt></ruby>、ドローンでクマなどの<ruby>野生<rt>やせい</rt></ruby><ruby>動物<rt>どうぶつ</rt></ruby>を<ruby>撃退<rt>げきたい</rt></ruby>する<ruby>実験<rt>じっけん</rt></ruby></h2>
+              <p class="body"><ruby>新潟県<rt>にいがたけん</rt></ruby><ruby>胎内<rt>たいない</rt></ruby><ruby>市<rt>し</rt></ruby>がクマなどの<ruby>野生<rt>やせい</rt></ruby><ruby>動物<rt>どうぶつ</rt></ruby>を<ruby>追い<rt>おい</rt></ruby><ruby>払う<rt>はらう</rt></ruby>ためのドローン<ruby>活用<rt>かつよう</rt></ruby><ruby>実験<rt>じっけん</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>した。<ruby>全国的<rt>ぜんこくてき</rt></ruby>に<ruby>人里<rt>ひとざと</rt></ruby>への<ruby>野生<rt>やせい</rt></ruby><ruby>動物<rt>どうぶつ</rt></ruby>の<ruby>出没<rt>しゅつぼつ</rt></ruby>が<ruby>深刻化<rt>しんこくか</rt></ruby>しており、<ruby>住民<rt>じゅうみん</rt></ruby>の<ruby>安全確保<rt>あんぜんかくほ</rt></ruby>が<ruby>喫緊<rt>きっきん</rt></ruby>の<ruby>課題<rt>かだい</rt></ruby>となっている。<ruby>比較的<rt>ひかくてき</rt></ruby><ruby>低コスト<rt>ていこすと</rt></ruby>の<ruby>技術<rt>ぎじゅつ</rt></ruby>で<ruby>地方<rt>ちほう</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby><ruby>管理<rt>かんり</rt></ruby>に<ruby>取り組む<rt>とりくむ</rt></ruby><ruby>自治体<rt>じちたい</rt></ruby>の<ruby>試み<rt>こころみ</rt></ruby>として<ruby>注目<rt>ちゅうもく</rt></ruby>される。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Niigata city tests drone to repel bears and wild animals</h2>
+              <p class="body en-body">Tainai City in Niigata Prefecture carried out a demonstration to test whether drones can drive away bears and other wild animals. Encounters with wildlife have become a growing concern in rural areas across Japan. The trial shows how municipalities are experimenting with affordable technology to manage public safety.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-05-27 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "一貫した", "reading": "いっかんした", "english": "coherent; consistent"}, {"word": "政権", "reading": "せいけん", "english": "government; administration"}, {"word": "結束", "reading": "けっそく", "english": "unity; solidarity"}, {"word": "野党", "reading": "やとう", "english": "opposition party"}, {"word": "打撃", "reading": "だげき", "english": "blow; setback"}], [{"word": "紛争", "reading": "ふんそう", "english": "conflict; dispute"}, {"word": "波及", "reading": "はきゅう", "english": "spread; ripple effect"}, {"word": "家計", "reading": "かけい", "english": "household finances"}, {"word": "脆弱性", "reading": "ぜいじゃくせい", "english": "vulnerability"}, {"word": "地政学的", "reading": "ちせいがくてき", "english": "geopolitical"}], [{"word": "激化", "reading": "げきか", "english": "intensification; escalation"}, {"word": "壊滅", "reading": "かいめつ", "english": "annihilation; destruction"}, {"word": "越境", "reading": "えっきょう", "english": "cross-border"}, {"word": "懸念", "reading": "けねん", "english": "concern; apprehension"}, {"word": "制御", "reading": "せいぎょ", "english": "control; containment"}], [{"word": "恒久的", "reading": "こうきゅうてき", "english": "permanent; enduring"}, {"word": "探査車", "reading": "たんさしゃ", "english": "exploration vehicle; rover"}, {"word": "移行", "reading": "いこう", "english": "transition; shift"}, {"word": "野心", "reading": "やしん", "english": "ambition"}], [{"word": "実証実験", "reading": "じっしょうじっけん", "english": "demonstration experiment; pilot project"}, {"word": "分別", "reading": "ぶんべつ", "english": "sorting; separation"}, {"word": "発火", "reading": "はっか", "english": "ignition; catching fire"}, {"word": "廃棄処理", "reading": "はいきしょり", "english": "waste disposal"}, {"word": "自治体", "reading": "じちたい", "english": "local government; municipality"}], [{"word": "領海", "reading": "りょうかい", "english": "territorial waters"}, {"word": "侵入", "reading": "しんにゅう", "english": "intrusion; entry"}, {"word": "海洋紛争", "reading": "かいようふんそう", "english": "maritime dispute"}, {"word": "安全保障", "reading": "あんぜんほしょう", "english": "national security"}, {"word": "外交的", "reading": "がいこうてき", "english": "diplomatic"}], [{"word": "撃退", "reading": "げきたい", "english": "repelling; driving away"}, {"word": "出没", "reading": "しゅつぼつ", "english": "appearance; sighting"}, {"word": "喫緊", "reading": "きっきん", "english": "urgent; pressing"}, {"word": "人里", "reading": "ひとざと", "english": "inhabited area; human settlement"}, {"word": "実施", "reading": "じっし", "english": "implementation; carrying out"}]];
+    const LABELS  = [{"section": "英国", "headline": "ブレア元首相、労働党政権に「一貫した計画なし」と批判"}, {"section": "英国・経済", "headline": "イラン紛争の影響、英家庭のエネルギー料金に初めて波及"}, {"section": "国際", "headline": "イスラエル、レバノンへの攻撃を激化　多数の死者"}, {"section": "国際・科学", "headline": "NASA、月面恒久基地建設の次段階を発表"}, {"section": "日本・社会", "headline": "神奈川県の市、AI搭載回収ボックスで電池を安全分別へ"}, {"section": "日本・政治", "headline": "中国公船2隻、尖閣諸島周辺の領海に侵入"}, {"section": "日本・社会", "headline": "新潟・胎内市、ドローンでクマなどの野生動物を撃退する実験"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
