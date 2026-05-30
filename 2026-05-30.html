@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年5月30日（土）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年5月30日（土）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>氏<rt>し</rt></ruby>、イラン<ruby>核<rt>かく</rt></ruby><ruby>協議<rt>きょうぎ</rt></ruby>で「<ruby>最終判断<rt>さいしゅうはんだん</rt></ruby>」も<ruby>合意<rt>ごうい</rt></ruby><ruby>発表<rt>はっぴょう</rt></ruby>なし</h2>
+              <p class="body">トランプ<ruby>米大統領<rt>べいだいとうりょう</rt></ruby>は、イランとの<ruby>核<rt>かく</rt></ruby><ruby>合意<rt>ごうい</rt></ruby>に<ruby>関す<rt>かんす</rt></ruby>る「<ruby>最終判断<rt>さいしゅうはんだん</rt></ruby>」を<ruby>下す<rt>くだす</rt></ruby>ため<ruby>顧問<rt>こもん</rt></ruby>らと<ruby>会議<rt>かいぎ</rt></ruby>を<ruby>行った<rt>いった</rt></ruby>。<ruby>米国<rt>べいこく</rt></ruby>とイランは<ruby>枠組み<rt>わくぐみ</rt></ruby>で<ruby>合意<rt>ごうい</rt></ruby>に<ruby>達し<rt>たっし</rt></ruby>たとされるが、<ruby>会議<rt>かいぎ</rt></ruby><ruby>後<rt>のち</rt></ruby>も<ruby>公式発表<rt>こうしきはっぴょう</rt></ruby>はなく、<ruby>合意<rt>ごうい</rt></ruby>の<ruby>承認<rt>しょうにん</rt></ruby>や<ruby>内容<rt>ないよう</rt></ruby>をめぐる<ruby>不透明感<rt>ふとうめいかん</rt></ruby>が<ruby>続い<rt>つづい</rt></ruby>ている。<ruby>石油<rt>せきゆ</rt></ruby><ruby>市場<rt>しじょう</rt></ruby>や<ruby>中東<rt>ちゅうとう</rt></ruby>の<ruby>地域<rt>ちいき</rt></ruby><ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>への<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>懸念<rt>けねん</rt></ruby>される。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Trump holds 'final determination' meeting on Iran but no deal announced</h2>
+              <p class="body en-body">US President Donald Trump met with advisers to make a 'final determination' on an Iran deal after officials said the two sides had agreed a framework. The meeting ended with no public announcement, leaving uncertainty over whether Washington will approve the arrangement. The outcome has significant implications for oil markets and regional security.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ウクライナ、AIドローンでロシア<ruby>軍<rt>ぐん</rt></ruby><ruby>補給<rt>ほきゅう</rt></ruby><ruby>路<rt>みち</rt></ruby>を<ruby>攻撃<rt>こうげき</rt></ruby></h2>
+              <p class="body">ウクライナ<ruby>軍<rt>ぐん</rt></ruby>がAI<ruby>搭載<rt>とうさい</rt></ruby>ドローンを<ruby>用いて<rt>もちいて</rt></ruby>、<ruby>占領地域<rt>せんりょうちいき</rt></ruby>におけるロシア<ruby>軍<rt>ぐん</rt></ruby>の<ruby>補給<rt>ほきゅう</rt></ruby>トラックを<ruby>攻撃<rt>こうげき</rt></ruby>していることがBBCの<ruby>検証<rt>けんしょう</rt></ruby>で<ruby>判明<rt>はんめい</rt></ruby>した。<ruby>弾薬<rt>だんやく</rt></ruby>や<ruby>燃料<rt>ねんりょう</rt></ruby>、<ruby>食料<rt>しょくりょう</rt></ruby>を<ruby>輸送<rt>ゆそう</rt></ruby>する<ruby>車列<rt>しゃれつ</rt></ruby>が<ruby>標的<rt>ひょうてき</rt></ruby>となっている。<ruby>戦場<rt>せんじょう</rt></ruby>がより<ruby>安価<rt>あんか</rt></ruby>な<ruby>自律<rt>じりつ</rt></ruby><ruby>型<rt>かた</rt></ruby><ruby>兵器<rt>へいき</rt></ruby>システムへと<ruby>移行<rt>いこう</rt></ruby>する<ruby>傾向<rt>けいこう</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>ており、<ruby>兵站<rt>へいたん</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>脅威<rt>きょうい</rt></ruby>が<ruby>増大<rt>ぞうだい</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Ukraine deploys AI drones to strike Russian supply convoys</h2>
+              <p class="body en-body">BBC Verify has confirmed that Ukraine is using AI-assisted drones to attack Russian trucks carrying ammunition, fuel and food in occupied areas. The shift highlights a broader trend toward cheaper autonomous weapons systems that can disrupt battlefield logistics and threaten supply lines.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">NHS<ruby>患者<rt>かんじゃ</rt></ruby><ruby>監視<rt>かんし</rt></ruby><ruby>機関<rt>きかん</rt></ruby>の<ruby>廃止<rt>はいし</rt></ruby>に<ruby>地方<rt>ちほう</rt></ruby><ruby>議会<rt>ぎかい</rt></ruby>が<ruby>反発<rt>はんぱつ</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>がNHSの<ruby>患者<rt>かんじゃ</rt></ruby><ruby>監視<rt>かんし</rt></ruby><ruby>機関<rt>きかん</rt></ruby>を<ruby>廃止<rt>はいし</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>たことに<ruby>対し<rt>たいし</rt></ruby>、<ruby>地方<rt>ちほう</rt></ruby><ruby>議会<rt>ぎかい</rt></ruby>が<ruby>強く<rt>つよく</rt></ruby><ruby>反発<rt>はんぱつ</rt></ruby>している。この<ruby>計画<rt>けいかく</rt></ruby>はNHS<ruby>近代化<rt>きんだいか</rt></ruby><ruby>法案<rt>ほうあん</rt></ruby>の<ruby>一環<rt>いっかん</rt></ruby>であるが、<ruby>独立<rt>どくりつ</rt></ruby>した<ruby>監査<rt>かんさ</rt></ruby><ruby>機能<rt>きのう</rt></ruby>が<ruby>失わ<rt>うしなわ</rt></ruby>れれば、<ruby>患者<rt>かんじゃ</rt></ruby>からの<ruby>苦情<rt>くじょう</rt></ruby>や<ruby>説明<rt>せつめい</rt></ruby><ruby>責任<rt>せきにん</rt></ruby>の<ruby>重要な<rt>じゅうような</rt></ruby><ruby>窓口<rt>まどぐち</rt></ruby>が<ruby>消滅<rt>しょうめつ</rt></ruby>する<ruby>恐れ<rt>おそれ</rt></ruby>があると<ruby>批判<rt>ひはん</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Councils warn abolishing NHS patient watchdog leaves service 'marking own homework'</h2>
+              <p class="body en-body">Local councils have warned that government plans to abolish an NHS patient watchdog in England could undermine independent scrutiny. The proposal is part of an NHS modernisation bill, but critics say patients may lose an important channel for complaints and accountability.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>一等<rt>いっとう</rt></ruby><ruby>郵便<rt>ゆうびん</rt></ruby>の<ruby>定時<rt>ていじ</rt></ruby><ruby>配達<rt>はいたつ</rt></ruby><ruby>率<rt>りつ</rt></ruby>、わずか75％にとどまる</h2>
+              <p class="body">ロイヤルメールの<ruby>一等<rt>いっとう</rt></ruby><ruby>郵便<rt>ゆうびん</rt></ruby>の<ruby>定時<rt>ていじ</rt></ruby><ruby>配達<rt>はいたつ</rt></ruby><ruby>率<rt>りつ</rt></ruby>が<ruby>約<rt>やく</rt></ruby>75％にとどまっていることが<ruby>明らか<rt>あきらか</rt></ruby>になった。<ruby>同社<rt>どうしゃ</rt></ruby>はサービス<ruby>改善<rt>かいぜん</rt></ruby><ruby>中<rt>なか</rt></ruby>であり、<ruby>通信<rt>つうしん</rt></ruby><ruby>規制<rt>きせい</rt></ruby><ruby>庁<rt>ちょう</rt></ruby>オフコムの<ruby>引き下げ<rt>ひきさげ</rt></ruby>られた<ruby>目標<rt>もくひょう</rt></ruby>の<ruby>達成<rt>たっせい</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>て<ruby>順調<rt>じゅんちょう</rt></ruby>であるとしている。しかし、<ruby>手紙<rt>てがみ</rt></ruby><ruby>市場<rt>しじょう</rt></ruby>が<ruby>縮小<rt>しゅくしょう</rt></ruby>する<ruby>中<rt>なか</rt></ruby>でサービスの<ruby>質<rt>しつ</rt></ruby>や<ruby>規制<rt>きせい</rt></ruby>のあり<ruby>方が<rt>ほうが</rt></ruby><ruby>問わ<rt>とわ</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Only three-quarters of first class mail delivered on time</h2>
+              <p class="body en-body">Royal Mail's first-class delivery performance remains at around 75%, even as the company says it is on track to meet Ofcom's reduced targets. The figures raise questions about service quality and regulation in a shrinking letters market.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">クロマグロ<ruby>漁獲量<rt>ぎょかくりょう</rt></ruby>、4<ruby>月<rt>がつ</rt></ruby>に<ruby>記録的<rt>きろくてき</rt></ruby><ruby>水準<rt>すいじゅん</rt></ruby>へ<ruby>急増<rt>きゅうぞう</rt></ruby></h2>
+              <p class="body"><ruby>日本各地<rt>にほんかくち</rt></ruby>でクロマグロの<ruby>漁獲量<rt>ぎょかくりょう</rt></ruby>が<ruby>急増<rt>きゅうぞう</rt></ruby>し、<ruby>一部<rt>いちぶ</rt></ruby>の<ruby>県<rt>けん</rt></ruby>では<ruby>漁獲<rt>ぎょかく</rt></ruby><ruby>枠<rt>わく</rt></ruby>に<ruby>前例<rt>ぜんれい</rt></ruby>のない<ruby>速さ<rt>はやさ</rt></ruby>で<ruby>近づ<rt>ちかづ</rt></ruby>いている。<ruby>水産庁<rt>すいさんちょう</rt></ruby>は<ruby>漁業<rt>ぎょぎょう</rt></ruby><ruby>制限<rt>せいげん</rt></ruby>や<ruby>一時停止<rt>いちじていし</rt></ruby>の<ruby>措置<rt>そち</rt></ruby>を<ruby>検討す<rt>けんとうす</rt></ruby>る<ruby>可能性<rt>かのうせい</rt></ruby>があり、<ruby>豊漁<rt>ほうりょう</rt></ruby>と<ruby>資源<rt>しげん</rt></ruby><ruby>保全<rt>ほぜん</rt></ruby>、<ruby>地域<rt>ちいき</rt></ruby><ruby>漁業<rt>ぎょぎょう</rt></ruby><ruby>経済<rt>けいざい</rt></ruby>のバランスが<ruby>問わ<rt>とわ</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan's bluefin tuna hauls surge to record levels in April</h2>
+              <p class="body en-body">Bluefin tuna catches are surging across Japan, with some prefectures approaching their quotas at unprecedented speed. Officials may need to impose restrictions or suspend fishing, highlighting the tension between strong hauls, conservation rules and local fishing economies.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>国勢調査<rt>こくせいちょうさ</rt></ruby>、5<ruby>年間<rt>ねんかん</rt></ruby>で<ruby>過去<rt>かこ</rt></ruby><ruby>最大<rt>さいだい</rt></ruby>の<ruby>人口<rt>じんこう</rt></ruby><ruby>減<rt>げん</rt></ruby>を<ruby>記録<rt>きろく</rt></ruby></h2>
+              <p class="body"><ruby>最新<rt>さいしん</rt></ruby>の<ruby>国勢調査<rt>こくせいちょうさ</rt></ruby>の<ruby>結果<rt>けっか</rt></ruby>、<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>人口<rt>じんこう</rt></ruby>は<ruby>約<rt>やく</rt></ruby><ruby>一億<rt>いちおく</rt></ruby><ruby>二千<rt>にせん</rt></ruby><ruby>三百<rt>さんびゃく</rt></ruby><ruby>万人<rt>ばんにん</rt></ruby>で、<ruby>五年間<rt>ごねんかん</rt></ruby>としては<ruby>過去<rt>かこ</rt></ruby><ruby>最大<rt>さいだい</rt></ruby>の<ruby>減少<rt>げんしょう</rt></ruby><ruby>幅<rt>はば</rt></ruby>を<ruby>記録<rt>きろく</rt></ruby>した。<ruby>少子<rt>しょうし</rt></ruby><ruby>高齢化<rt>こうれいか</rt></ruby>の<ruby>進行<rt>しんこう</rt></ruby>により、<ruby>地方自治体<rt>ちほうじちたい</rt></ruby>のサービス<ruby>維持<rt>いじ</rt></ruby>、<ruby>労働力<rt>ろうどうりょく</rt></ruby>の<ruby>確保<rt>かくほ</rt></ruby>、<ruby>経済<rt>けいざい</rt></ruby><ruby>計画<rt>けいかく</rt></ruby>の<ruby>見直し<rt>みなおし</rt></ruby>が<ruby>急務<rt>きゅうむ</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Census reveals largest five-year population decline in Japan's history</h2>
+              <p class="body en-body">Japan's latest census puts the population just above 123 million and confirms the largest five-year decline on record. The figures underscore the country's deepening demographic challenge, with consequences for regional services, labour supply and economic planning.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>国会<rt>こっかい</rt></ruby>、オンライン<ruby>入国審査<rt>にゅうこくしんさ</rt></ruby><ruby>導入<rt>どうにゅう</rt></ruby>の<ruby>改正<rt>かいせい</rt></ruby><ruby>法<rt>ほう</rt></ruby>を<ruby>可決<rt>かけつ</rt></ruby></h2>
+              <p class="body"><ruby>国会<rt>こっかい</rt></ruby>は<ruby>電子<rt>でんし</rt></ruby><ruby>渡航<rt>とこう</rt></ruby><ruby>認証<rt>にんしょう</rt></ruby>システムの<ruby>導入<rt>どうにゅう</rt></ruby>を<ruby>含む<rt>ふくむ</rt></ruby><ruby>改正<rt>かいせい</rt></ruby><ruby>入管<rt>にゅうかん</rt></ruby><ruby>法<rt>ほう</rt></ruby>を<ruby>可決<rt>かけつ</rt></ruby>した。<ruby>海外<rt>かいがい</rt></ruby>からの<ruby>渡航者<rt>とこうしゃ</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>事前審査<rt>じぜんしんさ</rt></ruby>を<ruby>電子化<rt>でんしか</rt></ruby>し、<ruby>入国<rt>にゅうこく</rt></ruby><ruby>手続き<rt>てつづき</rt></ruby>の<ruby>効率化<rt>こうりつか</rt></ruby>と<ruby>安全性<rt>あんぜんせい</rt></ruby>の<ruby>強化<rt>きょうか</rt></ruby>を<ruby>図る<rt>はかる</rt></ruby>。<ruby>訪日<rt>ほうにち</rt></ruby><ruby>観光客<rt>かんこうきゃく</rt></ruby>の<ruby>増加<rt>ぞうか</rt></ruby>に<ruby>対応<rt>たいおう</rt></ruby>しつつ、<ruby>国境<rt>こっきょう</rt></ruby><ruby>管理<rt>かんり</rt></ruby>を<ruby>強化<rt>きょうか</rt></ruby>する<ruby>狙い<rt>ねらい</rt></ruby>がある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan's parliament passes online immigration screening legislation</h2>
+              <p class="body en-body">Japan's Diet has enacted revised immigration legislation introducing a new electronic travel authorization system. The measure aims to streamline pre-arrival screening for overseas visitors as Japan balances growing tourism with tighter border management.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-05-30 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "核合意", "reading": "かくごうい", "english": "nuclear agreement"}, {"word": "顧問", "reading": "こもん", "english": "adviser; consultant"}, {"word": "枠組み", "reading": "わくぐみ", "english": "framework"}, {"word": "承認", "reading": "しょうにん", "english": "approval; authorization"}, {"word": "不透明感", "reading": "ふとうめいかん", "english": "sense of uncertainty"}], [{"word": "搭載", "reading": "とうさい", "english": "equipped with; mounted"}, {"word": "占領地域", "reading": "せんりょうちいき", "english": "occupied territory"}, {"word": "弾薬", "reading": "だんやく", "english": "ammunition"}, {"word": "兵站", "reading": "へいたん", "english": "logistics; supply chain (military)"}, {"word": "自律型", "reading": "じりつがた", "english": "autonomous type"}], [{"word": "監視機関", "reading": "かんしきかん", "english": "oversight body; watchdog"}, {"word": "廃止", "reading": "はいし", "english": "abolition"}, {"word": "監査", "reading": "かんさ", "english": "audit; inspection"}, {"word": "説明責任", "reading": "せつめいせきにん", "english": "accountability"}, {"word": "苦情", "reading": "くじょう", "english": "complaint; grievance"}], [{"word": "定時配達", "reading": "ていじはいたつ", "english": "on-time delivery"}, {"word": "通信規制庁", "reading": "つうしんきせいちょう", "english": "telecommunications regulator (Ofcom)"}, {"word": "縮小", "reading": "しゅくしょう", "english": "contraction; shrinking"}, {"word": "目標", "reading": "もくひょう", "english": "target; goal"}], [{"word": "漁獲量", "reading": "ぎょかくりょう", "english": "fish catch volume"}, {"word": "漁獲枠", "reading": "ぎょかくわく", "english": "fishing quota"}, {"word": "水産庁", "reading": "すいさんちょう", "english": "Fisheries Agency"}, {"word": "資源保全", "reading": "しげんほぜん", "english": "resource conservation"}, {"word": "豊漁", "reading": "ほうりょう", "english": "abundant catch; good haul"}], [{"word": "国勢調査", "reading": "こくせいちょうさ", "english": "national census"}, {"word": "減少幅", "reading": "げんしょうはば", "english": "extent of decline"}, {"word": "少子高齢化", "reading": "しょうしこうれいか", "english": "declining birthrate and aging population"}, {"word": "労働力", "reading": "ろうどうりょく", "english": "labour force"}, {"word": "急務", "reading": "きゅうむ", "english": "urgent task; pressing matter"}], [{"word": "電子渡航認証", "reading": "でんしとこうにんしょう", "english": "electronic travel authorization"}, {"word": "改正入管法", "reading": "かいせいにゅうかんほう", "english": "revised immigration control law"}, {"word": "事前審査", "reading": "じぜんしんさ", "english": "pre-arrival screening"}, {"word": "国境管理", "reading": "こっきょうかんり", "english": "border control"}, {"word": "効率化", "reading": "こうりつか", "english": "streamlining; making more efficient"}]];
+    const LABELS  = [{"section": "国際", "headline": "トランプ氏、イラン核協議で「最終判断」も合意発表なし"}, {"section": "国際", "headline": "ウクライナ、AIドローンでロシア軍補給路を攻撃"}, {"section": "英国", "headline": "NHS患者監視機関の廃止に地方議会が反発"}, {"section": "英国・経済", "headline": "一等郵便の定時配達率、わずか75％にとどまる"}, {"section": "日本・経済", "headline": "クロマグロ漁獲量、4月に記録的水準へ急増"}, {"section": "日本・社会", "headline": "国勢調査、5年間で過去最大の人口減を記録"}, {"section": "日本・政治", "headline": "国会、オンライン入国審査導入の改正法を可決"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
