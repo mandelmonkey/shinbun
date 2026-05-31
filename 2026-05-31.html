@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年5月31日（日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年5月31日（日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">スタージョン<ruby>元首相<rt>もとしゅしょう</rt></ruby>、「<ruby>犯し<rt>おかし</rt></ruby>ていない<ruby>罪<rt>つみ</rt></ruby>で<ruby>罰<rt>ばつ</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>ている」と<ruby>主張<rt>しゅちょう</rt></ruby></h2>
+              <p class="body">スコットランドの<ruby>元首相<rt>もとしゅしょう</rt></ruby>ニコラ・スタージョン<ruby>氏<rt>し</rt></ruby>がBBCのインタビューに<ruby>出演<rt>しゅつえん</rt></ruby>し、SNP<ruby>党<rt>とう</rt></ruby>の<ruby>横領<rt>おうりょう</rt></ruby>スキャンダルについて<ruby>語っ<rt>かたっ</rt></ruby>た。スタージョン<ruby>氏<rt>し</rt></ruby>は<ruby>元夫<rt>もとお</rt></ruby>が<ruby>起こ<rt>おこ</rt></ruby>した<ruby>事件<rt>じけん</rt></ruby>の<ruby>責任<rt>せきにん</rt></ruby>を<ruby>問わ<rt>とわ</rt></ruby>れていると<ruby>述べ<rt>のべ</rt></ruby>、「<ruby>自分<rt>じぶん</rt></ruby>が<ruby>犯し<rt>おかし</rt></ruby>ていない<ruby>罪<rt>つみ</rt></ruby>で<ruby>刑罰<rt>けいばつ</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>ているようなものだ」と<ruby>感情的<rt>かんじょうてき</rt></ruby>に<ruby>訴え<rt>うったえ</rt></ruby>た。この<ruby>発言<rt>はつげん</rt></ruby>は<ruby>党内外<rt>とうないがい</rt></ruby>で<ruby>波紋<rt>はもん</rt></ruby>を<ruby>広げ<rt>ひろげ</rt></ruby>ており、スタージョン<ruby>氏<rt>し</rt></ruby>の<ruby>政治的<rt>せいじてき</rt></ruby><ruby>遺産<rt>いさん</rt></ruby>をめぐる<ruby>議論<rt>ぎろん</rt></ruby>が<ruby>再燃<rt>さいねん</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Sturgeon says she is being punished for crimes she did not commit</h2>
+              <p class="body en-body">Former Scottish first minister Nicola Sturgeon gave an emotional BBC interview about the SNP embezzlement scandal, saying she feels punished for crimes committed by her former husband. The controversy continues to damage the party's credibility and raises fresh questions about Sturgeon's political legacy.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">PSG<ruby>優勝<rt>ゆうしょう</rt></ruby><ruby>祝賀<rt>しゅくが</rt></ruby>で<ruby>数百人<rt>すうひゃくにん</rt></ruby><ruby>逮捕<rt>たいほ</rt></ruby>、パリ<ruby>各地<rt>かくち</rt></ruby>で<ruby>混乱<rt>こんらん</rt></ruby></h2>
+              <p class="body">パリ・サンジェルマンがチャンピオンズリーグでアーセナルを<ruby>破っ<rt>やぶっ</rt></ruby>て<ruby>優勝<rt>ゆうしょう</rt></ruby>を<ruby>果た<rt>はた</rt></ruby>した<ruby>後<rt>のち</rt></ruby>、フランス<ruby>各地<rt>かくち</rt></ruby>で<ruby>祝賀<rt>しゅくが</rt></ruby><ruby>行事<rt>ぎょうじ</rt></ruby>が<ruby>混乱<rt>こんらん</rt></ruby>に<ruby>発展<rt>はってん</rt></ruby>した。<ruby>一部<rt>いちぶ</rt></ruby>のファンがフレアを<ruby>発射<rt>はっしゃ</rt></ruby>し、<ruby>複数<rt>ふくすう</rt></ruby>の<ruby>場所<rt>ばしょ</rt></ruby>で<ruby>騒乱<rt>そうらん</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>したため、<ruby>当局<rt>とうきょく</rt></ruby>は<ruby>数千人<rt>すうせんにん</rt></ruby>の<ruby>警察官<rt>けいさつかん</rt></ruby>を<ruby>動員<rt>どういん</rt></ruby>して<ruby>対応<rt>たいおう</rt></ruby>にあたった。フランス<ruby>当局<rt>とうきょく</rt></ruby>によると、<ruby>数百人<rt>すうひゃくにん</rt></ruby>が<ruby>逮捕<rt>たいほ</rt></ruby>されたという。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Hundreds arrested after PSG Champions League celebrations turn chaotic</h2>
+              <p class="body en-body">Celebrations for Paris Saint-Germain's Champions League victory over Arsenal turned chaotic across France. Some fans fired flares and unrest broke out in several locations, prompting authorities to deploy thousands of police officers. Hundreds were arrested.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">フェラーリ<ruby>初<rt>はつ</rt></ruby>のEV「ルーチェ」、ファンから<ruby>批判<rt>ひはん</rt></ruby>の<ruby>声<rt>こえ</rt></ruby></h2>
+              <p class="body">フェラーリが<ruby>初<rt>はつ</rt></ruby>の<ruby>電気自動車<rt>でんきじどうしゃ</rt></ruby>「ルーチェ」を<ruby>発表<rt>はっぴょう</rt></ruby>したが、<ruby>伝統的<rt>でんとうてき</rt></ruby>なブランドイメージからの<ruby>逸脱<rt>いつだつ</rt></ruby>だとして<ruby>一部<rt>いちぶ</rt></ruby>のファンや<ruby>評論家<rt>ひょうろんか</rt></ruby>から<ruby>批判<rt>ひはん</rt></ruby>を<ruby>浴び<rt>あび</rt></ruby>ている。<ruby>高級車<rt>こうきゅうしゃ</rt></ruby>メーカーは<ruby>中国<rt>ちゅうごく</rt></ruby>のEVメーカーとの<ruby>競争<rt>きょうそう</rt></ruby>を<ruby>意識<rt>いしき</rt></ruby>しつつも、<ruby>電動<rt>でんどう</rt></ruby><ruby>化<rt>か</rt></ruby>によって<ruby>長年<rt>ながねん</rt></ruby><ruby>培っ<rt>つちかっ</rt></ruby>てきたヘリテージを<ruby>失う<rt>うしなう</rt></ruby>リスクに<ruby>直面<rt>ちょくめん</rt></ruby>している。<ruby>自動車業界<rt>じどうしゃぎょうかい</rt></ruby><ruby>全体<rt>ぜんたい</rt></ruby>における<ruby>電動<rt>でんどう</rt></ruby><ruby>化<rt>か</rt></ruby>と<ruby>伝統<rt>でんとう</rt></ruby>の<ruby>両立<rt>りょうりつ</rt></ruby>という<ruby>課題<rt>かだい</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>浮き彫り<rt>うきぼり</rt></ruby>になった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Ferrari faces backlash over its first electric vehicle, the Luce</h2>
+              <p class="body en-body">Ferrari's first EV, the Luce, has drawn criticism from fans and commentators who say the company is abandoning its traditional identity. The story highlights a wider tension in the car industry as luxury brands try to compete with Chinese EV makers while preserving their heritage.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英国<rt>えいこく</rt></ruby>の<ruby>著名<rt>ちょめい</rt></ruby>シェフら、<ruby>飲食店<rt>いんしょくてん</rt></ruby>の<ruby>付加価値<rt>ふかかち</rt></ruby><ruby>税引<rt>ぜいびき</rt></ruby>き<ruby>下げ<rt>さげ</rt></ruby>を<ruby>要求<rt>ようきゅう</rt></ruby></h2>
+              <p class="body">トム・カーリッジ<ruby>氏<rt>し</rt></ruby>やヨタム・オットレンギ<ruby>氏<rt>し</rt></ruby>ら<ruby>著名<rt>ちょめい</rt></ruby>なシェフたちがBBCニュースナイトに<ruby>出演<rt>しゅつえん</rt></ruby>し、パブやレストランの<ruby>付加価値<rt>ふかかち</rt></ruby><ruby>税<rt>ぜい</rt></ruby>を<ruby>現行<rt>げんこう</rt></ruby>の20パーセントから10パーセントに<ruby>引き下げ<rt>ひきさげ</rt></ruby>るよう<ruby>訴え<rt>うったえ</rt></ruby>た。<ruby>飲食業<rt>いんしょくぎょう</rt></ruby><ruby>界<rt>かい</rt></ruby>はコスト<ruby>上昇<rt>じょうしょう</rt></ruby>の<ruby>圧力<rt>あつりょく</rt></ruby>にさらされており、<ruby>減税<rt>げんぜい</rt></ruby>によって<ruby>雇用<rt>こよう</rt></ruby>と<ruby>地域<rt>ちいき</rt></ruby><ruby>経済<rt>けいざい</rt></ruby>を<ruby>守る<rt>まもる</rt></ruby>ことができると<ruby>主張<rt>しゅちょう</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK celebrity chefs call for restaurant VAT to be halved to 10%</h2>
+              <p class="body en-body">Prominent chefs including Tom Kerridge and Yotam Ottolenghi have called for VAT on pubs and restaurants to be cut from 20% to 10%. They argue that the hospitality industry is under severe cost pressure and that tax relief would help protect jobs and local high streets.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">コンゴのエボラ<ruby>感染<rt>かんせん</rt></ruby><ruby>拡大<rt>かくだい</rt></ruby>、MSFが「<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>警告<rt>けいこく</rt></ruby>」</h2>
+              <p class="body"><ruby>国際<rt>こくさい</rt></ruby><ruby>医療<rt>いりょう</rt></ruby><ruby>支援<rt>しえん</rt></ruby><ruby>団体<rt>だんたい</rt></ruby>「<ruby>国境<rt>こっきょう</rt></ruby>なき<ruby>医師<rt>いし</rt></ruby><ruby>団<rt>だん</rt></ruby>」は、コンゴ<ruby>民主<rt>みんしゅ</rt></ruby><ruby>共和国<rt>きょうわこく</rt></ruby>におけるエボラ<ruby>出血<rt>しゅっけつ</rt></ruby><ruby>熱<rt>ねつ</rt></ruby>の<ruby>感染<rt>かんせん</rt></ruby><ruby>拡大<rt>かくだい</rt></ruby>が「<ruby>深く<rt>ふかく</rt></ruby><ruby>憂慮<rt>ゆうりょ</rt></ruby>すべき<ruby>状況<rt>じょうきょう</rt></ruby>」であると<ruby>警告し<rt>けいこくし</rt></ruby>た。<ruby>世界<rt>せかい</rt></ruby><ruby>保健<rt>ほけん</rt></ruby><ruby>機関<rt>きかん</rt></ruby>のトップが<ruby>最も<rt>もっとも</rt></ruby><ruby>被害<rt>ひがい</rt></ruby>の<ruby>大きい<rt>おおきい</rt></ruby><ruby>地域<rt>ちいき</rt></ruby>を<ruby>訪問<rt>ほうもん</rt></ruby>する<ruby>中<rt>なか</rt></ruby>、<ruby>医療<rt>いりょう</rt></ruby><ruby>体制<rt>たいせい</rt></ruby>が<ruby>逼迫<rt>ひっぱく</rt></ruby>した<ruby>地域<rt>ちいき</rt></ruby>での<ruby>感染症<rt>かんせんしょう</rt></ruby><ruby>封じ<rt>ふうじ</rt></ruby><ruby>込め<rt>こめ</rt></ruby>の<ruby>難しさ<rt>むつかしさ</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>浮き彫り<rt>うきぼり</rt></ruby>になっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Ebola spread in DR Congo described as deeply alarming by MSF</h2>
+              <p class="body en-body">Medical charity MSF has warned that the Ebola outbreak in the Democratic Republic of Congo is deeply alarming. The warning comes as the head of the WHO visits the worst-hit region, highlighting the challenge of containing dangerous diseases where health systems are under strain.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日米<rt>にちべい</rt></ruby><ruby>防衛<rt>ぼうえい</rt></ruby><ruby>相<rt>そう</rt></ruby>、<ruby>同盟<rt>どうめい</rt></ruby>の<ruby>抑止<rt>よくし</rt></ruby><ruby>力<rt>ちから</rt></ruby><ruby>強化<rt>きょうか</rt></ruby>で<ruby>合意<rt>ごうい</rt></ruby></h2>
+              <p class="body"><ruby>日米<rt>にちべい</rt></ruby><ruby>両国<rt>りょうごく</rt></ruby>の<ruby>防衛大<rt>ぼうえいだい</rt></ruby><ruby>臣<rt>しん</rt></ruby>が<ruby>会談<rt>かいだん</rt></ruby>し、<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby><ruby>協力<rt>きょうりょく</rt></ruby>の<ruby>推進<rt>すいしん</rt></ruby>と<ruby>同盟<rt>どうめい</rt></ruby>の<ruby>抑止<rt>よくし</rt></ruby><ruby>力<rt>ちから</rt></ruby>・<ruby>対応<rt>たいおう</rt></ruby><ruby>能力<rt>のうりょく</rt></ruby>の<ruby>強化<rt>きょうか</rt></ruby>で<ruby>合意<rt>ごうい</rt></ruby>した。<ruby>中国<rt>ちゅうごく</rt></ruby>の<ruby>軍事的<rt>ぐんじてき</rt></ruby><ruby>台頭<rt>たいとう</rt></ruby>や<ruby>北朝鮮<rt>きたちょうせん</rt></ruby>の<ruby>核<rt>かく</rt></ruby>・ミサイル<ruby>開発<rt>かいはつ</rt></ruby>への<ruby>懸念<rt>けねん</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>る<ruby>中<rt>なか</rt></ruby>、インド<ruby>太平洋地域<rt>たいへいようちいき</rt></ruby>の<ruby>安定<rt>あんてい</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>た<ruby>両国<rt>りょうごく</rt></ruby>の<ruby>結束<rt>けっそく</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>確認さ<rt>かくにんさ</rt></ruby>れた<ruby>形<rt>かたち</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan and US defense chiefs agree to strengthen alliance deterrence</h2>
+              <p class="body en-body">The defense chiefs of Japan and the United States agreed to promote security cooperation and strengthen their alliance's deterrence capabilities. The agreement comes amid growing regional concern about China's military rise and North Korea's nuclear and missile programs.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日本<rt>にっぽん</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>チーム、<ruby>衛星<rt>えいせい</rt></ruby>で<ruby>北極<rt>ほっきょく</rt></ruby><ruby>海氷<rt>かいひょう</rt></ruby>の<ruby>厚さ<rt>あつさ</rt></ruby>を<ruby>推定<rt>すいてい</rt></ruby>する<ruby>新手法<rt>しんしゅほう</rt></ruby>を<ruby>開発<rt>かいはつ</rt></ruby></h2>
+              <p class="body"><ruby>日本<rt>にっぽん</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>チームが<ruby>衛星<rt>えいせい</rt></ruby>データを<ruby>活用<rt>かつよう</rt></ruby>し、<ruby>北極<rt>ほっきょく</rt></ruby>の<ruby>海氷<rt>かいひょう</rt></ruby>の<ruby>厚さ<rt>あつさ</rt></ruby>を<ruby>推定<rt>すいてい</rt></ruby>する<ruby>新た<rt>あらた</rt></ruby>な<ruby>手法<rt>しゅほう</rt></ruby>を<ruby>開発<rt>かいはつ</rt></ruby>した。この<ruby>技術<rt>ぎじゅつ</rt></ruby>により<ruby>気候<rt>きこう</rt></ruby><ruby>変動<rt>へんどう</rt></ruby>の<ruby>監視<rt>かんし</rt></ruby><ruby>精度<rt>せいど</rt></ruby>が<ruby>向上<rt>こうじょう</rt></ruby>し、<ruby>極地<rt>きょくち</rt></ruby>の<ruby>氷<rt>こおり</rt></ruby>の<ruby>変化<rt>へんか</rt></ruby><ruby>速度<rt>そくど</rt></ruby>をより<ruby>正確<rt>せいかく</rt></ruby>に<ruby>把握<rt>はあく</rt></ruby>できるようになると<ruby>期待さ<rt>きたいさ</rt></ruby>れている。<ruby>地球温暖化<rt>ちきゅうおんだんか</rt></ruby>の<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>科学的<rt>かがくてき</rt></ruby>に<ruby>解明<rt>かいめい</rt></ruby>する<ruby>上で<rt>うえで</rt></ruby><ruby>重要な<rt>じゅうような</rt></ruby><ruby>一歩<rt>いっぽ</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japanese researchers develop satellite method for estimating Arctic sea ice thickness</h2>
+              <p class="body en-body">A Japanese research team has developed a new method for estimating Arctic sea ice thickness using satellite-derived data. The technique could improve climate monitoring accuracy and help scientists better understand how fast polar ice is changing as global temperatures rise.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,7)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>大型<rt>おおがた</rt></ruby><ruby>熱帯低気圧<rt>ねったいていきあつ</rt></ruby>が<ruby>沖縄<rt>おきなわ</rt></ruby>・<ruby>奄美<rt>あまみ</rt></ruby>に<ruby>接近<rt>せっきん</rt></ruby>、<ruby>航空便<rt>こうくうびん</rt></ruby>に<ruby>欠航<rt>けっこう</rt></ruby><ruby>相次ぐ<rt>あいつぐ</rt></ruby></h2>
+              <p class="body"><ruby>日本各地<rt>にほんかくち</rt></ruby>で30<ruby>度<rt>ど</rt></ruby>を<ruby>超え<rt>こえ</rt></ruby>る<ruby>真夏日<rt>まなつび</rt></ruby>となる<ruby>中<rt>なか</rt></ruby>、<ruby>大型<rt>おおがた</rt></ruby>の<ruby>熱帯低気圧<rt>ねったいていきあつ</rt></ruby>が6<ruby>月<rt>がつ</rt></ruby>1<ruby>日<rt>にち</rt></ruby>にかけて<ruby>沖縄県<rt>おきなわけん</rt></ruby>や<ruby>鹿児<rt>かこ</rt></ruby><ruby>島<rt>しま</rt></ruby><ruby>県<rt>けん</rt></ruby><ruby>奄美地方<rt>あまみちほう</rt></ruby>に<ruby>接近す<rt>せっきんす</rt></ruby>る<ruby>見込み<rt>みこみ</rt></ruby>である。<ruby>気象庁<rt>きしょうちょう</rt></ruby>は<ruby>強風<rt>きょうふう</rt></ruby>、<ruby>高波<rt>たかなみ</rt></ruby>、<ruby>大雨<rt>おおあめ</rt></ruby>に<ruby>警戒<rt>けいかい</rt></ruby>を<ruby>呼び<rt>よび</rt></ruby>かけており、<ruby>国内<rt>こくない</rt></ruby><ruby>航空<rt>こうくう</rt></ruby><ruby>各社<rt>かくしゃ</rt></ruby>は<ruby>沖縄<rt>おきなわ</rt></ruby><ruby>発着便<rt>はっちゃくびん</rt></ruby>を<ruby>中心<rt>ちゅうしん</rt></ruby>に<ruby>多数<rt>たすう</rt></ruby>の<ruby>欠航<rt>けっこう</rt></ruby>を<ruby>決定<rt>けってい</rt></ruby>した。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Severe tropical storm approaches Okinawa as airlines cancel flights</h2>
+              <p class="body en-body">Much of Japan saw summer-like heat above 30 degrees Celsius while a severe tropical storm is forecast to approach Okinawa and Amami from June 1. Japanese authorities are warning of strong winds, high waves and heavy rain, and domestic airlines have already cancelled many Okinawa-bound flights.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-05-31 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "横領", "reading": "おうりょう", "english": "embezzlement"}, {"word": "スキャンダル", "reading": "スキャンダル", "english": "scandal"}, {"word": "刑罰", "reading": "けいばつ", "english": "punishment"}, {"word": "波紋", "reading": "はもん", "english": "ripple; repercussion"}, {"word": "遺産", "reading": "いさん", "english": "legacy"}], [{"word": "祝賀", "reading": "しゅくが", "english": "celebration"}, {"word": "騒乱", "reading": "そうらん", "english": "riot; unrest"}, {"word": "動員", "reading": "どういん", "english": "mobilization"}, {"word": "逮捕", "reading": "たいほ", "english": "arrest"}, {"word": "発射", "reading": "はっしゃ", "english": "firing; launching"}], [{"word": "逸脱", "reading": "いつだつ", "english": "deviation; departure"}, {"word": "評論家", "reading": "ひょうろんか", "english": "critic; commentator"}, {"word": "電動化", "reading": "でんどうか", "english": "electrification"}, {"word": "培う", "reading": "つちかう", "english": "to cultivate; to build up"}, {"word": "浮き彫り", "reading": "うきぼり", "english": "to bring into relief; to highlight"}], [{"word": "付加価値税", "reading": "ふかかちぜい", "english": "value-added tax (VAT)"}, {"word": "引き下げ", "reading": "ひきさげ", "english": "reduction; cut"}, {"word": "飲食業界", "reading": "いんしょくぎょうかい", "english": "food and beverage industry"}, {"word": "減税", "reading": "げんぜい", "english": "tax reduction"}, {"word": "雇用", "reading": "こよう", "english": "employment"}], [{"word": "感染拡大", "reading": "かんせんかくだい", "english": "spread of infection"}, {"word": "憂慮", "reading": "ゆうりょ", "english": "concern; anxiety"}, {"word": "逼迫", "reading": "ひっぱく", "english": "strain; pressure"}, {"word": "封じ込め", "reading": "ふうじこめ", "english": "containment"}, {"word": "出血熱", "reading": "しゅっけつねつ", "english": "hemorrhagic fever"}], [{"word": "抑止力", "reading": "よくしりょく", "english": "deterrence"}, {"word": "防衛大臣", "reading": "ぼうえいだいじん", "english": "defense minister"}, {"word": "台頭", "reading": "たいとう", "english": "rise; emergence"}, {"word": "結束", "reading": "けっそく", "english": "unity; solidarity"}, {"word": "安全保障", "reading": "あんぜんほしょう", "english": "national security"}], [{"word": "海氷", "reading": "かいひょう", "english": "sea ice"}, {"word": "推定", "reading": "すいてい", "english": "estimation"}, {"word": "衛星", "reading": "えいせい", "english": "satellite"}, {"word": "精度", "reading": "せいど", "english": "accuracy; precision"}, {"word": "温暖化", "reading": "おんだんか", "english": "global warming"}], [{"word": "熱帯低気圧", "reading": "ねったいていきあつ", "english": "tropical depression/storm"}, {"word": "真夏日", "reading": "まなつび", "english": "midsummer day (above 30°C)"}, {"word": "警戒", "reading": "けいかい", "english": "caution; alert"}, {"word": "欠航", "reading": "けっこう", "english": "flight cancellation"}, {"word": "気象庁", "reading": "きしょうちょう", "english": "Japan Meteorological Agency"}]];
+    const LABELS  = [{"section": "英国", "headline": "スタージョン元首相、「犯していない罪で罰を受けている」と主張"}, {"section": "国際", "headline": "PSG優勝祝賀で数百人逮捕、パリ各地で混乱"}, {"section": "経済", "headline": "フェラーリ初のEV「ルーチェ」、ファンから批判の声"}, {"section": "英国・世界", "headline": "英国の著名シェフら、飲食店の付加価値税引き下げを要求"}, {"section": "国際", "headline": "コンゴのエボラ感染拡大、MSFが「深刻な警告」"}, {"section": "日本・政治", "headline": "日米防衛相、同盟の抑止力強化で合意"}, {"section": "日本・社会", "headline": "日本の研究チーム、衛星で北極海氷の厚さを推定する新手法を開発"}, {"section": "日本・社会", "headline": "大型熱帯低気圧が沖縄・奄美に接近、航空便に欠航相次ぐ"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
