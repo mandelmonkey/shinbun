@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年6月4日（木曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年6月4日（木曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米<rt>こめ</rt></ruby><ruby>下院<rt>かいん</rt></ruby>、トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>のイラン<ruby>戦争<rt>せんそう</rt></ruby><ruby>権限<rt>けんげん</rt></ruby>を<ruby>制限<rt>せいげん</rt></ruby>する<ruby>法案<rt>ほうあん</rt></ruby>を<ruby>可決<rt>かけつ</rt></ruby></h2>
+              <p class="body"><ruby>米<rt>こめ</rt></ruby><ruby>下院<rt>かいん</rt></ruby>は215<ruby>対<rt>つい</rt></ruby>208の<ruby>僅差<rt>きんさ</rt></ruby>で、トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>のイランに<ruby>対する<rt>たいする</rt></ruby><ruby>戦争<rt>せんそう</rt></ruby><ruby>権限<rt>けんげん</rt></ruby>を<ruby>制限<rt>せいげん</rt></ruby>する<ruby>法案<rt>ほうあん</rt></ruby>を<ruby>可決<rt>かけつ</rt></ruby>した。<ruby>共和党<rt>きょうわとう</rt></ruby>から4<ruby>名<rt>めい</rt></ruby>が<ruby>民主<rt>みんしゅ</rt></ruby><ruby>党側<rt>とうがわ</rt></ruby>に<ruby>回り<rt>まわり</rt></ruby>、<ruby>過去<rt>かこ</rt></ruby>3<ruby>回<rt>かい</rt></ruby><ruby>否決<rt>ひけつ</rt></ruby>されていた<ruby>法案<rt>ほうあん</rt></ruby>がようやく<ruby>成立<rt>せいりつ</rt></ruby>する<ruby>見通し<rt>みとおし</rt></ruby>となった。イランをめぐる<ruby>軍事的<rt>ぐんじてき</rt></ruby><ruby>緊張<rt>きんちょう</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>る<ruby>中<rt>なか</rt></ruby>、<ruby>議会<rt>ぎかい</rt></ruby>が<ruby>大統領<rt>だいとうりょう</rt></ruby>の<ruby>権限<rt>けんげん</rt></ruby>に<ruby>歯止め<rt>はどめ</rt></ruby>をかけようとする<ruby>異例<rt>いれい</rt></ruby>の<ruby>動き<rt>うごき</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US House votes to curb Trump's war powers over Iran</h2>
+              <p class="body en-body">The US House of Representatives voted 215-208 to pass a measure limiting President Trump's war powers over Iran. Four Republicans crossed party lines to support the bill, which had failed three previous times. The move comes amid heightened tensions over Iran and represents a rare congressional rebuke of presidential military authority.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イスラエルとレバノン、ヒズボラ<ruby>停戦<rt>ていせん</rt></ruby>の<ruby>枠組み<rt>わくぐみ</rt></ruby>で<ruby>合意<rt>ごうい</rt></ruby></h2>
+              <p class="body"><ruby>米国<rt>べいこく</rt></ruby><ruby>務<rt>つとむ</rt></ruby><ruby>省<rt>しょう</rt></ruby>によると、イスラエルとレバノンはヒズボラが<ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>停止<rt>ていし</rt></ruby>することを<ruby>条件<rt>じょうけん</rt></ruby>に、<ruby>停戦<rt>ていせん</rt></ruby><ruby>枠組み<rt>わくぐみ</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>することで<ruby>合意<rt>ごうい</rt></ruby>した。<ruby>声明<rt>せいめい</rt></ruby>では、いかなる<ruby>国家<rt>こっか</rt></ruby>・<ruby>非<rt>ひ</rt></ruby><ruby>国家<rt>こっか</rt></ruby><ruby>主体<rt>しゅたい</rt></ruby>もレバノンの<ruby>将来<rt>しょうらい</rt></ruby>を<ruby>人質<rt>ひとじち</rt></ruby>に<ruby>取る<rt>とる</rt></ruby>ことを<ruby>拒否<rt>きょひ</rt></ruby>するとの<ruby>立場<rt>たちば</rt></ruby>が<ruby>示さ<rt>しめさ</rt></ruby>れた。<ruby>地域<rt>ちいき</rt></ruby>のさらなる<ruby>紛争<rt>ふんそう</rt></ruby><ruby>拡大<rt>かくだい</rt></ruby>を<ruby>防ぐ<rt>ふせぐ</rt></ruby>ための<ruby>外交<rt>がいこう</rt></ruby><ruby>努力<rt>どりょく</rt></ruby>が<ruby>続い<rt>つづい</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Israel and Lebanon agree ceasefire framework contingent on Hezbollah</h2>
+              <p class="body en-body">Israel and Lebanon have agreed to implement a ceasefire framework on condition that Hezbollah halts its attacks, according to the US State Department. The statement rejected attempts by any state or non-state actor to hold Lebanon's future hostage. Diplomatic efforts continue to prevent further regional escalation.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">MI5、<ruby>中国<rt>ちゅうごく</rt></ruby>スパイが<ruby>求人<rt>きゅうじん</rt></ruby>サイトで<ruby>英<rt>えい</rt></ruby><ruby>政府<rt>せいふ</rt></ruby><ruby>職員<rt>しょくいん</rt></ruby>を<ruby>標的<rt>ひょうてき</rt></ruby>と<ruby>警告<rt>けいこく</rt></ruby></h2>
+              <p class="body"><ruby>英<rt>えい</rt></ruby><ruby>情報<rt>じょうほう</rt></ruby><ruby>機関<rt>きかん</rt></ruby>MI5は、<ruby>中国<rt>ちゅうごく</rt></ruby>の<ruby>諜報員<rt>ちょうほういん</rt></ruby>が<ruby>求人<rt>きゅうじん</rt></ruby>サイトや<ruby>偽<rt>にせ</rt></ruby>のリクルーターのプロフィールを<ruby>利用<rt>りよう</rt></ruby>して<ruby>英<rt>えい</rt></ruby><ruby>政府<rt>せいふ</rt></ruby><ruby>職員<rt>しょくいん</rt></ruby>に<ruby>接触し<rt>せっしょくし</rt></ruby>ていると<ruby>警告し<rt>けいこくし</rt></ruby>た。<ruby>通常<rt>つうじょう</rt></ruby>のキャリアネットワーキングを<ruby>装い<rt>よそおい</rt></ruby>、<ruby>機密情報<rt>きみつじょうほう</rt></ruby>の<ruby>収集<rt>しゅうしゅう</rt></ruby>や<ruby>協力者<rt>きょうりょくしゃ</rt></ruby>の<ruby>獲得<rt>かくとく</rt></ruby>を<ruby>図る<rt>はかる</rt></ruby><ruby>手法<rt>しゅほう</rt></ruby>が<ruby>確認さ<rt>かくにんさ</rt></ruby>れている。デジタル<ruby>時代<rt>じだい</rt></ruby>におけるスパイ<ruby>活動<rt>かつどう</rt></ruby>の<ruby>新た<rt>あらた</rt></ruby>な<ruby>形態<rt>けいたい</rt></ruby>として、<ruby>政府<rt>せいふ</rt></ruby><ruby>職員<rt>しょくいん</rt></ruby>に<ruby>一層<rt>いっそう</rt></ruby>の<ruby>警戒<rt>けいかい</rt></ruby>が<ruby>求め<rt>もとめ</rt></ruby>られている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">MI5 warns Chinese spies targeting UK government staff via job sites</h2>
+              <p class="body en-body">MI5 has warned that Chinese intelligence operatives are using job websites and fake recruiter profiles to approach UK government staff. The method blends ordinary career networking with espionage, aiming to collect sensitive information or recruit useful targets. Government employees are being urged to exercise greater vigilance against this modern form of spying.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">SpaceX、<ruby>企業<rt>きぎょう</rt></ruby><ruby>価値<rt>かち</rt></ruby>1.75<ruby>兆<rt>ちょう</rt></ruby>ドルで<ruby>株式<rt>かぶしき</rt></ruby><ruby>上場<rt>じょうじょう</rt></ruby>へ</h2>
+              <p class="body">イーロン・マスク<ruby>氏<rt>し</rt></ruby><ruby>率い<rt>ひきい</rt></ruby>るSpaceXが、<ruby>企業<rt>きぎょう</rt></ruby><ruby>価値<rt>かち</rt></ruby>を<ruby>約<rt>やく</rt></ruby>1<ruby>兆<rt>ちょう</rt></ruby>7500<ruby>億<rt>おく</rt></ruby>ドルに<ruby>設定<rt>せってい</rt></ruby>し、<ruby>株式市場<rt>かぶしきしじょう</rt></ruby>への<ruby>上場<rt>じょうじょう</rt></ruby><ruby>準備<rt>じゅんび</rt></ruby>を<ruby>進め<rt>すすめ</rt></ruby>ていることが<ruby>明らか<rt>あきらか</rt></ruby>になった。<ruby>宇宙開発<rt>うちゅうかいはつ</rt></ruby>や<ruby>衛星<rt>えいせい</rt></ruby><ruby>通信<rt>つうしん</rt></ruby>インフラへの<ruby>投資家<rt>とうしか</rt></ruby>の<ruby>関心<rt>かんしん</rt></ruby>の<ruby>高さ<rt>たかさ</rt></ruby>を<ruby>反映<rt>はんえい</rt></ruby>しているが、<ruby>急成長<rt>きゅうせいちょう</rt></ruby>するテクノロジー<ruby>企業<rt>きぎょう</rt></ruby>の<ruby>適正<rt>てきせい</rt></ruby>な<ruby>株価<rt>かぶか</rt></ruby><ruby>評価<rt>ひょうか</rt></ruby>をめぐる<ruby>議論<rt>ぎろん</rt></ruby>も<ruby>起き<rt>おき</rt></ruby>ている。<ruby>実現<rt>じつげん</rt></ruby>すれば、<ruby>史上最大<rt>しじょうさいだい</rt></ruby><ruby>級<rt>きゅう</rt></ruby>の<ruby>新規<rt>しんき</rt></ruby><ruby>上場<rt>じょうじょう</rt></ruby>となる<ruby>見込み<rt>みこみ</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">SpaceX valued at $1.75 trillion ahead of stock market debut</h2>
+              <p class="body en-body">SpaceX has set a target valuation of approximately $1.75 trillion as it moves closer to a stock market debut. The figure reflects strong investor appetite for space and satellite infrastructure, though it raises questions about how markets will price fast-growing technology firms. If completed, it would rank among the largest IPOs in history.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>九州北部<rt>きゅうしゅうほくぶ</rt></ruby>・<ruby>中国<rt>ちゅうごく</rt></ruby>・<ruby>近畿<rt>きんき</rt></ruby>が<ruby>梅雨入<rt>つゆいり</rt></ruby>り、<ruby>大雨<rt>おおあめ</rt></ruby>への<ruby>警戒<rt>けいかい</rt></ruby><ruby>呼び<rt>よび</rt></ruby>かけ</h2>
+              <p class="body"><ruby>気象庁<rt>きしょうちょう</rt></ruby>は、<ruby>九州北部<rt>きゅうしゅうほくぶ</rt></ruby>と<ruby>中国地方<rt>ちゅうごくちほう</rt></ruby>、<ruby>近畿地方<rt>きんきちほう</rt></ruby>が<ruby>梅雨入<rt>つゆいり</rt></ruby>りしたとみられると<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>季節<rt>きせつ</rt></ruby><ruby>前線<rt>ぜんせん</rt></ruby>と<ruby>湿っ<rt>しめっ</rt></ruby>た<ruby>空気<rt>くうき</rt></ruby>の<ruby>影響<rt>えいきょう</rt></ruby>で<ruby>曇り<rt>くもり</rt></ruby>や<ruby>雨<rt>あめ</rt></ruby>の<ruby>天気<rt>てんき</rt></ruby>が<ruby>続い<rt>つづい</rt></ruby>ている。<ruby>九州<rt>きゅうしゅう</rt></ruby>では6<ruby>月<rt>がつ</rt></ruby>5<ruby>日<rt>にち</rt></ruby>にかけて<ruby>大気<rt>たいき</rt></ruby>が<ruby>非常に<rt>ひじょうに</rt></ruby><ruby>不安定<rt>ふあんてい</rt></ruby>となり、<ruby>土砂<rt>どしゃ</rt></ruby><ruby>災害<rt>さいがい</rt></ruby>や<ruby>落雷<rt>らくらい</rt></ruby>、<ruby>突風<rt>とっぷう</rt></ruby>のおそれがあるとして<ruby>注意<rt>ちゅうい</rt></ruby>が<ruby>呼び<rt>よび</rt></ruby>かけられている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Northern Kyushu, Chugoku and Kansai enter rainy season</h2>
+              <p class="body en-body">Japan's Meteorological Agency announced that northern Kyushu, the Chugoku region and Kansai appear to have entered the rainy season. A seasonal front and humid air are bringing persistent cloud and rain. Kyushu faces particularly unstable conditions through June 5, with warnings issued for landslides, lightning and strong gusts.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ヤマダHDとエディオン、<ruby>経営<rt>けいえい</rt></ruby><ruby>統合<rt>とうごう</rt></ruby>を<ruby>検討<rt>けんとう</rt></ruby></h2>
+              <p class="body"><ruby>大手<rt>おおて</rt></ruby><ruby>家電<rt>かでん</rt></ruby><ruby>量販店<rt>りょうはんてん</rt></ruby>のヤマダホールディングスとエディオンが<ruby>経営<rt>けいえい</rt></ruby><ruby>統合<rt>とうごう</rt></ruby>を<ruby>検討し<rt>けんとうし</rt></ruby>ていることが<ruby>明らか<rt>あきらか</rt></ruby>になった。<ruby>実現<rt>じつげん</rt></ruby>すれば<ruby>年間<rt>ねんかん</rt></ruby><ruby>売上高<rt>うりあげだか</rt></ruby>は<ruby>約<rt>やく</rt></ruby>2<ruby>兆<rt>ちょう</rt></ruby>5000<ruby>億円<rt>おくえん</rt></ruby>に<ruby>達し<rt>たっし</rt></ruby>、<ruby>国内<rt>こくない</rt></ruby><ruby>最大規模<rt>さいだいきぼ</rt></ruby>の<ruby>家電<rt>かでん</rt></ruby>グループが<ruby>誕生<rt>たんじょう</rt></ruby>する。オンライン<ruby>小売業<rt>こうりぎょう</rt></ruby><ruby>者<rt>もの</rt></ruby>との<ruby>競争激化<rt>きょうそうげきか</rt></ruby>を<ruby>背景<rt>はいけい</rt></ruby>に、スケールメリットの<ruby>確保<rt>かくほ</rt></ruby>と<ruby>商品開発<rt>しょうひんかいはつ</rt></ruby><ruby>力<rt>ちから</rt></ruby>の<ruby>強化<rt>きょうか</rt></ruby>を<ruby>目指す<rt>めざす</rt></ruby>ものとみられる。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Yamada Holdings and Edion weigh management integration</h2>
+              <p class="body en-body">Major electronics retailers Yamada Holdings and Edion are reportedly discussing a management integration. The combined group would have annual sales of roughly 2.5 trillion yen, creating Japan's largest consumer electronics chain. The move is driven by intensifying competition from online retailers and a desire for greater scale and stronger product development.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>三重県<rt>みえけん</rt></ruby>、<ruby>全国初<rt>ぜんこくはつ</rt></ruby>の<ruby>罰則<rt>ばっそく</rt></ruby><ruby>付き<rt>つき</rt></ruby>カスハラ<ruby>防止<rt>ぼうし</rt></ruby><ruby>条例<rt>じょうれい</rt></ruby>を<ruby>提出<rt>ていしゅつ</rt></ruby>へ</h2>
+              <p class="body"><ruby>三重県<rt>みえけん</rt></ruby>はカスタマーハラスメントを<ruby>防止<rt>ぼうし</rt></ruby>するための<ruby>条例<rt>じょうれい</rt></ruby><ruby>案<rt>あん</rt></ruby>を<ruby>議会<rt>ぎかい</rt></ruby>に<ruby>提出<rt>ていしゅつ</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>を<ruby>固め<rt>かため</rt></ruby>た。<ruby>違反者<rt>いはんしゃ</rt></ruby>には<ruby>最大<rt>さいだい</rt></ruby>50<ruby>万円<rt>まんえん</rt></ruby>の<ruby>罰金<rt>ばっきん</rt></ruby>が<ruby>科さ<rt>かさ</rt></ruby>れる<ruby>内容<rt>ないよう</rt></ruby>で、<ruby>可決<rt>かけつ</rt></ruby>されれば<ruby>来年<rt>らいねん</rt></ruby>4<ruby>月<rt>がつ</rt></ruby>1<ruby>日<rt>にち</rt></ruby>に<ruby>施行<rt>しこう</rt></ruby>される。<ruby>罰則<rt>ばっそく</rt></ruby>を<ruby>伴う<rt>ともなう</rt></ruby>カスハラ<ruby>防止<rt>ぼうし</rt></ruby><ruby>条例<rt>じょうれい</rt></ruby>は<ruby>全国初<rt>ぜんこくはつ</rt></ruby>となり、<ruby>接客<rt>せっきゃく</rt></ruby><ruby>業<rt>ぎょう</rt></ruby><ruby>従事者<rt>じゅうじしゃ</rt></ruby>の<ruby>保護<rt>ほご</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>た<ruby>画期的<rt>かっきてき</rt></ruby>な<ruby>取り組み<rt>とりくみ</rt></ruby>として<ruby>注目<rt>ちゅうもく</rt></ruby>を<ruby>集め<rt>あつめ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Mie Prefecture to introduce Japan's first customer harassment ordinance with penalties</h2>
+              <p class="body en-body">Mie Prefecture plans to submit an ordinance aimed at preventing customer harassment, featuring penalties of up to 500,000 yen in fines. If passed, it would take effect on April 1 next year and become the first local ordinance in Japan to include penalties for customer harassment. The initiative is drawing attention as a landmark step in protecting service industry workers.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-06-04 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "僅差", "reading": "きんさ", "english": "narrow margin"}, {"word": "可決", "reading": "かけつ", "english": "passage (of a bill)"}, {"word": "戦争権限", "reading": "せんそうけんげん", "english": "war powers"}, {"word": "否決", "reading": "ひけつ", "english": "rejection (of a bill)"}, {"word": "歯止め", "reading": "はどめ", "english": "restraint; check"}], [{"word": "停戦", "reading": "ていせん", "english": "ceasefire"}, {"word": "枠組み", "reading": "わくぐみ", "english": "framework"}, {"word": "非国家主体", "reading": "ひこっかしゅたい", "english": "non-state actor"}, {"word": "紛争拡大", "reading": "ふんそうかくだい", "english": "conflict escalation"}, {"word": "外交努力", "reading": "がいこうどりょく", "english": "diplomatic efforts"}], [{"word": "諜報員", "reading": "ちょうほういん", "english": "intelligence operative; spy"}, {"word": "機密情報", "reading": "きみつじょうほう", "english": "classified information"}, {"word": "装う", "reading": "よそおう", "english": "to disguise; to pose as"}, {"word": "獲得", "reading": "かくとく", "english": "acquisition; recruitment"}, {"word": "警戒", "reading": "けいかい", "english": "vigilance; caution"}], [{"word": "企業価値", "reading": "きぎょうかち", "english": "corporate valuation"}, {"word": "上場", "reading": "じょうじょう", "english": "stock market listing; IPO"}, {"word": "衛星通信", "reading": "えいせいつうしん", "english": "satellite communications"}, {"word": "適正", "reading": "てきせい", "english": "appropriate; fair"}, {"word": "新規上場", "reading": "しんきじょうじょう", "english": "initial public offering (IPO)"}], [{"word": "梅雨入り", "reading": "つゆいり", "english": "start of the rainy season"}, {"word": "季節前線", "reading": "きせつぜんせん", "english": "seasonal front"}, {"word": "土砂災害", "reading": "どしゃさいがい", "english": "landslide disaster"}, {"word": "落雷", "reading": "らくらい", "english": "lightning strike"}, {"word": "突風", "reading": "とっぷう", "english": "sudden gust of wind"}], [{"word": "経営統合", "reading": "けいえいとうごう", "english": "management integration; merger"}, {"word": "家電量販店", "reading": "かでんりょうはんてん", "english": "electronics retail chain"}, {"word": "売上高", "reading": "うりあげだか", "english": "sales revenue"}, {"word": "競争激化", "reading": "きょうそうげきか", "english": "intensifying competition"}, {"word": "スケールメリット", "reading": "すけーるめりっと", "english": "economies of scale"}], [{"word": "条例", "reading": "じょうれい", "english": "ordinance; bylaw"}, {"word": "罰則", "reading": "ばっそく", "english": "penalty; punitive provision"}, {"word": "罰金", "reading": "ばっきん", "english": "fine (monetary penalty)"}, {"word": "施行", "reading": "しこう", "english": "enforcement; implementation"}, {"word": "画期的", "reading": "かっきてき", "english": "groundbreaking; epoch-making"}]];
+    const LABELS  = [{"section": "国際", "headline": "米下院、トランプ大統領のイラン戦争権限を制限する法案を可決"}, {"section": "国際", "headline": "イスラエルとレバノン、ヒズボラ停戦の枠組みで合意"}, {"section": "英国", "headline": "MI5、中国スパイが求人サイトで英政府職員を標的と警告"}, {"section": "経済", "headline": "SpaceX、企業価値1.75兆ドルで株式上場へ"}, {"section": "日本・社会", "headline": "九州北部・中国・近畿が梅雨入り、大雨への警戒呼びかけ"}, {"section": "日本・経済", "headline": "ヤマダHDとエディオン、経営統合を検討"}, {"section": "日本・社会", "headline": "三重県、全国初の罰則付きカスハラ防止条例を提出へ"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
