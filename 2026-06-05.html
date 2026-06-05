@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年6月5日（金）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年6月5日（金）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">バーナム<ruby>氏<rt>し</rt></ruby>、<ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby><ruby>党首<rt>とうしゅ</rt></ruby><ruby>選<rt>せん</rt></ruby>への<ruby>出馬<rt>しゅつば</rt></ruby><ruby>意向<rt>いこう</rt></ruby>を<ruby>表明<rt>ひょうめい</rt></ruby></h2>
+              <p class="body">グレーター・マンチェスター<ruby>市長<rt>しちょう</rt></ruby>のアンディ・バーナム<ruby>氏<rt>し</rt></ruby>は、<ruby>将来的<rt>しょうらいてき</rt></ruby>に<ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>の<ruby>党首<rt>とうしゅ</rt></ruby><ruby>選<rt>せん</rt></ruby>が<ruby>実施<rt>じっし</rt></ruby>される<ruby>場合<rt>ばあい</rt></ruby>は<ruby>出馬<rt>しゅつば</rt></ruby>する<ruby>意向<rt>いこう</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。ただし、まずメイカーフィールド<ruby>補欠<rt>ほけつ</rt></ruby><ruby>選挙<rt>せんきょ</rt></ruby>に<ruby>勝利<rt>しょうり</rt></ruby>し、<ruby>国会議員<rt>こっかいぎいん</rt></ruby>として<ruby>復帰<rt>ふっき</rt></ruby>する<ruby>必要<rt>ひつよう</rt></ruby>があるとしている。この<ruby>発言<rt>はつげん</rt></ruby>は、<ruby>党内<rt>とうない</rt></ruby>で<ruby>次期<rt>じき</rt></ruby><ruby>指導者<rt>しどうしゃ</rt></ruby>をめぐる<ruby>動き<rt>うごき</rt></ruby>が<ruby>始まり<rt>はじまり</rt></ruby>つつあることを<ruby>示唆す<rt>しさす</rt></ruby>るものである。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Burnham signals intent to run in Labour leadership contest</h2>
+              <p class="body en-body">Greater Manchester mayor Andy Burnham has said he would seek to enter any future Labour leadership contest, but would first need to win the Makerfield by-election to return to Parliament. The remarks hint at renewed manoeuvring inside the party over its future direction.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英国<rt>えいこく</rt></ruby><ruby>防<rt>ぼう</rt></ruby><ruby>参謀<rt>さんぼう</rt></ruby><ruby>総長<rt>そうちょう</rt></ruby>「<ruby>最も<rt>もっとも</rt></ruby><ruby>危険<rt>きけん</rt></ruby>な<ruby>時期<rt>じき</rt></ruby>」と<ruby>警告<rt>けいこく</rt></ruby></h2>
+              <p class="body"><ruby>国防<rt>こくぼう</rt></ruby><ruby>参謀<rt>さんぼう</rt></ruby><ruby>総長<rt>そうちょう</rt></ruby>のリチャード・ナイトン<ruby>卿<rt>きょう</rt></ruby>は、<ruby>英国<rt>えいこく</rt></ruby>が<ruby>自身<rt>じしん</rt></ruby>の<ruby>知る<rt>しる</rt></ruby><ruby>限り<rt>かぎり</rt></ruby><ruby>最も<rt>もっとも</rt></ruby><ruby>危険<rt>きけん</rt></ruby>な<ruby>時期<rt>じき</rt></ruby>にあるとの<ruby>認識<rt>にんしき</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。<ruby>特に<rt>とくに</rt></ruby>ロシアによる<ruby>英国<rt>えいこく</rt></ruby><ruby>防衛<rt>ぼうえい</rt></ruby><ruby>体制<rt>たいせい</rt></ruby>への<ruby>繰り返し<rt>くりかえし</rt></ruby>の<ruby>侵入<rt>しんにゅう</rt></ruby><ruby>行為<rt>こうい</rt></ruby>を<ruby>指摘<rt>してき</rt></ruby>し、<ruby>一線<rt>いっせん</rt></ruby>を<ruby>越え<rt>こえ</rt></ruby>るリスクがあると<ruby>警告し<rt>けいこくし</rt></ruby>ている。<ruby>抑止<rt>よくし</rt></ruby><ruby>力<rt>ちから</rt></ruby>と<ruby>即応<rt>そくおう</rt></ruby><ruby>体制<rt>たいせい</rt></ruby>の<ruby>強化<rt>きょうか</rt></ruby>が<ruby>急務<rt>きゅうむ</rt></ruby>であると<ruby>強調<rt>きょうちょう</rt></ruby>した。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK military chief warns of 'most dangerous period'</h2>
+              <p class="body en-body">Chief of the Defence Staff Sir Richard Knighton has said the UK is in the most dangerous period he has known, pointing to repeated Russian incursions into British defences. He warned that such probing risks crossing a line and stressed the urgent need to strengthen deterrence and readiness.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">AI<ruby>設計<rt>せっけい</rt></ruby>の<ruby>世界初<rt>せかいはつ</rt></ruby>ワクチン、ウイルス<ruby>科<rt>か</rt></ruby><ruby>全体<rt>ぜんたい</rt></ruby>に<ruby>有効<rt>ゆうこう</rt></ruby>か</h2>
+              <p class="body">ケンブリッジ<ruby>大学<rt>だいがく</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>チームは、<ruby>人工知能<rt>じんこうちのう</rt></ruby>が<ruby>設計<rt>せっけい</rt></ruby>した<ruby>世界初<rt>せかいはつ</rt></ruby>のワクチンを<ruby>試験<rt>しけん</rt></ruby>したと<ruby>発表<rt>はっぴょう</rt></ruby>した。このワクチンは<ruby>特定<rt>とくてい</rt></ruby>のウイルスだけでなく、ウイルス<ruby>科<rt>か</rt></ruby><ruby>全体<rt>ぜんたい</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>て<ruby>防御<rt>ぼうぎょ</rt></ruby><ruby>効果<rt>こうか</rt></ruby>を<ruby>持つ<rt>もつ</rt></ruby><ruby>可能性<rt>かのうせい</rt></ruby>がある。<ruby>初期段階<rt>しょきだんかい</rt></ruby>の<ruby>成果<rt>せいか</rt></ruby>が<ruby>確認さ<rt>かくにんさ</rt></ruby>れれば、<ruby>将来<rt>しょうらい</rt></ruby>のパンデミック<ruby>対策<rt>たいさく</rt></ruby>に<ruby>大きく<rt>おおきく</rt></ruby><ruby>貢献<rt>こうけん</rt></ruby>する<ruby>技術<rt>ぎじゅつ</rt></ruby>となりうる。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">World-first AI-designed vaccine could protect against entire virus families</h2>
+              <p class="body en-body">Cambridge scientists say they have tested what they describe as the first vaccine designed by artificial intelligence. The approach aims to protect against whole families of viruses, which could be significant for future outbreak preparedness if the early promise is confirmed.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">アンソロピック<ruby>共同<rt>きょうどう</rt></ruby><ruby>創業者<rt>そうぎょうしゃ</rt></ruby>「AI<ruby>減速<rt>げんそく</rt></ruby>の<ruby>仕組み<rt>しくみ</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>」</h2>
+              <p class="body">AI<ruby>企業<rt>きぎょう</rt></ruby>アンソロピックの<ruby>共同<rt>きょうどう</rt></ruby><ruby>創業者<rt>そうぎょうしゃ</rt></ruby>ジャック・クラーク<ruby>氏<rt>し</rt></ruby>は、AIシステムが<ruby>人間<rt>にんげん</rt></ruby>の<ruby>介入<rt>かいにゅう</rt></ruby>なしに<ruby>自己<rt>じこ</rt></ruby><ruby>改善<rt>かいぜん</rt></ruby>できるようになった<ruby>場合<rt>ばあい</rt></ruby>、<ruby>開発<rt>かいはつ</rt></ruby>を<ruby>減速<rt>げんそく</rt></ruby>させる<ruby>能力<rt>のうりょく</rt></ruby>が<ruby>社会<rt>しゃかい</rt></ruby>に<ruby>必要<rt>ひつよう</rt></ruby>だと<ruby>述べ<rt>のべ</rt></ruby>た。この<ruby>発言<rt>はつげん</rt></ruby>は、AI<ruby>安全性<rt>あんぜんせい</rt></ruby>や<ruby>規制<rt>きせい</rt></ruby>に<ruby>関す<rt>かんす</rt></ruby>る<ruby>政策<rt>せいさく</rt></ruby><ruby>議論<rt>ぎろん</rt></ruby>を<ruby>一段<rt>いちだん</rt></ruby>と<ruby>加速<rt>かそく</rt></ruby>させるものである。<ruby>各国<rt>かっこく</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>が<ruby>急速<rt>きゅうそく</rt></ruby>に<ruby>進化<rt>しんか</rt></ruby>するモデルにどう<ruby>対応<rt>たいおう</rt></ruby>すべきかが<ruby>問わ<rt>とわ</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Anthropic co-founder says society needs ability to slow AI</h2>
+              <p class="body en-body">Anthropic co-founder Jack Clark told BBC Newsnight that society may need the ability to slow advanced AI development if systems reach a point where they can improve without human input. The remarks add to the intensifying policy debate over AI safety, regulation, and governmental responses to rapidly evolving models.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>衆参<rt>しゅうさん</rt></ruby><ruby>議長<rt>ぎちょう</rt></ruby>、<ruby>皇位継承<rt>こういけいしょう</rt></ruby><ruby>安定化<rt>あんていか</rt></ruby>の<ruby>提言<rt>ていげん</rt></ruby>まとめる</h2>
+              <p class="body"><ruby>衆参<rt>しゅうさん</rt></ruby><ruby>両院<rt>りょういん</rt></ruby>の<ruby>議長<rt>ぎちょう</rt></ruby>と<ruby>副<rt>ふく</rt></ruby><ruby>議長<rt>ぎちょう</rt></ruby>は、<ruby>安定的<rt>あんていてき</rt></ruby>な<ruby>皇位継承<rt>こういけいしょう</rt></ruby>に<ruby>関す<rt>かんす</rt></ruby>る<ruby>提言<rt>ていげん</rt></ruby>をまとめ、6<ruby>月<rt>がつ</rt></ruby>8<ruby>日<rt>にち</rt></ruby>に<ruby>各<rt>かく</rt></ruby><ruby>政党<rt>せいとう</rt></ruby>および<ruby>会派<rt>かいは</rt></ruby>に<ruby>報告<rt>ほうこく</rt></ruby>する<ruby>予定<rt>よてい</rt></ruby>である。<ruby>各党<rt>かくとう</rt></ruby>の<ruby>意見<rt>いけん</rt></ruby>を<ruby>集約<rt>しゅうやく</rt></ruby>した<ruby>上で<rt>うえで</rt></ruby><ruby>国会<rt>こっかい</rt></ruby>としての<ruby>合意<rt>ごうい</rt></ruby>を<ruby>形成<rt>けいせい</rt></ruby>し、<ruby>政府<rt>せいふ</rt></ruby>に<ruby>速やか<rt>すみやか</rt></ruby>な<ruby>対応<rt>たいおう</rt></ruby>を<ruby>求め<rt>もとめ</rt></ruby>る<ruby>方針<rt>ほうしん</rt></ruby>だ。<ruby>皇位継承<rt>こういけいしょう</rt></ruby><ruby>問題<rt>もんだい</rt></ruby>は<ruby>長年<rt>ながねん</rt></ruby>にわたり<ruby>議論<rt>ぎろん</rt></ruby>が<ruby>続い<rt>つづい</rt></ruby>ており、<ruby>今回<rt>こんかい</rt></ruby>の<ruby>動き<rt>うごき</rt></ruby>は<ruby>具体的<rt>ぐたいてき</rt></ruby>な<ruby>進展<rt>しんてん</rt></ruby>として<ruby>注目<rt>ちゅうもく</rt></ruby>される。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Parliamentary leaders compile proposal on stable imperial succession</h2>
+              <p class="body en-body">The speakers and vice-speakers of both houses of Japan's Diet have compiled a proposal on stable imperial succession and plan to present it to parties on June 8. They aim to build parliamentary consensus and urge the government to act swiftly on this long-debated issue.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>経産<rt>けいさん</rt></ruby><ruby>省<rt>しょう</rt></ruby>、2040<ruby>年代<rt>ねんだい</rt></ruby>までに<ruby>原発<rt>げんぱつ</rt></ruby><ruby>最大<rt>さいだい</rt></ruby>5<ruby>基の<rt>もとの</rt></ruby><ruby>建て<rt>たて</rt></ruby><ruby>替え<rt>かえ</rt></ruby><ruby>必要<rt>ひつよう</rt></ruby>と<ruby>試算<rt>しさん</rt></ruby></h2>
+              <p class="body"><ruby>経済<rt>けいざい</rt></ruby><ruby>産業省<rt>さんぎょうしょう</rt></ruby>は、2040<ruby>年代<rt>ねんだい</rt></ruby>までに<ruby>最大<rt>さいだい</rt></ruby>5<ruby>基の<rt>もとの</rt></ruby><ruby>原子力発電所<rt>げんしりょくはつでんしょ</rt></ruby>の<ruby>建て<rt>たて</rt></ruby><ruby>替え<rt>かえ</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>になるとの<ruby>見通し<rt>みとおし</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。<ruby>電力需要<rt>でんりょくじゅよう</rt></ruby>の<ruby>増加<rt>ぞうか</rt></ruby>が<ruby>見込ま<rt>みこま</rt></ruby>れる<ruby>中<rt>なか</rt></ruby>、<ruby>老朽化<rt>ろうきゅうか</rt></ruby>した<ruby>原子炉<rt>げんしろ</rt></ruby>の<ruby>更新<rt>こうしん</rt></ruby>により<ruby>安定供給<rt>あんていきょうきゅう</rt></ruby>を<ruby>確保<rt>かくほ</rt></ruby>する<ruby>狙い<rt>ねらい</rt></ruby>がある。<ruby>原発<rt>げんぱつ</rt></ruby>の<ruby>新増設<rt>しんぞうせつ</rt></ruby>をめぐっては<ruby>国民<rt>こくみん</rt></ruby>の<ruby>間<rt>かん</rt></ruby>で<ruby>賛否<rt>さんぴ</rt></ruby>が<ruby>分か<rt>わか</rt></ruby>れており、<ruby>今後<rt>こんご</rt></ruby>の<ruby>政策判断<rt>せいさくはんだん</rt></ruby>が<ruby>注目<rt>ちゅうもく</rt></ruby>される。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan may need to replace up to five nuclear reactors by the 2040s</h2>
+              <p class="body en-body">Japan's Ministry of Economy, Trade and Industry has outlined projections showing up to five nuclear reactors may need replacement by the 2040s. The ministry argues that replacing ageing reactors would help secure electricity supply as demand is expected to rise.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日経平均<rt>にっけいへいきん</rt></ruby>が<ruby>一時<rt>いちじ</rt></ruby>1600<ruby>円<rt>えん</rt></ruby><ruby>超<rt>ちょう</rt></ruby><ruby>下落<rt>げらく</rt></ruby>、AI・<ruby>半導体<rt>はんどうたい</rt></ruby><ruby>株<rt>かぶ</rt></ruby>に<ruby>利益<rt>りえき</rt></ruby><ruby>確定<rt>かくてい</rt></ruby><ruby>売り<rt>うり</rt></ruby></h2>
+              <p class="body">6<ruby>月<rt>がつ</rt></ruby>5<ruby>日<rt>にち</rt></ruby>の<ruby>東京<rt>とうきょう</rt></ruby><ruby>株式市場<rt>かぶしきしじょう</rt></ruby>で、<ruby>日経平均<rt>にっけいへいきん</rt></ruby><ruby>株価<rt>かぶか</rt></ruby>が<ruby>一時<rt>いちじ</rt></ruby>1600<ruby>円<rt>えん</rt></ruby><ruby>以上<rt>いじょう</rt></ruby><ruby>下落<rt>げらく</rt></ruby>した。AIおよび<ruby>半導体<rt>はんどうたい</rt></ruby><ruby>関連<rt>かんれん</rt></ruby><ruby>銘柄<rt>めいがら</rt></ruby>が<ruby>急騰<rt>きゅうとう</rt></ruby>した<ruby>反動<rt>はんどう</rt></ruby>で、<ruby>投資家<rt>とうしか</rt></ruby>による<ruby>利益<rt>りえき</rt></ruby><ruby>確定<rt>かくてい</rt></ruby>の<ruby>売り<rt>うり</rt></ruby>が<ruby>広が<rt>ひろが</rt></ruby>った。その<ruby>後下<rt>こうか</rt></ruby>げ<ruby>幅<rt>はば</rt></ruby>はやや<ruby>縮小<rt>しゅくしょう</rt></ruby>したものの、テクノロジーセクターへの<ruby>期待<rt>きたい</rt></ruby>がいかに<ruby>相場<rt>そうば</rt></ruby>を<ruby>左右<rt>さゆう</rt></ruby>しているかを<ruby>改め<rt>あらため</rt></ruby>て<ruby>示す<rt>しめす</rt></ruby><ruby>展開<rt>てんかい</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Nikkei plunges over 1,600 yen as investors take profits on AI and chip stocks</h2>
+              <p class="body en-body">The Nikkei average briefly dropped by more than 1,600 yen on June 5 as investors moved to lock in gains from AI and semiconductor-related shares after a rapid rally. The market later narrowed some losses, but the fall underscored how sensitive Japanese equities remain to technology sector expectations.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-06-05 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "党首選", "reading": "とうしゅせん", "english": "party leadership election"}, {"word": "出馬", "reading": "しゅつば", "english": "running for office"}, {"word": "補欠選挙", "reading": "ほけつせんきょ", "english": "by-election"}, {"word": "意向", "reading": "いこう", "english": "intention"}, {"word": "示唆", "reading": "しさ", "english": "suggestion; implication"}], [{"word": "国防参謀総長", "reading": "こくぼうさんぼうそうちょう", "english": "Chief of the Defence Staff"}, {"word": "侵入", "reading": "しんにゅう", "english": "incursion; intrusion"}, {"word": "抑止力", "reading": "よくしりょく", "english": "deterrence"}, {"word": "即応体制", "reading": "そくおうたいせい", "english": "readiness posture"}, {"word": "強化", "reading": "きょうか", "english": "strengthening; reinforcement"}], [{"word": "人工知能", "reading": "じんこうちのう", "english": "artificial intelligence"}, {"word": "防御", "reading": "ぼうぎょ", "english": "defence; protection"}, {"word": "試験", "reading": "しけん", "english": "test; trial"}, {"word": "貢献", "reading": "こうけん", "english": "contribution"}, {"word": "初期段階", "reading": "しょきだんかい", "english": "early stage"}], [{"word": "共同創業者", "reading": "きょうどうそうぎょうしゃ", "english": "co-founder"}, {"word": "介入", "reading": "かいにゅう", "english": "intervention"}, {"word": "自己改善", "reading": "じこかいぜん", "english": "self-improvement"}, {"word": "減速", "reading": "げんそく", "english": "deceleration; slowing down"}, {"word": "政策議論", "reading": "せいさくぎろん", "english": "policy debate"}], [{"word": "皇位継承", "reading": "こういけいしょう", "english": "imperial succession"}, {"word": "提言", "reading": "ていげん", "english": "proposal; recommendation"}, {"word": "会派", "reading": "かいは", "english": "parliamentary group"}, {"word": "合意形成", "reading": "ごういけいせい", "english": "consensus building"}, {"word": "速やかな", "reading": "すみやかな", "english": "prompt; swift"}], [{"word": "経済産業省", "reading": "けいざいさんぎょうしょう", "english": "Ministry of Economy, Trade and Industry"}, {"word": "建て替え", "reading": "たてかえ", "english": "rebuilding; replacement"}, {"word": "老朽化", "reading": "ろうきゅうか", "english": "ageing; deterioration"}, {"word": "安定供給", "reading": "あんていきょうきゅう", "english": "stable supply"}, {"word": "賛否", "reading": "さんぴ", "english": "pros and cons; for and against"}], [{"word": "利益確定", "reading": "りえきかくてい", "english": "profit-taking"}, {"word": "半導体", "reading": "はんどうたい", "english": "semiconductor"}, {"word": "急騰", "reading": "きゅうとう", "english": "sharp rise; surge"}, {"word": "反動", "reading": "はんどう", "english": "reaction; rebound"}, {"word": "下げ幅", "reading": "さげはば", "english": "extent of decline"}]];
+    const LABELS  = [{"section": "英国", "headline": "バーナム氏、労働党党首選への出馬意向を表明"}, {"section": "英国・世界", "headline": "英国防参謀総長「最も危険な時期」と警告"}, {"section": "国際", "headline": "AI設計の世界初ワクチン、ウイルス科全体に有効か"}, {"section": "国際", "headline": "アンソロピック共同創業者「AI減速の仕組みが必要」"}, {"section": "日本・政治", "headline": "衆参議長、皇位継承安定化の提言まとめる"}, {"section": "日本・経済", "headline": "経産省、2040年代までに原発最大5基の建て替え必要と試算"}, {"section": "日本・経済", "headline": "日経平均が一時1600円超下落、AI・半導体株に利益確定売り"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
