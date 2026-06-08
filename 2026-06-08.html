@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年6月8日（月曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年6月8日（月曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>違法<rt>いほう</rt></ruby><ruby>精子<rt>せいし</rt></ruby>ドナーがSNSで<ruby>弱者<rt>じゃくしゃ</rt></ruby><ruby>標的<rt>ひょうてき</rt></ruby>に、BBC<ruby>調査<rt>ちょうさ</rt></ruby>で<ruby>判明<rt>はんめい</rt></ruby></h2>
+              <p class="body">BBCの<ruby>調査<rt>ちょうさ</rt></ruby><ruby>報道<rt>ほうどう</rt></ruby>により、ソーシャルメディア<ruby>上で<rt>うえで</rt></ruby><ruby>宣伝<rt>せんでん</rt></ruby>されている<ruby>違法<rt>いほう</rt></ruby>な<ruby>精子<rt>せいし</rt></ruby>ドナーサービスが<ruby>弱い<rt>よわい</rt></ruby><ruby>立場<rt>たちば</rt></ruby>の<ruby>女性<rt>じょせい</rt></ruby>を<ruby>標的<rt>ひょうてき</rt></ruby>にしていることが<ruby>明らか<rt>あきらか</rt></ruby>になった。ある<ruby>事例<rt>じれい</rt></ruby>では、ドナーが<ruby>少額<rt>しょうがく</rt></ruby>の<ruby>支払い<rt>しはらい</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>た<ruby>後<rt>のち</rt></ruby>、<ruby>郵便<rt>ゆうびん</rt></ruby>でサンプルを<ruby>送付<rt>そうふ</rt></ruby>していたという。<ruby>安全性<rt>あんぜんせい</rt></ruby>、<ruby>搾取<rt>さくしゅ</rt></ruby>、<ruby>医療<rt>いりょう</rt></ruby>スクリーニング、そして<ruby>非公式<rt>ひこうしき</rt></ruby>な<ruby>不妊<rt>ふにん</rt></ruby><ruby>治療<rt>ちりょう</rt></ruby>に<ruby>関す<rt>かんす</rt></ruby>る<ruby>規制<rt>きせい</rt></ruby>の<ruby>在り<rt>あり</rt></ruby><ruby>方が<rt>ほうが</rt></ruby><ruby>問わ<rt>とわ</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Illegal sperm donors target vulnerable women on social media, BBC finds</h2>
+              <p class="body en-body">A BBC investigation has revealed that illegal sperm donor services promoted on social media are targeting vulnerable women. In one case, a donor sent a sample through the post after receiving a small payment. The findings raise serious questions about safety, exploitation, medical screening, and regulation of informal fertility arrangements.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">アジア<ruby>株<rt>かぶ</rt></ruby><ruby>急落<rt>きゅうらく</rt></ruby>、テック<ruby>記録的<rt>きろくてき</rt></ruby><ruby>上昇<rt>じょうしょう</rt></ruby><ruby>後に<rt>のちに</rt></ruby><ruby>中東<rt>ちゅうとう</rt></ruby><ruby>緊張<rt>きんちょう</rt></ruby>も<ruby>重な<rt>おもな</rt></ruby>る</h2>
+              <p class="body"><ruby>記録的<rt>きろくてき</rt></ruby>な<ruby>上昇<rt>じょうしょう</rt></ruby>を<ruby>続け<rt>つづけ</rt></ruby>ていたテクノロジー<ruby>株<rt>かぶ</rt></ruby>がアジア<ruby>市場<rt>しじょう</rt></ruby>で<ruby>急落<rt>きゅうらく</rt></ruby>した。<ruby>日本<rt>にっぽん</rt></ruby>および<ruby>韓国<rt>かんこく</rt></ruby>の<ruby>株式市場<rt>かぶしきしじょう</rt></ruby>が<ruby>大幅<rt>おおはば</rt></ruby>に<ruby>下落<rt>げらく</rt></ruby>し、<ruby>米国<rt>べいこく</rt></ruby>ハイテク<ruby>株<rt>かぶ</rt></ruby>の<ruby>売り<rt>うり</rt></ruby>と<ruby>中東<rt>ちゅうとう</rt></ruby>での<ruby>軍事<rt>ぐんじ</rt></ruby><ruby>攻撃<rt>こうげき</rt></ruby><ruby>再開<rt>さいかい</rt></ruby>が<ruby>投資家<rt>とうしか</rt></ruby><ruby>心理<rt>しんり</rt></ruby>を<ruby>圧迫<rt>あっぱく</rt></ruby>している。<ruby>地政学<rt>ちせいがく</rt></ruby><ruby>的<rt>てき</rt></ruby>リスクと<ruby>株価<rt>かぶか</rt></ruby>の<ruby>過大評価<rt>かだいひょうか</rt></ruby>への<ruby>懸念<rt>けねん</rt></ruby>が<ruby>重なり<rt>かさなり</rt></ruby>、<ruby>市場<rt>しじょう</rt></ruby>は<ruby>不安定<rt>ふあんてい</rt></ruby>な<ruby>展開<rt>てんかい</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Asian stocks plunge as tech sell-off meets renewed Middle East tensions</h2>
+              <p class="body en-body">Technology stocks plunged across Asian markets after a record rally, with shares in Japan and South Korea falling sharply. Investors reacted to a sell-off in US tech stocks combined with renewed military attacks in the Middle East. Geopolitical uncertainty and concerns over stretched valuations weighed heavily on market sentiment.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ゼレンスキー<ruby>氏<rt>し</rt></ruby>の<ruby>欧州<rt>おうしゅう</rt></ruby><ruby>同盟<rt>どうめい</rt></ruby><ruby>国<rt>くに</rt></ruby>、<ruby>和平交渉<rt>わへいこうしょう</rt></ruby>に<ruby>五つ<rt>いつつ</rt></ruby>の<ruby>条件提示<rt>じょうけんていじ</rt></ruby></h2>
+              <p class="body">ウクライナのゼレンスキー<ruby>大統領<rt>だいとうりょう</rt></ruby>は<ruby>欧州<rt>おうしゅう</rt></ruby>の<ruby>主要<rt>しゅよう</rt></ruby>な<ruby>同盟<rt>どうめい</rt></ruby><ruby>国<rt>くに</rt></ruby>と<ruby>会談<rt>かいだん</rt></ruby>し、<ruby>和平交渉<rt>わへいこうしょう</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>た<ruby>五つ<rt>いつつ</rt></ruby>の<ruby>条件<rt>じょうけん</rt></ruby>を<ruby>取り<rt>とり</rt></ruby>まとめた。トランプ<ruby>米大統領<rt>べいだいとうりょう</rt></ruby>の<ruby>関心<rt>かんしん</rt></ruby>がイランとの<ruby>紛争<rt>ふんそう</rt></ruby>に<ruby>移行<rt>いこう</rt></ruby>する<ruby>中<rt>なか</rt></ruby>、<ruby>欧州各国<rt>おうしゅうかっこく</rt></ruby>の<ruby>連携<rt>れんけい</rt></ruby><ruby>強化<rt>きょうか</rt></ruby>がこれまで<ruby>以上<rt>いじょう</rt></ruby>に<ruby>重要性<rt>じゅうようせい</rt></ruby>を<ruby>増し<rt>まし</rt></ruby>ている。ウクライナ<ruby>問題<rt>もんだい</rt></ruby>における<ruby>欧州<rt>おうしゅう</rt></ruby><ruby>独自<rt>どくじ</rt></ruby>の<ruby>主導的<rt>しゅどうてき</rt></ruby><ruby>役割<rt>やくわり</rt></ruby>が<ruby>問わ<rt>とわ</rt></ruby>れる<ruby>局面<rt>きょくめん</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Zelensky's European allies set five conditions for peace talks</h2>
+              <p class="body en-body">Ukrainian President Volodymyr Zelensky met with key European allies to set out five conditions for any peace talks. The push for European coordination comes as US President Donald Trump's attention shifts toward the conflict with Iran. The discussion highlights the growing need for Europe to take a leading role on the Ukraine issue.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">M&S、<ruby>若者<rt>わかもの</rt></ruby><ruby>千人<rt>せんにん</rt></ruby><ruby>対象<rt>たいしょう</rt></ruby>の<ruby>研修<rt>けんしゅう</rt></ruby><ruby>制度<rt>せいど</rt></ruby>を<ruby>新設<rt>しんせつ</rt></ruby></h2>
+              <p class="body"><ruby>英<rt>えい</rt></ruby><ruby>大手<rt>おおて</rt></ruby><ruby>小売<rt>こうり</rt></ruby>チェーンのマークス・アンド・スペンサーが、<ruby>千人<rt>せんにん</rt></ruby>の<ruby>若者<rt>わかもの</rt></ruby>を<ruby>対象<rt>たいしょう</rt></ruby>とした<ruby>研修<rt>けんしゅう</rt></ruby>プログラムを<ruby>立ち上げ<rt>たちあげ</rt></ruby>ると<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>就学<rt>しゅうがく</rt></ruby>・<ruby>就労<rt>しゅうろう</rt></ruby>・<ruby>職業訓練<rt>しょくぎょうくんれん</rt></ruby>のいずれにも<ruby>属さ<rt>ぞくさ</rt></ruby>ない<ruby>若者<rt>わかもの</rt></ruby>の<ruby>増加<rt>ぞうか</rt></ruby>が<ruby>英国<rt>えいこく</rt></ruby>で<ruby>深刻化<rt>しんこくか</rt></ruby>しており、<ruby>同社<rt>どうしゃ</rt></ruby>はこの<ruby>社会<rt>しゃかい</rt></ruby><ruby>課題<rt>かだい</rt></ruby>への<ruby>対応<rt>たいおう</rt></ruby>を<ruby>目指す<rt>めざす</rt></ruby>。オランダでも<ruby>同様<rt>どうよう</rt></ruby>の<ruby>若年<rt>じゃくねん</rt></ruby><ruby>失業<rt>しつぎょう</rt></ruby><ruby>対策<rt>たいさく</rt></ruby>が<ruby>注目<rt>ちゅうもく</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">M&S launches traineeship programme for 1,000 young people</h2>
+              <p class="body en-body">Marks & Spencer has announced a traineeship programme targeting 1,000 young people. The scheme aims to address the growing challenge of young people not in employment, education, or training in the UK. Similar approaches to youth unemployment are also drawing attention in the Netherlands.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">フィリピン<ruby>地震<rt>じしん</rt></ruby>で<ruby>日本<rt>にっぽん</rt></ruby>に<ruby>津波<rt>つなみ</rt></ruby><ruby>注意報<rt>ちゅういほう</rt></ruby>、<ruby>沖縄<rt>おきなわ</rt></ruby>から<ruby>茨城<rt>いばらき</rt></ruby>まで</h2>
+              <p class="body">フィリピンで<ruby>発生<rt>はっせい</rt></ruby>した<ruby>地震<rt>じしん</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、<ruby>気象庁<rt>きしょうちょう</rt></ruby>は<ruby>太平洋<rt>たいへいよう</rt></ruby><ruby>沿岸<rt>えんがん</rt></ruby>の<ruby>広範囲<rt>こうはんい</rt></ruby>に<ruby>津波<rt>つなみ</rt></ruby><ruby>注意報<rt>ちゅういほう</rt></ruby>を<ruby>発令<rt>はつれい</rt></ruby>した。<ruby>対象<rt>たいしょう</rt></ruby><ruby>区域<rt>くいき</rt></ruby>は<ruby>沖縄県<rt>おきなわけん</rt></ruby>から<ruby>茨城県<rt>いばらきけん</rt></ruby>に<ruby>及び<rt>および</rt></ruby>、<ruby>一部<rt>いちぶ</rt></ruby>の<ruby>地域<rt>ちいき</rt></ruby>では<ruby>最大<rt>さいだい</rt></ruby>20センチの<ruby>津波<rt>つなみ</rt></ruby>が<ruby>観測<rt>かんそく</rt></ruby>された。<ruby>沿岸<rt>えんがん</rt></ruby><ruby>部<rt>ぶ</rt></ruby>の<ruby>住民<rt>じゅうみん</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>、<ruby>海岸<rt>かいがん</rt></ruby>に<ruby>近づ<rt>ちかづ</rt></ruby>かないよう<ruby>注意<rt>ちゅうい</rt></ruby>が<ruby>呼び<rt>よび</rt></ruby>かけられている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Philippines earthquake triggers tsunami advisory across Japan's Pacific coast</h2>
+              <p class="body en-body">Japan's Meteorological Agency issued a tsunami advisory along the Pacific coastline following an earthquake in the Philippines. The advisory covered areas from Okinawa Prefecture to Ibaraki Prefecture, with waves of up to 20 centimetres recorded in some areas. Coastal residents were urged to stay away from the shoreline.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">JAXA、H3ロケット<ruby>水曜<rt>すいよう</rt></ruby><ruby>打ち上げ<rt>うちあげ</rt></ruby>へ　12<ruby>月<rt>がつ</rt></ruby>の<ruby>失敗<rt>しっぱい</rt></ruby>から<ruby>再挑戦<rt>さいちょうせん</rt></ruby></h2>
+              <p class="body"><ruby>宇宙<rt>うちゅう</rt></ruby><ruby>航空<rt>こうくう</rt></ruby><ruby>研究開発機構<rt>けんきゅうかいはつきこう</rt></ruby>（JAXA）は、<ruby>水曜日<rt>すいようび</rt></ruby>にH3ロケットの<ruby>打ち上げ<rt>うちあげ</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>する<ruby>予定<rt>よてい</rt></ruby>である。<ruby>昨年<rt>さくねん</rt></ruby>12<ruby>月<rt>がつ</rt></ruby>の<ruby>打ち上げ<rt>うちあげ</rt></ruby><ruby>失敗<rt>しっぱい</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>た<ruby>再挑戦<rt>さいちょうせん</rt></ruby>であり、<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>宇宙開発<rt>うちゅうかいはつ</rt></ruby>プログラムと<ruby>国産<rt>こくさん</rt></ruby><ruby>打ち上げ<rt>うちあげ</rt></ruby><ruby>能力<rt>のうりょく</rt></ruby>の<ruby>維持<rt>いじ</rt></ruby>にとって<ruby>極め<rt>きわめ</rt></ruby>て<ruby>重要な<rt>じゅうような</rt></ruby><ruby>局面<rt>きょくめん</rt></ruby>となる。<ruby>産業界<rt>さんぎょうかい</rt></ruby>からも<ruby>成功<rt>せいこう</rt></ruby>への<ruby>期待<rt>きたい</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">JAXA to attempt H3 rocket launch Wednesday after December failure</h2>
+              <p class="body en-body">The Japan Aerospace Exploration Agency is scheduled to launch an H3 rocket on Wednesday. The attempt follows a failed launch in December and is seen as crucial for Japan's space programme and its effort to maintain reliable domestic launch capability. Industry confidence rides on a successful outcome.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">NTT、<ruby>次世代<rt>じせだい</rt></ruby><ruby>通信<rt>つうしん</rt></ruby>IOWN<ruby>普及<rt>ふきゅう</rt></ruby>へグローバル<ruby>投資<rt>とうし</rt></ruby>ファンド<ruby>設立<rt>せつりつ</rt></ruby></h2>
+              <p class="body"><ruby>通信<rt>つうしん</rt></ruby><ruby>大手<rt>おおて</rt></ruby>NTTは、<ruby>次世代<rt>じせだい</rt></ruby><ruby>光通信<rt>ひかりつうしん</rt></ruby><ruby>技術<rt>ぎじゅつ</rt></ruby>「IOWN」を<ruby>活用<rt>かつよう</rt></ruby>する<ruby>企業<rt>きぎょう</rt></ruby><ruby>向け<rt>むけ</rt></ruby>にグローバル<ruby>投資<rt>とうし</rt></ruby>ファンドを<ruby>設立<rt>せつりつ</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>を<ruby>明らか<rt>あきらか</rt></ruby>にした。IOWN<ruby>技術<rt>ぎじゅつ</rt></ruby>は<ruby>大量<rt>たいりょう</rt></ruby>の<ruby>電力<rt>でんりょく</rt></ruby>を<ruby>消費<rt>しょうひ</rt></ruby>するAIデータセンターにおいて、エネルギー<ruby>効率<rt>こうりつ</rt></ruby>の<ruby>大幅<rt>おおはば</rt></ruby>な<ruby>改善<rt>かいぜん</rt></ruby>が<ruby>期待さ<rt>きたいさ</rt></ruby>れている。<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>技術戦<rt>ぎじゅつせん</rt></ruby><ruby>略<rt>りゃく</rt></ruby>とAI<ruby>産業<rt>さんぎょう</rt></ruby>の<ruby>競争力<rt>きょうそうりょく</rt></ruby><ruby>強化<rt>きょうか</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>た<ruby>重要な<rt>じゅうような</rt></ruby><ruby>一手<rt>いって</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">NTT to launch global fund promoting IOWN data network technology</h2>
+              <p class="body en-body">Japanese telecom giant NTT is preparing to launch a global investment fund for companies using its next-generation IOWN data transmission technology. The technology is expected to significantly improve energy efficiency in AI data centres, which consume vast amounts of power. The move represents a key step in Japan's technology strategy and AI competitiveness.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-06-08 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "精子", "reading": "せいし", "english": "sperm"}, {"word": "調査報道", "reading": "ちょうさほうどう", "english": "investigative journalism"}, {"word": "搾取", "reading": "さくしゅ", "english": "exploitation"}, {"word": "不妊治療", "reading": "ふにんちりょう", "english": "fertility treatment"}, {"word": "規制", "reading": "きせい", "english": "regulation"}], [{"word": "急落", "reading": "きゅうらく", "english": "sharp decline; plunge"}, {"word": "投資家心理", "reading": "とうしかしんり", "english": "investor sentiment"}, {"word": "地政学的", "reading": "ちせいがくてき", "english": "geopolitical"}, {"word": "過大評価", "reading": "かだいひょうか", "english": "overvaluation"}, {"word": "圧迫", "reading": "あっぱく", "english": "pressure; strain"}], [{"word": "同盟国", "reading": "どうめいこく", "english": "allied nation"}, {"word": "和平交渉", "reading": "わへいこうしょう", "english": "peace negotiations"}, {"word": "連携強化", "reading": "れんけいきょうか", "english": "strengthening cooperation"}, {"word": "主導的", "reading": "しゅどうてき", "english": "leading; initiative-taking"}, {"word": "局面", "reading": "きょくめん", "english": "situation; phase"}], [{"word": "研修", "reading": "けんしゅう", "english": "training; traineeship"}, {"word": "就労", "reading": "しゅうろう", "english": "employment; working"}, {"word": "職業訓練", "reading": "しょくぎょうくんれん", "english": "vocational training"}, {"word": "深刻化", "reading": "しんこくか", "english": "worsening; becoming serious"}, {"word": "社会課題", "reading": "しゃかいかだい", "english": "social issue"}], [{"word": "津波注意報", "reading": "つなみちゅういほう", "english": "tsunami advisory"}, {"word": "気象庁", "reading": "きしょうちょう", "english": "Meteorological Agency"}, {"word": "沿岸部", "reading": "えんがんぶ", "english": "coastal area"}, {"word": "発令", "reading": "はつれい", "english": "issuance (of an order/advisory)"}, {"word": "観測", "reading": "かんそく", "english": "observation; measurement"}], [{"word": "打ち上げ", "reading": "うちあげ", "english": "launch"}, {"word": "宇宙航空研究開発機構", "reading": "うちゅうこうくうけんきゅうかいはつきこう", "english": "JAXA (Japan Aerospace Exploration Agency)"}, {"word": "再挑戦", "reading": "さいちょうせん", "english": "reattempt; second try"}, {"word": "国産", "reading": "こくさん", "english": "domestically produced"}, {"word": "維持", "reading": "いじ", "english": "maintenance; sustaining"}], [{"word": "通信大手", "reading": "つうしんおおて", "english": "major telecom company"}, {"word": "投資ファンド", "reading": "とうしファンド", "english": "investment fund"}, {"word": "光通信", "reading": "ひかりつうしん", "english": "optical communication"}, {"word": "消費電力", "reading": "しょうひでんりょく", "english": "power consumption"}, {"word": "競争力", "reading": "きょうそうりょく", "english": "competitiveness"}]];
+    const LABELS  = [{"section": "英国", "headline": "違法精子ドナーがSNSで弱者標的に、BBC調査で判明"}, {"section": "経済", "headline": "アジア株急落、テック記録的上昇後に中東緊張も重なる"}, {"section": "国際", "headline": "ゼレンスキー氏の欧州同盟国、和平交渉に五つの条件提示"}, {"section": "英国・世界", "headline": "M&S、若者千人対象の研修制度を新設"}, {"section": "日本・社会", "headline": "フィリピン地震で日本に津波注意報、沖縄から茨城まで"}, {"section": "日本・経済", "headline": "JAXA、H3ロケット水曜打ち上げへ　12月の失敗から再挑戦"}, {"section": "日本・経済", "headline": "NTT、次世代通信IOWN普及へグローバル投資ファンド設立"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
