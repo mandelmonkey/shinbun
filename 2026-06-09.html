@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年6月9日（火曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年6月9日（火曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">イラン・イスラエル、<ruby>攻撃<rt>こうげき</rt></ruby><ruby>応酬<rt>おうしゅう</rt></ruby><ruby>後に<rt>のちに</rt></ruby><ruby>軍事行動<rt>ぐんじこうどう</rt></ruby>を<ruby>一時停止<rt>いちじていし</rt></ruby></h2>
+              <p class="body">イランとイスラエルは、4<ruby>月<rt>がつ</rt></ruby>の<ruby>停戦<rt>ていせん</rt></ruby><ruby>合意<rt>ごうい</rt></ruby><ruby>以来<rt>いらい</rt></ruby><ruby>初<rt>はつ</rt></ruby>となる<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>攻撃<rt>こうげき</rt></ruby>の<ruby>応酬<rt>おうしゅう</rt></ruby>を<ruby>経て<rt>へて</rt></ruby>、<ruby>軍事行動<rt>ぐんじこうどう</rt></ruby>を<ruby>一時停止<rt>いちじていし</rt></ruby>すると<ruby>発表<rt>はっぴょう</rt></ruby>した。イスラエルのネタニヤフ<ruby>首相<rt>しゅしょう</rt></ruby>は<ruby>当面<rt>とうめん</rt></ruby><ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>控え<rt>ひかえ</rt></ruby>ると<ruby>述べ<rt>のべ</rt></ruby>、イラン<ruby>軍<rt>ぐん</rt></ruby>も<ruby>同様<rt>どうよう</rt></ruby>に<ruby>行動<rt>こうどう</rt></ruby><ruby>停止<rt>ていし</rt></ruby>を<ruby>宣言<rt>せんげん</rt></ruby>したが、<ruby>双方<rt>そうほう</rt></ruby>とも<ruby>停戦<rt>ていせん</rt></ruby><ruby>違反<rt>いはん</rt></ruby>があれば<ruby>即座<rt>そくざ</rt></ruby>に<ruby>報復<rt>ほうふく</rt></ruby>すると<ruby>警告し<rt>けいこくし</rt></ruby>ている。<ruby>脆弱<rt>ぜいじゃく</rt></ruby>な<ruby>停戦<rt>ていせん</rt></ruby>の<ruby>維持<rt>いじ</rt></ruby>は<ruby>米国<rt>べいこく</rt></ruby>の<ruby>外交<rt>がいこう</rt></ruby><ruby>努力<rt>どりょく</rt></ruby>に<ruby>大きく<rt>おおきく</rt></ruby><ruby>依存<rt>いぞん</rt></ruby>しており、<ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby>は<ruby>依然<rt>いぜん</rt></ruby>として<ruby>不安定<rt>ふあんてい</rt></ruby>な<ruby>状態<rt>じょうたい</rt></ruby>が<ruby>続い<rt>つづい</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Iran and Israel pause strikes after fresh exchange of attacks</h2>
+              <p class="body en-body">Iran and Israel have both announced a pause in military action following a fresh exchange of attacks, the first major flare-up since the April ceasefire agreement. Both sides warned they would respond immediately if the other breached the pause. The fragile ceasefire remains heavily dependent on continued US diplomatic efforts.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>薬物<rt>やくぶつ</rt></ruby><ruby>組織<rt>そしき</rt></ruby>による<ruby>住居<rt>じゅうきょ</rt></ruby><ruby>乗っ取り<rt>のっとり</rt></ruby>「カッコーイング」、<ruby>毎週<rt>まいしゅう</rt></ruby><ruby>数百<rt>すうひゃく</rt></ruby><ruby>件<rt>けん</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby><ruby>警察<rt>けいさつ</rt></ruby>は、<ruby>薬物<rt>やくぶつ</rt></ruby><ruby>犯罪<rt>はんざい</rt></ruby><ruby>組織<rt>そしき</rt></ruby>が<ruby>脆弱<rt>ぜいじゃく</rt></ruby>な<ruby>人々<rt>ひとびと</rt></ruby>の<ruby>住居<rt>じゅうきょ</rt></ruby>を<ruby>乗っ取る<rt>のっとる</rt></ruby>「カッコーイング」の<ruby>被害<rt>ひがい</rt></ruby>が<ruby>毎週<rt>まいしゅう</rt></ruby><ruby>数百<rt>すうひゃく</rt></ruby><ruby>件<rt>けん</rt></ruby>、<ruby>場合<rt>ばあい</rt></ruby>によっては<ruby>数千<rt>すうせん</rt></ruby><ruby>件<rt>けん</rt></ruby>に<ruby>上る<rt>のぼる</rt></ruby>と<ruby>警告し<rt>けいこくし</rt></ruby>た。<ruby>被害者<rt>ひがいしゃ</rt></ruby>は<ruby>自宅<rt>じたく</rt></ruby>を<ruby>犯罪<rt>はんざい</rt></ruby><ruby>拠点<rt>きょてん</rt></ruby>として<ruby>占拠<rt>せんきょ</rt></ruby>され、<ruby>恐怖<rt>きょうふ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<ruby>閉じ込め<rt>とじこめ</rt></ruby>られた<ruby>生活<rt>せいかつ</rt></ruby>を<ruby>強いら<rt>しいら</rt></ruby>れる。<ruby>住宅<rt>じゅうたく</rt></ruby><ruby>不安<rt>ふあん</rt></ruby>、<ruby>強制<rt>きょうせい</rt></ruby>、<ruby>福祉<rt>ふくし</rt></ruby><ruby>制度<rt>せいど</rt></ruby>の<ruby>不備<rt>ふび</rt></ruby>が<ruby>重なっ<rt>かさなっ</rt></ruby>た<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>組織<rt>そしき</rt></ruby><ruby>犯罪<rt>はんざい</rt></ruby><ruby>問題<rt>もんだい</rt></ruby>であり、<ruby>対策<rt>たいさく</rt></ruby>の<ruby>強化<rt>きょうか</rt></ruby>が<ruby>急務<rt>きゅうむ</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Drug gangs 'cuckooing' hundreds of homes weekly, police warn</h2>
+              <p class="body en-body">UK police have warned that drug gangs are taking over hundreds, and possibly thousands, of homes every week in a practice known as cuckooing. Vulnerable victims have their homes occupied and used as bases for criminal activity, leaving them trapped and frightened. The issue highlights a serious intersection of housing insecurity, coercion, and safeguarding failures.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">バデノック<ruby>保守党<rt>ほしゅとう</rt></ruby><ruby>党首<rt>とうしゅ</rt></ruby>、<ruby>公共<rt>こうきょう</rt></ruby>サービスの<ruby>平等<rt>びょうどう</rt></ruby><ruby>義務<rt>ぎむ</rt></ruby><ruby>撤廃<rt>てっぱい</rt></ruby>を<ruby>主張<rt>しゅちょう</rt></ruby></h2>
+              <p class="body"><ruby>保守党<rt>ほしゅとう</rt></ruby>のケミ・バデノック<ruby>党首<rt>とうしゅ</rt></ruby>は、<ruby>公共<rt>こうきょう</rt></ruby>サービスに<ruby>課さ<rt>かさ</rt></ruby>れる<ruby>法的<rt>ほうてき</rt></ruby>な<ruby>平等<rt>びょうどう</rt></ruby><ruby>義務<rt>ぎむ</rt></ruby>の<ruby>撤廃<rt>てっぱい</rt></ruby>を<ruby>訴え<rt>うったえ</rt></ruby>た。<ruby>同<rt>どう</rt></ruby><ruby>制度<rt>せいど</rt></ruby>が<ruby>主要<rt>しゅよう</rt></ruby>な<ruby>公的<rt>こうてき</rt></ruby><ruby>意思決定<rt>いしけってい</rt></ruby>において<ruby>法的<rt>ほうてき</rt></ruby>な<ruby>地雷原<rt>じらいげん</rt></ruby>と<ruby>化し<rt>かし</rt></ruby>ていると<ruby>批判<rt>ひはん</rt></ruby>し、<ruby>差別<rt>さべつ</rt></ruby><ruby>防止<rt>ぼうし</rt></ruby>と<ruby>行政<rt>ぎょうせい</rt></ruby>の<ruby>簡素化<rt>かんそか</rt></ruby>のバランスを<ruby>再考<rt>さいこう</rt></ruby>すべきだと<ruby>主張<rt>しゅちょう</rt></ruby>した。この<ruby>提案<rt>ていあん</rt></ruby>は、<ruby>平等<rt>びょうどう</rt></ruby><ruby>法<rt>ほう</rt></ruby>の<ruby>在り<rt>あり</rt></ruby><ruby>方を<rt>ほうを</rt></ruby>めぐる<ruby>英国内<rt>えいこくない</rt></ruby>の<ruby>議論<rt>ぎろん</rt></ruby>をさらに<ruby>先鋭化<rt>せんえいか</rt></ruby>させる<ruby>見通し<rt>みとおし</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Badenoch calls for scrapping public service equality duty</h2>
+              <p class="body en-body">Conservative leader Kemi Badenoch has called for scrapping the legal equality duty on public services, arguing it has become a legal minefield around major public decisions. The proposal is expected to sharpen debate over how equality law should balance anti-discrimination protections with administrative simplicity.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">OpenAIとSpaceX、<ruby>相次ぎ<rt>あいつぎ</rt></ruby><ruby>株式公開<rt>かぶしきこうかい</rt></ruby>を<ruby>計画<rt>けいかく</rt></ruby>　テック<ruby>大型<rt>おおがた</rt></ruby><ruby>上場<rt>じょうじょう</rt></ruby>ラッシュへ</h2>
+              <p class="body">OpenAIが<ruby>株式公開<rt>かぶしきこうかい</rt></ruby>の<ruby>計画<rt>けいかく</rt></ruby>を<ruby>正式<rt>せいしき</rt></ruby>に<ruby>発表<rt>はっぴょう</rt></ruby>した。Anthropicが<ruby>先週<rt>せんしゅう</rt></ruby><ruby>同様<rt>どうよう</rt></ruby>の<ruby>動き<rt>うごき</rt></ruby>を<ruby>見せ<rt>みせ</rt></ruby>たばかりであり、AI<ruby>業界<rt>ぎょうかい</rt></ruby>における<ruby>投資<rt>とうし</rt></ruby><ruby>競争<rt>きょうそう</rt></ruby>が<ruby>公開<rt>こうかい</rt></ruby><ruby>市場<rt>しじょう</rt></ruby>へと<ruby>拡大<rt>かくだい</rt></ruby>している。<ruby>一方<rt>いっぽう</rt></ruby>、SpaceXも<ruby>株式<rt>かぶしき</rt></ruby><ruby>上場<rt>じょうじょう</rt></ruby>の<ruby>準備<rt>じゅんび</rt></ruby>を<ruby>進め<rt>すすめ</rt></ruby>ていると<ruby>報じ<rt>ほうじ</rt></ruby>られ、イーロン・マスク<ruby>氏<rt>し</rt></ruby>にとって<ruby>過去<rt>かこ</rt></ruby><ruby>最大<rt>さいだい</rt></ruby>の<ruby>賭け<rt>かけ</rt></ruby>となる<ruby>可能性<rt>かのうせい</rt></ruby>がある。テクノロジー<ruby>分野<rt>ぶんや</rt></ruby>への<ruby>巨額<rt>きょがく</rt></ruby>のインフラ<ruby>投資<rt>とうし</rt></ruby>が、<ruby>金融<rt>きんゆう</rt></ruby><ruby>市場<rt>しじょう</rt></ruby>の<ruby>最大<rt>さいだい</rt></ruby>の<ruby>関心事<rt>かんしんじ</rt></ruby>の<ruby>一つ<rt>ひとつ</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">OpenAI and SpaceX both plan stock market debuts in tech IPO rush</h2>
+              <p class="body en-body">OpenAI has filed plans for a stock market debut, following Anthropic's similar move last week, escalating the AI investment race into public markets. SpaceX is also reportedly preparing an IPO that could be Elon Musk's biggest gamble yet. The technology sector's massive infrastructure spending is becoming one of the defining financial contests of the era.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>宇都宮市<rt>うつのみやし</rt></ruby><ruby>中心部<rt>ちゅうしんぶ</rt></ruby>でクマ<ruby>目撃<rt>もくげき</rt></ruby><ruby>相次ぐ<rt>あいつぐ</rt></ruby>、<ruby>全<rt>ぜん</rt></ruby><ruby>小中学校<rt>しょうちゅうがっこう</rt></ruby>が<ruby>休校<rt>きゅうこう</rt></ruby>に</h2>
+              <p class="body"><ruby>栃木県<rt>とちぎけん</rt></ruby><ruby>宇都宮市<rt>うつのみやし</rt></ruby>の<ruby>中心部<rt>ちゅうしんぶ</rt></ruby>でクマの<ruby>目撃<rt>もくげき</rt></ruby><ruby>情報<rt>じょうほう</rt></ruby>が<ruby>相次ぎ<rt>あいつぎ</rt></ruby>、<ruby>市<rt>し</rt></ruby><ruby>当局<rt>とうきょく</rt></ruby>は<ruby>住民<rt>じゅうみん</rt></ruby>に<ruby>警戒<rt>けいかい</rt></ruby>を<ruby>呼び<rt>よび</rt></ruby>かけるとともに、<ruby>捕獲<rt>ほかく</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>た<ruby>捜索<rt>そうさく</rt></ruby>を<ruby>続け<rt>つづけ</rt></ruby>ている。<ruby>市内<rt>しない</rt></ruby>のすべての<ruby>小中学校<rt>しょうちゅうがっこう</rt></ruby>が<ruby>休校<rt>きゅうこう</rt></ruby><ruby>措置<rt>そち</rt></ruby>を<ruby>取り<rt>とり</rt></ruby>、<ruby>通学路<rt>つうがくろ</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby>が<ruby>確認さ<rt>かくにんさ</rt></ruby>れるまで<ruby>再開<rt>さいかい</rt></ruby>は<ruby>見送ら<rt>みおくら</rt></ruby>れる<ruby>見通し<rt>みとおし</rt></ruby>である。<ruby>近年<rt>きんねん</rt></ruby>、<ruby>全国的<rt>ぜんこくてき</rt></ruby>にクマの<ruby>生息<rt>せいそく</rt></ruby><ruby>域<rt>いき</rt></ruby>が<ruby>都市部<rt>としぶ</rt></ruby>まで<ruby>拡大<rt>かくだい</rt></ruby>しており、<ruby>自治体<rt>じちたい</rt></ruby>の<ruby>対応<rt>たいおう</rt></ruby>が<ruby>課題<rt>かだい</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Bear sightings in central Utsunomiya force all schools to close</h2>
+              <p class="body en-body">Repeated bear sightings in central Utsunomiya, Tochigi Prefecture, have prompted authorities to close all elementary and junior high schools in the city. Search teams continue efforts to capture the animal while residents are urged to stay alert. The incident reflects a nationwide trend of bears expanding into urban areas.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>再審<rt>さいしん</rt></ruby><ruby>制度見直し<rt>せいどみなおし</rt></ruby>、<ruby>袴田<rt>はかまだ</rt></ruby>さんの<ruby>姉<rt>あね</rt></ruby>が<ruby>衆院<rt>しゅういん</rt></ruby><ruby>法務<rt>ほうむ</rt></ruby><ruby>委<rt>い</rt></ruby>で<ruby>訴え<rt>うったえ</rt></ruby></h2>
+              <p class="body"><ruby>衆議院<rt>しゅうぎいん</rt></ruby><ruby>法務<rt>ほうむ</rt></ruby><ruby>委員会<rt>いいんかい</rt></ruby>は、<ruby>再審<rt>さいしん</rt></ruby><ruby>制度<rt>せいど</rt></ruby>の<ruby>見直し<rt>みなおし</rt></ruby>をめぐる<ruby>参考人<rt>さんこうにん</rt></ruby><ruby>質疑<rt>しつぎ</rt></ruby>を<ruby>行い<rt>おこない</rt></ruby>、<ruby>袴田<rt>はかまだ</rt></ruby><ruby>巌<rt>がん</rt></ruby>さんの<ruby>姉<rt>あね</rt></ruby>・ひで<ruby>子<rt>こ</rt></ruby>さんが<ruby>手続き<rt>てつづき</rt></ruby>の<ruby>迅速化<rt>じんそくか</rt></ruby>と<ruby>証拠<rt>しょうこ</rt></ruby><ruby>開示<rt>かいじ</rt></ruby>の<ruby>拡大<rt>かくだい</rt></ruby>を<ruby>強く<rt>つよく</rt></ruby><ruby>訴え<rt>うったえ</rt></ruby>た。<ruby>袴田<rt>はかまだ</rt></ruby><ruby>事件<rt>じけん</rt></ruby>は、<ruby>逮捕<rt>たいほ</rt></ruby>から<ruby>再審<rt>さいしん</rt></ruby><ruby>無罪<rt>むざい</rt></ruby>の<ruby>確認<rt>かくにん</rt></ruby>まで<ruby>数十年<rt>すうじゅうねん</rt></ruby>を<ruby>要し<rt>ようし</rt></ruby>た<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>冤罪<rt>えんざい</rt></ruby><ruby>問題<rt>もんだい</rt></ruby>の<ruby>象徴的<rt>しょうちょうてき</rt></ruby>な<ruby>事例<rt>じれい</rt></ruby>である。<ruby>制度<rt>せいど</rt></ruby><ruby>改革<rt>かいかく</rt></ruby>の<ruby>議論<rt>ぎろん</rt></ruby>は、<ruby>刑事<rt>けいじ</rt></ruby><ruby>司法<rt>しほう</rt></ruby>の<ruby>公正<rt>こうせい</rt></ruby>さと<ruby>被告人<rt>ひこくにん</rt></ruby>の<ruby>権利<rt>けんり</rt></ruby><ruby>保護<rt>ほご</rt></ruby>のあり<ruby>方を<rt>ほうを</rt></ruby><ruby>問う<rt>とう</rt></ruby><ruby>重要な<rt>じゅうような</rt></ruby><ruby>局面<rt>きょくめん</rt></ruby>を<ruby>迎え<rt>むかえ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Hakamada's sister appeals for retrial reform at Diet committee</h2>
+              <p class="body en-body">Japan's Lower House Judicial Affairs Committee heard testimony on retrial reform from Hideko Hakamada, sister of Iwao Hakamada, whose acquittal was confirmed after decades of legal proceedings. She called for faster procedures and broader evidence disclosure. The Hakamada case has become a symbol of wrongful conviction risks in Japan's criminal justice system.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米国<rt>べいこく</rt></ruby><ruby>防<rt>ぼう</rt></ruby><ruby>総省<rt>そうしょう</rt></ruby>、<ruby>百<rt>ひゃく</rt></ruby><ruby>度<rt>ど</rt></ruby>・アリババを<ruby>中国軍<rt>ちゅうごくぐん</rt></ruby><ruby>関連<rt>かんれん</rt></ruby><ruby>企業<rt>きぎょう</rt></ruby>リストに<ruby>追加<rt>ついか</rt></ruby></h2>
+              <p class="body"><ruby>米国<rt>べいこく</rt></ruby><ruby>防<rt>ぼう</rt></ruby><ruby>総省<rt>そうしょう</rt></ruby>は、<ruby>中国人民<rt>ちゅうごくじんみん</rt></ruby><ruby>解放<rt>かいほう</rt></ruby><ruby>軍<rt>ぐん</rt></ruby>と<ruby>関わ<rt>かかわ</rt></ruby>りがあるとされる<ruby>企業<rt>きぎょう</rt></ruby>のリストに、<ruby>百<rt>ひゃく</rt></ruby><ruby>度<rt>ど</rt></ruby>やアリババグループなどの<ruby>大手<rt>おおて</rt></ruby>テクノロジー<ruby>企業<rt>きぎょう</rt></ruby>を<ruby>新たに<rt>あらたに</rt></ruby><ruby>追加<rt>ついか</rt></ruby>した。リスト<ruby>掲載<rt>けいさい</rt></ruby><ruby>企業<rt>きぎょう</rt></ruby>は<ruby>国防総省<rt>こくぼうそうしょう</rt></ruby>との<ruby>取引<rt>とりひき</rt></ruby>が<ruby>制限<rt>せいげん</rt></ruby>され、<ruby>投資家<rt>とうしか</rt></ruby>や<ruby>取引先<rt>とりひきさき</rt></ruby>への<ruby>影響<rt>えいきょう</rt></ruby>も<ruby>懸念<rt>けねん</rt></ruby>される。この<ruby>決定<rt>けってい</rt></ruby>は<ruby>米中<rt>べいちゅう</rt></ruby><ruby>間の<rt>まの</rt></ruby><ruby>技術<rt>ぎじゅつ</rt></ruby><ruby>覇権<rt>はけん</rt></ruby><ruby>争い<rt>あらそい</rt></ruby>を<ruby>一段<rt>いちだん</rt></ruby>と<ruby>激化<rt>げきか</rt></ruby>させるとみられ、<ruby>日本<rt>にっぽん</rt></ruby>を<ruby>含む<rt>ふくむ</rt></ruby>アジア<ruby>地域<rt>ちいき</rt></ruby>のサプライチェーンや<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby><ruby>政策<rt>せいさく</rt></ruby>にも<ruby>波及<rt>はきゅう</rt></ruby>する<ruby>可能性<rt>かのうせい</rt></ruby>がある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Pentagon adds Baidu and Alibaba to China military-linked list</h2>
+              <p class="body en-body">The US Department of Defense has added major Chinese technology companies including Baidu and Alibaba Group to a list of firms alleged to have links with China's military. Companies on the list face restrictions on dealing with the Pentagon. The decision is expected to further escalate US-China tensions, with potential implications for supply chains and security policy across Asia, including Japan.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-06-09 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "応酬", "reading": "おうしゅう", "english": "exchange (of attacks)"}, {"word": "停戦", "reading": "ていせん", "english": "ceasefire"}, {"word": "報復", "reading": "ほうふく", "english": "retaliation"}, {"word": "脆弱", "reading": "ぜいじゃく", "english": "fragile, vulnerable"}, {"word": "外交", "reading": "がいこう", "english": "diplomacy"}], [{"word": "乗っ取り", "reading": "のっとり", "english": "takeover, hijacking"}, {"word": "脆弱", "reading": "ぜいじゃく", "english": "vulnerable"}, {"word": "占拠", "reading": "せんきょ", "english": "occupation, seizure"}, {"word": "福祉", "reading": "ふくし", "english": "welfare"}, {"word": "不備", "reading": "ふび", "english": "deficiency, inadequacy"}, {"word": "急務", "reading": "きゅうむ", "english": "urgent task"}], [{"word": "撤廃", "reading": "てっぱい", "english": "abolition, repeal"}, {"word": "義務", "reading": "ぎむ", "english": "duty, obligation"}, {"word": "簡素化", "reading": "かんそか", "english": "simplification"}, {"word": "先鋭化", "reading": "せんえいか", "english": "intensification, sharpening"}, {"word": "意思決定", "reading": "いしけってい", "english": "decision-making"}], [{"word": "株式公開", "reading": "かぶしきこうかい", "english": "IPO, going public"}, {"word": "上場", "reading": "じょうじょう", "english": "stock market listing"}, {"word": "投資競争", "reading": "とうしきょうそう", "english": "investment race"}, {"word": "巨額", "reading": "きょがく", "english": "enormous amount"}, {"word": "公開市場", "reading": "こうかいしじょう", "english": "public market"}], [{"word": "目撃", "reading": "もくげき", "english": "sighting, witnessing"}, {"word": "捕獲", "reading": "ほかく", "english": "capture"}, {"word": "休校", "reading": "きゅうこう", "english": "school closure"}, {"word": "生息域", "reading": "せいそくいき", "english": "habitat range"}, {"word": "自治体", "reading": "じちたい", "english": "local government"}], [{"word": "再審", "reading": "さいしん", "english": "retrial"}, {"word": "参考人質疑", "reading": "さんこうにんしつぎ", "english": "testimony from witnesses/experts"}, {"word": "冤罪", "reading": "えんざい", "english": "wrongful conviction"}, {"word": "証拠開示", "reading": "しょうこかいじ", "english": "evidence disclosure"}, {"word": "刑事司法", "reading": "けいじしほう", "english": "criminal justice"}], [{"word": "国防総省", "reading": "こくぼうそうしょう", "english": "Department of Defense (Pentagon)"}, {"word": "人民解放軍", "reading": "じんみんかいほうぐん", "english": "People's Liberation Army"}, {"word": "覇権争い", "reading": "はけんあらそい", "english": "hegemonic rivalry"}, {"word": "波及", "reading": "はきゅう", "english": "ripple effect, spread"}, {"word": "供給チェーン", "reading": "きょうきゅうチェーン", "english": "supply chain"}]];
+    const LABELS  = [{"section": "国際", "headline": "イラン・イスラエル、攻撃応酬後に軍事行動を一時停止"}, {"section": "英国", "headline": "薬物組織による住居乗っ取り「カッコーイング」、毎週数百件"}, {"section": "英国・世界", "headline": "バデノック保守党党首、公共サービスの平等義務撤廃を主張"}, {"section": "経済", "headline": "OpenAIとSpaceX、相次ぎ株式公開を計画　テック大型上場ラッシュへ"}, {"section": "日本・社会", "headline": "宇都宮市中心部でクマ目撃相次ぐ、全小中学校が休校に"}, {"section": "日本・政治", "headline": "再審制度見直し、袴田さんの姉が衆院法務委で訴え"}, {"section": "国際", "headline": "米国防総省、百度・アリババを中国軍関連企業リストに追加"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
