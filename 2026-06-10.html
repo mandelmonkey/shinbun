@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年6月10日（水曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年6月10日（水曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米軍<rt>べいぐん</rt></ruby>、イランに<ruby>報復攻撃<rt>ほうふくこうげき</rt></ruby>　ヘリ<ruby>撃墜<rt>げきつい</rt></ruby><ruby>受け<rt>うけ</rt></ruby></h2>
+              <p class="body">トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>は、イランがホルムズ<ruby>海峡<rt>かいきょう</rt></ruby><ruby>上空<rt>じょうくう</rt></ruby>で<ruby>米軍<rt>べいぐん</rt></ruby>ヘリコプターを<ruby>撃墜<rt>げきつい</rt></ruby>したと<ruby>非難<rt>ひなん</rt></ruby>し、<ruby>報復<rt>ほうふく</rt></ruby>としてイラン<ruby>国内<rt>こくない</rt></ruby>の<ruby>軍事<rt>ぐんじ</rt></ruby><ruby>目標<rt>もくひょう</rt></ruby>への<ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>命じ<rt>めいじ</rt></ruby>た。この<ruby>衝突<rt>しょうとつ</rt></ruby>により、<ruby>中東地域<rt>ちゅうとうちいき</rt></ruby>での<ruby>危機<rt>きき</rt></ruby><ruby>拡大<rt>かくだい</rt></ruby>が<ruby>懸念<rt>けねん</rt></ruby>されている。<ruby>専門家<rt>せんもんか</rt></ruby>は、<ruby>海上<rt>かいじょう</rt></ruby><ruby>輸送<rt>ゆそう</rt></ruby>の<ruby>混乱<rt>こんらん</rt></ruby>やエネルギー<ruby>価格<rt>かかく</rt></ruby>の<ruby>高騰<rt>こうとう</rt></ruby>、<ruby>地域外<rt>ちいきがい</rt></ruby><ruby>交へ<rt>かへ</rt></ruby>の<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>指摘<rt>してき</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US strikes Iran in retaliation for helicopter downing</h2>
+              <p class="body en-body">President Trump accused Iran of shooting down a US military helicopter over the Strait of Hormuz and ordered strikes on Iranian military targets in response. The confrontation has raised fears of a broader Middle East crisis. Experts warn of disruptions to shipping, surging energy prices, and serious diplomatic consequences across the region.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>違法<rt>いほう</rt></ruby>ミニマート、<ruby>閉鎖<rt>へいさ</rt></ruby><ruby>期間<rt>きかん</rt></ruby>を<ruby>最長<rt>さいちょう</rt></ruby>1<ruby>年<rt>ねん</rt></ruby>に<ruby>延長<rt>えんちょう</rt></ruby>へ</h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>は、BBCの<ruby>報道<rt>ほうどう</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>、イングランドとウェールズにおける<ruby>違法<rt>いほう</rt></ruby><ruby>小売店<rt>こうりてん</rt></ruby>の<ruby>閉鎖<rt>へいさ</rt></ruby><ruby>規定<rt>きてい</rt></ruby>を<ruby>改正<rt>かいせい</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>現行法<rt>げんこうほう</rt></ruby>では<ruby>最長<rt>さいちょう</rt></ruby>6ヶ<ruby>月<rt>がつ</rt></ruby>の<ruby>閉鎖<rt>へいさ</rt></ruby><ruby>命令<rt>めいれい</rt></ruby>が<ruby>上限<rt>じょうげん</rt></ruby>であるが、<ruby>新た<rt>あらた</rt></ruby>な<ruby>法改正<rt>ほうかいせい</rt></ruby>により<ruby>最長<rt>さいちょう</rt></ruby>12ヶ<ruby>月<rt>がつ</rt></ruby>まで<ruby>延長<rt>えんちょう</rt></ruby>される<ruby>見通し<rt>みとおし</rt></ruby>である。<ruby>偽造<rt>ぎぞう</rt></ruby><ruby>品<rt>ひん</rt></ruby>や<ruby>規制<rt>きせい</rt></ruby><ruby>商品<rt>しょうひん</rt></ruby>の<ruby>販売<rt>はんばい</rt></ruby>が<ruby>横行<rt>おうこう</rt></ruby>する<ruby>店舗<rt>てんぽ</rt></ruby>への<ruby>取り締まり<rt>とりしまり</rt></ruby><ruby>強化<rt>きょうか</rt></ruby>が<ruby>狙い<rt>ねらい</rt></ruby>だ。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Illegal mini-marts face closure of up to 12 months under new law</h2>
+              <p class="body en-body">The UK government announced plans to tighten closure rules for illegal mini-marts in England and Wales following BBC reporting on the issue. Under current law, offending shops can be shut for up to six months, but the new rules would extend that to 12 months. The move aims to crack down on shops selling counterfeit and regulated goods.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>家計<rt>かけい</rt></ruby>の<ruby>負債<rt>ふさい</rt></ruby><ruby>急増<rt>きゅうぞう</rt></ruby>、<ruby>支援<rt>しえん</rt></ruby><ruby>制度<rt>せいど</rt></ruby>の<ruby>認知度<rt>にんちど</rt></ruby>に<ruby>課題<rt>かだい</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>の<ruby>支出<rt>ししゅつ</rt></ruby><ruby>監視<rt>かんし</rt></ruby><ruby>機関<rt>きかん</rt></ruby>は、<ruby>公共<rt>こうきょう</rt></ruby><ruby>料金<rt>りょうきん</rt></ruby>の<ruby>滞納<rt>たいのう</rt></ruby>が<ruby>急増<rt>きゅうぞう</rt></ruby>している<ruby>一方<rt>いっぽう</rt></ruby>、<ruby>多く<rt>おおく</rt></ruby>の<ruby>世帯<rt>せたい</rt></ruby>が<ruby>水道<rt>すいどう</rt></ruby>やブロードバンドの<ruby>特別料金<rt>とくべつりょうきん</rt></ruby><ruby>制度<rt>せいど</rt></ruby>を<ruby>知ら<rt>しら</rt></ruby>ないと<ruby>報告<rt>ほうこく</rt></ruby>した。<ruby>公式<rt>こうしき</rt></ruby>なインフレ<ruby>指標<rt>しひょう</rt></ruby>には<ruby>反映<rt>はんえい</rt></ruby>されにくい<ruby>生活費<rt>せいかつひ</rt></ruby>の<ruby>圧迫<rt>あっぱく</rt></ruby>が、<ruby>依然<rt>いぜん</rt></ruby>として<ruby>家庭<rt>かてい</rt></ruby>を<ruby>苦し<rt>くるし</rt></ruby>めている<ruby>実態<rt>じったい</rt></ruby>が<ruby>浮き彫り<rt>うきぼり</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Household bill debt soars as many remain unaware of available support</h2>
+              <p class="body en-body">A UK spending watchdog reported that household bill debt is rising sharply, while many families remain unaware of special tariffs and support schemes for water and broadband. The findings highlight how everyday cost pressures continue to strain households, even when formal inflation measures may not capture the full picture.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">TSMC<ruby>幹部<rt>かんぶ</rt></ruby>、コスト<ruby>増<rt>ぞう</rt></ruby>で<ruby>製品<rt>せいひん</rt></ruby><ruby>値上げ<rt>ねあげ</rt></ruby>の<ruby>可能性<rt>かのうせい</rt></ruby>を<ruby>示唆<rt>しさ</rt></ruby></h2>
+              <p class="body"><ruby>世界最大<rt>せかいさいだい</rt></ruby>の<ruby>半導体<rt>はんどうたい</rt></ruby><ruby>受託<rt>じゅたく</rt></ruby><ruby>製造<rt>せいぞう</rt></ruby><ruby>企業<rt>きぎょう</rt></ruby>TSMCの<ruby>幹部<rt>かんぶ</rt></ruby>は、BBCのインタビューで<ruby>製造<rt>せいぞう</rt></ruby>コストの<ruby>上昇<rt>じょうしょう</rt></ruby>に<ruby>伴う<rt>ともなう</rt></ruby><ruby>値上げ<rt>ねあげ</rt></ruby>の<ruby>可能性<rt>かのうせい</rt></ruby>を<ruby>否定<rt>ひてい</rt></ruby>しなかった。AIブームによる<ruby>需要<rt>じゅよう</rt></ruby><ruby>拡大<rt>かくだい</rt></ruby>と<ruby>半導体<rt>はんどうたい</rt></ruby>をめぐる<ruby>地政学<rt>ちせいがく</rt></ruby><ruby>的<rt>てき</rt></ruby><ruby>緊張<rt>きんちょう</rt></ruby>が<ruby>背景<rt>はいけい</rt></ruby>にあり、<ruby>最終的<rt>さいしゅうてき</rt></ruby>に<ruby>家電製品<rt>かでんせいひん</rt></ruby>やスマートフォンなどの<ruby>消費者<rt>しょうひしゃ</rt></ruby><ruby>価格<rt>かかく</rt></ruby>に<ruby>波及<rt>はきゅう</rt></ruby>する<ruby>恐れ<rt>おそれ</rt></ruby>がある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">TSMC executive signals possible price rises as costs climb</h2>
+              <p class="body en-body">A senior TSMC executive told the BBC that the world's largest chipmaker cannot rule out price increases as manufacturing costs rise. The AI boom and geopolitical tensions around semiconductors are driving cost pressures that could eventually feed through to consumer electronics prices.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日経平均<rt>にっけいへいきん</rt></ruby>1600<ruby>円<rt>えん</rt></ruby><ruby>超<rt>ちょう</rt></ruby><ruby>急落<rt>きゅうらく</rt></ruby>、<ruby>半導体<rt>はんどうたい</rt></ruby><ruby>株<rt>かぶ</rt></ruby>に<ruby>売り<rt>うり</rt></ruby><ruby>殺到<rt>さっとう</rt></ruby></h2>
+              <p class="body">6<ruby>月<rt>がつ</rt></ruby>10<ruby>日<rt>にち</rt></ruby>の<ruby>東京<rt>とうきょう</rt></ruby><ruby>株式市場<rt>かぶしきしじょう</rt></ruby>で、<ruby>日経平均<rt>にっけいへいきん</rt></ruby><ruby>株価<rt>かぶか</rt></ruby>が<ruby>一時<rt>いちじ</rt></ruby>1600<ruby>円<rt>えん</rt></ruby><ruby>以上<rt>いじょう</rt></ruby><ruby>下落<rt>げらく</rt></ruby>した。AIおよび<ruby>半導体<rt>はんどうたい</rt></ruby><ruby>関連<rt>かんれん</rt></ruby><ruby>銘柄<rt>めいがら</rt></ruby>への<ruby>売り<rt>うり</rt></ruby>が<ruby>主因<rt>しゅいん</rt></ruby>であり、イラン<ruby>情勢<rt>じょうせい</rt></ruby>の<ruby>緊迫<rt>きんぱく</rt></ruby><ruby>化<rt>か</rt></ruby>も<ruby>投資家<rt>とうしか</rt></ruby><ruby>心理<rt>しんり</rt></ruby>を<ruby>悪化<rt>あっか</rt></ruby>させた。<ruby>市場<rt>しじょう</rt></ruby><ruby>関係者<rt>かんけいしゃ</rt></ruby>は<ruby>今後<rt>こんご</rt></ruby>も<ruby>中東<rt>ちゅうとう</rt></ruby>リスクが<ruby>相場<rt>そうば</rt></ruby>の<ruby>重荷<rt>おもに</rt></ruby>になるとの<ruby>見方<rt>みかた</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Nikkei plunges over 1,600 points as AI and chip stocks sell off</h2>
+              <p class="body en-body">The Nikkei average plunged more than 1,600 yen on June 10, driven by heavy selling in AI and semiconductor-related stocks. Heightened tensions over the Iran situation further weighed on investor sentiment. Market analysts expect Middle East risks to continue dragging on share prices.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>高市<rt>たかいち</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>、マレーシアとLNG<ruby>安定供給<rt>あんていきょうきゅう</rt></ruby>で<ruby>合意<rt>ごうい</rt></ruby></h2>
+              <p class="body"><ruby>高市<rt>たかいち</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>は<ruby>訪日<rt>ほうにち</rt></ruby><ruby>中の<rt>なかの</rt></ruby>マレーシア・アンワル<ruby>首相<rt>しゅしょう</rt></ruby>と<ruby>会談<rt>かいだん</rt></ruby>し、エネルギー<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>の<ruby>強化<rt>きょうか</rt></ruby>で<ruby>一致<rt>いっち</rt></ruby>した。<ruby>特に<rt>とくに</rt></ruby>マレーシアからの<ruby>液化<rt>えきか</rt></ruby><ruby>天然<rt>てんねん</rt></ruby>ガスの<ruby>安定供給<rt>あんていきょうきゅう</rt></ruby>が<ruby>議題<rt>ぎだい</rt></ruby>の<ruby>中心<rt>ちゅうしん</rt></ruby>となり、<ruby>中東情勢<rt>ちゅうとうじょうせい</rt></ruby>の<ruby>不安定化<rt>ふあんていか</rt></ruby>を<ruby>受け<rt>うけ</rt></ruby>た<ruby>供給源<rt>きょうきゅうげん</rt></ruby><ruby>多角化<rt>たかくか</rt></ruby>の<ruby>重要性<rt>じゅうようせい</rt></ruby>が<ruby>確認さ<rt>かくにんさ</rt></ruby>れた。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">PM Takaichi and Malaysia's Anwar agree on stable LNG supply</h2>
+              <p class="body en-body">Prime Minister Takaichi met with Malaysian Prime Minister Anwar during his visit to Japan, and the two leaders agreed to deepen energy security cooperation. The talks centered on stable LNG supplies from Malaysia, underscoring the importance of diversifying energy sources amid Middle East instability.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">NTT、<ruby>次世代<rt>じせだい</rt></ruby>IOWN<ruby>技術<rt>ぎじゅつ</rt></ruby><ruby>普及<rt>ふきゅう</rt></ruby>へ<ruby>新<rt>しん</rt></ruby>ファンド<ruby>設立<rt>せつりつ</rt></ruby></h2>
+              <p class="body">NTTは、<ruby>次世代<rt>じせだい</rt></ruby><ruby>光通信<rt>ひかりつうしん</rt></ruby><ruby>基盤<rt>きばん</rt></ruby>「IOWN」の<ruby>普及<rt>ふきゅう</rt></ruby>を<ruby>目的<rt>もくてき</rt></ruby>とした<ruby>新<rt>しん</rt></ruby>ファンドの<ruby>設立<rt>せつりつ</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>国内外<rt>こくないがい</rt></ruby><ruby>約<rt>やく</rt></ruby>20<ruby>社<rt>しゃ</rt></ruby>が<ruby>出資<rt>しゅっし</rt></ruby>に<ruby>参加<rt>さんか</rt></ruby>し、<ruby>日本<rt>にっぽん</rt></ruby>およびシリコンバレーのAI・<ruby>半導体<rt>はんどうたい</rt></ruby><ruby>関連<rt>かんれん</rt></ruby>スタートアップへの<ruby>投資<rt>とうし</rt></ruby>を<ruby>予定<rt>よてい</rt></ruby>している。<ruby>光技術<rt>ひかりぎじゅつ</rt></ruby>を<ruby>軸<rt>じく</rt></ruby>とした<ruby>通信<rt>つうしん</rt></ruby>インフラの<ruby>革新<rt>かくしん</rt></ruby>を<ruby>加速<rt>かそく</rt></ruby>させる<ruby>狙い<rt>ねらい</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">NTT launches fund to promote next-generation IOWN technology</h2>
+              <p class="body en-body">NTT announced a new fund backed by around 20 domestic and international companies to promote its next-generation IOWN optical communications platform. The fund will invest in AI and semiconductor startups in Japan and Silicon Valley, aiming to accelerate innovation in optical communications infrastructure.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-06-10 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "報復", "reading": "ほうふく", "english": "retaliation"}, {"word": "撃墜", "reading": "げきつい", "english": "shooting down"}, {"word": "海峡", "reading": "かいきょう", "english": "strait"}, {"word": "軍事目標", "reading": "ぐんじもくひょう", "english": "military target"}, {"word": "高騰", "reading": "こうとう", "english": "surge/spike (in prices)"}], [{"word": "閉鎖", "reading": "へいさ", "english": "closure/shutdown"}, {"word": "法改正", "reading": "ほうかいせい", "english": "legal reform/amendment"}, {"word": "偽造品", "reading": "ぎぞうひん", "english": "counterfeit goods"}, {"word": "取り締まり", "reading": "とりしまり", "english": "crackdown/enforcement"}, {"word": "上限", "reading": "じょうげん", "english": "upper limit/cap"}], [{"word": "滞納", "reading": "たいのう", "english": "arrears/overdue payment"}, {"word": "監視機関", "reading": "かんしきかん", "english": "watchdog/oversight body"}, {"word": "公共料金", "reading": "こうきょうりょうきん", "english": "utility charges"}, {"word": "圧迫", "reading": "あっぱく", "english": "pressure/strain"}, {"word": "浮き彫り", "reading": "うきぼり", "english": "brought to light/highlighted"}], [{"word": "受託製造", "reading": "じゅたくせいぞう", "english": "contract manufacturing"}, {"word": "半導体", "reading": "はんどうたい", "english": "semiconductor"}, {"word": "地政学的", "reading": "ちせいがくてき", "english": "geopolitical"}, {"word": "波及", "reading": "はきゅう", "english": "ripple effect/spread to"}, {"word": "需要拡大", "reading": "じゅようかくだい", "english": "demand expansion"}], [{"word": "急落", "reading": "きゅうらく", "english": "sharp fall/plunge"}, {"word": "銘柄", "reading": "めいがら", "english": "stock/listed issue"}, {"word": "緊迫化", "reading": "きんぱくか", "english": "escalation of tensions"}, {"word": "投資家心理", "reading": "とうしかしんり", "english": "investor sentiment"}, {"word": "相場", "reading": "そうば", "english": "market price/market"}], [{"word": "液化天然ガス", "reading": "えきかてんねんガス", "english": "liquefied natural gas (LNG)"}, {"word": "安全保障", "reading": "あんぜんほしょう", "english": "security"}, {"word": "多角化", "reading": "たかくか", "english": "diversification"}, {"word": "供給源", "reading": "きょうきゅうげん", "english": "supply source"}, {"word": "会談", "reading": "かいだん", "english": "summit/talks"}], [{"word": "光通信", "reading": "ひかりつうしん", "english": "optical communications"}, {"word": "基盤", "reading": "きばん", "english": "platform/foundation"}, {"word": "出資", "reading": "しゅっし", "english": "investment/funding"}, {"word": "革新", "reading": "かくしん", "english": "innovation"}, {"word": "加速", "reading": "かそく", "english": "acceleration"}]];
+    const LABELS  = [{"section": "国際", "headline": "米軍、イランに報復攻撃　ヘリ撃墜受け"}, {"section": "英国", "headline": "違法ミニマート、閉鎖期間を最長1年に延長へ"}, {"section": "英国・世界", "headline": "家計の負債急増、支援制度の認知度に課題"}, {"section": "経済", "headline": "TSMC幹部、コスト増で製品値上げの可能性を示唆"}, {"section": "日本・経済", "headline": "日経平均1600円超急落、半導体株に売り殺到"}, {"section": "日本・政治", "headline": "高市首相、マレーシアとLNG安定供給で合意"}, {"section": "日本・経済", "headline": "NTT、次世代IOWN技術普及へ新ファンド設立"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
