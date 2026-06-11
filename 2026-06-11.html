@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年6月11日（木曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年6月11日（木曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米<rt>こめ</rt></ruby>・イラン、<ruby>中東<rt>ちゅうとう</rt></ruby>で<ruby>二日連続<rt>ふつかれんぞく</rt></ruby>の<ruby>軍事衝突<rt>ぐんじしょうとつ</rt></ruby>　<ruby>紛争<rt>ふんそう</rt></ruby><ruby>拡大<rt>かくだい</rt></ruby>の<ruby>懸念<rt>けねん</rt></ruby><ruby>高ま<rt>たかま</rt></ruby>る</h2>
+              <p class="body">アメリカはイラン<ruby>南部<rt>なんぶ</rt></ruby>の<ruby>軍事<rt>ぐんじ</rt></ruby><ruby>拠点<rt>きょてん</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>空爆<rt>くうばく</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>し、イランはクウェート、バーレーン、ヨルダンに<ruby>所在<rt>しょざい</rt></ruby>する<ruby>米軍<rt>べいぐん</rt></ruby><ruby>施設<rt>しせつ</rt></ruby>を<ruby>標的<rt>ひょうてき</rt></ruby>にした。<ruby>二日連続<rt>ふつかれんぞく</rt></ruby>の<ruby>直接的<rt>ちょくせつてき</rt></ruby>な<ruby>軍事衝突<rt>ぐんじしょうとつ</rt></ruby>により、<ruby>紛争<rt>ふんそう</rt></ruby>が<ruby>中東<rt>ちゅうとう</rt></ruby><ruby>全域<rt>ぜんいき</rt></ruby>に<ruby>拡大<rt>かくだい</rt></ruby>する<ruby>懸念<rt>けねん</rt></ruby>が<ruby>急速<rt>きゅうそく</rt></ruby>に<ruby>広が<rt>ひろが</rt></ruby>っている。エネルギー<ruby>市場<rt>しじょう</rt></ruby>への<ruby>影響<rt>えいきょう</rt></ruby>も<ruby>深刻<rt>しんこく</rt></ruby>であり、<ruby>米<rt>こめ</rt></ruby><ruby>同盟<rt>どうめい</rt></ruby><ruby>国<rt>くに</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby>をめぐる<ruby>議論<rt>ぎろん</rt></ruby>が<ruby>活発化<rt>かっぱつか</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US and Iran trade strikes across Middle East for second consecutive day</h2>
+              <p class="body en-body">The United States struck military targets in southern Iran, while Iran retaliated by targeting US military assets in Kuwait, Bahrain and Jordan. The second consecutive day of direct military exchanges has heightened fears that the conflict could spread across the wider Middle East. Energy markets and the security of US allies in the region remain under significant pressure.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ロンドン<ruby>警視庁<rt>けいしちょう</rt></ruby>、<ruby>盗難<rt>とうなん</rt></ruby>スマホの<ruby>無力<rt>むりょく</rt></ruby><ruby>化<rt>か</rt></ruby>を<ruby>大手<rt>おおて</rt></ruby>テック<ruby>企業<rt>きぎょう</rt></ruby>に<ruby>要請<rt>ようせい</rt></ruby></h2>
+              <p class="body">ロンドン<ruby>警視庁<rt>けいしちょう</rt></ruby>のマーク・ロウリー<ruby>総監<rt>そうかん</rt></ruby>は、<ruby>内務<rt>ないむ</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>、テクノロジー<ruby>企業<rt>きぎょう</rt></ruby>に<ruby>盗難<rt>とうなん</rt></ruby><ruby>端末<rt>たんまつ</rt></ruby>のデータ<ruby>公開<rt>こうかい</rt></ruby>を<ruby>義務付け<rt>ぎむづけ</rt></ruby>る<ruby>法整備<rt>ほうせいび</rt></ruby>を<ruby>求め<rt>もとめ</rt></ruby>た。メーカーやプラットフォーム<ruby>事業者<rt>じぎょうしゃ</rt></ruby>が<ruby>盗ま<rt>ぬすま</rt></ruby>れた<ruby>端末<rt>たんまつ</rt></ruby>を<ruby>使用不能<rt>しようふのう</rt></ruby>にする<ruby>措置<rt>そち</rt></ruby>を<ruby>講じ<rt>こうじ</rt></ruby>ることで、<ruby>路上<rt>ろじょう</rt></ruby><ruby>犯罪<rt>はんざい</rt></ruby>の<ruby>抑止<rt>よくし</rt></ruby>につながると<ruby>主張<rt>しゅちょう</rt></ruby>している。<ruby>消費者保護<rt>しょうひしゃほご</rt></ruby>と<ruby>大手<rt>おおて</rt></ruby>テック<ruby>企業<rt>きぎょう</rt></ruby>の<ruby>社会的責任<rt>しゃかいてきせきにん</rt></ruby>が<ruby>問わ<rt>とわ</rt></ruby>れる<ruby>議論<rt>ぎろん</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Met Police urges tech firms to render stolen phones unusable</h2>
+              <p class="body en-body">Metropolitan Police Commissioner Sir Mark Rowley has called on the home secretary to legislate forcing technology companies to publish data on stolen devices. The Met argues that phone makers and platform operators should do more to make stolen handsets useless, which would help deter street crime. The proposal raises questions about consumer protection and the responsibilities of major tech firms.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米<rt>こめ</rt></ruby><ruby>物価<rt>ぶっか</rt></ruby>、3<ruby>年<rt>ねん</rt></ruby>ぶりの<ruby>急上昇<rt>きゅうじょうしょう</rt></ruby>　トランプ<ruby>氏<rt>し</rt></ruby>「インフレを<ruby>愛す<rt>あいす</rt></ruby>」と<ruby>発言<rt>はつげん</rt></ruby></h2>
+              <p class="body"><ruby>米国<rt>べいこく</rt></ruby>の<ruby>消費者<rt>しょうひしゃ</rt></ruby><ruby>物価<rt>ぶっか</rt></ruby>が<ruby>三年<rt>さんねん</rt></ruby>ぶりの<ruby>速さ<rt>はやさ</rt></ruby>で<ruby>上昇<rt>じょうしょう</rt></ruby>しており、<ruby>中東<rt>ちゅうとう</rt></ruby>での<ruby>軍事衝突<rt>ぐんじしょうとつ</rt></ruby>によるエネルギー<ruby>価格<rt>かかく</rt></ruby>の<ruby>高騰<rt>こうとう</rt></ruby>が<ruby>一因<rt>いちいん</rt></ruby>とされている。トランプ<ruby>大統領<rt>だいとうりょう</rt></ruby>は「インフレを<ruby>愛し<rt>いとし</rt></ruby>ている」と<ruby>述べ<rt>のべ</rt></ruby>、<ruby>家計<rt>かけい</rt></ruby>の<ruby>圧迫<rt>あっぱく</rt></ruby>に<ruby>苦し<rt>くるし</rt></ruby>む<ruby>国民<rt>こくみん</rt></ruby>から<ruby>批判<rt>ひはん</rt></ruby>を<ruby>招い<rt>まねい</rt></ruby>た。<ruby>経済<rt>けいざい</rt></ruby><ruby>指標<rt>しひょう</rt></ruby>と<ruby>政治的<rt>せいじてき</rt></ruby><ruby>発言<rt>はつげん</rt></ruby>、さらに<ruby>地政学<rt>ちせいがく</rt></ruby><ruby>的<rt>てき</rt></ruby>リスクが<ruby>複雑<rt>ふくざつ</rt></ruby>に<ruby>絡み<rt>からみ</rt></ruby><ruby>合う<rt>あう</rt></ruby><ruby>状況<rt>じょうきょう</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US prices rise at fastest pace in three years as Trump says he 'loves the inflation'</h2>
+              <p class="body en-body">US consumer prices are climbing at their fastest rate in three years, driven in part by energy costs linked to the US-Iran conflict. President Trump's remark that he 'loves the inflation' drew sharp criticism from households already feeling squeezed. The story intertwines economic data, political rhetoric and the cost impact of geopolitical instability.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">フレイザーズ、ヒューゴ・ボス<ruby>全株<rt>ぜんかぶ</rt></ruby><ruby>取得<rt>しゅとく</rt></ruby>に17<ruby>億<rt>おく</rt></ruby>ポンド<ruby>提示<rt>ていじ</rt></ruby></h2>
+              <p class="body">マイク・アシュリー<ruby>氏<rt>し</rt></ruby>が<ruby>率い<rt>ひきい</rt></ruby>るフレイザーズ・グループは、ドイツの<ruby>高級<rt>こうきゅう</rt></ruby>ファッションブランド、ヒューゴ・ボスの<ruby>残り<rt>のこり</rt></ruby>の<ruby>株式<rt>かぶしき</rt></ruby>を<ruby>約<rt>やく</rt></ruby>17<ruby>億<rt>おく</rt></ruby>3000<ruby>万<rt>まん</rt></ruby>ポンドで<ruby>取得<rt>しゅとく</rt></ruby>する<ruby>提案<rt>ていあん</rt></ruby>を<ruby>行った<rt>いった</rt></ruby>。<ruby>同社<rt>どうしゃ</rt></ruby>はすでに<ruby>約<rt>やく</rt></ruby>4<ruby>分<rt>ふん</rt></ruby>の1の<ruby>持ち株<rt>もちかぶ</rt></ruby>を<ruby>保有<rt>ほゆう</rt></ruby>しており、<ruby>買収<rt>ばいしゅう</rt></ruby>が<ruby>成功<rt>せいこう</rt></ruby>すればヨーロッパの<ruby>小売<rt>こうり</rt></ruby>・<ruby>高級<rt>こうきゅう</rt></ruby>ファッション<ruby>分野<rt>ぶんや</rt></ruby>における<ruby>影響力<rt>えいきょうりょく</rt></ruby>が<ruby>大幅<rt>おおはば</rt></ruby>に<ruby>拡大<rt>かくだい</rt></ruby>する。<ruby>消費<rt>しょうひ</rt></ruby><ruby>低迷<rt>ていめい</rt></ruby>やインフレが<ruby>続く<rt>つづく</rt></ruby><ruby>中<rt>なか</rt></ruby>での<ruby>大型<rt>おおがた</rt></ruby><ruby>提案<rt>ていあん</rt></ruby>として<ruby>注目<rt>ちゅうもく</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Frasers Group offers £1.73bn to buy all of Hugo Boss</h2>
+              <p class="body en-body">Frasers Group, controlled by Mike Ashley, has offered about £1.73 billion to acquire the remaining shares of German fashion house Hugo Boss. Frasers already holds just over a quarter of the company, and a successful deal would significantly expand its footprint in European retail and premium fashion. The bid comes amid weak consumer demand and persistent inflation across the sector.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">スターバックス、<ruby>日本<rt>にっぽん</rt></ruby><ruby>事業<rt>じぎょう</rt></ruby>の<ruby>売却<rt>ばいきゃく</rt></ruby>・<ruby>上場<rt>じょうじょう</rt></ruby>を<ruby>検討<rt>けんとう</rt></ruby>か</h2>
+              <p class="body">NHKによると、<ruby>米<rt>こめ</rt></ruby>スターバックスが<ruby>日本<rt>にっぽん</rt></ruby><ruby>事業<rt>じぎょう</rt></ruby>の<ruby>売却<rt>ばいきゃく</rt></ruby>もしくは<ruby>株式<rt>かぶしき</rt></ruby><ruby>上場<rt>じょうじょう</rt></ruby>を<ruby>検討し<rt>けんとうし</rt></ruby>ていると<ruby>米<rt>こめ</rt></ruby>メディアが<ruby>報じ<rt>ほうじ</rt></ruby>た。<ruby>最終決定<rt>さいしゅうけってい</rt></ruby>には<ruby>至っ<rt>いたっ</rt></ruby>ていないものの、<ruby>日本<rt>にっぽん</rt></ruby>はスターバックスにとって<ruby>最も<rt>もっとも</rt></ruby><ruby>重要な<rt>じゅうような</rt></ruby><ruby>海外市場<rt>かいがいしじょう</rt></ruby>の<ruby>一つ<rt>ひとつ</rt></ruby>であり、その<ruby>動向<rt>どうこう</rt></ruby>は<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>外食産業<rt>がいしょくさんぎょう</rt></ruby><ruby>全体<rt>ぜんたい</rt></ruby>に<ruby>影響<rt>えいきょう</rt></ruby>を<ruby>与え<rt>あたえ</rt></ruby>る<ruby>可能性<rt>かのうせい</rt></ruby>がある。<ruby>外資系<rt>がいしけい</rt></ruby>ブランドの<ruby>日本<rt>にっぽん</rt></ruby><ruby>戦略<rt>せんりゃく</rt></ruby>や<ruby>成熟<rt>せいじゅく</rt></ruby>した<ruby>小売<rt>こうり</rt></ruby><ruby>事業<rt>じぎょう</rt></ruby>の<ruby>企業<rt>きぎょう</rt></ruby><ruby>価値<rt>かち</rt></ruby><ruby>評価<rt>ひょうか</rt></ruby>が<ruby>焦点<rt>しょうてん</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Starbucks reportedly considering sale or listing of Japan business</h2>
+              <p class="body en-body">US media report that Starbucks is considering options for its Japan business, including a sale or public listing, according to NHK. No final decision has been made, but Japan is one of Starbucks' most important international markets. The move raises questions about foreign brand strategy and the valuation of mature retail operations in Japan.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>相模原<rt>さがみはら</rt></ruby>の<ruby>河川敷<rt>かせんじき</rt></ruby>で17<ruby>歳<rt>とし</rt></ruby><ruby>女子高校生<rt>じょしこうこうせい</rt></ruby>の<ruby>遺体<rt>いたい</rt></ruby><ruby>発見<rt>はっけん</rt></ruby>　<ruby>殺人<rt>さつじん</rt></ruby><ruby>容疑<rt>ようぎ</rt></ruby>で<ruby>捜査<rt>そうさ</rt></ruby></h2>
+              <p class="body">6<ruby>月<rt>がつ</rt></ruby>11<ruby>日朝<rt>にっちょう</rt></ruby>、<ruby>神奈川県<rt>かながわけん</rt></ruby><ruby>相模原市<rt>さがみはらし</rt></ruby>の<ruby>河川敷<rt>かせんじき</rt></ruby>で<ruby>座間市<rt>ざまし</rt></ruby><ruby>在住<rt>ざいじゅう</rt></ruby>の17<ruby>歳<rt>とし</rt></ruby>の<ruby>女子高校生<rt>じょしこうこうせい</rt></ruby>が<ruby>遺体<rt>いたい</rt></ruby>で<ruby>発見<rt>はっけん</rt></ruby>された。<ruby>警察<rt>けいさつ</rt></ruby>は<ruby>殺人事件<rt>さつじんじけん</rt></ruby>として<ruby>捜査<rt>そうさ</rt></ruby>を<ruby>開始<rt>かいし</rt></ruby>し、10<ruby>代<rt>だい</rt></ruby>の<ruby>知人<rt>ちじん</rt></ruby><ruby>男性<rt>だんせい</rt></ruby>が<ruby>死亡<rt>しぼう</rt></ruby>の<ruby>経緯<rt>けいい</rt></ruby>を<ruby>知って<rt>しって</rt></ruby>いる<ruby>可能性<rt>かのうせい</rt></ruby>があるとみている。<ruby>事件<rt>じけん</rt></ruby>の<ruby>全容<rt>ぜんよう</rt></ruby><ruby>解明<rt>かいめい</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>、<ruby>人間関係<rt>にんげんかんけい</rt></ruby>や<ruby>当日<rt>とうじつ</rt></ruby>の<ruby>行動<rt>こうどう</rt></ruby>の<ruby>確認<rt>かくにん</rt></ruby>が<ruby>進め<rt>すすめ</rt></ruby>られている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Body of 17-year-old high school student found on Sagamihara riverbank; murder investigation launched</h2>
+              <p class="body en-body">A 17-year-old high school student from Zama, Kanagawa Prefecture, was found dead on a riverbank in Sagamihara on the morning of June 11. Police have launched a murder investigation and believe a teenage male acquaintance may have knowledge of the circumstances. Investigators are working to establish the timeline and the relationships involved.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>池袋<rt>いけぶくろ</rt></ruby>で<ruby>強盗<rt>ごうとう</rt></ruby><ruby>傷害<rt>しょうがい</rt></ruby><ruby>事件<rt>じけん</rt></ruby>、<ruby>現金<rt>げんきん</rt></ruby><ruby>約<rt>やく</rt></ruby>800<ruby>万円<rt>まんえん</rt></ruby><ruby>奪わ<rt>うばわ</rt></ruby>れる</h2>
+              <p class="body">6<ruby>月<rt>がつ</rt></ruby>10<ruby>日夜<rt>にちや</rt></ruby>、<ruby>東京<rt>とうきょう</rt></ruby>・<ruby>池袋<rt>いけぶくろ</rt></ruby>の<ruby>路上<rt>ろじょう</rt></ruby>で60<ruby>歳<rt>とし</rt></ruby>の<ruby>女性<rt>じょせい</rt></ruby>が<ruby>男<rt>おとこ</rt></ruby><ruby>二人<rt>ふたり</rt></ruby>に<ruby>襲わ<rt>おそわ</rt></ruby>れ、<ruby>現金<rt>げんきん</rt></ruby><ruby>約<rt>やく</rt></ruby>800<ruby>万円<rt>まんえん</rt></ruby>が<ruby>入っ<rt>いっっ</rt></ruby>たショルダーバッグを<ruby>奪わ<rt>うばわ</rt></ruby>れた。<ruby>警視庁<rt>けいしちょう</rt></ruby>は<ruby>強盗<rt>ごうとう</rt></ruby><ruby>傷害<rt>しょうがい</rt></ruby><ruby>事件<rt>じけん</rt></ruby>として<ruby>捜査<rt>そうさ</rt></ruby>を<ruby>進め<rt>すすめ</rt></ruby>ている。<ruby>繁華街<rt>はんかがい</rt></ruby>での<ruby>犯行<rt>はんこう</rt></ruby>であり、<ruby>都市部<rt>としぶ</rt></ruby>の<ruby>治安<rt>ちあん</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby><ruby>懸念<rt>けねん</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>浮き彫り<rt>うきぼり</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Woman robbed of roughly 8 million yen in cash on Ikebukuro street</h2>
+              <p class="body en-body">A 60-year-old woman was attacked by two men on a street in Ikebukuro on the night of June 10 and had her shoulder bag containing roughly 8 million yen in cash stolen. The Metropolitan Police Department is investigating the case as robbery resulting in injury. The crime in one of Tokyo's busiest districts has renewed concerns about urban safety.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-06-11 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "軍事拠点", "reading": "ぐんじきょてん", "english": "military base"}, {"word": "空爆", "reading": "くうばく", "english": "airstrike"}, {"word": "衝突", "reading": "しょうとつ", "english": "clash; conflict"}, {"word": "紛争", "reading": "ふんそう", "english": "dispute; armed conflict"}, {"word": "安全保障", "reading": "あんぜんほしょう", "english": "security; national defence"}], [{"word": "警視庁", "reading": "けいしちょう", "english": "Metropolitan Police Department"}, {"word": "内務大臣", "reading": "ないむだいじん", "english": "home secretary"}, {"word": "法整備", "reading": "ほうせいび", "english": "legislative framework; legal reform"}, {"word": "端末", "reading": "たんまつ", "english": "device; terminal"}, {"word": "抑止", "reading": "よくし", "english": "deterrence; prevention"}], [{"word": "消費者物価", "reading": "しょうひしゃぶっか", "english": "consumer prices"}, {"word": "高騰", "reading": "こうとう", "english": "surge; sharp rise"}, {"word": "家計", "reading": "かけい", "english": "household finances"}, {"word": "圧迫", "reading": "あっぱく", "english": "pressure; strain"}, {"word": "地政学的", "reading": "ちせいがくてき", "english": "geopolitical"}], [{"word": "株式", "reading": "かぶしき", "english": "shares; stock"}, {"word": "取得", "reading": "しゅとく", "english": "acquisition"}, {"word": "持ち株", "reading": "もちかぶ", "english": "shareholding"}, {"word": "買収", "reading": "ばいしゅう", "english": "buyout; acquisition"}, {"word": "消費低迷", "reading": "しょうひていめい", "english": "sluggish consumption"}], [{"word": "上場", "reading": "じょうじょう", "english": "stock listing; IPO"}, {"word": "外食産業", "reading": "がいしょくさんぎょう", "english": "restaurant industry"}, {"word": "外資系", "reading": "がいしけい", "english": "foreign-affiliated"}, {"word": "成熟", "reading": "せいじゅく", "english": "mature; well-established"}, {"word": "企業価値", "reading": "きぎょうかち", "english": "corporate value; valuation"}], [{"word": "河川敷", "reading": "かせんしき", "english": "riverbank; floodplain"}, {"word": "遺体", "reading": "いたい", "english": "body; remains"}, {"word": "殺人", "reading": "さつじん", "english": "murder; homicide"}, {"word": "捜査", "reading": "そうさ", "english": "criminal investigation"}, {"word": "経緯", "reading": "けいい", "english": "circumstances; course of events"}], [{"word": "強盗傷害", "reading": "ごうとうしょうがい", "english": "robbery resulting in injury"}, {"word": "繁華街", "reading": "はんかがい", "english": "entertainment district; busy commercial area"}, {"word": "犯行", "reading": "はんこう", "english": "criminal act; offence"}, {"word": "治安", "reading": "ちあん", "english": "public safety; law and order"}, {"word": "浮き彫り", "reading": "うきぼり", "english": "to bring to light; to highlight"}]];
+    const LABELS  = [{"section": "国際", "headline": "米・イラン、中東で二日連続の軍事衝突　紛争拡大の懸念高まる"}, {"section": "英国", "headline": "ロンドン警視庁、盗難スマホの無力化を大手テック企業に要請"}, {"section": "経済", "headline": "米物価、3年ぶりの急上昇　トランプ氏「インフレを愛す」と発言"}, {"section": "経済", "headline": "フレイザーズ、ヒューゴ・ボス全株取得に17億ポンド提示"}, {"section": "日本・経済", "headline": "スターバックス、日本事業の売却・上場を検討か"}, {"section": "日本・社会", "headline": "相模原の河川敷で17歳女子高校生の遺体発見　殺人容疑で捜査"}, {"section": "日本・社会", "headline": "池袋で強盗傷害事件、現金約800万円奪われる"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
