@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年6月24日（水曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年6月24日（水曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英国<rt>えいこく</rt></ruby>、20<ruby>年<rt>ねん</rt></ruby><ruby>以内<rt>いない</rt></ruby>に40<ruby>度<rt>ど</rt></ruby><ruby>超<rt>ちょう</rt></ruby>の<ruby>猛暑<rt>もうしょ</rt></ruby>が<ruby>常態化<rt>じょうたいか</rt></ruby>か</h2>
+              <p class="body"><ruby>現在<rt>げんざい</rt></ruby>の<ruby>温暖化<rt>おんだんか</rt></ruby><ruby>傾向<rt>けいこう</rt></ruby>が<ruby>続け<rt>つづけ</rt></ruby>ば、<ruby>英国<rt>えいこく</rt></ruby>の<ruby>一部地域<rt>いちぶちいき</rt></ruby>では<ruby>今後<rt>こんご</rt></ruby>20<ruby>年<rt>ねん</rt></ruby><ruby>以内<rt>いない</rt></ruby>に40<ruby>度<rt>ど</rt></ruby>を<ruby>超え<rt>こえ</rt></ruby>る<ruby>猛暑<rt>もうしょ</rt></ruby>が<ruby>日常的<rt>にちじょうてき</rt></ruby>になると<ruby>専門家<rt>せんもんか</rt></ruby>が<ruby>警告し<rt>けいこくし</rt></ruby>ている。<ruby>公衆衛生<rt>こうしゅうえいせい</rt></ruby>や<ruby>交通<rt>こうつう</rt></ruby>インフラ、<ruby>労働環境<rt>ろうどうかんきょう</rt></ruby>への<ruby>深刻<rt>しんこく</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>懸念<rt>けねん</rt></ruby>されており、<ruby>適応<rt>てきおう</rt></ruby><ruby>策<rt>さく</rt></ruby>の<ruby>遅れ<rt>おくれ</rt></ruby>が<ruby>社会的<rt>しゃかいてき</rt></ruby><ruby>負担<rt>ふたん</rt></ruby>を<ruby>増大<rt>ぞうだい</rt></ruby>させる<ruby>恐れ<rt>おそれ</rt></ruby>がある。より<ruby>早期<rt>そうき</rt></ruby>に、より<ruby>強力<rt>きょうりょく</rt></ruby>な<ruby>熱波<rt>ねっぱ</rt></ruby>が<ruby>到来<rt>とうらい</rt></ruby>する<ruby>傾向<rt>けいこう</rt></ruby>は、<ruby>英国<rt>えいこく</rt></ruby>の<ruby>夏<rt>なつ</rt></ruby>の<ruby>気候<rt>きこう</rt></ruby>が<ruby>不安定化<rt>ふあんていか</rt></ruby>していることを<ruby>示し<rt>しめし</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK could face regular 40°C summers within two decades</h2>
+              <p class="body en-body">Experts warn that parts of the UK could regularly see temperatures above 40°C within two decades if current warming trends continue. There are growing concerns about the impact on public health, transport infrastructure and working conditions. The trend toward earlier and stronger heatwaves signals an increasingly unstable summer climate for the country.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">バーナム<ruby>氏<rt>し</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby><ruby>就任<rt>しゅうにん</rt></ruby>ならリーブス<ruby>財務<rt>ざいむ</rt></ruby><ruby>相<rt>そう</rt></ruby>は<ruby>降格<rt>こうかく</rt></ruby>か</h2>
+              <p class="body">BBCの<ruby>報道<rt>ほうどう</rt></ruby>によると、アンディ・バーナム<ruby>氏<rt>し</rt></ruby>が<ruby>首相<rt>しゅしょう</rt></ruby>に<ruby>就任<rt>しゅうにん</rt></ruby>した<ruby>場合<rt>ばあい</rt></ruby>、レイチェル・リーブス<ruby>現<rt>げん</rt></ruby><ruby>財務<rt>ざいむ</rt></ruby><ruby>相<rt>そう</rt></ruby>はより<ruby>下位<rt>かい</rt></ruby>の<ruby>閣僚<rt>かくりょう</rt></ruby>ポストに<ruby>移さ<rt>うつさ</rt></ruby>れる<ruby>見通し<rt>みとおし</rt></ruby>である。ウェストミンスターでは<ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>の<ruby>指導部<rt>しどうぶ</rt></ruby><ruby>継承<rt>けいしょう</rt></ruby>をめぐる<ruby>動き<rt>うごき</rt></ruby>が<ruby>加速<rt>かそく</rt></ruby>しており、<ruby>財務<rt>ざいむ</rt></ruby><ruby>省<rt>しょう</rt></ruby>の<ruby>主導権<rt>しゅどうけん</rt></ruby>と<ruby>次期<rt>じき</rt></ruby><ruby>内閣<rt>ないかく</rt></ruby>の<ruby>構成<rt>こうせい</rt></ruby>が<ruby>焦点<rt>しょうてん</rt></ruby>となっている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Reeves likely demoted if Burnham becomes PM</h2>
+              <p class="body en-body">According to the BBC, Rachel Reeves would be offered a more junior cabinet role if Andy Burnham becomes prime minister. The fast-moving story highlights the leadership succession struggle within the Labour Party, with Treasury control and the shape of a new cabinet at the centre of the debate.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米<rt>こめ</rt></ruby><ruby>議会<rt>ぎかい</rt></ruby>、イラン<ruby>戦争<rt>せんそう</rt></ruby><ruby>権限<rt>けんげん</rt></ruby><ruby>決議<rt>けつぎ</rt></ruby>を<ruby>初<rt>はつ</rt></ruby><ruby>可決<rt>かけつ</rt></ruby>　<ruby>大統領<rt>だいとうりょう</rt></ruby>に<ruby>圧力<rt>あつりょく</rt></ruby></h2>
+              <p class="body"><ruby>米<rt>こめ</rt></ruby><ruby>議会<rt>ぎかい</rt></ruby>は<ruby>火曜日<rt>かようび</rt></ruby>、イラン<ruby>問題<rt>もんだい</rt></ruby>をめぐる<ruby>戦争<rt>せんそう</rt></ruby><ruby>権限<rt>けんげん</rt></ruby><ruby>決議<rt>けつぎ</rt></ruby>を<ruby>初めて<rt>はじめて</rt></ruby><ruby>可決<rt>かけつ</rt></ruby>した。<ruby>決議<rt>けつぎ</rt></ruby>は<ruby>主に<rt>おもに</rt></ruby><ruby>象徴的<rt>しょうちょうてき</rt></ruby>な<ruby>意味合い<rt>いみあい</rt></ruby>が<ruby>強い<rt>つよい</rt></ruby>ものの、<ruby>紛争<rt>ふんそう</rt></ruby>の<ruby>早期<rt>そうき</rt></ruby><ruby>終結<rt>しゅうけつ</rt></ruby>を<ruby>求め<rt>もとめ</rt></ruby>る<ruby>議会<rt>ぎかい</rt></ruby>の<ruby>姿勢<rt>しせい</rt></ruby>を<ruby>明確<rt>めいかく</rt></ruby>に<ruby>示す<rt>しめす</rt></ruby>ものである。<ruby>異例<rt>いれい</rt></ruby>の<ruby>超党派<rt>ちょうとうは</rt></ruby><ruby>的な<rt>てきな</rt></ruby><ruby>動き<rt>うごき</rt></ruby>は、イラン<ruby>問題<rt>もんだい</rt></ruby>に<ruby>対する<rt>たいする</rt></ruby>ホワイトハウスへの<ruby>政治的<rt>せいじてき</rt></ruby><ruby>圧力<rt>あつりょく</rt></ruby>が<ruby>高ま<rt>たかま</rt></ruby>っていることを<ruby>物語っ<rt>ものがたっ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US Congress passes war powers resolution over Iran, breaking with Trump</h2>
+              <p class="body en-body">The US Congress passed a war powers resolution on Tuesday, marking the first time it has taken such action over the Iran conflict. While largely symbolic, the vote underscores Congress's push to end the conflict and represents an unusually direct challenge to the president's authority on the issue.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ブレグジットから10<ruby>年<rt>ねん</rt></ruby>、<ruby>経済<rt>けいざい</rt></ruby>への<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>鮮明<rt>せんめい</rt></ruby>に</h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>がEU<ruby>離脱<rt>りだつ</rt></ruby>を<ruby>決め<rt>きめ</rt></ruby>てから10<ruby>年<rt>ねん</rt></ruby>が<ruby>経過<rt>けいか</rt></ruby>し、<ruby>貿易<rt>ぼうえき</rt></ruby>・<ruby>投資<rt>とうし</rt></ruby>・<ruby>経済成長<rt>けいざいせいちょう</rt></ruby>への<ruby>長期的<rt>ちょうきてき</rt></ruby>な<ruby>影響<rt>えいきょう</rt></ruby>がより<ruby>明確<rt>めいかく</rt></ruby>になりつつある。エコノミストらは、<ruby>当時<rt>とうじ</rt></ruby>の<ruby>警告<rt>けいこく</rt></ruby>の<ruby>多く<rt>おおく</rt></ruby>が<ruby>現実<rt>げんじつ</rt></ruby>のものとなったと<ruby>分析<rt>ぶんせき</rt></ruby>している。<ruby>次期<rt>じき</rt></ruby><ruby>政権<rt>せいけん</rt></ruby>にとって、ブレグジット<ruby>後の<rt>のちの</rt></ruby><ruby>経済<rt>けいざい</rt></ruby><ruby>戦略<rt>せんりゃく</rt></ruby>の<ruby>再構築<rt>さいこうちく</rt></ruby>が<ruby>重要な<rt>じゅうような</rt></ruby><ruby>課題<rt>かだい</rt></ruby>となるであろう。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Ten years on, Brexit's economic impact grows clearer</h2>
+              <p class="body en-body">A decade after the UK voted to leave the EU, economists say the longer-term effects on trade, investment and growth are becoming easier to measure. Many of the warnings made at the time appear to have been borne out, raising questions about what economic strategy the next government should pursue.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>九州<rt>きゅうしゅう</rt></ruby><ruby>南部<rt>なんぶ</rt></ruby>で<ruby>激しい<rt>はげしい</rt></ruby><ruby>大雨<rt>おおあめ</rt></ruby>、<ruby>洪水<rt>こうずい</rt></ruby>・<ruby>土砂<rt>どしゃ</rt></ruby><ruby>災害<rt>さいがい</rt></ruby>に<ruby>警戒<rt>けいかい</rt></ruby></h2>
+              <p class="body"><ruby>九州地方<rt>きゅうしゅうちほう</rt></ruby>に<ruby>停滞<rt>ていたい</rt></ruby>する<ruby>前線<rt>ぜんせん</rt></ruby>の<ruby>影響<rt>えいきょう</rt></ruby>で、<ruby>南九州<rt>みなみきゅうしゅう</rt></ruby>に<ruby>帯状<rt>おびじょう</rt></ruby>の<ruby>雨雲<rt>あまぐも</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>し、<ruby>水曜日<rt>すいようび</rt></ruby>の<ruby>午前中<rt>ごぜんちゅう</rt></ruby>から<ruby>激しい<rt>はげしい</rt></ruby><ruby>雨<rt>あめ</rt></ruby>が<ruby>降り<rt>おり</rt></ruby><ruby>続い<rt>つづい</rt></ruby>ている。<ruby>気象庁<rt>きしょうちょう</rt></ruby>は<ruby>洪水<rt>こうずい</rt></ruby>や<ruby>土砂<rt>どしゃ</rt></ruby><ruby>災害<rt>さいがい</rt></ruby>への<ruby>警戒<rt>けいかい</rt></ruby>を<ruby>呼び<rt>よび</rt></ruby>かけており、<ruby>交通機関<rt>こうつうきかん</rt></ruby>への<ruby>影響<rt>えいきょう</rt></ruby>も<ruby>広が<rt>ひろが</rt></ruby>っている。<ruby>住民<rt>じゅうみん</rt></ruby>には<ruby>最新<rt>さいしん</rt></ruby>の<ruby>避難<rt>ひなん</rt></ruby><ruby>情報<rt>じょうほう</rt></ruby>への<ruby>注意<rt>ちゅうい</rt></ruby>が<ruby>求め<rt>もとめ</rt></ruby>られている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Heavy rain batters southern Kyushu, flooding and landslide risks rise</h2>
+              <p class="body en-body">A stationary rain front over the Kyushu region has produced bands of heavy rain clouds in southern Kyushu, bringing torrential rain since Wednesday morning. Authorities are warning of flooding and landslide risks, with transport disruptions spreading across the region.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>天皇皇后<rt>てんのうこうごう</rt></ruby><ruby>両<rt>りょう</rt></ruby><ruby>陛下<rt>へいか</rt></ruby>、ベルギーで<ruby>歓迎<rt>かんげい</rt></ruby><ruby>晩餐会<rt>ばんさんかい</rt></ruby>に<ruby>出席<rt>しゅっせき</rt></ruby></h2>
+              <p class="body"><ruby>天皇陛下<rt>てんのうへいか</rt></ruby>と<ruby>皇后<rt>こうごう</rt></ruby><ruby>雅子<rt>まさこ</rt></ruby>さまは、ベルギー<ruby>国賓<rt>こくひん</rt></ruby>としてブリュッセルの<ruby>王宮<rt>おうきゅう</rt></ruby>で<ruby>歓迎<rt>かんげい</rt></ruby><ruby>晩餐会<rt>ばんさんかい</rt></ruby>に<ruby>出席<rt>しゅっせき</rt></ruby>された。<ruby>今回<rt>こんかい</rt></ruby>のヨーロッパ<ruby>歴訪<rt>れきほう</rt></ruby>は、<ruby>日本<rt>にっぽん</rt></ruby>とベルギー<ruby>両国<rt>りょうごく</rt></ruby>の<ruby>外交関係<rt>がいこうかんけい</rt></ruby>の<ruby>深さ<rt>ふかさ</rt></ruby>を<ruby>象徴<rt>しょうちょう</rt></ruby>するものであり、<ruby>皇室<rt>こうしつ</rt></ruby><ruby>外交<rt>がいこう</rt></ruby>の<ruby>重要性<rt>じゅうようせい</rt></ruby>を<ruby>改め<rt>あらため</rt></ruby>て<ruby>示す<rt>しめす</rt></ruby><ruby>機会<rt>きかい</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan's Emperor and Empress attend royal banquet in Belgium</h2>
+              <p class="body en-body">Emperor Naruhito and Empress Masako attended a welcome banquet at the royal palace in Brussels as state guests of Belgium. The European visit underscores the depth of diplomatic ties between Japan and Belgium and highlights the continued importance of imperial diplomacy.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日銀<rt>にちぎん</rt></ruby><ruby>委員<rt>いいん</rt></ruby>、<ruby>早期<rt>そうき</rt></ruby><ruby>追加<rt>ついか</rt></ruby><ruby>利上げ<rt>りあげ</rt></ruby>を<ruby>主張<rt>しゅちょう</rt></ruby>　<ruby>物価<rt>ぶっか</rt></ruby><ruby>上昇<rt>じょうしょう</rt></ruby><ruby>懸念<rt>けねん</rt></ruby>で</h2>
+              <p class="body"><ruby>日本銀行<rt>にっぽんぎんこう</rt></ruby>が<ruby>公表<rt>こうひょう</rt></ruby>した<ruby>金融<rt>きんゆう</rt></ruby><ruby>政策決定<rt>せいさくけってい</rt></ruby><ruby>会合<rt>かいごう</rt></ruby>の「<ruby>主な<rt>おもな</rt></ruby><ruby>意見<rt>いけん</rt></ruby>」によると、<ruby>物価<rt>ぶっか</rt></ruby><ruby>上昇<rt>じょうしょう</rt></ruby>への<ruby>懸念<rt>けねん</rt></ruby>を<ruby>背景<rt>はいけい</rt></ruby>に、<ruby>一部<rt>いちぶ</rt></ruby>の<ruby>政策<rt>せいさく</rt></ruby><ruby>委員<rt>いいん</rt></ruby>が<ruby>早期<rt>そうき</rt></ruby>の<ruby>追加<rt>ついか</rt></ruby><ruby>利上げ<rt>りあげ</rt></ruby>を<ruby>求め<rt>もとめ</rt></ruby>ていることが<ruby>明らか<rt>あきらか</rt></ruby>になった。<ruby>日本<rt>にっぽん</rt></ruby>の<ruby>金融<rt>きんゆう</rt></ruby><ruby>引き<rt>ひき</rt></ruby><ruby>締め<rt>しめ</rt></ruby>の<ruby>議論<rt>ぎろん</rt></ruby>は<ruby>依然<rt>いぜん</rt></ruby>として<ruby>活発<rt>かっぱつ</rt></ruby>であり、<ruby>今後<rt>こんご</rt></ruby>の<ruby>政策判断<rt>せいさくはんだん</rt></ruby>が<ruby>家計<rt>かけい</rt></ruby>や<ruby>企業<rt>きぎょう</rt></ruby>に<ruby>与え<rt>あたえ</rt></ruby>る<ruby>影響<rt>えいきょう</rt></ruby>が<ruby>注目<rt>ちゅうもく</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">BOJ policymakers push for additional rate hike amid inflation concerns</h2>
+              <p class="body en-body">The Bank of Japan's summary of opinions from its latest board meeting reveals that some policymakers are calling for an additional rate increase at an early date, driven by concerns over persistent price rises. Japan's monetary tightening debate remains firmly in focus, with markets watching closely for the impact on households and businesses.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-06-24 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "猛暑", "reading": "もうしょ", "english": "extreme heat"}, {"word": "常態化", "reading": "じょうたいか", "english": "becoming the norm"}, {"word": "温暖化", "reading": "おんだんか", "english": "global warming"}, {"word": "公衆衛生", "reading": "こうしゅうえいせい", "english": "public health"}, {"word": "適応策", "reading": "てきおうさく", "english": "adaptation measures"}, {"word": "増大", "reading": "ぞうだい", "english": "increase; expansion"}], [{"word": "降格", "reading": "こうかく", "english": "demotion"}, {"word": "就任", "reading": "しゅうにん", "english": "taking office"}, {"word": "閣僚", "reading": "かくりょう", "english": "cabinet minister"}, {"word": "指導部", "reading": "しどうぶ", "english": "leadership"}, {"word": "継承", "reading": "けいしょう", "english": "succession"}], [{"word": "可決", "reading": "かけつ", "english": "passage; approval"}, {"word": "戦争権限", "reading": "せんそうけんげん", "english": "war powers"}, {"word": "紛争", "reading": "ふんそう", "english": "conflict; dispute"}, {"word": "超党派", "reading": "ちょうとうは", "english": "bipartisan"}, {"word": "物語る", "reading": "ものがたる", "english": "to indicate; to tell"}], [{"word": "離脱", "reading": "りだつ", "english": "withdrawal; departure"}, {"word": "鮮明", "reading": "せんめい", "english": "clear; vivid"}, {"word": "経過", "reading": "けいか", "english": "passage (of time)"}, {"word": "再構築", "reading": "さいこうちく", "english": "reconstruction; rebuilding"}, {"word": "次期政権", "reading": "じきせいけん", "english": "next administration"}], [{"word": "停滞前線", "reading": "ていたいぜんせん", "english": "stationary front"}, {"word": "土砂災害", "reading": "どしゃさいがい", "english": "landslide disaster"}, {"word": "帯状", "reading": "おびじょう", "english": "band-shaped; belt-like"}, {"word": "避難情報", "reading": "ひなんじょうほう", "english": "evacuation information"}, {"word": "気象庁", "reading": "きしょうちょう", "english": "Japan Meteorological Agency"}], [{"word": "国賓", "reading": "こくひん", "english": "state guest"}, {"word": "晩餐会", "reading": "ばんさんかい", "english": "banquet; state dinner"}, {"word": "歴訪", "reading": "れきほう", "english": "tour; visiting in succession"}, {"word": "皇室外交", "reading": "こうしつがいこう", "english": "imperial diplomacy"}, {"word": "象徴", "reading": "しょうちょう", "english": "symbol"}], [{"word": "利上げ", "reading": "りあげ", "english": "interest rate hike"}, {"word": "金融引き締め", "reading": "きんゆうひきしめ", "english": "monetary tightening"}, {"word": "政策委員", "reading": "せいさくいいん", "english": "policy board member"}, {"word": "物価上昇", "reading": "ぶっかじょうしょう", "english": "price increase; inflation"}, {"word": "公表", "reading": "こうひょう", "english": "announcement; publication"}]];
+    const LABELS  = [{"section": "英国", "headline": "英国、20年以内に40度超の猛暑が常態化か"}, {"section": "英国・世界", "headline": "バーナム氏首相就任ならリーブス財務相は降格か"}, {"section": "国際", "headline": "米議会、イラン戦争権限決議を初可決　大統領に圧力"}, {"section": "経済", "headline": "ブレグジットから10年、経済への影響が鮮明に"}, {"section": "日本・社会", "headline": "九州南部で激しい大雨、洪水・土砂災害に警戒"}, {"section": "日本・政治", "headline": "天皇皇后両陛下、ベルギーで歓迎晩餐会に出席"}, {"section": "日本・経済", "headline": "日銀委員、早期追加利上げを主張　物価上昇懸念で"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
