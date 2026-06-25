@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年6月25日（木曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年6月25日（木曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">リーブス<ruby>財務<rt>ざいむ</rt></ruby><ruby>相<rt>そう</rt></ruby>、バーナム<ruby>氏<rt>し</rt></ruby>を<ruby>次期<rt>じき</rt></ruby><ruby>党首<rt>とうしゅ</rt></ruby>に<ruby>支持<rt>しじ</rt></ruby><ruby>表明<rt>ひょうめい</rt></ruby></h2>
+              <p class="body">レイチェル・リーブス<ruby>財務<rt>ざいむ</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>は、アンディ・バーナム<ruby>氏<rt>し</rt></ruby>を<ruby>労働<rt>ろうどう</rt></ruby><ruby>党<rt>とう</rt></ruby>の<ruby>次期<rt>じき</rt></ruby><ruby>党首<rt>とうしゅ</rt></ruby>および<ruby>首相<rt>しゅしょう</rt></ruby><ruby>候補<rt>こうほ</rt></ruby>として<ruby>支持<rt>しじ</rt></ruby>すると<ruby>表明<rt>ひょうめい</rt></ruby>した。バーナム<ruby>氏<rt>し</rt></ruby>が<ruby>首相<rt>しゅしょう</rt></ruby>に<ruby>就任<rt>しゅうにん</rt></ruby>した<ruby>場合<rt>ばあい</rt></ruby>、リーブス<ruby>氏<rt>し</rt></ruby>を<ruby>閣僚<rt>かくりょう</rt></ruby>から<ruby>降格<rt>こうかく</rt></ruby>させる<ruby>可能性<rt>かのうせい</rt></ruby>があるとの<ruby>報道<rt>ほうどう</rt></ruby>にもかかわらず、<ruby>支持<rt>しじ</rt></ruby>を<ruby>打ち出し<rt>うちだし</rt></ruby>た<ruby>形<rt>かたち</rt></ruby>である。<ruby>一方<rt>いっぽう</rt></ruby>、トランプ<ruby>米大統領<rt>べいだいとうりょう</rt></ruby>はバーナム<ruby>氏<rt>し</rt></ruby>を「ある<ruby>町<rt>まち</rt></ruby>の<ruby>市長<rt>しちょう</rt></ruby>にすぎない」と<ruby>評し<rt>ひょうし</rt></ruby>、「<ruby>極め<rt>きわめ</rt></ruby>てリベラルだ」と<ruby>批判<rt>ひはん</rt></ruby>した。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Reeves backs Burnham for Labour leadership despite demotion risk</h2>
+              <p class="body en-body">Chancellor Rachel Reeves has endorsed Andy Burnham as Labour's next leader and potential prime minister, despite reports that Burnham could demote her if he reaches Downing Street. The endorsement signals a significant realignment within the Labour Party as the leadership contest intensifies. US President Donald Trump dismissed Burnham as 'the mayor of a town' and described him as 'extremely liberal.'</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ベネズエラで<ruby>大地震<rt>だいじしん</rt></ruby>、32<ruby>人死<rt>ひとじに</rt></ruby><ruby>亡<rt>ぼう</rt></ruby>・700<ruby>人<rt>にん</rt></ruby><ruby>超<rt>ちょう</rt></ruby><ruby>負傷<rt>ふしょう</rt></ruby></h2>
+              <p class="body"><ruby>水曜日<rt>すいようび</rt></ruby>、ベネズエラで<ruby>二つ<rt>ふたつ</rt></ruby>の<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>地震<rt>じしん</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>し、<ruby>少なくとも<rt>すくなくとも</rt></ruby>32<ruby>人<rt>にん</rt></ruby>が<ruby>死亡<rt>しぼう</rt></ruby>、700<ruby>人以上<rt>ひといじょう</rt></ruby>が<ruby>負傷<rt>ふしょう</rt></ruby>した。<ruby>首都<rt>しゅと</rt></ruby>カラカスとその<ruby>周辺<rt>しゅうへん</rt></ruby>で<ruby>建物<rt>たてもの</rt></ruby>が<ruby>崩壊<rt>ほうかい</rt></ruby>し、がれきの<ruby>下に<rt>したに</rt></ruby><ruby>閉じ込め<rt>とじこめ</rt></ruby>られた<ruby>人々<rt>ひとびと</rt></ruby>の<ruby>救出<rt>きゅうしゅつ</rt></ruby><ruby>活動<rt>かつどう</rt></ruby>が<ruby>続い<rt>つづい</rt></ruby>ている。デルシー・ロドリゲス<ruby>暫定<rt>ざんてい</rt></ruby><ruby>大統領<rt>だいとうりょう</rt></ruby>は<ruby>国家<rt>こっか</rt></ruby><ruby>非常事態<rt>ひじょうじたい</rt></ruby>を<ruby>宣言<rt>せんげん</rt></ruby>し、<ruby>各国<rt>かっこく</rt></ruby>から<ruby>支援<rt>しえん</rt></ruby>の<ruby>申し出<rt>もうしで</rt></ruby>が<ruby>相次<rt>あいつぎ</rt></ruby>いでいる。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Two powerful earthquakes kill at least 32 in Venezuela</h2>
+              <p class="body en-body">Two major earthquakes struck Venezuela on Wednesday, killing at least 32 people and injuring over 700 as buildings collapsed in and around the capital Caracas. Emergency services scrambled to reach those trapped in rubble. Interim President Delcy Rodriguez declared a national emergency as international aid offers poured in.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">テーマパークや<ruby>子供<rt>こども</rt></ruby>の<ruby>食事<rt>しょくじ</rt></ruby>、<ruby>付加価値<rt>ふかかち</rt></ruby><ruby>税<rt>ぜい</rt></ruby>5%に<ruby>引き下げ<rt>ひきさげ</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby><ruby>政府<rt>せいふ</rt></ruby>は、テーマパーク、<ruby>動物園<rt>どうぶつえん</rt></ruby>、<ruby>子供向け<rt>こどもむけ</rt></ruby>レストランの<ruby>食事<rt>しょくじ</rt></ruby>などに<ruby>適用<rt>てきよう</rt></ruby>される<ruby>付加価値<rt>ふかかち</rt></ruby><ruby>税<rt>ぜい</rt></ruby>を20パーセントから5パーセントに<ruby>引き下げ<rt>ひきさげ</rt></ruby>た。<ruby>夏休み<rt>なつやすみ</rt></ruby>の<ruby>開始<rt>かいし</rt></ruby>に<ruby>合わ<rt>あわ</rt></ruby>せた<ruby>措置<rt>そち</rt></ruby>で、<ruby>家庭<rt>かてい</rt></ruby>の<ruby>負担<rt>ふたん</rt></ruby><ruby>軽減<rt>けいげん</rt></ruby>が<ruby>狙い<rt>ねらい</rt></ruby>である。ただし、レジャーに<ruby>出か<rt>でか</rt></ruby>ける<ruby>余裕<rt>よゆう</rt></ruby>のある<ruby>裕福<rt>ゆうふく</rt></ruby>な<ruby>世帯<rt>せたい</rt></ruby>に<ruby>恩恵<rt>おんけい</rt></ruby>が<ruby>偏る<rt>かたよる</rt></ruby>との<ruby>批判<rt>ひはん</rt></ruby>もある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK cuts VAT on theme parks and children's meals to 5%</h2>
+              <p class="body en-body">The UK government has reduced VAT from 20% to 5% on family attractions including theme parks, zoos, and children's restaurant meals, timed to coincide with the start of the summer holidays. Ministers say the measure will save families hundreds of pounds over the summer. Critics argue the cut disproportionately benefits wealthier households.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>英国<rt>えいこく</rt></ruby>の<ruby>若年層<rt>じゃくねんそう</rt></ruby>で<ruby>肥満<rt>ひまん</rt></ruby><ruby>率<rt>りつ</rt></ruby>が<ruby>急上昇<rt>きゅうじょうしょう</rt></ruby>、<ruby>加工<rt>かこう</rt></ruby><ruby>食品<rt>しょくひん</rt></ruby>が<ruby>一因<rt>いちいん</rt></ruby></h2>
+              <p class="body"><ruby>英国<rt>えいこく</rt></ruby>の<ruby>最新<rt>さいしん</rt></ruby>の<ruby>健康<rt>けんこう</rt></ruby>データによると、20<ruby>代<rt>だい</rt></ruby>から30<ruby>代<rt>だい</rt></ruby>の<ruby>若者<rt>わかもの</rt></ruby>の<ruby>間<rt>かん</rt></ruby>で<ruby>肥満<rt>ひまん</rt></ruby><ruby>率<rt>りつ</rt></ruby>が<ruby>最も<rt>もっとも</rt></ruby><ruby>急速<rt>きゅうそく</rt></ruby>に<ruby>増加<rt>ぞうか</rt></ruby>していることが<ruby>判明<rt>はんめい</rt></ruby>した。<ruby>食費<rt>しょくひ</rt></ruby>の<ruby>高騰<rt>こうとう</rt></ruby>により<ruby>安価<rt>あんか</rt></ruby>な<ruby>加工<rt>かこう</rt></ruby><ruby>食品<rt>しょくひん</rt></ruby>に<ruby>頼る<rt>たよる</rt></ruby><ruby>傾向<rt>けいこう</rt></ruby>が<ruby>強ま<rt>つよま</rt></ruby>っていることや、コロナ<ruby>禍<rt>か</rt></ruby>で<ruby>乱れ<rt>みだれ</rt></ruby>た<ruby>食生活<rt>しょくせいかつ</rt></ruby>が<ruby>定着<rt>ていちゃく</rt></ruby>したことが<ruby>原因<rt>げんいん</rt></ruby>と<ruby>指摘<rt>してき</rt></ruby>されている。<ruby>保健<rt>ほけん</rt></ruby><ruby>当局<rt>とうきょく</rt></ruby>はジャンクフードの<ruby>広告<rt>こうこく</rt></ruby><ruby>規制<rt>きせい</rt></ruby>の<ruby>強化<rt>きょうか</rt></ruby>を<ruby>求め<rt>もとめ</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Obesity rising fastest among young adults in England</h2>
+              <p class="body en-body">New health data shows obesity rates are rising most sharply among people in their 20s and 30s in England. Experts point to rising food costs pushing people toward cheaper processed options and disrupted eating habits formed during the pandemic. Health officials are calling for tighter advertising restrictions on junk food.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>岩手<rt>いわて</rt></ruby><ruby>沖<rt>おき</rt></ruby>でM7.2の<ruby>地震<rt>じしん</rt></ruby>、<ruby>津波<rt>つなみ</rt></ruby>の<ruby>恐れ<rt>おそれ</rt></ruby>なし</h2>
+              <p class="body"><ruby>木曜日<rt>もくようび</rt></ruby><ruby>朝<rt>あさ</rt></ruby>、<ruby>岩手県<rt>いわてけん</rt></ruby><ruby>東方<rt>とうほう</rt></ruby><ruby>沖<rt>おき</rt></ruby>を<ruby>震源<rt>しんげん</rt></ruby>とするマグニチュード7.2の<ruby>地震<rt>じしん</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>した。<ruby>東北地方<rt>とうほくちほう</rt></ruby>を<ruby>中心<rt>ちゅうしん</rt></ruby>に<ruby>広い<rt>ひろい</rt></ruby><ruby>範囲<rt>はんい</rt></ruby>で<ruby>揺れ<rt>ゆれ</rt></ruby>が<ruby>観測<rt>かんそく</rt></ruby>されたが、<ruby>気象庁<rt>きしょうちょう</rt></ruby>は<ruby>津波<rt>つなみ</rt></ruby>の<ruby>危険性<rt>きけんせい</rt></ruby>はないと<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>東北新幹線<rt>とうほくしんかんせん</rt></ruby>は<ruby>安全確認<rt>あんぜんかくにん</rt></ruby>のため<ruby>一時<rt>いちじ</rt></ruby><ruby>運転<rt>うんてん</rt></ruby>を<ruby>見合わ<rt>みあわ</rt></ruby>せたが、<ruby>大き<rt>おおき</rt></ruby>な<ruby>被害<rt>ひがい</rt></ruby>は<ruby>報告<rt>ほうこく</rt></ruby>されていない。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Magnitude 7.2 earthquake strikes off Iwate coast; no tsunami warning</h2>
+              <p class="body en-body">A powerful magnitude 7.2 earthquake struck off the eastern coast of Iwate Prefecture in northeastern Japan on Thursday morning. While felt widely across the Tohoku region, Japan's Meteorological Agency confirmed there was no tsunami risk. Bullet train services were briefly suspended as a precaution.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>九州<rt>きゅうしゅう</rt></ruby>で<ruby>大雨<rt>おおあめ</rt></ruby>、<ruby>鹿児<rt>かこ</rt></ruby><ruby>島<rt>しま</rt></ruby>に<ruby>最高<rt>さいこう</rt></ruby>レベルの<ruby>警報<rt>けいほう</rt></ruby></h2>
+              <p class="body"><ruby>九州<rt>きゅうしゅう</rt></ruby><ruby>南部<rt>なんぶ</rt></ruby>で<ruby>激しい<rt>はげしい</rt></ruby><ruby>雨<rt>あめ</rt></ruby>が<ruby>続き<rt>つづき</rt></ruby>、<ruby>鹿児<rt>かこ</rt></ruby><ruby>島<rt>しま</rt></ruby><ruby>県<rt>けん</rt></ruby>では<ruby>線状<rt>せんじょう</rt></ruby><ruby>降水<rt>こうすい</rt></ruby><ruby>帯<rt>おび</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>した。<ruby>気象庁<rt>きしょうちょう</rt></ruby>は<ruby>同県<rt>どうけん</rt></ruby>に<ruby>最高<rt>さいこう</rt></ruby>レベルの<ruby>大雨<rt>おおあめ</rt></ruby><ruby>警報<rt>けいほう</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>し、<ruby>低地<rt>ていち</rt></ruby>の<ruby>住民<rt>じゅうみん</rt></ruby>に<ruby>避難<rt>ひなん</rt></ruby>を<ruby>呼び<rt>よび</rt></ruby>かけている。<ruby>今年<rt>こんねん</rt></ruby>の<ruby>梅雨<rt>つゆ</rt></ruby>は<ruby>西日本<rt>にしにほん</rt></ruby><ruby>全域<rt>ぜんいき</rt></ruby>で<ruby>例年<rt>れいねん</rt></ruby>より<ruby>降水量<rt>こうすいりょう</rt></ruby>が<ruby>多く<rt>おおく</rt></ruby>、<ruby>土砂<rt>どしゃ</rt></ruby><ruby>災害<rt>さいがい</rt></ruby>や<ruby>河川<rt>かせん</rt></ruby>の<ruby>氾濫<rt>はんらん</rt></ruby>への<ruby>警戒<rt>けいかい</rt></ruby>が<ruby>続い<rt>つづい</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Heavy rain lashes Kyushu; highest warning issued for Kagoshima</h2>
+              <p class="body en-body">Kyushu was battered by intense rainfall, with a linear rainband forming over parts of Kagoshima Prefecture. The Japan Meteorological Agency issued its highest level of warnings, urging residents in low-lying areas to evacuate. The rainy season has been particularly intense across western Japan this year.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>最高裁<rt>さいこうさい</rt></ruby>、<ruby>旧<rt>きゅう</rt></ruby><ruby>統一教会<rt>とういつきょうかい</rt></ruby>の<ruby>解散<rt>かいさん</rt></ruby><ruby>命令<rt>めいれい</rt></ruby>を<ruby>支持<rt>しじ</rt></ruby></h2>
+              <p class="body"><ruby>最高裁<rt>さいこうさい</rt></ruby>は、<ruby>旧<rt>きゅう</rt></ruby><ruby>統一教会<rt>とういつきょうかい</rt></ruby>（<ruby>世界平和<rt>せかいへいわ</rt></ruby><ruby>統一<rt>とういつ</rt></ruby><ruby>家庭<rt>かてい</rt></ruby><ruby>連合<rt>れんごう</rt></ruby>）に<ruby>対する<rt>たいする</rt></ruby><ruby>解散<rt>かいさん</rt></ruby><ruby>命令<rt>めいれい</rt></ruby>を<ruby>支持<rt>しじ</rt></ruby>する<ruby>判決<rt>はんけつ</rt></ruby>を<ruby>下し<rt>くだし</rt></ruby>た。<ruby>教会<rt>きょうかい</rt></ruby>の<ruby>寄付<rt>きふ</rt></ruby><ruby>勧誘<rt>かんゆう</rt></ruby><ruby>手法<rt>しゅほう</rt></ruby>を「やむを<ruby>得な<rt>えな</rt></ruby>い<ruby>解散<rt>かいさん</rt></ruby><ruby>事由<rt>じゆう</rt></ruby>」と<ruby>認定<rt>にんてい</rt></ruby>し、<ruby>下級<rt>かきゅう</rt></ruby><ruby>審<rt>しん</rt></ruby>の<ruby>判断<rt>はんだん</rt></ruby>を<ruby>維持し<rt>いじし</rt></ruby>た。2022<ruby>年<rt>ねん</rt></ruby>の<ruby>安倍<rt>あべ</rt></ruby><ruby>晋三<rt>しんぞう</rt></ruby><ruby>元首相<rt>もとしゅしょう</rt></ruby>の<ruby>暗殺<rt>あんさつ</rt></ruby><ruby>事件<rt>じけん</rt></ruby>を<ruby>契機<rt>けいき</rt></ruby>に、<ruby>教会<rt>きょうかい</rt></ruby>と<ruby>自民党<rt>じみんとう</rt></ruby>の<ruby>深い<rt>ふかい</rt></ruby><ruby>関係<rt>かんけい</rt></ruby>が<ruby>露呈<rt>ろてい</rt></ruby>し、<ruby>数年<rt>すうねん</rt></ruby>に<ruby>及ぶ<rt>およぶ</rt></ruby><ruby>法的<rt>ほうてき</rt></ruby>・<ruby>政治的<rt>せいじてき</rt></ruby><ruby>闘争<rt>とうそう</rt></ruby>に<ruby>決着<rt>けっちゃく</rt></ruby>がついた<ruby>形<rt>かたち</rt></ruby>である。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan's Supreme Court upholds dissolution order for Unification Church</h2>
+              <p class="body en-body">Japan's Supreme Court upheld a lower court decision ordering the Unification Church to dissolve, ruling that its aggressive donation-solicitation tactics constituted grounds for disbandment. The church faced intense scrutiny after the 2022 assassination of former Prime Minister Shinzo Abe exposed its deep ties to ruling Liberal Democratic Party politicians. The ruling marks the end of a years-long legal and political battle.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-06-25 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "財務大臣", "reading": "ざいむだいじん", "english": "Chancellor of the Exchequer / finance minister"}, {"word": "党首", "reading": "とうしゅ", "english": "party leader"}, {"word": "降格", "reading": "こうかく", "english": "demotion"}, {"word": "支持", "reading": "しじ", "english": "support / endorsement"}, {"word": "一蹴", "reading": "いっしゅう", "english": "dismissal / brushing aside"}], [{"word": "地震", "reading": "じしん", "english": "earthquake"}, {"word": "崩壊", "reading": "ほうかい", "english": "collapse"}, {"word": "がれき", "reading": "がれき", "english": "rubble / debris"}, {"word": "暫定大統領", "reading": "ざんていだいとうりょう", "english": "interim president"}, {"word": "非常事態", "reading": "ひじょうじたい", "english": "state of emergency"}], [{"word": "付加価値税", "reading": "ふかかちぜい", "english": "value-added tax (VAT)"}, {"word": "引き下げ", "reading": "ひきさげ", "english": "reduction / cut"}, {"word": "負担軽減", "reading": "ふたんけいげん", "english": "burden relief"}, {"word": "恩恵", "reading": "おんけい", "english": "benefit / favour"}, {"word": "裕福", "reading": "ゆうふく", "english": "affluent / wealthy"}], [{"word": "肥満率", "reading": "ひまんりつ", "english": "obesity rate"}, {"word": "加工食品", "reading": "かこうしょくひん", "english": "processed food"}, {"word": "高騰", "reading": "こうとう", "english": "surge / sharp rise (in price)"}, {"word": "広告規制", "reading": "こうこくきせい", "english": "advertising restrictions"}, {"word": "保健当局", "reading": "ほけんとうきょく", "english": "health authorities"}], [{"word": "震源", "reading": "しんげん", "english": "epicentre"}, {"word": "気象庁", "reading": "きしょうちょう", "english": "Japan Meteorological Agency"}, {"word": "津波", "reading": "つなみ", "english": "tsunami"}, {"word": "運転見合わせ", "reading": "うんてんみあわせ", "english": "suspension of services"}, {"word": "安全確認", "reading": "あんぜんかくにん", "english": "safety check / confirmation"}], [{"word": "線状降水帯", "reading": "せんじょうこうすいたい", "english": "linear rainband"}, {"word": "土砂災害", "reading": "どしゃさいがい", "english": "landslide / mudslide disaster"}, {"word": "氾濫", "reading": "はんらん", "english": "flooding / overflow"}, {"word": "梅雨", "reading": "つゆ", "english": "rainy season"}, {"word": "避難", "reading": "ひなん", "english": "evacuation"}], [{"word": "解散命令", "reading": "かいさんめいれい", "english": "dissolution order"}, {"word": "寄付勧誘", "reading": "きふかんゆう", "english": "donation solicitation"}, {"word": "暗殺", "reading": "あんさつ", "english": "assassination"}, {"word": "露呈", "reading": "ろてい", "english": "exposure / revelation"}, {"word": "判決", "reading": "はんけつ", "english": "court ruling / verdict"}]];
+    const LABELS  = [{"section": "英国", "headline": "リーブス財務相、バーナム氏を次期党首に支持表明"}, {"section": "国際", "headline": "ベネズエラで大地震、32人死亡・700人超負傷"}, {"section": "英国・経済", "headline": "テーマパークや子供の食事、付加価値税5%に引き下げ"}, {"section": "英国・世界", "headline": "英国の若年層で肥満率が急上昇、加工食品が一因"}, {"section": "日本・社会", "headline": "岩手沖でM7.2の地震、津波の恐れなし"}, {"section": "日本・社会", "headline": "九州で大雨、鹿児島に最高レベルの警報"}, {"section": "日本・政治", "headline": "最高裁、旧統一教会の解散命令を支持"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
