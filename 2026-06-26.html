@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年6月26日（金）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年6月26日（金）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">スターマー<ruby>首相<rt>しゅしょう</rt></ruby>、<ruby>政権<rt>せいけん</rt></ruby><ruby>維持<rt>いじ</rt></ruby><ruby>困難<rt>こんなん</rt></ruby>に　<ruby>後任<rt>こうにん</rt></ruby>にバーナム<ruby>氏<rt>し</rt></ruby><ruby>浮上<rt>ふじょう</rt></ruby></h2>
+              <p class="body">キア・スターマー<ruby>首相<rt>しゅしょう</rt></ruby>が<ruby>事実上<rt>じじつじょう</rt></ruby>の<ruby>政権<rt>せいけん</rt></ruby><ruby>運営能力<rt>うんえいのうりょく</rt></ruby>を<ruby>喪失<rt>そうしつ</rt></ruby>したとBBCが<ruby>分析<rt>ぶんせき</rt></ruby>した。リズ・トラス<ruby>氏<rt>し</rt></ruby>やボリス・ジョンソン<ruby>氏<rt>し</rt></ruby>に<ruby>続き<rt>つづき</rt></ruby>、<ruby>短期間<rt>たんきかん</rt></ruby>で<ruby>政権<rt>せいけん</rt></ruby>が<ruby>崩壊<rt>ほうかい</rt></ruby>するパターンが<ruby>繰り返さ<rt>くりかえさ</rt></ruby>れている。<ruby>後任<rt>こうにん</rt></ruby>にはアンディ・バーナム<ruby>氏<rt>し</rt></ruby>が<ruby>有力視<rt>ゆうりょくし</rt></ruby>されており、レイチェル・リーブス<ruby>財務<rt>ざいむ</rt></ruby><ruby>大臣<rt>だいじん</rt></ruby>は<ruby>現<rt>げん</rt></ruby><ruby>経済<rt>けいざい</rt></ruby><ruby>路線<rt>ろせん</rt></ruby>の<ruby>継続<rt>けいぞく</rt></ruby>を<ruby>訴え<rt>うったえ</rt></ruby>ている。バーナム<ruby>氏<rt>し</rt></ruby>が<ruby>首相<rt>しゅしょう</rt></ruby>に<ruby>就任<rt>しゅうにん</rt></ruby>すればリーブス<ruby>氏<rt>し</rt></ruby>の<ruby>降格<rt>こうかく</rt></ruby>も<ruby>取り<rt>とり</rt></ruby><ruby>沙汰<rt>さた</rt></ruby>されており、<ruby>労働<rt>ろうどう</rt></ruby><ruby>党内<rt>とうない</rt></ruby>の<ruby>権力<rt>けんりょく</rt></ruby><ruby>闘争<rt>とうそう</rt></ruby>が<ruby>激化<rt>げきか</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">UK PM Starmer loses grip on power; Burnham emerges as successor</h2>
+              <p class="body en-body">BBC analysis suggests Prime Minister Keir Starmer has effectively lost the ability to govern, following the same pattern of rapid collapse seen under Liz Truss and Boris Johnson. Andy Burnham has emerged as the leading candidate to succeed him as Labour leader. Chancellor Rachel Reeves has urged Burnham to maintain her economic policies, despite reports she could be demoted under his leadership.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">ベネズエラで<ruby>連続<rt>れんぞく</rt></ruby><ruby>地震<rt>じしん</rt></ruby>　<ruby>死者<rt>ししゃ</rt></ruby>235<ruby>人<rt>にん</rt></ruby>、4300<ruby>人<rt>にん</rt></ruby><ruby>超<rt>ちょう</rt></ruby>が<ruby>負傷<rt>ふしょう</rt></ruby></h2>
+              <p class="body">ベネズエラで<ruby>今週<rt>こんしゅう</rt></ruby>、<ruby>二度<rt>にど</rt></ruby>にわたり<ruby>大規模<rt>だいきぼ</rt></ruby>な<ruby>地震<rt>じしん</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>し、<ruby>少なくとも<rt>すくなくとも</rt></ruby>235<ruby>人<rt>にん</rt></ruby>が<ruby>死亡<rt>しぼう</rt></ruby>、4,300<ruby>人以上<rt>ひといじょう</rt></ruby>が<ruby>負傷<rt>ふしょう</rt></ruby>した。<ruby>沿岸<rt>えんがん</rt></ruby><ruby>都市<rt>とし</rt></ruby>ラ・グアイラでは<ruby>複数<rt>ふくすう</rt></ruby><ruby>階建<rt>かいだて</rt></ruby>てのビルが<ruby>倒壊<rt>とうかい</rt></ruby>し、<ruby>多く<rt>おおく</rt></ruby>の<ruby>住民<rt>じゅうみん</rt></ruby>が<ruby>瓦礫<rt>がれき</rt></ruby>の<ruby>下に<rt>したに</rt></ruby><ruby>取り残さ<rt>とりのこさ</rt></ruby>れているとみられる。<ruby>旧<rt>きゅう</rt></ruby>マドゥロ<ruby>政権<rt>せいけん</rt></ruby>の<ruby>崩壊<rt>ほうかい</rt></ruby>から<ruby>半年<rt>はんとし</rt></ruby><ruby>足ら<rt>たら</rt></ruby>ずで<ruby>国家的<rt>こっかてき</rt></ruby><ruby>危機<rt>きき</rt></ruby>に<ruby>見舞<rt>みまい</rt></ruby>われた<ruby>形<rt>かたち</rt></ruby>であり、<ruby>救助<rt>きゅうじょ</rt></ruby><ruby>活動<rt>かつどう</rt></ruby>が<ruby>懸命<rt>けんめい</rt></ruby>に<ruby>続け<rt>つづけ</rt></ruby>られている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Venezuela earthquakes kill 235, injure over 4,300</h2>
+              <p class="body en-body">Two major earthquakes struck Venezuela this week, killing at least 235 people and injuring more than 4,300. Multi-storey buildings collapsed in the coastal city of La Guaira, with many believed still trapped under rubble. The disaster compounds the country's instability, coming less than six months after former leader Nicolás Maduro was seized by US forces.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">チャールズ<ruby>国王<rt>こくおう</rt></ruby>、<ruby>納税<rt>のうぜい</rt></ruby><ruby>額<rt>ひたい</rt></ruby>を<ruby>初公開<rt>はつこうかい</rt></ruby>　<ruby>約<rt>やく</rt></ruby>1290<ruby>万<rt>まん</rt></ruby>ポンド</h2>
+              <p class="body">チャールズ<ruby>国王<rt>こくおう</rt></ruby>が2024<ruby>年度<rt>ねんど</rt></ruby>に<ruby>約<rt>やく</rt></ruby>1,290<ruby>万<rt>まん</rt></ruby>ポンドを<ruby>納税<rt>のうぜい</rt></ruby>したことを<ruby>公表<rt>こうひょう</rt></ruby>し、イギリス<ruby>史上初<rt>しじょうはつ</rt></ruby>めて<ruby>国王<rt>こくおう</rt></ruby>が<ruby>自ら<rt>みずから</rt></ruby>の<ruby>納税<rt>のうぜい</rt></ruby><ruby>額<rt>ひたい</rt></ruby>を<ruby>公開<rt>こうかい</rt></ruby>した。この<ruby>金額<rt>きんがく</rt></ruby>は<ruby>英国<rt>えいこく</rt></ruby>の<ruby>上位<rt>じょうい</rt></ruby>100<ruby>人<rt>にん</rt></ruby>の<ruby>納税者<rt>のうぜいしゃ</rt></ruby>に<ruby>入る<rt>いる</rt></ruby><ruby>水準<rt>すいじゅん</rt></ruby>である。また、バッキンガム<ruby>宮殿<rt>きゅうでん</rt></ruby>は<ruby>国王<rt>こくおう</rt></ruby><ruby>夫妻<rt>ふさい</rt></ruby>が<ruby>改修<rt>かいしゅう</rt></ruby><ruby>完了後<rt>かんりょうご</rt></ruby>もクラレンスハウスに<ruby>引き続き<rt>ひきつづき</rt></ruby><ruby>居住<rt>きょじゅう</rt></ruby>すると<ruby>発表<rt>はっぴょう</rt></ruby>した。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">King Charles becomes first monarch to publish tax payments</h2>
+              <p class="body en-body">King Charles disclosed he paid £12.9 million in tax for the 2024-25 financial year, becoming the first British monarch to publish his tax payments. The figure places him among the UK's top 100 taxpayers. Buckingham Palace also confirmed that the King and Queen will continue residing at Clarence House after palace renovations are complete.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">アップル、MacとiPadを<ruby>約<rt>やく</rt></ruby>20%<ruby>値上げ<rt>ねあげ</rt></ruby>　AIチップ<ruby>不足<rt>ふそく</rt></ruby>が<ruby>原因<rt>げんいん</rt></ruby></h2>
+              <p class="body">アップルがMacおよびiPadの<ruby>大幅<rt>おおはば</rt></ruby>な<ruby>値上げ<rt>ねあげ</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。AI<ruby>技術<rt>ぎじゅつ</rt></ruby>の<ruby>急速<rt>きゅうそく</rt></ruby>な<ruby>普及<rt>ふきゅう</rt></ruby>によりメモリチップの<ruby>需要<rt>じゅよう</rt></ruby>が<ruby>急増<rt>きゅうぞう</rt></ruby>し、<ruby>部品価格<rt>ぶひんかかく</rt></ruby>が<ruby>前例<rt>ぜんれい</rt></ruby>のない<ruby>速度<rt>そくど</rt></ruby>で<ruby>上昇<rt>じょうしょう</rt></ruby>しているためである。<ruby>一部<rt>いちぶ</rt></ruby><ruby>製品<rt>せいひん</rt></ruby>では<ruby>約<rt>やく</rt></ruby>20%の<ruby>値上げ<rt>ねあげ</rt></ruby>となる。マイクロソフトのXboxもコンソール<ruby>価格<rt>かかく</rt></ruby>を<ruby>引き上げ<rt>ひきあげ</rt></ruby>ている。<ruby>一方<rt>いっぽう</rt></ruby>、<ruby>米<rt>こめ</rt></ruby>AI<ruby>企業<rt>きぎょう</rt></ruby>アンソロピックは<ruby>中国<rt>ちゅうごく</rt></ruby>アリババが<ruby>不正<rt>ふせい</rt></ruby>な<ruby>手段<rt>しゅだん</rt></ruby>でClaudeモデルの<ruby>能力<rt>のうりょく</rt></ruby>を<ruby>抽出<rt>ちゅうしゅつ</rt></ruby>したとして<ruby>非難<rt>ひなん</rt></ruby>しており、AI<ruby>知的<rt>ちてき</rt></ruby><ruby>財産<rt>ざいさん</rt></ruby>をめぐる<ruby>国際紛争<rt>こくさいふんそう</rt></ruby>が<ruby>表面化<rt>ひょうめんか</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Apple hikes Mac and iPad prices nearly 20% amid AI chip shortage</h2>
+              <p class="body en-body">Apple announced significant price increases for Macs and iPads, blaming an unprecedented surge in memory chip costs driven by AI demand. Some products will see hikes of nearly 20%. Meanwhile, Anthropic has accused Chinese tech giant Alibaba of using fraudulent accounts to illicitly extract capabilities from its Claude AI model, marking a major escalation in AI intellectual property disputes.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・スポーツ</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">サッカー<ruby>日本代表<rt>にほんだいひょう</rt></ruby>、W<ruby>杯<rt>はい</rt></ruby><ruby>決勝<rt>けっしょう</rt></ruby>T<ruby>進出<rt>しんしゅつ</rt></ruby>　<ruby>次戦<rt>じせん</rt></ruby>はブラジル</h2>
+              <p class="body">サッカー<ruby>日本代表<rt>にほんだいひょう</rt></ruby>がFIFAワールドカップのグループF<ruby>最終戦<rt>さいしゅうせん</rt></ruby>でスウェーデンと1<ruby>対<rt>つい</rt></ruby>1で<ruby>引き分け<rt>ひきわけ</rt></ruby>、グループ2<ruby>位<rt>くらい</rt></ruby>で<ruby>決勝<rt>けっしょう</rt></ruby>トーナメント<ruby>進出<rt>しんしゅつ</rt></ruby>を<ruby>決め<rt>きめ</rt></ruby>た。グループ<ruby>首位<rt>しゅい</rt></ruby>はオランダであった。<ruby>決勝<rt>けっしょう</rt></ruby>トーナメント1<ruby>回戦<rt>かいせん</rt></ruby>ではブラジルと<ruby>対戦<rt>たいせん</rt></ruby>することが<ruby>決定<rt>けってい</rt></ruby>し、サムライブルーにとって<ruby>最大級<rt>さいだいきゅう</rt></ruby>の<ruby>一戦<rt>いっせん</rt></ruby>となる。ダラスの<ruby>会場<rt>かいじょう</rt></ruby>では<ruby>日本人<rt>にほんじん</rt></ruby>ファンが<ruby>大き<rt>おおき</rt></ruby>な<ruby>声援<rt>せいえん</rt></ruby>を<ruby>送っ<rt>おくっ</rt></ruby>た。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan advance to World Cup last 32, set to face Brazil</h2>
+              <p class="body en-body">Japan secured their place in the FIFA World Cup knockout rounds with a 1-1 draw against Sweden in their final Group F match, finishing as runners-up behind the Netherlands. They will now face Brazil in the last 32 — a blockbuster fixture for the Samurai Blue. Japanese fans gathered in Dallas to cheer on their team.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>千葉県<rt>ちばけん</rt></ruby>でM5.8の<ruby>地震<rt>じしん</rt></ruby>　<ruby>首都圏<rt>しゅとけん</rt></ruby>で<ruby>広く<rt>ひろく</rt></ruby><ruby>揺れ<rt>ゆれ</rt></ruby><ruby>観測<rt>かんそく</rt></ruby></h2>
+              <p class="body"><ruby>金曜日<rt>きんようび</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>、<ruby>千葉県<rt>ちばけん</rt></ruby>を<ruby>震源<rt>しんげん</rt></ruby>とするマグニチュード5.8の<ruby>地震<rt>じしん</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>した。<ruby>気象庁<rt>きしょうちょう</rt></ruby>によると<ruby>震源<rt>しんげん</rt></ruby>の<ruby>深さ<rt>ふかさ</rt></ruby>は<ruby>約<rt>やく</rt></ruby>50キロメートルで、<ruby>東京<rt>とうきょう</rt></ruby>を<ruby>含む<rt>ふくむ</rt></ruby><ruby>首都圏<rt>しゅとけん</rt></ruby>の<ruby>広い<rt>ひろい</rt></ruby><ruby>範囲<rt>はんい</rt></ruby>で<ruby>揺れ<rt>ゆれ</rt></ruby>が<ruby>観測<rt>かんそく</rt></ruby>された。<ruby>現時点<rt>げんじてん</rt></ruby>で<ruby>大き<rt>おおき</rt></ruby>な<ruby>被害<rt>ひがい</rt></ruby>や<ruby>死傷者<rt>ししょうしゃ</rt></ruby>の<ruby>報告<rt>ほうこく</rt></ruby>はないが、<ruby>今週<rt>こんしゅう</rt></ruby>ベネズエラで<ruby>壊滅的<rt>かいめつてき</rt></ruby>な<ruby>地震<rt>じしん</rt></ruby>が<ruby>起き<rt>おき</rt></ruby>たばかりであり、<ruby>防災<rt>ぼうさい</rt></ruby><ruby>意識<rt>いしき</rt></ruby>の<ruby>重要性<rt>じゅうようせい</rt></ruby>が<ruby>改め<rt>あらため</rt></ruby>て<ruby>注目<rt>ちゅうもく</rt></ruby>されている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Magnitude 5.8 earthquake strikes Chiba, felt across Tokyo region</h2>
+              <p class="body en-body">An earthquake with a preliminary magnitude of 5.8 struck Chiba Prefecture on Friday morning at a depth of approximately 50 kilometres, according to the Japan Meteorological Agency. The tremor was felt widely across the greater Tokyo region. No major damage or casualties have been reported, but the event has heightened awareness of earthquake preparedness following the devastating Venezuela earthquakes this week.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>韓国<rt>かんこく</rt></ruby>、「ドローン<ruby>戦士<rt>せんし</rt></ruby>」50<ruby>万人<rt>ばんにん</rt></ruby><ruby>育成<rt>いくせい</rt></ruby>へ　<ruby>北朝鮮<rt>きたちょうせん</rt></ruby>に<ruby>対抗<rt>たいこう</rt></ruby></h2>
+              <p class="body"><ruby>韓国政府<rt>かんこくせいふ</rt></ruby>が<ruby>北朝鮮<rt>きたちょうせん</rt></ruby>のドローン<ruby>脅威<rt>きょうい</rt></ruby>に<ruby>対抗<rt>たいこう</rt></ruby>するため、50<ruby>万人<rt>ばんにん</rt></ruby><ruby>規模<rt>きぼ</rt></ruby>の「ドローン<ruby>戦士<rt>せんし</rt></ruby>」<ruby>育成<rt>いくせい</rt></ruby><ruby>計画<rt>けいかく</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。<ruby>数万<rt>すうまん</rt></ruby><ruby>機の<rt>きの</rt></ruby><ruby>無人<rt>むじん</rt></ruby><ruby>航空機<rt>こうくうき</rt></ruby>の<ruby>配備<rt>はいび</rt></ruby>も<ruby>予定<rt>よてい</rt></ruby>されている。<ruby>北朝鮮<rt>きたちょうせん</rt></ruby>は<ruby>過去<rt>かこ</rt></ruby>にドローンをソウル<ruby>上空<rt>じょうくう</rt></ruby>に<ruby>飛行<rt>ひこう</rt></ruby>させた<ruby>実績<rt>じっせき</rt></ruby>があり、<ruby>韓国<rt>かんこく</rt></ruby>は<ruby>無人<rt>むじん</rt></ruby><ruby>機<rt>き</rt></ruby><ruby>技術<rt>ぎじゅつ</rt></ruby>を<ruby>安全<rt>あんぜん</rt></ruby><ruby>保障<rt>ほしょう</rt></ruby><ruby>戦略<rt>せんりゃく</rt></ruby>の<ruby>中核<rt>ちゅうかく</rt></ruby>に<ruby>据え<rt>すえ</rt></ruby>る<ruby>方針<rt>ほうしん</rt></ruby>である。この<ruby>動き<rt>うごき</rt></ruby>は<ruby>東<rt>ひがし</rt></ruby>アジアにおける<ruby>防衛<rt>ぼうえい</rt></ruby>のあり<ruby>方が<rt>ほうが</rt></ruby><ruby>無人<rt>むじん</rt></ruby><ruby>機<rt>き</rt></ruby><ruby>技術<rt>ぎじゅつ</rt></ruby>によって<ruby>大きく<rt>おおきく</rt></ruby><ruby>変容<rt>へんよう</rt></ruby>しつつあることを<ruby>示し<rt>しめし</rt></ruby>ている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">South Korea to train 500,000 drone operators to counter North Korea</h2>
+              <p class="body en-body">South Korea announced an ambitious plan to train 500,000 'drone warriors' and deploy tens of thousands of unmanned systems to counter North Korea's growing drone programme. North Korean drones have previously penetrated Seoul airspace. The announcement signals a major shift in East Asian defence strategy, with unmanned aerial technology taking centre stage.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-06-26 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "凋落", "reading": "ちょうらく", "english": "downfall; decline"}, {"word": "政権運営", "reading": "せいけんうんえい", "english": "governance; running of government"}, {"word": "有力視", "reading": "ゆうりょくし", "english": "regarded as a strong candidate"}, {"word": "降格", "reading": "こうかく", "english": "demotion"}, {"word": "権力闘争", "reading": "けんりょくとうそう", "english": "power struggle"}], [{"word": "瓦礫", "reading": "がれき", "english": "rubble; debris"}, {"word": "倒壊", "reading": "とうかい", "english": "collapse (of a building)"}, {"word": "負傷", "reading": "ふしょう", "english": "injury; wound"}, {"word": "見舞われる", "reading": "みまわれる", "english": "to be struck by; to be hit by"}, {"word": "懸命に", "reading": "けんめいに", "english": "desperately; with all one's might"}], [{"word": "納税額", "reading": "のうぜいがく", "english": "amount of tax paid"}, {"word": "公表", "reading": "こうひょう", "english": "public disclosure; announcement"}, {"word": "改修", "reading": "かいしゅう", "english": "renovation; refurbishment"}, {"word": "居住", "reading": "きょじゅう", "english": "residence; dwelling"}, {"word": "水準", "reading": "すいじゅん", "english": "level; standard"}], [{"word": "値上げ", "reading": "ねあげ", "english": "price increase"}, {"word": "急増", "reading": "きゅうぞう", "english": "rapid increase; surge"}, {"word": "前例のない", "reading": "ぜんれいのない", "english": "unprecedented"}, {"word": "知的財産", "reading": "ちてきざいさん", "english": "intellectual property"}, {"word": "表面化", "reading": "ひょうめんか", "english": "coming to the surface; becoming apparent"}], [{"word": "決勝トーナメント", "reading": "けっしょうトーナメント", "english": "knockout stage; finals tournament"}, {"word": "引き分け", "reading": "ひきわけ", "english": "draw; tie"}, {"word": "進出", "reading": "しんしゅつ", "english": "advance; progression"}, {"word": "声援", "reading": "せいえん", "english": "cheering; vocal support"}, {"word": "対戦", "reading": "たいせん", "english": "match-up; playing against"}], [{"word": "震源", "reading": "しんげん", "english": "epicentre; seismic source"}, {"word": "気象庁", "reading": "きしょうちょう", "english": "Japan Meteorological Agency"}, {"word": "死傷者", "reading": "ししょうしゃ", "english": "casualties (dead and injured)"}, {"word": "防災", "reading": "ぼうさい", "english": "disaster prevention"}, {"word": "壊滅的", "reading": "かいめつてき", "english": "devastating; catastrophic"}], [{"word": "無人航空機", "reading": "むじんこうくうき", "english": "unmanned aerial vehicle; drone"}, {"word": "配備", "reading": "はいび", "english": "deployment; stationing"}, {"word": "安全保障", "reading": "あんぜんほしょう", "english": "national security"}, {"word": "脅威", "reading": "きょうい", "english": "threat; menace"}, {"word": "変容", "reading": "へんよう", "english": "transformation; change in form"}]];
+    const LABELS  = [{"section": "英国", "headline": "スターマー首相、政権維持困難に　後任にバーナム氏浮上"}, {"section": "国際", "headline": "ベネズエラで連続地震　死者235人、4300人超が負傷"}, {"section": "英国", "headline": "チャールズ国王、納税額を初公開　約1290万ポンド"}, {"section": "経済", "headline": "アップル、MacとiPadを約20%値上げ　AIチップ不足が原因"}, {"section": "日本・スポーツ", "headline": "サッカー日本代表、W杯決勝T進出　次戦はブラジル"}, {"section": "日本・社会", "headline": "千葉県でM5.8の地震　首都圏で広く揺れ観測"}, {"section": "国際", "headline": "韓国、「ドローン戦士」50万人育成へ　北朝鮮に対抗"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
