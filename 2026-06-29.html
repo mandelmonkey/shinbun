@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毎日新聞 — 2026年6月29日（月曜日）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #1a1a1a;
+    line-height: 1.8;
+  }
+  .masthead {
+    background: #1a1a1a;
+    color: #f5f0e8;
+    text-align: center;
+    padding: 24px 16px 16px;
+    border-bottom: 4px solid #8b1a1a;
+  }
+  .masthead-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .masthead-subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+  .masthead-date {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    margin-top: 8px;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+  }
+  .divider { height: 2px; background: #8b1a1a; margin: 0; }
+  .flip-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background: #fffdf0;
+    border-bottom: 1px solid #d4c9a8;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  .flip-label {
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+  }
+  .flip-btn {
+    background: #8b1a1a;
+    color: white;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .flip-btn:active { opacity: 0.75; }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .article {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #8b1a1a;
+    padding: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .article:active { opacity: 0.9; }
+  .section-tag {
+    font-size: 0.7rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.2em;
+    color: #8b1a1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4c9a8;
+    padding-bottom: 12px;
+  }
+  .en-headline {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+  }
+  .body {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 2;
+    color: #2a2a2a;
+  }
+  .en-body {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    color: #333;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+  }
+  ruby rt { font-size: 0.55em; color: #666; }
+  .vocab-section {
+    background: #fffdf7;
+    border: 1px solid #d4c9a8;
+    border-top: 3px solid #2a5a8b;
+    padding: 24px;
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+  .vocab-title { font-size: 1rem; color: #2a5a8b; margin-bottom: 16px; font-family: 'Helvetica Neue', sans-serif; }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: clamp(0.8rem, 2vw, 0.95rem); }
+  .vocab-table th { background: #2a5a8b; color: white; padding: 8px 12px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; }
+  .vocab-table td { padding: 8px 12px; border-bottom: 1px solid #e0d9c8; }
+  .vocab-table tr:hover td { background: #f0ead8; }
+  .vocab-word { font-size: 1.1em; font-weight: 600; }
+  .vocab-reading { color: #666; font-style: italic; }
+  .vocab-english { color: #2a5a8b; }
+  .footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #888; font-family: 'Helvetica Neue', sans-serif; border-top: 1px solid #d4c9a8; margin-top: 32px; }
+  .article-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .vocab-btn {
+    background: none; border: 1px solid #d4c9a8; border-radius: 16px;
+    padding: 3px 10px; font-size: 0.8rem; cursor: pointer; color: #8b1a1a;
+    font-family: 'Helvetica Neue', sans-serif; white-space: nowrap;
+    flex-shrink: 0; line-height: 1.4;
+  }
+  .vocab-btn:active { background: #f0ead8; }
+  .archive-link { text-align: center; margin: 16px 0; font-family: 'Helvetica Neue', sans-serif; }
+  .archive-link a { color: #8b1a1a; text-decoration: none; font-size: 0.85rem; }
+
+  /* Per-article vocab panel */
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    max-height: 55vh; overflow-y: auto;
+    background: #fdf6e3; border-top: 3px solid #8b1a1a;
+    padding: 16px 20px 40px; z-index: 200;
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+    font-family: 'Hiragino Mincho ProN','Yu Mincho',Georgia,serif;
+  }
+  .vocab-panel.open { display: block; }
+  .vocab-panel-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .vocab-panel-title {
+    font-size: 0.82rem; color: #8b1a1a; font-weight: bold;
+    line-height: 1.4; flex: 1;
+  }
+  .vocab-close {
+    background: none; border: 1px solid #d4c9a8; border-radius: 14px;
+    padding: 3px 12px; font-size: 0.78rem; color: #888; cursor: pointer;
+    font-family: 'Helvetica Neue', sans-serif; flex-shrink: 0;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .vocab-table tr { border-bottom: 1px solid #e0d9c8; }
+  .vocab-table td { padding: 8px 4px; vertical-align: top; }
+  .vocab-word { font-weight: bold; width: 36%; }
+  .vocab-reading { color: #888; width: 28%; font-size: 0.82rem; }
+  .vocab-english { color: #2a5a8b; width: 36%; }
+  ruby rt { font-size: 0.55em; color: #aaa; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-title">毎日新聞</div>
+  <div class="masthead-subtitle">LONGFELLOW DAILY — N2 JAPANESE EDITION</div>
+  <div class="masthead-date">2026年6月29日（月曜日）</div>
+</header>
+<div class="divider"></div>
+
+  <div class="flip-bar">
+    <span class="flip-label" id="flip-label">🇯🇵 日本語 — tap article to flip</span>
+    <button class="flip-btn" onclick="flipAll(event)">🇬🇧 All → English</button>
+  </div>
+
+<div class="container">
+  <div class="archive-link"><a href="index.html">← 記事一覧 / Archive</a></div>
+  <div class="articles-grid">
+    
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国</div>
+              <button class="vocab-btn" onclick="openVocab(event,0)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">バーナム<ruby>氏<rt>し</rt></ruby>、<ruby>地方分<rt>ちほうぶん</rt></ruby><ruby>権<rt>けん</rt></ruby>を<ruby>公約<rt>こうやく</rt></ruby>　<ruby>首相<rt>しゅしょう</rt></ruby><ruby>選<rt>せん</rt></ruby>で<ruby>初<rt>はつ</rt></ruby>の<ruby>大型<rt>おおがた</rt></ruby><ruby>演説<rt>えんぜつ</rt></ruby></h2>
+              <p class="body"><ruby>元<rt>もと</rt></ruby>グレーター・マンチェスター<ruby>市長<rt>しちょう</rt></ruby>で<ruby>現<rt>げん</rt></ruby>メイカーフィールド<ruby>選挙区<rt>せんきょく</rt></ruby><ruby>議員<rt>ぎいん</rt></ruby>のアンディ・バーナム<ruby>氏<rt>し</rt></ruby>が、<ruby>首相<rt>しゅしょう</rt></ruby>の<ruby>座<rt>ざ</rt></ruby>を<ruby>目指す<rt>めざす</rt></ruby><ruby>選挙<rt>せんきょ</rt></ruby>キャンペーンで<ruby>初<rt>はつ</rt></ruby>の<ruby>大型<rt>おおがた</rt></ruby><ruby>演説<rt>えんぜつ</rt></ruby>を<ruby>行った<rt>いった</rt></ruby>。バーナム<ruby>氏<rt>し</rt></ruby>は「すべての<ruby>郵便番号<rt>ゆうびんばんごう</rt></ruby>に<ruby>良い<rt>よい</rt></ruby><ruby>成長<rt>せいちょう</rt></ruby>を」と<ruby>訴え<rt>うったえ</rt></ruby>、<ruby>地方<rt>ちほう</rt></ruby>への<ruby>意思決定<rt>いしけってい</rt></ruby><ruby>権限<rt>けんげん</rt></ruby>の<ruby>移譲<rt>いじょう</rt></ruby>を<ruby>強く<rt>つよく</rt></ruby><ruby>推進<rt>すいしん</rt></ruby>する<ruby>方針<rt>ほうしん</rt></ruby>を<ruby>示し<rt>しめし</rt></ruby>た。この<ruby>構想<rt>こうそう</rt></ruby>は<ruby>前<rt>まえ</rt></ruby><ruby>労働<rt>ろうどう</rt></ruby><ruby>党政<rt>とうせい</rt></ruby><ruby>権<rt>けん</rt></ruby>の<ruby>中央集権的<rt>ちゅうおうしゅうけんてき</rt></ruby>アプローチとは<ruby>対照的<rt>たいしょうてき</rt></ruby>であり、<ruby>党首<rt>とうしゅ</rt></ruby><ruby>選に<rt>えらに</rt></ruby>おける<ruby>重要な<rt>じゅうような</rt></ruby><ruby>転換<rt>てんかん</rt></ruby><ruby>点<rt>てん</rt></ruby>と<ruby>見ら<rt>みら</rt></ruby>れている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Burnham pledges devolution in first major leadership speech</h2>
+              <p class="body en-body">Andy Burnham, former Greater Manchester mayor and current MP for Makerfield, delivered his first major speech in the contest to succeed the outgoing prime minister. He pledged to push decision-making power to regions and local communities under the banner of 'good growth in every postcode'. The vision contrasts sharply with the centralised approach of the previous Labour government.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">国際</div>
+              <button class="vocab-btn" onclick="openVocab(event,1)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>米国<rt>べいこく</rt></ruby>とイラン、<ruby>週末<rt>しゅうまつ</rt></ruby>の<ruby>軍事衝突<rt>ぐんじしょうとつ</rt></ruby><ruby>後に<rt>のちに</rt></ruby>「<ruby>停戦<rt>ていせん</rt></ruby>」<ruby>合意<rt>ごうい</rt></ruby></h2>
+              <p class="body"><ruby>米国<rt>べいこく</rt></ruby>とイランは、<ruby>週末<rt>しゅうまつ</rt></ruby>にかけて<ruby>互いに<rt>たがいに</rt></ruby><ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>繰り返し<rt>くりかえし</rt></ruby>た<ruby>後<rt>のち</rt></ruby>、<ruby>敵対<rt>てきたい</rt></ruby><ruby>行為<rt>こうい</rt></ruby>の<ruby>停止<rt>ていし</rt></ruby>に<ruby>合意<rt>ごうい</rt></ruby>した。<ruby>双方<rt>そうほう</rt></ruby>が<ruby>以前<rt>いぜん</rt></ruby>の<ruby>停戦<rt>ていせん</rt></ruby><ruby>合意<rt>ごうい</rt></ruby><ruby>違反<rt>いはん</rt></ruby>を<ruby>非難<rt>ひなん</rt></ruby>し、<ruby>一連<rt>いちれん</rt></ruby>の<ruby>軍事<rt>ぐんじ</rt></ruby><ruby>攻撃<rt>こうげき</rt></ruby>を<ruby>行った<rt>いった</rt></ruby>が、<ruby>外交官<rt>がいこうかん</rt></ruby>の<ruby>介入<rt>かいにゅう</rt></ruby>により<ruby>再度<rt>さいど</rt></ruby>の<ruby>停戦<rt>ていせん</rt></ruby>が<ruby>実現<rt>じつげん</rt></ruby>した。<ruby>状況<rt>じょうきょう</rt></ruby>は<ruby>依然<rt>いぜん</rt></ruby>として<ruby>脆弱<rt>ぜいじゃく</rt></ruby>であり、<ruby>中東<rt>ちゅうとう</rt></ruby>におけるさらなるエスカレーションを<ruby>懸念<rt>けねん</rt></ruby>する<ruby>国際社会<rt>こくさいしゃかい</rt></ruby>の<ruby>注目<rt>ちゅうもく</rt></ruby>が<ruby>集ま<rt>あつま</rt></ruby>っている。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">US and Iran agree to stand down after weekend exchange of strikes</h2>
+              <p class="body en-body">The United States and Iran agreed to halt hostilities after a tense weekend in which both sides exchanged strikes and accused each other of violating an earlier ceasefire. Diplomats stepped in to broker a renewed stand-down. The situation remains fragile, with international observers closely watching for further escalation in the Middle East.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">経済</div>
+              <button class="vocab-btn" onclick="openVocab(event,2)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline">トランプ<ruby>氏<rt>し</rt></ruby>、<ruby>欧州<rt>おうしゅう</rt></ruby>デジタル<ruby>課税<rt>かぜい</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>100%<ruby>関税<rt>かんぜい</rt></ruby>を<ruby>警告<rt>けいこく</rt></ruby></h2>
+              <p class="body">トランプ<ruby>米大統領<rt>べいだいとうりょう</rt></ruby>は、デジタルサービス<ruby>税<rt>ぜい</rt></ruby>の<ruby>導入<rt>どうにゅう</rt></ruby>を<ruby>進め<rt>すすめ</rt></ruby>る<ruby>複数<rt>ふくすう</rt></ruby>の<ruby>欧州<rt>おうしゅう</rt></ruby><ruby>諸国<rt>しょこく</rt></ruby>に<ruby>対し<rt>たいし</rt></ruby>、100パーセントの<ruby>関税<rt>かんぜい</rt></ruby>を<ruby>課す<rt>かす</rt></ruby>と<ruby>警告し<rt>けいこくし</rt></ruby>た。<ruby>同氏<rt>どうし</rt></ruby>はこの<ruby>課税<rt>かぜい</rt></ruby>が<ruby>米国<rt>べいこく</rt></ruby>のテクノロジー<ruby>企業<rt>きぎょう</rt></ruby>を<ruby>不当<rt>ふとう</rt></ruby>に<ruby>標的<rt>ひょうてき</rt></ruby>にしていると<ruby>主張<rt>しゅちょう</rt></ruby>している。<ruby>今回<rt>こんかい</rt></ruby>の<ruby>脅し<rt>おどし</rt></ruby>により、すでに<ruby>緊張<rt>きんちょう</rt></ruby><ruby>状態<rt>じょうたい</rt></ruby>にある<ruby>大西洋<rt>たいせいよう</rt></ruby><ruby>間の<rt>まの</rt></ruby><ruby>貿易関係<rt>ぼうえきかんけい</rt></ruby>にさらなる<ruby>摩擦<rt>まさつ</rt></ruby>が<ruby>加わ<rt>くわわ</rt></ruby>る<ruby>形<rt>かたち</rt></ruby>となった。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Trump threatens 100% tariff on Europe over digital services tax</h2>
+              <p class="body en-body">US President Donald Trump has threatened to impose 100% tariffs on goods from European countries implementing digital services taxes targeting US tech firms. Trump argued the taxes unfairly single out American technology companies. The threat adds fresh tension to already strained transatlantic trade relations.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">英国・世界</div>
+              <button class="vocab-btn" onclick="openVocab(event,3)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>南極<rt>なんきょく</rt></ruby><ruby>初<rt>はつ</rt></ruby>の<ruby>恐竜<rt>きょうりゅう</rt></ruby><ruby>化石<rt>かせき</rt></ruby>、<ruby>博物館<rt>はくぶつかん</rt></ruby>の<ruby>引き出し<rt>ひきだし</rt></ruby>で40<ruby>年間<rt>ねんかん</rt></ruby><ruby>眠る<rt>ねむる</rt></ruby></h2>
+              <p class="body"><ruby>古生物学者<rt>こせいぶつがくしゃ</rt></ruby>が<ruby>南極<rt>なんきょく</rt></ruby><ruby>大陸<rt>たいりく</rt></ruby>で<ruby>初めて<rt>はじめて</rt></ruby><ruby>発見<rt>はっけん</rt></ruby>された<ruby>恐竜<rt>きょうりゅう</rt></ruby>の<ruby>骨<rt>ほね</rt></ruby>を<ruby>特定<rt>とくてい</rt></ruby>した。この<ruby>化石<rt>かせき</rt></ruby>は1985<ruby>年<rt>ねん</rt></ruby>に<ruby>採集<rt>さいしゅう</rt></ruby>されたものの、<ruby>博物館<rt>はくぶつかん</rt></ruby>の<ruby>引き出し<rt>ひきだし</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<ruby>長年<rt>ながねん</rt></ruby><ruby>見過ご<rt>みすご</rt></ruby>されていた。<ruby>史上最大<rt>しじょうさいだい</rt></ruby><ruby>級<rt>きゅう</rt></ruby>の<ruby>恐竜<rt>きょうりゅう</rt></ruby>であるティタノサウルスの<ruby>尾<rt>お</rt></ruby>の<ruby>一部<rt>いちぶ</rt></ruby>であり、<ruby>古代<rt>こだい</rt></ruby>の<ruby>超<rt>ちょう</rt></ruby><ruby>大陸<rt>たいりく</rt></ruby>ゴンドワナにおける<ruby>恐竜<rt>きょうりゅう</rt></ruby>の<ruby>分布<rt>ぶんぷ</rt></ruby>を<ruby>解明<rt>かいめい</rt></ruby>する<ruby>新た<rt>あらた</rt></ruby>な<ruby>手がかり<rt>てがかり</rt></ruby>となる。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">First Antarctic dinosaur bone found — in a museum drawer since 1985</h2>
+              <p class="body en-body">Palaeontologists have identified the first dinosaur bone ever found in Antarctica, which had been sitting unnoticed in a museum drawer since it was collected in 1985. The fossil is part of the tail of a Titanosaur, one of the largest dinosaurs to have lived. The discovery opens new possibilities for understanding how dinosaurs spread across the ancient supercontinent Gondwana.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・社会</div>
+              <button class="vocab-btn" onclick="openVocab(event,4)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>大阪府警<rt>おおさかふけい</rt></ruby>、AI<ruby>警察署長<rt>けいさつしょちょう</rt></ruby>「AIこ」で<ruby>特殊<rt>とくしゅ</rt></ruby><ruby>詐欺<rt>さぎ</rt></ruby><ruby>対策<rt>たいさく</rt></ruby>を<ruby>強化<rt>きょうか</rt></ruby></h2>
+              <p class="body"><ruby>大阪府警<rt>おおさかふけい</rt></ruby>は、<ruby>特殊<rt>とくしゅ</rt></ruby><ruby>詐欺<rt>さぎ</rt></ruby>への<ruby>注意喚起<rt>ちゅういかんき</rt></ruby>を<ruby>目的<rt>もくてき</rt></ruby>としたバーチャルAI<ruby>警察署長<rt>けいさつしょちょう</rt></ruby>「AIこ」を<ruby>発表<rt>はっぴょう</rt></ruby>した。「AI」と<ruby>女性名<rt>じょせいめい</rt></ruby>に<ruby>用い<rt>もちい</rt></ruby>られる「<ruby>子<rt>こ</rt></ruby>」を<ruby>掛け<rt>かけ</rt></ruby><ruby>合わ<rt>あわ</rt></ruby>せた<ruby>名前<rt>なまえ</rt></ruby>で、<ruby>府警<rt>ふけい</rt></ruby>のYouTubeチャンネルを<ruby>通じ<rt>つうじ</rt></ruby>て<ruby>防犯<rt>ぼうはん</rt></ruby><ruby>情報<rt>じょうほう</rt></ruby>を<ruby>発信<rt>はっしん</rt></ruby>する。<ruby>府警<rt>ふけい</rt></ruby>のデータによると、64<ruby>歳<rt>とし</rt></ruby><ruby>以下の<rt>いかの</rt></ruby><ruby>被害者<rt>ひがいしゃ</rt></ruby>が<ruby>全体<rt>ぜんたい</rt></ruby>のほぼ<ruby>半数<rt>はんすう</rt></ruby>を<ruby>占め<rt>しめ</rt></ruby>ており、<ruby>警察官<rt>けいさつかん</rt></ruby>や<ruby>有名人<rt>ゆうめいじん</rt></ruby>、<ruby>恋人<rt>こいびと</rt></ruby>を<ruby>装う<rt>よそおう</rt></ruby><ruby>手口<rt>てぐち</rt></ruby>が<ruby>横行<rt>おうこう</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Osaka police launch AI chief 'AIko' to combat imposter scams</h2>
+              <p class="body en-body">Osaka Prefecture police have unveiled a virtual AI police chief named 'AIko' to raise awareness about imposter scams. AIko delivers crime prevention advice via the prefectural police's YouTube channel. Police data shows victims aged 64 or younger now account for nearly half of all imposter scam cases, with criminals posing as officers, celebrities, and even romantic partners.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,5)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>日本政府<rt>にほんせいふ</rt></ruby>、STEM<ruby>女性<rt>じょせい</rt></ruby><ruby>比率<rt>ひりつ</rt></ruby>を2040<ruby>年<rt>ねん</rt></ruby>までに<ruby>倍増<rt>ばいぞう</rt></ruby>へ</h2>
+              <p class="body"><ruby>日本政府<rt>にほんせいふ</rt></ruby>は、<ruby>科学<rt>かがく</rt></ruby>・<ruby>技術<rt>ぎじゅつ</rt></ruby>・<ruby>工学<rt>こうがく</rt></ruby>・<ruby>数学分野<rt>すうがくぶんや</rt></ruby>における<ruby>女性<rt>じょせい</rt></ruby>の<ruby>割合<rt>わりあい</rt></ruby>を2040<ruby>年<rt>ねん</rt></ruby>までに36パーセントへ<ruby>倍増<rt>ばいぞう</rt></ruby>させる<ruby>計画<rt>けいかく</rt></ruby>を<ruby>発表<rt>はっぴょう</rt></ruby>した。2025<ruby>年時<rt>ねんじ</rt></ruby><ruby>点<rt>てん</rt></ruby>の<ruby>女性<rt>じょせい</rt></ruby><ruby>比率<rt>ひりつ</rt></ruby>は18パーセントにとどまっている。<ruby>高市<rt>たかいち</rt></ruby><ruby>早苗<rt>さなえ</rt></ruby><ruby>首相<rt>しゅしょう</rt></ruby>が<ruby>発表<rt>はっぴょう</rt></ruby>した<ruby>政策<rt>せいさく</rt></ruby>には、ジェンダー<ruby>平等<rt>びょうどう</rt></ruby>を<ruby>推進<rt>すいしん</rt></ruby>する<ruby>大学<rt>だいがく</rt></ruby>への<ruby>補助金<rt>ほじょきん</rt></ruby>や<ruby>保育<rt>ほいく</rt></ruby>サービスの<ruby>税制<rt>ぜいせい</rt></ruby><ruby>優遇<rt>ゆうぐう</rt></ruby>が<ruby>含ま<rt>ふくま</rt></ruby>れる。<ruby>半導体<rt>はんどうたい</rt></ruby>やAIを<ruby>含む<rt>ふくむ</rt></ruby>17の<ruby>戦略<rt>せんりゃく</rt></ruby><ruby>分野<rt>ぶんや</rt></ruby>における<ruby>労働力<rt>ろうどうりょく</rt></ruby><ruby>不足<rt>ふそく</rt></ruby>が<ruby>背景<rt>はいけい</rt></ruby>にある。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Japan aims to double women in STEM fields to 36% by 2040</h2>
+              <p class="body en-body">The Japanese government announced plans to double the proportion of women in STEM to 36% by 2040, up from just 18% in 2025. Prime Minister Sanae Takaichi unveiled the policy, which includes university subsidies and childcare tax incentives. The initiative is driven by labour shortages across 17 strategic sectors including semiconductors and artificial intelligence.</p>
+            </div>
+        </article>
+        <article class="article" onclick="flipArticle(this)">
+            <div class="article-header">
+              <div class="section-tag">日本・政治</div>
+              <button class="vocab-btn" onclick="openVocab(event,6)" title="単語チートシート">📖</button>
+            </div>
+            <div class="lang-jp">
+              <h2 class="headline"><ruby>参政<rt>さんせい</rt></ruby><ruby>党<rt>とう</rt></ruby>、<ruby>与党<rt>よとう</rt></ruby><ruby>自民党<rt>じみんとう</rt></ruby>との<ruby>協調<rt>きょうちょう</rt></ruby><ruby>路線<rt>ろせん</rt></ruby>に<ruby>転換<rt>てんかん</rt></ruby>か</h2>
+              <p class="body">「<ruby>日本<rt>にっぽん</rt></ruby><ruby>第一<rt>だいいち</rt></ruby>」を<ruby>掲げ<rt>かかげ</rt></ruby>る<ruby>超<rt>ちょう</rt></ruby><ruby>保守<rt>ほしゅ</rt></ruby><ruby>政党<rt>せいとう</rt></ruby>・<ruby>参政<rt>さんせい</rt></ruby><ruby>党<rt>とう</rt></ruby>が、<ruby>近<rt>きん</rt></ruby><ruby>週<rt>しゅう</rt></ruby>は<ruby>与党<rt>よとう</rt></ruby>・<ruby>自由民主党<rt>じゆうみんしゅとう</rt></ruby><ruby>連立政権<rt>れんりつせいけん</rt></ruby>と<ruby>協調<rt>きょうちょう</rt></ruby><ruby>的な<rt>てきな</rt></ruby><ruby>姿勢<rt>しせい</rt></ruby>を<ruby>見せ<rt>みせ</rt></ruby>ている。<ruby>再審<rt>さいしん</rt></ruby><ruby>制度<rt>せいど</rt></ruby><ruby>改正<rt>かいせい</rt></ruby><ruby>法案<rt>ほうあん</rt></ruby>への<ruby>支持<rt>しじ</rt></ruby>や、<ruby>国旗<rt>こっき</rt></ruby><ruby>毀損<rt>きそん</rt></ruby><ruby>禁止<rt>きんし</rt></ruby><ruby>法案<rt>ほうあん</rt></ruby>の<ruby>共同<rt>きょうどう</rt></ruby><ruby>提出<rt>ていしゅつ</rt></ruby>がその<ruby>象徴<rt>しょうちょう</rt></ruby>である。アナリストは、<ruby>来春<rt>らいしゅん</rt></ruby>の<ruby>地方選挙<rt>ちほうせんきょ</rt></ruby>に<ruby>向け<rt>むけ</rt></ruby>て<ruby>政策<rt>せいさく</rt></ruby><ruby>面<rt>めん</rt></ruby>での<ruby>譲歩<rt>じょうほ</rt></ruby>を<ruby>引き出す<rt>ひきだす</rt></ruby><ruby>狙い<rt>ねらい</rt></ruby>があると<ruby>分析<rt>ぶんせき</rt></ruby>している。</p>
+            </div>
+            <div class="lang-en" style="display:none;">
+              <h2 class="headline en-headline">Sanseito party shifts toward cooperation with ruling LDP</h2>
+              <p class="body en-body">Japan's ultraconservative Sanseito party, which rose on a 'Japanese first' platform, has recently taken a more cooperative stance toward the ruling LDP coalition. The party backed a retrial system reform bill and co-submitted legislation to outlaw desecration of the Japanese flag. Analysts suggest Sanseito is positioning itself to win policy concessions ahead of local elections next spring.</p>
+            </div>
+        </article>
+  </div>
+</div>
+
+<!-- Per-article vocab panel -->
+<div class="vocab-panel" id="vocab-panel">
+  <div class="vocab-panel-header">
+    <div class="vocab-panel-title" id="vocab-title"></div>
+    <button class="vocab-close" onclick="closeVocab()">✕ 閉じる</button>
+  </div>
+  <table class="vocab-table">
+    <tbody id="vocab-tbody"></tbody>
+  </table>
+</div>
+
+<footer class="footer">
+  毎日新聞 · Longfellow Daily · 2026-06-29 · N2日本語練習用
+</footer>
+
+  <script>
+    const VOCABS  = [[{"word": "地方分権", "reading": "ちほうぶんけん", "english": "devolution; decentralisation"}, {"word": "公約", "reading": "こうやく", "english": "campaign pledge; public commitment"}, {"word": "選挙区", "reading": "せんきょく", "english": "electoral district; constituency"}, {"word": "移譲", "reading": "いじょう", "english": "transfer; delegation"}, {"word": "中央集権", "reading": "ちゅうおうしゅうけん", "english": "centralisation of power"}], [{"word": "敵対行為", "reading": "てきたいこうい", "english": "hostile acts; hostilities"}, {"word": "停戦", "reading": "ていせん", "english": "ceasefire"}, {"word": "非難", "reading": "ひなん", "english": "criticism; condemnation"}, {"word": "脆弱", "reading": "ぜいじゃく", "english": "fragile; vulnerable"}, {"word": "エスカレーション", "reading": "エスカレーション", "english": "escalation"}], [{"word": "関税", "reading": "かんぜい", "english": "tariff; customs duty"}, {"word": "課税", "reading": "かぜい", "english": "taxation; imposing a tax"}, {"word": "標的", "reading": "ひょうてき", "english": "target"}, {"word": "摩擦", "reading": "まさつ", "english": "friction; conflict"}, {"word": "大西洋", "reading": "たいせいよう", "english": "Atlantic Ocean"}], [{"word": "古生物学者", "reading": "こせいぶつがくしゃ", "english": "palaeontologist"}, {"word": "化石", "reading": "かせき", "english": "fossil"}, {"word": "超大陸", "reading": "ちょうたいりく", "english": "supercontinent"}, {"word": "分布", "reading": "ぶんぷ", "english": "distribution; spread"}, {"word": "解明", "reading": "かいめい", "english": "elucidation; clarification"}], [{"word": "特殊詐欺", "reading": "とくしゅさぎ", "english": "imposter scam; special fraud"}, {"word": "注意喚起", "reading": "ちゅういかんき", "english": "raising awareness; alerting"}, {"word": "防犯", "reading": "ぼうはん", "english": "crime prevention"}, {"word": "被害者", "reading": "ひがいしゃ", "english": "victim"}, {"word": "横行", "reading": "おうこう", "english": "rampant; widespread"}], [{"word": "倍増", "reading": "ばいぞう", "english": "doubling"}, {"word": "補助金", "reading": "ほじょきん", "english": "subsidy; grant"}, {"word": "税制優遇", "reading": "ぜいせいゆうぐう", "english": "tax incentive; preferential tax treatment"}, {"word": "戦略分野", "reading": "せんりゃくぶんや", "english": "strategic sector/field"}, {"word": "労働力不足", "reading": "ろうどうりょくぶそく", "english": "labour shortage"}], [{"word": "超保守", "reading": "ちょうほしゅ", "english": "ultraconservative"}, {"word": "再審", "reading": "さいしん", "english": "retrial"}, {"word": "毀損", "reading": "きそん", "english": "defamation; desecration; damage"}, {"word": "譲歩", "reading": "じょうほ", "english": "concession; compromise"}, {"word": "連立政権", "reading": "れんりつせいけん", "english": "coalition government"}]];
+    const LABELS  = [{"section": "英国", "headline": "バーナム氏、地方分権を公約　首相選で初の大型演説"}, {"section": "国際", "headline": "米国とイラン、週末の軍事衝突後に「停戦」合意"}, {"section": "経済", "headline": "トランプ氏、欧州デジタル課税に対し100%関税を警告"}, {"section": "英国・世界", "headline": "南極初の恐竜化石、博物館の引き出しで40年間眠る"}, {"section": "日本・社会", "headline": "大阪府警、AI警察署長「AIこ」で特殊詐欺対策を強化"}, {"section": "日本・政治", "headline": "日本政府、STEM女性比率を2040年までに倍増へ"}, {"section": "日本・政治", "headline": "参政党、与党自民党との協調路線に転換か"}];
+    let isJP = true;
+
+    function flipAll(e) {
+      if (e) e.stopPropagation();
+      isJP = !isJP;
+      document.querySelectorAll('.lang-jp').forEach(el => el.style.display = isJP ? '' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isJP ? 'none' : '');
+      const lbl = document.getElementById('flip-label');
+      if (lbl) lbl.textContent = isJP ? '🇯🇵 日本語 — tap article to flip' : '🇬🇧 English — tap to flip back';
+      const btn = document.querySelector('.flip-btn');
+      if (btn) btn.textContent = isJP ? '🇬🇧 All → English' : '🇯🇵 All → 日本語';
+    }
+
+    function flipArticle(article) {
+      const jp = article.querySelector('.lang-jp');
+      const en = article.querySelector('.lang-en');
+      if (!en) return;
+      const jpVisible = jp.style.display !== 'none';
+      jp.style.display = jpVisible ? 'none' : '';
+      en.style.display = jpVisible ? '' : 'none';
+    }
+
+    function openVocab(e, idx) {
+      e.stopPropagation();
+      const vocab  = VOCABS[idx] || [];
+      const label  = LABELS[idx] || {};
+      if (!vocab.length) return;
+
+      const panel  = document.getElementById('vocab-panel');
+      const title  = document.getElementById('vocab-title');
+      const tbody  = document.getElementById('vocab-tbody');
+
+      title.textContent = label.section + ' — ' + label.headline;
+
+      let rows = '';
+      vocab.forEach(v => {
+        rows += `<tr>
+          <td class="vocab-word"><ruby>${v.word}<rt>${v.reading}</rt></ruby></td>
+          <td class="vocab-reading">${v.reading}</td>
+          <td class="vocab-english">${v.english}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = rows;
+      panel.classList.add('open');
+    }
+
+    function closeVocab() {
+      document.getElementById('vocab-panel').classList.remove('open');
+    }
+
+    // Close panel when tapping outside
+    document.addEventListener('click', function(e) {
+      const panel = document.getElementById('vocab-panel');
+      if (panel.classList.contains('open') && !panel.contains(e.target)) {
+        panel.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
